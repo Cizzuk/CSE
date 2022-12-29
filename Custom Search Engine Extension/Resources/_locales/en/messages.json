@@ -1,0 +1,10 @@
+{
+    "extension_name": {
+        "message": "Customize Search Engine",
+        "description": "The display name for the extension."
+    },
+    "extension_description": {
+        "message": "Customize your search engine.",
+        "description": "Description of what the extension does."
+    }
+}
