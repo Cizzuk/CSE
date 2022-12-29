@@ -8,9 +8,9 @@ browser.runtime.sendMessage({
     function(response) {
         URLtop = response.top;
         URLsuffix = response.suffix;
-    if (getParam('q') != null && (getParam('t') == "ipad" || getParam('t') == "iphone")) {
+    if (getParam('q') != null && (getParam('t') == "ipad" || getParam('t') == "iphone" || getParam('t') == "osx")) {
         location.href = "https://" + URLtop + getParam('q') + URLsuffix;
-        document.getElementsByTagName('html')[0].innerHTML = '<body style="background-color:#000">';
+        document.getElementsByTagName('html')[0].innerHTML = '<body style="background:#000;Color:#ccc;font-family:sans-serif;text-align:center"><h1>Customize Search Engine</h1><p><strong>Redirecting...</strong></p></body>';
         console.log("CSE: URL has been rewritten.")
     }
 });
