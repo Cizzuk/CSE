@@ -10,11 +10,6 @@ Safari Extensions
 
 [Download on the App Store](https://apps.apple.com/app/customize-search-engine/id1636254806)
 
-### AltStore
-
-- AltStore Source: [https://tsg0o0.com/altstore.json](https://a.tsg0o0.com/as/)
-- [Download on the AltStore](https://a.tsg0o0.com/as/cse/)
-
 ### Download .ipa
 
 - [tsg0o0.com](https://tsg0o0.com/resource/app/cse/ios/CSE.ipa)
