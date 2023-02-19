@@ -16,6 +16,6 @@ Safari Extensions
 - [tsg4o4zjaknpkbefs2k47a7emkl54moz2t2k4py4gbyhz6v7vubsjbad.onion](http://tsg4o4zjaknpkbefs2k47a7emkl54moz2t2k4py4gbyhz6v7vubsjbad.onion/resource/app/cse/ios/CSE.ipa)
 - [GitHub](https://github.com/tsg0o0/CSE-iOS/releases)
 
-## Credit
+## Licence
 
-by tsg0o0
+This software is licensed under the terms of the [GNU GPL v2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt).
