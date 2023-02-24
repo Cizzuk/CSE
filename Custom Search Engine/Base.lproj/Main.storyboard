@@ -119,6 +119,10 @@
                                     <segment title="Baidu"/>
                                     <segment title="Yandex"/>
                                 </segments>
+                                <connections>
+                                    <action selector="editSegmentEngine:" destination="Ud8-ac-krr" eventType="editingDidEndOnExit" id="IgN-cq-cqB"/>
+                                    <action selector="editSegmentEngine:" destination="Ud8-ac-krr" eventType="editingChanged" id="sQZ-fB-KEC"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="w5H-uS-qgJ"/>
@@ -147,6 +151,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="HWi-vD-mQO"/>
                     <connections>
+                        <outlet property="engineSelector" destination="w7D-rw-l5b" id="qbb-ve-OPm"/>
                         <outlet property="suffixText" destination="5in-TF-wri" id="MHk-xW-cCz"/>
                         <outlet property="topText" destination="o61-jE-R1q" id="bXI-qS-Xo3"/>
                     </connections>
