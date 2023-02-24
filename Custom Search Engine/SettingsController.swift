@@ -15,7 +15,7 @@ class SettingsController: UIViewController {
     @IBAction func DoneButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.Custom-Search-Engine")
+    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     override func viewDidLoad() {
         super.viewDidLoad()
         topText.text! = userDefaults!.string(forKey: "urltop") ?? "twitter.com/search?q="
