@@ -2,8 +2,8 @@
 /* Class = "UITextField"; accessibilityHint = "Enter the Suffix of URL"; ObjectID = "5in-TF-wri"; */
 "5in-TF-wri.accessibilityHint" = "URLの後尾を入力";
 
-/* Class = "UILabel"; accessibilityHint = "Only URLs beginning with https are supported"; ObjectID = "QIl-It-lAa"; */
-"QIl-It-lAa.accessibilityHint" = "httpsから始まるURLのみサポートしています。";
+/* Class = "UILabel"; text = "Default search engine for Safari"; ObjectID = "B4P-bd-k6B"; */
+"B4P-bd-k6B.text" = "Safariのデフォルト検索エンジン";
 
 /* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "faK-BQ-XnR"; */
 "faK-BQ-XnR.title" = "完了";
