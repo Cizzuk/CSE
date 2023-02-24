@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21208.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -53,7 +53,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fVa-cF-grF">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="-1" y="0.0" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Settings" leftItemsSupplementBackButton="YES" id="lPG-iz-YiO">
@@ -65,8 +65,8 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="twitter.com/search?q=" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="o61-jE-R1q">
-                                <rect key="frame" x="86" y="182" width="308" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="https://twitter.com/search?q=" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="o61-jE-R1q">
+                                <rect key="frame" x="20" y="182" width="374" height="34"/>
                                 <accessibility key="accessibilityConfiguration" hint="Enter the Top of URL"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="URL" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="url"/>
@@ -103,33 +103,46 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="https://" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIl-It-lAa">
-                                <rect key="frame" x="20" y="182" width="58" height="34"/>
-                                <accessibility key="accessibilityConfiguration" hint="Only URLs beginning with https are supported"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default search engine for Safari" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4P-bd-k6B">
+                                <rect key="frame" x="20" y="406" width="374" height="26"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" staticText="YES" header="YES"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="w7D-rw-l5b">
+                                <rect key="frame" x="20" y="475" width="374" height="32"/>
+                                <segments>
+                                    <segment title="DuckDuckGo"/>
+                                    <segment title="Baidu"/>
+                                    <segment title="Yandex"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="w5H-uS-qgJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="w7D-rw-l5b" firstAttribute="top" secondItem="B4P-bd-k6B" secondAttribute="bottom" constant="43" id="0SV-Jh-BNa"/>
                             <constraint firstItem="5in-TF-wri" firstAttribute="top" secondItem="uWo-xN-md5" secondAttribute="bottom" constant="33" id="3O9-le-Ctv"/>
-                            <constraint firstItem="o61-jE-R1q" firstAttribute="leading" secondItem="QIl-It-lAa" secondAttribute="trailing" constant="8" id="83L-Cu-pZd"/>
+                            <constraint firstItem="w7D-rw-l5b" firstAttribute="top" secondItem="B4P-bd-k6B" secondAttribute="bottom" constant="43" id="562-RL-E8m"/>
                             <constraint firstItem="uWo-xN-md5" firstAttribute="leading" secondItem="w5H-uS-qgJ" secondAttribute="leading" constant="20" id="JjJ-e0-B3u"/>
                             <constraint firstItem="w5H-uS-qgJ" firstAttribute="trailing" secondItem="pEQ-Cn-6qA" secondAttribute="trailing" constant="20" id="NEf-hx-a3g"/>
-                            <constraint firstItem="QIl-It-lAa" firstAttribute="top" secondItem="pEQ-Cn-6qA" secondAttribute="bottom" constant="33" id="TUn-Ag-l9B"/>
                             <constraint firstItem="uWo-xN-md5" firstAttribute="top" secondItem="o61-jE-R1q" secondAttribute="bottom" constant="46" id="ab0-45-Iih"/>
                             <constraint firstItem="pEQ-Cn-6qA" firstAttribute="top" secondItem="w5H-uS-qgJ" secondAttribute="top" constant="80" id="dDA-EA-KKi"/>
                             <constraint firstItem="5in-TF-wri" firstAttribute="leading" secondItem="w5H-uS-qgJ" secondAttribute="leading" constant="20" id="die-Zk-vLk"/>
-                            <constraint firstItem="QIl-It-lAa" firstAttribute="leading" secondItem="w5H-uS-qgJ" secondAttribute="leading" constant="20" id="f7m-r4-Car"/>
                             <constraint firstItem="w5H-uS-qgJ" firstAttribute="trailing" secondItem="5in-TF-wri" secondAttribute="trailing" constant="20" id="hFP-Th-r9D"/>
+                            <constraint firstItem="w7D-rw-l5b" firstAttribute="leading" secondItem="w5H-uS-qgJ" secondAttribute="leading" constant="20" id="hzS-bi-BCG"/>
+                            <constraint firstItem="w5H-uS-qgJ" firstAttribute="trailing" secondItem="B4P-bd-k6B" secondAttribute="trailing" constant="20" id="iDc-pE-w6n"/>
+                            <constraint firstItem="w5H-uS-qgJ" firstAttribute="trailing" secondItem="w7D-rw-l5b" secondAttribute="trailing" constant="20" id="j7e-RS-xhH"/>
                             <constraint firstItem="o61-jE-R1q" firstAttribute="top" secondItem="pEQ-Cn-6qA" secondAttribute="bottom" constant="33" id="kvr-rd-0Zf"/>
-                            <constraint firstItem="o61-jE-R1q" firstAttribute="leading" secondItem="w5H-uS-qgJ" secondAttribute="leading" constant="86" id="nLa-NS-2NI"/>
+                            <constraint firstItem="o61-jE-R1q" firstAttribute="leading" secondItem="w5H-uS-qgJ" secondAttribute="leading" constant="20" id="nLa-NS-2NI"/>
                             <constraint firstItem="w5H-uS-qgJ" firstAttribute="trailing" secondItem="uWo-xN-md5" secondAttribute="trailing" constant="20" id="qTD-QP-ubi"/>
+                            <constraint firstItem="B4P-bd-k6B" firstAttribute="top" secondItem="5in-TF-wri" secondAttribute="bottom" constant="52" id="ry3-KZ-ge7"/>
                             <constraint firstItem="w5H-uS-qgJ" firstAttribute="trailing" secondItem="o61-jE-R1q" secondAttribute="trailing" constant="20" id="t50-lH-EYI"/>
                             <constraint firstItem="pEQ-Cn-6qA" firstAttribute="leading" secondItem="w5H-uS-qgJ" secondAttribute="leading" constant="20" id="tg8-hW-P1z"/>
-                            <constraint firstItem="uWo-xN-md5" firstAttribute="top" secondItem="QIl-It-lAa" secondAttribute="bottom" constant="46" id="tvB-CQ-NVa"/>
+                            <constraint firstItem="B4P-bd-k6B" firstAttribute="leading" secondItem="w5H-uS-qgJ" secondAttribute="leading" constant="20" id="xoW-gc-2KN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HWi-vD-mQO"/>
