@@ -8,13 +8,7 @@ Safari Extensions
 
 ### App Store
 
-[Download on the App Store](https://apps.apple.com/app/customize-search-engine/id1636254806)
-
-### Download .ipa
-
-- [tsg0o0.com](https://tsg0o0.com/resource/app/cse/ios/CSE.ipa)
-- [tsg4o4zjaknpkbefs2k47a7emkl54moz2t2k4py4gbyhz6v7vubsjbad.onion](http://tsg4o4zjaknpkbefs2k47a7emkl54moz2t2k4py4gbyhz6v7vubsjbad.onion/resource/app/cse/ios/CSE.ipa)
-- [GitHub](https://github.com/tsg0o0/CSE-iOS/releases)
+[Download on the App Store](https://apps.apple.com/app/customize-search-engine/id6445840140)
 
 ## Licence
 
