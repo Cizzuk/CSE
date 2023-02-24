@@ -22,10 +22,10 @@ class SettingsController: UIViewController {
         topText.text! = userDefaults!.string(forKey: "urltop") ?? "https://twitter.com/search?q="
         suffixText.text! = userDefaults!.string(forKey: "urlsuffix") ?? "&f=live"
         
-        var engineSet = userDefaults!.string(forKey: "searchengine") ?? "duckduckgo"
+        let engineSet = userDefaults!.string(forKey: "searchengine") ?? "duckduckgo"
         if engineSet == "duckduckgo" {
             engineSelector.selectedSegmentIndex = 0
-        }else if engineSet == "baidu" {
+        }else if engineSet == "sogou" {
             engineSelector.selectedSegmentIndex = 1
         }else if engineSet == "yandex" {
             engineSelector.selectedSegmentIndex = 2
@@ -43,7 +43,14 @@ class SettingsController: UIViewController {
     }
     
     @IBAction func editSegmentEngine(_ sender: Any) {
-//        print(sender.titleForSegment(at: sender.selectedSegmentIndex)!)
+        print("aaaa")
+        if engineSelector.selectedSegmentIndex == 0 {
+            userDefaults!.set("duckduckgo", forKey: "searchengine")
+        }else if engineSelector.selectedSegmentIndex == 1 {
+            userDefaults!.set("sogou", forKey: "searchengine")
+        }else if engineSelector.selectedSegmentIndex == 2 {
+            userDefaults!.set("yandex", forKey: "searchengine")
+        }
     }
     
     @IBAction func endInputtop(_ sender: Any) {

@@ -21,7 +21,7 @@
 
     "content_scripts": [{
         "js": [ "content.js" ],
-        "matches": [ "*://duckduckgo.com/*","*://m.baidu.com/*","*://yandex.ru/*" ]
+        "matches": [ "*://duckduckgo.com/*","*://m.sogou.com/*","*://yandex.ru/*" ]
     }],
 
     "action": {

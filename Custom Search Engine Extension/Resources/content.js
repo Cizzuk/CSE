@@ -10,17 +10,17 @@ browser.runtime.sendMessage({
         URLtop = response.top;
         URLsuffix = response.suffix;
         Engine = response.engine;
-    if (Engine == "duckduckgo") {
+    if (Engine == "duckduckgo" && window.location.hostname == "duckduckgo.com") {
         if (getParam('q') != null && (getParam('t') == "ipad" || getParam('t') == "iphone" || getParam('t') == "osx")) {
             location.href = URLtop + getParam('q') + URLsuffix;
             CSELog();
         }
-    }else if (Engine == "baidu") {
-        if (getParam('word') != null) {
+    }else if (Engine == "sogou" && window.location.hostname == "m.sogou.com") {
+        if (getParam('keyword') != null) {
             location.href = URLtop + getParam('word') + URLsuffix;
             CSELog();
         }
-    }else if (Engine == "yandex") {
+    }else if (Engine == "yandex" && window.location.hostname == "yandex.ru") {
         if (getParam('text') != null) {
             location.href = URLtop + getParam('text') + URLsuffix;
             CSELog();

@@ -116,12 +116,13 @@
                                 <rect key="frame" x="20" y="475" width="374" height="32"/>
                                 <segments>
                                     <segment title="DuckDuckGo"/>
-                                    <segment title="Baidu"/>
+                                    <segment title="Sogou"/>
                                     <segment title="Yandex"/>
                                 </segments>
                                 <connections>
                                     <action selector="editSegmentEngine:" destination="Ud8-ac-krr" eventType="editingDidEndOnExit" id="IgN-cq-cqB"/>
                                     <action selector="editSegmentEngine:" destination="Ud8-ac-krr" eventType="editingChanged" id="sQZ-fB-KEC"/>
+                                    <action selector="editSegmentEngine:" destination="Ud8-ac-krr" eventType="valueChanged" id="zO2-TC-Dqk"/>
                                 </connections>
                             </segmentedControl>
                         </subviews>
