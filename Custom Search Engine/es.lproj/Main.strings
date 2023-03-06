@@ -1,0 +1,21 @@
+
+/* Class = "UITextField"; accessibilityHint = "Enter the Suffix of URL"; ObjectID = "5in-TF-wri"; */
+"5in-TF-wri.accessibilityHint" = "Introduzca el sufijo de la URL";
+
+/* Class = "UILabel"; text = "Default search engine for Safari"; ObjectID = "B4P-bd-k6B"; */
+"B4P-bd-k6B.text" = "Motor de búsqueda predeterminado para Safari";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "faK-BQ-XnR"; */
+"faK-BQ-XnR.title" = "Hecho";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "lPG-iz-YiO"; */
+"lPG-iz-YiO.title" = "Ajustes";
+
+/* Class = "UITextField"; accessibilityHint = "Enter the Top of URL"; ObjectID = "o61-jE-R1q"; */
+"o61-jE-R1q.accessibilityHint" = "Introduzca la parte superior de la URL";
+
+/* Class = "UILabel"; text = "Top of URL"; ObjectID = "pEQ-Cn-6qA"; */
+"pEQ-Cn-6qA.text" = "Inicio de URL";
+
+/* Class = "UILabel"; text = "Suffix of URL"; ObjectID = "uWo-xN-md5"; */
+"uWo-xN-md5.text" = "Sufijo de URL";
