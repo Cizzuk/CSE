@@ -12,4 +12,8 @@ Safari Extensions
 
 ## License
 
-This software is licensed under the terms of the [GNU GPL v2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt).
+This software is licensed under the terms of the [Mozilla Public License 2.0](https://www.mozilla.org/en-US/MPL/2.0/).
+
+## Tip
+
+Did you like it? [Send me a tip](https://tsg0o0.com/tip/) if you like!
