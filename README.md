@@ -1,8 +1,23 @@
 # Customize Search Engine for iOS
 
-Customize your search engine.
+This is an extension to set a non-prescribed search engine in Safari.
 
-Safari Extensions
+Safari can be changed to Google, Bing, DuckDuckGo and other search engines in the settings, but this extension allows you to change to other search engines.
+
+It can be applied to change to search engines such as Startpage and Brave Search, to search within sites such as Twitter and YouTube, and to translate DeepL from the search bar.
+
+## How to use
+
+Enter the top and suffix of URL.
+
+Example:
+
+| Search Engine | Top of URL | Suffix of URL |
+| ------------- | ---------- | ------------- |
+| Google (Personalized Off) | https://www.google.com/search?q= | &pws=0 |
+| Startpage (Safe Search Off) | https://www.startpage.com/sp/search?query= | &qadf=none |
+| Twitter (Latest) | https://twitter.com/search?q= | &f=live |
+| DeepL (to Japanese) | https://www.deepl.com/translator#en/ja/ |  |
 
 ## Install
 
