@@ -14,7 +14,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     
     func beginRequest(with context: NSExtensionContext) {
         
-        let body: Dictionary<String, String> = ["type": "native", "top": userDefaults!.string(forKey: "urltop") ?? "https://twitter.com/search?q=", "suffix": userDefaults!.string(forKey: "urlsuffix") ?? "&f=live", "engine": userDefaults!.string(forKey: "searchengine") ?? "duckduckgo"]
+        let body: Dictionary<String, String> = ["type": "native", "top": userDefaults!.string(forKey: "urltop") ?? "https://archive.org/search?query=", "suffix": userDefaults!.string(forKey: "urlsuffix") ?? "", "engine": userDefaults!.string(forKey: "searchengine") ?? "duckduckgo"]
         do {
             let data = try JSONEncoder().encode(body)
             let json = String(data: data, encoding: .utf8) ?? ""

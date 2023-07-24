@@ -30,7 +30,7 @@ browser.runtime.sendMessage({
     
 
 function CSELog() {
-    document.getElementsByTagName('html')[0].innerHTML = '<body style="background:#000;Color:#ccc;font-family:sans-serif;text-align:center"><h1>Customize Search Engine</h1><p><strong>Redirecting...</strong></p></body>';
+    document.getElementsByTagName('html')[0].innerHTML = '<body style="background:#000"></body>';
     console.log("CSE: URL has been rewritten.")
 }
 

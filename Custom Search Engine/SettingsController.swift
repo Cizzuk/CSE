@@ -19,8 +19,8 @@ class SettingsController: UIViewController {
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     override func viewDidLoad() {
         super.viewDidLoad()
-        topText.text! = userDefaults!.string(forKey: "urltop") ?? "https://twitter.com/search?q="
-        suffixText.text! = userDefaults!.string(forKey: "urlsuffix") ?? "&f=live"
+        topText.text! = userDefaults!.string(forKey: "urltop") ?? "https://archive.org/search?query="
+        suffixText.text! = userDefaults!.string(forKey: "urlsuffix") ?? ""
         
         let engineSet = userDefaults!.string(forKey: "searchengine") ?? "duckduckgo"
         if engineSet == "duckduckgo" {
@@ -43,7 +43,6 @@ class SettingsController: UIViewController {
     }
     
     @IBAction func editSegmentEngine(_ sender: Any) {
-        print("aaaa")
         if engineSelector.selectedSegmentIndex == 0 {
             userDefaults!.set("duckduckgo", forKey: "searchengine")
         }else if engineSelector.selectedSegmentIndex == 1 {
