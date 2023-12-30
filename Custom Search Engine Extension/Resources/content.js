@@ -30,7 +30,13 @@ browser.runtime.sendMessage({
     
 
 function CSELog() {
-    document.getElementsByTagName('html')[0].innerHTML = '<body style="background:#000"></body>';
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        //if darkmode
+        document.getElementsByTagName('html')[0].innerHTML = '<body style="background:#222"></body>';
+    }else{
+        //if lightmode
+        document.getElementsByTagName('html')[0].innerHTML = '<body style="background:#cacacf"></body>';
+    }
     console.log("CSE: URL has been rewritten.")
 }
 
