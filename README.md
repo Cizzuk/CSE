@@ -16,7 +16,6 @@ Example:
 | ------------- | ---------- | ------------- |
 | Google (Personalized Off) | https://www.google.com/search?q= | &pws=0 |
 | Startpage (Safe Search Off) | https://www.startpage.com/sp/search?query= | &qadf=none |
-| Twitter (Latest) | https://twitter.com/search?q= | &f=live |
 | DeepL (to Japanese) | https://www.deepl.com/translator#en/ja/ |  |
 
 ## Install
