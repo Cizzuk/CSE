@@ -30,4 +30,4 @@ This software is licensed under the terms of the [Mozilla Public License 2.0](ht
 
 ## Tip
 
-Did you like it? [Send me a tip](https://tsg0o0.com/tip/) if you like!
+Did you like it? [Send me a tip](https://tsg0o0.com/en/tip/) if you like!
