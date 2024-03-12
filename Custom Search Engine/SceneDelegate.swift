@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  Custom Search Engine
+//  Customize Search Engine
 //
-//  Created by tsg0o0 on 2022/07/23.
+//  Created by Cizzuk on 2022/07/23.
 //
 
 import UIKit

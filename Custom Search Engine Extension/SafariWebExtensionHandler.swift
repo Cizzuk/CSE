@@ -1,8 +1,8 @@
 //
 //  SafariWebExtensionHandler.swift
-//  Custom Search Engine Extension
+//  Customize Search Engine Extension
 //
-//  Created by tsg0o0 on 2022/07/23.
+//  Created by Cizzuk on 2022/07/23.
 //
 
 import SafariServices
