@@ -33,7 +33,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
         }else{
             if navigationAction.request.url!.absoluteString == "cse://settings"{
                 self.performSegue(withIdentifier: "settings", sender: self)
-            }else if navigationAction.request.url!.absoluteString == "https://tsg0o0.com/" || navigationAction.request.url!.absoluteString == "https://www.mozilla.org/en-US/MPL/2.0/"{
+            }else if navigationAction.request.url!.absoluteString == "https://cizzuk.net/" || navigationAction.request.url!.absoluteString == "https://www.mozilla.org/en-US/MPL/2.0/"{
                 UIApplication.shared.open(navigationAction.request.url!, options: [:], completionHandler: nil)
             }
             decisionHandler(.cancel)
