@@ -94,7 +94,7 @@ struct ContentView: View {
                 Section {
                     // Contact Link
                     Link(destination:URL(string: "https://cizzuk.net/contact/")!, label: {
-                        HStack{
+                        HStack {
                             Text("Contact")
                             Spacer()
                             Image(systemName: "chevron.right")
@@ -102,7 +102,7 @@ struct ContentView: View {
                     })
                     // Privacy Policy
                     Link(destination:URL(string: "https://tsg0o0.com/privacy/")!, label: {
-                        HStack{
+                        HStack {
                             Text("Privacy Policy")
                             Spacer()
                             Image(systemName: "chevron.right")
@@ -110,7 +110,7 @@ struct ContentView: View {
                     })
                     // License Link
                     Link(destination:URL(string: "https://www.mozilla.org/en-US/MPL/2.0/")!, label: {
-                        HStack{
+                        HStack {
                             Text("License")
                             Spacer()
                             Text("MPL 2.0")
@@ -119,7 +119,7 @@ struct ContentView: View {
                     })
                     // GitHub Source Link
                     Link(destination:URL(string: "https://github.com/tsg0o0/CSE-iOS")!, label: {
-                        HStack{
+                        HStack {
                             Text("Source")
                             Spacer()
                             Text("GitHub")
