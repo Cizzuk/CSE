@@ -76,6 +76,15 @@ struct ContentView: View {
                 } footer: {
                     Text(verbatim: "You will need to change the setting in Settings > Safari > Search Engine.")
                 }
+            
+                
+                Section {
+                    HStack {
+                        
+                    }
+                } header: {
+                    Text("App Icon")
+                }
                 
                 // Support Section
                 Section {
