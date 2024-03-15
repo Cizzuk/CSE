@@ -32,6 +32,9 @@ struct ContentView: View {
                 Section {
                     TextField("", text: $urltop)
                         .disableAutocorrection(true)
+                        .keyboardType(.URL)
+                        .textInputAutocapitalization(.never)
+                        .submitLabel(.done)
                         .onChange(of: urltop) { entered in
                             userDefaults!.set(entered, forKey: "urltop")
                         }
@@ -46,6 +49,9 @@ struct ContentView: View {
                 Section {
                     TextField("", text: $urlsuffix)
                         .disableAutocorrection(true)
+                        .keyboardType(.URL)
+                        .textInputAutocapitalization(.never)
+                        .submitLabel(.done)
                         .onChange(of: urlsuffix) { entered in
                             userDefaults!.set(entered, forKey: "urlsuffix")
                         }
@@ -64,7 +70,6 @@ struct ContentView: View {
                     }
                     .onChange(of: searchengine) { entered in
                         userDefaults!.set(entered, forKey: "searchengine")
-                        print("Search Engine: \(entered)")
                     }
                 } header: {
                     Text("Safari Setting")
