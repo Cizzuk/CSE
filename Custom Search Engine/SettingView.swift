@@ -74,7 +74,11 @@ struct ContentView: View {
                 } header: {
                     Text("Safari Setting")
                 } footer: {
-                    Text(verbatim: "You will need to change the setting in Settings > Safari > Search Engine.")
+                    VStack (alignment : .leading) {
+                        Text(verbatim: "You will need to change the setting in Settings > Safari > Search Engine.")
+                        Spacer()
+                        Text(verbatim: "And please allow CSE in Settings > Safari > Extentions.")
+                    }
                 }
             
                 
@@ -125,7 +129,7 @@ struct ContentView: View {
                 } header: {
                     Text("Support")
                 } footer: {
-                    HStack{
+                    HStack {
                         Text("© Cizzuk")
                         Spacer()
                         Text("Version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String)")
@@ -135,6 +139,7 @@ struct ContentView: View {
             .listStyle(.insetGrouped)
             .navigationTitle("CSE Settings")
         }
+        .navigationViewStyle(.stack)
     }
 }
 
