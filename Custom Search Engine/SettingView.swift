@@ -18,14 +18,23 @@ struct MainView: App {
 }
 
 struct ContentView: View {
+    
+    //Load app settings
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
+    @State private var urltop = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "urltop") ?? "https://archive.org/search?query="
+    @State private var urlsuffix = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "urlsuffix") ?? ""
+    @State private var searchengine = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "duckduckgo"
+    
     var body: some View {
         NavigationView {
             List {
                 // Top Section
                 Section {
-                    TextField("", text: .constant(userDefaults!.string(forKey: "urltop") ?? "https://archive.org/search?query="))
+                    TextField("", text: $urltop)
                         .disableAutocorrection(true)
+                        .onChange(of: urltop) { entered in
+                            userDefaults!.set(entered, forKey: "urltop")
+                        }
                     
                 } header: {
                     Text("Top of URL")
@@ -35,8 +44,11 @@ struct ContentView: View {
                 
                 // Suffix Section
                 Section {
-                    TextField("", text: .constant(userDefaults!.string(forKey: "urlsuffix") ?? ""))
+                    TextField("", text: $urlsuffix)
                         .disableAutocorrection(true)
+                        .onChange(of: urlsuffix) { entered in
+                            userDefaults!.set(entered, forKey: "urlsuffix")
+                        }
                 } header: {
                     Text("Suffix of URL")
                 } footer: {
@@ -45,10 +57,14 @@ struct ContentView: View {
                 
                 // Default SE Section
                 Section {
-                    Picker("Default Search Engine", selection: .constant(userDefaults!.string(forKey: "searchengine") ?? "duckduckgo")) {
+                    Picker("Default Search Engine", selection: $searchengine) {
                         Text("DuckDuckGo").tag("duckduckgo")
                         Text("Sogou").tag("sogou")
                         Text("Yandex").tag("yandex")
+                    }
+                    .onChange(of: searchengine) { entered in
+                        userDefaults!.set(entered, forKey: "searchengine")
+                        print("Search Engine: \(entered)")
                     }
                 } header: {
                     Text("Safari Setting")
