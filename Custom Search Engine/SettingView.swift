@@ -163,10 +163,10 @@ struct IconSettingView: View {
                 iconItem(iconName: "White", iconID: "gray-white")
                 iconItem(iconName: "Light", iconID: "light")
                 iconItem(iconName: "Glitch", iconID: "glitch")
-                iconItem(iconName: "Blue Dark", iconID: "blue-dark")
-                iconItem(iconName: "Red Dark", iconID: "red-dark")
-                iconItem(iconName: "Green Dark", iconID: "green-dark")
-                iconItem(iconName: "Gray Dark", iconID: "gray-dark")
+                iconItem(iconName: "Dark Blue", iconID: "blue-dark")
+                iconItem(iconName: "Dark Red", iconID: "red-dark")
+                iconItem(iconName: "Dark Green", iconID: "green-dark")
+                iconItem(iconName: "Black", iconID: "gray-dark")
             }
         }
         .listStyle(.insetGrouped)
