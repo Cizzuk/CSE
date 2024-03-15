@@ -29,6 +29,8 @@ struct ContentView: View {
                     
                 } header: {
                     Text("Top of URL")
+                } footer: {
+                    Text(verbatim: "For example, if you search for \"TYPEDTEXT\" and \"https://example.com/?q=TYPEDTEXT&kp=-2\" is your URL, enter \"https://example.com/?q=\".")
                 }
                 
                 // Suffix Section
@@ -37,6 +39,8 @@ struct ContentView: View {
                         .disableAutocorrection(true)
                 } header: {
                     Text("Suffix of URL")
+                } footer: {
+                    Text(verbatim: "And here, enter \"&kp=-2\" after \"TYPEDTEXT\".")
                 }
                 
                 // Default SE Section
@@ -47,7 +51,9 @@ struct ContentView: View {
                         Text("Yandex").tag("yandex")
                     }
                 } header: {
-                    Text("Safari Settings")
+                    Text("Safari Setting")
+                } footer: {
+                    Text(verbatim: "You will need to change the setting in Settings > Safari > Search Engine.")
                 }
                 
                 // Support Section
@@ -73,7 +79,7 @@ struct ContentView: View {
                         HStack{
                             Text("License")
                             Spacer()
-                            Text("Mozilla Public License 2.0")
+                            Text("MPL 2.0")
                             Image(systemName: "chevron.right")
                         }
                     })
@@ -88,6 +94,12 @@ struct ContentView: View {
                     })
                 } header: {
                     Text("Support")
+                } footer: {
+                    HStack{
+                        Text("© Cizzuk")
+                        Spacer()
+                        Text("Version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String)")
+                    }
                 }
             }
             .listStyle(.insetGrouped)
