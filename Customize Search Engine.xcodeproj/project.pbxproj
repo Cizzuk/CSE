@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		903A4A212BA1D87F005E346B /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903A4A202BA1D87F005E346B /* SettingView.swift */; };
 		90AD405E288E904000C5E21A /* accessibility.js in Resources */ = {isa = PBXBuildFile; fileRef = 90AD405D288E904000C5E21A /* accessibility.js */; };
 		90AD4060288E90C300C5E21A /* jquery.js in Resources */ = {isa = PBXBuildFile; fileRef = 90AD405F288E90C300C5E21A /* jquery.js */; };
 		90C9BE16288BE17000E22FB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9BE15288BE17000E22FB8 /* AppDelegate.swift */; };
@@ -16,7 +17,6 @@
 		90C9BE20288BE17000E22FB8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9BE1F288BE17000E22FB8 /* SceneDelegate.swift */; };
 		90C9BE22288BE17000E22FB8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9BE21288BE17000E22FB8 /* ViewController.swift */; };
 		90C9BE25288BE17000E22FB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE23288BE17000E22FB8 /* LaunchScreen.storyboard */; };
-		90C9BE28288BE17000E22FB8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE26288BE17000E22FB8 /* Main.storyboard */; };
 		90C9BE30288BE17300E22FB8 /* Customize Search Engine Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 90C9BE2F288BE17300E22FB8 /* Customize Search Engine Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		90C9BE35288BE17300E22FB8 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9BE34288BE17300E22FB8 /* SafariWebExtensionHandler.swift */; };
 		90C9BE38288BE17300E22FB8 /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE37288BE17300E22FB8 /* _locales */; };
@@ -56,11 +56,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		903A4A202BA1D87F005E346B /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		90AD4058288E74CD00C5E21A /* Custom Search Engine Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Custom Search Engine Extension.entitlements"; sourceTree = "<group>"; };
 		90AD405A288E7F2600C5E21A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = ja; path = ../ja.lproj/Main.html; sourceTree = "<group>"; };
 		90AD405D288E904000C5E21A /* accessibility.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = accessibility.js; sourceTree = "<group>"; };
 		90AD405F288E90C300C5E21A /* jquery.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.js; sourceTree = "<group>"; };
-		90AFD5F1288F56BA0086C5CB /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		90C9BE12288BE17000E22FB8 /* Customize Search Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Customize Search Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90C9BE15288BE17000E22FB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90C9BE19288BE17000E22FB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = ../Base.lproj/Main.html; sourceTree = "<group>"; };
@@ -69,7 +69,6 @@
 		90C9BE1F288BE17000E22FB8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		90C9BE21288BE17000E22FB8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		90C9BE24288BE17000E22FB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		90C9BE27288BE17000E22FB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		90C9BE29288BE17200E22FB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90C9BE2A288BE17200E22FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90C9BE2F288BE17300E22FB8 /* Customize Search Engine Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Customize Search Engine Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,17 +84,11 @@
 		90C9BE47288BE17300E22FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90C9BE52288D09DB00E22FB8 /* Custom Search Engine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Custom Search Engine.entitlements"; sourceTree = "<group>"; };
 		90C9BE53288D0CC300E22FB8 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
-		90D8FBE529B6024E00851BEB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		90D8FBE629B6024E00851BEB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = fr; path = ../fr.lproj/Main.html; sourceTree = "<group>"; };
-		90D8FBE729B602E300851BEB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		90D8FBE829B602E300851BEB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = de; path = ../de.lproj/Main.html; sourceTree = "<group>"; };
-		90D8FBE929B602ED00851BEB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		90D8FBEA29B602ED00851BEB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = ru; path = ../ru.lproj/Main.html; sourceTree = "<group>"; };
-		90D8FBEB29B602F500851BEB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		90D8FBEC29B602F500851BEB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = es; path = ../es.lproj/Main.html; sourceTree = "<group>"; };
-		90D8FBED29B602FD00851BEB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		90D8FBEE29B602FD00851BEB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hans"; path = "../zh-Hans.lproj/Main.html"; sourceTree = "<group>"; };
-		90D8FBEF29B6030200851BEB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		90D8FBF029B6030200851BEB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hant"; path = "../zh-Hant.lproj/Main.html"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,9 +135,9 @@
 				90C9BE15288BE17000E22FB8 /* AppDelegate.swift */,
 				90C9BE1F288BE17000E22FB8 /* SceneDelegate.swift */,
 				90C9BE21288BE17000E22FB8 /* ViewController.swift */,
+				903A4A202BA1D87F005E346B /* SettingView.swift */,
 				90C9BE53288D0CC300E22FB8 /* SettingsController.swift */,
 				90C9BE23288BE17000E22FB8 /* LaunchScreen.storyboard */,
-				90C9BE26288BE17000E22FB8 /* Main.storyboard */,
 				90C9BE29288BE17200E22FB8 /* Assets.xcassets */,
 				90C9BE2A288BE17200E22FB8 /* Info.plist */,
 				90C9BE17288BE17000E22FB8 /* Resources */,
@@ -279,7 +272,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				90C9BE1C288BE17000E22FB8 /* Icon.png in Resources */,
-				90C9BE28288BE17000E22FB8 /* Main.storyboard in Resources */,
 				90C9BE25288BE17000E22FB8 /* LaunchScreen.storyboard in Resources */,
 				90C9BE1A288BE17000E22FB8 /* Main.html in Resources */,
 				90AD4060288E90C300C5E21A /* jquery.js in Resources */,
@@ -312,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				90C9BE54288D0CC300E22FB8 /* SettingsController.swift in Sources */,
+				903A4A212BA1D87F005E346B /* SettingView.swift in Sources */,
 				90C9BE22288BE17000E22FB8 /* ViewController.swift in Sources */,
 				90C9BE16288BE17000E22FB8 /* AppDelegate.swift in Sources */,
 				90C9BE20288BE17000E22FB8 /* SceneDelegate.swift in Sources */,
@@ -358,21 +351,6 @@
 				90C9BE24288BE17000E22FB8 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		90C9BE26288BE17000E22FB8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				90C9BE27288BE17000E22FB8 /* Base */,
-				90AFD5F1288F56BA0086C5CB /* ja */,
-				90D8FBE529B6024E00851BEB /* fr */,
-				90D8FBE729B602E300851BEB /* de */,
-				90D8FBE929B602ED00851BEB /* ru */,
-				90D8FBEB29B602F500851BEB /* es */,
-				90D8FBED29B602FD00851BEB /* zh-Hans */,
-				90D8FBEF29B6030200851BEB /* zh-Hant */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -575,7 +553,6 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -617,7 +594,6 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
