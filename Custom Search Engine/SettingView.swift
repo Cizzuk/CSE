@@ -24,6 +24,10 @@ struct ContentView: View {
     @State private var urltop = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "urltop") ?? "https://archive.org/search?query="
     @State private var urlsuffix = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "urlsuffix") ?? ""
     @State private var searchengine = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "duckduckgo"
+    @State private var isIconSettingView: Bool = false
+    var alternateIconName: String? {
+        UIApplication.shared.alternateIconName
+    }
     
     var body: some View {
         NavigationView {
@@ -83,9 +87,15 @@ struct ContentView: View {
             
                 
                 Section {
-                    HStack {
-                        
+                    NavigationLink(destination: IconSettingView(), isActive: $isIconSettingView) {
+                        Image((alternateIconName ?? "appicon") + "-pre")
+                            .resizable()
+                            .frame(width: 64, height: 64)
+                            .id(isIconSettingView)
+                        Text("Change App Icon")
+                        Spacer()
                     }
+                    .contentShape(Rectangle())
                 } header: {
                     Text("App Icon")
                 }
@@ -142,6 +152,47 @@ struct ContentView: View {
         .navigationViewStyle(.stack)
     }
 }
+
+struct IconSettingView: View {
+    var body: some View {
+        List {
+            Section {
+                iconItem(iconName: "Default", iconID: "appicon")
+                iconItem(iconName: "Red", iconID: "red-white")
+                iconItem(iconName: "Green", iconID: "green-white")
+                iconItem(iconName: "White", iconID: "gray-white")
+                iconItem(iconName: "Light", iconID: "light")
+                iconItem(iconName: "Glitch", iconID: "glitch")
+                iconItem(iconName: "Blue Dark", iconID: "blue-dark")
+                iconItem(iconName: "Red Dark", iconID: "red-dark")
+                iconItem(iconName: "Green Dark", iconID: "green-dark")
+                iconItem(iconName: "Gray Dark", iconID: "gray-dark")
+            }
+        }
+        .listStyle(.insetGrouped)
+        .navigationTitle("Change App Icon")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+    func iconItem(iconName: String, iconID: String) -> some View {
+            return
+            HStack {
+                Image(iconID + "-pre")
+                    .resizable()
+                    .frame(width: 80, height: 80)
+                Text(iconName)
+                Spacer()
+            }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                if iconID == "appicon" {
+                    UIApplication.shared.setAlternateIconName(nil)
+                }else{
+                    UIApplication.shared.setAlternateIconName(iconID)
+                }
+            }
+        }
+}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
