@@ -218,6 +218,7 @@
 				fr,
 				de,
 				ru,
+				ko,
 			);
 			mainGroup = 90C9BE09288BE17000E22FB8;
 			productRefGroup = 90C9BE13288BE17000E22FB8 /* Products */;

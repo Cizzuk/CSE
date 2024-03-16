@@ -42,6 +42,12 @@
             "value" : "アプリアイコン"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 아이콘"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -93,6 +99,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "利用可能なアイコン"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사용 가능한 아이콘"
           }
         },
         "ru" : {
@@ -148,6 +160,12 @@
             "value" : "アプリアイコンを変更"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 아이콘 변경"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -199,6 +217,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "利用可能なアイコンは今後変更される可能性があります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사용 가능한 아이콘은 향후 변경될 수 있습니다."
           }
         },
         "ru" : {
@@ -254,6 +278,12 @@
             "value" : "問い合わせ"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "문의"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -305,6 +335,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSE設定"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE 설정"
           }
         },
         "ru" : {
@@ -360,6 +396,12 @@
             "value" : "既定の検索エンジン"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기본 검색 엔진"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -411,6 +453,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "設定 > Safari > 検索エンジン から設定を変更する必要があります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설정 > Safari > 검색 엔진 에서 설정을 변경해야 합니다."
           }
         },
         "ru" : {
@@ -465,6 +513,12 @@
             "value" : "DuckDuckGo"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuckDuckGo"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -512,6 +566,12 @@
           }
         },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "GitHub"
@@ -570,6 +630,12 @@
             "value" : "ライセンス"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "라이선스"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -626,6 +692,12 @@
             "value" : "プライバシーポリシー"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개인정보 보호정책"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -672,6 +744,12 @@
             "value" : "購入に失敗しました"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "구매 실패"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -716,6 +794,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "購入完了！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "구매 완료!"
           }
         },
         "ru" : {
@@ -771,6 +855,12 @@
             "value" : "アプリのアイコンを変更できるようになります"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 아이콘을 변경할 수 있습니다"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -824,6 +914,12 @@
             "value" : "購入することでCSEの開発をサポートできます"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "구매를 통해 CSE의 개발을 지원할 수 있습니다"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -868,13 +964,19 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Davantage de personnes pourront continuer à utiliser le CSE gratuitement."
+            "value" : "Davantage de personnes pourront continuer à utiliser le CSE gratuitement"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "より多くの人がCSEを無料で使い続けられるようになります"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "더 많은 사람들이 CSE를 무료로 계속 사용할 수 있습니다"
           }
         },
         "ru" : {
@@ -930,6 +1032,12 @@
             "value" : "購入する:"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "구매하기:"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -981,6 +1089,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "購入済み権利の復元"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "구매 복원"
           }
         },
         "ru" : {
@@ -1036,6 +1150,12 @@
             "value" : "Safariの設定"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safari 설정"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1089,6 +1209,12 @@
             "value" : "さらに、設定 > Safari > 拡張機能 からCSEを許可する必要があります。"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "또한 설정 > Safari > 확장 프로그램 에서 CSE를 허용해야 합니다."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1136,6 +1262,12 @@
           }
         },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sogou"
+          }
+        },
+        "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sogou"
@@ -1194,6 +1326,12 @@
             "value" : "ソースコード"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "소스 코드"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1245,6 +1383,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "URLの末尾"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL 끝부분"
           }
         },
         "ru" : {
@@ -1300,6 +1444,12 @@
             "value" : "そしてここに、｢TYPEDTEXT｣の前の｢&kp=-2｣を入力してください。"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "그리고 여기에 \"TYPEDTEXT\" 앞에 \"&kp=-2\"를 입력한다."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1351,6 +1501,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "サポート"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지원"
           }
         },
         "ru" : {
@@ -1406,6 +1562,12 @@
             "value" : "URLの先頭"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL 시작 부분"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1457,6 +1619,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "例えば、｢TYPEDTEXT｣と検索して、そのURLが｢https://example.com/?q=TYPEDTEXT&kp=-2｣であったら、ここには｢https://example.com/?q=｣を入力してください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "예를 들어, \"TYPEDTEXT\"를 검색하여 해당 URL이 \"https://example.com/?q=TYPEDTEXT&kp=-2\"이라면, 여기에 \"https://example.com/?q=\"을 입력합니다."
           }
         },
         "ru" : {
@@ -1511,6 +1679,12 @@
             "value" : "バージョン: %@"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "버전: %@"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1559,6 +1733,12 @@
           }
         },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex"
+          }
+        },
+        "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yandex"
