@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		903A4A212BA1D87F005E346B /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903A4A202BA1D87F005E346B /* SettingView.swift */; };
+		90ACB07B2BA5157A000E315D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 90ACB07A2BA5157A000E315D /* Localizable.xcstrings */; };
 		90C9BE16288BE17000E22FB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9BE15288BE17000E22FB8 /* AppDelegate.swift */; };
 		90C9BE22288BE17000E22FB8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9BE21288BE17000E22FB8 /* ViewController.swift */; };
 		90C9BE25288BE17000E22FB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE23288BE17000E22FB8 /* LaunchScreen.storyboard */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		903A4A202BA1D87F005E346B /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		90ACB07A2BA5157A000E315D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		90AD4058288E74CD00C5E21A /* Custom Search Engine Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Custom Search Engine Extension.entitlements"; sourceTree = "<group>"; };
 		90C9BE12288BE17000E22FB8 /* Customize Search Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Customize Search Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90C9BE15288BE17000E22FB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 		90C9BE09288BE17000E22FB8 = {
 			isa = PBXGroup;
 			children = (
+				90ACB07A2BA5157A000E315D /* Localizable.xcstrings */,
 				90C9BE14288BE17000E22FB8 /* Custom Search Engine */,
 				90C9BE33288BE17300E22FB8 /* Custom Search Engine Extension */,
 				90C9BE13288BE17000E22FB8 /* Products */,
@@ -211,6 +214,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 90C9BE09288BE17000E22FB8;
 			productRefGroup = 90C9BE13288BE17000E22FB8 /* Products */;
@@ -230,6 +234,7 @@
 			files = (
 				90C9BE25288BE17000E22FB8 /* LaunchScreen.storyboard in Resources */,
 				90C9BE48288BE17300E22FB8 /* Assets.xcassets in Resources */,
+				90ACB07B2BA5157A000E315D /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

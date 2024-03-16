@@ -44,9 +44,10 @@ struct ContentView: View {
                         }
                     
                 } header: {
-                    Text("Top of URL")
+                    Text("TopUrl")
                 } footer: {
-                    Text(verbatim: "For example, if you search for \"TYPEDTEXT\" and \"https://example.com/?q=TYPEDTEXT&kp=-2\" is your URL, enter \"https://example.com/?q=\".")
+                    Text("TopUrl-Desc")
+                        .tint(.secondary)
                 }
                 
                 // Suffix Section
@@ -60,14 +61,15 @@ struct ContentView: View {
                             userDefaults!.set(entered, forKey: "urlsuffix")
                         }
                 } header: {
-                    Text("Suffix of URL")
+                    Text("SuffixUrl")
                 } footer: {
-                    Text(verbatim: "And here, enter \"&kp=-2\" after \"TYPEDTEXT\".")
+                    Text("SuffixUrl-Desc")
+                        .tint(.secondary)
                 }
                 
                 // Default SE Section
                 Section {
-                    Picker("Default Search Engine", selection: $searchengine) {
+                    Picker("DefaultSE", selection: $searchengine) {
                         Text("DuckDuckGo").tag("duckduckgo")
                         Text("Sogou").tag("sogou")
                         Text("Yandex").tag("yandex")
@@ -76,12 +78,12 @@ struct ContentView: View {
                         userDefaults!.set(entered, forKey: "searchengine")
                     }
                 } header: {
-                    Text("Safari Setting")
+                    Text("SafariSetting")
                 } footer: {
                     VStack (alignment : .leading) {
-                        Text(verbatim: "You will need to change the setting in Settings > Safari > Search Engine.")
+                        Text("DefaultSE-Desc")
                         Spacer()
-                        Text(verbatim: "And please allow CSE in Settings > Safari > Extentions.")
+                        Text("SafariSetting-Desc")
                     }
                 }
             
@@ -92,12 +94,12 @@ struct ContentView: View {
                             .resizable()
                             .frame(width: 64, height: 64)
                             .id(isIconSettingView)
-                        Text("Change App Icon")
+                        Text("ChangeAppIcon")
                         Spacer()
                     }
                     .contentShape(Rectangle())
                 } header: {
-                    Text("App Icon")
+                    Text("AppIcon")
                 }
                 
                 // Support Section
@@ -105,7 +107,7 @@ struct ContentView: View {
                     // Contact Link
                     Link(destination:URL(string: "https://cizzuk.net/contact/")!, label: {
                         HStack {
-                            Text("Contact")
+                            Text("ContactLink")
                             Spacer()
                             Image(systemName: "chevron.right")
                         }
@@ -113,7 +115,7 @@ struct ContentView: View {
                     // Privacy Policy
                     Link(destination:URL(string: "https://tsg0o0.com/privacy/")!, label: {
                         HStack {
-                            Text("Privacy Policy")
+                            Text("PrivacyPolicyLink")
                             Spacer()
                             Image(systemName: "chevron.right")
                         }
@@ -121,7 +123,7 @@ struct ContentView: View {
                     // License Link
                     Link(destination:URL(string: "https://www.mozilla.org/en-US/MPL/2.0/")!, label: {
                         HStack {
-                            Text("License")
+                            Text("LicenseLink")
                             Spacer()
                             Text("MPL 2.0")
                             Image(systemName: "chevron.right")
@@ -130,14 +132,14 @@ struct ContentView: View {
                     // GitHub Source Link
                     Link(destination:URL(string: "https://github.com/tsg0o0/CSE-iOS")!, label: {
                         HStack {
-                            Text("Source")
+                            Text("SourceLink")
                             Spacer()
                             Text("GitHub")
                             Image(systemName: "chevron.right")
                         }
                     })
                 } header: {
-                    Text("Support")
+                    Text("SupportLink")
                 } footer: {
                     HStack {
                         Text("© Cizzuk")
@@ -147,7 +149,7 @@ struct ContentView: View {
                 }
             }
             .listStyle(.insetGrouped)
-            .navigationTitle("CSE Settings")
+            .navigationTitle("CSESetting")
         }
         .navigationViewStyle(.stack)
     }
@@ -157,7 +159,7 @@ struct IconSettingView: View {
     var body: some View {
         List {
             Section {
-                iconItem(iconName: "Default", iconID: "appicon")
+                iconItem(iconName: "CSE", iconID: "appicon")
                 iconItem(iconName: "Red", iconID: "red-white")
                 iconItem(iconName: "Green", iconID: "green-white")
                 iconItem(iconName: "White", iconID: "gray-white")
@@ -170,7 +172,7 @@ struct IconSettingView: View {
             }
         }
         .listStyle(.insetGrouped)
-        .navigationTitle("Change App Icon")
+        .navigationTitle("ChangeAppIcon")
         .navigationBarTitleDisplayMode(.inline)
     }
     func iconItem(iconName: String, iconID: String) -> some View {

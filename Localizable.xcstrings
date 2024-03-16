@@ -1,0 +1,318 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "© Cizzuk" : {
+
+    },
+    "AppIcon" : {
+      "comment" : "App Icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Icon"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリアイコン"
+          }
+        }
+      }
+    },
+    "ChangeAppIcon" : {
+      "comment" : "Change App Icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change App Icon"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリアイコンを変更"
+          }
+        }
+      }
+    },
+    "ContactLink" : {
+      "comment" : "Contact",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "問い合わせ"
+          }
+        }
+      }
+    },
+    "CSESetting" : {
+      "comment" : "CSE Settings",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE Settings"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE設定"
+          }
+        }
+      }
+    },
+    "DefaultSE" : {
+      "comment" : "Default Search Engine",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default Search Engine"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "既定の検索エンジン"
+          }
+        }
+      }
+    },
+    "DefaultSE-Desc" : {
+      "comment" : "You will need to change the setting in Settings > Safari > Search Engine.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You will need to change the setting in Settings > Safari > Search Engine."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定 > Safari > 検索エンジン から設定を変更する必要があります。"
+          }
+        }
+      }
+    },
+    "DuckDuckGo" : {
+
+    },
+    "GitHub" : {
+
+    },
+    "LicenseLink" : {
+      "comment" : "License",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "License"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライセンス"
+          }
+        }
+      }
+    },
+    "MPL 2.0" : {
+
+    },
+    "PrivacyPolicyLink" : {
+      "comment" : "Privacy Policy",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プライバシーポリシー"
+          }
+        }
+      }
+    },
+    "SafariSetting" : {
+      "comment" : "Safari Setting",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safari Setting"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safariの設定"
+          }
+        }
+      }
+    },
+    "SafariSetting-Desc" : {
+      "comment" : "And please allow CSE in Settings > Safari > Extentions.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "And please allow CSE in Settings > Safari > Extentions."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "さらに、設定 > Safari > 拡張機能 からCSEを許可する必要があります。"
+          }
+        }
+      }
+    },
+    "Sogou" : {
+
+    },
+    "SourceLink" : {
+      "comment" : "Source",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ソースコード"
+          }
+        }
+      }
+    },
+    "SuffixUrl" : {
+      "comment" : "Suffix of URL",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suffix of URL"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URLの末尾"
+          }
+        }
+      }
+    },
+    "SuffixUrl-Desc" : {
+      "comment" : "And here, enter \\\"&kp=-2\\\" after \\\"TYPEDTEXT\\\".",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "And here, enter \\\"&kp=-2\\\" after \\\"TYPEDTEXT\\\"."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "そしてここに、\\\"TYPEDTEXT\\\"の前の\\\"&kp=-2\\\"を入力してください。"
+          }
+        }
+      }
+    },
+    "SupportLink" : {
+      "comment" : "Support",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サポート"
+          }
+        }
+      }
+    },
+    "TopUrl" : {
+      "comment" : "Top of URL",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Top of URL"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URLの先頭"
+          }
+        }
+      }
+    },
+    "TopUrl-Desc" : {
+      "comment" : "For example, if you search for \\\"TYPEDTEXT\\\" and \\\"https://example.com/?q=TYPEDTEXT&kp=-2\\\" is your URL, enter \\\"https://example.com/?q=\\\".",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For example, if you search for \\\"TYPEDTEXT\\\" and \\\"https://example.com/?q=TYPEDTEXT&kp=-2\\\" is your URL, enter \\\"https://example.com/?q=\\\"."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "例えば、\\\"TYPEDTEXT\\\"と検索して、そのURLが\\\"https://example.com/?q=TYPEDTEXT&kp=-2\\\"であったら、ここには\\\"https://example.com/?q=\\\"を入力してください。"
+          }
+        }
+      }
+    },
+    "Version: %@" : {
+
+    },
+    "Yandex" : {
+
+    }
+  },
+  "version" : "1.0"
+}
