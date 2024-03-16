@@ -198,6 +198,22 @@
       "comment" : "Don't translate",
       "extractionState" : "manual"
     },
+    "OK" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
     "PrivacyPolicyLink" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -215,6 +231,26 @@
         }
       }
     },
+    "Purchase Failed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入に失敗しました"
+          }
+        }
+      }
+    },
+    "Purchase Success!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入完了！"
+          }
+        }
+      }
+    },
     "Purchase-Desc1" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -226,7 +262,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "アプリのアイコンを変更できるようになります"
           }
         }
@@ -243,7 +279,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "購入することでCSEの開発をサポートできます"
           }
         }
@@ -260,7 +296,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "より多くの人がCSEを無料で使い続けられるようになります"
           }
         }

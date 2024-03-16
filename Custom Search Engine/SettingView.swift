@@ -9,6 +9,7 @@ import SwiftUI
 import StoreKit
 
 @main
+
 struct MainView: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
@@ -30,7 +31,17 @@ struct ContentView: View {
         UIApplication.shared.alternateIconName
     }
     
+    @ObservedObject var storeManager = StoreManager()
+    var linkDestination: some View {
+        if UserDefaults().bool(forKey: "haveIconChange") {
+            return AnyView(IconSettingView())
+        } else {
+            return AnyView(PurchaseView())
+        }
+    }
+    
     var body: some View {
+        @ObservedObject var storeManager = StoreManager()
         NavigationView {
             List {
                 // Top Section
@@ -87,10 +98,9 @@ struct ContentView: View {
                         Text("SafariSetting-Desc")
                     }
                 }
-            
                 
                 Section {
-                    NavigationLink(destination: PurchaseView(), isActive: $isIconSettingView) {
+                    NavigationLink(destination: linkDestination, isActive: $isIconSettingView) {
                         Image((alternateIconName ?? "appicon") + "-pre")
                             .resizable()
                             .frame(width: 64, height: 64)
@@ -189,6 +199,7 @@ struct IconSettingView: View {
             Image(iconID + "-pre")
                 .resizable()
                 .frame(width: 80, height: 80)
+                .accessibilityHidden(true)
             Text(iconName)
             Spacer()
         }
@@ -204,39 +215,66 @@ struct IconSettingView: View {
 }
 
 struct PurchaseView: View {
+    @ObservedObject var storeManager = StoreManager()
+    @State private var showSucAlert = false
+    @State private var showFailAlert = false
     var body: some View {
         List {
-            //Purchase Section (Test)
+            //Purchase Section
             Section {
                 HStack {
                     Image(systemName: "checkmark.circle")
+                        .accessibilityHidden(true)
                     Text("Purchase-Desc1")
                 }
                 HStack {
                     Image(systemName: "checkmark.circle")
+                        .accessibilityHidden(true)
                     Text("Purchase-Desc2")
                 }
                 HStack {
                     Image(systemName: "checkmark.circle")
+                        .accessibilityHidden(true)
                     Text("Purchase-Desc3")
                 }
                 //Purchase Button
                 Button(action: {
-                    
+                    if let product = self.storeManager.products.first {
+                        self.storeManager.purchase(product: product)
+                    }
                 }) {
                     HStack {
                         Text("PurchaseButton")
                             .fontWeight(.bold)
                             .padding(10)
-                        Text("")
+                        ForEach(storeManager.products, id: \.self) { product in
+                            Text(self.localizedPrice(for: product))
+                        }
                     }
                     .frame(maxWidth: .infinity)
                 }
+                .alert(isPresented: $showSucAlert) {
+                    Alert(title: Text("Purchase Success!"), dismissButton: .default(Text("OK")))
+                }
+                .onReceive(storeManager.$purchaseCompleted) { purchaseCompleted in
+                    if purchaseCompleted {
+                        showSucAlert = true
+                    }
+                }
+                .alert(isPresented: $showFailAlert) {
+                    Alert(title: Text("Purchase Failed"), dismissButton: .default(Text("OK")))
+                }
+                .onReceive(storeManager.$purchaseFailed) { purchaseFailed in
+                    if purchaseFailed {
+                        showFailAlert = true
+                    }
+                }
+                .disabled(storeManager.products.isEmpty)
             }
             Section {
                 //Restore Button
                 Button(action: {
-                    
+                    self.storeManager.restorePurchases()
                 }) {
                     Text("RestorePurchase")
                         .font(.subheadline)
@@ -270,12 +308,77 @@ struct PurchaseView: View {
             Image(iconID + "-pre")
                 .resizable()
                 .frame(width: 80, height: 80)
+                .accessibilityHidden(true)
             Text(iconName)
-            Spacer()
         }
+    }
+    private func localizedPrice(for product: SKProduct) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = product.priceLocale
+        return formatter.string(from: product.price) ?? "\(product.price)"
     }
 }
 
+class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+    @Published var products = [SKProduct]()
+    var presentationMode: Binding<PresentationMode>?
+    @Published var purchaseCompleted = false
+    @Published var purchaseFailed = false
+    
+    override init() {
+        super.init()
+        fetchProducts()
+        SKPaymentQueue.default().add(self)
+    }
+    
+    func fetchProducts() {
+        let productIdentifiers: Set<String> = ["cse.changeicon"]
+        let request = SKProductsRequest(productIdentifiers: productIdentifiers)
+        request.delegate = self
+        request.start()
+    }
+    
+    func purchase(product: SKProduct) {
+        let payment = SKPayment(product: product)
+        SKPaymentQueue.default().add(payment)
+    }
+    
+    func restorePurchases() {
+        SKPaymentQueue.default().restoreCompletedTransactions()
+    }
+    
+    // SKProductsRequestDelegate methods
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        self.products = response.products
+    }
+    
+    // SKPaymentTransactionObserver methods
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        for transaction in transactions {
+            switch transaction.transactionState {
+            case .purchased, .restored:
+                SKPaymentQueue.default().finishTransaction(transaction)
+                // Success!!!
+                handlePurchaseSuccess()
+            case .failed:
+                SKPaymentQueue.default().finishTransaction(transaction)
+                // Failed...
+                handlePurchaseFailure()
+            default:
+                break
+            }
+        }
+    }
+    
+    func handlePurchaseSuccess() {
+        UserDefaults.standard.set(true, forKey: "haveIconChange")
+        purchaseCompleted = true
+    }
+    func handlePurchaseFailure() {
+        purchaseFailed = true
+    }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

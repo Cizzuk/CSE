@@ -1,0 +1,107 @@
+{
+  "identifier" : "ECB182C3",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "6479282479",
+      "localizations" : [
+        {
+          "description" : "アプリのアイコンを変更します",
+          "displayName" : "アイコン変更",
+          "locale" : "ja"
+        },
+        {
+          "description" : "Change your app icon",
+          "displayName" : "Change App icon",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Cambiar el icono de la aplicación",
+          "displayName" : "Cambiar el icono",
+          "locale" : "es_ES"
+        }
+      ],
+      "productID" : "cse.changeicon",
+      "referenceName" : "Change App icon",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6445840140",
+    "_developerTeamID" : "Z8R89S24YT",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 732253802.98371506,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : {
+          "index" : 2,
+          "type" : "generic"
+        },
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : {
+          "index" : 3,
+          "type" : "generic"
+        },
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : {
+          "index" : 2,
+          "type" : "generic"
+        },
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : {
+          "index" : 0,
+          "type" : "refund request"
+        },
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}
