@@ -29,6 +29,12 @@
             "state" : "translated",
             "value" : "アプリアイコン"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Иконка приложения"
+          }
         }
       }
     },
@@ -52,6 +58,12 @@
             "state" : "translated",
             "value" : "利用可能なアイコン"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доступные значки"
+          }
         }
       }
     },
@@ -74,6 +86,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "アプリアイコンを変更"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изменить значок приложения"
           }
         }
       }
@@ -121,6 +139,12 @@
             "state" : "translated",
             "value" : "問い合わせ"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Связаться с"
+          }
         }
       }
     },
@@ -143,6 +167,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSE設定"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки CSE"
           }
         }
       }
@@ -167,6 +197,12 @@
             "state" : "translated",
             "value" : "既定の検索エンジン"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поисковая машина по умолчанию"
+          }
         }
       }
     },
@@ -190,6 +226,12 @@
             "state" : "translated",
             "value" : "設定 > Safari > 検索エンジン から設定を変更する必要があります。"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вам нужно изменить настройку в разделе Настройки > Safari > Поисковая машина."
+          }
         }
       }
     },
@@ -212,6 +254,12 @@
             "state" : "translated",
             "value" : "DuckDuckGo"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuckDuckGo"
+          }
         }
       }
     },
@@ -230,6 +278,12 @@
           }
         },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "GitHub"
@@ -257,6 +311,12 @@
             "state" : "translated",
             "value" : "ライセンス"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лицензия"
+          }
         }
       }
     },
@@ -283,6 +343,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "プライバシーポリシー"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Политика конфиденциальности"
           }
         }
       }
@@ -454,6 +520,12 @@
             "state" : "translated",
             "value" : "Safariの設定"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройка Safari"
+          }
         }
       }
     },
@@ -477,6 +549,12 @@
             "state" : "translated",
             "value" : "さらに、設定 > Safari > 拡張機能 からCSEを許可する必要があります。"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "И, пожалуйста, разрешите CSE в Настройки > Safari > Расширения."
+          }
         }
       }
     },
@@ -495,6 +573,12 @@
           }
         },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sogou"
+          }
+        },
+        "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sogou"
@@ -522,6 +606,12 @@
             "state" : "translated",
             "value" : "ソースコード"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Исходный код"
+          }
         }
       }
     },
@@ -544,6 +634,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "URLの末尾"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Суффикс URL"
           }
         }
       }
@@ -568,6 +664,12 @@
             "state" : "translated",
             "value" : "そしてここに、｢TYPEDTEXT｣の前の｢&kp=-2｣を入力してください。"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "А здесь введите \"&kp=-2\" после \"TYPEDTEXT\"."
+          }
         }
       }
     },
@@ -590,6 +692,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "サポート"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Помощь"
           }
         }
       }
@@ -614,6 +722,12 @@
             "state" : "translated",
             "value" : "URLの先頭"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вверху URL"
+          }
         }
       }
     },
@@ -637,6 +751,12 @@
             "state" : "translated",
             "value" : "例えば、｢TYPEDTEXT｣と検索して、そのURLが｢https://example.com/?q=TYPEDTEXT&kp=-2｣であったら、ここには｢https://example.com/?q=｣を入力してください。"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Например, если вы ищете \"TYPEDTEXT\" и \"https://example.com/?q=TYPEDTEXT&kp=-2\" - это ваш URL, введите \"https://example.com/?q=\"."
+          }
         }
       }
     },
@@ -658,6 +778,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "バージョン: %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Версия: %@"
           }
         }
       }
@@ -681,6 +807,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yandex"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Яндекс"
           }
         }
       }
