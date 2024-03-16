@@ -18,6 +18,12 @@
             "value" : "App Icon"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ícono de la app"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -33,6 +39,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Available Icons"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Íconos disponibles"
           }
         },
         "ja" : {
@@ -52,6 +64,12 @@
             "value" : "Change App Icon"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambiar ícono de la app"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -67,6 +85,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Available icons may change in the future."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los íconos disponibles pueden cambiar en el futuro."
           }
         },
         "ja" : {
@@ -86,6 +110,12 @@
             "value" : "Contact"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contacto"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -101,6 +131,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSE Settings"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuración de CSE"
           }
         },
         "ja" : {
@@ -120,6 +156,12 @@
             "value" : "Default Search Engine"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Motor de búsqueda predeterminado"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -137,6 +179,12 @@
             "value" : "You will need to change the setting in Settings > Safari > Search Engine."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tendrás que cambiar la configuración en Configuración > Safari > Buscador."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -148,6 +196,12 @@
     "DuckDuckGo" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuckDuckGo"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "DuckDuckGo"
@@ -169,6 +223,12 @@
             "value" : "GitHub"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -184,6 +244,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "License"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Licencia"
           }
         },
         "ja" : {
@@ -223,6 +289,12 @@
             "value" : "Privacy Policy"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Política de privacidad"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -233,6 +305,12 @@
     },
     "Purchase Failed" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compra fallida"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -243,6 +321,12 @@
     },
     "Purchase Success!" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Éxito de la compra!"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -258,6 +342,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "You will be able to change the application icon"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podrás cambiar el ícono de la app"
           }
         },
         "ja" : {
@@ -277,6 +367,12 @@
             "value" : "Your purchase will support the development of CSE"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Su compra contribuirá al desarrollo de CSE"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -292,6 +388,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "More people will be able to continue to use CSE free of charge"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Más personas podrán seguir utilizando gratuitamente CSE"
           }
         },
         "ja" : {
@@ -311,6 +413,12 @@
             "value" : "Purchase:"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compra:"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -326,6 +434,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Restore Purchase"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurar compra"
           }
         },
         "ja" : {
@@ -345,6 +459,12 @@
             "value" : "Safari Setting"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuración de Safari"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -362,6 +482,12 @@
             "value" : "And please allow CSE in Settings > Safari > Extentions."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Y por favor permita CSE en Configuración > Safari > Extensiones."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -373,6 +499,12 @@
     "Sogou" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sogou"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sogou"
@@ -395,6 +527,12 @@
             "value" : "Source"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Código fuente"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -410,6 +548,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Suffix of URL"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sufijo de URL"
           }
         },
         "ja" : {
@@ -429,6 +573,12 @@
             "value" : "And here, enter \"&kp=-2\" after \"TYPEDTEXT\"."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Y aquí, introduzca \"&kp=-2\" después de \"TYPEDTEXT\"."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -444,6 +594,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Support"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayuda"
           }
         },
         "ja" : {
@@ -463,6 +619,12 @@
             "value" : "Top of URL"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Principio de URL"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -478,6 +640,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "For example, if you search for \"TYPEDTEXT\" and \"https://example.com/?q=TYPEDTEXT&kp=-2\" is your URL, enter \"https://example.com/?q=\"."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por ejemplo, si busca \"TYPEDTEXT\" y \"https://example.com/?q=TYPEDTEXT&kp=-2\" es su URL, introduzca \"https://example.com/?q=\"."
           }
         },
         "ja" : {
@@ -496,6 +664,12 @@
             "value" : "Version: %@"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión: %@"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -508,6 +682,12 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yandex"

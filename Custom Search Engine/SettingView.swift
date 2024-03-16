@@ -254,7 +254,7 @@ struct PurchaseView: View {
                     .frame(maxWidth: .infinity)
                 }
                 .alert(isPresented: $showSucAlert) {
-                    Alert(title: Text("Purchase Success!"), dismissButton: .default(Text("OK")))
+                    Alert(title: Text("Purchase Success!"))
                 }
                 .onReceive(storeManager.$purchaseCompleted) { purchaseCompleted in
                     if purchaseCompleted {
@@ -262,7 +262,7 @@ struct PurchaseView: View {
                     }
                 }
                 .alert(isPresented: $showFailAlert) {
-                    Alert(title: Text("Purchase Failed"), dismissButton: .default(Text("OK")))
+                    Alert(title: Text("Purchase Failed"))
                 }
                 .onReceive(storeManager.$purchaseFailed) { purchaseFailed in
                     if purchaseFailed {
