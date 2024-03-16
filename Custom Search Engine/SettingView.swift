@@ -303,6 +303,7 @@ struct PurchaseView: View {
         }
         .listStyle(.insetGrouped)
         .navigationTitle("ChangeAppIcon")
+        .navigationBarTitleDisplayMode(.inline)
     }
     func iconItem(iconName: String, iconID: String) -> some View {
         HStack {
