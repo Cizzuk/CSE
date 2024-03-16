@@ -21,7 +21,6 @@
 		90C9BE40288BE17300E22FB8 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE3F288BE17300E22FB8 /* content.js */; };
 		90C9BE42288BE17300E22FB8 /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE41288BE17300E22FB8 /* popup.html */; };
 		90C9BE44288BE17300E22FB8 /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE43288BE17300E22FB8 /* popup.css */; };
-		90C9BE46288BE17300E22FB8 /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE45288BE17300E22FB8 /* popup.js */; };
 		90C9BE48288BE17300E22FB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE29288BE17200E22FB8 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -68,7 +67,6 @@
 		90C9BE3F288BE17300E22FB8 /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = content.js; sourceTree = "<group>"; };
 		90C9BE41288BE17300E22FB8 /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = popup.html; sourceTree = "<group>"; };
 		90C9BE43288BE17300E22FB8 /* popup.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = popup.css; sourceTree = "<group>"; };
-		90C9BE45288BE17300E22FB8 /* popup.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = popup.js; sourceTree = "<group>"; };
 		90C9BE47288BE17300E22FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90C9BE52288D09DB00E22FB8 /* Custom Search Engine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Custom Search Engine.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,7 +143,6 @@
 				90C9BE3F288BE17300E22FB8 /* content.js */,
 				90C9BE41288BE17300E22FB8 /* popup.html */,
 				90C9BE43288BE17300E22FB8 /* popup.css */,
-				90C9BE45288BE17300E22FB8 /* popup.js */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -249,7 +246,6 @@
 				90C9BE3C288BE17300E22FB8 /* manifest.json in Resources */,
 				90C9BE38288BE17300E22FB8 /* _locales in Resources */,
 				90C9BE40288BE17300E22FB8 /* content.js in Resources */,
-				90C9BE46288BE17300E22FB8 /* popup.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,3 @@ body {
 ol {
     padding-left:30px;
 }
-
-@media (prefers-color-scheme: dark) {
-    /* Dark Mode styles go here. */
-}
