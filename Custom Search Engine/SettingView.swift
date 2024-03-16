@@ -59,7 +59,6 @@ struct ContentView: View {
                     Text("TopUrl")
                 } footer: {
                     Text("TopUrl-Desc")
-                        .tint(.secondary)
                 }
                 
                 // Suffix Section
@@ -76,7 +75,6 @@ struct ContentView: View {
                     Text("SuffixUrl")
                 } footer: {
                     Text("SuffixUrl-Desc")
-                        .tint(.secondary)
                 }
                 
                 // Default SE Section

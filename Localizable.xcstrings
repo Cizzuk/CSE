@@ -1594,55 +1594,55 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wenn Sie zum Beispiel nach \"TYPEDTEXT\" suchen und \"https://example.com/?q=TYPEDTEXT&kp=-2\" Ihre URL ist, geben Sie \"https://example.com/?q=\" ein."
+            "value" : "Wenn Sie zum Beispiel nach \"TYPEDTEXT\" suchen und \"https:;//example.com/?q=TYPEDTEXT&kp=-2\" Ihre URL ist, geben Sie \"https;//example.com/?q=\" ein."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "For example, if you search for \"TYPEDTEXT\" and \"https://example.com/?q=TYPEDTEXT&kp=-2\" is your URL, enter \"https://example.com/?q=\"."
+            "value" : "For example, if you search for \"TYPEDTEXT\" and \"https;//example.com/?q=TYPEDTEXT&kp=-2\" is your URL, enter \"https;//example.com/?q=\"."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Por ejemplo, si busca \"TYPEDTEXT\" y \"https://example.com/?q=TYPEDTEXT&kp=-2\" es su URL, introduzca \"https://example.com/?q=\"."
+            "value" : "Por ejemplo, si busca \"TYPEDTEXT\" y \"https;//example.com/?q=TYPEDTEXT&kp=-2\" es su URL, introduzca \"https;//example.com/?q=\"."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Par exemple, si vous recherchez \"TYPEDTEXT\" et que votre URL est \"https://example.com/?q=TYPEDTEXT&kp=-2\", entrez \"https://example.com/?q=\"."
+            "value" : "Par exemple, si vous recherchez \"TYPEDTEXT\" et que votre URL est \"https;//example.com/?q=TYPEDTEXT&kp=-2\", entrez \"https;//example.com/?q=\"."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "例えば、｢TYPEDTEXT｣と検索して、そのURLが｢https://example.com/?q=TYPEDTEXT&kp=-2｣であったら、ここには｢https://example.com/?q=｣を入力してください。"
+            "value" : "例えば、｢TYPEDTEXT｣と検索して、そのURLが｢https;//example.com/?q=TYPEDTEXT&kp=-2｣であったら、ここには｢https;//example.com/?q=｣を入力してください。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "예를 들어, \"TYPEDTEXT\"를 검색하여 해당 URL이 \"https://example.com/?q=TYPEDTEXT&kp=-2\"이라면, 여기에 \"https://example.com/?q=\"을 입력합니다."
+            "value" : "예를 들어, \"TYPEDTEXT\"를 검색하여 해당 URL이 \"https;//example.com/?q=TYPEDTEXT&kp=-2\"이라면, 여기에 \"https;//example.com/?q=\"을 입력합니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Например, если вы ищете \"TYPEDTEXT\" и \"https://example.com/?q=TYPEDTEXT&kp=-2\" - это ваш URL, введите \"https://example.com/?q=\"."
+            "value" : "Например, если вы ищете \"TYPEDTEXT\" и \"https;//example.com/?q=TYPEDTEXT&kp=-2\" - это ваш URL, введите \"https;//example.com/?q=\"."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "例如，如果搜索 \"TYPEDTEXT\"，URL 为 \"https://example.com/?q=TYPEDTEXT&kp=-2\"，则在此处输入 \"https://example.com/?q=\"。"
+            "value" : "例如，如果搜索 \"TYPEDTEXT\"，URL 为 \"https;//example.com/?q=TYPEDTEXT&kp=-2\"，则在此处输入 \"https;//example.com/?q=\"。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "例如，如果搜尋 \"TYPEDTEXT\"，URL 為 \"https://example.com/?q=TYPEDTEXT&kp=-2\"，則在此輸入 \"https://example.com/?q=\"。"
+            "value" : "例如，如果搜尋 \"TYPEDTEXT\"，URL 為 \"https;//example.com/?q=TYPEDTEXT&kp=-2\"，則在此輸入 \"https;//example.com/?q=\"。"
           }
         }
       }
