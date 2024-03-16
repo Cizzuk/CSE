@@ -262,7 +262,8 @@ struct PurchaseView: View {
                     }
                 }
                 .alert(isPresented: $showFailAlert) {
-                    Alert(title: Text("Purchase Failed"))
+                    Alert(title: Text("Purchase Failed"
+                                     ))
                 }
                 .onReceive(storeManager.$purchaseFailed) { purchaseFailed in
                     if purchaseFailed {

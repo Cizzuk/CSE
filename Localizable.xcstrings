@@ -30,6 +30,12 @@
             "value" : "Ícono de la app"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icône de l'app"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -40,6 +46,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Иконка приложения"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "应用图标"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "應用程式圖示"
           }
         }
       }
@@ -65,6 +83,12 @@
             "value" : "Íconos disponibles"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icônes disponibles"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -75,6 +99,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Доступные значки"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可用图标"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可用圖示"
           }
         }
       }
@@ -100,6 +136,12 @@
             "value" : "Cambiar ícono de la app"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Changer l'icône de l'application"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -110,6 +152,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Изменить значок приложения"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更改应用程序图标"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更改應用程式圖標"
           }
         }
       }
@@ -135,6 +189,12 @@
             "value" : "Los íconos disponibles pueden cambiar en el futuro."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les icônes disponibles peuvent changer à l'avenir."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -145,6 +205,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Доступные значки могут измениться в будущем."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可用图标今后可能会更改。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可用圖示今後可能會變更。"
           }
         }
       }
@@ -170,6 +242,12 @@
             "value" : "Contacto"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contacter"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -180,6 +258,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Связаться с"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "询问"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "詢問"
           }
         }
       }
@@ -205,6 +295,12 @@
             "value" : "Configuración de CSE"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réglages CSE"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -215,6 +311,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Настройки CSE"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE 设置"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE 設定"
           }
         }
       }
@@ -240,6 +348,12 @@
             "value" : "Buscador por defecto"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moteur de recherche par défaut"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -251,6 +365,18 @@
             "state" : "translated",
             "value" : "Поисковая машина по умолчанию"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "默认搜索引擎"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "預設搜尋引擎"
+          }
         }
       }
     },
@@ -260,7 +386,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sie müssen die Einstellung unter Einstellungen > Safari > Suchmaschine."
+            "value" : "Sie müssen die Einstellung unter Einstellungen > Safari > Suchmaschine."
           }
         },
         "en" : {
@@ -272,7 +398,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tendrás que cambiar la configuración en Configuración > Safari > Buscador."
+            "value" : "Tendrás que cambiar la configuración en Configuración > Safari > Buscador."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous devez modifier les paramètres dans Réglages > Safari > Moteur de recherche."
           }
         },
         "ja" : {
@@ -284,7 +416,19 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Вам нужно изменить настройку в разделе Настройки > Safari > Поисковая машина."
+            "value" : "Вам нужно изменить настройку в разделе Настройки > Safari > Поисковая машина."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您需要在 设置 > Safari 浏览器 > 搜索引擎 中更改设置。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您需要在 設定 > Safari > 搜尋引擎 中變更設定。"
           }
         }
       }
@@ -309,6 +453,12 @@
             "value" : "DuckDuckGo"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuckDuckGo"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -316,6 +466,18 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuckDuckGo"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuckDuckGo"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "DuckDuckGo"
@@ -343,6 +505,12 @@
             "value" : "GitHub"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -350,6 +518,18 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "GitHub"
@@ -378,6 +558,12 @@
             "value" : "Licencia"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Licence"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -389,11 +575,22 @@
             "state" : "translated",
             "value" : "Лицензия"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "许可证"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "許可證"
+          }
         }
       }
     },
     "MPL 2.0" : {
-      "comment" : "Don't translate",
       "extractionState" : "manual"
     },
     "PrivacyPolicyLink" : {
@@ -417,6 +614,12 @@
             "value" : "Política de privacidad"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Politique de confidentialité"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -427,6 +630,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Политика конфиденциальности"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "隐私政策"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "隱私政策"
           }
         }
       }
@@ -445,6 +660,12 @@
             "value" : "Compra fallida"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Échec de l'achat"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -455,6 +676,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Покупка не состоялась"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "购买失败"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購買失敗"
           }
         }
       }
@@ -473,6 +706,12 @@
             "value" : "¡Éxito de la compra!"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Achat réussi !"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -483,6 +722,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Приобрести Успех!"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "购买成功！"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購買成功！"
           }
         }
       }
@@ -508,6 +759,12 @@
             "value" : "Podrás cambiar el ícono de la app"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous pourrez changer l'icône de l'application"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -518,6 +775,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вы сможете изменить значок приложения"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可更改应用程序图标"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可更改應用程式圖標"
           }
         }
       }
@@ -543,6 +812,12 @@
             "value" : "Su compra contribuirá al desarrollo de CSE"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre achat soutiendra le développement du CSE"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -553,6 +828,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ваша покупка будет способствовать развитию CSE"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以通过购买以下产品来支持 CSE 的开发"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以透過購買以下產品來支持 CSE 的開發"
           }
         }
       }
@@ -578,6 +865,12 @@
             "value" : "Más personas podrán seguir utilizando gratuitamente CSE"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Davantage de personnes pourront continuer à utiliser le CSE gratuitement."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -588,6 +881,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Больше людей смогут продолжать пользоваться услугами CSE бесплатно"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "让更多人继续免费使用 CSE"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "讓更多人繼續免費使用 CSE"
           }
         }
       }
@@ -613,6 +918,12 @@
             "value" : "Compra:"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Achat :"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -623,6 +934,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Приобрести:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "购买:"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購買:"
           }
         }
       }
@@ -648,6 +971,12 @@
             "value" : "Restaurar compra"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurer l'achat"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -658,6 +987,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Восстановить покупку"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "恢复购买"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "恢復購買"
           }
         }
       }
@@ -683,6 +1024,12 @@
             "value" : "Configuración de Safari"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réglage de Safari"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -694,6 +1041,18 @@
             "state" : "translated",
             "value" : "Настройка Safari"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safari 浏览器设置"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safari 設定"
+          }
         }
       }
     },
@@ -703,7 +1062,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Und bitte erlauben Sie CSE in Einstellungen > Safari > Erweiterungen."
+            "value" : "Und bitte erlauben Sie CSE in Einstellungen > Safari > Erweiterungen."
           }
         },
         "en" : {
@@ -715,7 +1074,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Y por favor permita CSE en Configuración > Safari > Extensiones."
+            "value" : "Y por favor permita CSE en Configuración > Safari > Extensiones."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Et autorisez CSE dans Réglages > Safari > Extensions."
           }
         },
         "ja" : {
@@ -727,7 +1092,19 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "И, пожалуйста, разрешите CSE в Настройки > Safari > Расширения."
+            "value" : "И, пожалуйста, разрешите CSE в Настройки > Safari > Расширения."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此外，必须通过 设置 > Safari 浏览器 > 扩展 允许使用 CSE。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此外，必須透過 設定 > Safari > 延伸功能 允許使用 CSE。"
           }
         }
       }
@@ -752,6 +1129,12 @@
             "value" : "Sogou"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sogou"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -762,6 +1145,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sogou"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "搜狗"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "搜狗"
           }
         }
       }
@@ -787,6 +1182,12 @@
             "value" : "Código fuente"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Code source"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -797,6 +1198,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Исходный код"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "源代码"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原始碼"
           }
         }
       }
@@ -822,6 +1235,12 @@
             "value" : "Sufijo de URL"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suffixe de l'URL"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -832,6 +1251,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Суффикс URL"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL 结束"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL 結束"
           }
         }
       }
@@ -857,6 +1288,12 @@
             "value" : "Y aquí, introduzca \"&kp=-2\" después de \"TYPEDTEXT\"."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Et ici, entrez \"&kp=-2\" après \"TYPEDTEXT\"."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -867,6 +1304,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "А здесь введите \"&kp=-2\" после \"TYPEDTEXT\"."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "然后在 \"TYPEDTEXT \"前输入\"&kp=-2\"。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "然後在 \"TYPEDTEXT \"前輸入\"&kp=-2\"。"
           }
         }
       }
@@ -892,6 +1341,12 @@
             "value" : "Ayuda"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soutien"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -902,6 +1357,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Помощь"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "应用支持"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "應用程式支援"
           }
         }
       }
@@ -927,6 +1394,12 @@
             "value" : "Principio de URL"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Début de l'URL"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -937,6 +1410,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вверху URL"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL 开头"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL 開頭"
           }
         }
       }
@@ -962,6 +1447,12 @@
             "value" : "Por ejemplo, si busca \"TYPEDTEXT\" y \"https://example.com/?q=TYPEDTEXT&kp=-2\" es su URL, introduzca \"https://example.com/?q=\"."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Par exemple, si vous recherchez \"TYPEDTEXT\" et que votre URL est \"https://example.com/?q=TYPEDTEXT&kp=-2\", entrez \"https://example.com/?q=\"."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -972,6 +1463,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Например, если вы ищете \"TYPEDTEXT\" и \"https://example.com/?q=TYPEDTEXT&kp=-2\" - это ваш URL, введите \"https://example.com/?q=\"."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "例如，如果搜索 \"TYPEDTEXT\"，URL 为 \"https://example.com/?q=TYPEDTEXT&kp=-2\"，则在此处输入 \"https://example.com/?q=\"。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "例如，如果搜尋 \"TYPEDTEXT\"，URL 為 \"https://example.com/?q=TYPEDTEXT&kp=-2\"，則在此輸入 \"https://example.com/?q=\"。"
           }
         }
       }
@@ -996,6 +1499,12 @@
             "value" : "Versión: %@"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version: %@"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1006,6 +1515,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Версия: %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本: %@"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本: %@"
           }
         }
       }
@@ -1031,6 +1552,12 @@
             "value" : "Yandex"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1041,6 +1568,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Яндекс"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex"
           }
         }
       }
