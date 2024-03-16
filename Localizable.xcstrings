@@ -12,6 +12,12 @@
     "AppIcon" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App-Symbol"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -41,6 +47,12 @@
     "AvailableIcon" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verfügbare Symbole"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -70,6 +82,12 @@
     "ChangeAppIcon" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App-Symbol ändern"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -99,6 +117,12 @@
     "ChangeAppIcon-Desc" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die verfügbaren Icons können sich in Zukunft ändern."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -116,12 +140,24 @@
             "state" : "translated",
             "value" : "利用可能なアイコンは今後変更される可能性があります。"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доступные значки могут измениться в будущем."
+          }
         }
       }
     },
     "ContactLink" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontakt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -151,6 +187,12 @@
     "CSESetting" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE-Einstellungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -180,6 +222,12 @@
     "DefaultSE" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standard-Suchmaschine"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -209,6 +257,12 @@
     "DefaultSE-Desc" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie müssen die Einstellung unter Einstellungen > Safari > Suchmaschine."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -237,6 +291,12 @@
     },
     "DuckDuckGo" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuckDuckGo"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -265,6 +325,12 @@
     },
     "GitHub" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -294,6 +360,12 @@
     "LicenseLink" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lizenz"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -327,6 +399,12 @@
     "PrivacyPolicyLink" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datenschutzrichtlinie"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -355,6 +433,12 @@
     },
     "Purchase Failed" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kauf fehlgeschlagen"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -366,11 +450,23 @@
             "state" : "translated",
             "value" : "購入に失敗しました"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Покупка не состоялась"
+          }
         }
       }
     },
     "Purchase Success!" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaufen Sie Erfolg!"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -382,12 +478,24 @@
             "state" : "translated",
             "value" : "購入完了！"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Приобрести Успех!"
+          }
         }
       }
     },
     "Purchase-Desc1" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie können das Anwendungssymbol ändern"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -405,12 +513,24 @@
             "state" : "translated",
             "value" : "アプリのアイコンを変更できるようになります"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы сможете изменить значок приложения"
+          }
         }
       }
     },
     "Purchase-Desc2" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mit Ihrem Kauf unterstützen Sie die Entwicklung von CSE"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -428,12 +548,24 @@
             "state" : "translated",
             "value" : "購入することでCSEの開発をサポートできます"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваша покупка будет способствовать развитию CSE"
+          }
         }
       }
     },
     "Purchase-Desc3" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mehr Menschen werden in der Lage sein, CSE weiterhin kostenlos zu nutzen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -451,12 +583,24 @@
             "state" : "translated",
             "value" : "より多くの人がCSEを無料で使い続けられるようになります"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Больше людей смогут продолжать пользоваться услугами CSE бесплатно"
+          }
         }
       }
     },
     "PurchaseButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaufen:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -474,12 +618,24 @@
             "state" : "translated",
             "value" : "購入する:"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Приобрести:"
+          }
         }
       }
     },
     "RestorePurchase" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kauf wiederherstellen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -497,12 +653,24 @@
             "state" : "translated",
             "value" : "購入済み権利の復元"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Восстановить покупку"
+          }
         }
       }
     },
     "SafariSetting" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safari-Einstellung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -532,6 +700,12 @@
     "SafariSetting-Desc" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Und bitte erlauben Sie CSE in Einstellungen > Safari > Erweiterungen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -560,6 +734,12 @@
     },
     "Sogou" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sogou"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -589,6 +769,12 @@
     "SourceLink" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quellcode"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -618,6 +804,12 @@
     "SuffixUrl" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suffix der URL"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -647,6 +839,12 @@
     "SuffixUrl-Desc" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Und hier geben Sie \"&kp=-2\" nach \"TYPEDTEXT\" ein."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -676,6 +874,12 @@
     "SupportLink" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hilfe"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -705,6 +909,12 @@
     "TopUrl" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anfang der URL"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -734,6 +944,12 @@
     "TopUrl-Desc" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wenn Sie zum Beispiel nach \"TYPEDTEXT\" suchen und \"https://example.com/?q=TYPEDTEXT&kp=-2\" Ihre URL ist, geben Sie \"https://example.com/?q=\" ein."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -762,6 +978,12 @@
     },
     "Version: %@" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version: %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -791,6 +1013,12 @@
     "Yandex" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
