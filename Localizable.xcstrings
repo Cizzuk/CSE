@@ -264,22 +264,6 @@
       "comment" : "Don't translate",
       "extractionState" : "manual"
     },
-    "OK" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
-          }
-        }
-      }
-    },
     "PrivacyPolicyLink" : {
       "extractionState" : "manual",
       "localizations" : {
