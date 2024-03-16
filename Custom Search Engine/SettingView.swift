@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StoreKit
 
 @main
 struct MainView: App {
@@ -89,7 +90,7 @@ struct ContentView: View {
             
                 
                 Section {
-                    NavigationLink(destination: IconSettingView(), isActive: $isIconSettingView) {
+                    NavigationLink(destination: PurchaseView(), isActive: $isIconSettingView) {
                         Image((alternateIconName ?? "appicon") + "-pre")
                             .resizable()
                             .frame(width: 64, height: 64)
@@ -107,6 +108,8 @@ struct ContentView: View {
                     // Contact Link
                     Link(destination:URL(string: "https://cizzuk.net/contact/")!, label: {
                         HStack {
+                            Image(systemName: "message")
+                                .frame(width: 20.0)
                             Text("ContactLink")
                             Spacer()
                             Image(systemName: "chevron.right")
@@ -115,6 +118,8 @@ struct ContentView: View {
                     // Privacy Policy
                     Link(destination:URL(string: "https://tsg0o0.com/privacy/")!, label: {
                         HStack {
+                            Image(systemName: "hand.raised")
+                                .frame(width: 20.0)
                             Text("PrivacyPolicyLink")
                             Spacer()
                             Image(systemName: "chevron.right")
@@ -123,6 +128,8 @@ struct ContentView: View {
                     // License Link
                     Link(destination:URL(string: "https://www.mozilla.org/en-US/MPL/2.0/")!, label: {
                         HStack {
+                            Image(systemName: "book.closed")
+                                .frame(width: 20.0)
                             Text("LicenseLink")
                             Spacer()
                             Text("MPL 2.0")
@@ -132,6 +139,8 @@ struct ContentView: View {
                     // GitHub Source Link
                     Link(destination:URL(string: "https://github.com/tsg0o0/CSE-iOS")!, label: {
                         HStack {
+                            Image(systemName: "ladybug")
+                                .frame(width: 20.0)
                             Text("SourceLink")
                             Spacer()
                             Text("GitHub")
@@ -176,22 +185,95 @@ struct IconSettingView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
     func iconItem(iconName: String, iconID: String) -> some View {
-            HStack {
-                Image(iconID + "-pre")
-                    .resizable()
-                    .frame(width: 80, height: 80)
-                Text(iconName)
-                Spacer()
-            }
-            .contentShape(Rectangle())
-            .onTapGesture {
-                if iconID == "appicon" {
-                    UIApplication.shared.setAlternateIconName(nil)
-                }else{
-                    UIApplication.shared.setAlternateIconName(iconID)
-                }
+        HStack {
+            Image(iconID + "-pre")
+                .resizable()
+                .frame(width: 80, height: 80)
+            Text(iconName)
+            Spacer()
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            if iconID == "appicon" {
+                UIApplication.shared.setAlternateIconName(nil)
+            }else{
+                UIApplication.shared.setAlternateIconName(iconID)
             }
         }
+    }
+}
+
+struct PurchaseView: View {
+    var body: some View {
+        List {
+            //Purchase Section (Test)
+            Section {
+                HStack {
+                    Image(systemName: "checkmark.circle")
+                    Text("Purchase-Desc1")
+                }
+                HStack {
+                    Image(systemName: "checkmark.circle")
+                    Text("Purchase-Desc2")
+                }
+                HStack {
+                    Image(systemName: "checkmark.circle")
+                    Text("Purchase-Desc3")
+                }
+                //Purchase Button
+                Button(action: {
+                    
+                }) {
+                    HStack {
+                        Text("PurchaseButton")
+                            .fontWeight(.bold)
+                            .padding(10)
+                        Text("")
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+            }
+            Section {
+                //Restore Button
+                Button(action: {
+                    
+                }) {
+                    Text("RestorePurchase")
+                        .font(.subheadline)
+                        .frame(maxWidth: .infinity)
+                }
+            }
+            
+            //Icon Preview Section
+            Section {
+                iconItem(iconName: "CSE", iconID: "appicon")
+                iconItem(iconName: "Red", iconID: "red-white")
+                iconItem(iconName: "Green", iconID: "green-white")
+                iconItem(iconName: "White", iconID: "gray-white")
+                iconItem(iconName: "Light", iconID: "light")
+                iconItem(iconName: "Glitch", iconID: "glitch")
+                iconItem(iconName: "Dark Blue", iconID: "blue-dark")
+                iconItem(iconName: "Dark Red", iconID: "red-dark")
+                iconItem(iconName: "Dark Green", iconID: "green-dark")
+                iconItem(iconName: "Black", iconID: "gray-dark")
+            } header: {
+                Text("AvailableIcon")
+            } footer: {
+                Text("ChangeAppIcon-Desc")
+            }
+        }
+        .listStyle(.insetGrouped)
+        .navigationTitle("ChangeAppIcon")
+    }
+    func iconItem(iconName: String, iconID: String) -> some View {
+        HStack {
+            Image(iconID + "-pre")
+                .resizable()
+                .frame(width: 80, height: 80)
+            Text(iconName)
+            Spacer()
+        }
+    }
 }
 
 

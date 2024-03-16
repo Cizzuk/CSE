@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
