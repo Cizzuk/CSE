@@ -2,13 +2,14 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
-
+      "comment" : "Don't translate",
+      "extractionState" : "manual"
     },
     "© Cizzuk" : {
-
+      "comment" : "Don't translate",
+      "extractionState" : "manual"
     },
     "AppIcon" : {
-      "comment" : "App Icon",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -26,7 +27,6 @@
       }
     },
     "ChangeAppIcon" : {
-      "comment" : "Change App Icon",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -44,7 +44,6 @@
       }
     },
     "ContactLink" : {
-      "comment" : "Contact",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -62,7 +61,6 @@
       }
     },
     "CSESetting" : {
-      "comment" : "CSE Settings",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -80,7 +78,6 @@
       }
     },
     "DefaultSE" : {
-      "comment" : "Default Search Engine",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -98,7 +95,6 @@
       }
     },
     "DefaultSE-Desc" : {
-      "comment" : "You will need to change the setting in Settings > Safari > Search Engine.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -117,6 +113,12 @@
     },
     "DuckDuckGo" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuckDuckGo"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -127,6 +129,12 @@
     },
     "GitHub" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -136,7 +144,6 @@
       }
     },
     "LicenseLink" : {
-      "comment" : "License",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -154,10 +161,10 @@
       }
     },
     "MPL 2.0" : {
-
+      "comment" : "Don't translate",
+      "extractionState" : "manual"
     },
     "PrivacyPolicyLink" : {
-      "comment" : "Privacy Policy",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -175,7 +182,6 @@
       }
     },
     "SafariSetting" : {
-      "comment" : "Safari Setting",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -193,7 +199,6 @@
       }
     },
     "SafariSetting-Desc" : {
-      "comment" : "And please allow CSE in Settings > Safari > Extentions.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -212,6 +217,12 @@
     },
     "Sogou" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sogou"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -221,7 +232,6 @@
       }
     },
     "SourceLink" : {
-      "comment" : "Source",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -239,7 +249,6 @@
       }
     },
     "SuffixUrl" : {
-      "comment" : "Suffix of URL",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -257,7 +266,6 @@
       }
     },
     "SuffixUrl-Desc" : {
-      "comment" : "And here, enter \"&kp=-2\" after \"TYPEDTEXT\".",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -275,7 +283,6 @@
       }
     },
     "SupportLink" : {
-      "comment" : "Support",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -293,7 +300,6 @@
       }
     },
     "TopUrl" : {
-      "comment" : "Top of URL",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -311,7 +317,6 @@
       }
     },
     "TopUrl-Desc" : {
-      "comment" : "For example, if you search for \"TYPEDTEXT\" and \"https://example.com/?q=TYPEDTEXT&kp=-2\" is your URL, enter \"https://example.com/?q=\".",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -330,6 +335,12 @@
     },
     "Version: %@" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version: %@"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -341,6 +352,12 @@
     "Yandex" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
