@@ -176,7 +176,6 @@ struct IconSettingView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
     func iconItem(iconName: String, iconID: String) -> some View {
-            return
             HStack {
                 Image(iconID + "-pre")
                     .resizable()

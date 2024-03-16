@@ -116,10 +116,24 @@
       }
     },
     "DuckDuckGo" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuckDuckGo"
+          }
+        }
+      }
     },
     "GitHub" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        }
+      }
     },
     "LicenseLink" : {
       "comment" : "License",
@@ -197,7 +211,14 @@
       }
     },
     "Sogou" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sogou"
+          }
+        }
+      }
     },
     "SourceLink" : {
       "comment" : "Source",
@@ -236,19 +257,19 @@
       }
     },
     "SuffixUrl-Desc" : {
-      "comment" : "And here, enter \\\"&kp=-2\\\" after \\\"TYPEDTEXT\\\".",
+      "comment" : "And here, enter \"&kp=-2\" after \"TYPEDTEXT\".",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "And here, enter \\\"&kp=-2\\\" after \\\"TYPEDTEXT\\\"."
+            "value" : "And here, enter \"&kp=-2\" after \"TYPEDTEXT\"."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "そしてここに、\\\"TYPEDTEXT\\\"の前の\\\"&kp=-2\\\"を入力してください。"
+            "value" : "そしてここに、｢TYPEDTEXT｣の前の｢&kp=-2｣を入力してください。"
           }
         }
       }
@@ -290,28 +311,43 @@
       }
     },
     "TopUrl-Desc" : {
-      "comment" : "For example, if you search for \\\"TYPEDTEXT\\\" and \\\"https://example.com/?q=TYPEDTEXT&kp=-2\\\" is your URL, enter \\\"https://example.com/?q=\\\".",
+      "comment" : "For example, if you search for \"TYPEDTEXT\" and \"https://example.com/?q=TYPEDTEXT&kp=-2\" is your URL, enter \"https://example.com/?q=\".",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "For example, if you search for \\\"TYPEDTEXT\\\" and \\\"https://example.com/?q=TYPEDTEXT&kp=-2\\\" is your URL, enter \\\"https://example.com/?q=\\\"."
+            "value" : "For example, if you search for \"TYPEDTEXT\" and \"https://example.com/?q=TYPEDTEXT&kp=-2\" is your URL, enter \"https://example.com/?q=\"."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "例えば、\\\"TYPEDTEXT\\\"と検索して、そのURLが\\\"https://example.com/?q=TYPEDTEXT&kp=-2\\\"であったら、ここには\\\"https://example.com/?q=\\\"を入力してください。"
+            "value" : "例えば、｢TYPEDTEXT｣と検索して、そのURLが｢https://example.com/?q=TYPEDTEXT&kp=-2｣であったら、ここには｢https://example.com/?q=｣を入力してください。"
           }
         }
       }
     },
     "Version: %@" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バージョン: %@"
+          }
+        }
+      }
     },
     "Yandex" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
