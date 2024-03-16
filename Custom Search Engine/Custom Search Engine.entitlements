@@ -5,6 +5,7 @@
 	<key>com.apple.developer.associated-domains</key>
 	<array>
 		<string>applinks:tsg0o0.com</string>
+		<string>applinks:cizzuk.net</string>
 	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>
