@@ -858,7 +858,7 @@
 				90BC1A362BAD2CC700961F3B /* Release iOS */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "Release macOS";
+			defaultConfigurationName = "Release visionOS";
 		};
 		90C9BE4B288BE17300E22FB8 /* Build configuration list for PBXNativeTarget "Customize Search Engine Extension" */ = {
 			isa = XCConfigurationList;
@@ -869,7 +869,7 @@
 				90BC1A382BAD2CC700961F3B /* Release iOS */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "Release macOS";
+			defaultConfigurationName = "Release visionOS";
 		};
 		90C9BE4F288BE17300E22FB8 /* Build configuration list for PBXNativeTarget "Customize Search Engine" */ = {
 			isa = XCConfigurationList;
@@ -880,7 +880,7 @@
 				90BC1A372BAD2CC700961F3B /* Release iOS */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "Release macOS";
+			defaultConfigurationName = "Release visionOS";
 		};
 /* End XCConfigurationList section */
 	};
