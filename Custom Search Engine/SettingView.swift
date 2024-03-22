@@ -156,7 +156,7 @@ struct ContentView: View {
                         }
                     })
                     // GitHub Source Link
-                    Link(destination:URL(string: "https://github.com/tsg0o0/CSE-iOS")!, label: {
+                    Link(destination:URL(string: "https://github.com/tsg0o0/CSE")!, label: {
                         HStack {
                             Image(systemName: "ladybug")
                                 .frame(width: 20.0)
