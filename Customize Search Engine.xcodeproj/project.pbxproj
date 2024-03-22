@@ -337,12 +337,14 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = xros;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
+				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = "Release visionOS";
 		};
@@ -475,6 +477,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -482,6 +485,7 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
+				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = "Release iOS";
 		};
@@ -619,12 +623,14 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Debug;
 		};
@@ -675,12 +681,14 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
+				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = "Release macOS";
 		};
@@ -858,7 +866,7 @@
 				90BC1A362BAD2CC700961F3B /* Release iOS */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "Release visionOS";
+			defaultConfigurationName = "Release macOS";
 		};
 		90C9BE4B288BE17300E22FB8 /* Build configuration list for PBXNativeTarget "Customize Search Engine Extension" */ = {
 			isa = XCConfigurationList;
@@ -869,7 +877,7 @@
 				90BC1A382BAD2CC700961F3B /* Release iOS */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "Release visionOS";
+			defaultConfigurationName = "Release macOS";
 		};
 		90C9BE4F288BE17300E22FB8 /* Build configuration list for PBXNativeTarget "Customize Search Engine" */ = {
 			isa = XCConfigurationList;
@@ -880,7 +888,7 @@
 				90BC1A372BAD2CC700961F3B /* Release iOS */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "Release visionOS";
+			defaultConfigurationName = "Release macOS";
 		};
 /* End XCConfigurationList section */
 	};
