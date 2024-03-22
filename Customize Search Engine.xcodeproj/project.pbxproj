@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		90240FAF2BA54E68003C264A /* Customize Search Engine.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 90240FAE2BA54E68003C264A /* Customize Search Engine.storekit */; };
 		903A4A212BA1D87F005E346B /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903A4A202BA1D87F005E346B /* SettingView.swift */; };
+		908FBC952BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */; };
+		908FBC962BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */; };
 		90ACB07B2BA5157A000E315D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 90ACB07A2BA5157A000E315D /* Localizable.xcstrings */; };
 		90C9BE16288BE17000E22FB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9BE15288BE17000E22FB8 /* AppDelegate.swift */; };
 		90C9BE30288BE17300E22FB8 /* Customize Search Engine Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 90C9BE2F288BE17300E22FB8 /* Customize Search Engine Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -50,6 +52,7 @@
 /* Begin PBXFileReference section */
 		90240FAE2BA54E68003C264A /* Customize Search Engine.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Customize Search Engine.storekit"; sourceTree = "<group>"; };
 		903A4A202BA1D87F005E346B /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		90ACB07A2BA5157A000E315D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		90AD4058288E74CD00C5E21A /* Custom Search Engine Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Custom Search Engine Extension.entitlements"; sourceTree = "<group>"; };
 		90C9BE12288BE17000E22FB8 /* Customize Search Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Customize Search Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +93,7 @@
 		90C9BE09288BE17000E22FB8 = {
 			isa = PBXGroup;
 			children = (
+				908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */,
 				90ACB07A2BA5157A000E315D /* Localizable.xcstrings */,
 				90C9BE14288BE17000E22FB8 /* Custom Search Engine */,
 				90C9BE33288BE17300E22FB8 /* Custom Search Engine Extension */,
@@ -235,6 +239,7 @@
 			files = (
 				90240FAF2BA54E68003C264A /* Customize Search Engine.storekit in Resources */,
 				90C9BE48288BE17300E22FB8 /* Assets.xcassets in Resources */,
+				908FBC952BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */,
 				90ACB07B2BA5157A000E315D /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,6 +254,7 @@
 				90C9BE3A288BE17300E22FB8 /* images in Resources */,
 				90C9BE3C288BE17300E22FB8 /* manifest.json in Resources */,
 				90C9BE38288BE17300E22FB8 /* _locales in Resources */,
+				908FBC962BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */,
 				90C9BE40288BE17300E22FB8 /* content.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,6 +423,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = "Release visionOS";
 		};
@@ -554,6 +561,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = "Release iOS";
 		};
@@ -708,6 +716,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Debug;
 		};
@@ -744,6 +753,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = "Release macOS";
 		};
