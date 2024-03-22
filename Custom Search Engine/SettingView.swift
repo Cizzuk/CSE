@@ -11,7 +11,9 @@ import StoreKit
 @main
 
 struct MainView: App {
+#if iOS
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+#endif
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -26,6 +28,7 @@ struct ContentView: View {
     @State private var urltop = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "urltop") ?? "https://archive.org/search?query="
     @State private var urlsuffix = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "urlsuffix") ?? ""
     @State private var searchengine = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "duckduckgo"
+#if iOS
     @State private var isIconSettingView: Bool = false
     var alternateIconName: String? {
         UIApplication.shared.alternateIconName
@@ -39,18 +42,23 @@ struct ContentView: View {
             return AnyView(PurchaseView())
         }
     }
+#endif
     
     var body: some View {
+        #if IOS
         @ObservedObject var storeManager = StoreManager()
+        #endif
         NavigationView {
             List {
                 // Top Section
                 Section {
                     TextField("", text: $urltop)
                         .disableAutocorrection(true)
+#if iOS
                         .keyboardType(.URL)
                         .textInputAutocapitalization(.never)
                         .submitLabel(.done)
+#endif
                         .onChange(of: urltop) { entered in
                             userDefaults!.set(entered, forKey: "urltop")
                         }
@@ -65,9 +73,11 @@ struct ContentView: View {
                 Section {
                     TextField("", text: $urlsuffix)
                         .disableAutocorrection(true)
+#if iOS
                         .keyboardType(.URL)
                         .textInputAutocapitalization(.never)
                         .submitLabel(.done)
+#endif
                         .onChange(of: urlsuffix) { entered in
                             userDefaults!.set(entered, forKey: "urlsuffix")
                         }
@@ -96,7 +106,7 @@ struct ContentView: View {
                         Text("SafariSetting-Desc")
                     }
                 }
-                
+                #if iOS
                 Section {
                     NavigationLink(destination: linkDestination, isActive: $isIconSettingView) {
                         Image((alternateIconName ?? "appicon") + "-pre")
@@ -110,6 +120,7 @@ struct ContentView: View {
                 } header: {
                     Text("AppIcon")
                 }
+                #endif
                 
                 // Support Section
                 Section {
@@ -168,10 +179,12 @@ struct ContentView: View {
             .listStyle(.insetGrouped)
             .navigationTitle("CSESetting")
         }
+        .frame(idealWidth: 200, idealHeight: 300)
         .navigationViewStyle(.stack)
     }
 }
 
+#if iOS
 struct IconSettingView: View {
     var body: some View {
         List {
@@ -379,6 +392,7 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
         purchaseFailed = true
     }
 }
+#endif
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

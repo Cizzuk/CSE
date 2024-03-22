@@ -5,6 +5,7 @@
 //  Created by Cizzuk on 2022/07/23.
 //
 
+#if iOS
 import UIKit
 import StoreKit
 
@@ -22,3 +23,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+#endif
