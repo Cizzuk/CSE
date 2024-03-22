@@ -1,4 +1,4 @@
-# Customize Search Engine for iOS
+# Customize Search Engine
 
 This is an extension to customize Safari's search engine.
 
