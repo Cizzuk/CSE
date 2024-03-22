@@ -179,7 +179,6 @@ struct ContentView: View {
             .listStyle(.insetGrouped)
             .navigationTitle("CSESetting")
         }
-        .frame(idealWidth: 200, idealHeight: 300)
         .navigationViewStyle(.stack)
     }
 }
