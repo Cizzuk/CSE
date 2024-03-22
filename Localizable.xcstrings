@@ -1648,7 +1648,6 @@
       }
     },
     "Version: %@" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
