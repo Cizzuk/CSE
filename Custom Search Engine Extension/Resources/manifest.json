@@ -20,7 +20,7 @@
 
     "content_scripts": [{
         "js": [ "content.js" ],
-        "matches": [ "*://duckduckgo.com/*","*://m.sogou.com/*","*://yandex.ru/*" ]
+        "matches": [ "*://duckduckgo.com/*","*://m.sogou.com/*","*://www.sogou.com/*","*://yandex.ru/*" ]
     }],
 
     "action": {

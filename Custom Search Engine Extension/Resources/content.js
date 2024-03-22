@@ -2,6 +2,7 @@
 var URLtop = "";
 var URLsuffix = "";
 var Engine = "";
+var Domain = "";
 
 browser.runtime.sendMessage({
     type: "content"
@@ -10,23 +11,29 @@ browser.runtime.sendMessage({
         URLtop = response.top;
         URLsuffix = response.suffix;
         Engine = response.engine;
-    if (Engine == "duckduckgo" && window.location.hostname == "duckduckgo.com") {
-        if (getParam('q') != null && (getParam('t') == "ipad" || getParam('t') == "iphone" || getParam('t') == "osx")) {
-            location.href = URLtop + getParam('q') + URLsuffix;
-            CSELog();
+        Domain = window.location.hostname;
+        if (Engine == "duckduckgo" && Domain == "duckduckgo.com") {
+            if (getParam('q') != null && (getParam('t') == "ipad" || getParam('t') == "iphone" || getParam('t') == "osx")) {
+                location.href = URLtop + getParam('q') + URLsuffix;
+                CSELog();
+            }
+        }else if (Engine == "sogou" && Domain == "m.sogou.com") {
+            if (getParam('keyword') != null) {
+                location.href = URLtop + getParam('word') + URLsuffix;
+                CSELog();
+            }
+        }else if (Engine == "sogou" && Domain == "www.sogou.com") {
+            if (getParam('query') != null) {
+                location.href = URLtop + getParam('word') + URLsuffix;
+                CSELog();
+            }
+        }else if (Engine == "yandex" && Domain == "yandex.ru") {
+            if (getParam('text') != null) {
+                location.href = URLtop + getParam('text') + URLsuffix;
+                CSELog();
+            }
         }
-    }else if (Engine == "sogou" && window.location.hostname == "m.sogou.com") {
-        if (getParam('keyword') != null) {
-            location.href = URLtop + getParam('word') + URLsuffix;
-            CSELog();
-        }
-    }else if (Engine == "yandex" && window.location.hostname == "yandex.ru") {
-        if (getParam('text') != null) {
-            location.href = URLtop + getParam('text') + URLsuffix;
-            CSELog();
-        }
-    }
-});
+    });
     
 
 function CSELog() {
