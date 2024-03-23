@@ -3,40 +3,40 @@ var URLtop = "";
 var URLsuffix = "";
 var Engine = "";
 var Domain = "";
+var Query = "";
 
-browser.runtime.sendMessage({
-    type: "content"
-},
+browser.runtime.sendMessage({ type: "content" },
     function(response) {
         URLtop = response.top;
         URLsuffix = response.suffix;
         Engine = response.engine;
         Domain = window.location.hostname;
-        if (Engine == "duckduckgo" && Domain == "duckduckgo.com") {
-            if (getParam('q') != null && (getParam('t') == "ipad" || getParam('t') == "iphone" || getParam('t') == "osx")) {
-                location.href = URLtop + getParam('q') + URLsuffix;
-                CSELog();
-            }
-        }else if (Engine == "sogou" && Domain == "m.sogou.com") {
-            if (getParam('keyword') != null) {
-                location.href = URLtop + getParam('word') + URLsuffix;
-                CSELog();
-            }
-        }else if (Engine == "sogou" && Domain == "www.sogou.com") {
-            if (getParam('query') != null) {
-                location.href = URLtop + getParam('word') + URLsuffix;
-                CSELog();
-            }
-        }else if (Engine == "yandex" && Domain == "yandex.ru") {
-            if (getParam('text') != null) {
-                location.href = URLtop + getParam('text') + URLsuffix;
-                CSELog();
-            }
+    
+        //DuckDuckGo
+        if (Engine == "duckduckgo" && Domain == "duckduckgo.com" && getParam('q') != null && (getParam('t') == "ipad" || getParam('t') == "iphone" || getParam('t') == "osx")) {
+            Query = getParam('q');
+            doCSE();
+            
+        //Sogou (Mobile)
+        }else if (Engine == "sogou" && Domain == "m.sogou.com" && getParam('keyword') != null && window.location.pathname.startsWith('/web/sl')) {
+            Query = getParam('keyword');
+            doCSE();
+            
+        //Sogou (PC)
+        }else if (Engine == "sogou" && Domain == "www.sogou.com" && getParam('query') != null && getParam('_asf') != "www.sogou.com") {
+            Query = getParam('query');
+            doCSE();
+            
+        //Yandex
+        }else if (Engine == "yandex" && Domain == "yandex.ru" && getParam('text') != null) {
+            Query = getParam('text');
+            doCSE();
         }
-    });
+    }
+);
     
 
-function CSELog() {
+function doCSE() {
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         //if darkmode
         document.getElementsByTagName('html')[0].innerHTML = '<body style="background:#222"></body>';
@@ -44,7 +44,8 @@ function CSELog() {
         //if lightmode
         document.getElementsByTagName('html')[0].innerHTML = '<body style="background:#cacacf"></body>';
     }
-    console.log("CSE: URL has been rewritten.")
+    location.replace(URLtop + Query + URLsuffix);
+    console.log("CSE: URL has been rewritten. query=" + Query)
 }
 
 function getParam(name) {
