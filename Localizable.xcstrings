@@ -837,7 +837,6 @@
       }
     },
     "Purchase Failed" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -890,7 +889,6 @@
       }
     },
     "Purchase Success!" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
