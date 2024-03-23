@@ -422,7 +422,7 @@
         }
       }
     },
-    "DefaultSE-Desc" : {
+    "DefaultSE-Desc-iOS" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -477,6 +477,124 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "您需要在 設定 > Safari > 搜尋引擎 中變更設定。"
+          }
+        }
+      }
+    },
+    "DefaultSE-Desc-macOS" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie müssen die Einstellung unter Safari > Einstellungen > Suchen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You will need to change the setting in Safari > Settings > Search."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tendrás que cambiar la configuración en Safari > Ajustes > Búsqueda."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous devez modifier les paramètres dans Safari > Réglages > Recherche."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safari > 設定 > 検索 から設定を変更する必要があります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safari > 설정 > 검색 엔진 에서 설정을 변경해야 합니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вам нужно изменить настройку в разделе Safari > Настройки > Поиск машина."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您需要在 Safari 浏览器 > 设置 > 搜索 中更改设置。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您需要在 Safari > 設定 > 搜尋 中變更設定。"
+          }
+        }
+      }
+    },
+    "DefaultSE-Desc-visionOS" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie müssen die Einstellung unter Settings > Apps > Safari > Search Engine."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You will need to change the setting in Settings > Apps > Safari > Search Engine."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tendrás que cambiar la configuración en Settings > Apps > Safari > Search Engine."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous devez modifier les paramètres dans Settings > Apps > Safari > Search Engine."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings > Apps > Safari > Search Engine から設定を変更する必要があります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings > Apps > Safari > Search Engine 에서 설정을 변경해야 합니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вам нужно изменить настройку в разделе Settings > Apps > Safari > Search Engine."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您需要在 Settings > Apps > Safari > Search Engine 中更改设置。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您需要在 Settings > Apps > Safari > Search Engine 中變更設定。"
           }
         }
       }
@@ -1176,7 +1294,7 @@
         }
       }
     },
-    "SafariSetting-Desc" : {
+    "SafariSetting-Desc-iOS" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -1231,6 +1349,124 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "此外，必須透過 設定 > Safari > 延伸功能 允許使用 CSE。"
+          }
+        }
+      }
+    },
+    "SafariSetting-Desc-macOS" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Und bitte erlauben Sie CSE in Safari > Einstellungen > Erweiterungen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "And please allow CSE in Safari > Settings > Extentions."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Y por favor permita CSE en Safari > Ajustes > Extensiones."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Et autorisez CSE dans Safari > Réglages > Extensions."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "さらに、Safari > 設定 > 拡張機能 からCSEを許可する必要があります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "또한 Safari > 설정 > 확장 프로그램 에서 CSE를 허용해야 합니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "И, пожалуйста, разрешите CSE в Safari > Настройки > Расширения."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此外，必须通过 Safari 浏览器 > 设置 > 扩展 允许使用 CSE。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此外，必須透過 Safari > 設定 > 延伸功能 允許使用 CSE。"
+          }
+        }
+      }
+    },
+    "SafariSetting-Desc-visionOS" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Und bitte erlauben Sie CSE in Settings > Apps > Safari > Extentions."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "And please allow CSE in Settings > Apps > Safari > Extentions."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Y por favor permita CSE en Settings > Apps > Safari > Extentions."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Et autorisez CSE dans Settings > Apps > Safari > Extentions."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "さらに、Settings > Apps > Safari > Extentions からCSEを許可する必要があります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "또한 Settings > Apps > Safari > Extentions 에서 CSE를 허용해야 합니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "И, пожалуйста, разрешите CSE в Settings > Apps > Safari > Extentions."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此外，必须通过 Settings > Apps > Safari > Extentions 允许使用 CSE。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此外，必須透過 Settings > Apps > Safari > Extentions 允許使用 CSE。"
           }
         }
       }

@@ -101,9 +101,19 @@ struct ContentView: View {
                     Text("SafariSetting")
                 } footer: {
                     VStack (alignment : .leading) {
-                        Text("DefaultSE-Desc")
+                        #if iOS
+                        Text("DefaultSE-Desc-iOS")
                         Spacer()
-                        Text("SafariSetting-Desc")
+                        Text("SafariSetting-Desc-iOS")
+                        #elseif macOS
+                        Text("DefaultSE-Desc-macOS")
+                        Spacer()
+                        Text("SafariSetting-Desc-macOS")
+                        #elseif visionOS
+                        Text("DefaultSE-Desc-visionOS")
+                        Spacer()
+                        Text("SafariSetting-Desc-visionOS")
+                        #endif
                     }
                 }
                 #if iOS
