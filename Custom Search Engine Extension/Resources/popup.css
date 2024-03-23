@@ -11,3 +11,8 @@ body {
 ol {
     padding-left:30px;
 }
+a {
+    display:block;
+    width:100%;
+    text-align:center;
+}
