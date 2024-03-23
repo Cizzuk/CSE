@@ -440,7 +440,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tendrás que cambiar la configuración en Configuración > Safari > Buscador."
+            "value" : "Tendrás que cambiar la configuración en Ajustes > Safari > Buscador."
           }
         },
         "fr" : {
@@ -837,6 +837,7 @@
       }
     },
     "Purchase Failed" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -889,6 +890,7 @@
       }
     },
     "Purchase Success!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1312,7 +1314,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Y por favor permita CSE en Configuración > Safari > Extensiones."
+            "value" : "Y por favor permita CSE en Ajustes > Safari > Extensiones."
           }
         },
         "fr" : {
