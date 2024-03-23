@@ -47,8 +47,8 @@ function CSELog() {
     console.log("CSE: URL has been rewritten.")
 }
 
-function getParam(name, url) {
-    if (!url) url = window.location.href;
+function getParam(name) {
+    var url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
     results = regex.exec(url);
