@@ -45,7 +45,7 @@ function doCSE() {
         document.getElementsByTagName('html')[0].innerHTML = '<body style="background:#cacacf"></body>';
     }
     location.replace(URLtop + Query + URLsuffix);
-    console.log("CSE: URL has been rewritten. query=" + Query)
+    console.log("CSE: URL has been rewritten.")
 }
 
 function getParam(name) {
