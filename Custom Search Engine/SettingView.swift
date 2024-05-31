@@ -27,7 +27,7 @@ struct ContentView: View {
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     @State private var urltop = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "urltop") ?? "https://archive.org/search?query="
     @State private var urlsuffix = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "urlsuffix") ?? ""
-    @State private var searchengine = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "duckduckgo"
+    @State private var searchengine = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "google"
 #if iOS
     @State private var isIconSettingView: Bool = false
     var alternateIconName: String? {
