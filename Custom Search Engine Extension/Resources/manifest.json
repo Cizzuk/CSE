@@ -24,17 +24,15 @@
         "run_at": "document_start",
         "matches": [
             "https://www.google.com/search",
-            "https://search.yahoo.com/search",
+            "https://www.google.cn/search",
+            "https://*.search.yahoo.com/search",
             "https://search.yahoo.co.jp/search",
             "https://www.bing.com/search",
             "https://duckduckgo.com/",
             "https://www.ecosia.org/search",
-            "https://m.baidu.com/s",
-            "https://www.baidu.com/s",
-            "https://m.sogou.com/web/sl",
-            "https://www.sogou.com/web",
-            "https://m.so.com/s",
-            "https://www.so.com/s",
+            "https://*.baidu.com/s",
+            "https://*.sogou.com/web/*",
+            "https://*.so.com/s",
             "https://yandex.ru/search"
         ]
     }],

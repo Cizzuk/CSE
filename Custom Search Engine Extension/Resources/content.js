@@ -15,12 +15,12 @@ browser.runtime.sendMessage({ type: "content" },
     
     
         //Google
-        if (Engine == "google" && Domain == "www.google.com" && Path.startsWith('/search') && getParam('q') != null) {
+        if (Engine == "google" && (Domain == "www.google.com" || Domain == "www.google.cn") && Path.startsWith('/search') && getParam('q') != null) {
             Query = getParam('q');
             doCSE();
             
         //Yahoo
-        }else if (Engine == "yahoo" && (Domain == "search.yahoo.com" || Domain == "search.yahoo.co.jp") && Path.startsWith('/search') && getParam('p') != null && (getParam('fr') == "iphone" || getParam('fr') == "appsfch2" || getParam('ipad') == "osx")) {
+        }else if (Engine == "yahoo" && Domain.endsWith('search.yahoo.com') && Path.startsWith('/search') && getParam('p') != null && (getParam('fr') == "iphone" || getParam('fr') == "appsfch2" || getParam('ipad') == "osx")) {
             Query = getParam('p');
             doCSE();
             
