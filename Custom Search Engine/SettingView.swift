@@ -90,7 +90,11 @@ struct ContentView: View {
                 // Default SE Section
                 Section {
                     Picker("DefaultSE", selection: $searchengine) {
+                        Text("Google").tag("google")
+                        Text("Yahoo").tag("yahoo")
+                        Text("Bing").tag("bing")
                         Text("DuckDuckGo").tag("duckduckgo")
+                        Text("Ecosia").tag("ecosia")
                         Text("Sogou").tag("sogou")
                         Text("Yandex").tag("yandex")
                     }
