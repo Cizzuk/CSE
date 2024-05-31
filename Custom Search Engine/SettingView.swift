@@ -95,7 +95,9 @@ struct ContentView: View {
                         Text("Bing").tag("bing")
                         Text("DuckDuckGo").tag("duckduckgo")
                         Text("Ecosia").tag("ecosia")
+                        Text("Baidu").tag("baidu")
                         Text("Sogou").tag("sogou")
+                        Text("360 Search").tag("360search")
                         Text("Yandex").tag("yandex")
                     }
                     .onChange(of: searchengine) { entered in
