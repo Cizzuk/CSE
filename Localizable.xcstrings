@@ -127,6 +127,9 @@
         }
       }
     },
+    "Bing" : {
+
+    },
     "ChangeAppIcon" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -657,6 +660,9 @@
         }
       }
     },
+    "Ecosia" : {
+
+    },
     "GitHub" : {
       "localizations" : {
         "de" : {
@@ -714,6 +720,9 @@
           }
         }
       }
+    },
+    "Google" : {
+
     },
     "LicenseLink" : {
       "extractionState" : "manual",
@@ -1940,6 +1949,9 @@
           }
         }
       }
+    },
+    "Yahoo" : {
+
     },
     "Yandex" : {
       "extractionState" : "manual",

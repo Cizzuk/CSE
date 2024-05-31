@@ -15,6 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(currentVersion, forKey: "LastAppVer")
         return true
     }
 
