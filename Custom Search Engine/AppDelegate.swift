@@ -5,7 +5,6 @@
 //  Created by Cizzuk on 2022/07/23.
 //
 
-#if iOS
 import UIKit
 import StoreKit
 
@@ -36,33 +35,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-#endif
 
-
-#if macOS
-import Cocoa
-
-@NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
-
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
-        let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-        let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
-        let lastVersion = userDefaults!.string(forKey: "LastAppVer") ?? nil
-        let urltop = userDefaults!.string(forKey: "urltop") ?? nil
-        let urlsuffix = userDefaults!.string(forKey: "urlsuffix") ?? nil
-        let searchengine = userDefaults!.string(forKey: "searchengine") ?? nil
-        
-        print(lastVersion,urlsuffix ,urltop,searchengine)
-        if lastVersion == nil && (urltop != nil || urlsuffix != nil) && searchengine == nil {
-            userDefaults!.set("duckduckgo", forKey: "searchengine")
-        }
-
-        userDefaults!.set(currentVersion, forKey: "LastAppVer")
-    }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
-}
-#endif
