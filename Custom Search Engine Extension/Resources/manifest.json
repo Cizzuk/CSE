@@ -49,6 +49,6 @@
         }
     },
 
-    "permissions": [ "nativeMessaging" ],
+    "permissions": [ "nativeMessaging" ]
     
 }
