@@ -129,6 +129,7 @@ struct ContentView: View {
                             .resizable()
                             .frame(width: 64, height: 64)
                             .id(isIconSettingView)
+                            .accessibilityIgnoresInvertColors(true)
                         Text("ChangeAppIcon")
                         Spacer()
                     }
@@ -226,6 +227,7 @@ struct IconSettingView: View {
                 .resizable()
                 .frame(width: 80, height: 80)
                 .accessibilityHidden(true)
+                .accessibilityIgnoresInvertColors(true)
             Text(iconName)
             Spacer()
         }
