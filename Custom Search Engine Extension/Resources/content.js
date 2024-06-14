@@ -14,6 +14,19 @@ browser.runtime.sendMessage({ type: "content" },
         const Domain = window.location.hostname;
         const Path = window.location.pathname;
         const URL = window.location.href;
+    
+        if (URLtop.startsWith("https://google.com")) {
+            URLtop = URLtop.replace("https://google.com", "https://www.google.com");
+        }
+        if (URLtop.startsWith("https://bing.com")) {
+            URLtop = URLtop.replace("https://bing.com", "https://www.bing.com");
+        }
+        if (URLtop.startsWith("https://www.duckduckgo.com")) {
+            URLtop = URLtop.replace("https://www.duckduckgo.com", "https://duckduckgo.com");
+        }
+        if (URLtop.startsWith("https://ecosia.com")) {
+            URLtop = URLtop.replace("https://ecosia.com", "https://www.ecosia.com");
+        }
 
         const engines = {
             "google": {
@@ -72,8 +85,6 @@ browser.runtime.sendMessage({ type: "content" },
             const domains = Array.isArray(engine.domain) ? engine.domain : [engine.domain];
             const paths = Array.isArray(engine.path) ? engine.path : [engine.path];
             const param = typeof engine.param === "function" ? engine.param(Domain) : engine.param;
-
-            console.log(engine)
             if (domains.includes(Domain)
                 && paths.some(p => Path.startsWith(p))
                 && getParam(param) != null
