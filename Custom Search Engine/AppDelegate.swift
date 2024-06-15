@@ -20,12 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let urltop = userDefaults!.string(forKey: "urltop") ?? nil
         let urlsuffix = userDefaults!.string(forKey: "urlsuffix") ?? nil
         let searchengine = userDefaults!.string(forKey: "searchengine") ?? nil
-        
-        if lastVersion == nil && (urltop != nil || urlsuffix != nil) && searchengine == nil {
-            userDefaults!.set("duckduckgo", forKey: "searchengine")
-        }
 
         userDefaults!.set(currentVersion, forKey: "LastAppVer")
+        
         return true
     }
 
