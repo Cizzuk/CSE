@@ -32,7 +32,8 @@ browser.runtime.sendMessage({ type: "content" },
             "google": {
                 domain: ["www.google.com", "www.google.cn"],
                 path: "/search",
-                param: "q"
+                param: "q",
+                check: () => ["safari"].includes(getParam("client"))
             },
             "yahoo": {
                 domain: ["search.yahoo.com", "search.yahoo.co.jp"],
