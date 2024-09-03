@@ -15,6 +15,7 @@ browser.runtime.sendMessage({ type: "content" },
         const Path = window.location.pathname;
         const URL = window.location.href;
     
+        // Normalize URLtop
         if (URLtop.startsWith("https://google.com")) {
             URLtop = URLtop.replace("https://google.com", "https://www.google.com");
         }
@@ -86,10 +87,10 @@ browser.runtime.sendMessage({ type: "content" },
             const paths = Array.isArray(engine.path) ? engine.path : [engine.path];
             const param = typeof engine.param === "function" ? engine.param(Domain) : engine.param;
             if (domains.includes(Domain)
-                && paths.some(p => Path.startsWith(p))
-                && getParam(param) != null
-                && (!engine.check || engine.check(Domain))
-                && (!URL.startsWith(URLtop) || !URL.endsWith(URLsuffix))
+                && paths.some(p => Path.startsWith(p)) // Path starts with a search link
+                && getParam(param) != null // Query exists
+                && (!engine.check || engine.check(Domain)) // Searched from search bar
+                && (!URL.startsWith(URLtop) || !URL.endsWith(URLsuffix)) // It's not CSE
                 ) {
                 const Query = getParam(param);
                 doCSE(URLtop, Query, URLsuffix);
