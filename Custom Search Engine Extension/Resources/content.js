@@ -1,15 +1,9 @@
 
-var URLtop = "";
-var URLsuffix = "";
-var Engine = "";
-var Domain = "";
-var Query = "";
-
 browser.runtime.sendMessage({ type: "content" },
     function(response) {
-        URLtop = response.top;
-        URLsuffix = response.suffix;
-        Engine = response.engine;
+        const URLtop = response.top;
+        const URLsuffix = response.suffix;
+        const Engine = response.engine;
 
         const Domain = window.location.hostname;
         const Path = window.location.pathname;
