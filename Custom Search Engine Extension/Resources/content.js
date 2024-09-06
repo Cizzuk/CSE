@@ -9,7 +9,7 @@ browser.runtime.sendMessage({ type: "content" },
         const Domain = window.location.hostname;
         const Path = window.location.pathname;
         const URL = window.location.href;
-    
+
         if (URLtop.startsWith("https://google.com")) {
             URLtop = URLtop.replace("https://google.com", "https://www.google.com");
         }
