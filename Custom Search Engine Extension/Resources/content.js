@@ -1,3 +1,4 @@
+"use strict";
 
 browser.runtime.sendMessage({ type: "content" },
     function(response) {
