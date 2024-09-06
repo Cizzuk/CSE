@@ -27,43 +27,43 @@ browser.runtime.sendMessage({ type: "content" },
         if (URLtop.startsWith("https://ecosia.com")) {
             URLtop = URLtop.replace("https://ecosia.com", "https://www.ecosia.com");
         }
-
+    
         const engines = {
             "google": {
                 domain: ["www.google.com", "www.google.cn"],
                 path: "/search",
                 param: "q",
-                check: () => ["safari"].includes(getParam("client"))
+                check: { param: "client", ids: ["safari"] }
             },
             "yahoo": {
                 domain: ["search.yahoo.com", "search.yahoo.co.jp"],
                 path: "/search",
                 param: "p",
-                check: () => ["iphone", "appsfch2", "osx"].includes(getParam("fr"))
+                check: { param: "fr", ids: ["iphone", "appsfch2", "osx"] }
             },
             "bing": {
                 domain: ["www.bing.com"],
                 path: "/search",
                 param: "q",
-                check: () => ["APIPH1", "APMCS1", "APIPA1"].includes(getParam("form"))
+                check: { param: "form", ids: ["APIPH1", "APMCS1", "APIPA1"] }
             },
             "duckduckgo": {
                 domain: ["duckduckgo.com"],
                 path: "/",
                 param: "q",
-                check: () => ["iphone", "osx", "ipad"].includes(getParam("t"))
+                check: { param: "t", ids: ["iphone", "osx", "ipad"] }
             },
             "ecosia": {
                 domain: ["www.ecosia.org"],
                 path: "/search",
                 param: "q",
-                check: () => ["st_asaf_iphone", "st_asaf_macos", "st_asaf_ipad"].includes(getParam("tts"))
+                check: { param: "tts", ids: ["st_asaf_iphone", "st_asaf_macos", "st_asaf_ipad"] }
             },
             "baidu": {
                 domain: ["m.baidu.com", "www.baidu.com"],
                 path: "/s",
                 param: (domain) => domain === "m.baidu.com" ? "word" : "wd",
-                check: (domain) => domain === "m.baidu.com" ? getParam("from") === "1000539d" : ["84053098_dg", "84053098_4_dg"].includes(getParam("tn"))
+                check: (domain) => domain === "m.baidu.com" ? { param: "from", ids: ["1000539d"] } : { param: "tn", ids: ["84053098_dg", "84053098_4_dg"] }
             },
             "sogou": {
                 domain: ["m.sogou.com", "www.sogou.com"],
