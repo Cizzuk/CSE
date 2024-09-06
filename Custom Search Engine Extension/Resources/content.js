@@ -76,25 +76,28 @@ browser.runtime.sendMessage({ type: "content" },
                 param: "text"
             }
         };
+    
         if (Engine in engines) {
             const engine = engines[Engine];
-            const domains = Array.isArray(engine.domain) ? engine.domain : [engine.domain];
-            const paths = Array.isArray(engine.path) ? engine.path : [engine.path];
-            const param = typeof engine.param === "function" ? engine.param(Domain) : engine.param;
-            if (domains.includes(Domain)
-                && paths.some(p => Path.startsWith(p))
-                && getParam(param) != null
-                && (!engine.check || engine.check(Domain))
-                && (!URL.startsWith(URLtop) || !URL.endsWith(URLsuffix))
-                ) {
-                const Query = getParam(param);
-                doCSE(URLtop, Query, URLsuffix);
+            if (engine.domain.includes(Domain)) {
+                const path = typeof engine.path === 'function' ? engine.path(Domain) : engine.path;
+                const param = typeof engine.param === 'function' ? engine.param(Domain) : engine.param;
+                const check = typeof engine.check === 'function' ? engine.check(Domain) : engine.check;
+                if (Path.startsWith(path) // Path starts with a search link
+                    && getParam(URL, param) != null // Query exists
+                    && (!check || check.ids.includes(getParam(URL, check.param))) // Search bar
+                    && (!URL.startsWith(URLtop) || !URL.endsWith(URLsuffix)) // It's not CSE
+                    ) {
+                    let cseURL = URLtop + getParam(URL, param) + URLsuffix;
+                    cseURL = checkerParamRemover(cseURL, check);
+                    doCSE(cseURL);
+                }
             }
         }
     }
 );
 
-function doCSE(URLtop, Query, URLsuffix) {
+function doCSE(url) {
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
         //if darkmode
         document.getElementsByTagName("html")[0].innerHTML = '<body style="background:#222"></body>';
@@ -102,11 +105,22 @@ function doCSE(URLtop, Query, URLsuffix) {
         //if lightmode
         document.getElementsByTagName("html")[0].innerHTML = '<body style="background:#cacacf"></body>';
     }
-    location.replace(URLtop + Query + URLsuffix);
+    location.replace(url);
     console.log("CSE: URL has been rewritten.");
 }
 
-function getParam(name) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
+function getParam(url, param) {
+    const urlObj = new URL(url);
+    const urlParams = new URLSearchParams(urlObj.search);
+    return urlParams.get(param);
+}
+
+function checkerParamRemover(url, check) {
+    if (check && check.ids.includes(getParam(url, check.param))) {
+        let urlObj = new URL(url);
+        urlObj.searchParams.delete(check.param);
+        return urlObj.toString();
+    } else {
+        return url;
+    }
 }
