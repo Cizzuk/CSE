@@ -1,21 +1,15 @@
-
-var URLtop = "";
-var URLsuffix = "";
-var Engine = "";
-var Domain = "";
-var Query = "";
+"use strict";
 
 browser.runtime.sendMessage({ type: "content" },
     function(response) {
-        URLtop = response.top;
-        URLsuffix = response.suffix;
-        Engine = response.engine;
+        const URLtop = response.top;
+        const URLsuffix = response.suffix;
+        const Engine = response.engine;
 
         const Domain = window.location.hostname;
         const Path = window.location.pathname;
         const URL = window.location.href;
-    
-        // Normalize URLtop
+
         if (URLtop.startsWith("https://google.com")) {
             URLtop = URLtop.replace("https://google.com", "https://www.google.com");
         }
@@ -28,42 +22,43 @@ browser.runtime.sendMessage({ type: "content" },
         if (URLtop.startsWith("https://ecosia.com")) {
             URLtop = URLtop.replace("https://ecosia.com", "https://www.ecosia.com");
         }
-
+    
         const engines = {
             "google": {
                 domain: ["www.google.com", "www.google.cn"],
                 path: "/search",
-                param: "q"
+                param: "q",
+                check: { param: "client", ids: ["safari"] }
             },
             "yahoo": {
                 domain: ["search.yahoo.com", "search.yahoo.co.jp"],
                 path: "/search",
                 param: "p",
-                check: () => ["iphone", "appsfch2", "osx"].includes(getParam("fr"))
+                check: { param: "fr", ids: ["iphone", "appsfch2", "osx"] }
             },
             "bing": {
                 domain: ["www.bing.com"],
                 path: "/search",
                 param: "q",
-                check: () => ["APIPH1", "APMCS1", "APIPA1"].includes(getParam("form"))
+                check: { param: "form", ids: ["APIPH1", "APMCS1", "APIPA1"] }
             },
             "duckduckgo": {
                 domain: ["duckduckgo.com"],
                 path: "/",
                 param: "q",
-                check: () => ["iphone", "osx", "ipad"].includes(getParam("t"))
+                check: { param: "t", ids: ["iphone", "osx", "ipad"] }
             },
             "ecosia": {
                 domain: ["www.ecosia.org"],
                 path: "/search",
                 param: "q",
-                check: () => ["st_asaf_iphone", "st_asaf_macos", "st_asaf_ipad"].includes(getParam("tts"))
+                check: { param: "tts", ids: ["st_asaf_iphone", "st_asaf_macos", "st_asaf_ipad"] }
             },
             "baidu": {
                 domain: ["m.baidu.com", "www.baidu.com"],
                 path: "/s",
                 param: (domain) => domain === "m.baidu.com" ? "word" : "wd",
-                check: (domain) => domain === "m.baidu.com" ? getParam("from") === "1000539d" : ["84053098_dg", "84053098_4_dg"].includes(getParam("tn"))
+                check: (domain) => domain === "m.baidu.com" ? { param: "from", ids: ["1000539d"] } : { param: "tn", ids: ["84053098_dg", "84053098_4_dg"] }
             },
             "sogou": {
                 domain: ["m.sogou.com", "www.sogou.com"],
@@ -81,37 +76,51 @@ browser.runtime.sendMessage({ type: "content" },
                 param: "text"
             }
         };
+    
         if (Engine in engines) {
             const engine = engines[Engine];
-            const domains = Array.isArray(engine.domain) ? engine.domain : [engine.domain];
-            const paths = Array.isArray(engine.path) ? engine.path : [engine.path];
-            const param = typeof engine.param === "function" ? engine.param(Domain) : engine.param;
-            if (domains.includes(Domain)
-                && paths.some(p => Path.startsWith(p)) // Path starts with a search link
-                && getParam(param) != null // Query exists
-                && (!engine.check || engine.check(Domain)) // Searched from search bar
-                && (!URL.startsWith(URLtop) || !URL.endsWith(URLsuffix)) // It's not CSE
-                ) {
-                const Query = getParam(param);
-                doCSE(URLtop, Query, URLsuffix);
+            if (engine.domain.includes(Domain)) {
+                const path = typeof engine.path === 'function' ? engine.path(Domain) : engine.path;
+                const param = typeof engine.param === 'function' ? engine.param(Domain) : engine.param;
+                const check = typeof engine.check === 'function' ? engine.check(Domain) : engine.check;
+                if (Path.startsWith(path) // Path starts with a search link
+                    && getParam(URL, param) != null // Query exists
+                    && (!check || check.ids.includes(getParam(URL, check.param))) // Search bar
+                    && (!URL.startsWith(URLtop) || !URL.endsWith(URLsuffix)) // It's not CSE
+                    ) {
+                    let cseURL = URLtop + getParam(URL, param) + URLsuffix;
+                    cseURL = checkerParamRemover(cseURL, check);
+                    doCSE(cseURL);
+                }
             }
         }
     }
 );
 
-function doCSE(URLtop, Query, URLsuffix) {
+function doCSE(url) {
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
         //if darkmode
-        document.getElementsByTagName("html")[0].innerHTML = '<body style="background:#222"></body>';
+        document.getElementsByTagName("html")[0].innerHTML = '<body style="background:#1c1c1e"></body>';
     } else {
         //if lightmode
-        document.getElementsByTagName("html")[0].innerHTML = '<body style="background:#cacacf"></body>';
+        document.getElementsByTagName("html")[0].innerHTML = '<body style="background:#f2f2f7"></body>';
     }
-    location.replace(URLtop + Query + URLsuffix);
+    location.replace(url);
     console.log("CSE: URL has been rewritten.");
 }
 
-function getParam(name) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
+function getParam(url, param) {
+    const urlObj = new URL(url);
+    const urlParams = new URLSearchParams(urlObj.search);
+    return urlParams.get(param);
+}
+
+function checkerParamRemover(url, check) {
+    if (check && check.ids.includes(getParam(url, check.param))) {
+        let urlObj = new URL(url);
+        urlObj.searchParams.delete(check.param);
+        return urlObj.toString();
+    } else {
+        return url;
+    }
 }

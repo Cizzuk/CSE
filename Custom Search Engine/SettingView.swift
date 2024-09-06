@@ -90,15 +90,20 @@ struct ContentView: View {
                 // Default SE Section
                 Section {
                     Picker("DefaultSE", selection: $searchengine) {
+                        let currentRegion = Locale.current.regionCode
+                        if currentRegion == "CN" {
+                            Text("Baidu").tag("baidu")
+                            Text("Sogou").tag("sogou")
+                            Text("360 Search").tag("360search")
+                        }
                         Text("Google").tag("google")
                         Text("Yahoo").tag("yahoo")
                         Text("Bing").tag("bing")
+                        if currentRegion == "RU" {
+                            Text("Yandex").tag("yandex")
+                        }
                         Text("DuckDuckGo").tag("duckduckgo")
                         Text("Ecosia").tag("ecosia")
-                        Text("Baidu").tag("baidu")
-                        Text("Sogou").tag("sogou")
-                        Text("360 Search").tag("360search")
-                        Text("Yandex").tag("yandex")
                     }
                     .onChange(of: searchengine) { entered in
                         userDefaults!.set(entered, forKey: "searchengine")
