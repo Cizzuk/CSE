@@ -2,8 +2,8 @@
 
 browser.runtime.sendMessage({ type: "content" },
     function(response) {
-        const URLtop = response.top;
-        const URLsuffix = response.suffix;
+        let URLtop = response.top;
+        let URLsuffix = response.suffix;
         const Engine = response.engine;
 
         const Domain = window.location.hostname;
