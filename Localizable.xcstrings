@@ -3,11 +3,13 @@
   "strings" : {
     "" : {
       "comment" : "Don't translate",
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "shouldTranslate" : false
     },
     "© Cizzuk" : {
       "comment" : "Don't translate",
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "shouldTranslate" : false
     },
     "360 Search" : {
       "localizations" : {
@@ -584,55 +586,55 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sie müssen die Einstellung unter Einstellungen > Safari > Suchmaschine."
+            "value" : "Sie müssen die Einstellung unter Einstellungen > Apps > Safari > Suchmaschine."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You will need to change the setting in Settings > Safari > Search Engine."
+            "value" : "You will need to change the setting in Settings > Apps > Safari > Search Engine."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tendrás que cambiar la configuración en Ajustes > Safari > Buscador."
+            "value" : "Tendrás que cambiar la configuración en Ajustes > Apps > Safari > Buscador."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vous devez modifier les paramètres dans Réglages > Safari > Moteur de recherche."
+            "value" : "Vous devez modifier les paramètres dans Réglages > Apps > Safari > Moteur de recherche."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "設定 > Safari > 検索エンジン から設定を変更する必要があります。"
+            "value" : "設定 > アプリ > Safari > 検索エンジン から設定を変更する必要があります。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "설정 > Safari > 검색 엔진 에서 설정을 변경해야 합니다."
+            "value" : "설정 > 앱 > Safari > 검색 엔진 에서 설정을 변경해야 합니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Вам нужно изменить настройку в разделе Настройки > Safari > Поисковая машина."
+            "value" : "Вам нужно изменить настройку в разделе Настройки > Приложения > Safari > Поисковая машина."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "您需要在 设置 > Safari 浏览器 > 搜索引擎 中更改设置。"
+            "value" : "您需要在 设置 > App > Safari 浏览器 > 搜索引擎 中更改设置。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "您需要在 設定 > Safari > 搜尋引擎 中變更設定。"
+            "value" : "您需要在 設定 > App > Safari > 搜尋引擎 中變更設定。"
           }
         }
       }
@@ -1036,7 +1038,8 @@
     },
     "MPL 2.0" : {
       "comment" : "Don't translate",
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "shouldTranslate" : false
     },
     "PrivacyPolicyLink" : {
       "extractionState" : "manual",
@@ -1561,55 +1564,55 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Und bitte erlauben Sie CSE in Einstellungen > Safari > Erweiterungen."
+            "value" : "Und bitte erlauben Sie CSE in Einstellungen > Apps > Safari > Erweiterungen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "And please allow CSE in Settings > Safari > Extentions."
+            "value" : "And please allow CSE in Settings > Apps > Safari > Extentions."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Y por favor permita CSE en Ajustes > Safari > Extensiones."
+            "value" : "Y por favor permita CSE en Ajustes > Apps > Safari > Extensiones."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Et autorisez CSE dans Réglages > Safari > Extensions."
+            "value" : "Et autorisez CSE dans Réglages > Apps > Safari > Extensions."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "さらに、設定 > Safari > 拡張機能 からCSEを許可する必要があります。"
+            "value" : "さらに、設定 > アプリ > Safari > 拡張機能 からCSEを許可する必要があります。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "또한 설정 > Safari > 확장 프로그램 에서 CSE를 허용해야 합니다."
+            "value" : "또한 설정 > 앱 > Safari > 확장 프로그램 에서 CSE를 허용해야 합니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "И, пожалуйста, разрешите CSE в Настройки > Safari > Расширения."
+            "value" : "И, пожалуйста, разрешите CSE в Настройки > Приложения > Safari > Расширения."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "此外，必须通过 设置 > Safari 浏览器 > 扩展 允许使用 CSE。"
+            "value" : "此外，必须通过 设置 > App > Safari 浏览器 > 扩展 允许使用 CSE。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "此外，必須透過 設定 > Safari > 延伸功能 允許使用 CSE。"
+            "value" : "此外，必須透過 設定 > App > Safari > 延伸功能 允許使用 CSE。"
           }
         }
       }
@@ -1728,6 +1731,266 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "此外，必須透過 Settings > Apps > Safari > Extentions 允許使用 CSE。"
+          }
+        }
+      }
+    },
+    "Search Engine" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suchen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscador"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moteur de recherche"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索エンジン"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검색 엔진"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поисковая машина"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "搜索引擎"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "搜尋引擎"
+          }
+        }
+      }
+    },
+    "Set Default Search Engine on CSE" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standard-Suchen auf CSE einstellen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Establecer Buscador por Defecto en CSE"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Définir le moteur de recherche par défaut sur le CSE"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE上の既定の検索エンジンを設定"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE에서 기본 검색 엔진 설정"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Установка поисковой системы по умолчанию на CSE"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在 CSE 上设置默认搜索引擎"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在 CSE 上設定預設搜尋引擎"
+          }
+        }
+      }
+    },
+    "Set Default Search Engine to %@ on CSE" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standard-Suchen auf %@ auf CSE einstellen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Establecer Buscador por defecto en %@ en CSE"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Définir le moteur de recherche par défaut sur %@ dans le CSE"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE上の既定の検索エンジンを%@に設定"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE의 기본 검색 엔진을 %@로 설정하기"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Установите поисковую систему по умолчанию на %@ в CSE"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在 CSE 上将默认搜索引擎设置为 %@"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在 CSE 上設定預設搜尋引擎為%@"
+          }
+        }
+      }
+    },
+    "Set Default Search Engine to ${searchEngine} on CSE" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standard-Suchen auf ${searchEngine} auf CSE einstellen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Establecer Buscador por defecto en ${searchEngine} en CSE"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Définir le moteur de recherche par défaut sur ${searchEngine} dans le CSE"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE上の既定の検索エンジンを${searchEngine}に設定"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE의 기본 검색 엔진을 ${searchEngine}로 설정하기"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Установите поисковую систему по умолчанию на ${searchEngine} в CSE"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在 CSE 上将默认搜索引擎设置为 ${searchEngine}"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在 CSE 上設定預設搜尋引擎為${searchEngine}"
+          }
+        }
+      }
+    },
+    "Sets a Safari Default Search Engine on CSE." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Legt eine Safari-Standard-Suchen auf CSE fest."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Establece un Buscador Safari por defecto en el CSE."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Définit un moteur de recherche Safari par défaut sur le CSE."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE上のSafariの既定の検索エンジンの設定を変更します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE에서 Safari의 기본 검색 엔진 설정을 변경합니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Устанавливает поисковую систему Safari по умолчанию на CSE."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更改 CSE 上 Safari 的默认搜索引擎设置。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "變更 CSE 上 Safari 的預設搜尋引擎設定。"
           }
         }
       }

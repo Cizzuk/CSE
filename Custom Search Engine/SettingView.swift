@@ -25,9 +25,13 @@ struct ContentView: View {
     
     //Load app settings
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
-    @State private var urltop = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "urltop") ?? "https://archive.org/search?query="
-    @State private var urlsuffix = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "urlsuffix") ?? ""
-    @State private var searchengine = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "google"
+    @AppStorage("urltop", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var urltop: String = (UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "urltop") ?? "https://archive.org/search?query=")
+    @AppStorage("urlsuffix", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var urlsuffix: String = (UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "urlsuffix") ?? "")
+    @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var searchengine: String = (UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "google")
+    
 #if iOS
     @State private var isIconSettingView: Bool = false
     var alternateIconName: String? {

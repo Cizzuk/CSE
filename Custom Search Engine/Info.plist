@@ -21,6 +21,10 @@
 			</array>
 		</dict>
 	</array>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>DefaultSearchEngineIntent</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
