@@ -28,7 +28,6 @@ browser.runtime.sendMessage({ type: "content" },
         if (URLtop.startsWith("https://ecosia.com")) {
             URLtop = URLtop.replace("https://ecosia.com", "https://www.ecosia.com");
         }
-    console.log("aba");
     
         const engines = {
             "google": {
@@ -87,17 +86,14 @@ browser.runtime.sendMessage({ type: "content" },
         if (Engine in engines) {
             const engine = engines[Engine];
             if (engine.domain.includes(Domain)) {
-                console.log(adv_disablechecker);
                 const path = typeof engine.path === 'function' ? engine.path(Domain) : engine.path;
                 const param = typeof engine.param === 'function' ? engine.param(Domain) : engine.param;
                 const check = typeof engine.check === 'function' ? engine.check(Domain) : engine.check;
-                console.log(adv_disablechecker);
                 if (Path.startsWith(path) // Path starts with a search link
                     && getParam(URL, param) != null // Query exists
                     && (!check || check.ids.includes(getParam(URL, check.param)) || adv_disablechecker) // Search bar
                     && (!URL.startsWith(URLtop) || !URL.endsWith(URLsuffix)) // It's not CSE
                     ) {
-                    console.log("a;klsdhf");
                     cseURL = URLtop + getParam(URL, param) + URLsuffix;
                     cseURL = checkerParamRemover(cseURL, check);
                     complete("loading");
