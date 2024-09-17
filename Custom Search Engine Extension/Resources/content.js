@@ -1,8 +1,8 @@
 "use strict";
 
-var cseURL = "";
-var completedFlags = {};
-var adv_redirectat = "loading";
+let cseURL = "";
+let completedFlags = {};
+let adv_redirectat = "loading";
 
 browser.runtime.sendMessage({ type: "content" },
     function(response) {
