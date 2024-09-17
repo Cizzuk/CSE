@@ -111,8 +111,7 @@ document.onreadystatechange = () => {
 
 function complete(flag) {
     completedFlags[flag] = true;
-    console.log(completedFlags);
-    if (completedFlags["loading"] && completedFlags[adv_redirectat]) {
+    if (!completedFlags["done"] && completedFlags["loading"] && completedFlags[adv_redirectat]) {
         doCSE();
     }
 }
@@ -126,6 +125,7 @@ function doCSE() {
         document.getElementsByTagName("html")[0].innerHTML = '<body style="background:#f2f2f7"></body>';
     }
     location.replace(cseURL);
+    completedFlags["done"] = true;
     console.log("CSE: URL has been rewritten.");
 }
 
