@@ -14,10 +14,27 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     
     func beginRequest(with context: NSExtensionContext) {
         
-        let body: Dictionary<String, String> = ["top": userDefaults!.string(forKey: "urltop") ?? "https://archive.org/search?query=", "suffix": userDefaults!.string(forKey: "urlsuffix") ?? "", "engine": userDefaults!.string(forKey: "searchengine") ?? "google"]
+        struct Settings: Encodable {
+            let type: String
+            let urltop: String
+            let urlsuffix: String
+            let searchengine: String
+            let adv_disablechecker: Bool
+            let adv_redirectat: String
+        }
+        
+        let settings = Settings(
+            type: "native",
+            urltop: userDefaults!.string(forKey: "urltop") ?? "https://archive.org/search?query=",
+            urlsuffix: userDefaults!.string(forKey: "urlsuffix") ?? "",
+            searchengine: userDefaults!.string(forKey: "searchengine") ?? "google",
+            adv_disablechecker: userDefaults!.bool(forKey: "adv_disablechecker"),
+            adv_redirectat: userDefaults!.string(forKey: "adv_redirectat") ?? "loading"
+        )
+        
         do {
-            let data = try JSONEncoder().encode(body)
-            let json = String(data: data, encoding: .utf8) ?? ""
+            let data = try JSONEncoder().encode(settings)
+            let json = String(data: data, encoding: .utf8)!
             let extensionItem = NSExtensionItem()
             extensionItem.userInfo = [ SFExtensionMessageKey: json ]
             context.completeRequest(returningItems: [extensionItem], completionHandler: nil)

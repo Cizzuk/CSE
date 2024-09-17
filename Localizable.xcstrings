@@ -63,6 +63,96 @@
         }
       }
     },
+    "adv_disablechecker" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disable Checker"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "チェッカーを無効化"
+          }
+        }
+      }
+    },
+    "adv_disablechecker-Desc-1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE will not check that you have searched from the search bar."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSEが検索バーから検索したことを確認しなくなります。"
+          }
+        }
+      }
+    },
+    "adv_redirectat" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redirect at"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リダイレクトのタイミング"
+          }
+        }
+      }
+    },
+    "adv_redirectat-Desc-1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change when to redirect according to the document's loading status."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ドキュメントの読み込み中の状態に応じて、リダイレクトを実行するタイミングを変更します。"
+          }
+        }
+      }
+    },
+    "adv_resetall" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべての高度な設定をリセット"
+          }
+        }
+      }
+    },
+    "AdvSettings" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Advanced Settings"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "高度な設定"
+          }
+        }
+      }
+    },
     "AppIcon" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -402,6 +492,9 @@
           }
         }
       }
+    },
+    "complete" : {
+      "shouldTranslate" : false
     },
     "ContactLink" : {
       "extractionState" : "manual",
@@ -977,6 +1070,9 @@
         }
       }
     },
+    "interactive" : {
+      "shouldTranslate" : false
+    },
     "LicenseLink" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1035,6 +1131,9 @@
           }
         }
       }
+    },
+    "loading" : {
+      "shouldTranslate" : false
     },
     "MPL 2.0" : {
       "comment" : "Don't translate",

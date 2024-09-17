@@ -1,10 +1,16 @@
 "use strict";
 
+var cseURL = "";
+var completedFlags = {};
+var adv_redirectat = "loading";
+
 browser.runtime.sendMessage({ type: "content" },
     function(response) {
-        let URLtop = response.top;
-        let URLsuffix = response.suffix;
-        const Engine = response.engine;
+        let URLtop = response.urltop;
+        let URLsuffix = response.urlsuffix;
+        const Engine = response.searchengine;
+        const adv_disablechecker = response.adv_disablechecker;
+        adv_redirectat = response.adv_redirectat;
 
         const Domain = window.location.hostname;
         const Path = window.location.pathname;
@@ -22,6 +28,7 @@ browser.runtime.sendMessage({ type: "content" },
         if (URLtop.startsWith("https://ecosia.com")) {
             URLtop = URLtop.replace("https://ecosia.com", "https://www.ecosia.com");
         }
+    console.log("aba");
     
         const engines = {
             "google": {
@@ -80,24 +87,41 @@ browser.runtime.sendMessage({ type: "content" },
         if (Engine in engines) {
             const engine = engines[Engine];
             if (engine.domain.includes(Domain)) {
+                console.log(adv_disablechecker);
                 const path = typeof engine.path === 'function' ? engine.path(Domain) : engine.path;
                 const param = typeof engine.param === 'function' ? engine.param(Domain) : engine.param;
                 const check = typeof engine.check === 'function' ? engine.check(Domain) : engine.check;
+                console.log(adv_disablechecker);
                 if (Path.startsWith(path) // Path starts with a search link
                     && getParam(URL, param) != null // Query exists
-                    && (!check || check.ids.includes(getParam(URL, check.param))) // Search bar
+                    && (!check || check.ids.includes(getParam(URL, check.param)) || adv_disablechecker) // Search bar
                     && (!URL.startsWith(URLtop) || !URL.endsWith(URLsuffix)) // It's not CSE
                     ) {
-                    let cseURL = URLtop + getParam(URL, param) + URLsuffix;
+                    console.log("a;klsdhf");
+                    cseURL = URLtop + getParam(URL, param) + URLsuffix;
                     cseURL = checkerParamRemover(cseURL, check);
-                    doCSE(cseURL);
+                    complete("loading");
                 }
             }
         }
     }
 );
 
-function doCSE(url) {
+document.onreadystatechange = () => {
+    if (document.readyState === "interactive" || document.readyState === "complete") {
+        complete(document.readyState);
+    }
+};
+
+function complete(flag) {
+    completedFlags[flag] = true;
+    console.log(completedFlags);
+    if (completedFlags["loading"] && completedFlags[adv_redirectat]) {
+        doCSE();
+    }
+}
+
+function doCSE() {
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
         //if darkmode
         document.getElementsByTagName("html")[0].innerHTML = '<body style="background:#1c1c1e"></body>';
@@ -105,7 +129,7 @@ function doCSE(url) {
         //if lightmode
         document.getElementsByTagName("html")[0].innerHTML = '<body style="background:#f2f2f7"></body>';
     }
-    location.replace(url);
+    location.replace(cseURL);
     console.log("CSE: URL has been rewritten.");
 }
 
