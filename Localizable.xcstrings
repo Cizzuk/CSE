@@ -129,9 +129,15 @@
     },
     "adv_resetall" : {
       "localizations" : {
-        "ja" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Reset All Advanced Settings"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "すべての高度な設定をリセット"
           }
         }
