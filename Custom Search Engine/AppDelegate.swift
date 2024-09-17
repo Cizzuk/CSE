@@ -35,7 +35,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if (currentRegion != "CN" && ["baidu", "sogou", "360search"].contains(searchengine))
            || (currentRegion != "RU" && ["yandex"].contains(searchengine)) {
-            userDefaults!.set("google", forKey: "searchengine")
+            if currentRegion == "CN" {
+                userDefaults!.set("baidu", forKey: "searchengine")
+            } else {
+                userDefaults!.set("google", forKey: "searchengine")
+            }
         }
 
         userDefaults!.set(currentVersion, forKey: "LastAppVer")
