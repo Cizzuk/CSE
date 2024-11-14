@@ -1,20 +1,20 @@
 "use strict";
 
-let cseURL = "";
-let completedFlags = {};
-let adv_redirectat = "loading";
+var cseURL = "";
+var completedFlags = {};
+var adv_redirectat = "loading";
 
 browser.runtime.sendMessage({ type: "content" },
     function(response) {
-        let URLtop = response.urltop;
-        let URLsuffix = response.urlsuffix;
-        const Engine = response.searchengine;
-        const adv_disablechecker = response.adv_disablechecker;
+        var URLtop = response.urltop;
+        var URLsuffix = response.urlsuffix;
+        var Engine = response.searchengine;
+        var adv_disablechecker = response.adv_disablechecker;
         adv_redirectat = response.adv_redirectat;
 
-        const Domain = window.location.hostname;
-        const Path = window.location.pathname;
-        const URL = window.location.href;
+        var Domain = window.location.hostname;
+        var Path = window.location.pathname;
+        var URL = window.location.href;
 
         if (URLtop.startsWith("https://google.com")) {
             URLtop = URLtop.replace("https://google.com", "https://www.google.com");
@@ -29,7 +29,7 @@ browser.runtime.sendMessage({ type: "content" },
             URLtop = URLtop.replace("https://ecosia.com", "https://www.ecosia.com");
         }
     
-        const engines = {
+        var engines = {
             "google": {
                 domain: ["www.google.com", "www.google.cn"],
                 path: "/search",
@@ -84,11 +84,11 @@ browser.runtime.sendMessage({ type: "content" },
         };
     
         if (Engine in engines) {
-            const engine = engines[Engine];
+            var engine = engines[Engine];
             if (engine.domain.includes(Domain)) {
-                const path = typeof engine.path === 'function' ? engine.path(Domain) : engine.path;
-                const param = typeof engine.param === 'function' ? engine.param(Domain) : engine.param;
-                const check = typeof engine.check === 'function' ? engine.check(Domain) : engine.check;
+                var path = typeof engine.path === 'function' ? engine.path(Domain) : engine.path;
+                var param = typeof engine.param === 'function' ? engine.param(Domain) : engine.param;
+                var check = typeof engine.check === 'function' ? engine.check(Domain) : engine.check;
                 if (Path.startsWith(path) // Path starts with a search link
                     && getParam(URL, param) != null // Query exists
                     && (!check || check.ids.includes(getParam(URL, check.param)) || adv_disablechecker) // Search bar
@@ -130,14 +130,14 @@ function doCSE() {
 }
 
 function getParam(url, param) {
-    const urlObj = new URL(url);
-    const urlParams = new URLSearchParams(urlObj.search);
+    var urlObj = new URL(url);
+    var urlParams = new URLSearchParams(urlObj.search);
     return urlParams.get(param);
 }
 
 function checkerParamRemover(url, check) {
     if (check && check.ids.includes(getParam(url, check.param))) {
-        let urlObj = new URL(url);
+        var urlObj = new URL(url);
         urlObj.searchParams.delete(check.param);
         return urlObj.toString();
     } else {
