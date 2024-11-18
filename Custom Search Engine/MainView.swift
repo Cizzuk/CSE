@@ -160,7 +160,7 @@ struct ContentView: View {
                         }
                     })
                     // Privacy Policy
-                    Link(destination:URL(string: "https://tsg0o0.com/privacy/")!, label: {
+                    Link(destination:URL(string: "https://i.cizzuk.net/privacy/")!, label: {
                         HStack {
                             Image(systemName: "hand.raised")
                                 .frame(width: 20.0)
