@@ -29,6 +29,7 @@ struct ContentView: View {
     var urlsuffix: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "urlsuffix") ?? ""
     @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var searchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "google"
+    @State private var needTutorial = true
     
 #if iOS
     @State private var isIconSettingView: Bool = false
@@ -214,6 +215,7 @@ struct ContentView: View {
             .navigationTitle("CSESetting")
         }
         .navigationViewStyle(.stack)
+        .sheet(isPresented: $needTutorial, content: { TutorialView() })
     }
 }
 

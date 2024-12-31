@@ -413,6 +413,9 @@
         }
       }
     },
+    "Before using CSE, do some setup." : {
+
+    },
     "Bing" : {
       "localizations" : {
         "de" : {
@@ -1229,6 +1232,9 @@
       "comment" : "Don't translate",
       "extractionState" : "manual",
       "shouldTranslate" : false
+    },
+    "Next" : {
+
     },
     "PrivacyPolicyLink" : {
       "extractionState" : "manual",
@@ -2184,6 +2190,9 @@
         }
       }
     },
+    "Skip" : {
+
+    },
     "Sogou" : {
       "localizations" : {
         "de" : {
@@ -2653,6 +2662,9 @@
           }
         }
       }
+    },
+    "Welcome to CSE" : {
+
     },
     "Yahoo" : {
       "localizations" : {
