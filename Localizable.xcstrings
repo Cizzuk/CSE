@@ -413,8 +413,15 @@
         }
       }
     },
-    "Before using CSE, do some setup." : {
-
+    "Before you can start using CSE, you need to do some setup." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSEを使い始める前に、いくつかのセットアップが必要です。"
+          }
+        }
+      }
     },
     "Bing" : {
       "localizations" : {
@@ -1234,7 +1241,14 @@
       "shouldTranslate" : false
     },
     "Next" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次へ"
+          }
+        }
+      }
     },
     "PrivacyPolicyLink" : {
       "extractionState" : "manual",
@@ -2191,7 +2205,14 @@
       }
     },
     "Skip" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スキップ"
+          }
+        }
+      }
     },
     "Sogou" : {
       "localizations" : {
@@ -2605,6 +2626,64 @@
         }
       }
     },
+    "Tutorial-createcse" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create your CSE"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カスタム検索エンジンを設定"
+          }
+        }
+      }
+    },
+    "Tutorial-full" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Full Tutorial"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "チュートリアルをやり直す"
+          }
+        }
+      }
+    },
+    "Tutorial-Full-setupsafari" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safari Settings"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safariの設定方法"
+          }
+        }
+      }
+    },
+    "Tutorials" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "チュートリアル"
+          }
+        }
+      }
+    },
     "Version: %@" : {
       "localizations" : {
         "de" : {
@@ -2664,7 +2743,14 @@
       }
     },
     "Welcome to CSE" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSEへようこそ"
+          }
+        }
+      }
     },
     "Yahoo" : {
       "localizations" : {
