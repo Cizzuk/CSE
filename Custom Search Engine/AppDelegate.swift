@@ -23,16 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let urlsuffix = userDefaults!.string(forKey: "urlsuffix") ?? nil
         let searchengine = userDefaults!.string(forKey: "searchengine") ?? nil
         
-        if lastVersion == nil && urltop != nil && urlsuffix != nil && searchengine == nil {
-            userDefaults!.set("google", forKey: "urltop")
-            userDefaults!.set("https://archive.org/search?query=", forKey: "urlsuffix")
-            if currentRegion == "CN" {
-                userDefaults!.set("baidu", forKey: "searchengine")
-            } else {
-                userDefaults!.set("google", forKey: "searchengine")
-            }
-        }
-        
         if (currentRegion != "CN" && ["baidu", "sogou", "360search"].contains(searchengine))
            || (currentRegion != "RU" && ["yandex"].contains(searchengine)) {
             if currentRegion == "CN" {
