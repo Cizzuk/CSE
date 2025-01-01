@@ -29,7 +29,8 @@ struct ContentView: View {
     var urlsuffix: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "urlsuffix") ?? ""
     @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var searchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "google"
-    @State private var needTutorial = true
+    @State private var openTutorial = true
+    @State private var requestTutorial: [String] = []
     
 #if iOS
     @State private var isIconSettingView: Bool = false
@@ -113,22 +114,6 @@ struct ContentView: View {
                     }
                 } header: {
                     Text("SafariSetting")
-                } footer: {
-                    VStack (alignment : .leading) {
-                        #if iOS
-                        Text("DefaultSE-Desc-iOS")
-                        Spacer()
-                        Text("SafariSetting-Desc-iOS")
-                        #elseif macOS
-                        Text("DefaultSE-Desc-macOS")
-                        Spacer()
-                        Text("SafariSetting-Desc-macOS")
-                        #elseif visionOS
-                        Text("DefaultSE-Desc-visionOS")
-                        Spacer()
-                        Text("SafariSetting-Desc-visionOS")
-                        #endif
-                    }
                 }
                 
                 #if iOS
@@ -147,6 +132,30 @@ struct ContentView: View {
                     Text("AppIcon")
                 }
                 #endif
+                
+                // Tutorial Section
+                Section {
+                    Button(action: {
+                        requestTutorial = ["setupsafari", "createcse"]
+                        openTutorial = true
+                    }) {
+                        Text("Tutorial-full")
+                    }
+                    Button(action: {
+                        requestTutorial = ["setupsafari"]
+                        openTutorial = true
+                    }) {
+                        Text("Tutorial-Full-setupsafari")
+                    }
+                    Button(action: {
+                        requestTutorial = ["createcse"]
+                        openTutorial = true
+                    }) {
+                        Text("Tutorial-createcse")
+                    }
+                } header: {
+                    Text("Tutorials")
+                }
                 
                 // Support Section
                 Section {
@@ -215,7 +224,9 @@ struct ContentView: View {
             .navigationTitle("CSESetting")
         }
         .navigationViewStyle(.stack)
-        .sheet(isPresented: $needTutorial, content: { TutorialView() })
+        .sheet(isPresented: $openTutorial, content: {
+            TutorialView(requestTutorial: $requestTutorial)
+        })
     }
 }
 
