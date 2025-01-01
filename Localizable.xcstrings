@@ -243,6 +243,16 @@
         }
       }
     },
+    "AlsoUseInPrivate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Also Use in Private Browsing"
+          }
+        }
+      }
+    },
     "AppIcon" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1305,6 +1315,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "隱私政策"
+          }
+        }
+      }
+    },
+    "PrivDefaultSE" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Private Search Engine"
           }
         }
       }

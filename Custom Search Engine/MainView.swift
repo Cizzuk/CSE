@@ -29,8 +29,15 @@ struct ContentView: View {
     var urlsuffix: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "urlsuffix") ?? ""
     @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var searchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "google"
-    @State private var openTutorial = true
-    @State private var requestTutorial: [String] = []
+    @AppStorage("alsousepriv", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var alsousepriv: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "alsousepriv")
+    @AppStorage("privsearchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var privsearchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "privsearchengine") ?? ""
+    
+    @AppStorage("needFirstTutorial", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var needFirstTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needFirstTutorial")
+    @State private var openTutorial = false
+    @State private var requestTutorial: [String] = ["setupsafari", "createcse"]
     
 #if iOS
     @State private var isIconSettingView: Bool = false
@@ -69,8 +76,6 @@ struct ContentView: View {
                     
                 } header: {
                     Text("TopUrl")
-                } footer: {
-                    Text("TopUrl-Desc")
                 }
                 
                 // Suffix Section
@@ -87,8 +92,6 @@ struct ContentView: View {
                         }
                 } header: {
                     Text("SuffixUrl")
-                } footer: {
-                    Text("SuffixUrl-Desc")
                 }
                 
                 // Default SE Section
@@ -109,8 +112,53 @@ struct ContentView: View {
                         Text("DuckDuckGo").tag("duckduckgo")
                         Text("Ecosia").tag("ecosia")
                     }
-                    .onChange(of: searchengine) { entered in
-                        userDefaults!.set(entered, forKey: "searchengine")
+                    .onChange(of: searchengine) { newValue in
+                        userDefaults!.set(newValue, forKey: "searchengine")
+                        if alsousepriv == true {
+                            let currentRegion = Locale.current.regionCode
+                            if currentRegion == "CN" {
+                                if searchengine == "duckduckgo" {
+                                    userDefaults!.set("baidu", forKey: "privsearchengine")
+                                } else {
+                                    userDefaults!.set("duckduckgo", forKey: "privsearchengine")
+                                }
+                            } else {
+                                if searchengine == "duckduckgo" {
+                                    userDefaults!.set("google", forKey: "privsearchengine")
+                                } else {
+                                    userDefaults!.set("duckduckgo", forKey: "privsearchengine")
+                                }
+                            }
+                        }
+                    }
+                    
+                    Toggle(isOn: $alsousepriv, label: {
+                        Text("AlsoUseInPrivate")
+                    })
+                    .onChange(of: alsousepriv) { newValue in
+                        userDefaults!.set(newValue, forKey: "alsousepriv")
+                    }
+                    
+                    if !alsousepriv {
+                        Picker("PrivDefaultSE", selection: $privsearchengine) {
+                            let currentRegion = Locale.current.regionCode
+                            if currentRegion == "CN" {
+                                Text("Baidu").tag("baidu")
+                                Text("Sogou").tag("sogou")
+                                Text("360 Search").tag("360search")
+                            }
+                            Text("Google").tag("google")
+                            Text("Yahoo").tag("yahoo")
+                            Text("Bing").tag("bing")
+                            if currentRegion == "RU" {
+                                Text("Yandex").tag("yandex")
+                            }
+                            Text("DuckDuckGo").tag("duckduckgo")
+                            Text("Ecosia").tag("ecosia")
+                        }
+                        .onChange(of: privsearchengine) { newValue in
+                            userDefaults!.set(newValue, forKey: "privsearchengine")
+                        }
                     }
                 } header: {
                     Text("SafariSetting")
@@ -225,6 +273,9 @@ struct ContentView: View {
         }
         .navigationViewStyle(.stack)
         .sheet(isPresented: $openTutorial, content: {
+            TutorialView(requestTutorial: $requestTutorial)
+        })
+        .sheet(isPresented: $needFirstTutorial, content: {
             TutorialView(requestTutorial: $requestTutorial)
         })
     }
