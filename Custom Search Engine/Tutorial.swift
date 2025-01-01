@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct TutorialView: View {
+    @Environment(\.dismiss) private var dismiss
+    @Binding var requestTutorial: [String]
     var body: some View {
-        @Environment(\.dismiss) var dismiss
-        let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
         VStack(spacing: 16) {
             // Title
             Text("Welcome to CSE")
@@ -19,7 +19,7 @@ struct TutorialView: View {
                 .padding(.top, 40)
             
             VStack(spacing: 16) {
-                Text("Before using CSE, do some setup.")
+                Text("Before you can start using CSE, you need to do some setup.")
             }
             .padding(.horizontal, 32)
             .frame(maxWidth: .infinity)
