@@ -18,9 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let currentRegion = Locale.current.regionCode
         
         let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
-        let lastVersion = userDefaults!.string(forKey: "LastAppVer") ?? nil
-        let urltop = userDefaults!.string(forKey: "urltop") ?? nil
-        let urlsuffix = userDefaults!.string(forKey: "urlsuffix") ?? nil
         let searchengine = userDefaults!.string(forKey: "searchengine") ?? nil
         
         if (currentRegion != "CN" && ["baidu", "sogou", "360search"].contains(searchengine))
