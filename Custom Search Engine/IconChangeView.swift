@@ -19,7 +19,6 @@ struct IconSettingView: View {
                 iconItem(iconName: "White", iconID: "gray-white")
                 iconItem(iconName: "Pride", iconID: "pride")
                 iconItem(iconName: "General", iconID: "light")
-                iconItem(iconName: "Glitch", iconID: "glitch")
                 iconItem(iconName: "Dark Blue", iconID: "blue-dark")
                 iconItem(iconName: "Dark Red", iconID: "red-dark")
                 iconItem(iconName: "Dark Green", iconID: "green-dark")
@@ -34,9 +33,11 @@ struct IconSettingView: View {
         HStack {
             Image(iconID + "-pre")
                 .resizable()
-                .frame(width: 80, height: 80)
+                .frame(width: 64, height: 64)
                 .accessibilityHidden(true)
-                .accessibilityIgnoresInvertColors(true)
+                .cornerRadius(14)
+                .padding(8)
+                .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
             Text(iconName)
             Spacer()
         }
@@ -127,7 +128,6 @@ struct PurchaseView: View {
                 iconItem(iconName: "White", iconID: "gray-white")
                 iconItem(iconName: "Pride", iconID: "pride")
                 iconItem(iconName: "General", iconID: "light")
-                iconItem(iconName: "Glitch", iconID: "glitch")
                 iconItem(iconName: "Dark Blue", iconID: "blue-dark")
                 iconItem(iconName: "Dark Red", iconID: "red-dark")
                 iconItem(iconName: "Dark Green", iconID: "green-dark")
@@ -146,8 +146,11 @@ struct PurchaseView: View {
         HStack {
             Image(iconID + "-pre")
                 .resizable()
-                .frame(width: 80, height: 80)
+                .frame(width: 64, height: 64)
                 .accessibilityHidden(true)
+                .cornerRadius(14)
+                .padding(8)
+                .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
             Text(iconName)
         }
     }

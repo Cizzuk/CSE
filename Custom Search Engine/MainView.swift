@@ -172,8 +172,11 @@ struct ContentView: View {
                         Image((alternateIconName ?? "appicon") + "-pre")
                             .resizable()
                             .frame(width: 64, height: 64)
+                            .accessibilityHidden(true)
+                            .cornerRadius(14)
+                            .padding(4)
+                            .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
                             .id(isIconSettingView)
-                            .accessibilityIgnoresInvertColors(true)
                         Text("Change App Icon")
                         Spacer()
                     }
