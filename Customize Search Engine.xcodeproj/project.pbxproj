@@ -11,7 +11,6 @@
 		903A4A212BA1D87F005E346B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903A4A202BA1D87F005E346B /* MainView.swift */; };
 		908FBC952BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */; };
 		908FBC962BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */; };
-		90ACB07B2BA5157A000E315D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 90ACB07A2BA5157A000E315D /* Localizable.xcstrings */; };
 		90C9BE16288BE17000E22FB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9BE15288BE17000E22FB8 /* AppDelegate.swift */; };
 		90C9BE30288BE17300E22FB8 /* Customize Search Engine Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 90C9BE2F288BE17300E22FB8 /* Customize Search Engine Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		90C9BE35288BE17300E22FB8 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9BE34288BE17300E22FB8 /* SafariWebExtensionHandler.swift */; };
@@ -56,7 +55,6 @@
 		90240FAE2BA54E68003C264A /* Customize Search Engine.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Customize Search Engine.storekit"; sourceTree = "<group>"; };
 		903A4A202BA1D87F005E346B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		90ACB07A2BA5157A000E315D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		90AD4058288E74CD00C5E21A /* Custom Search Engine Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Custom Search Engine Extension.entitlements"; sourceTree = "<group>"; };
 		90C9BE12288BE17000E22FB8 /* Customize Search Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Customize Search Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90C9BE15288BE17000E22FB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 				BE289FCD2C8DA7C8005BBDC6 /* Intent */,
 				BE8E1D2D2C16EB3000B31EA1 /* Customize Search EngineRelease visionOS.entitlements */,
 				908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */,
-				90ACB07A2BA5157A000E315D /* Localizable.xcstrings */,
 				90C9BE14288BE17000E22FB8 /* Custom Search Engine */,
 				90C9BE33288BE17300E22FB8 /* Custom Search Engine Extension */,
 				90C9BE13288BE17000E22FB8 /* Products */,
@@ -238,6 +235,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 90C9BE09288BE17000E22FB8;
 			productRefGroup = 90C9BE13288BE17000E22FB8 /* Products */;
@@ -258,7 +256,6 @@
 				90240FAF2BA54E68003C264A /* Customize Search Engine.storekit in Resources */,
 				90C9BE48288BE17300E22FB8 /* Assets.xcassets in Resources */,
 				908FBC952BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */,
-				90ACB07B2BA5157A000E315D /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +361,7 @@
 				SDKROOT = xros;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = visionOS;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 				XROS_DEPLOYMENT_TARGET = 1.0;
@@ -505,6 +503,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = iOS;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 				XROS_DEPLOYMENT_TARGET = 1.0;
@@ -651,6 +650,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
@@ -709,6 +709,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = macOS;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 				XROS_DEPLOYMENT_TARGET = 1.0;

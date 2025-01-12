@@ -75,7 +75,7 @@ struct ContentView: View {
                         }
                     
                 } header: {
-                    Text("TopUrl")
+                    Text("Top of URL")
                 }
                 
                 // Suffix Section
@@ -91,12 +91,12 @@ struct ContentView: View {
                             userDefaults!.set(entered, forKey: "urlsuffix")
                         }
                 } header: {
-                    Text("SuffixUrl")
+                    Text("Suffix of URL")
                 }
                 
                 // Default SE Section
                 Section {
-                    Picker("DefaultSE", selection: $searchengine) {
+                    Picker("Default Search Engine", selection: $searchengine) {
                         let currentRegion = Locale.current.regionCode
                         if currentRegion == "CN" {
                             Text("Baidu").tag("baidu")
@@ -133,14 +133,14 @@ struct ContentView: View {
                     }
                     
                     Toggle(isOn: $alsousepriv, label: {
-                        Text("AlsoUseInPrivate")
+                        Text("Also Use in Private Browsing")
                     })
                     .onChange(of: alsousepriv) { newValue in
                         userDefaults!.set(newValue, forKey: "alsousepriv")
                     }
                     
                     if !alsousepriv {
-                        Picker("PrivDefaultSE", selection: $privsearchengine) {
+                        Picker("Private Search Engine", selection: $privsearchengine) {
                             let currentRegion = Locale.current.regionCode
                             if currentRegion == "CN" {
                                 Text("Baidu").tag("baidu")
@@ -161,7 +161,7 @@ struct ContentView: View {
                         }
                     }
                 } header: {
-                    Text("SafariSetting")
+                    Text("Safari Settings")
                 }
                 
                 #if iOS
@@ -172,12 +172,12 @@ struct ContentView: View {
                             .frame(width: 64, height: 64)
                             .id(isIconSettingView)
                             .accessibilityIgnoresInvertColors(true)
-                        Text("ChangeAppIcon")
+                        Text("Change App Icon")
                         Spacer()
                     }
                     .contentShape(Rectangle())
                 } header: {
-                    Text("AppIcon")
+                    Text("App Icon")
                 }
                 #endif
                 
@@ -187,19 +187,19 @@ struct ContentView: View {
                         requestTutorial = ["setupsafari", "createcse"]
                         openTutorial = true
                     }) {
-                        Text("Tutorial-full")
+                        Text("Open Full Tutorial")
                     }
                     Button(action: {
                         requestTutorial = ["setupsafari"]
                         openTutorial = true
                     }) {
-                        Text("Tutorial-Full-setupsafari")
+                        Text("Safari Settings")
                     }
                     Button(action: {
                         requestTutorial = ["createcse"]
                         openTutorial = true
                     }) {
-                        Text("Tutorial-createcse")
+                        Text("Create your CSE")
                     }
                 } header: {
                     Text("Tutorials")
@@ -212,7 +212,7 @@ struct ContentView: View {
                         HStack {
                             Image(systemName: "message")
                                 .frame(width: 20.0)
-                            Text("ContactLink")
+                            Text("Contact")
                             Spacer()
                             Image(systemName: "chevron.right")
                         }
@@ -222,7 +222,7 @@ struct ContentView: View {
                         HStack {
                             Image(systemName: "hand.raised")
                                 .frame(width: 20.0)
-                            Text("PrivacyPolicyLink")
+                            Text("Privacy Policy")
                             Spacer()
                             Image(systemName: "chevron.right")
                         }
@@ -232,7 +232,7 @@ struct ContentView: View {
                         HStack {
                             Image(systemName: "book.closed")
                                 .frame(width: 20.0)
-                            Text("LicenseLink")
+                            Text("License")
                             Spacer()
                             Text("MPL 2.0")
                             Image(systemName: "chevron.right")
@@ -243,19 +243,19 @@ struct ContentView: View {
                         HStack {
                             Image(systemName: "ladybug")
                                 .frame(width: 20.0)
-                            Text("SourceLink")
+                            Text("Source")
                             Spacer()
                             Text("GitHub")
                             Image(systemName: "chevron.right")
                         }
                     })
                 } header: {
-                    Text("SupportLink")
+                    Text("Support")
                 } footer: {
                     HStack {
-                        Text("© Cizzuk")
-                        Spacer()
                         Text("Version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String)")
+                        Spacer()
+                        Text("© Cizzuk")
                     }
                 }
                 
@@ -269,7 +269,7 @@ struct ContentView: View {
                 
             }
             .listStyle(.insetGrouped)
-            .navigationTitle("CSE Setting")
+            .navigationTitle("CSE Settings")
         }
         .navigationViewStyle(.stack)
         .sheet(isPresented: $openTutorial, content: {

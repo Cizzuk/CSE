@@ -27,7 +27,7 @@ struct IconSettingView: View {
             }
         }
         .listStyle(.insetGrouped)
-        .navigationTitle("ChangeAppIcon")
+        .navigationTitle("Change App Icon")
         .navigationBarTitleDisplayMode(.inline)
     }
     func iconItem(iconName: String, iconID: String) -> some View {
@@ -62,17 +62,17 @@ struct PurchaseView: View {
                 HStack {
                     Image(systemName: "checkmark.circle")
                         .accessibilityHidden(true)
-                    Text("Purchase-Desc1")
+                    Text("You will be able to change the application icon")
                 }
                 HStack {
                     Image(systemName: "checkmark.circle")
                         .accessibilityHidden(true)
-                    Text("Purchase-Desc2")
+                    Text("Your purchase will support the development of CSE")
                 }
                 HStack {
                     Image(systemName: "checkmark.circle")
                         .accessibilityHidden(true)
-                    Text("Purchase-Desc3")
+                    Text("More people will be able to continue using CSE for free")
                 }
                 //Purchase Button
                 Button(action: {
@@ -81,7 +81,7 @@ struct PurchaseView: View {
                     }
                 }) {
                     HStack {
-                        Text("PurchaseButton")
+                        Text("Purchase:")
                             .fontWeight(.bold)
                             .padding(10)
                         ForEach(storeManager.products, id: \.self) { product in
@@ -99,8 +99,7 @@ struct PurchaseView: View {
                     }
                 }
                 .alert(isPresented: $showFailAlert) {
-                    Alert(title: Text("Purchase Failed"
-                                     ))
+                    Alert(title: Text("Purchase Failed"))
                 }
                 .onReceive(storeManager.$purchaseFailed) { purchaseFailed in
                     if purchaseFailed {
@@ -114,7 +113,7 @@ struct PurchaseView: View {
                 Button(action: {
                     self.storeManager.restorePurchases()
                 }) {
-                    Text("RestorePurchase")
+                    Text("Restore Purchase")
                         .font(.subheadline)
                         .frame(maxWidth: .infinity)
                 }
@@ -134,13 +133,13 @@ struct PurchaseView: View {
                 iconItem(iconName: "Dark Green", iconID: "green-dark")
                 iconItem(iconName: "Black", iconID: "gray-dark")
             } header: {
-                Text("AvailableIcon")
+                Text("Available Icons")
             } footer: {
-                Text("ChangeAppIcon-Desc")
+                Text("Available icons may change in the future.")
             }
         }
         .listStyle(.insetGrouped)
-        .navigationTitle("ChangeAppIcon")
+        .navigationTitle("Change App Icon")
         .navigationBarTitleDisplayMode(.inline)
     }
     func iconItem(iconName: String, iconID: String) -> some View {
