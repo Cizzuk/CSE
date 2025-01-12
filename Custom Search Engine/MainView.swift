@@ -257,7 +257,7 @@ struct ContentView: View {
                 }
                 
                 Section {
-                    NavigationLink(destination: AdvSettingView().navigationTitle("AdvSettings")) {
+                    NavigationLink(destination: AdvSettingView().navigationTitle("Advanced Settings")) {
                         Text("Advanced Settings")
                         Spacer()
                     }
