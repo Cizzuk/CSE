@@ -12,8 +12,6 @@ struct AdvSettingView: View {
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     @AppStorage("adv_disablechecker", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var disablechecker: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_disablechecker")
-    @AppStorage("adv_redirectat", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var redirectat: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "adv_redirectat") ?? "loading"
     //loading, interactive, complete
     
     var body: some View {
