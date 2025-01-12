@@ -20,32 +20,19 @@ struct AdvSettingView: View {
         NavigationView {
             List {
                 Section {
-                    Button("adv_resetall") {
+                    Button("Reset All Advanced Settings") {
                         userDefaults!.set(false, forKey: "adv_disablechecker")
-                        userDefaults!.set("loading", forKey: "adv_redirectat")
                     }
                 }
                 Section {
                     Toggle(isOn: $disablechecker, label: {
-                        Text("adv_disablechecker")
+                        Text("Disable Checker")
                     })
                     .onChange(of: disablechecker) { newValue in
                         userDefaults!.set(newValue, forKey: "adv_disablechecker")
                     }
                 } footer: {
-                    Text("adv_disablechecker-Desc-1")
-                }
-                Section {
-                    Picker("adv_redirectat", selection: $redirectat) {
-                        Text("loading").tag("loading")
-                        Text("interactive").tag("interactive")
-                        Text("complete").tag("complete")
-                    }
-                    .onChange(of: redirectat) { entered in
-                        userDefaults!.set(entered, forKey: "adv_redirectat")
-                    }
-                } footer: {
-                    Text("adv_redirectat-Desc-1")
+                    Text("CSE will not check that you have searched from the search bar.")
                 }
             }
         }

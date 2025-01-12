@@ -261,7 +261,7 @@ struct ContentView: View {
                 
                 Section {
                     NavigationLink(destination: AdvSettingView().navigationTitle("AdvSettings")) {
-                        Text("AdvSettings")
+                        Text("Advanced Settings")
                         Spacer()
                     }
                     .contentShape(Rectangle())
@@ -269,7 +269,7 @@ struct ContentView: View {
                 
             }
             .listStyle(.insetGrouped)
-            .navigationTitle("CSESetting")
+            .navigationTitle("CSE Setting")
         }
         .navigationViewStyle(.stack)
         .sheet(isPresented: $openTutorial, content: {

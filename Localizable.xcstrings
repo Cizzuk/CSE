@@ -70,16 +70,11 @@
             "state" : "translated",
             "value" : "Disable Checker"
           }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "チェッカーを無効化"
-          }
         }
       }
     },
     "adv_disablechecker-Desc-1" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -111,23 +106,8 @@
         }
       }
     },
-    "adv_redirectat-Desc-1" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Change when to redirect according to the document's loading status."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ドキュメントの読み込み中の状態に応じて、リダイレクトを実行するタイミングを変更します。"
-          }
-        }
-      }
-    },
     "adv_resetall" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -185,6 +165,16 @@
         }
       }
     },
+    "Advanced Settings" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "高度な設定"
+          }
+        }
+      }
+    },
     "AdvSettings" : {
       "localizations" : {
         "de" : {
@@ -209,12 +199,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Paramètres avancés"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "高度な設定"
           }
         },
         "ko" : {
@@ -603,9 +587,6 @@
         }
       }
     },
-    "complete" : {
-      "shouldTranslate" : false
-    },
     "ContactLink" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -664,6 +645,12 @@
           }
         }
       }
+    },
+    "CSE Setting" : {
+
+    },
+    "CSE will not check that you have searched from the search bar." : {
+
     },
     "CSESetting" : {
       "extractionState" : "manual",
@@ -960,6 +947,9 @@
         }
       }
     },
+    "Disable Checker" : {
+
+    },
     "DuckDuckGo" : {
       "localizations" : {
         "de" : {
@@ -1179,9 +1169,6 @@
           }
         }
       }
-    },
-    "interactive" : {
-      "shouldTranslate" : false
     },
     "LicenseLink" : {
       "extractionState" : "manual",
@@ -1668,6 +1655,9 @@
           }
         }
       }
+    },
+    "Reset All Advanced Settings" : {
+
     },
     "RestorePurchase" : {
       "extractionState" : "manual",
