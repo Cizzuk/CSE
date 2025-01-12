@@ -7,16 +7,29 @@
 
 import SwiftUI
 
+private func HeaderText(text: String) -> some View {
+    Text(text)
+        .font(.largeTitle)
+        .fontWeight(.bold)
+        .padding(.top, 40)
+}
+
+private func NextButton(text: String) -> some View {
+    Text(text)
+        .foregroundColor(.white)
+        .font(.headline)
+        .frame(maxWidth: .infinity)
+        .padding()
+        .background(Color.accentColor)
+        .cornerRadius(12)
+}
+
 struct FullTutorialView: View {
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         NavigationView {
             VStack(spacing: 16) {
-                // Title
-                Text("Welcome to CSE")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.top, 40)
+                HeaderText(text: "Welcome to CSE")
                 
                 VStack(spacing: 16) {
                     Text("Before you can start using CSE, you need to do some setup.")
@@ -28,13 +41,7 @@ struct FullTutorialView: View {
                 NavigationLink {
                     SafariTutorialView()
                 } label: {
-                    Text("Next")
-                        .foregroundColor(.white)
-                        .font(.headline)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.accentColor)
-                        .cornerRadius(12)
+                    NextButton(text: "Next")
                 }
                 .padding(.horizontal, 24)
                 Button(action: {
@@ -54,11 +61,7 @@ struct SafariTutorialView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 16) {
-                // Title
-                Text("Safari Settings")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.top, 40)
+                HeaderText(text: "Safari Settings")
                 
                 VStack(spacing: 16) {
                     Text("Before you can start using CSE, you need to do some setup.")
@@ -71,13 +74,7 @@ struct SafariTutorialView: View {
                 Button(action: {
                     
                 }) {
-                    Text("Next")
-                        .foregroundColor(.white)
-                        .font(.headline)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.accentColor)
-                        .cornerRadius(12)
+                    NextButton(text: "Next")
                 }
                 .padding([.horizontal, .bottom], 24)
             }
@@ -91,11 +88,7 @@ struct CreateCSETutorialView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 16) {
-                // Title
-                Text("Create your CSE")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.top, 40)
+                HeaderText(text: "Create your CSE")
                 
                 VStack(spacing: 16) {
                     Text("")
@@ -108,13 +101,7 @@ struct CreateCSETutorialView: View {
                 Button(action: {
                     
                 }) {
-                    Text("Next")
-                        .foregroundColor(.white)
-                        .font(.headline)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.accentColor)
-                        .cornerRadius(12)
+                    NextButton(text: "Next")
                 }
                 .padding([.horizontal, .bottom], 24)
             }
