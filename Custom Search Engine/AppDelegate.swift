@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let searchengine = userDefaults!.string(forKey: "searchengine") ?? nil
         let privsearchengine = userDefaults!.string(forKey: "privsearchengine") ?? nil
         
-        userDefaults!.set(true, forKey: "needFirstTutorial")
         if lastVersion == nil {
             userDefaults!.set(true, forKey: "needFirstTutorial")
             userDefaults!.set(true, forKey: "alsousepriv")
