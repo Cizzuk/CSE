@@ -36,8 +36,8 @@ struct ContentView: View {
     
     @AppStorage("needFirstTutorial", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var needFirstTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needFirstTutorial")
-    @State private var openTutorial = false
-    @State private var requestTutorial: [String] = ["setupsafari", "createcse"]
+    @State private var openSafariTutorialView = false
+    @State private var openCreateCSETutorialView = false
     
 #if iOS
     @State private var isIconSettingView: Bool = false
@@ -162,6 +162,8 @@ struct ContentView: View {
                     }
                 } header: {
                     Text("Safari Settings")
+                } footer: {
+                    Text("If you have changed your Safari settings, you may need to redo the tutorial.")
                 }
                 
                 #if iOS
@@ -184,20 +186,12 @@ struct ContentView: View {
                 // Tutorial Section
                 Section {
                     Button(action: {
-                        requestTutorial = ["setupsafari", "createcse"]
-                        openTutorial = true
-                    }) {
-                        Text("Open Full Tutorial")
-                    }
-                    Button(action: {
-                        requestTutorial = ["setupsafari"]
-                        openTutorial = true
+                        openSafariTutorialView = true
                     }) {
                         Text("Safari Settings")
                     }
                     Button(action: {
-                        requestTutorial = ["createcse"]
-                        openTutorial = true
+                        openCreateCSETutorialView = true
                     }) {
                         Text("Create your CSE")
                     }
@@ -272,11 +266,14 @@ struct ContentView: View {
             .navigationTitle("CSE Settings")
         }
         .navigationViewStyle(.stack)
-        .sheet(isPresented: $openTutorial, content: {
-            TutorialView(requestTutorial: $requestTutorial)
-        })
         .sheet(isPresented: $needFirstTutorial, content: {
-            TutorialView(requestTutorial: $requestTutorial)
+            FullTutorialView()
+        })
+        .sheet(isPresented: $openSafariTutorialView, content: {
+            SafariTutorialView()
+        })
+        .sheet(isPresented: $openCreateCSETutorialView, content: {
+            CreateCSETutorialView()
         })
     }
 }
