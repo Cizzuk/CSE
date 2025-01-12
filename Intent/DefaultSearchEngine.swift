@@ -57,20 +57,17 @@ struct DefaultSearchEngine: AppIntent, CustomIntentMigratedAppIntent, Predictabl
     }
 
     func perform() async throws -> some IntentResult {
-        // TODO: Place your refactored intent handler code here.
+        let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
         
         let currentRegion = Locale.current.regionCode
         if (currentRegion != "CN" && ["baidu", "sogou", "so360search"].contains(searchEngine?.rawValue))
         || (currentRegion != "RU" && ["yandex"].contains(searchEngine?.rawValue)) {
             if currentRegion == "CN" {
-                searchEngine = .baidu
+                userDefaults!.set("baidu", forKey: "searchengine")
             } else {
-                searchEngine = .google
+                userDefaults!.set("google", forKey: "searchengine")
             }
-        }
-        
-        let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
-        if searchEngine == .so360search {
+        } else if searchEngine == .so360search {
             userDefaults!.set("360search", forKey: "searchengine")
         } else {
             userDefaults!.set(searchEngine?.rawValue, forKey: "searchengine")

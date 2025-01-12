@@ -82,6 +82,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				DefaultSearchEngine.swift,
+				PrivateSearchEngine.swift,
 			);
 			target = 90C9BE11288BE17000E22FB8 /* Customize Search Engine */;
 		};

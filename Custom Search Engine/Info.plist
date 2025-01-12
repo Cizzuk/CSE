@@ -23,6 +23,7 @@
 	</array>
 	<key>NSUserActivityTypes</key>
 	<array>
+		<string>PrivateSearchEngineIntent</string>
 		<string>DefaultSearchEngineIntent</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
