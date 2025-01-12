@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if lastVersion == nil {
             userDefaults!.set(true, forKey: "needFirstTutorial")
             userDefaults!.set(true, forKey: "alsousepriv")
+            userDefaults!.set("duckduckgo", forKey: "privsearchengine")
         }
         
         if (currentRegion != "CN" && ["baidu", "sogou", "360search"].contains(searchengine))
