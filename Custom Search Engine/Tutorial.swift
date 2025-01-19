@@ -57,24 +57,188 @@ struct FullTutorialView: View {
 }
 
 struct SafariTutorialView: View {
-    @Environment(\.dismiss) private var dismiss
+    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
+    @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var searchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "google"
+    @AppStorage("alsousepriv", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var alsousepriv: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "alsousepriv")
+    @AppStorage("privsearchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var privsearchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "privsearchengine") ?? ""
     var body: some View {
         NavigationView {
             VStack(spacing: 16) {
                 HeaderText(text: "Safari Settings")
                 
                 VStack(spacing: 16) {
-                    Text("Before you can start using CSE, you need to do some setup.")
+                    Text("Please make sure that the following items are the same as your Safari settings")
                 }
                 .padding(.horizontal, 32)
                 .frame(maxWidth: .infinity)
                 
                 Spacer()
+                    
+                List {
+                    Section {
+                        Picker("Search Engine", selection: $searchengine) {
+                            let currentRegion = Locale.current.regionCode
+                            if currentRegion == "CN" {
+                                Text("Baidu").tag("baidu")
+                                Text("Sogou").tag("sogou")
+                                Text("360 Search").tag("360search")
+                            }
+                            Text("Google").tag("google")
+                            Text("Yahoo").tag("yahoo")
+                            Text("Bing").tag("bing")
+                            if currentRegion == "RU" {
+                                Text("Yandex").tag("yandex")
+                            }
+                            Text("DuckDuckGo").tag("duckduckgo")
+                            Text("Ecosia").tag("ecosia")
+                        }
+                        .onChange(of: searchengine) { newValue in
+                            userDefaults!.set(newValue, forKey: "searchengine")
+                            if alsousepriv == true {
+                                let currentRegion = Locale.current.regionCode
+                                if currentRegion == "CN" {
+                                    if searchengine == "duckduckgo" {
+                                        userDefaults!.set("baidu", forKey: "privsearchengine")
+                                    } else {
+                                        userDefaults!.set("duckduckgo", forKey: "privsearchengine")
+                                    }
+                                } else {
+                                    if searchengine == "duckduckgo" {
+                                        userDefaults!.set("google", forKey: "privsearchengine")
+                                    } else {
+                                        userDefaults!.set("duckduckgo", forKey: "privsearchengine")
+                                    }
+                                }
+                            }
+                        }
+                        
+                        Toggle(isOn: $alsousepriv, label: {
+                            Text("Also Use in Private Browsing")
+                        })
+                        .onChange(of: alsousepriv) { newValue in
+                            userDefaults!.set(newValue, forKey: "alsousepriv")
+                        }
+                        
+                        if !alsousepriv {
+                            Picker("Private Search Engine", selection: $privsearchengine) {
+                                let currentRegion = Locale.current.regionCode
+                                if currentRegion == "CN" {
+                                    Text("Baidu").tag("baidu")
+                                    Text("Sogou").tag("sogou")
+                                    Text("360 Search").tag("360search")
+                                }
+                                Text("Google").tag("google")
+                                Text("Yahoo").tag("yahoo")
+                                Text("Bing").tag("bing")
+                                if currentRegion == "RU" {
+                                    Text("Yandex").tag("yandex")
+                                }
+                                Text("DuckDuckGo").tag("duckduckgo")
+                                Text("Ecosia").tag("ecosia")
+                            }
+                            .onChange(of: privsearchengine) { newValue in
+                                userDefaults!.set(newValue, forKey: "privsearchengine")
+                            }
+                        }
+                    } footer: {
+                        #if macOS
+                        Text("Open Safari, go to Safari → Settings... and select 'Search' tab to find these settings.")
+                        #else
+                        Text("You can find these settings in Settings → Apps → Safari.")
+                        #endif
+                    }
+                }
+                
+                
+                NavigationLink {
+                    SafariTutorialSecondView()
+                } label: {
+                    NextButton(text: "Next")
+                }
+                .padding([.horizontal, .bottom], 24)
+            }
+        }
+        .navigationBarBackButtonHidden(true)
+    }
+}
+
+struct SafariTutorialSecondView: View {
+    @Environment(\.dismiss) var dismiss
+    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
+    @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var searchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "google"
+    @AppStorage("alsousepriv", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var alsousepriv: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "alsousepriv")
+    @AppStorage("privsearchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var privsearchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "privsearchengine") ?? ""
+    var body: some View {
+        NavigationView {
+            VStack(spacing: 16) {
+                HeaderText(text: "Safari Settings")
+                
+                VStack(spacing: 16) {
+                    Text("Please allow CSE at the following webpage")
+                }
+                .padding(.horizontal, 32)
+                .frame(maxWidth: .infinity)
+                
+                Spacer()
+                    
+                List {
+                    Section {
+                        let currentRegion = Locale.current.regionCode
+                        if searchengine == "google" || (!alsousepriv && privsearchengine == "google") {
+                            if currentRegion == "CN" {
+                                Text("google.cn")
+                            } else {
+                                Text("google.com")
+                            }
+                        }
+                        if searchengine == "yahoo" || (!alsousepriv && privsearchengine == "yahoo") {
+                            if currentRegion == "JP" {
+                                Text("search.yahoo.co.jp")
+                            } else {
+                                Text("search.yahoo.com")
+                            }
+                        }
+                        if searchengine == "bing" || (!alsousepriv && privsearchengine == "bing") {
+                            Text("bing.com")
+                        }
+                        if searchengine == "duckduckgo" || (!alsousepriv && privsearchengine == "duckduckgo") {
+                            Text("duckduckgo.com")
+                        }
+                        if searchengine == "ecosia" || (!alsousepriv && privsearchengine == "ecosia") {
+                            Text("ecosia.org")
+                        }
+                        if searchengine == "baidu" || (!alsousepriv && privsearchengine == "baidu") {
+                            Text("baidu.com")
+                        }
+                        if searchengine == "sogou" || (!alsousepriv && privsearchengine == "sogou") {
+                            Text("sogou.com")
+                        }
+                        if searchengine == "360search" || (!alsousepriv && privsearchengine == "360search") {
+                            Text("so.com")
+                        }
+                        if searchengine == "yandex" || (!alsousepriv && privsearchengine == "yandex") {
+                            Text("yandex.ru")
+                        }
+                    } footer: {
+                        #if macOS
+                        Text("Open Safari, go to Safari → Settings..., select 'Websites' tab, select 'Customize Search Engine' and 'Allow' this webpage.")
+                        #else
+                        Text("Go to Settings → Apps → Safari → Extensions → Customize Search Engine and 'Allow' this webpage.")
+                        #endif
+                    }
+                }
+                
                 
                 Button(action: {
-                    
+                    dismiss()
                 }) {
-                    NextButton(text: "Next")
+                    NextButton(text: "Done")
                 }
                 .padding([.horizontal, .bottom], 24)
             }
