@@ -270,10 +270,10 @@ struct ContentView: View {
         }
         .navigationViewStyle(.stack)
         .sheet(isPresented: $needFirstTutorial, content: {
-            FullTutorialView()
+            FullTutorialView(isOpenSheet: $needFirstTutorial)
         })
         .sheet(isPresented: $openSafariTutorialView, content: {
-            SafariTutorialView()
+            SafariTutorialView(isOpenSheet: $openSafariTutorialView)
         })
         .sheet(isPresented: $openCreateCSETutorialView, content: {
             CreateCSETutorialView()

@@ -25,6 +25,7 @@ private func NextButton(text: String) -> some View {
 }
 
 struct FullTutorialView: View {
+    @Binding var isOpenSheet: Bool
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         NavigationView {
@@ -39,7 +40,7 @@ struct FullTutorialView: View {
                 
                 Spacer()
                 NavigationLink {
-                    SafariTutorialView()
+                    SafariTutorialView(isOpenSheet: $isOpenSheet)
                 } label: {
                     NextButton(text: "Next")
                 }
@@ -57,6 +58,7 @@ struct FullTutorialView: View {
 }
 
 struct SafariTutorialView: View {
+    @Binding var isOpenSheet: Bool
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var searchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "google"
@@ -156,7 +158,7 @@ struct SafariTutorialView: View {
                 
                 
                 NavigationLink {
-                    SafariTutorialSecondView()
+                    SafariTutorialSecondView(isOpenSheet: self.$isOpenSheet)
                 } label: {
                     NextButton(text: "Next")
                 }
@@ -168,7 +170,7 @@ struct SafariTutorialView: View {
 }
 
 struct SafariTutorialSecondView: View {
-    @Environment(\.dismiss) var dismiss
+    @Binding var isOpenSheet: Bool
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var searchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "google"
@@ -237,7 +239,7 @@ struct SafariTutorialSecondView: View {
                 
                 
                 Button(action: {
-                    dismiss()
+                    isOpenSheet = false
                 }) {
                     NextButton(text: "Done")
                 }
