@@ -40,7 +40,7 @@ struct FullTutorialView: View {
                 
                 Spacer()
                 NavigationLink {
-                    SafariTutorialView(isOpenSheet: $isOpenSheet)
+                    SafariTutorialView(isOpenSheet: $isOpenSheet, isFullTutorial: .constant(true))
                 } label: {
                     NextButton(text: "Next")
                 }
@@ -60,6 +60,7 @@ struct FullTutorialView: View {
 struct SafariTutorialView: View {
     let currentRegion = Locale.current.regionCode
     @Binding var isOpenSheet: Bool
+    @Binding var isFullTutorial: Bool
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var searchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "google"
@@ -150,7 +151,7 @@ struct SafariTutorialView: View {
                 
                 
                 NavigationLink {
-                    SafariTutorialSecondView(isOpenSheet: self.$isOpenSheet)
+                    SafariTutorialSecondView(isOpenSheet: self.$isOpenSheet, isFullTutorial: .constant(true))
                 } label: {
                     NextButton(text: "Next")
                 }
@@ -164,6 +165,7 @@ struct SafariTutorialView: View {
 struct SafariTutorialSecondView: View {
     let currentRegion = Locale.current.regionCode
     @Binding var isOpenSheet: Bool
+    @Binding var isFullTutorial: Bool
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var searchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "google"
@@ -229,13 +231,21 @@ struct SafariTutorialSecondView: View {
                     }
                 }
                 
-                
-                Button(action: {
-                    isOpenSheet = false
-                }) {
-                    NextButton(text: "Done")
+                if isFullTutorial {
+                    NavigationLink {
+                        CreateCSETutorialView(isOpenSheet: self.$isOpenSheet, isFullTutorial: .constant(true))
+                    } label: {
+                        NextButton(text: "Next")
+                    }
+                    .padding([.horizontal, .bottom], 24)
+                } else {
+                    Button(action: {
+                        isOpenSheet = false
+                    }) {
+                        NextButton(text: "Done")
+                    }
+                    .padding([.horizontal, .bottom], 24)
                 }
-                .padding([.horizontal, .bottom], 24)
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -243,7 +253,8 @@ struct SafariTutorialSecondView: View {
 }
 
 struct CreateCSETutorialView: View {
-    @Environment(\.dismiss) private var dismiss
+    @Binding var isOpenSheet: Bool
+    @Binding var isFullTutorial: Bool
     var body: some View {
         NavigationView {
             VStack(spacing: 16) {

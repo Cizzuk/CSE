@@ -258,10 +258,10 @@ struct ContentView: View {
             FullTutorialView(isOpenSheet: $needFirstTutorial)
         })
         .sheet(isPresented: $openSafariTutorialView, content: {
-            SafariTutorialView(isOpenSheet: $openSafariTutorialView)
+            SafariTutorialView(isOpenSheet: $openSafariTutorialView, isFullTutorial: .constant(false))
         })
         .sheet(isPresented: $openCreateCSETutorialView, content: {
-            CreateCSETutorialView()
+            CreateCSETutorialView(isOpenSheet: $openCreateCSETutorialView, isFullTutorial: .constant(false))
         })
     }
 }
