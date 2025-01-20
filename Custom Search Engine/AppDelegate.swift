@@ -29,7 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userDefaults!.set(true, forKey: "needFirstTutorial")
             userDefaults!.set(true, forKey: "alsousepriv")
             if searchengine == "duckduckgo" {
-                userDefaults!.set("google", forKey: "privsearchengine")
+                if currentRegion == "CN" {
+                    userDefaults!.set("baidu", forKey: "privsearchengine")
+                } else {
+                    userDefaults!.set("google", forKey: "privsearchengine")
+                }
             } else {
                 userDefaults!.set("duckduckgo", forKey: "privsearchengine")
             }
