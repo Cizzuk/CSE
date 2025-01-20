@@ -34,5 +34,6 @@ struct AdvSettingView: View {
                 }
             }
         }
+        .navigationViewStyle(.stack)
     }
 }

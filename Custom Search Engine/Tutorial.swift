@@ -16,12 +16,14 @@ private func HeaderText(text: String) -> some View {
 
 private func NextButton(text: String) -> some View {
     Text(text)
-        .foregroundColor(.white)
         .font(.headline)
-        .frame(maxWidth: .infinity)
         .padding()
+        #if iOS
+        .foregroundColor(.white)
+        .frame(maxWidth: .infinity)
         .background(Color.accentColor)
         .cornerRadius(12)
+        #endif
 }
 
 struct FullTutorialView: View {
@@ -154,6 +156,7 @@ struct SafariTutorialView: View {
                 .padding([.horizontal, .bottom], 24)
             }
         }
+        .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden(true)
     }
 }
@@ -244,6 +247,7 @@ struct SafariTutorialSecondView: View {
                 }
             }
         }
+        .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden(true)
     }
 }
@@ -272,6 +276,7 @@ struct CreateCSETutorialView: View {
                 .padding([.horizontal, .bottom], 24)
             }
         }
+        .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden(true)
     }
 }
