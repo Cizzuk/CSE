@@ -108,19 +108,16 @@ struct ContentView: View {
                     .onChange(of: searchengine) { newValue in
                         if alsousepriv == true {
                             let currentRegion = Locale.current.regionCode
-                            if currentRegion == "CN" {
-                                if searchengine == "duckduckgo" {
+                            if searchengine == "duckduckgo" {
+                                if currentRegion == "CN" {
                                     privsearchengine = "baidu"
                                 } else {
-                                    privsearchengine = "duckduckgo"
+                                    privsearchengine = "google"
                                 }
                             } else {
-                                if searchengine == "duckduckgo" {
-                                    privsearchengine = "google"
-                                } else {
-                                    privsearchengine = "duckduckgo"
-                                }
+                                privsearchengine = "duckduckgo"
                             }
+                            
                         }
                     }
                     
