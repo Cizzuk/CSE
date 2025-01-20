@@ -144,11 +144,15 @@ struct SafariTutorialView: View {
                             }
                         }
                     } footer: {
-                        #if macOS
-                        Text("Open Safari, go to Safari → Settings... and select 'Search' tab to find these settings.")
-                        #else
-                        Text("You can find these settings in Settings → Apps → Safari.")
-                        #endif
+                        VStack (alignment : .leading) {
+                            #if macOS
+                            Text("Open Safari, go to Safari → Settings... and select 'Search' tab to find these settings.")
+                            #else
+                            Text("You can find these settings in Settings → Apps → Safari.")
+                            #endif
+                            Spacer()
+                            Text("If you set another search engine in private browsing, you can set another custom search engine in a private window.")
+                        }
                     }
                 }
                 
