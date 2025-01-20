@@ -24,7 +24,7 @@ struct ContentView: View {
     //Load app settings
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     @AppStorage("urltop", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var urltop: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "urltop") ?? "https://archive.org/search?query="
+    var urltop: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "urltop") ?? ""
     @AppStorage("urlsuffix", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var urlsuffix: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "urlsuffix") ?? ""
     @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
@@ -32,7 +32,7 @@ struct ContentView: View {
     @AppStorage("alsousepriv", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var alsousepriv: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "alsousepriv")
     @AppStorage("privsearchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var privsearchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "privsearchengine") ?? ""
+    var privsearchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "privsearchengine") ?? "duckduckgo"
     
     @AppStorage("needFirstTutorial", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var needFirstTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needFirstTutorial")
