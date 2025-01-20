@@ -96,20 +96,19 @@ struct SafariTutorialView: View {
                             Text("Ecosia").tag("ecosia")
                         }
                         .onChange(of: searchengine) { newValue in
-                            userDefaults!.set(newValue, forKey: "searchengine")
                             if alsousepriv == true {
                                 let currentRegion = Locale.current.regionCode
                                 if currentRegion == "CN" {
                                     if searchengine == "duckduckgo" {
-                                        userDefaults!.set("baidu", forKey: "privsearchengine")
+                                        privsearchengine = "baidu"
                                     } else {
-                                        userDefaults!.set("duckduckgo", forKey: "privsearchengine")
+                                        privsearchengine = "duckduckgo"
                                     }
                                 } else {
                                     if searchengine == "duckduckgo" {
-                                        userDefaults!.set("google", forKey: "privsearchengine")
+                                        privsearchengine = "google"
                                     } else {
-                                        userDefaults!.set("duckduckgo", forKey: "privsearchengine")
+                                        privsearchengine = "duckduckgo"
                                     }
                                 }
                             }
@@ -118,9 +117,6 @@ struct SafariTutorialView: View {
                         Toggle(isOn: $alsousepriv, label: {
                             Text("Also Use in Private Browsing")
                         })
-                        .onChange(of: alsousepriv) { newValue in
-                            userDefaults!.set(newValue, forKey: "alsousepriv")
-                        }
                         
                         if !alsousepriv {
                             Picker("Private Search Engine", selection: $privsearchengine) {
@@ -138,9 +134,6 @@ struct SafariTutorialView: View {
                                 }
                                 Text("DuckDuckGo").tag("duckduckgo")
                                 Text("Ecosia").tag("ecosia")
-                            }
-                            .onChange(of: privsearchengine) { newValue in
-                                userDefaults!.set(newValue, forKey: "privsearchengine")
                             }
                         }
                     } footer: {
