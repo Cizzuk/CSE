@@ -73,6 +73,19 @@ struct DefaultSearchEngine: AppIntent, CustomIntentMigratedAppIntent, Predictabl
             userDefaults!.set(searchEngine?.rawValue, forKey: "searchengine")
         }
         
+        let alsousepriv: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "alsousepriv")
+        if alsousepriv == true {
+            if searchEngine?.rawValue == "duckduckgo" {
+                if currentRegion == "CN" {
+                    userDefaults!.set("baidu", forKey: "privsearchengine")
+                } else {
+                    userDefaults!.set("google", forKey: "privsearchengine")
+                }
+            } else {
+                userDefaults!.set("duckduckgo", forKey: "privsearchengine")
+            }
+        }
+        
         return .result()
     }
 }
