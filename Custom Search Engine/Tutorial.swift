@@ -151,7 +151,7 @@ struct SafariTutorialView: View {
                 
                 
                 NavigationLink {
-                    SafariTutorialSecondView(isOpenSheet: self.$isOpenSheet, isFullTutorial: .constant(true))
+                    SafariTutorialSecondView(isOpenSheet: self.$isOpenSheet, isFullTutorial: $isFullTutorial)
                 } label: {
                     NextButton(text: "Next")
                 }
@@ -233,7 +233,7 @@ struct SafariTutorialSecondView: View {
                 
                 if isFullTutorial {
                     NavigationLink {
-                        CreateCSETutorialView(isOpenSheet: self.$isOpenSheet, isFullTutorial: .constant(true))
+                        CreateCSETutorialView(isOpenSheet: self.$isOpenSheet, isFullTutorial: $isFullTutorial)
                     } label: {
                         NextButton(text: "Next")
                     }
