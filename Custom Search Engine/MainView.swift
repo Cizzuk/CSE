@@ -20,6 +20,7 @@ struct MainView: App {
 }
 
 struct ContentView: View {
+    let currentRegion = Locale.current.regionCode
     
     //Load app settings
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
@@ -90,7 +91,6 @@ struct ContentView: View {
                 // Default SE Section
                 Section {
                     Picker("Default Search Engine", selection: $searchengine) {
-                        let currentRegion = Locale.current.regionCode
                         if currentRegion == "CN" {
                             Text("Baidu").tag("baidu")
                             Text("Sogou").tag("sogou")
@@ -130,7 +130,6 @@ struct ContentView: View {
                     
                     if !alsousepriv {
                         Picker("Private Search Engine", selection: $privsearchengine) {
-                            let currentRegion = Locale.current.regionCode
                             if currentRegion == "CN" {
                                 Text("Baidu").tag("baidu")
                                 Text("Sogou").tag("sogou")
