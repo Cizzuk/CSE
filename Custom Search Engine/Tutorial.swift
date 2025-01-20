@@ -99,18 +99,14 @@ struct SafariTutorialView: View {
                         }
                         .onChange(of: searchengine) { newValue in
                             if alsousepriv == true {
-                                if currentRegion == "CN" {
-                                    if searchengine == "duckduckgo" {
+                                if searchengine == "duckduckgo" {
+                                    if currentRegion == "CN" {
                                         privsearchengine = "baidu"
                                     } else {
-                                        privsearchengine = "duckduckgo"
+                                        privsearchengine = "google"
                                     }
                                 } else {
-                                    if searchengine == "duckduckgo" {
-                                        privsearchengine = "google"
-                                    } else {
-                                        privsearchengine = "duckduckgo"
-                                    }
+                                    privsearchengine = "duckduckgo"
                                 }
                             }
                         }
