@@ -58,6 +58,7 @@ struct FullTutorialView: View {
 }
 
 struct SafariTutorialView: View {
+    let currentRegion = Locale.current.regionCode
     @Binding var isOpenSheet: Bool
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
@@ -97,7 +98,6 @@ struct SafariTutorialView: View {
                         }
                         .onChange(of: searchengine) { newValue in
                             if alsousepriv == true {
-                                let currentRegion = Locale.current.regionCode
                                 if currentRegion == "CN" {
                                     if searchengine == "duckduckgo" {
                                         privsearchengine = "baidu"
@@ -120,7 +120,6 @@ struct SafariTutorialView: View {
                         
                         if !alsousepriv {
                             Picker("Private Search Engine", selection: $privsearchengine) {
-                                let currentRegion = Locale.current.regionCode
                                 if currentRegion == "CN" {
                                     Text("Baidu").tag("baidu")
                                     Text("Sogou").tag("sogou")
@@ -163,6 +162,7 @@ struct SafariTutorialView: View {
 }
 
 struct SafariTutorialSecondView: View {
+    let currentRegion = Locale.current.regionCode
     @Binding var isOpenSheet: Bool
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
@@ -191,7 +191,6 @@ struct SafariTutorialSecondView: View {
                         #endif
                     }
                     Section {
-                        let currentRegion = Locale.current.regionCode
                         if searchengine == "google" || (!alsousepriv && privsearchengine == "google") {
                             if currentRegion == "CN" {
                                 Text("google.cn")
