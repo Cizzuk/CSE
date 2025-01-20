@@ -193,6 +193,18 @@ struct SafariTutorialSecondView: View {
                         #endif
                     }
                     Section {
+                        if searchengine == "baidu" || (!alsousepriv && privsearchengine == "baidu") {
+                            Text("baidu.com")
+                        }
+                        if searchengine == "bing" || (!alsousepriv && privsearchengine == "bing") {
+                            Text("bing.com")
+                        }
+                        if searchengine == "duckduckgo" || (!alsousepriv && privsearchengine == "duckduckgo") {
+                            Text("duckduckgo.com")
+                        }
+                        if searchengine == "ecosia" || (!alsousepriv && privsearchengine == "ecosia") {
+                            Text("ecosia.org")
+                        }
                         if searchengine == "google" || (!alsousepriv && privsearchengine == "google") {
                             if currentRegion == "CN" {
                                 Text("google.cn")
@@ -207,23 +219,11 @@ struct SafariTutorialSecondView: View {
                                 Text("search.yahoo.com")
                             }
                         }
-                        if searchengine == "bing" || (!alsousepriv && privsearchengine == "bing") {
-                            Text("bing.com")
-                        }
-                        if searchengine == "duckduckgo" || (!alsousepriv && privsearchengine == "duckduckgo") {
-                            Text("duckduckgo.com")
-                        }
-                        if searchengine == "ecosia" || (!alsousepriv && privsearchengine == "ecosia") {
-                            Text("ecosia.org")
-                        }
-                        if searchengine == "baidu" || (!alsousepriv && privsearchengine == "baidu") {
-                            Text("baidu.com")
+                        if searchengine == "360search" || (!alsousepriv && privsearchengine == "360search") {
+                            Text("so.com")
                         }
                         if searchengine == "sogou" || (!alsousepriv && privsearchengine == "sogou") {
                             Text("sogou.com")
-                        }
-                        if searchengine == "360search" || (!alsousepriv && privsearchengine == "360search") {
-                            Text("so.com")
                         }
                         if searchengine == "yandex" || (!alsousepriv && privsearchengine == "yandex") {
                             Text("yandex.ru")
