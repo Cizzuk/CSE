@@ -74,8 +74,6 @@ struct SafariTutorialView: View {
                 }
                 .padding(.horizontal, 32)
                 .frame(maxWidth: .infinity)
-                
-                Spacer()
                     
                 List {
                     Section {
@@ -188,10 +186,15 @@ struct SafariTutorialSecondView: View {
                 }
                 .padding(.horizontal, 32)
                 .frame(maxWidth: .infinity)
-                
-                Spacer()
                     
                 List {
+                    Section {} footer: {
+                        #if macOS
+                        Text("Open Safari, go to Safari → Settings..., select 'Extensions' tab and enable CSE. Then 'Allow' the following webpage from 'Edit Websites...' button")
+                        #else
+                        Text("Go to Settings → Apps → Safari → Extensions → Customize Search Engine and allow extension. Then 'Allow' the following webpage")
+                        #endif
+                    }
                     Section {
                         let currentRegion = Locale.current.regionCode
                         if searchengine == "google" || (!alsousepriv && privsearchengine == "google") {
@@ -229,12 +232,6 @@ struct SafariTutorialSecondView: View {
                         if searchengine == "yandex" || (!alsousepriv && privsearchengine == "yandex") {
                             Text("yandex.ru")
                         }
-                    } footer: {
-                        #if macOS
-                        Text("Open Safari, go to Safari → Settings..., select 'Websites' tab, select 'Customize Search Engine' and 'Allow' this webpage.")
-                        #else
-                        Text("Go to Settings → Apps → Safari → Extensions → Customize Search Engine and 'Allow' this webpage.")
-                        #endif
                     }
                 }
                 
