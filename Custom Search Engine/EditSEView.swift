@@ -45,7 +45,7 @@ struct EditSEView: View {
                     }
                     // Quick Search Key
                     Section() {
-                        TextField("q", text: $quickID)
+                        TextField("cse", text: $quickID)
                             .submitLabel(.done)
                             .onChange(of: quickID) { newValue in
                                 if newValue.count > 25 {
@@ -58,7 +58,7 @@ struct EditSEView: View {
                     } footer: {
                         VStack(alignment : .leading) {
                             Text("Enter this key first to search with this search engine.")
-                            Text("Example: '\(quickID) your search'")
+                            Text("Example: '\(quickID == "" ? "cse" : quickID) your search'")
                         }
                     }
                 }
