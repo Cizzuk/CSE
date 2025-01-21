@@ -72,9 +72,15 @@ struct EditSEView: View {
                 
                 // POST Data
                 Section() {
-                    // Display each key-value pair so both can be edited
                     ForEach(postEntries.indices, id: \.self) { index in
                         HStack {
+                            Button(action: {
+                                postEntries.remove(at: index)
+                            })  {
+                                Image(systemName: "minus.circle")
+                                    .foregroundColor(.red)
+                                    .accessibilityLabel("Delete")
+                            }
                             TextField("Key", text: $postEntries[index].key)
                             TextField("Value", text: $postEntries[index].value)
                         }
