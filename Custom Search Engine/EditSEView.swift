@@ -167,7 +167,7 @@ struct EditSEView: View {
         } else if cseType == "quick" {
             let quickCSEData = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.dictionary(forKey: "quickCSE") ?? ["":""]
             CSEData = quickCSEData[cseID] as? Dictionary<String, Any> ?? ["":""]
-            cseID = quickID
+            quickID = cseID
         } else {
             showFailAlert = true
             dismiss()
