@@ -161,12 +161,12 @@ struct EditSEView: View {
     private func loadCSEData() {
         var CSEData: Dictionary<String, Any>
         if cseType == "default" {
-            CSEData = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.dictionary(forKey: "defaultCSE") ?? ["":""]
+            CSEData = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.dictionary(forKey: "defaultCSE") ?? [:]
         } else if cseType == "private" {
-            CSEData = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.dictionary(forKey: "privateCSE") ?? ["":""]
+            CSEData = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.dictionary(forKey: "privateCSE") ?? [:]
         } else if cseType == "quick" {
-            let quickCSEData = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.dictionary(forKey: "quickCSE") ?? ["":""]
-            CSEData = quickCSEData[cseID] as? Dictionary<String, Any> ?? ["":""]
+            let quickCSEData = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.dictionary(forKey: "quickCSE") ?? [:]
+            CSEData = quickCSEData[cseID] as? Dictionary<String, Any> ?? [:]
             quickID = cseID
         } else {
             showFailAlert = true
