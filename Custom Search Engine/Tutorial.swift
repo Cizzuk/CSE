@@ -97,7 +97,7 @@ struct SafariTutorialView: View {
                             Text("DuckDuckGo").tag("duckduckgo")
                             Text("Ecosia").tag("ecosia")
                         }
-                        .onChange(of: searchengine) { newValue in
+                        .onChange(of: searchengine) { _ in
                             if alsousepriv == true {
                                 if searchengine == "duckduckgo" {
                                     if currentRegion == "CN" {
