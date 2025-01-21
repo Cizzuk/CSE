@@ -71,6 +71,7 @@ struct AdvSettingView: View {
                 Text("Existing data will be deleted at next startup: " + resetCSEs)
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
         .navigationViewStyle(.stack)
     }
 }
