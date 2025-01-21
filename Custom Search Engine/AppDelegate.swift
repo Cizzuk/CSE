@@ -24,6 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let urltop: String = userDefaults!.string(forKey: "urltop") ?? ""
         let urlsuffix: String = userDefaults!.string(forKey: "urlsuffix") ?? ""
         let defaultCSE = userDefaults!.dictionary(forKey: "defaultCSE")
+        let adv_resetCSEs: String = userDefaults!.string(forKey: "adv_resetCSEs") ?? ""
+        
+        // adv_resetCSEs
+        if adv_resetCSEs != "" {
+            resetDefaultCSE(target: adv_resetCSEs)
+            userDefaults!.set("", forKey: "adv_resetCSEs")
+        }
         
         // Update/Create database for v3.0 or later
         if lastVersion == "" || isUpdated(updateVer: "3.0", lastVer: lastVersion) {
@@ -38,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 userDefaults!.set("duckduckgo", forKey: "privsearchengine")
             }
-            saveDefaultCSE()
+            resetDefaultCSE(target: "all")
             
             // Update old CSE
             if (urltop != "" || urlsuffix != "") && defaultCSE == nil {
@@ -92,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-func saveDefaultCSE() {
+func resetDefaultCSE(target: String) {
     let currentRegion = Locale.current.regionCode
     
     let defaultCSE: [String: Any] = [
@@ -331,15 +338,22 @@ func saveDefaultCSE() {
             quickCSE[key] = value
         }
     }
-
+    
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
-    if currentRegion == "CN" {
-        userDefaults!.set(defaultCSECN, forKey: "defaultCSE")
-    } else {
-        userDefaults!.set(defaultCSE, forKey: "defaultCSE")
+    
+    if target == "default" || target == "all" {
+        if currentRegion == "CN" {
+            userDefaults!.set(defaultCSECN, forKey: "defaultCSE")
+        } else {
+            userDefaults!.set(defaultCSE, forKey: "defaultCSE")
+        }
     }
-    userDefaults!.set(privateCSE, forKey: "privateCSE")
-    userDefaults!.set(quickCSE, forKey: "quickCSE")
+    if target == "private" || target == "all" {
+        userDefaults!.set(privateCSE, forKey: "privateCSE")
+    }
+    if target == "quick" || target == "all" {
+        userDefaults!.set(quickCSE, forKey: "quickCSE")
+    }
 }
 
 func isUpdated(updateVer: String, lastVer: String) -> Bool {
