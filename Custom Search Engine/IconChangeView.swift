@@ -57,6 +57,7 @@ struct PurchaseView: View {
     @ObservedObject var storeManager = StoreManager()
     @State private var showSucAlert = false
     @State private var showFailAlert = false
+    @State private var showRestoreSucAlert = false
     var body: some View {
         List {
             //Purchase Section
@@ -76,6 +77,7 @@ struct PurchaseView: View {
                         .accessibilityHidden(true)
                     Text("More people will be able to continue using CSE for free")
                 }
+                
                 //Purchase Button
                 Button(action: {
                     if let product = self.storeManager.products.first {
@@ -83,11 +85,16 @@ struct PurchaseView: View {
                     }
                 }) {
                     HStack {
-                        Text("Purchase:")
-                            .fontWeight(.bold)
-                            .padding(10)
-                        ForEach(storeManager.products, id: \.self) { product in
-                            Text(self.localizedPrice(for: product))
+                        if !storeManager.products.isEmpty {
+                            Text("Purchase:")
+                                .fontWeight(.bold)
+                                .padding(10)
+                            ForEach(storeManager.products, id: \.self) { product in
+                                Text(self.localizedPrice(for: product))
+                            }
+                        } else {
+                            Text("Purchase is currently not available.")
+                                .padding(10)
                         }
                     }
                     .frame(maxWidth: .infinity)
@@ -118,6 +125,14 @@ struct PurchaseView: View {
                     Text("Restore Purchase")
                         .font(.subheadline)
                         .frame(maxWidth: .infinity)
+                }
+                .alert(isPresented: $showRestoreSucAlert) {
+                    Alert(title: Text("Restore Success!"))
+                }
+                .onReceive(storeManager.$restoreCompleted) { restoreCompleted in
+                    if restoreCompleted {
+                        showRestoreSucAlert = true
+                    }
                 }
             }
             
@@ -169,6 +184,7 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
     var presentationMode: Binding<PresentationMode>?
     @Published var purchaseCompleted = false
     @Published var purchaseFailed = false
+    @Published var restoreCompleted = false
     
     override init() {
         super.init()
@@ -201,7 +217,7 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
             switch transaction.transactionState {
-            case .purchased, .restored:
+            case .purchased:
                 SKPaymentQueue.default().finishTransaction(transaction)
                 // Success!!!
                 handlePurchaseSuccess()
@@ -209,6 +225,10 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
                 SKPaymentQueue.default().finishTransaction(transaction)
                 // Failed...
                 handlePurchaseFailure()
+            case .restored:
+                SKPaymentQueue.default().finishTransaction(transaction)
+                // Success!!!
+                handleRestoreSuccess()
             default:
                 break
             }
@@ -221,6 +241,10 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
     }
     func handlePurchaseFailure() {
         purchaseFailed = true
+    }
+    func handleRestoreSuccess() {
+        UserDefaults.standard.set(true, forKey: "haveIconChange")
+        restoreCompleted = true
     }
 }
 #endif
