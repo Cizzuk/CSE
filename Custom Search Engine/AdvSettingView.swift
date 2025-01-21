@@ -12,6 +12,8 @@ struct AdvSettingView: View {
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     @AppStorage("adv_disablechecker", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var disablechecker: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_disablechecker")
+    @AppStorage("adv_resetCSEs", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var resetCSEs: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "adv_resetCSEs") ?? ""
     @State private var allowReset: Bool = false
     
     var body: some View {
@@ -20,6 +22,8 @@ struct AdvSettingView: View {
                 Section {
                     Button("Reset All Advanced Settings") {
                         userDefaults!.set(false, forKey: "adv_disablechecker")
+                        userDefaults!.set("", forKey: "adv_resetCSEs")
+                        allowReset = false
                     }
                 }
                 Section {
@@ -36,35 +40,31 @@ struct AdvSettingView: View {
                         Text("Enable Reset Buttons")
                     })
                     Button(action: {
-                        userDefaults!.set("default", forKey: "adv_resetCSEs")
-                        exit(0)
+                        resetCSEs = "default"
                     }) {
                         Text("Reset Default Search Engine")
                     }
                     .disabled(!allowReset)
                     Button(action: {
-                        userDefaults!.set("private", forKey: "adv_resetCSEs")
-                        exit(0)
+                        resetCSEs = "private"
                     }) {
                         Text("Reset Private Search Engine")
                     }
                     .disabled(!allowReset)
                     Button(action: {
-                        userDefaults!.set("quick", forKey: "adv_resetCSEs")
-                        exit(0)
+                        resetCSEs = "quick"
                     }) {
                         Text("Reset Quick Search Engines")
                     }
                     .disabled(!allowReset)
                     Button(action: {
-                        userDefaults!.set("all", forKey: "adv_resetCSEs")
-                        exit(0)
+                        resetCSEs = "all"
                     }) {
                         Text("Reset All Custom Search Engines")
                     }
                     .disabled(!allowReset)
                 } footer: {
-                    Text("Existing data will be deleted")
+                    Text("Existing data will be deleted at next startup: " + resetCSEs)
                 }
             }
         }
