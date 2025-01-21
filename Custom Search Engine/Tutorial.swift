@@ -28,7 +28,6 @@ private func NextButton(text: String) -> some View {
 
 struct FullTutorialView: View {
     @Binding var isOpenSheet: Bool
-    @Environment(\.dismiss) private var dismiss
     var body: some View {
         NavigationView {
             VStack(spacing: 16) {
@@ -48,7 +47,7 @@ struct FullTutorialView: View {
                 }
                 .padding(.horizontal, 24)
                 Button(action: {
-                    dismiss()
+                    isOpenSheet = false
                 }) {
                     Text("Skip")
                 }
