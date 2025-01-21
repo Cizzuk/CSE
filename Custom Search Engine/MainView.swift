@@ -9,9 +9,7 @@ import SwiftUI
 
 @main
 struct MainView: App {
-#if iOS
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-#endif
     var body: some Scene {
         WindowGroup {
             ContentView()
