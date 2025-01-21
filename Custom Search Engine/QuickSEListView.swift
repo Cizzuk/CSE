@@ -22,7 +22,9 @@ struct QuickSEListView: View {
                             .accessibilityHidden(true)
                         Text("Add New Search Engine")
                     }
+                    #if !visionOS
                     .foregroundColor(.accentColor)
+                    #endif
                 }
             }
             Section {
