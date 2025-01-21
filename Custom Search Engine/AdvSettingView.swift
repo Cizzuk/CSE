@@ -17,60 +17,58 @@ struct AdvSettingView: View {
     @State private var allowReset: Bool = false
     
     var body: some View {
-        NavigationView {
-            List {
-                Section {
-                    Button("Reset All Advanced Settings") {
-                        userDefaults!.set(false, forKey: "adv_disablechecker")
+        List {
+            Section {
+                Button("Reset All Advanced Settings") {
+                    userDefaults!.set(false, forKey: "adv_disablechecker")
+                    userDefaults!.set("", forKey: "adv_resetCSEs")
+                    allowReset = false
+                }
+            }
+            Section {
+                Toggle(isOn: $disablechecker, label: {
+                    Text("Disable Checker")
+                })
+            } footer: {
+                Text("CSE will not check that you have searched from the search bar.")
+            }
+            
+            
+            Section {
+                Toggle(isOn: $allowReset, label: {
+                    Text("Enable Reset Buttons")
+                })
+                .onChange(of: allowReset) { _ in
+                    if !allowReset {
                         userDefaults!.set("", forKey: "adv_resetCSEs")
-                        allowReset = false
                     }
                 }
-                Section {
-                    Toggle(isOn: $disablechecker, label: {
-                        Text("Disable Checker")
-                    })
-                } footer: {
-                    Text("CSE will not check that you have searched from the search bar.")
+                Button(action: {
+                    resetCSEs = "default"
+                }) {
+                    Text("Reset Default Search Engine")
                 }
-                
-                
-                Section {
-                    Toggle(isOn: $allowReset, label: {
-                        Text("Enable Reset Buttons")
-                    })
-                    .onChange(of: allowReset) { _ in
-                        if !allowReset {
-                            userDefaults!.set("", forKey: "adv_resetCSEs")
-                        }
-                    }
-                    Button(action: {
-                        resetCSEs = "default"
-                    }) {
-                        Text("Reset Default Search Engine")
-                    }
-                    .disabled(!allowReset)
-                    Button(action: {
-                        resetCSEs = "private"
-                    }) {
-                        Text("Reset Private Search Engine")
-                    }
-                    .disabled(!allowReset)
-                    Button(action: {
-                        resetCSEs = "quick"
-                    }) {
-                        Text("Reset Quick Search Engines")
-                    }
-                    .disabled(!allowReset)
-                    Button(action: {
-                        resetCSEs = "all"
-                    }) {
-                        Text("Reset All Custom Search Engines")
-                    }
-                    .disabled(!allowReset)
-                } footer: {
-                    Text("Existing data will be deleted at next startup: " + resetCSEs)
+                .disabled(!allowReset)
+                Button(action: {
+                    resetCSEs = "private"
+                }) {
+                    Text("Reset Private Search Engine")
                 }
+                .disabled(!allowReset)
+                Button(action: {
+                    resetCSEs = "quick"
+                }) {
+                    Text("Reset Quick Search Engines")
+                }
+                .disabled(!allowReset)
+                Button(action: {
+                    resetCSEs = "all"
+                }) {
+                    Text("Reset All Custom Search Engines")
+                }
+                .disabled(!allowReset)
+            } footer: {
+                Text("Existing data will be deleted at next startup: " + resetCSEs)
             }
         }
         .navigationViewStyle(.stack)
