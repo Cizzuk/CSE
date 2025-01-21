@@ -338,10 +338,6 @@ func saveDefaultCSE() {
     }
     userDefaults!.set(privateCSE, forKey: "privateCSE")
     userDefaults!.set(quickCSE, forKey: "quickCSE")
-    
-    print(defaultCSE)
-    print(privateCSE)
-    print(quickCSE)
 }
 
 func isUpdated(updateVer: String, lastVer: String) -> Bool {
