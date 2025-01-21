@@ -38,7 +38,6 @@ struct ContentView: View {
     @AppStorage("needFirstTutorial", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var needFirstTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needFirstTutorial")
     @State private var openSafariTutorialView = false
-    @State private var openCreateCSETutorialView = false
     
     #if iOS
     @State private var isIconSettingView: Bool = false
@@ -88,64 +87,14 @@ struct ContentView: View {
                     Text("Suffix of URL")
                 }
                 
-                // Default SE Section
                 Section {
-                    Picker("Default Search Engine", selection: $searchengine) {
-                        if currentRegion == "CN" {
-                            Text("Baidu").tag("baidu")
-                            Text("Sogou").tag("sogou")
-                            Text("360 Search").tag("360search")
-                        }
-                        Text("Google").tag("google")
-                        Text("Yahoo").tag("yahoo")
-                        Text("Bing").tag("bing")
-                        if currentRegion == "RU" {
-                            Text("Yandex").tag("yandex")
-                        }
-                        Text("DuckDuckGo").tag("duckduckgo")
-                        Text("Ecosia").tag("ecosia")
+                    Button(action: {
+                        openSafariTutorialView = true
+                    }) {
+                        Text("Safari Settings")
                     }
-                    .onChange(of: searchengine) { newValue in
-                        if alsousepriv == true {
-                            let currentRegion = Locale.current.regionCode
-                            if searchengine == "duckduckgo" {
-                                if currentRegion == "CN" {
-                                    privsearchengine = "baidu"
-                                } else {
-                                    privsearchengine = "google"
-                                }
-                            } else {
-                                privsearchengine = "duckduckgo"
-                            }
-                            
-                        }
-                    }
-                    
-                    Toggle(isOn: $alsousepriv, label: {
-                        Text("Also Use in Private Browsing")
-                    })
-                    
-                    if !alsousepriv {
-                        Picker("Private Search Engine", selection: $privsearchengine) {
-                            if currentRegion == "CN" {
-                                Text("Baidu").tag("baidu")
-                                Text("Sogou").tag("sogou")
-                                Text("360 Search").tag("360search")
-                            }
-                            Text("Google").tag("google")
-                            Text("Yahoo").tag("yahoo")
-                            Text("Bing").tag("bing")
-                            if currentRegion == "RU" {
-                                Text("Yandex").tag("yandex")
-                            }
-                            Text("DuckDuckGo").tag("duckduckgo")
-                            Text("Ecosia").tag("ecosia")
-                        }
-                    }
-                } header: {
-                    Text("Safari Settings")
                 } footer: {
-                    Text("If you have changed your Safari settings, you may need to redo the tutorial.")
+                    Text("If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial.")
                 }
                 
                 #if iOS
@@ -167,22 +116,6 @@ struct ContentView: View {
                     Text("App Icon")
                 }
                 #endif
-                
-                // Tutorial Section
-                Section {
-                    Button(action: {
-                        openSafariTutorialView = true
-                    }) {
-                        Text("Safari Settings")
-                    }
-                    Button(action: {
-                        openCreateCSETutorialView = true
-                    }) {
-                        Text("Create your CSE")
-                    }
-                } header: {
-                    Text("Tutorials")
-                }
                 
                 // Support Section
                 Section {
@@ -256,9 +189,6 @@ struct ContentView: View {
         })
         .sheet(isPresented: $openSafariTutorialView, content: {
             SafariTutorialView(isOpenSheet: $openSafariTutorialView, isFullTutorial: .constant(false))
-        })
-        .sheet(isPresented: $openCreateCSETutorialView, content: {
-            CreateCSETutorialView(isOpenSheet: $openCreateCSETutorialView, isFullTutorial: .constant(false))
         })
     }
 }
