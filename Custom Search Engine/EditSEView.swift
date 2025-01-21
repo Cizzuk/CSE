@@ -47,6 +47,12 @@ struct EditSEView: View {
                     Section() {
                         TextField("q", text: $quickID)
                             .submitLabel(.done)
+                            .onChange(of: quickID) { newValue in
+                                if newValue.count > 25 {
+                                    quickID = String(newValue.prefix(25))
+                                }
+                                quickID = quickID.filter { $0 != " " && $0 != "　" }
+                            }
                     } header: {
                         Text("Quick Search Key")
                     } footer: {
