@@ -59,7 +59,7 @@ struct DefaultSearchEngine: AppIntent, CustomIntentMigratedAppIntent, Predictabl
     func perform() async throws -> some IntentResult {
         let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
         
-        let currentRegion = Locale.current.region?.identifier
+        let currentRegion = Locale.current.regionCode
         if (currentRegion != "CN" && ["baidu", "sogou", "so360search"].contains(searchEngine?.rawValue))
         || (currentRegion != "RU" && ["yandex"].contains(searchEngine?.rawValue)) {
             if currentRegion == "CN" {

@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-        let currentRegion = Locale.current.region?.identifier
+        let currentRegion = Locale.current.regionCode
         
         let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
         let lastVersion = userDefaults!.string(forKey: "LastAppVer") ?? ""
@@ -100,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 func resetDefaultCSE(target: String) {
-    let currentRegion = Locale.current.region?.identifier
+    let currentRegion = Locale.current.regionCode
     
     let defaultCSE: [String: Any] = [
         "url": "https://www.google.com/search?q=%s",
