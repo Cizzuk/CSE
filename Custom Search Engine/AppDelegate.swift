@@ -103,19 +103,16 @@ func resetDefaultCSE(target: String) {
     let currentRegion = Locale.current.regionCode
     
     let defaultCSE: [String: Any] = [
-        "name": "Google",
         "url": "https://www.google.com/search?q=%s",
         "post": []
     ]
     
     let defaultCSECN: [String: Any] = [
-        "name": "Baidu",
         "url": "https://www.baidu.com/s?wd=%s",
         "post": []
     ]
 
     let privateCSE: [String: Any] = [
-        "name": "DuckDuckgo",
         "url": "https://duckduckgo.com/?q=%s",
         "post": []
     ]
@@ -150,7 +147,7 @@ func resetDefaultCSE(target: String) {
             "name": "Startpage",
             "url": "https://www.startpage.com/sp/search",
             "post": [
-                "query": "%s"
+                ["key": "query", "value": "%s"]
             ]
         ],
         "br": [

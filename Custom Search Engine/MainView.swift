@@ -35,6 +35,11 @@ struct ContentView: View {
     @AppStorage("privsearchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var privsearchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "privsearchengine") ?? "duckduckgo"
     
+    @AppStorage("usePrivateCSE", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var usePrivateCSE: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "usePrivateCSE")
+    @AppStorage("useQuickCSE", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var useQuickCSE: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "useQuickCSE")
+    
     @AppStorage("needFirstTutorial", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var needFirstTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needFirstTutorial")
     @State private var openSafariTutorialView = false
@@ -61,30 +66,50 @@ struct ContentView: View {
         #endif
         NavigationView {
             List {
-                // Top Section
                 Section {
-                    TextField("", text: $urltop)
-                        .disableAutocorrection(true)
-                        #if iOS
-                        .keyboardType(.URL)
-                        .textInputAutocapitalization(.never)
-                        .submitLabel(.done)
-                        #endif
+                    NavigationLink {
+                        EditSEView(cseType: .constant("default"), cseID: .constant(""))
+                    } label: {
+                        Text("Default Search Engine")
+                    }
+                    
+                    let toggleText = "Use different search engine in Private Browse"
+                    if !alsousepriv {
+                        Toggle(isOn: $usePrivateCSE, label: {
+                            Text(toggleText)
+                        })
+                        if usePrivateCSE {
+                            NavigationLink {
+                                EditSEView(cseType: .constant("private"), cseID: .constant(""))
+                            } label: {
+                                Text("Private Search Engine")
+                            }
+                        }
+                    } else {
+                        Toggle(isOn: .constant(false), label: {
+                            Text(toggleText)
+                        })
+                        .disabled(true)
+                    }
                 } header: {
-                    Text("Top of URL")
+                    Text("Your Custom Search Engine")
+                } footer: {
+                    if alsousepriv {
+                        Text("If you set another search engine in private browsing in Safari settings, you can set another custom search engine in a private window.")
+                    }
                 }
                 
-                // Suffix Section
                 Section {
-                    TextField("", text: $urlsuffix)
-                        .disableAutocorrection(true)
-                        #if iOS
-                        .keyboardType(.URL)
-                        .textInputAutocapitalization(.never)
-                        .submitLabel(.done)
-                        #endif
-                } header: {
-                    Text("Suffix of URL")
+                    Toggle(isOn: $useQuickCSE, label: {
+                        Text("Enable Quick Search")
+                    })
+                    if useQuickCSE {
+                        NavigationLink {
+                            QuickSEListView()
+                        } label: {
+                            Text("Quick Search Engines")
+                        }
+                    }
                 }
                 
                 Section {
@@ -188,7 +213,7 @@ struct ContentView: View {
             FullTutorialView(isOpenSheet: $needFirstTutorial)
         })
         .sheet(isPresented: $openSafariTutorialView, content: {
-            SafariTutorialView(isOpenSheet: $openSafariTutorialView, isFullTutorial: .constant(false))
+            SafariTutorialView(isOpenSheet: $openSafariTutorialView)
         })
     }
 }
