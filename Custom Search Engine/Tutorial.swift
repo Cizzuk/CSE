@@ -18,7 +18,7 @@ private func NextButton(text: String) -> some View {
     Text(text)
         .font(.headline)
         .padding()
-        #if iOS
+        #if !visionOS
         .foregroundColor(.white)
         .frame(maxWidth: .infinity)
         .background(Color.accentColor)
