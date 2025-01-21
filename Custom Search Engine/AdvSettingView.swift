@@ -26,9 +26,6 @@ struct AdvSettingView: View {
                     Toggle(isOn: $disablechecker, label: {
                         Text("Disable Checker")
                     })
-                    .onChange(of: disablechecker) { newValue in
-                        userDefaults!.set(newValue, forKey: "adv_disablechecker")
-                    }
                 } footer: {
                     Text("CSE will not check that you have searched from the search bar.")
                 }
