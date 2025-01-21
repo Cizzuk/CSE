@@ -137,7 +137,7 @@ struct EditSEView: View {
                 showURLBlankAlert = true
                 return
             }
-            var quickCSEData = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.dictionary(forKey: "quickCSE") ?? ["":""]
+            var quickCSEData = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.dictionary(forKey: "quickCSE") ?? [:]
             if cseID != quickID {
                 if quickCSEData[quickID] == nil {
                     quickCSEData.removeValue(forKey: cseID)
