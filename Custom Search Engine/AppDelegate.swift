@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let urlsuffix: String = userDefaults!.string(forKey: "urlsuffix") ?? ""
         let defaultCSE = userDefaults!.dictionary(forKey: "defaultCSE")
         
+        // Update/Create database for v3.0 or later
         if lastVersion == "" || isUpdated(updateVer: "3.0", lastVer: lastVersion) {
             userDefaults!.set(true, forKey: "needFirstTutorial")
             userDefaults!.set(true, forKey: "alsousepriv")
@@ -37,22 +38,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 userDefaults!.set("duckduckgo", forKey: "privsearchengine")
             }
+            saveDefaultCSE()
+            
+            // Update old CSE
+            if (urltop != "" || urlsuffix != "") && defaultCSE == nil {
+                let defaultCSE: [String: Any] = [
+                    "name": "Default Search Engine",
+                    "url": urltop + "%s" + urlsuffix,
+                    "post": []
+                ]
+                userDefaults!.set(defaultCSE, forKey: "defaultCSE")
+                userDefaults!.removeObject(forKey: "urltop")
+                userDefaults!.removeObject(forKey: "urlsuffix")
+            }
         }
         
-        if (urltop != "" || urlsuffix != "") && defaultCSE == nil {
-            saveDefaultCSE()
-            let defaultCSE: [String: Any] = [
-                "name": "Default Search Engine",
-                "url": urltop + "%s" + urlsuffix,
-                "post": []
-            ]
-            userDefaults!.set(defaultCSE, forKey: "defaultCSE")
-            userDefaults!.removeObject(forKey: "urltop")
-            userDefaults!.removeObject(forKey: "urlsuffix")
-        } else {
-            saveDefaultCSE()
-        }
-        
+        // Fix Default SE by region
         if (currentRegion != "CN" && ["baidu", "sogou", "360search"].contains(searchengine))
            || (currentRegion != "RU" && ["yandex"].contains(searchengine)) {
             if currentRegion == "CN" {
@@ -62,6 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        // Fix Private SE by region
         if (currentRegion != "CN" && ["baidu", "sogou", "360search"].contains(privsearchengine))
            || (currentRegion != "RU" && ["yandex"].contains(privsearchengine)) {
             if currentRegion == "CN" {
