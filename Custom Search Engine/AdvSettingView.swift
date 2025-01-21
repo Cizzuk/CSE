@@ -39,6 +39,11 @@ struct AdvSettingView: View {
                     Toggle(isOn: $allowReset, label: {
                         Text("Enable Reset Buttons")
                     })
+                    .onChange(of: allowReset) { _ in
+                        if !allowReset {
+                            userDefaults!.set("", forKey: "adv_resetCSEs")
+                        }
+                    }
                     Button(action: {
                         resetCSEs = "default"
                     }) {
