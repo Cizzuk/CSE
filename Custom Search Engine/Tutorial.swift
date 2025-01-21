@@ -59,7 +59,7 @@ struct FullTutorialView: View {
 }
 
 struct SafariTutorialView: View {
-    let currentRegion = Locale.current.regionCode
+    let currentRegion = Locale.current.region?.identifier
     @Binding var isOpenSheet: Bool
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
@@ -82,7 +82,7 @@ struct SafariTutorialView: View {
                 List {
                     Section {
                         Picker("Search Engine", selection: $searchengine) {
-                            let currentRegion = Locale.current.regionCode
+                            let currentRegion = Locale.current.region?.identifier
                             if currentRegion == "CN" {
                                 Text("Baidu").tag("baidu")
                                 Text("Sogou").tag("sogou")
@@ -97,7 +97,7 @@ struct SafariTutorialView: View {
                             Text("DuckDuckGo").tag("duckduckgo")
                             Text("Ecosia").tag("ecosia")
                         }
-                        .onChange(of: searchengine) { newValue in
+                        .onChange(of: searchengine) { _ in
                             if alsousepriv == true {
                                 if searchengine == "duckduckgo" {
                                     if currentRegion == "CN" {
@@ -160,7 +160,7 @@ struct SafariTutorialView: View {
 }
 
 struct SafariTutorialSecondView: View {
-    let currentRegion = Locale.current.regionCode
+    let currentRegion = Locale.current.region?.identifier
     @Binding var isOpenSheet: Bool
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))

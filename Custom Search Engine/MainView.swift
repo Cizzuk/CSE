@@ -20,7 +20,7 @@ struct MainView: App {
 }
 
 struct ContentView: View {
-    let currentRegion = Locale.current.regionCode
+    let currentRegion = Locale.current.region?.identifier
     
     //Load app settings
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")

@@ -66,7 +66,7 @@ struct PrivateSearchEngine: AppIntent, CustomIntentMigratedAppIntent, Predictabl
         } else {
             userDefaults!.set(false, forKey: "alsousepriv")
             
-            let currentRegion = Locale.current.regionCode
+            let currentRegion = Locale.current.region?.identifier
             if (currentRegion != "CN" && ["baidu", "sogou", "so360search"].contains(searchEngine?.rawValue))
             || (currentRegion != "RU" && ["yandex"].contains(searchEngine?.rawValue)) {
                 userDefaults!.set("duckduckgo", forKey: "privsearchengine")
