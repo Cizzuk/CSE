@@ -41,7 +41,7 @@ struct FullTutorialView: View {
                 
                 Spacer()
                 NavigationLink {
-                    SafariTutorialView(isOpenSheet: $isOpenSheet, isFullTutorial: .constant(true))
+                    SafariTutorialView(isOpenSheet: $isOpenSheet)
                 } label: {
                     NextButton(text: "Next")
                 }
@@ -61,7 +61,6 @@ struct FullTutorialView: View {
 struct SafariTutorialView: View {
     let currentRegion = Locale.current.regionCode
     @Binding var isOpenSheet: Bool
-    @Binding var isFullTutorial: Bool
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var searchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "google"
@@ -141,14 +140,14 @@ struct SafariTutorialView: View {
                             Text("You can find these settings in Settings → Apps → Safari.")
                             #endif
                             Spacer()
-                            Text("If you set another search engine in private browsing, you can set another custom search engine in a private window.")
+                            Text("If you set another search engine in private browsing in Safari settings, you can set another custom search engine in a private window.")
                         }
                     }
                 }
                 
                 
                 NavigationLink {
-                    SafariTutorialSecondView(isOpenSheet: self.$isOpenSheet, isFullTutorial: $isFullTutorial)
+                    SafariTutorialSecondView(isOpenSheet: self.$isOpenSheet)
                 } label: {
                     NextButton(text: "Next")
                 }
@@ -163,7 +162,6 @@ struct SafariTutorialView: View {
 struct SafariTutorialSecondView: View {
     let currentRegion = Locale.current.regionCode
     @Binding var isOpenSheet: Bool
-    @Binding var isFullTutorial: Bool
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var searchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "google"
@@ -181,7 +179,7 @@ struct SafariTutorialSecondView: View {
                 }
                 .padding(.horizontal, 32)
                 .frame(maxWidth: .infinity)
-                    
+                
                 List {
                     Section {} footer: {
                         #if macOS
@@ -229,48 +227,10 @@ struct SafariTutorialSecondView: View {
                     }
                 }
                 
-                if isFullTutorial {
-                    NavigationLink {
-                        CreateCSETutorialView(isOpenSheet: self.$isOpenSheet, isFullTutorial: $isFullTutorial)
-                    } label: {
-                        NextButton(text: "Next")
-                    }
-                    .padding([.horizontal, .bottom], 24)
-                } else {
-                    Button(action: {
-                        isOpenSheet = false
-                    }) {
-                        NextButton(text: "Done")
-                    }
-                    .padding([.horizontal, .bottom], 24)
-                }
-            }
-        }
-        .navigationViewStyle(.stack)
-        .navigationBarBackButtonHidden(true)
-    }
-}
-
-struct CreateCSETutorialView: View {
-    @Binding var isOpenSheet: Bool
-    @Binding var isFullTutorial: Bool
-    var body: some View {
-        NavigationView {
-            VStack(spacing: 16) {
-                HeaderText(text: "Create your CSE")
-                
-                VStack(spacing: 16) {
-                    Text("")
-                }
-                .padding(.horizontal, 32)
-                .frame(maxWidth: .infinity)
-                
-                Spacer()
-                
                 Button(action: {
-                    
+                    isOpenSheet = false
                 }) {
-                    NextButton(text: "Next")
+                    NextButton(text: "Done")
                 }
                 .padding([.horizontal, .bottom], 24)
             }
