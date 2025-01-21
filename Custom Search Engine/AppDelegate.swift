@@ -117,7 +117,7 @@ func resetDefaultCSE(target: String) {
         "post": []
     ]
 
-    var quickCSE: [String: Any] = [
+    var quickCSE: [String: [String: Any]] = [
         "g": [
             "name": "Google",
             "url": "https://www.google.com/search?q=%s",
@@ -207,7 +207,7 @@ func resetDefaultCSE(target: String) {
         ]
     ]
     
-    let quickCSEJP: [String: Any] = [
+    let quickCSEJP: [String: [String: Any]] = [
         "y": [
             "name": "Yahoo! Japan",
             "url": "https://search.yahoo.co.jp/search?p=%s",
@@ -225,7 +225,7 @@ func resetDefaultCSE(target: String) {
         ]
     ]
     
-    let quickCSECN: [String: Any] = [
+    let quickCSECN: [String: [String: Any]] = [
         "baidu": [
             "name": "百度",
             "url": "https://www.baidu.com/s?wd=%s",
@@ -263,7 +263,7 @@ func resetDefaultCSE(target: String) {
         ]
     ]
     
-    let quickCSERU: [String: Any] = [
+    let quickCSERU: [String: [String: Any]] = [
         "yandex": [
             "name": "Yandex",
             "url": "https://yandex.ru/search?text=%s",
@@ -276,7 +276,7 @@ func resetDefaultCSE(target: String) {
         ]
     ]
     
-    let quickCSEFR: [String: Any] = [
+    let quickCSEFR: [String: [String: Any]] = [
         "qwant": [
             "name": "Qwant",
             "url": "https://www.qwant.com/?q=%s",
@@ -289,7 +289,7 @@ func resetDefaultCSE(target: String) {
         ]
     ]
         
-    let quickCSEDE: [String: Any] = [
+    let quickCSEDE: [String: [String: Any]] = [
         "de_wiki": [
             "name": "Wikipedia (de)",
             "url": "https://de.wikipedia.org/w/index.php?title=Special:Search&search=%s",
@@ -297,7 +297,7 @@ func resetDefaultCSE(target: String) {
         ]
     ]
             
-    let quickCSEKR: [String: Any] = [
+    let quickCSEKR: [String: [String: Any]] = [
         "naver": [
             "name": "NAVER",
             "url": "https://search.naver.com/search.naver?query=%s",

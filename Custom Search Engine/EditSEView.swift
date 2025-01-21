@@ -22,6 +22,7 @@ struct EditSEView: View {
     @State private var showFailAlert: Bool = false
     @State private var showKeyUsedAlert: Bool = false
     @State private var showKeyBlankAlert: Bool = false
+    @State private var showURLBlankAlert: Bool = false
     
     var body: some View {
         NavigationView {
@@ -99,6 +100,7 @@ struct EditSEView: View {
             .alert("An error occurred while loading or updating data", isPresented: $showFailAlert, actions:{})
             .alert("This Quick Search Key is already in use", isPresented: $showKeyUsedAlert, actions:{})
             .alert("Quick Search Key cannot be blank", isPresented: $showKeyBlankAlert, actions:{})
+            .alert("Search URL cannot be blank", isPresented: $showURLBlankAlert, actions:{})
         }
         .navigationTitle("Edit Search Engine")
         .navigationBarTitleDisplayMode(.inline)
@@ -127,31 +129,28 @@ struct EditSEView: View {
         case "private":
             userDefaults!.set(CSEData, forKey: "privateCSE")
         case "quick":
-            if quickID != "" {
-                var isKeyAvailable: Bool = false
-                var quickCSEData = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.dictionary(forKey: "quickCSE") ?? ["":""]
-                if cseID == quickID {
-                    isKeyAvailable = true
-                } else {
-                    if quickCSEData[quickID] == nil {
-                        quickCSEData.removeValue(forKey: cseID)
-                        cseID = quickID
-                        isKeyAvailable = true
-                    }
-                }
-                if isKeyAvailable {
-                    quickCSEData.removeValue(forKey: quickID)
-                    CSEData["name"] = cseName
-                    quickCSEData[quickID] = CSEData
-                    userDefaults!.set(quickCSEData, forKey: "quickCSE")
+            if quickID == "" {
+                showKeyBlankAlert = true
+                return
+            }
+            if cseURL == "" {
+                showURLBlankAlert = true
+                return
+            }
+            var quickCSEData = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.dictionary(forKey: "quickCSE") ?? ["":""]
+            if cseID != quickID {
+                if quickCSEData[quickID] == nil {
+                    quickCSEData.removeValue(forKey: cseID)
+                    cseID = quickID
                 } else {
                     showKeyUsedAlert = true
                     return
                 }
-            } else {
-                showKeyBlankAlert = true
-                return
             }
+            quickCSEData.removeValue(forKey: quickID)
+            CSEData["name"] = cseName
+            quickCSEData[quickID] = CSEData
+            userDefaults!.set(quickCSEData, forKey: "quickCSE")
         default:
             showFailAlert = true
             dismiss()
