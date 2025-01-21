@@ -81,12 +81,14 @@ struct EditSEView: View {
                     .onDelete {
                         postEntries.remove(atOffsets: $0)
                     }
-                    //.onChange(of: postEntries) { _ in
-                    //    saveCSEData()
-                   // }
-                    // Button to add new pairs if desired
-                    Button("Add POST Data") {
+                    Button(action: {
                         postEntries.append((key: "", value: ""))
+                    })  {
+                        HStack {
+                            Image(systemName: "plus.circle")
+                                .accessibilityHidden(true)
+                            Text("Add POST Data")
+                        }
                     }
                 } header: {
                     Text("POST Data")
