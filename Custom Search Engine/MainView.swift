@@ -91,8 +91,6 @@ struct ContentView: View {
                         })
                         .disabled(true)
                     }
-                } header: {
-                    Text("Your Custom Search Engine")
                 } footer: {
                     if alsousepriv {
                         Text("If you set another search engine in private browsing in Safari settings, you can set another custom search engine in a private window.")
