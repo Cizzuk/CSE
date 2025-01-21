@@ -46,6 +46,9 @@ struct QuickSEListView: View {
         .navigationTitle("Quick Search Engines")
         .navigationBarTitleDisplayMode(.inline)
         .navigationViewStyle(.stack)
+        .toolbar {
+            EditButton()
+        }
         .onAppear {
             quickCSE = userDefaults!.dictionary(forKey: "quickCSE") as? [String: [String: Any]] ?? [:]
         }
