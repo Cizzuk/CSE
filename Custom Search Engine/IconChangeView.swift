@@ -99,17 +99,13 @@ struct PurchaseView: View {
                     }
                     .frame(maxWidth: .infinity)
                 }
-                .alert(isPresented: $showSucAlert) {
-                    Alert(title: Text("Purchase Success!"))
-                }
+                .alert("Purchase Success!", isPresented: $showSucAlert, actions: {})
                 .onReceive(storeManager.$purchaseCompleted) { purchaseCompleted in
                     if purchaseCompleted {
                         showSucAlert = true
                     }
                 }
-                .alert(isPresented: $showFailAlert) {
-                    Alert(title: Text("Purchase Failed"))
-                }
+                .alert("Purchase Failed", isPresented: $showFailAlert, actions: {})
                 .onReceive(storeManager.$purchaseFailed) { purchaseFailed in
                     if purchaseFailed {
                         showFailAlert = true
@@ -126,9 +122,7 @@ struct PurchaseView: View {
                         .font(.subheadline)
                         .frame(maxWidth: .infinity)
                 }
-                .alert(isPresented: $showRestoreSucAlert) {
-                    Alert(title: Text("Restore Success!"))
-                }
+                .alert("Restore Success!", isPresented: $showRestoreSucAlert, actions: {})
                 .onReceive(storeManager.$restoreCompleted) { restoreCompleted in
                     if restoreCompleted {
                         showRestoreSucAlert = true
