@@ -38,6 +38,7 @@ struct QuickSEListView: View {
                                 Text(cseID)
                                     .bold()
                                 Text(cseName as? String ?? "")
+                                    .lineLimit(1)
                             }
                         }
                     }
