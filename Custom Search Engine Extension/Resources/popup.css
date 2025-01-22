@@ -8,9 +8,6 @@ body {
     min-width:300px;
     font-family:system-ui;
 }
-ol {
-    padding-left:30px;
-}
 a {
     display:block;
     width:100%;
