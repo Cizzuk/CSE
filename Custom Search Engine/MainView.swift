@@ -37,6 +37,8 @@ struct ContentView: View {
     var usePrivateCSE: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "usePrivateCSE")
     @AppStorage("useQuickCSE", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var useQuickCSE: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "useQuickCSE")
+    @AppStorage("useEmojiSearch", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var useEmojiSearch: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "useEmojiSearch")
     
     @AppStorage("needFirstTutorial", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var needFirstTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needFirstTutorial")
@@ -106,6 +108,13 @@ struct ContentView: View {
                             Text("Quick Search Engines")
                         }
                     }
+                
+                Section {
+                    Toggle(isOn: $useEmojiSearch, label: {
+                        Text("Emoji Search")
+                    })
+                } footer: {
+                    Text("If you enter only one emoji, you can search on Emojipedia.org.")
                 }
                 
                 Section {
