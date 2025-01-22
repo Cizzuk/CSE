@@ -130,6 +130,19 @@ struct EditSEView: View {
     }
     
     func saveCSEData() {
+        let replacements = [
+            "https://google.com": "https://www.google.com",
+            "https://bing.com": "https://www.bing.com",
+            "https://www.duckduckgo.com": "https://duckduckgo.com",
+            "https://ecosia.com": "https://www.ecosia.com"
+        ]
+        for (original, replacement) in replacements {
+            if cseURL.hasPrefix(original) {
+                cseURL = cseURL.replacingOccurrences(of: original, with: replacement)
+                break
+            }
+        }
+        
         let postArray: [[String: String]] = postEntries.map { ["key": $0.key, "value": $0.value] }
         var CSEData: [String: Any] = [
             "url": cseURL,
