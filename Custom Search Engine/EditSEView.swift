@@ -54,10 +54,10 @@ struct EditSEView: View {
                                 quickID = quickID.filter { $0 != " " && $0 != "　" }
                             }
                     } header: {
-                        Text("Quick Search Key")
+                        Text("Keyword")
                     } footer: {
                         VStack(alignment : .leading) {
-                            Text("Enter this key first to search with this search engine.")
+                            Text("Enter this keyword at the top to search with this search engine.")
                             Text("Example: '\(quickID == "" ? "cse" : quickID) your search'")
                         }
                     }
@@ -110,8 +110,8 @@ struct EditSEView: View {
                 }
             }
             .alert("An error occurred while loading or updating data", isPresented: $showFailAlert, actions:{})
-            .alert("This Quick Search Key is already in use", isPresented: $showKeyUsedAlert, actions:{})
-            .alert("Quick Search Key cannot be blank", isPresented: $showKeyBlankAlert, actions:{})
+            .alert("This keyword is already used in other", isPresented: $showKeyUsedAlert, actions:{})
+            .alert("Keyword cannot be blank", isPresented: $showKeyBlankAlert, actions:{})
             .alert("Search URL cannot be blank", isPresented: $showURLBlankAlert, actions:{})
         }
         .navigationTitle("Edit Search Engine")
