@@ -256,7 +256,7 @@ func resetDefaultCSE(target: String) {
             "url": "https://search.bilibili.com/all?keyword=%s",
             "post": []
         ],
-        "cn_wiki": [
+        "wiki": [
             "name": "Wikipedia (zh)",
             "url": "https://zh.wikipedia.org/w/index.php?title=Special:Search&search=%s",
             "post": []
@@ -269,7 +269,7 @@ func resetDefaultCSE(target: String) {
             "url": "https://yandex.ru/search?text=%s",
             "post": []
         ],
-        "ru_wiki": [
+        "wiki": [
             "name": "Wikipedia (ru)",
             "url": "https://ru.wikipedia.org/w/index.php?title=Special:Search&search=%s",
             "post": []
@@ -282,7 +282,7 @@ func resetDefaultCSE(target: String) {
             "url": "https://www.qwant.com/?q=%s",
             "post": []
         ],
-        "fr_wiki": [
+        "wiki": [
             "name": "Wikipedia (fr)",
             "url": "https://fr.wikipedia.org/w/index.php?title=Special:Search&search=%s",
             "post": []
@@ -290,7 +290,7 @@ func resetDefaultCSE(target: String) {
     ]
         
     let quickCSEDE: [String: [String: Any]] = [
-        "de_wiki": [
+        "wiki": [
             "name": "Wikipedia (de)",
             "url": "https://de.wikipedia.org/w/index.php?title=Special:Search&search=%s",
             "post": []
@@ -303,7 +303,7 @@ func resetDefaultCSE(target: String) {
             "url": "https://search.naver.com/search.naver?query=%s",
             "post": []
         ],
-        "kr_wiki": [
+        "wiki": [
             "name": "Wikipedia (ko)",
             "url": "https://ko.wikipedia.org/w/index.php?title=Special:Search&search=%s",
             "post": []
