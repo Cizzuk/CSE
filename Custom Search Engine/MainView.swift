@@ -108,6 +108,9 @@ struct ContentView: View {
                             Text("Quick Search Engines")
                         }
                     }
+                } footer: {
+                    Text("Enter the keyword at the top to switch search engines.")
+                }
                 
                 Section {
                     Toggle(isOn: $useEmojiSearch, label: {
