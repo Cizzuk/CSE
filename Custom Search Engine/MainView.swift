@@ -70,7 +70,12 @@ struct ContentView: View {
                     }
                     
                     let toggleText = "Use different search engine in Private Browse"
-                    if !alsousepriv {
+                    if alsousepriv || searchengine == privsearchengine {
+                        Toggle(isOn: .constant(false), label: {
+                            Text(toggleText)
+                        })
+                        .disabled(true)
+                    } else {
                         Toggle(isOn: $usePrivateCSE, label: {
                             Text(toggleText)
                         })
@@ -81,14 +86,9 @@ struct ContentView: View {
                                 Text("Private Search Engine")
                             }
                         }
-                    } else {
-                        Toggle(isOn: .constant(false), label: {
-                            Text(toggleText)
-                        })
-                        .disabled(true)
                     }
                 } footer: {
-                    if alsousepriv {
+                    if alsousepriv || searchengine == privsearchengine {
                         Text("If you set another search engine in private browsing in Safari settings, you can use another custom search engine in private browse.")
                     }
                 }
