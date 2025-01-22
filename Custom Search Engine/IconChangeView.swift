@@ -44,6 +44,7 @@ struct IconSettingView: View {
         }
         .contentShape(Rectangle())
         .onTapGesture {
+            // Change App Icon
             if iconID == "appicon" {
                 UIApplication.shared.setAlternateIconName(nil)
             }else{
@@ -60,7 +61,7 @@ struct PurchaseView: View {
     @State private var showRestoreSucAlert = false
     var body: some View {
         List {
-            //Purchase Section
+            // Purchase Section
             Section {
                 HStack {
                     Image(systemName: "checkmark.circle")
@@ -78,7 +79,7 @@ struct PurchaseView: View {
                     Text("More people will be able to continue using CSE for free")
                 }
                 
-                //Purchase Button
+                // Purchase Button
                 Button(action: {
                     if let product = self.storeManager.products.first {
                         self.storeManager.purchase(product: product)
@@ -113,8 +114,9 @@ struct PurchaseView: View {
                 }
                 .disabled(storeManager.products.isEmpty)
             }
+            
+            // Restore Button
             Section {
-                //Restore Button
                 Button(action: {
                     self.storeManager.restorePurchases()
                 }) {
@@ -130,7 +132,7 @@ struct PurchaseView: View {
                 }
             }
             
-            //Icon Preview Section
+            // Icon Preview Section
             Section {
                 iconItem(iconName: "CSE", iconID: "appicon")
                 iconItem(iconName: "Red", iconID: "red-white")
@@ -165,6 +167,8 @@ struct PurchaseView: View {
             Text(iconName)
         }
     }
+    
+    // Get Localized Price
     private func localizedPrice(for product: SKProduct) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
@@ -229,6 +233,7 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
         }
     }
     
+    // Handlers
     func handlePurchaseSuccess() {
         UserDefaults.standard.set(true, forKey: "haveIconChange")
         purchaseCompleted = true

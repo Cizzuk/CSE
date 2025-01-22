@@ -25,6 +25,7 @@ struct AdvSettingView: View {
                     allowReset = false
                 }
             }
+            
             Section {
                 Toggle(isOn: $disablechecker, label: {
                     Text("Disable Checker")
@@ -32,7 +33,6 @@ struct AdvSettingView: View {
             } footer: {
                 Text("CSE will not check that you have searched from the search bar.")
             }
-            
             
             Section {
                 Toggle(isOn: $allowReset, label: {

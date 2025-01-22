@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         let currentRegion = Locale.current.regionCode
         
+        // Get userDefaults
         let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
         let lastVersion = userDefaults!.string(forKey: "LastAppVer") ?? ""
         let searchengine = userDefaults!.string(forKey: "searchengine") ?? nil
@@ -28,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // adv_resetCSEs
         if adv_resetCSEs != "" {
-            resetDefaultCSE(target: adv_resetCSEs)
+            resetCSE(target: adv_resetCSEs)
             userDefaults!.set("", forKey: "adv_resetCSEs")
         }
         
@@ -45,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 userDefaults!.set("duckduckgo", forKey: "privsearchengine")
             }
-            resetDefaultCSE(target: "all")
+            resetCSE(target: "all")
             
             // Update old CSE
             if (urltop != "" || urlsuffix != "") && defaultCSE == nil {
@@ -88,6 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
+        // Save last opened version
         userDefaults!.set(currentVersion, forKey: "LastAppVer")
         
         return true
@@ -99,7 +101,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-func resetDefaultCSE(target: String) {
+// Reset CSEs | target == 'all' or 'default' or 'private' or 'quick'
+func resetCSE(target: String) {
     let currentRegion = Locale.current.regionCode
     
     let defaultCSE: [String: Any] = [
@@ -107,6 +110,7 @@ func resetDefaultCSE(target: String) {
         "post": []
     ]
     
+    // Only for China mainland
     let defaultCSECN: [String: Any] = [
         "url": "https://www.baidu.com/s?wd=%s",
         "post": []
@@ -207,6 +211,7 @@ func resetDefaultCSE(target: String) {
         ]
     ]
     
+    // ↓ country/region based Quick SE ↓
     let quickCSEJP: [String: [String: Any]] = [
         "y": [
             "name": "Yahoo! Japan",
@@ -310,6 +315,7 @@ func resetDefaultCSE(target: String) {
         ]
     ]
     
+    // Edit QuickSE by country/region
     if currentRegion == "JP" {
         for (key, value) in quickCSEJP {
             quickCSE[key] = value
@@ -338,6 +344,7 @@ func resetDefaultCSE(target: String) {
     
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     
+    // Save Data
     if target == "default" || target == "all" {
         if currentRegion == "CN" {
             userDefaults!.set(defaultCSECN, forKey: "defaultCSE")
@@ -353,6 +360,7 @@ func resetDefaultCSE(target: String) {
     }
 }
 
+// Version high and low
 func isUpdated(updateVer: String, lastVer: String) -> Bool {
     if lastVer == "" {
         return true

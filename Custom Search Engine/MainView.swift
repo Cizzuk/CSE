@@ -41,11 +41,13 @@ struct ContentView: View {
     @State private var openSafariTutorialView = false
     
     #if iOS
+    // Icon change for iOS/iPadOS
     @State private var isIconSettingView: Bool = false
+    // Get current icon
     var alternateIconName: String? {
         UIApplication.shared.alternateIconName
     }
-    
+    // Purchased ChangeIcon?
     @ObservedObject var storeManager = StoreManager()
     var linkDestination: some View {
         if UserDefaults().bool(forKey: "haveIconChange") {
@@ -62,20 +64,24 @@ struct ContentView: View {
         #endif
         NavigationView {
             List {
+                // Normal CSE Settings
                 Section {
+                    // Default CSE
                     NavigationLink {
                         EditSEView(cseType: .constant("default"), cseID: .constant(""))
                     } label: {
                         Text("Default Search Engine")
                     }
                     
+                    // Private CSE
                     let toggleText = "Use different search engine in Private Browse"
+                    // If private CSE is not available due to Safari settings
                     if alsousepriv || searchengine == privsearchengine {
                         Toggle(isOn: .constant(false), label: {
                             Text(toggleText)
                         })
                         .disabled(true)
-                    } else {
+                    } else { // is available
                         Toggle(isOn: $usePrivateCSE, label: {
                             Text(toggleText)
                         })
@@ -88,11 +94,12 @@ struct ContentView: View {
                         }
                     }
                 } footer: {
-                    if alsousepriv || searchengine == privsearchengine {
+                    if alsousepriv || searchengine == privsearchengine { // is not available
                         Text("If you set another search engine in private browsing in Safari settings, you can use another custom search engine in private browse.")
                     }
                 }
                 
+                // Quick SE Settings
                 Section {
                     Toggle(isOn: $useQuickCSE, label: {
                         Text("Enable Quick Search")
@@ -108,6 +115,7 @@ struct ContentView: View {
                     Text("Enter the keyword at the top to switch search engines.")
                 }
                 
+                // Emojipedia Search Setting
                 Section {
                     Toggle(isOn: $useEmojiSearch, label: {
                         Text("Emoji Search")
@@ -116,6 +124,7 @@ struct ContentView: View {
                     Text("If you enter only one emoji, you can search on Emojipedia.org.")
                 }
                 
+                // Show Safari Settings Tutorial Button
                 Section {
                     Button(action: {
                         openSafariTutorialView = true
@@ -127,6 +136,7 @@ struct ContentView: View {
                 }
                 
                 #if iOS
+                // Go IconChange View for iOS/iPadOS
                 Section {
                     NavigationLink(destination: linkDestination, isActive: $isIconSettingView) {
                         Image((alternateIconName ?? "appicon") + "-pre")
@@ -198,6 +208,7 @@ struct ContentView: View {
                     }
                 }
                 
+                // Advanced Settings
                 Section {
                     NavigationLink(destination: AdvSettingView().navigationTitle("Advanced Settings")) {
                         Text("Advanced Settings")
@@ -211,6 +222,7 @@ struct ContentView: View {
             .navigationTitle("CSE Settings")
         }
         .navigationViewStyle(.stack)
+        // Tutorial sheets
         .sheet(isPresented: $needFirstTutorial, content: {
             FullTutorialView(isOpenSheet: $needFirstTutorial)
         })

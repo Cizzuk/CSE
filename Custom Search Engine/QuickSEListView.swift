@@ -13,6 +13,7 @@ struct QuickSEListView: View {
     
     var body: some View {
         List {
+            // Add new SE Button
             Section {
                 NavigationLink {
                     EditSEView(cseType: .constant("quick"), cseID: .constant(""))
@@ -27,10 +28,13 @@ struct QuickSEListView: View {
                     #endif
                 }
             }
+            
+            // Current Quick SEs List
             Section {
                 ForEach(quickCSE.keys.sorted(), id: \.self) { cseID in
                     if let cseData = quickCSE[cseID],
-                       let cseName = cseData["name"] as? String ?? "" != "" ? cseData["name"] : cseData["url"] {
+                        // If cse has no name, use URL instead
+                        let cseName = cseData["name"] as? String ?? "" != "" ? cseData["name"] : cseData["url"] {
                         NavigationLink {
                             EditSEView(cseType: .constant("quick"), cseID: .constant(cseID))
                         } label: {
@@ -53,6 +57,7 @@ struct QuickSEListView: View {
             EditButton()
         }
         .onAppear {
+            // (Re)load Data
             quickCSE = userDefaults!.dictionary(forKey: "quickCSE") as? [String: [String: Any]] ?? [:]
         }
     }

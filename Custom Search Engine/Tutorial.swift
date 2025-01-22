@@ -26,6 +26,7 @@ private func NextButton(text: String) -> some View {
         #endif
 }
 
+// First Tutorial
 struct FullTutorialView: View {
     @Binding var isOpenSheet: Bool
     var body: some View {
@@ -58,6 +59,7 @@ struct FullTutorialView: View {
     }
 }
 
+// Set Safari settings
 struct SafariTutorialView: View {
     let currentRegion = Locale.current.regionCode
     @Binding var isOpenSheet: Bool
@@ -81,6 +83,7 @@ struct SafariTutorialView: View {
                     
                 List {
                     Section {
+                        // Default SE
                         Picker("Search Engine", selection: $searchengine) {
                             let currentRegion = Locale.current.regionCode
                             if currentRegion == "CN" {
@@ -98,6 +101,8 @@ struct SafariTutorialView: View {
                             Text("Ecosia").tag("ecosia")
                         }
                         .onChange(of: searchengine) { _ in
+                            // When 'Also Use in Private Browsing' is enabled, it works the same as native
+                            // → Reset Private SE
                             if alsousepriv == true {
                                 if searchengine == "duckduckgo" {
                                     if currentRegion == "CN" {
@@ -115,6 +120,7 @@ struct SafariTutorialView: View {
                             Text("Also Use in Private Browsing")
                         })
                         
+                        // Private SE
                         if !alsousepriv {
                             Picker("Private Search Engine", selection: $privsearchengine) {
                                 if currentRegion == "CN" {
@@ -144,7 +150,6 @@ struct SafariTutorialView: View {
                         }
                     }
                 }
-                
                 
                 NavigationLink {
                     SafariTutorialSecondView(isOpenSheet: self.$isOpenSheet)
@@ -188,6 +193,8 @@ struct SafariTutorialSecondView: View {
                         Text("Go to Settings → Apps → Safari → Extensions → Customize Search Engine and allow extension. Then 'Allow' the following webpage")
                         #endif
                     }
+                    
+                    // Show domains that need to allow
                     Section {
                         if searchengine == "baidu" || (!alsousepriv && privsearchengine == "baidu") {
                             Text("baidu.com")

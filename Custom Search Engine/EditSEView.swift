@@ -80,6 +80,7 @@ struct EditSEView: View {
                 Section() {
                     ForEach(postEntries.indices, id: \.self) { index in
                         HStack {
+                            // Delete Button
                             Button(action: {
                                 postEntries.remove(at: index)
                             })  {
@@ -109,6 +110,7 @@ struct EditSEView: View {
                     Text("Replace query with %s")
                 }
             }
+            // Error alerts
             .alert("An error occurred while loading or updating data", isPresented: $showFailAlert, actions:{})
             .alert("This keyword is already used in other", isPresented: $showKeyUsedAlert, actions:{})
             .alert("Keyword cannot be blank", isPresented: $showKeyBlankAlert, actions:{})
@@ -130,6 +132,7 @@ struct EditSEView: View {
     }
     
     func saveCSEData() {
+        // Normalize Safari search engine URLs
         let replacements = [
             "https://google.com": "https://www.google.com",
             "https://bing.com": "https://www.bing.com",
@@ -143,27 +146,37 @@ struct EditSEView: View {
             }
         }
         
+        // POST Data
         let postArray: [[String: String]] = postEntries.map { ["key": $0.key, "value": $0.value] }
+        
+        // Create temporary data
         var CSEData: [String: Any] = [
             "url": cseURL,
             "post": postArray
         ]
+        
+        // Save for Search Engine type
         switch cseType {
         case "default":
             userDefaults!.set(CSEData, forKey: "defaultCSE")
         case "private":
             userDefaults!.set(CSEData, forKey: "privateCSE")
         case "quick":
+            // If Keyword is blank
             if quickID == "" {
                 showKeyBlankAlert = true
                 return
             }
+            // If URL is blank
             if cseURL == "" {
                 showURLBlankAlert = true
                 return
             }
+            // Get current QuickSEs Data
             var quickCSEData = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.dictionary(forKey: "quickCSE") ?? [:]
+            // If Keyword is changed
             if cseID != quickID {
+                // If Keyword is free
                 if quickCSEData[quickID] == nil {
                     quickCSEData.removeValue(forKey: cseID)
                     cseID = quickID
@@ -172,11 +185,12 @@ struct EditSEView: View {
                     return
                 }
             }
+            // Replace this QuickSE
             quickCSEData.removeValue(forKey: quickID)
             CSEData["name"] = cseName
             quickCSEData[quickID] = CSEData
             userDefaults!.set(quickCSEData, forKey: "quickCSE")
-        default:
+        default: // If unknown CSE type
             showFailAlert = true
             dismiss()
             return
@@ -186,6 +200,7 @@ struct EditSEView: View {
     
     private func loadCSEData() {
         var CSEData: Dictionary<String, Any>
+        // Get Data for Search Engine type
         if cseType == "default" {
             CSEData = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.dictionary(forKey: "defaultCSE") ?? [:]
         } else if cseType == "private" {
@@ -193,16 +208,19 @@ struct EditSEView: View {
         } else if cseType == "quick" {
             let quickCSEData = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.dictionary(forKey: "quickCSE") ?? [:]
             CSEData = quickCSEData[cseID] as? Dictionary<String, Any> ?? [:]
-            quickID = cseID
-        } else {
+            quickID = cseID // Get Keyword(=ID)
+        } else { // If unknown CSE type
             showFailAlert = true
             dismiss()
             return
         }
         
+        // Get Name & URL
         cseName = CSEData["name"] as? String ?? ""
         cseURL = CSEData["url"] as? String ?? ""
         
+        // Get POST Data
+        // If POST Data exists
         if let postArray = CSEData["post"] as? [[String: String]] {
             postEntries = postArray.compactMap { item in
                 if let key = item["key"], let value = item["value"] {
@@ -211,7 +229,6 @@ struct EditSEView: View {
                     return nil
                 }
             }
-            
         } else {
             postEntries = []
         }
