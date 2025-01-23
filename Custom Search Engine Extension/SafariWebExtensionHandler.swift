@@ -284,10 +284,15 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             CSEData = quickCSEData[cseID] ?? [:]
         }
         
+        // Replace %s with query
         let redirectURL: String = (CSEData["url"] as! String).replacingOccurrences(of: "%s", with: fixedQuery)
-        let postArray: [[String: String]] = CSEData["post"] as! [[String : String]]
+        var postData = CSEData["post"] as! [[String: String]]
+        for i in 0..<postData.count {
+            postData[i]["key"] = postData[i]["key"]?.replacingOccurrences(of: "%s", with: fixedQuery)
+            postData[i]["value"] = postData[i]["value"]?.replacingOccurrences(of: "%s", with: fixedQuery)
+        }
         
-        return (redirectURL, postArray)
+        return (redirectURL, postData)
     }
 }
 
