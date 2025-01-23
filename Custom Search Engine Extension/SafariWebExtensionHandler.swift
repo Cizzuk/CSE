@@ -20,33 +20,29 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             return
         }
         
-        var CSEData: Dictionary<String, Any>
-        var cseType: String
-        var cseID: String
-        var cseURL: String
-        var postArray: [[String: String]] = [[:]]
+        let searchengine: String = userDefaults.string(forKey: "searchengine") ?? ""
+        let alsousepriv: Bool = userDefaults.bool(forKey: "alsousepriv")
+        let privsearchengine: String = userDefaults.string(forKey: "privsearchengine") ?? ""
+        let usePrivateCSE: Bool = userDefaults.bool(forKey: "usePrivateCSE")
         
-        //let quickCSEData = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.dictionary(forKey: "quickCSE") ?? [:]
-        //CSEData = quickCSEData[cseID] as? Dictionary<String, Any> ?? [:]
+        var redirectData: (url: String, post: [[String: String]])
         
-        let searchengine = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? ""
-        let alsousepriv: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "alsousepriv")
-        let privsearchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "privsearchengine") ?? ""
-        
-        var searchQuery: String = ""
-        
+        // Get Redirect URL
         if checkEngineURL(engineName: searchengine, url: searchURL) {
-            guard let query: String = getQueryValue(engineName: searchengine, url: searchURL) else {
-                sendError(context: context)
+            guard let searchQuery: String = getQueryValue(engineName: searchengine, url: searchURL) else {
+                sendData(context: context, data: ["type" : "error"])
                 return
             }
-            searchQuery = query
-        } else if privsearchengine != "" && !alsousepriv {
-            guard let query = getQueryValue(engineName: privsearchengine, url: searchURL) else {
-                sendError(context: context)
+            redirectData = makeSearchURL(windowName: "default", query: searchQuery)
+        } else if usePrivateCSE && !alsousepriv && checkEngineURL(engineName: privsearchengine, url: searchURL) {
+            guard let searchQuery: String = getQueryValue(engineName: privsearchengine, url: searchURL) else {
+                sendData(context: context, data: ["type" : "error"])
                 return
             }
-            searchQuery = query
+            redirectData = makeSearchURL(windowName: "private", query: searchQuery)
+        } else {
+            sendData(context: context, data: ["type" : "cancel"])
+            return
         }
         
         struct dataSet: Encodable {
@@ -57,8 +53,8 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         
         let sendData = dataSet(
             type: "redirect",
-            redirectTo: searchQuery, //test
-            postData: [[:]]
+            redirectTo: redirectData.url,
+            postData: redirectData.post
         )
         
         do {
@@ -72,9 +68,9 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         }
     }
     
-    func sendError(context: NSExtensionContext) {
+    func sendData(context: NSExtensionContext, data: Encodable) {
         do {
-            let data = try JSONEncoder().encode("error")
+            let data = try JSONEncoder().encode(data)
             let json = String(data: data, encoding: .utf8)!
             let extensionItem = NSExtensionItem()
             extensionItem.userInfo = [ SFExtensionMessageKey: json ]
@@ -247,6 +243,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         // Get query
         let queryItems = urlComponents.queryItems ?? []
         let queryValue = queryItems.first(where: { $0.name == mainParam })?.value
+        
         // URL Encode
         guard let queryEncoded = queryValue?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             return nil
@@ -254,6 +251,43 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         
         // Return query
         return queryEncoded
+    }
+    
+    func makeSearchURL(windowName: String, query: String) -> (url: String, post: [[String: String]]) {
+        // Load Settings
+        let defaultCSEData = userDefaults.dictionary(forKey: "defaultCSE") ?? [:]
+        let privateCSEData = userDefaults.dictionary(forKey: "privateCSE") ?? [:]
+        let quickCSEData = userDefaults.dictionary(forKey: "quickCSE") as? [String: [String: Any]] ?? [:]
+        
+        var CSEData: Dictionary<String, Any> = [:]
+        var cseID: String = ""
+        var fixedQuery: String = query
+
+        // Check quick search
+        for key in quickCSEData.keys {
+            // If query has maybe quick search keyword
+            if query.hasPrefix(key) && (key.count + 1 < query.count) {
+                let queryNoKey = String(query.dropFirst(key.count))
+                // If query has space or full-width space
+                if queryNoKey.hasPrefix(" ") || queryNoKey.hasPrefix("\u{3000}") || queryNoKey.hasPrefix("+") {
+                    cseID = key
+                    fixedQuery = String(queryNoKey.dropFirst(1))
+                    break
+                }
+            }
+        }
+        
+        // Get CSE Data
+        if cseID == "" {
+            CSEData = windowName == "private" ? privateCSEData : defaultCSEData
+        } else {
+            CSEData = quickCSEData[cseID] ?? [:]
+        }
+        
+        let redirectURL: String = (CSEData["url"] as! String).replacingOccurrences(of: "%s", with: fixedQuery)
+        let postArray: [[String: String]] = CSEData["post"] as! [[String : String]]
+        
+        return (redirectURL, postArray)
     }
 }
 
