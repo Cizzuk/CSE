@@ -268,8 +268,8 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             // If query has maybe quick search keyword
             if query.hasPrefix(key) && (key.count + 1 < query.count) {
                 let queryNoKey = String(query.dropFirst(key.count))
-                // If query has space or full-width space
-                if queryNoKey.hasPrefix(" ") || queryNoKey.hasPrefix("\u{3000}") || queryNoKey.hasPrefix("+") {
+                // If query has space
+                if queryNoKey.hasPrefix("+") {
                     cseID = key
                     fixedQuery = String(queryNoKey.dropFirst(1))
                     break
