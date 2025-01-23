@@ -80,14 +80,6 @@ struct EditSEView: View {
                 Section() {
                     ForEach(postEntries.indices, id: \.self) { index in
                         HStack {
-                            // Delete Button
-                            Button(action: {
-                                postEntries.remove(at: index)
-                            })  {
-                                Image(systemName: "minus.circle")
-                                    .foregroundColor(.red)
-                                    .accessibilityLabel("Delete")
-                            }
                             TextField("Key", text: $postEntries[index].key)
                             TextField("Value", text: $postEntries[index].value)
                         }
