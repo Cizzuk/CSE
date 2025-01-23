@@ -244,24 +244,27 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         let queryItems = urlComponents.queryItems ?? []
         let queryValue = queryItems.first(where: { $0.name == mainParam })?.value
         
-        // URL Encode
-        guard let queryEncoded = queryValue?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-            return nil
-        }
-        
         // Return query
-        return queryEncoded
+        return queryValue
     }
     
     func makeSearchURL(windowName: String, query: String) -> (url: String, post: [[String: String]]) {
-        // Load Settings
-        let defaultCSEData = userDefaults.dictionary(forKey: "defaultCSE") ?? [:]
-        let privateCSEData = userDefaults.dictionary(forKey: "privateCSE") ?? [:]
-        let quickCSEData = userDefaults.dictionary(forKey: "quickCSE") as? [String: [String: Any]] ?? [:]
+        // Check Emoji Search
+        if userDefaults.bool(forKey: "useEmojiSearch") &&
+           query.unicodeScalars.first!.properties.isEmoji &&
+           (query.unicodeScalars.first!.value >= 0x203C || query.unicodeScalars.count > 1) {
+            let redirectURL = "https://emojipedia.org/" + query
+            return (redirectURL, [])
+        }
         
-        var CSEData: Dictionary<String, Any> = [:]
-        var cseID: String = ""
-        var fixedQuery: String = query
+        // Load Settings
+        let quickCSEData = userDefaults.dictionary(forKey: "quickCSE") as? [String: [String: Any]] ?? [:]
+        var CSEData: Dictionary<String, Any> = windowName == "private" ?
+            userDefaults.dictionary(forKey: "privateCSE") ?? [:] :
+            userDefaults.dictionary(forKey: "defaultCSE") ?? [:]
+        
+        var cseID: String
+        var fixedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
 
         // Check quick search
         for key in quickCSEData.keys {
@@ -272,16 +275,10 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
                 if queryNoKey.hasPrefix("+") {
                     cseID = key
                     fixedQuery = String(queryNoKey.dropFirst(1))
+                    CSEData = quickCSEData[cseID] ?? CSEData
                     break
                 }
             }
-        }
-        
-        // Get CSE Data
-        if cseID == "" {
-            CSEData = windowName == "private" ? privateCSEData : defaultCSEData
-        } else {
-            CSEData = quickCSEData[cseID] ?? [:]
         }
         
         // Replace %s with query
