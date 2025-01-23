@@ -12,7 +12,7 @@ struct EditSEView: View {
     @Environment(\.dismiss) private var dismiss
     @Binding var cseType: String
     @Binding var cseID: String
-    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
+    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
     
     @State private var cseName: String = ""
     @State private var quickID: String = ""
@@ -158,9 +158,9 @@ struct EditSEView: View {
         // Save for Search Engine type
         switch cseType {
         case "default":
-            userDefaults!.set(CSEData, forKey: "defaultCSE")
+            userDefaults.set(CSEData, forKey: "defaultCSE")
         case "private":
-            userDefaults!.set(CSEData, forKey: "privateCSE")
+            userDefaults.set(CSEData, forKey: "privateCSE")
         case "quick":
             // If Keyword is blank
             if quickID == "" {
@@ -173,7 +173,7 @@ struct EditSEView: View {
                 return
             }
             // Get current QuickSEs Data
-            var quickCSEData = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.dictionary(forKey: "quickCSE") ?? [:]
+            var quickCSEData = userDefaults.dictionary(forKey: "quickCSE") ?? [:]
             // If Keyword is changed
             if cseID != quickID {
                 // If Keyword is free
@@ -189,7 +189,7 @@ struct EditSEView: View {
             quickCSEData.removeValue(forKey: quickID)
             CSEData["name"] = cseName
             quickCSEData[quickID] = CSEData
-            userDefaults!.set(quickCSEData, forKey: "quickCSE")
+            userDefaults.set(quickCSEData, forKey: "quickCSE")
         default: // If unknown CSE type
             showFailAlert = true
             dismiss()
@@ -202,11 +202,11 @@ struct EditSEView: View {
         var CSEData: Dictionary<String, Any>
         // Get Data for Search Engine type
         if cseType == "default" {
-            CSEData = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.dictionary(forKey: "defaultCSE") ?? [:]
+            CSEData = userDefaults.dictionary(forKey: "defaultCSE") ?? [:]
         } else if cseType == "private" {
-            CSEData = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.dictionary(forKey: "privateCSE") ?? [:]
+            CSEData = userDefaults.dictionary(forKey: "privateCSE") ?? [:]
         } else if cseType == "quick" {
-            let quickCSEData = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.dictionary(forKey: "quickCSE") ?? [:]
+            let quickCSEData = userDefaults.dictionary(forKey: "quickCSE") ?? [:]
             CSEData = quickCSEData[cseID] as? Dictionary<String, Any> ?? [:]
             quickID = cseID // Get Keyword(=ID)
         } else { // If unknown CSE type

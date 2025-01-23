@@ -10,7 +10,7 @@ import os.log
 
 class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
 
-    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
+    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
     
     func beginRequest(with context: NSExtensionContext) {
         // Get Search URL from content.js

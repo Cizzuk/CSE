@@ -18,33 +18,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let currentRegion = Locale.current.regionCode
         
         // Get userDefaults
-        let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
-        let lastVersion = userDefaults!.string(forKey: "LastAppVer") ?? ""
-        let searchengine = userDefaults!.string(forKey: "searchengine") ?? nil
-        let privsearchengine = userDefaults!.string(forKey: "privsearchengine") ?? nil
-        let urltop: String = userDefaults!.string(forKey: "urltop") ?? ""
-        let urlsuffix: String = userDefaults!.string(forKey: "urlsuffix") ?? ""
-        let defaultCSE = userDefaults!.dictionary(forKey: "defaultCSE")
-        let adv_resetCSEs: String = userDefaults!.string(forKey: "adv_resetCSEs") ?? ""
+        let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
+        let lastVersion = userDefaults.string(forKey: "LastAppVer") ?? ""
+        let searchengine = userDefaults.string(forKey: "searchengine") ?? nil
+        let privsearchengine = userDefaults.string(forKey: "privsearchengine") ?? nil
+        let urltop: String = userDefaults.string(forKey: "urltop") ?? ""
+        let urlsuffix: String = userDefaults.string(forKey: "urlsuffix") ?? ""
+        let defaultCSE = userDefaults.dictionary(forKey: "defaultCSE")
+        let adv_resetCSEs: String = userDefaults.string(forKey: "adv_resetCSEs") ?? ""
         
         // adv_resetCSEs
         if adv_resetCSEs != "" {
             resetCSE(target: adv_resetCSEs)
-            userDefaults!.set("", forKey: "adv_resetCSEs")
+            userDefaults.set("", forKey: "adv_resetCSEs")
         }
         
         // Update/Create database for v3.0 or later
         if lastVersion == "" || isUpdated(updateVer: "3.0", lastVer: lastVersion) {
-            userDefaults!.set(true, forKey: "needFirstTutorial")
-            userDefaults!.set(true, forKey: "alsousepriv")
+            userDefaults.set(true, forKey: "needFirstTutorial")
+            userDefaults.set(true, forKey: "alsousepriv")
             if searchengine == "duckduckgo" {
                 if currentRegion == "CN" {
-                    userDefaults!.set("baidu", forKey: "privsearchengine")
+                    userDefaults.set("baidu", forKey: "privsearchengine")
                 } else {
-                    userDefaults!.set("google", forKey: "privsearchengine")
+                    userDefaults.set("google", forKey: "privsearchengine")
                 }
             } else {
-                userDefaults!.set("duckduckgo", forKey: "privsearchengine")
+                userDefaults.set("duckduckgo", forKey: "privsearchengine")
             }
             resetCSE(target: "all")
             
@@ -55,9 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     "url": urltop + "%s" + urlsuffix,
                     "post": []
                 ]
-                userDefaults!.set(defaultCSE, forKey: "defaultCSE")
-                userDefaults!.removeObject(forKey: "urltop")
-                userDefaults!.removeObject(forKey: "urlsuffix")
+                userDefaults.set(defaultCSE, forKey: "defaultCSE")
+                userDefaults.removeObject(forKey: "urltop")
+                userDefaults.removeObject(forKey: "urlsuffix")
             }
         }
         
@@ -65,9 +65,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (currentRegion != "CN" && ["baidu", "sogou", "360search"].contains(searchengine))
            || (currentRegion != "RU" && ["yandex"].contains(searchengine)) {
             if currentRegion == "CN" {
-                userDefaults!.set("baidu", forKey: "searchengine")
+                userDefaults.set("baidu", forKey: "searchengine")
             } else {
-                userDefaults!.set("google", forKey: "searchengine")
+                userDefaults.set("google", forKey: "searchengine")
             }
         }
         
@@ -76,21 +76,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            || (currentRegion != "RU" && ["yandex"].contains(privsearchengine)) {
             if currentRegion == "CN" {
                 if searchengine == "duckduckgo" {
-                    userDefaults!.set("baidu", forKey: "privsearchengine")
+                    userDefaults.set("baidu", forKey: "privsearchengine")
                 } else {
-                    userDefaults!.set("duckduckgo", forKey: "privsearchengine")
+                    userDefaults.set("duckduckgo", forKey: "privsearchengine")
                 }
             } else {
                 if searchengine == "duckduckgo" {
-                    userDefaults!.set("google", forKey: "privsearchengine")
+                    userDefaults.set("google", forKey: "privsearchengine")
                 } else {
-                    userDefaults!.set("duckduckgo", forKey: "privsearchengine")
+                    userDefaults.set("duckduckgo", forKey: "privsearchengine")
                 }
             }
         }
 
         // Save last opened version
-        userDefaults!.set(currentVersion, forKey: "LastAppVer")
+        userDefaults.set(currentVersion, forKey: "LastAppVer")
         
         return true
     }
@@ -342,21 +342,21 @@ func resetCSE(target: String) {
         }
     }
     
-    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
+    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
     
     // Save Data
     if target == "default" || target == "all" {
         if currentRegion == "CN" {
-            userDefaults!.set(defaultCSECN, forKey: "defaultCSE")
+            userDefaults.set(defaultCSECN, forKey: "defaultCSE")
         } else {
-            userDefaults!.set(defaultCSE, forKey: "defaultCSE")
+            userDefaults.set(defaultCSE, forKey: "defaultCSE")
         }
     }
     if target == "private" || target == "all" {
-        userDefaults!.set(privateCSE, forKey: "privateCSE")
+        userDefaults.set(privateCSE, forKey: "privateCSE")
     }
     if target == "quick" || target == "all" {
-        userDefaults!.set(quickCSE, forKey: "quickCSE")
+        userDefaults.set(quickCSE, forKey: "quickCSE")
     }
 }
 

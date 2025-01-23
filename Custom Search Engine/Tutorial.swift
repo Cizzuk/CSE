@@ -63,7 +63,6 @@ struct FullTutorialView: View {
 struct SafariTutorialView: View {
     let currentRegion = Locale.current.regionCode
     @Binding var isOpenSheet: Bool
-    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var searchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "google"
     @AppStorage("alsousepriv", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
@@ -167,7 +166,6 @@ struct SafariTutorialView: View {
 struct SafariTutorialSecondView: View {
     let currentRegion = Locale.current.regionCode
     @Binding var isOpenSheet: Bool
-    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var searchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "google"
     @AppStorage("alsousepriv", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))

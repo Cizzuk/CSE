@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AdvSettingView: View {
     //Load advanced settings
-    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     @AppStorage("adv_disablechecker", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var disablechecker: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_disablechecker")
     @AppStorage("adv_resetCSEs", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
@@ -20,8 +19,8 @@ struct AdvSettingView: View {
         List {
             Section {
                 Button("Reset All Advanced Settings") {
-                    userDefaults!.set(false, forKey: "adv_disablechecker")
-                    userDefaults!.set("", forKey: "adv_resetCSEs")
+                    disablechecker = false
+                    resetCSEs = ""
                     allowReset = false
                 }
             }
@@ -40,7 +39,7 @@ struct AdvSettingView: View {
                 })
                 .onChange(of: allowReset) { _ in
                     if !allowReset {
-                        userDefaults!.set("", forKey: "adv_resetCSEs")
+                        resetCSEs = ""
                     }
                 }
                 Button(action: {
