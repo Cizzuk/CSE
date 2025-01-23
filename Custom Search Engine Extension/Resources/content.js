@@ -1,12 +1,11 @@
 browser.runtime.sendMessage({ url: window.location.href }, function(response) {
     // Output log
     if (response.type == "error") {
-        console.log("CSE: Aborted due to an error.")
-        return
+        console.log("CSE: Aborted due to an error.");
+        return;
     } else if (response.type == "cancel") {
-        return
+        return;
     }
-    console.log(response)
     
     // Screen curtain
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
