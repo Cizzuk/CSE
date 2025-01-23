@@ -1,10 +1,12 @@
 //"use strict";
 
-browser.runtime.sendMessage({ url: window.location.href },
-    function(response) {
-    
+browser.runtime.sendMessage({ url: window.location.href }, function(response) {
+    if (response == "error") {
+        console.log("CSE: error")
+        return
     }
-);
+    console.log(response)
+});
 
 function doCSE() {
   if (window.matchMedia("(prefers-color-scheme: dark)").matches) {

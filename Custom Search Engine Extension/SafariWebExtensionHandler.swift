@@ -16,16 +16,38 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         // Get Search URL from content.js
         let item = context.inputItems.first as! NSExtensionItem
         let message = item.userInfo?[SFExtensionMessageKey] as? [String: Any]
-        let searchURL = message?["url"] as? String
+        guard let searchURL = message?["url"] as? String else {
+            return
+        }
         
         var CSEData: Dictionary<String, Any>
         var cseType: String
         var cseID: String
         var cseURL: String
-        var postArray: [[String: String]]
+        var postArray: [[String: String]] = [[:]]
         
         //let quickCSEData = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.dictionary(forKey: "quickCSE") ?? [:]
-        //CSEData = quickCSEData[""] as? Dictionary<String, Any> ?? [:]
+        //CSEData = quickCSEData[cseID] as? Dictionary<String, Any> ?? [:]
+        
+        let searchengine = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? ""
+        let alsousepriv: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "alsousepriv")
+        let privsearchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "privsearchengine") ?? ""
+        
+        var searchQuery: String = ""
+        
+        if checkEngineURL(engineName: searchengine, url: searchURL) {
+            guard let query: String = getQueryValue(engineName: searchengine, url: searchURL) else {
+                sendError(context: context)
+                return
+            }
+            searchQuery = query
+        } else if privsearchengine != "" && !alsousepriv {
+            guard let query = getQueryValue(engineName: privsearchengine, url: searchURL) else {
+                sendError(context: context)
+                return
+            }
+            searchQuery = query
+        }
         
         struct dataSet: Encodable {
             let type: String
@@ -34,13 +56,25 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         }
         
         let sendData = dataSet(
-            type: "cse",
-            redirectTo: "",
+            type: "redirect",
+            redirectTo: searchQuery, //test
             postData: [[:]]
         )
         
         do {
             let data = try JSONEncoder().encode(sendData)
+            let json = String(data: data, encoding: .utf8)!
+            let extensionItem = NSExtensionItem()
+            extensionItem.userInfo = [ SFExtensionMessageKey: json ]
+            context.completeRequest(returningItems: [extensionItem], completionHandler: nil)
+        } catch {
+            print("error")
+        }
+    }
+    
+    func sendError(context: NSExtensionContext) {
+        do {
+            let data = try JSONEncoder().encode("error")
             let json = String(data: data, encoding: .utf8)!
             let extensionItem = NSExtensionItem()
             extensionItem.userInfo = [ SFExtensionMessageKey: json ]
@@ -194,6 +228,32 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         // OK
         return true
     }
-
+    
+    func getQueryValue(engineName: String, url: String) -> String? {
+        // Is engine available?
+        guard let engine = engines[engineName] else {
+            return nil
+        }
+        
+        guard let urlComponents = URLComponents(string: url),
+              let host = urlComponents.host,
+              engine.domains.contains(host) else {
+            return nil
+        }
+        
+        // Get param name
+        let mainParam = engine.param(host)
+        
+        // Get query
+        let queryItems = urlComponents.queryItems ?? []
+        let queryValue = queryItems.first(where: { $0.name == mainParam })?.value
+        // URL Encode
+        guard let queryEncoded = queryValue?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            return nil
+        }
+        
+        // Return query
+        return queryEncoded
+    }
 }
 
