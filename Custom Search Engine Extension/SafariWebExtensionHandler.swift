@@ -25,7 +25,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         let privsearchengine: String = userDefaults.string(forKey: "privsearchengine") ?? ""
         let usePrivateCSE: Bool = userDefaults.bool(forKey: "usePrivateCSE")
         
-        var redirectData: (url: String, post: [[String: String]])
+        var redirectData: (url: String, post: [[String: String]]) = ("", [])
         
         // Get Redirect URL
         if checkEngineURL(engineName: searchengine, url: searchURL) {
@@ -41,6 +41,12 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             }
             redirectData = makeSearchURL(windowName: "private", query: searchQuery)
         } else {
+            sendData(context: context, data: ["type" : "cancel"])
+            return
+        }
+        
+        // Check Redirect URL exists
+        if redirectData.url == "" {
             sendData(context: context, data: ["type" : "cancel"])
             return
         }
