@@ -264,7 +264,6 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         }
         
         // Load Settings
-        let quickCSEData = userDefaults.dictionary(forKey: "quickCSE") as? [String: [String: Any]] ?? [:]
         var CSEData: Dictionary<String, Any> = windowName == "private" ?
             userDefaults.dictionary(forKey: "privateCSE") ?? [:] :
             userDefaults.dictionary(forKey: "defaultCSE") ?? [:]
@@ -272,17 +271,21 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         var cseID: String
         var fixedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
 
+        
         // Check quick search
-        for key in quickCSEData.keys {
-            // If query has maybe quick search keyword
-            if query.hasPrefix(key) && (key.count + 1 < query.count) {
-                let queryNoKey = String(query.dropFirst(key.count))
-                // If query has space
-                if queryNoKey.hasPrefix("+") {
-                    cseID = key
-                    fixedQuery = String(queryNoKey.dropFirst(1))
-                    CSEData = quickCSEData[cseID] ?? CSEData
-                    break
+        if userDefaults.bool(forKey: "useQuickCSE") {
+            let quickCSEData = userDefaults.dictionary(forKey: "quickCSE") as? [String: [String: Any]] ?? [:]
+            for key in quickCSEData.keys {
+                // If query has maybe quick search keyword
+                if query.hasPrefix(key) && (key.count + 1 < query.count) {
+                    let queryNoKey = String(query.dropFirst(key.count))
+                    // If query has space
+                    if queryNoKey.hasPrefix("+") {
+                        cseID = key
+                        fixedQuery = String(queryNoKey.dropFirst(1))
+                        CSEData = quickCSEData[cseID] ?? CSEData
+                        break
+                    }
                 }
             }
         }
