@@ -215,7 +215,8 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         }
         
         // Param Check
-        if let checkFn = engine.check,
+        if !userDefaults.bool(forKey: "adv_disablechecker"),
+           let checkFn = engine.check,
            let checkInfo = checkFn(host) {
             let checkParamKey = checkInfo.param
             let possibleIds = checkInfo.ids
