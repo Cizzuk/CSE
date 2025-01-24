@@ -109,8 +109,8 @@ func resetCSE(target: String) {
     let preferredLanguages = Locale.preferredLanguages
     let wikiLangsList: [String] = ["ar", "de", "en", "es", "fa", "fr", "it", "arz", "nl", "ja", "pl", "pt", "ceb", "sv", "uk", "vi", "war", "zh", "ru"]
     var wikiLang: String = "en"
-    for wikiLangsList in preferredLanguages {
-        let languageCode = wikiLangsList.components(separatedBy: "-").first ?? wikiLangsList
+    for language in preferredLanguages {
+        let languageCode = language.components(separatedBy: "-").first ?? language
         if wikiLangsList.contains(languageCode) {
             wikiLang = languageCode
             break
