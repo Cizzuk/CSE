@@ -101,7 +101,7 @@ struct ContentView: View {
                 // Quick SE Settings
                 Section {
                     Toggle(isOn: $useQuickCSE, label: {
-                        Text("Enable Quick Search")
+                        Text("Quick Search")
                     })
                     if useQuickCSE {
                         NavigationLink {
