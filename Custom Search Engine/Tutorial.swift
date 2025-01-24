@@ -99,21 +99,6 @@ struct SafariTutorialView: View {
                             Text("DuckDuckGo").tag("duckduckgo")
                             Text("Ecosia").tag("ecosia")
                         }
-                        .onChange(of: searchengine) { _ in
-                            // When 'Also Use in Private Browsing' is enabled, it works the same as native
-                            // → Reset Private SE
-                            if alsousepriv == true {
-                                if searchengine == "duckduckgo" {
-                                    if currentRegion == "CN" {
-                                        privsearchengine = "baidu"
-                                    } else {
-                                        privsearchengine = "google"
-                                    }
-                                } else {
-                                    privsearchengine = "duckduckgo"
-                                }
-                            }
-                        }
                         
                         Toggle(isOn: $alsousepriv, label: {
                             Text("Also Use in Private Browsing")
