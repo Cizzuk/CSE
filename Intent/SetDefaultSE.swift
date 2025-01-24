@@ -12,7 +12,7 @@ import AppIntents
 struct SetDefaultSE: AppIntent, CustomIntentMigratedAppIntent {
     static let intentClassName = "SetDefaultSE"
     static var title: LocalizedStringResource = "Set Default Search Engine"
-    static var description: LocalizedStringResource = "Set a Custom Default Search Engine on CSE."
+    static var description: LocalizedStringResource = "Sets a Custom Default Search Engine on CSE."
 
     @Parameter(title: "Search Engine URL", default: "")
     var cseURL: String

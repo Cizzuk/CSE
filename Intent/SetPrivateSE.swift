@@ -12,7 +12,7 @@ import AppIntents
 struct SetPrivateSE: AppIntent, CustomIntentMigratedAppIntent {
     static let intentClassName = "SetPrivateSE"
     static var title: LocalizedStringResource = "Set Private Search Engine"
-    static var description: LocalizedStringResource = "Set a Custom Private Search Engine on CSE."
+    static var description: LocalizedStringResource = "Sets a Custom Private Search Engine on CSE."
 
     @Parameter(title: "Search Engine URL", default: "")
     var cseURL: String
