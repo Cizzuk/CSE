@@ -105,6 +105,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 func resetCSE(target: String) {
     let currentRegion = Locale.current.regionCode
     
+    // Wikipedia
+    let preferredLanguages = Locale.preferredLanguages
+    let wikiLangsList: [String] = ["ar", "de", "en", "es", "fa", "fr", "it", "arz", "nl", "ja", "pl", "pt", "ceb", "sv", "uk", "vi", "war", "zh", "ru"]
+    var wikiLang: String = "en"
+    for wikiLangsList in preferredLanguages {
+        let languageCode = wikiLangsList.components(separatedBy: "-").first ?? wikiLangsList
+        if wikiLangsList.contains(languageCode) {
+            wikiLang = languageCode
+            break
+        }
+    }
+    
     let defaultCSE: [String: Any] = [
         "url": "https://www.google.com/search?q=%s",
         "post": []
@@ -190,8 +202,8 @@ func resetCSE(target: String) {
             "post": []
         ],
         "wiki": [
-            "name": "Wikipedia (en)",
-            "url": "https://en.wikipedia.org/w/index.php?title=Special:Search&search=%s",
+            "name": "Wikipedia (" + wikiLang + ")",
+            "url": "https://" + wikiLang + ".wikipedia.org/w/index.php?title=Special:Search&search=%s",
             "post": []
         ],
         "archive": [
@@ -222,11 +234,6 @@ func resetCSE(target: String) {
             "name": "ニコニコ動画",
             "url": "https://www.nicovideo.jp/search/%s",
             "post": []
-        ],
-        "wiki": [
-            "name": "Wikipedia (ja)",
-            "url": "https://ja.wikipedia.org/w/index.php?title=Special:Search&search=%s",
-            "post": []
         ]
     ]
     
@@ -250,19 +257,6 @@ func resetCSE(target: String) {
             "name": "哔哩哔哩",
             "url": "https://search.bilibili.com/all?keyword=%s",
             "post": []
-        ],
-        "wiki": [
-            "name": "Wikipedia (zh)",
-            "url": "https://zh.wikipedia.org/w/index.php?title=Special:Search&search=%s",
-            "post": []
-        ]
-    ]
-    
-    let quickCSERU: [String: [String: Any]] = [
-        "wiki": [
-            "name": "Wikipedia (ru)",
-            "url": "https://ru.wikipedia.org/w/index.php?title=Special:Search&search=%s",
-            "post": []
         ]
     ]
     
@@ -271,19 +265,6 @@ func resetCSE(target: String) {
             "name": "Qwant",
             "url": "https://www.qwant.com/?q=%s",
             "post": []
-        ],
-        "wiki": [
-            "name": "Wikipedia (fr)",
-            "url": "https://fr.wikipedia.org/w/index.php?title=Special:Search&search=%s",
-            "post": []
-        ]
-    ]
-        
-    let quickCSEDE: [String: [String: Any]] = [
-        "wiki": [
-            "name": "Wikipedia (de)",
-            "url": "https://de.wikipedia.org/w/index.php?title=Special:Search&search=%s",
-            "post": []
         ]
     ]
             
@@ -291,11 +272,6 @@ func resetCSE(target: String) {
         "naver": [
             "name": "NAVER",
             "url": "https://search.naver.com/search.naver?query=%s",
-            "post": []
-        ],
-        "wiki": [
-            "name": "Wikipedia (ko)",
-            "url": "https://ko.wikipedia.org/w/index.php?title=Special:Search&search=%s",
             "post": []
         ]
     ]
@@ -309,16 +285,8 @@ func resetCSE(target: String) {
         for (key, value) in quickCSECN {
             quickCSE[key] = value
         }
-    } else if currentRegion == "RU" {
-       for (key, value) in quickCSERU {
-           quickCSE[key] = value
-       }
     } else if currentRegion == "FR" {
         for (key, value) in quickCSEFR {
-            quickCSE[key] = value
-        }
-    } else if currentRegion == "DE" {
-        for (key, value) in quickCSEDE {
             quickCSE[key] = value
         }
     } else if currentRegion == "KR" {
