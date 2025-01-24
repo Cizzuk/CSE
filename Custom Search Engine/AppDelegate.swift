@@ -44,6 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     userDefaults.set("google", forKey: "privsearchengine")
                 }
             } else {
+                if searchengine == nil {
+                    userDefaults.set("google", forKey: "searchengine")
+                }
                 userDefaults.set("duckduckgo", forKey: "privsearchengine")
             }
             resetCSE(target: "all")
