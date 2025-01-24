@@ -260,7 +260,20 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         if userDefaults.bool(forKey: "useEmojiSearch") &&
            query.unicodeScalars.first!.properties.isEmoji &&
            (query.unicodeScalars.first!.value >= 0x203C || query.unicodeScalars.count > 1) {
-            let redirectURL = "https://emojipedia.org/" + query
+            
+            // Check Language
+            let preferredLanguages = Locale.preferredLanguages
+            let emojipediaLangsList: [String] = ["bn", "da", "de", "en", "es", "fr", "hi", "it", "ja", "ko", "mr", "ms", "nl", "no", "pt", "sv", "ta", "te", "zh"]
+            var emojipediaLang: String = "en/"
+            for language in preferredLanguages {
+                let languageCode = language.components(separatedBy: "-").first ?? language
+                if emojipediaLangsList.contains(languageCode) {
+                    emojipediaLang = languageCode + "/"
+                    break
+                }
+            }
+            
+            let redirectURL = "https://emojipedia.org/" + emojipediaLang + query
             return ("redirect", redirectURL, [])
         }
         
