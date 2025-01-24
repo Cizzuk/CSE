@@ -27,6 +27,8 @@
 		BE5342E52C9E36FA00AE1DB3 /* AdvSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */; };
 		BE866B682D3F688900C506E5 /* EditSEView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE866B672D3F688900C506E5 /* EditSEView.swift */; };
 		BE866B6A2D3F9A1F00C506E5 /* QuickSEListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE866B692D3F9A1F00C506E5 /* QuickSEListView.swift */; };
+		BE866B702D431C5800C506E5 /* post_redirector.html in Resources */ = {isa = PBXBuildFile; fileRef = BE866B6F2D431C5800C506E5 /* post_redirector.html */; };
+		BE866B722D431FA400C506E5 /* post_redirector.js in Resources */ = {isa = PBXBuildFile; fileRef = BE866B712D431FA400C506E5 /* post_redirector.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,8 @@
 		BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvSettingView.swift; sourceTree = "<group>"; };
 		BE866B672D3F688900C506E5 /* EditSEView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSEView.swift; sourceTree = "<group>"; };
 		BE866B692D3F9A1F00C506E5 /* QuickSEListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSEListView.swift; sourceTree = "<group>"; };
+		BE866B6F2D431C5800C506E5 /* post_redirector.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = post_redirector.html; sourceTree = "<group>"; };
+		BE866B712D431FA400C506E5 /* post_redirector.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = post_redirector.js; sourceTree = "<group>"; };
 		BE8E1D2D2C16EB3000B31EA1 /* Customize Search EngineRelease visionOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Customize Search EngineRelease visionOS.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -172,6 +176,8 @@
 				90C9BE3B288BE17300E22FB8 /* manifest.json */,
 				90C9BE3D288BE17300E22FB8 /* background.js */,
 				90C9BE3F288BE17300E22FB8 /* content.js */,
+				BE866B712D431FA400C506E5 /* post_redirector.js */,
+				BE866B6F2D431C5800C506E5 /* post_redirector.html */,
 				90C9BE41288BE17300E22FB8 /* popup.html */,
 				90C9BE43288BE17300E22FB8 /* popup.css */,
 			);
@@ -284,7 +290,9 @@
 				90C9BE3C288BE17300E22FB8 /* manifest.json in Resources */,
 				90C9BE38288BE17300E22FB8 /* _locales in Resources */,
 				908FBC962BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */,
+				BE866B702D431C5800C506E5 /* post_redirector.html in Resources */,
 				90C9BE40288BE17300E22FB8 /* content.js in Resources */,
+				BE866B722D431FA400C506E5 /* post_redirector.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

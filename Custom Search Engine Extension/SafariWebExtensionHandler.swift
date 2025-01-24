@@ -15,8 +15,8 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     func beginRequest(with context: NSExtensionContext) {
         // Get Search URL from content.js
         let item = context.inputItems.first as! NSExtensionItem
-        let message = item.userInfo?[SFExtensionMessageKey] as? [String: Any]
-        guard let searchURL = message?["url"] as? String else {
+        let message = item.userInfo?[SFExtensionMessageKey] as? String
+        guard let searchURL = message else {
             return
         }
         
@@ -25,7 +25,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         let privsearchengine: String = userDefaults.string(forKey: "privsearchengine") ?? ""
         let usePrivateCSE: Bool = userDefaults.bool(forKey: "usePrivateCSE")
         
-        var redirectData: (url: String, post: [[String: String]]) = ("", [])
+        var redirectData: (type: String, url: String, post: [[String: String]]) = ("error", "", [])
         
         // Get Redirect URL
         if checkEngineURL(engineName: searchengine, url: searchURL) {
@@ -58,7 +58,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         }
         
         let sendData = dataSet(
-            type: "redirect",
+            type: redirectData.type,
             redirectTo: redirectData.url,
             postData: redirectData.post
         )
@@ -255,13 +255,13 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         return queryValue
     }
     
-    func makeSearchURL(windowName: String, query: String) -> (url: String, post: [[String: String]]) {
+    func makeSearchURL(windowName: String, query: String) -> (type: String, url: String, post: [[String: String]]) {
         // Check Emoji Search
         if userDefaults.bool(forKey: "useEmojiSearch") &&
            query.unicodeScalars.first!.properties.isEmoji &&
            (query.unicodeScalars.first!.value >= 0x203C || query.unicodeScalars.count > 1) {
             let redirectURL = "https://emojipedia.org/" + query
-            return (redirectURL, [])
+            return ("redirect", redirectURL, [])
         }
         
         // Load Settings
@@ -292,14 +292,15 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         }
         
         // Replace %s with query
-        let redirectURL: String = (CSEData["url"] as! String).replacingOccurrences(of: "%s", with: fixedQuery)
+        let redirectURL: String = (CSEData["url"] as? String)!.replacingOccurrences(of: "%s", with: fixedQuery)
         var postData = CSEData["post"] as! [[String: String]]
         for i in 0..<postData.count {
             postData[i]["key"] = postData[i]["key"]?.replacingOccurrences(of: "%s", with: fixedQuery)
             postData[i]["value"] = postData[i]["value"]?.replacingOccurrences(of: "%s", with: fixedQuery)
         }
+        let redirectType: String = postData == [] ? "redirect" : "haspost"
         
-        return (redirectURL, postData)
+        return (redirectType, redirectURL, postData)
     }
 }
 
