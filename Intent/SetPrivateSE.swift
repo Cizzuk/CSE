@@ -12,20 +12,20 @@ import AppIntents
 struct SetPrivateSE: AppIntent, CustomIntentMigratedAppIntent {
     static let intentClassName = "SetPrivateSE"
     static var title: LocalizedStringResource = "Set Private Search Engine"
-    static var description = IntentDescription("Set a Custom Private Search Engine on CSE.")
+    static var description: LocalizedStringResource = "Set a Custom Private Search Engine on CSE."
 
     @Parameter(title: "Search Engine URL", default: "")
-    var searchEngine: String
+    var cseURL: String
 
     static var parameterSummary: some ParameterSummary {
-        Summary("Set Private Search Engine to \(\.$searchEngine)")
+        Summary("Set Private Search Engine to \(\.$cseURL)")
     }
 
     func perform() async throws -> some IntentResult {
         let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
         var CSEData: Dictionary<String, Any> = userDefaults.dictionary(forKey: "privateCSE") ?? [:]
         
-        CSEData["url"] = searchEngine
+        CSEData["url"] = cseURL
         userDefaults.set(CSEData, forKey: "privateCSE")
         
         return .result()

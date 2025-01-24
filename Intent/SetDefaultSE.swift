@@ -12,20 +12,20 @@ import AppIntents
 struct SetDefaultSE: AppIntent, CustomIntentMigratedAppIntent {
     static let intentClassName = "SetDefaultSE"
     static var title: LocalizedStringResource = "Set Default Search Engine"
-    static var description = IntentDescription("Set a Custom Default Search Engine on CSE.")
+    static var description: LocalizedStringResource = "Set a Custom Default Search Engine on CSE."
 
     @Parameter(title: "Search Engine URL", default: "")
-    var searchEngine: String
+    var cseURL: String
 
     static var parameterSummary: some ParameterSummary {
-        Summary("Set Default Search Engine to \(\.$searchEngine)")
+        Summary("Set Default Search Engine to \(\.$cseURL)")
     }
 
     func perform() async throws -> some IntentResult {
         let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
         var CSEData: Dictionary<String, Any> = userDefaults.dictionary(forKey: "defaultCSE") ?? [:]
         
-        CSEData["url"] = searchEngine
+        CSEData["url"] = cseURL
         userDefaults.set(CSEData, forKey: "defaultCSE")
         
         return .result()
