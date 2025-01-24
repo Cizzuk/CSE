@@ -5,20 +5,16 @@ browser.runtime.sendMessage({ type: "post_redirector" }, function(response) {
     }
     
     // Create <form>
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = response.redirectTo;
+    var formDOM = '<form id="cseForm" method="post" action="' + response.redirectTo + '">';
     
     // Add POST Data
     response.postData.forEach(item => {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = item.key;
-        input.value = item.value;
-        form.appendChild(input);
+        formDOM += '<input type="hidden" name="' + item.key + '" value="' + item.value + '"></input>';
     })
     
+    formDOM += '</form>';
+    
     // Submit form
-    document.body.appendChild(form);
-    form.submit();
+    document.getElementsByTagName("body")[0].innerHTML = formDOM;
+    cseForm.submit();
 });
