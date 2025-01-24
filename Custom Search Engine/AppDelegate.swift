@@ -35,6 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Update/Create database for v3.0 or later
         if lastVersion == "" || isUpdated(updateVer: "3.0", lastVer: lastVersion) {
+            #if macOS
+            userDefaults.set(true, forKey: "ignorePOSTFallback")
+            #endif
             userDefaults.set(true, forKey: "needFirstTutorial")
             userDefaults.set(true, forKey: "alsousepriv")
             if searchengine == "duckduckgo" {

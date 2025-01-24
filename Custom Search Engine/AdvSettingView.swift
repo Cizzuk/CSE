@@ -11,6 +11,8 @@ struct AdvSettingView: View {
     //Load advanced settings
     @AppStorage("adv_disablechecker", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var disablechecker: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_disablechecker")
+    @AppStorage("adv_ignorePOSTFallback", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var ignorePOSTFallback: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_ignorePOSTFallback")
     @AppStorage("adv_resetCSEs", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var resetCSEs: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "adv_resetCSEs") ?? ""
     @State private var allowReset: Bool = false
@@ -20,6 +22,11 @@ struct AdvSettingView: View {
             Section {
                 Button("Reset All Advanced Settings") {
                     disablechecker = false
+                    #if macOS
+                    ignorePOSTFallback = true
+                    #else
+                    ignorePOSTFallback = false
+                    #endif
                     resetCSEs = ""
                     allowReset = false
                 }
@@ -31,6 +38,14 @@ struct AdvSettingView: View {
                 })
             } footer: {
                 Text("CSE will not check that you have searched from the search bar.")
+            }
+            
+            Section {
+                Toggle(isOn: $ignorePOSTFallback, label: {
+                    Text("Ignore POST Fallback")
+                })
+            } footer: {
+                Text("When using custom search engines with POST, to bypass CSP restrictions, the process redirects to a page created by CSE and then redirects again to your custom search engine. However, this mechanism does not work correctly in some environments (as far as I have researched, macOS). Enabling this setting will redirect directly to your custom search engine without bypassing CSP restrictions. However, for some Safari search engines with strict CSP settings (as far as I have researched, DuckDuckGo), it will not be possible to use a search engine with POST.")
             }
             
             Section {

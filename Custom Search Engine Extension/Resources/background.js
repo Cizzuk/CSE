@@ -7,7 +7,7 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
             const cseData = JSON.parse(response);
             
             // type handler
-            if (cseData.type == "redirect") {
+            if (cseData.type == "redirect" || cseData.adv_ignorePOSTFallback) {
                 console.log("Run redirect.");
                 sendResponse(cseData);
                 return;
@@ -17,6 +17,7 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
                 const postRedirectorURL = location.protocol + "//" + location.host + "/post_redirector.html";
                 console.log("Open POST Redirector.");
                 sendResponse({type: "redirect", redirectTo: postRedirectorURL});
+                return;
                 
             } else if (cseData.type == "error") {
                 console.log("Aborted due to an error.");

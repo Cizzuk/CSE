@@ -97,9 +97,14 @@ struct EditSEView: View {
                         }
                     }
                 } header: {
-                    Text("POST Data")
+                    Text("POST Data (Option)")
                 } footer: {
-                    Text("Replace query with %s")
+                    VStack(alignment: .leading) {
+                        Text("Replace query with %s")
+                        if userDefaults.bool(forKey: "adv_ignorePOSTFallback") {
+                            Text("May not work with some Safari search engines.")
+                        }
+                    }
                 }
             }
             // Error alerts

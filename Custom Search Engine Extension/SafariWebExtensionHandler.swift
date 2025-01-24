@@ -55,12 +55,14 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             let type: String
             let redirectTo: String
             let postData: [[String: String]]
+            let adv_ignorePOSTFallback: Bool
         }
         
         let sendData = dataSet(
             type: redirectData.type,
             redirectTo: redirectData.url,
-            postData: redirectData.post
+            postData: redirectData.post,
+            adv_ignorePOSTFallback: userDefaults.bool(forKey: "adv_ignorePOSTFallback")
         )
         
         do {
