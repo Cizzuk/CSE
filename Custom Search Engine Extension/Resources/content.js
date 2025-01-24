@@ -1,5 +1,4 @@
 browser.runtime.sendMessage({ type: "content" }, function(response) {
-    console.log(response);
     if (response == "kill") {
         return;
     }
