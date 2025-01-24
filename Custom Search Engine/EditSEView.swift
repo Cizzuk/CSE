@@ -139,7 +139,9 @@ struct EditSEView: View {
         }
         
         // POST Data
-        let postArray: [[String: String]] = postEntries.map { ["key": $0.key, "value": $0.value] }
+        let postArray: [[String: String]] = postEntries
+            .map { ["key": $0.key, "value": $0.value] }
+            .filter { !$0["key"]!.isEmpty }
         
         // Create temporary data
         var CSEData: [String: Any] = [
