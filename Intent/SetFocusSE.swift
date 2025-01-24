@@ -12,34 +12,31 @@ struct SetFocusSE : SetFocusFilterIntent {
     static var title: LocalizedStringResource = "Set Search Engine"
     static var description: LocalizedStringResource = "Sets a Custom Search Engine to be used during this Focus."
     
-    typealias IntentPerformResultType = IntentResult
-    
-    @Parameter(title: "URL", description: "Replace query with %s")
+    @Parameter(title: "URL", description: "Replace query with %s", default: nil)
     var cseURL: String?
     
-    @Parameter(title: "Enable Quick Search", default: false)
+    @Parameter(title: "Enable Quick Search", default: nil)
     var useQuickCSE: Bool?
     
-    @Parameter(title: "Enable Emoji Search", default: false)
-    var useEmojiCSE: Bool?
+    @Parameter(title: "Enable Emoji Search", default: nil)
+    var useEmojiSearch: Bool?
     
     var displayRepresentation: DisplayRepresentation {
         var subtitleList: [String] = []
         var subtitle: LocalizedStringResource
         
-        if let cseURL = self.cseURL {
-            subtitleList.append(cseURL)
-            subtitle = LocalizedStringResource("\(subtitleList.formatted())")
-        } else {
+        if self.cseURL == "" || self.cseURL == nil {
             subtitle = LocalizedStringResource("Disable CSE")
+        } else {
+            subtitleList.append(self.cseURL!)
+            subtitle = LocalizedStringResource("\(subtitleList.formatted())")
         }
         
         return DisplayRepresentation(title: SetFocusSE.title, subtitle: subtitle)
     }
     
     
-    func perform() async throws -> some IntentPerformResultType {
-        
+    func perform() async throws -> some IntentResult {
 
         return .result()
     }
