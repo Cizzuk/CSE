@@ -86,6 +86,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		BE07A84E2D4405AB00469317 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				SetFocusSE.swift,
+			);
+			target = 90C9BE2E288BE17300E22FB8 /* Customize Search Engine Extension */;
+		};
 		BE289FE22C8DAE07005BBDC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -98,7 +105,7 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		BE289FCD2C8DA7C8005BBDC6 /* Intent */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (BE289FE22C8DAE07005BBDC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Intent; sourceTree = "<group>"; };
+		BE289FCD2C8DA7C8005BBDC6 /* Intent */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (BE289FE22C8DAE07005BBDC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, BE07A84E2D4405AB00469317 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Intent; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */

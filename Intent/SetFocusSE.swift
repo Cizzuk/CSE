@@ -40,6 +40,4 @@ struct SetFocusSE : SetFocusFilterIntent {
 
         return .result()
     }
-    
-    
 }
