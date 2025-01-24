@@ -133,7 +133,7 @@ func resetCSE(target: String) {
             "post": []
         ],
         "y": [
-            "name": "Yahoo (Global)",
+            "name": "Yahoo",
             "url": "https://search.yahoo.com/search?p=%s",
             "post": []
         ],
@@ -236,16 +236,6 @@ func resetCSE(target: String) {
             "url": "https://www.baidu.com/s?wd=%s",
             "post": []
         ],
-        "sogou": [
-            "name": "搜狗",
-            "url": "https://www.sogou.com/web?query=%s",
-            "post": []
-        ],
-        "s360": [
-            "name": "360搜索",
-            "url": "https://www.so.com/s?q=%s",
-            "post": []
-        ],
         "weibo": [
             "name": "微博",
             "url": "https://s.weibo.com/weibo?q=%s",
@@ -269,11 +259,6 @@ func resetCSE(target: String) {
     ]
     
     let quickCSERU: [String: [String: Any]] = [
-        "yandex": [
-            "name": "Yandex",
-            "url": "https://yandex.ru/search?text=%s",
-            "post": []
-        ],
         "wiki": [
             "name": "Wikipedia (ru)",
             "url": "https://ru.wikipedia.org/w/index.php?title=Special:Search&search=%s",
