@@ -1,8 +1,5 @@
 browser.runtime.sendMessage({ type: "post_redirector" }, function(response) {
-    if (response == "kill") {
-        document.getElementsByTagName("body")[0].innerHTML = '<h1>CSE</h1><p>An error occurred during redirect.</p><p>Please check your settings.</p><a href="net.cizzuk.cse://" target="_blank" rel="noopener noreferrer">Open CSE Settings</a>';
-        return;
-    } else if (response.length === 0) {
+    if (response.length === 0) {
         window.history.go(-3);
         return;
     }
