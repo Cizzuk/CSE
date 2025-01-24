@@ -14,7 +14,7 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
                 
             } else if (cseData.type == "haspost") {
                 holdData = cseData;
-                let postRedirectorURL = location.protocol + "//" + location.host + "/post_redirector.html";
+                const postRedirectorURL = location.protocol + "//" + location.host + "/post_redirector.html";
                 sendResponse({type: "redirect", redirectTo: postRedirectorURL});
                 
             } else if (cseData.type == "error") {
