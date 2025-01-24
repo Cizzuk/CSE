@@ -89,8 +89,8 @@
 		BE289FE22C8DAE07005BBDC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				DefaultSearchEngine.swift,
-				PrivateSearchEngine.swift,
+				SetDefaultSE.swift,
+				SetPrivateSE.swift,
 			);
 			target = 90C9BE11288BE17000E22FB8 /* Customize Search Engine */;
 		};
