@@ -15,10 +15,10 @@ struct SetFocusSE : SetFocusFilterIntent {
     @Parameter(title: "URL", description: "Replace query with %s", default: nil)
     var cseURL: String?
     
-    @Parameter(title: "Enable Quick Search", default: nil)
+    @Parameter(title: "Quick Search", default: nil)
     var useQuickCSE: Bool?
     
-    @Parameter(title: "Enable Emoji Search", default: nil)
+    @Parameter(title: "Emoji Search", default: nil)
     var useEmojiSearch: Bool?
     
     var displayRepresentation: DisplayRepresentation {
