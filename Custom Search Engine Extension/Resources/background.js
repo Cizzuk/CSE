@@ -15,6 +15,7 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
             } else if (cseData.type == "haspost") {
                 holdData = cseData;
                 const postRedirectorURL = location.protocol + "//" + location.host + "/post_redirector.html";
+                console.log("Open POST Redirector.");
                 sendResponse({type: "redirect", redirectTo: postRedirectorURL});
                 
             } else if (cseData.type == "error") {
@@ -31,6 +32,7 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
         
     // If this request is from post_redirector
     } else if (request.type == "post_redirector") {
+        console.log("Run redirect (with POST).");
         sendResponse(holdData);
         holdData = []
     }
