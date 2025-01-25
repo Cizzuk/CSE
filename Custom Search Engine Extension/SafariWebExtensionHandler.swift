@@ -11,6 +11,7 @@ import os.log
 class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
 
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
+    var focusSettings: (cseURL: String?, useQuickCSE: Bool?, useEmojiSearch: Bool?)? = nil
     
     func beginRequest(with context: NSExtensionContext) {
         // Get Search URL from content.js
@@ -27,30 +28,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         
         var redirectData: (type: String, url: String, post: [[String: String]]) = ("error", "", [])
         
-        // Get Redirect URL
-        if checkEngineURL(engineName: searchengine, url: searchURL) {
-            guard let searchQuery: String = getQueryValue(engineName: searchengine, url: searchURL) else {
-                sendData(context: context, data: ["type" : "error"])
-                return
-            }
-            redirectData = makeSearchURL(windowName: "default", query: searchQuery)
-        } else if usePrivateCSE && !alsousepriv && checkEngineURL(engineName: privsearchengine, url: searchURL) {
-            guard let searchQuery: String = getQueryValue(engineName: privsearchengine, url: searchURL) else {
-                sendData(context: context, data: ["type" : "error"])
-                return
-            }
-            redirectData = makeSearchURL(windowName: "private", query: searchQuery)
-        } else {
-            sendData(context: context, data: ["type" : "cancel"])
-            return
-        }
-        
-        // Check Redirect URL exists
-        if redirectData.url == "" {
-            sendData(context: context, data: ["type" : "cancel"])
-            return
-        }
-        
+        // CSE data set
         struct dataSet: Encodable {
             let type: String
             let redirectTo: String
@@ -58,21 +36,44 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             let adv_ignorePOSTFallback: Bool
         }
         
-        let sendData = dataSet(
-            type: redirectData.type,
-            redirectTo: redirectData.url,
-            postData: redirectData.post,
-            adv_ignorePOSTFallback: userDefaults.bool(forKey: "adv_ignorePOSTFallback")
-        )
-        
-        do {
-            let data = try JSONEncoder().encode(sendData)
-            let json = String(data: data, encoding: .utf8)!
-            let extensionItem = NSExtensionItem()
-            extensionItem.userInfo = [ SFExtensionMessageKey: json ]
-            context.completeRequest(returningItems: [extensionItem], completionHandler: nil)
-        } catch {
-            print("error")
+        Task {
+            // Check current focus filter
+            try await getFocusFilter()
+            
+            // Get Redirect URL
+            if checkEngineURL(engineName: searchengine, url: searchURL) {
+                guard let searchQuery: String = getQueryValue(engineName: searchengine, url: searchURL) else {
+                    sendData(context: context, data: ["type" : "error"])
+                    return
+                }
+                redirectData = makeSearchURL(windowName: "default", query: searchQuery)
+            } else if usePrivateCSE && !alsousepriv && checkEngineURL(engineName: privsearchengine, url: searchURL) {
+                guard let searchQuery: String = getQueryValue(engineName: privsearchengine, url: searchURL) else {
+                    sendData(context: context, data: ["type" : "error"])
+                    return
+                }
+                redirectData = makeSearchURL(windowName: "private", query: searchQuery)
+            } else {
+                sendData(context: context, data: ["type" : "cancel"])
+                return
+            }
+            
+            // Check Redirect URL exists
+            if redirectData.url == "" {
+                sendData(context: context, data: ["type" : "cancel"])
+                return
+            }
+            
+            // Create CSE Data
+            let Data = dataSet(
+                type: redirectData.type,
+                redirectTo: redirectData.url,
+                postData: redirectData.post,
+                adv_ignorePOSTFallback: userDefaults.bool(forKey: "adv_ignorePOSTFallback")
+            )
+            
+            // Send to background.js!
+            sendData(context: context, data: Data)
         }
     }
     
@@ -258,8 +259,18 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     }
     
     func makeSearchURL(windowName: String, query: String) -> (type: String, url: String, post: [[String: String]]) {
+        // Is useEmojiSearch Enabled?
+        var useEmojiSearch: Bool = userDefaults.bool(forKey: "useEmojiSearch")
+        if focusSettings != nil {
+            if focusSettings?.useEmojiSearch == true {
+                useEmojiSearch = true
+            } else {
+                useEmojiSearch = false
+            }
+        }
+        
         // Check Emoji Search
-        if userDefaults.bool(forKey: "useEmojiSearch") &&
+        if useEmojiSearch &&
            query.unicodeScalars.first!.properties.isEmoji &&
            (query.unicodeScalars.first!.value >= 0x203C || query.unicodeScalars.count > 1) {
             
@@ -280,16 +291,33 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         }
         
         // Load Settings
+        var fixedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        
         var CSEData: Dictionary<String, Any> = windowName == "private" ?
             userDefaults.dictionary(forKey: "privateCSE") ?? [:] :
             userDefaults.dictionary(forKey: "defaultCSE") ?? [:]
         
-        var cseID: String
-        var fixedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-
+        // Set focus filter setting
+        if focusSettings != nil {
+            CSEData = [
+                "url": focusSettings?.cseURL ?? "",
+                "post": []
+            ]
+        }
+        
+        // Is useQuickCSE Enabled?
+        var useQuickCSE: Bool = userDefaults.bool(forKey: "useQuickCSE")
+        if focusSettings != nil {
+            if focusSettings?.useQuickCSE == true {
+                useQuickCSE = true
+            } else {
+                useQuickCSE = false
+            }
+        }
         
         // Check quick search
-        if userDefaults.bool(forKey: "useQuickCSE") {
+        if useQuickCSE {
+            var cseID: String
             let quickCSEData = userDefaults.dictionary(forKey: "quickCSE") as? [String: [String: Any]] ?? [:]
             for key in quickCSEData.keys {
                 // If query has maybe quick search keyword
@@ -308,7 +336,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         
         // Replace %s with query
         let redirectURL: String = (CSEData["url"] as? String)!.replacingOccurrences(of: "%s", with: fixedQuery)
-        var postData = CSEData["post"] as! [[String: String]]
+        var postData: [[String: String]] = CSEData["post"] as? [[String : String]] ?? [[:]]
         for i in 0..<postData.count {
             postData[i]["key"] = postData[i]["key"]?.replacingOccurrences(of: "%s", with: fixedQuery)
             postData[i]["value"] = postData[i]["value"]?.replacingOccurrences(of: "%s", with: fixedQuery)
@@ -316,6 +344,19 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         let redirectType: String = postData == [] ? "redirect" : "haspost"
         
         return (redirectType, redirectURL, postData)
+    }
+    
+    // Check current focus filter
+    func getFocusFilter() async throws {
+        focusSettings = nil
+        if #available(iOS 16.0, macOS 13.0, watchOS 9.0, tvOS 16.0, *) {
+            do {
+                let filter: SetFocusSE = try await SetFocusSE.current
+                if filter.useQuickCSE != nil && filter.useEmojiSearch != nil {
+                    focusSettings = (filter.cseURL, filter.useQuickCSE, filter.useEmojiSearch)
+                }
+            }
+        }
     }
 }
 
