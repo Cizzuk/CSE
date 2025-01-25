@@ -44,7 +44,7 @@ struct FullTutorialView: View {
                 NavigationLink {
                     SafariTutorialView(isOpenSheet: $isOpenSheet)
                 } label: {
-                    NextButton(text: "Next")
+                    NextButton(text: NSLocalizedString("Next", comment: ""))
                 }
                 .padding(.horizontal, 24)
                 Button(action: {
@@ -138,7 +138,7 @@ struct SafariTutorialView: View {
                 NavigationLink {
                     SafariTutorialSecondView(isOpenSheet: self.$isOpenSheet)
                 } label: {
-                    NextButton(text: "Next")
+                    NextButton(text: NSLocalizedString("Next", comment: ""))
                 }
                 .padding([.horizontal, .bottom], 24)
             }
@@ -220,7 +220,7 @@ struct SafariTutorialSecondView: View {
                 Button(action: {
                     isOpenSheet = false
                 }) {
-                    NextButton(text: "Done")
+                    NextButton(text: NSLocalizedString("Done", comment: ""))
                 }
                 .padding([.horizontal, .bottom], 24)
             }

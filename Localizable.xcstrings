@@ -194,7 +194,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CSEの設定"
+            "value" : "CSE設定"
           }
         }
       }
@@ -255,6 +255,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "デフォルトの検索エンジンを無効化"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完了"
           }
         }
       }
@@ -503,6 +513,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "名前"
+          }
+        }
+      }
+    },
+    "Next" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次へ"
           }
         }
       }
