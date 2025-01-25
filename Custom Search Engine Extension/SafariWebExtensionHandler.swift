@@ -271,6 +271,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         
         // Check Emoji Search
         if useEmojiSearch &&
+           query.count == 1 &&
            query.unicodeScalars.first!.properties.isEmoji &&
            (query.unicodeScalars.first!.value >= 0x203C || query.unicodeScalars.count > 1) {
             
