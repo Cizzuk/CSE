@@ -1043,7 +1043,14 @@
       "shouldTranslate" : false
     },
     "Version: %@" : {
-      "shouldTranslate" : false
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バージョン: %@"
+          }
+        }
+      }
     },
     "Welcome to CSE" : {
       "localizations" : {
