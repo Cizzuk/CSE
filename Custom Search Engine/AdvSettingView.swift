@@ -11,6 +11,8 @@ struct AdvSettingView: View {
     //Load advanced settings
     @AppStorage("adv_disablechecker", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var disablechecker: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_disablechecker")
+    @AppStorage("adv_ignoreFocusFilter", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var ignoreFocusFilter: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_ignoreFocusFilter")
     @AppStorage("adv_ignorePOSTFallback", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var ignorePOSTFallback: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_ignorePOSTFallback")
     @AppStorage("adv_resetCSEs", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
@@ -22,6 +24,7 @@ struct AdvSettingView: View {
             Section {
                 Button("Reset All Advanced Settings") {
                     disablechecker = false
+                    ignoreFocusFilter = false
                     #if macOS
                     ignorePOSTFallback = true
                     #else
@@ -38,6 +41,14 @@ struct AdvSettingView: View {
                 })
             } footer: {
                 Text("CSE will not check that you have searched from the search bar.")
+            }
+            
+            Section {
+                Toggle(isOn: $ignoreFocusFilter, label: {
+                    Text("Ignore Focus Filter")
+                })
+            } footer: {
+                Text("CSE will ignore all Focus Filters")
             }
             
             Section {

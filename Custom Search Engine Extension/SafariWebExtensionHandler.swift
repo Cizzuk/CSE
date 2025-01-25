@@ -349,6 +349,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     // Check current focus filter
     func getFocusFilter() async throws {
         focusSettings = nil
+        if userDefaults.bool(forKey: "adv_ignoreFocusFilter") { return }
         if #available(iOS 16.0, macOS 13.0, watchOS 9.0, tvOS 16.0, *) {
             do {
                 let filter: SetFocusSE = try await SetFocusSE.current
