@@ -17,6 +17,12 @@
             "state" : "translated",
             "value" : "絵文字検索を${toggle}"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} 表情符号搜索"
+          }
         }
       }
     },
@@ -26,6 +32,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "絵文字検索を${state}に${toggle}"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${state} 表情符号搜索"
           }
         }
       }
@@ -37,6 +49,12 @@
             "state" : "translated",
             "value" : "クイック検索を${toggle}"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} 快速搜索"
+          }
         }
       }
     },
@@ -46,6 +64,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "クイック検索を${state}に${toggle}"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${state} 快速搜索"
           }
         }
       }
@@ -57,6 +81,12 @@
             "state" : "translated",
             "value" : "360 Search"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "360搜索"
+          }
         }
       }
     },
@@ -66,6 +96,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "検索エンジンを追加"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加新搜索引擎"
           }
         }
       }
@@ -77,6 +113,12 @@
             "state" : "translated",
             "value" : "POSTデータを追加"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加 POST 数据"
+          }
         }
       }
     },
@@ -86,6 +128,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "高度な設定"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "高级设置"
           }
         }
       }
@@ -97,6 +145,12 @@
             "state" : "translated",
             "value" : "プライベートブラウズでも使用"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "同时用于无痕浏览"
+          }
         }
       }
     },
@@ -106,6 +160,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "データをロードまたはアップデート中にエラーが発生しました"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "加载或更新数据时发生错误"
           }
         }
       }
@@ -117,6 +177,12 @@
             "state" : "translated",
             "value" : "利用可能なアイコン"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可用图标"
+          }
         }
       }
     },
@@ -127,6 +193,12 @@
             "state" : "translated",
             "value" : "利用可能なアイコンは今後変更される可能性があります。"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可用图标今后可能会更改。"
+          }
         }
       }
     },
@@ -136,6 +208,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "バイドゥ"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "百度"
           }
         }
       }
@@ -150,6 +228,12 @@
             "state" : "translated",
             "value" : "CSEを使い始める前に、いくつかの設定が必要です。"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在开始使用 CSE 之前，您需要进行一些设置。"
+          }
         }
       }
     },
@@ -159,6 +243,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bing"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "必应"
           }
         }
       }
@@ -173,6 +263,12 @@
             "state" : "translated",
             "value" : "アイコンを変更"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更改应用程序图标"
+          }
         }
       }
     },
@@ -182,6 +278,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "問い合わせ"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "询问"
           }
         }
       }
@@ -195,6 +297,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSE設定"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE 设置"
           }
         }
       }
@@ -226,6 +334,12 @@
             "state" : "translated",
             "value" : "デフォルトの検索エンジン"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "默认搜索引擎"
+          }
         }
       }
     },
@@ -246,6 +360,12 @@
             "state" : "translated",
             "value" : "CSEを無効化"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停用 CSE"
+          }
         }
       }
     },
@@ -255,6 +375,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "デフォルトの検索エンジンを無効化"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停用默认搜索引擎"
           }
         }
       }
@@ -266,12 +392,24 @@
             "state" : "translated",
             "value" : "完了"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完成"
+          }
         }
       }
     },
     "DuckDuckGo" : {
       "localizations" : {
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuckDuckGo"
+          }
+        },
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "DuckDuckGo"
@@ -289,6 +427,12 @@
             "state" : "translated",
             "value" : "Ecosia"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ecosia"
+          }
         }
       }
     },
@@ -302,6 +446,12 @@
             "state" : "translated",
             "value" : "検索エンジンを編集"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "编辑搜索引擎"
+          }
         }
       }
     },
@@ -311,6 +461,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "絵文字検索"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表情符号搜索"
           }
         }
       }
@@ -332,6 +488,12 @@
             "state" : "translated",
             "value" : "キーワードを先頭に入力して、検索エンジンを切り替えます。"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在顶部输入关键词，切换搜索引擎。"
+          }
         }
       }
     },
@@ -342,6 +504,12 @@
             "state" : "translated",
             "value" : "このキーワードを先頭に入力すると、この検索エンジンで検索します。"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在顶部输入该关键词，即可使用该搜索引擎进行搜索。"
+          }
         }
       }
     },
@@ -351,6 +519,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "例: 「%@ 検索 方法」"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "例: \"%@ 検索 方法\""
           }
         }
       }
@@ -372,15 +546,27 @@
             "state" : "translated",
             "value" : "GitHub"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
         }
       }
     },
-    "Go to Settings → Apps → Safari → Extensions → Customize Search Engine and allow extension. Then 'Allow' the following webpage" : {
+    "Go to Settings → Apps → Safari → Extensions → Customize Search Engine and allow extension. Then 'Allow' the following webpage." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "設定 → アプリ → Safari →　拡張機能 → Customize Search Engine から拡張機能を許可してください。それから以下のWebページへのアクセスを「許可」してください。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "进入设置 → App → Safari 浏览器 → 扩展 → Customize Search Engine 并允许扩展。然后 “允许 ”以下网页。"
           }
         }
       }
@@ -391,6 +577,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Google"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "谷歌"
           }
         }
       }
@@ -408,6 +600,12 @@
             "state" : "translated",
             "value" : "Safariの設定を変更したり、CSEがうまく動作しない場合は、このチュートリアルをやり直す必要があるかもしれません。"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果您更改了 Safari 浏览器的设置或 CSE 无法正常工作，您可能需要重做本教程。"
+          }
         }
       }
     },
@@ -418,6 +616,12 @@
             "state" : "translated",
             "value" : "絵文字を一文字だけ入力すると、Emojipedia.orgで検索します。"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果只输入一个表情符号，可以在 Emojipedia.org 上搜索。"
+          }
         }
       }
     },
@@ -427,6 +631,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Safariのプライベートブラウズの設定で別の検索エンジンを選択すると、プライベートブラウズ用に異なるカスタム検索エンジンを設定できるようになります。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果在 Safari 浏览器设置中的无痕浏览中设置了另一个搜索引擎，则可以在无痕浏览中使用另一个自定义搜索引擎。"
           }
         }
       }
@@ -461,6 +671,12 @@
             "state" : "translated",
             "value" : "キーワード"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关键字"
+          }
         }
       }
     },
@@ -471,6 +687,12 @@
             "state" : "translated",
             "value" : "キーワードは空白にできません"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关键字不能为空"
+          }
         }
       }
     },
@@ -480,6 +702,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ライセンス"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "许可证"
           }
         }
       }
@@ -501,6 +729,12 @@
             "state" : "translated",
             "value" : "より多くの人がCSEを無料で使い続けられるようになります。"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "让更多人继续免费使用 CSE"
+          }
         }
       }
     },
@@ -514,6 +748,12 @@
             "state" : "translated",
             "value" : "名前"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "名称"
+          }
         }
       }
     },
@@ -523,6 +763,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "次へ"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下一页"
           }
         }
       }
@@ -534,15 +780,27 @@
             "state" : "translated",
             "value" : "Safariを開いて、Safari → 設定… と選択して「検索」タブを選ぶと、これらの設定を確認できます。"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打开 Safari 浏览器，进入 Safari 浏览器 → 设置...，选择 “搜索 ”选项卡，找到这些设置。"
+          }
         }
       }
     },
-    "Open Safari, go to Safari → Settings..., select 'Extensions' tab and enable CSE. Then 'Allow' the following webpage from 'Edit Websites...' button" : {
+    "Open Safari, go to Safari → Settings..., select 'Extensions' tab and enable CSE. Then 'Allow' the following webpage from 'Edit Websites...' button." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Safariを開いて、Safari → 設定… と選択して「拡張機能」タブからCSEを有効にします。それから以下のWebページを「Webサイトを編集」ボタンから「許可」してください。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打开 Safari 浏览器，进入 Safari 浏览器 → 设置...，选择 “扩展 ”选项卡并启用 CSE。然后从 “编辑网站... ”按钮中 “允许 ”以下网页。"
           }
         }
       }
@@ -550,6 +808,12 @@
     "Operation" : {
       "localizations" : {
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "操作"
+          }
+        },
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "操作"
@@ -564,6 +828,12 @@
             "state" : "translated",
             "value" : "以下のWebページでCSEを許可してください"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请允许 CSE 访问以下网页"
+          }
         }
       }
     },
@@ -573,6 +843,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "以下の項目をあなたのSafariの設定と同じものにしてください。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请确保以下项目与您的 Safari 浏览器设置相同"
           }
         }
       }
@@ -584,6 +860,12 @@
             "state" : "translated",
             "value" : "POSTデータ (オプション)"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "POST 数据（可选）"
+          }
         }
       }
     },
@@ -593,6 +875,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "プライバシーポリシー"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "隐私政策"
           }
         }
       }
@@ -604,6 +892,12 @@
             "state" : "translated",
             "value" : "プライベート検索エンジン"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无痕浏览搜索引擎"
+          }
         }
       }
     },
@@ -613,6 +907,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "購入に失敗しました"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "购买失败"
           }
         }
       }
@@ -624,6 +924,12 @@
             "state" : "translated",
             "value" : "現在購入できません。"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目前无法购买。"
+          }
         }
       }
     },
@@ -633,6 +939,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "購入に成功しました！"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "购买成功！"
           }
         }
       }
@@ -644,6 +956,12 @@
             "state" : "translated",
             "value" : "購入:"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "购买:"
+          }
         }
       }
     },
@@ -653,6 +971,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "クイック検索"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "快速搜索"
           }
         }
       }
@@ -664,6 +988,12 @@
             "state" : "translated",
             "value" : "クイック検索エンジン"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "快速搜索引擎"
+          }
         }
       }
     },
@@ -674,6 +1004,12 @@
             "state" : "translated",
             "value" : "クエリを%sで置き換えます"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用 %s 替换查询"
+          }
         }
       }
     },
@@ -683,6 +1019,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "全ての高度な設定をリセット"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重置所有高级设置"
           }
         }
       }
@@ -734,6 +1076,12 @@
             "state" : "translated",
             "value" : "購入を復元"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "恢复购买"
+          }
         }
       }
     },
@@ -743,6 +1091,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "復元に成功しました！"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "恢复成功！"
           }
         }
       }
@@ -754,6 +1108,12 @@
             "state" : "translated",
             "value" : "Safariの設定"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safari 浏览器设置"
+          }
         }
       }
     },
@@ -763,6 +1123,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "保存"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完成"
           }
         }
       }
@@ -774,6 +1140,12 @@
             "state" : "translated",
             "value" : "検索エンジン"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "搜索引擎"
+          }
         }
       }
     },
@@ -783,6 +1155,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "検索エンジンのURL"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "搜索引擎 URL"
           }
         }
       }
@@ -794,6 +1172,12 @@
             "state" : "translated",
             "value" : "検索URL"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "搜索 URL"
+          }
         }
       }
     },
@@ -803,6 +1187,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "検索URLは空欄にできません"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "搜索 URL 不能为空"
           }
         }
       }
@@ -820,6 +1210,12 @@
             "state" : "translated",
             "value" : "デフォルトの検索エンジンを設定"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置默认搜索引擎"
+          }
         }
       }
     },
@@ -829,6 +1225,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "デフォルトの検索エンジンを${cseURL}に設定"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置默认搜索引擎为 ${cseURL}"
           }
         }
       }
@@ -840,6 +1242,12 @@
             "state" : "translated",
             "value" : "絵文字検索を設定"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置表情符号搜索"
+          }
         }
       }
     },
@@ -849,6 +1257,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "プライベート検索エンジンを設定"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置无痕搜索引擎"
           }
         }
       }
@@ -860,6 +1274,12 @@
             "state" : "translated",
             "value" : "プライベート検索エンジンを${cseURL}に設定"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置无痕搜索引擎设置为 ${cseURL}"
+          }
         }
       }
     },
@@ -869,6 +1289,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "クイック検索を設定"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置快速搜索"
           }
         }
       }
@@ -880,6 +1306,12 @@
             "state" : "translated",
             "value" : "検索エンジンを設定"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置搜索引擎"
+          }
         }
       }
     },
@@ -889,6 +1321,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSEでデフォルトのカスタム検索エンジンを設定します。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置 CSE 上的自定义默认搜索引擎。"
           }
         }
       }
@@ -900,6 +1338,12 @@
             "state" : "translated",
             "value" : "CSEプライベートカスタム検索エンジンを設定します。"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置 CSE 上的自定义无痕搜索引擎。"
+          }
         }
       }
     },
@@ -910,6 +1354,12 @@
             "state" : "translated",
             "value" : "この集中モード中に使用するカスタム検索エンジンを設定します。"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置在此专注模式期间使用的自定义搜索引擎。"
+          }
         }
       }
     },
@@ -919,6 +1369,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "スキップ"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跳过"
           }
         }
       }
@@ -933,6 +1389,12 @@
             "state" : "translated",
             "value" : "捜狗"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "搜狗"
+          }
         }
       }
     },
@@ -946,6 +1408,12 @@
             "state" : "translated",
             "value" : "ソースコード"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "源代码"
+          }
         }
       }
     },
@@ -955,6 +1423,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "状態"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "状态"
           }
         }
       }
@@ -966,6 +1440,12 @@
             "state" : "translated",
             "value" : "サポート"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "应用支持"
+          }
         }
       }
     },
@@ -975,6 +1455,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "このキーワードはすでに使用されています"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "该关键字已在其他"
           }
         }
       }
@@ -986,6 +1472,12 @@
             "state" : "translated",
             "value" : "切り替える"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开/关"
+          }
         }
       }
     },
@@ -995,6 +1487,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "変更"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "切换"
           }
         }
       }
@@ -1006,6 +1504,12 @@
             "state" : "translated",
             "value" : "CSEで絵文字検索をオンまたはオフに変更します。"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在 CSE 上打开或关闭表情符号搜索。"
+          }
         }
       }
     },
@@ -1016,12 +1520,24 @@
             "state" : "translated",
             "value" : "CSEでクイック検索をオンまたはオフに変更します。"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在 CSE 上打开或关闭快速搜索。"
+          }
         }
       }
     },
     "URL" : {
       "localizations" : {
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL"
+          }
+        },
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL"
@@ -1036,6 +1552,12 @@
             "state" : "translated",
             "value" : "プライベートブラウズで別の検索エンジンを使用する"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在无痕浏览中使用其他搜索引擎"
+          }
         }
       }
     },
@@ -1049,6 +1571,12 @@
             "state" : "translated",
             "value" : "バージョン: %@"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本: %@"
+          }
         }
       }
     },
@@ -1058,6 +1586,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSEへようこそ"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "欢迎来到 CSE"
           }
         }
       }
@@ -1079,12 +1613,24 @@
             "state" : "translated",
             "value" : "Yahoo"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "雅虎"
+          }
         }
       }
     },
     "Yandex" : {
       "localizations" : {
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex"
+          }
+        },
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yandex"
@@ -1102,6 +1648,12 @@
             "state" : "translated",
             "value" : "設定 → アプリ → Safariから設定を確認できます。"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以在设置 → App → Safari 浏览器中找到这些设置。"
+          }
         }
       }
     },
@@ -1112,6 +1664,12 @@
             "state" : "translated",
             "value" : "アプリのアイコンを変更できるようになります"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可更改应用程序图标"
+          }
         }
       }
     },
@@ -1121,6 +1679,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "購入することでCSEの開発をサポートできます。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以通过购买以下产品来支持 CSE 的开发"
           }
         }
       }
