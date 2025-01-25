@@ -2,7 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
-
+      "shouldTranslate" : false
     },
     "%@" : {
       "shouldTranslate" : false
@@ -11,118 +11,349 @@
       "shouldTranslate" : false
     },
     "${toggle} Emoji Search" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "絵文字検索を${toggle}"
+          }
+        }
+      }
     },
     "${toggle} Emoji Search ${state}" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "絵文字検索を${state}に${toggle}"
+          }
+        }
+      }
     },
     "${toggle} Quick Search" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クイック検索を${toggle}"
+          }
+        }
+      }
     },
     "${toggle} Quick Search ${state}" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クイック検索を${state}に${toggle}"
+          }
+        }
+      }
     },
     "360 Search" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "360 Search"
+          }
+        }
+      }
     },
     "Add New Search Engine" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索エンジンを追加"
+          }
+        }
+      }
     },
     "Add POST Data" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "POSTデータを追加"
+          }
+        }
+      }
     },
     "Advanced Settings" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "高度な設定"
+          }
+        }
+      }
     },
     "Also Use in Private Browsing" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プライベートブラウズでも使用"
+          }
+        }
+      }
     },
     "An error occurred while loading or updating data" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "データをロードまたはアップデート中にエラーが発生しました"
+          }
+        }
+      }
     },
     "Available Icons" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "利用可能なアイコン"
+          }
+        }
+      }
     },
     "Available icons may change in the future." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "利用可能なアイコンは今後変更される可能性があります。"
+          }
+        }
+      }
     },
     "Baidu" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バイドゥ"
+          }
+        }
+      }
     },
     "baidu.com" : {
       "shouldTranslate" : false
     },
     "Before you can start using CSE, you need to do some setup." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSEを使い始める前に、いくつかの設定が必要です。"
+          }
+        }
+      }
     },
     "Bing" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bing"
+          }
+        }
+      }
     },
     "bing.com" : {
       "shouldTranslate" : false
     },
     "Change App Icon" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アイコンを変更"
+          }
+        }
+      }
     },
     "Contact" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "問い合わせ"
+          }
+        }
+      }
     },
     "cse" : {
       "shouldTranslate" : false
     },
     "CSE Settings" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSEの設定"
+          }
+        }
+      }
     },
-    "CSE will ignore all Focus Filters" : {
-
+    "CSE will ignore all Focus Filters." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSEは全ての集中モードフィルタを無視するようになります。"
+          }
+        }
+      }
     },
     "CSE will not check that you have searched from the search bar." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSEは検索バーから検索したことを確認しなくなります"
+          }
+        }
+      }
     },
     "Default Search Engine" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デフォルトの検索エンジン"
+          }
+        }
+      }
     },
     "Disable Checker" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "チェッカーを無効化"
+          }
+        }
+      }
     },
     "DuckDuckGo" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuckDuckGo"
+          }
+        }
+      }
     },
     "duckduckgo.com" : {
       "shouldTranslate" : false
     },
     "Ecosia" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ecosia"
+          }
+        }
+      }
     },
     "ecosia.org" : {
       "shouldTranslate" : false
     },
     "Edit Search Engine" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索エンジンを編集"
+          }
+        }
+      }
     },
     "Emoji Search" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "絵文字検索"
+          }
+        }
+      }
     },
     "Enable Reset Buttons" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リセットボタンを有効化"
+          }
+        }
+      }
     },
     "Enter the keyword at the top to switch search engines." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キーワードを先頭に入力して、検索エンジンを切り替えます。"
+          }
+        }
+      }
     },
     "Enter this keyword at the top to search with this search engine." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このキーワードを先頭に入力すると、この検索エンジンで検索します。"
+          }
+        }
+      }
     },
     "Example: '%@ your search'" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "例: 「%@ 検索 方法」"
+          }
+        }
+      }
     },
     "GitHub" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        }
+      }
     },
     "Go to Settings → Apps → Safari → Extensions → Customize Search Engine and allow extension. Then 'Allow' the following webpage" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定 → アプリ → Safari →　拡張機能 → Customize Search Engine から拡張機能を許可してください。それから以下のWebページへのアクセスを「許可」してください。"
+          }
+        }
+      }
     },
     "Google" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Google"
+          }
+        }
+      }
     },
     "google.cn" : {
       "shouldTranslate" : false
@@ -131,121 +362,400 @@
       "shouldTranslate" : false
     },
     "If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safariの設定を変更したり、CSEがうまく動作しない場合は、このチュートリアルをやり直す必要があるかもしれません。"
+          }
+        }
+      }
     },
     "If you enter only one emoji, you can search on Emojipedia.org." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "絵文字を一文字だけ入力すると、Emojipedia.orgで検索します。"
+          }
+        }
+      }
     },
     "If you set another search engine in private browsing in Safari settings, you can use another custom search engine in private browse." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safariのプライベートブラウズの設定で別の検索エンジンを選択すると、プライベートブラウズ用に異なるカスタム検索エンジンを設定できるようになります。"
+          }
+        }
+      }
     },
     "Ignore Focus Filter" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "集中モードフィルタを無視"
+          }
+        }
+      }
     },
     "Ignore POST Fallback" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "POSTフォールバックを無視"
+          }
+        }
+      }
     },
     "Key" : {
-
+      "shouldTranslate" : false
     },
     "Keyword" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キーワード"
+          }
+        }
+      }
     },
     "Keyword cannot be blank" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キーワードは空白にできません"
+          }
+        }
+      }
     },
     "License" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライセンス"
+          }
+        }
+      }
     },
     "May not work with some Safari search engines." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "いくつかのSafariの検索エンジンで動作しません。"
+          }
+        }
+      }
     },
     "More people will be able to continue using CSE for free" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "より多くの人がCSEを無料で使い続けられるようになります。"
+          }
+        }
+      }
     },
     "MPL 2.0" : {
       "shouldTranslate" : false
     },
     "Name" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "名前"
+          }
+        }
+      }
+    },
+    "Open Safari, go to Safari → Settings... and select 'Search' tab to find these settings." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safariを開いて、Safari → 設定… と選択して「検索」タブを選ぶと、これらの設定を確認できます。"
+          }
+        }
+      }
+    },
+    "Open Safari, go to Safari → Settings..., select 'Extensions' tab and enable CSE. Then 'Allow' the following webpage from 'Edit Websites...' button" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safariを開いて、Safari → 設定… と選択して「拡張機能」タブからCSEを有効にします。それから以下のWebページを「Webサイトを編集」ボタンから「許可」してください。"
+          }
+        }
+      }
     },
     "Operation" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "操作"
+          }
+        }
+      }
     },
     "Please allow CSE at the following webpage" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "以下のWebページでCSEを許可してください"
+          }
+        }
+      }
     },
     "Please make sure that the following items are the same as your Safari settings" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "以下の項目をあなたのSafariの設定と同じものにしてください。"
+          }
+        }
+      }
     },
     "POST Data (Option)" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "POSTデータ (オプション)"
+          }
+        }
+      }
     },
     "Privacy Policy" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プライバシーポリシー"
+          }
+        }
+      }
     },
     "Private Search Engine" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プライベート検索エンジン"
+          }
+        }
+      }
     },
     "Purchase Failed" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入に失敗しました"
+          }
+        }
+      }
     },
     "Purchase is currently not available." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "現在購入できません。"
+          }
+        }
+      }
     },
     "Purchase Success!" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入に成功しました！"
+          }
+        }
+      }
     },
     "Purchase:" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入:"
+          }
+        }
+      }
     },
     "Quick Search" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クイック検索"
+          }
+        }
+      }
     },
     "Quick Search Engines" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クイック検索エンジン"
+          }
+        }
+      }
     },
     "Replace query with %s" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クエリを%sで置き換えます"
+          }
+        }
+      }
     },
     "Reset All Advanced Settings" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全ての高度な設定をリセット"
+          }
+        }
+      }
     },
     "Reset All Custom Search Engines" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全てのカスタム検索エンジンをリセット"
+          }
+        }
+      }
     },
     "Reset Default Search Engine" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デフォルトの検索エンジンをリセット"
+          }
+        }
+      }
     },
     "Reset Private Search Engine" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プライベート検索エンジンをリセット"
+          }
+        }
+      }
     },
     "Reset Quick Search Engines" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クイック検索エンジンをリセット"
+          }
+        }
+      }
     },
     "Restore Purchase" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入を復元"
+          }
+        }
+      }
     },
     "Restore Success!" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "復元に成功しました！"
+          }
+        }
+      }
     },
     "Safari Settings" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safariの設定"
+          }
+        }
+      }
     },
     "Save" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存"
+          }
+        }
+      }
     },
     "Search Engine" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索エンジン"
+          }
+        }
+      }
     },
     "Search Engine URL" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索エンジンのURL"
+          }
+        }
+      }
     },
     "Search URL" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索URL"
+          }
+        }
+      }
     },
     "Search URL cannot be blank" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索URLは空欄にできません"
+          }
+        }
+      }
     },
     "search.yahoo.co.jp" : {
       "shouldTranslate" : false
@@ -254,37 +764,114 @@
       "shouldTranslate" : false
     },
     "Set Default Search Engine" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デフォルトの検索エンジンを設定"
+          }
+        }
+      }
     },
     "Set Default Search Engine to ${cseURL}" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デフォルトの検索エンジンを${cseURL}に設定"
+          }
+        }
+      }
     },
     "Set Emoji Search" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "絵文字検索を設定"
+          }
+        }
+      }
     },
     "Set Private Search Engine" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プライベート検索エンジンを設定"
+          }
+        }
+      }
     },
     "Set Private Search Engine to ${cseURL}" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プライベート検索エンジンを${cseURL}に設定"
+          }
+        }
+      }
     },
     "Set Quick Search" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クイック検索を設定"
+          }
+        }
+      }
     },
     "Set Search Engine" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索エンジンを設定"
+          }
+        }
+      }
     },
     "Sets a Custom Default Search Engine on CSE." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSEでデフォルトのカスタム検索エンジンを設定します。"
+          }
+        }
+      }
     },
     "Sets a Custom Private Search Engine on CSE." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSEプライベートカスタム検索エンジンを設定します。"
+          }
+        }
+      }
     },
     "Sets a Custom Search Engine to be used during this Focus." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この集中モード中に使用するカスタム検索エンジンを設定します。"
+          }
+        }
+      }
     },
     "Skip" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スキップ"
+          }
+        }
+      }
     },
     "so.com" : {
       "shouldTranslate" : false
@@ -296,58 +883,163 @@
       "shouldTranslate" : false
     },
     "Source" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ソースコード"
+          }
+        }
+      }
     },
     "State" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "状態"
+          }
+        }
+      }
     },
     "Support" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サポート"
+          }
+        }
+      }
     },
     "This keyword is already used in other" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このキーワードはすでに使用されています"
+          }
+        }
+      }
     },
     "Toggle" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "切り替える"
+          }
+        }
+      }
     },
     "Turn" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "変更"
+          }
+        }
+      }
     },
     "Turn Emoji Search On or Off on CSE." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSEで絵文字検索をオンまたはオフに変更します。"
+          }
+        }
+      }
     },
     "Turn Quick Search On or Off on CSE." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSEでクイック検索をオンまたはオフに変更します。"
+          }
+        }
+      }
     },
     "URL" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL"
+          }
+        }
+      }
     },
     "Value" : {
-
+      "shouldTranslate" : false
     },
     "Version: %@" : {
       "shouldTranslate" : false
     },
     "When using custom search engines with POST, to bypass CSP restrictions, the process redirects to a page created by CSE and then redirects again to your custom search engine. However, this mechanism does not work correctly in some environments (as far as I have researched, macOS). Enabling this setting will redirect directly to your custom search engine without bypassing CSP restrictions. However, for some Safari search engines with strict CSP settings (as far as I have researched, DuckDuckGo), it will not be possible to use a search engine with POST." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カスタム検索エンジンでPOSTを使用する場合、CSPの制限を回避するために、一度CSEが作成したページにリダイレクトされ、再度カスタム検索エンジンにリダイレクトされます。ただし、この仕組みは一部の環境(私が調べた限りではmacOS)では正しく動作しません。この設定を有効にすると、CSPの制限を回避することなく、カスタム検索エンジンに直接リダイレクトされます。ただし、CSPの設定が厳しい一部のSafariの検索エンジン(私が調べた限りではDuckDuckGo)では、POSTを使った検索エンジンが利用できなくなります。"
+          }
+        }
+      }
     },
     "Yahoo" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yahoo"
+          }
+        }
+      }
     },
     "Yandex" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex"
+          }
+        }
+      }
     },
     "yandex.ru" : {
       "shouldTranslate" : false
     },
     "You can find these settings in Settings → Apps → Safari." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定 → アプリ → Safariから設定を確認できます。"
+          }
+        }
+      }
     },
     "You will be able to change the application icon" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリのアイコンを変更できるようになります"
+          }
+        }
+      }
     },
     "Your purchase will support the development of CSE" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入することでCSEの開発をサポートできます。"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

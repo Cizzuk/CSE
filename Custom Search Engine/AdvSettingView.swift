@@ -48,7 +48,7 @@ struct AdvSettingView: View {
                     Text("Ignore Focus Filter")
                 })
             } footer: {
-                Text("CSE will ignore all Focus Filters")
+                Text("CSE will ignore all Focus Filters.")
             }
             
             Section {
