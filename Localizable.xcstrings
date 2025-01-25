@@ -928,7 +928,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Allez dans Réglages > Apps > Safari > Extensions → Customize Search Engine et autorisez l'extension. Autorisez ensuite la page web suivante."
+            "value" : "Allez dans Réglages → Apps → Safari → Extensions → Customize Search Engine et autorisez l'extension. Autorisez ensuite la page web suivante."
           }
         },
         "ja" : {
