@@ -214,7 +214,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CSEは検索バーから検索したことを確認しなくなります"
+            "value" : "CSEは検索バーから検索したことを確認しなくなります。"
           }
         }
       }
