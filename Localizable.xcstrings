@@ -907,7 +907,14 @@
       "shouldTranslate" : false
     },
     "Sogou" : {
-      "shouldTranslate" : false
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "捜狗"
+          }
+        }
+      }
     },
     "sogou.com" : {
       "shouldTranslate" : false
