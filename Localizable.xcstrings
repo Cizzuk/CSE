@@ -1,0 +1,354 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "%@" : {
+      "shouldTranslate" : false
+    },
+    "© Cizzuk" : {
+      "shouldTranslate" : false
+    },
+    "${toggle} Emoji Search" : {
+
+    },
+    "${toggle} Emoji Search ${state}" : {
+
+    },
+    "${toggle} Quick Search" : {
+
+    },
+    "${toggle} Quick Search ${state}" : {
+
+    },
+    "360 Search" : {
+
+    },
+    "Add New Search Engine" : {
+
+    },
+    "Add POST Data" : {
+
+    },
+    "Advanced Settings" : {
+
+    },
+    "Also Use in Private Browsing" : {
+
+    },
+    "An error occurred while loading or updating data" : {
+
+    },
+    "Available Icons" : {
+
+    },
+    "Available icons may change in the future." : {
+
+    },
+    "Baidu" : {
+
+    },
+    "baidu.com" : {
+      "shouldTranslate" : false
+    },
+    "Before you can start using CSE, you need to do some setup." : {
+
+    },
+    "Bing" : {
+
+    },
+    "bing.com" : {
+      "shouldTranslate" : false
+    },
+    "Change App Icon" : {
+
+    },
+    "Contact" : {
+
+    },
+    "cse" : {
+      "shouldTranslate" : false
+    },
+    "CSE Settings" : {
+
+    },
+    "CSE will ignore all Focus Filters" : {
+
+    },
+    "CSE will not check that you have searched from the search bar." : {
+
+    },
+    "Default Search Engine" : {
+
+    },
+    "Disable Checker" : {
+
+    },
+    "DuckDuckGo" : {
+
+    },
+    "duckduckgo.com" : {
+      "shouldTranslate" : false
+    },
+    "Ecosia" : {
+
+    },
+    "ecosia.org" : {
+      "shouldTranslate" : false
+    },
+    "Edit Search Engine" : {
+
+    },
+    "Emoji Search" : {
+
+    },
+    "Enable Reset Buttons" : {
+
+    },
+    "Enter the keyword at the top to switch search engines." : {
+
+    },
+    "Enter this keyword at the top to search with this search engine." : {
+
+    },
+    "Example: '%@ your search'" : {
+
+    },
+    "GitHub" : {
+
+    },
+    "Go to Settings → Apps → Safari → Extensions → Customize Search Engine and allow extension. Then 'Allow' the following webpage" : {
+
+    },
+    "Google" : {
+
+    },
+    "google.cn" : {
+      "shouldTranslate" : false
+    },
+    "google.com" : {
+      "shouldTranslate" : false
+    },
+    "If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial." : {
+
+    },
+    "If you enter only one emoji, you can search on Emojipedia.org." : {
+
+    },
+    "If you set another search engine in private browsing in Safari settings, you can use another custom search engine in private browse." : {
+
+    },
+    "Ignore Focus Filter" : {
+
+    },
+    "Ignore POST Fallback" : {
+
+    },
+    "Key" : {
+
+    },
+    "Keyword" : {
+
+    },
+    "Keyword cannot be blank" : {
+
+    },
+    "License" : {
+
+    },
+    "May not work with some Safari search engines." : {
+
+    },
+    "More people will be able to continue using CSE for free" : {
+
+    },
+    "MPL 2.0" : {
+      "shouldTranslate" : false
+    },
+    "Name" : {
+
+    },
+    "Operation" : {
+
+    },
+    "Please allow CSE at the following webpage" : {
+
+    },
+    "Please make sure that the following items are the same as your Safari settings" : {
+
+    },
+    "POST Data (Option)" : {
+
+    },
+    "Privacy Policy" : {
+
+    },
+    "Private Search Engine" : {
+
+    },
+    "Purchase Failed" : {
+
+    },
+    "Purchase is currently not available." : {
+
+    },
+    "Purchase Success!" : {
+
+    },
+    "Purchase:" : {
+
+    },
+    "Quick Search" : {
+
+    },
+    "Quick Search Engines" : {
+
+    },
+    "Replace query with %s" : {
+
+    },
+    "Reset All Advanced Settings" : {
+
+    },
+    "Reset All Custom Search Engines" : {
+
+    },
+    "Reset Default Search Engine" : {
+
+    },
+    "Reset Private Search Engine" : {
+
+    },
+    "Reset Quick Search Engines" : {
+
+    },
+    "Restore Purchase" : {
+
+    },
+    "Restore Success!" : {
+
+    },
+    "Safari Settings" : {
+
+    },
+    "Save" : {
+
+    },
+    "Search Engine" : {
+
+    },
+    "Search Engine URL" : {
+
+    },
+    "Search URL" : {
+
+    },
+    "Search URL cannot be blank" : {
+
+    },
+    "search.yahoo.co.jp" : {
+      "shouldTranslate" : false
+    },
+    "search.yahoo.com" : {
+      "shouldTranslate" : false
+    },
+    "Set Default Search Engine" : {
+
+    },
+    "Set Default Search Engine to ${cseURL}" : {
+
+    },
+    "Set Emoji Search" : {
+
+    },
+    "Set Private Search Engine" : {
+
+    },
+    "Set Private Search Engine to ${cseURL}" : {
+
+    },
+    "Set Quick Search" : {
+
+    },
+    "Set Search Engine" : {
+
+    },
+    "Sets a Custom Default Search Engine on CSE." : {
+
+    },
+    "Sets a Custom Private Search Engine on CSE." : {
+
+    },
+    "Sets a Custom Search Engine to be used during this Focus." : {
+
+    },
+    "Skip" : {
+
+    },
+    "so.com" : {
+      "shouldTranslate" : false
+    },
+    "Sogou" : {
+      "shouldTranslate" : false
+    },
+    "sogou.com" : {
+      "shouldTranslate" : false
+    },
+    "Source" : {
+
+    },
+    "State" : {
+
+    },
+    "Support" : {
+
+    },
+    "This keyword is already used in other" : {
+
+    },
+    "Toggle" : {
+
+    },
+    "Turn" : {
+
+    },
+    "Turn Emoji Search On or Off on CSE." : {
+
+    },
+    "Turn Quick Search On or Off on CSE." : {
+
+    },
+    "URL" : {
+
+    },
+    "Value" : {
+
+    },
+    "Version: %@" : {
+      "shouldTranslate" : false
+    },
+    "When using custom search engines with POST, to bypass CSP restrictions, the process redirects to a page created by CSE and then redirects again to your custom search engine. However, this mechanism does not work correctly in some environments (as far as I have researched, macOS). Enabling this setting will redirect directly to your custom search engine without bypassing CSP restrictions. However, for some Safari search engines with strict CSP settings (as far as I have researched, DuckDuckGo), it will not be possible to use a search engine with POST." : {
+
+    },
+    "Yahoo" : {
+
+    },
+    "Yandex" : {
+
+    },
+    "yandex.ru" : {
+      "shouldTranslate" : false
+    },
+    "You can find these settings in Settings → Apps → Safari." : {
+
+    },
+    "You will be able to change the application icon" : {
+
+    },
+    "Your purchase will support the development of CSE" : {
+
+    }
+  },
+  "version" : "1.0"
+}
