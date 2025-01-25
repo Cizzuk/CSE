@@ -32,7 +32,7 @@ struct FullTutorialView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 16) {
-                HeaderText(text: "Welcome to CSE")
+                HeaderText(text: NSLocalizedString("Welcome to CSE", comment: ""))
                 
                 VStack(spacing: 16) {
                     Text("Before you can start using CSE, you need to do some setup.")
@@ -72,7 +72,7 @@ struct SafariTutorialView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 16) {
-                HeaderText(text: "Safari Settings")
+                HeaderText(text: NSLocalizedString("Safari Settings", comment: ""))
                 
                 VStack(spacing: 16) {
                     Text("Please make sure that the following items are the same as your Safari settings")
@@ -160,7 +160,7 @@ struct SafariTutorialSecondView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 16) {
-                HeaderText(text: "Safari Settings")
+                HeaderText(text: NSLocalizedString("Safari Settings", comment: ""))
                 
                 VStack(spacing: 16) {
                     Text("Please allow CSE at the following webpage")

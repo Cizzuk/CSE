@@ -1045,6 +1045,16 @@
     "Version: %@" : {
       "shouldTranslate" : false
     },
+    "Welcome to CSE" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSEへようこそ"
+          }
+        }
+      }
+    },
     "When using custom search engines with POST, to bypass CSP restrictions, the process redirects to a page created by CSE and then redirects again to your custom search engine. However, this mechanism does not work correctly in some environments (as far as I have researched, macOS). Enabling this setting will redirect directly to your custom search engine without bypassing CSP restrictions. However, for some Safari search engines with strict CSP settings (as far as I have researched, DuckDuckGo), it will not be possible to use a search engine with POST." : {
       "localizations" : {
         "ja" : {
