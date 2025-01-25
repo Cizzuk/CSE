@@ -31,10 +31,9 @@ struct FullTutorialView: View {
     @Binding var isOpenSheet: Bool
     var body: some View {
         NavigationView {
-            VStack(spacing: 16) {
+            VStack() {
                 HeaderText(text: NSLocalizedString("Welcome to CSE", comment: ""))
-                
-                VStack(spacing: 16) {
+                VStack() {
                     Text("Before you can start using CSE, you need to do some setup.")
                 }
                 .padding(.horizontal, 32)
@@ -52,7 +51,7 @@ struct FullTutorialView: View {
                 }) {
                     Text("Skip")
                 }
-                .padding(.bottom, 24)
+                .padding(EdgeInsets(top: 12, leading: 0, bottom: 24, trailing: 0))
             }
         }
         .interactiveDismissDisabled()
@@ -71,10 +70,9 @@ struct SafariTutorialView: View {
     var privsearchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "privsearchengine") ?? "duckduckgo"
     var body: some View {
         NavigationView {
-            VStack(spacing: 16) {
+            VStack() {
                 HeaderText(text: NSLocalizedString("Safari Settings", comment: ""))
-                
-                VStack(spacing: 16) {
+                VStack() {
                     Text("Please make sure that the following items are the same as your Safari settings")
                 }
                 .padding(.horizontal, 32)
@@ -159,10 +157,9 @@ struct SafariTutorialSecondView: View {
     var privsearchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "privsearchengine") ?? "duckduckgo"
     var body: some View {
         NavigationView {
-            VStack(spacing: 16) {
+            VStack() {
                 HeaderText(text: NSLocalizedString("Safari Settings", comment: ""))
-                
-                VStack(spacing: 16) {
+                VStack() {
                     Text("Please allow CSE at the following webpage")
                 }
                 .padding(.horizontal, 32)
