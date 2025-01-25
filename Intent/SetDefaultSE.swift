@@ -8,7 +8,7 @@
 import Foundation
 import AppIntents
 
-@available(iOS 16.0, macOS 13.0, watchOS 9.0, tvOS 16.0, *)
+@available(iOS 16.0, macOS 13.0, visionOS 1.0, *)
 struct SetDefaultSE: AppIntent, CustomIntentMigratedAppIntent {
     static let intentClassName = "SetDefaultSE"
     static var title: LocalizedStringResource = "Set Default Search Engine"

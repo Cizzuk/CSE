@@ -8,7 +8,7 @@
 import Foundation
 import AppIntents
 
-@available(iOS 16.0, macOS 13.0, watchOS 9.0, tvOS 16.0, *)
+@available(iOS 16.0, macOS 13.0, visionOS 1.0, *)
 struct SetUseQuickSearch: AppIntent, CustomIntentMigratedAppIntent {
     static let intentClassName = "SetUseQuickSearch"
     static var title: LocalizedStringResource = "Set Quick Search"
