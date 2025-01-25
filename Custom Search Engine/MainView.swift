@@ -73,16 +73,15 @@ struct ContentView: View {
                     }
                     
                     // Private CSE
-                    let toggleText = "Use different search engine in Private Browse"
                     // If private CSE is not available due to Safari settings
                     if alsousepriv || searchengine == privsearchengine {
                         Toggle(isOn: .constant(false), label: {
-                            Text(toggleText)
+                            Text("Use different search engine in Private Browse")
                         })
                         .disabled(true)
                     } else { // is available
                         Toggle(isOn: $usePrivateCSE, label: {
-                            Text(toggleText)
+                            Text("Use different search engine in Private Browse")
                         })
                         if usePrivateCSE {
                             NavigationLink {

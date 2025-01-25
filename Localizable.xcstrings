@@ -239,6 +239,26 @@
         }
       }
     },
+    "Disable CSE" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSEを無効化"
+          }
+        }
+      }
+    },
+    "Disable Default Search Engine" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デフォルトの検索エンジンを無効化"
+          }
+        }
+      }
+    },
     "DuckDuckGo" : {
       "localizations" : {
         "ja" : {
@@ -321,6 +341,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "例: 「%@ 検索 方法」"
+          }
+        }
+      }
+    },
+    "Existing data will be deleted at next startup: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次の起動時に既存のデータが削除されます: %@"
           }
         }
       }
@@ -968,6 +998,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL"
+          }
+        }
+      }
+    },
+    "Use different search engine in Private Browse" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プライベートブラウズで別の検索エンジンを使用する"
           }
         }
       }

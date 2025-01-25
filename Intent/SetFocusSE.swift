@@ -22,23 +22,18 @@ struct SetFocusSE : SetFocusFilterIntent {
     var useEmojiSearch: Bool?
     
     var displayRepresentation: DisplayRepresentation {
-        var subtitleList: [String] = []
+        var subtitle = LocalizedStringResource("")
         
         if self.cseURL == "" || self.cseURL == nil {
-            if useQuickCSE ?? false {
-                subtitleList.append("Quick Search")
-            }
-            if useEmojiSearch ?? false {
-                subtitleList.append("Emoji Search")
-            }
-            if subtitleList.count == 0 {
-                subtitleList.append("Disable CSE")
+            if useQuickCSE ?? false || useEmojiSearch ?? false {
+                subtitle = LocalizedStringResource("Disable Default Search Engine")
+            } else {
+                subtitle = LocalizedStringResource("Disable CSE")
             }
         } else {
-            subtitleList.append(self.cseURL!)
+            subtitle = LocalizedStringResource("\(self.cseURL!)")
         }
         
-        let subtitle = LocalizedStringResource("\(subtitleList.formatted())")
         return DisplayRepresentation(title: SetFocusSE.title, subtitle: subtitle)
     }
     

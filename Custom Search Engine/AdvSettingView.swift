@@ -93,7 +93,7 @@ struct AdvSettingView: View {
                 }
                 .disabled(!allowReset)
             } footer: {
-                Text("Existing data will be deleted at next startup: " + resetCSEs)
+                Text("Existing data will be deleted at next startup: \(resetCSEs)")
             }
         }
         .navigationBarTitleDisplayMode(.inline)
