@@ -1430,13 +1430,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "恢复购买"
+            "value" : "复元购买"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "恢復購買"
+            "value" : "復原購買"
           }
         }
       }
@@ -1452,13 +1452,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "恢复成功！"
+            "value" : "复元成功！"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "恢復成功！"
+            "value" : "復原成功！"
           }
         }
       }
