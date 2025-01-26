@@ -44,6 +44,12 @@
             "value" : "${toggle}: 이모티콘 검색"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} Поиск эмодзи"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -82,6 +88,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "${toggle}: 이모티콘 검색 ${state}"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${state} Поиск эмодзи"
           }
         },
         "zh-Hans" : {
@@ -124,6 +136,12 @@
             "value" : "${toggle}: 빠른 검색"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} Быстрый поиск"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -162,6 +180,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "${toggle}: 빠른 검색 ${state}"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${state} Быстрый поиск"
           }
         },
         "zh-Hans" : {
@@ -256,6 +280,12 @@
             "value" : "검색 엔진 추가"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить новую Поисковую машину"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -294,6 +324,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "POST 데이터 추가"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить данные POST"
           }
         },
         "zh-Hans" : {
@@ -388,6 +424,12 @@
             "value" : "개인정보 보호 브라우징에서도 사용"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Также в режиме частного доступа"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -426,6 +468,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "데이터를 로드하거나 업데이트하는 동안 오류가 발생했습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "При загрузке или обновлении данных произошла ошибка"
           }
         },
         "zh-Hans" : {
@@ -524,6 +572,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "사용 가능한 아이콘은 향후 변경될 수 있습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доступные значки могут измениться в будущем."
           }
         },
         "zh-Hans" : {
@@ -901,6 +955,12 @@
             "value" : "기본 검색 엔진"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поисковая машина по умолчанию"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -951,6 +1011,12 @@
             "value" : "CSE 비활성화"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отключить CSE"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -989,6 +1055,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "기본 검색 엔진 비활성화"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отключите поисковую машину по умолчанию"
           }
         },
         "zh-Hans" : {
@@ -1193,6 +1265,12 @@
             "value" : "검색 엔진 편집"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Редактирование Поисковая машина"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1231,6 +1309,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "이모티콘 검색"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поиск эмодзи"
           }
         },
         "zh-Hans" : {
@@ -1283,6 +1367,12 @@
             "value" : "키워드를 맨 앞에 입력하고 검색엔진을 전환합니다."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите ключевое слово в верхней части страницы, чтобы переключить поисковую систему."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1323,6 +1413,12 @@
             "value" : "이 키워드를 맨 앞에 입력하면 이 검색엔진에서 검색됩니다."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите это ключевое слово в верхней части страницы для поиска с помощью этой поисковой системы."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1361,6 +1457,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "예: \"%@ 검색 방법\""
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пример: '%@ ваш поиск'"
           }
         },
         "zh-Hans" : {
@@ -1465,6 +1567,12 @@
             "value" : "설정 → 앱 → Safari → 확장 프로그램 → Customize Search Engine 에서 확장 프로그램을 허용해 주세요. 그리고 다음 웹페이지에 대한 접근을 '허용'하십시오."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перейдите в Настройки → Приложения → Safari → Расширения → Customize Search Engine и разрешите расширение. Затем «Разрешить» следующую веб-страницу."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1563,6 +1671,12 @@
             "value" : "Safari 설정을 변경하거나 CSE가 제대로 작동하지 않는 경우 이 튜토리얼을 다시 시작해야 할 수도 있습니다."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Если вы измените настройки Safari или CSE не будет работать должным образом, вам, возможно, придется повторить этот урок."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1603,6 +1717,12 @@
             "value" : "이모티콘을 한 글자만 입력하면 Emojipedia.org에서 검색합니다."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Если вы вводите только один эмодзи, то можете воспользоваться поиском на сайте Emojipedia.org."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1641,6 +1761,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Safari의 개인정보 보호 브라우징 설정에서 다른 검색 엔진을 선택하면 개인정보 보호 브라우징을 위해 다른 사용자 지정 검색 엔진을 설정할 수 있다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Если вы установили другую поисковую систему в режиме частного доступа в настройках Safari, вы можете использовать другую пользовательскую поисковую систему в режиме частного доступа."
           }
         },
         "zh-Hans" : {
@@ -1706,6 +1832,12 @@
             "value" : "키워드"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ключевое слово"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1744,6 +1876,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "키워드는 비워둘 수 없습니다"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ключевое слово не может быть пустым"
           }
         },
         "zh-Hans" : {
@@ -1903,6 +2041,12 @@
             "value" : "이름"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Имя"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1941,6 +2085,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "다음"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Следующая"
           }
         },
         "zh-Hans" : {
@@ -1983,6 +2133,12 @@
             "value" : "Safari를 열고 Safari → 설정...을 선택한 후 '검색' 탭을 선택하면 이러한 설정을 확인할 수 있습니다."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Откройте Safari, перейдите в меню Safari → Настройки... и выберите вкладку «Поиск», чтобы найти эти настройки."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2021,6 +2177,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Safari를 열고 Safari → 설정...을 선택한 후 '확장 프로그램' 탭에서 CSE를 활성화합니다. 그리고 아래 웹페이지를 '웹 사이트 편집…' 버튼에서 '허용'하십시오."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Откройте Safari, перейдите в меню Safari → Настройки..., выберите вкладку «Расширения» и включите CSE. Затем «Разрешить» следующую веб-страницу с помощью кнопки «Изменить веб-сайты...»."
           }
         },
         "zh-Hans" : {
@@ -2063,6 +2225,12 @@
             "value" : "작업"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Операция"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2101,6 +2269,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "아래 웹페이지에서 CSE를 허용해 주세요."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пожалуйста, разрешите проведение ЕГЭ на следующей веб-странице"
           }
         },
         "zh-Hans" : {
@@ -2143,6 +2317,12 @@
             "value" : "아래 항목을 Safari의 설정과 동일하게 설정해 주세요."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Убедитесь, что следующие пункты совпадают с настройками Safari"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2181,6 +2361,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "POST 데이터 (옵션)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Данные POST (необязательно)"
           }
         },
         "zh-Hans" : {
@@ -2379,6 +2565,12 @@
             "value" : "현재 구매할 수 없습니다."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В настоящее время покупка недоступна."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2523,6 +2715,12 @@
             "value" : "빠른 검색"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Быстрый поиск"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2561,6 +2759,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "빠른 검색 엔진"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Быстрый поисковые машины"
           }
         },
         "zh-Hans" : {
@@ -2603,6 +2807,12 @@
             "value" : "쿼리를 %s로 대체합니다."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Замените запрос на %s"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2641,6 +2851,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "모든 고급 설정 재설정하기"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сброс всех дополнительных настроек"
           }
         },
         "zh-Hans" : {
@@ -2983,6 +3199,12 @@
             "value" : "검색 엔진 URL"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL Поисковой машины"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3023,6 +3245,12 @@
             "value" : "검색 URL"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL поиска"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3061,6 +3289,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "검색 URL은 비워둘 수 없습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL поиска не может быть пустым"
           }
         },
         "zh-Hans" : {
@@ -3109,6 +3343,12 @@
             "value" : "기본 검색 엔진 설정"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройка поисковой машины по умолчанию"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3147,6 +3387,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "기본 검색 엔진을 ${cseURL}로 설정합니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройка Поисковой машины по умолчанию на ${cseURL}"
           }
         },
         "zh-Hans" : {
@@ -3189,6 +3435,12 @@
             "value" : "이모티콘 검색 설정"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройка поиска эмодзи"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3227,6 +3479,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "개인정보 보호 검색 엔진 설정"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройка Поисковой машины Частного доступа"
           }
         },
         "zh-Hans" : {
@@ -3269,6 +3527,12 @@
             "value" : "개인정보 보호 검색 엔진을 ${cseURL}로 설정합니다"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройка Поисковая машина Частного доступа на ${cseURL}"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3307,6 +3571,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "빠른 검색 설정"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройка быстрого поиска"
           }
         },
         "zh-Hans" : {
@@ -3349,6 +3619,12 @@
             "value" : "검색 엔진 설정"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройка Поисковую машину"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3387,6 +3663,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSE에서 기본 검색 엔진을 설정합니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройка пользовательской поисковой машины по умолчанию на CSE."
           }
         },
         "zh-Hans" : {
@@ -3429,6 +3711,12 @@
             "value" : "CSE에서 개인정보 보호 검색 엔진을 설정합니다."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройка пользовательской Поисковой машины Частного доступа на CSE."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3469,6 +3757,12 @@
             "value" : "이 집중 모드 중에 사용할 사용자 지정 검색 엔진을 설정합니다."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройка Поисковую машину для использования во время этого фокусирования."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3507,6 +3801,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "건너뛰기"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пропустить"
           }
         },
         "zh-Hans" : {
@@ -3659,6 +3959,12 @@
             "value" : "상태"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Состояние"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3751,6 +4057,12 @@
             "value" : "이 키워드는 이미 다른"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Это ключевое слово уже используется в других"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3789,6 +4101,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "토글"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переключить"
           }
         },
         "zh-Hans" : {
@@ -3831,6 +4149,12 @@
             "value" : "전환"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изменить"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3871,6 +4195,12 @@
             "value" : "CSE에서 이모티콘 검색을 켜거나 끕니다."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Включите или выключите Поиск эмодзи на CSE."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3909,6 +4239,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSE에서 빠른 검색을 켜거나 끕니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Включите или выключите Быстрый поиск на CSE."
           }
         },
         "zh-Hans" : {
@@ -4001,6 +4337,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "개인정보 보호 브라우징으로 다른 검색 엔진 사용하기"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Используйте различные поисковые машины в режиме частного доступа"
           }
         },
         "zh-Hans" : {
@@ -4096,6 +4438,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSE에 오신 것을 환영합니다"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добро пожаловать в CSE"
           }
         },
         "zh-Hans" : {
@@ -4253,6 +4601,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "설정 → 앱 → Safari에서 설정을 확인할 수 있습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Эти настройки можно найти в разделе Настройки → Приложения → Safari."
           }
         },
         "zh-Hans" : {
