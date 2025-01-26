@@ -26,6 +26,12 @@
             "value" : "${toggle} Emoji-Suche"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} Búsqueda emoji"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -70,6 +76,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Emoji-Suche ${state}"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${state} Búsqueda emoji"
           }
         },
         "fr" : {
@@ -118,6 +130,12 @@
             "value" : "${toggle} Schnellsuche"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} Búsqueda rápida"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -162,6 +180,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Schnellsuche ${state}"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${state} Búsqueda rápida"
           }
         },
         "fr" : {
@@ -262,6 +286,12 @@
             "value" : "Neue Suchmaschine hinzufügen"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar nuevo Buscador"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -306,6 +336,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "POST-Daten hinzufügen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar datos POST"
           }
         },
         "fr" : {
@@ -406,6 +442,12 @@
             "value" : "Auch im Modus „Privaten Surfen“ verwenden"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usar también en navegación privada"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -450,6 +492,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Beim Laden oder Aktualisieren von Daten ist ein Fehler aufgetreten"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se ha producido un error al cargar o actualizar datos"
           }
         },
         "fr" : {
@@ -655,6 +703,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bevor Sie mit CSE arbeiten können, müssen Sie einige Einstellungen vornehmen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Antes de empezar a utilizar el CSE, es necesario realizar algunos ajustes."
           }
         },
         "fr" : {
@@ -937,6 +991,12 @@
             "value" : "Standard-Suchmaschine"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscador defecto"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -993,6 +1053,12 @@
             "value" : "CSE deaktivieren"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desactivar CSE"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1037,6 +1103,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Standard-Suchmaschine deaktivieren"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desactivar Buscador defecto"
           }
         },
         "fr" : {
@@ -1247,6 +1319,12 @@
             "value" : "Suchmaschine bearbeiten"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar Buscador"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1291,6 +1369,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Emoji-Suche"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Búsqueda emoji"
           }
         },
         "fr" : {
@@ -1349,6 +1433,12 @@
             "value" : "Geben Sie das Schlüsselwort oben ein, um die Suchmaschine zu wechseln."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Introduzca la palabra clave en la parte superior para cambiar de buscador."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1395,6 +1485,12 @@
             "value" : "Geben Sie dieses Schlüsselwort oben ein, um mit dieser Suchmaschine zu suchen."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Introduzca esta palabra clave en la parte superior para buscar con este buscador."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1439,6 +1535,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Beispiel: '%@ Ihre Suche'"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ejemplo: \"%@ tu búsqueda\""
           }
         },
         "fr" : {
@@ -1549,6 +1651,12 @@
             "value" : "Gehen Sie zu Einstellungen → Apps → Safari → Erweiterungen → Customize Search Engine und erlauben Sie die Erweiterung. Dann „Zulassen“ der folgenden Webseite."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vaya a Configuración → Apps → Safari → Extensiones → Customize Search Engine y permita la extensión. A continuación, 'Permitir' la siguiente página web."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1653,6 +1761,12 @@
             "value" : "Wenn Sie Ihre Safari-Einstellungen ändern oder CSE nicht richtig funktioniert, müssen Sie diese Anleitung möglicherweise erneut durchführen."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si cambia la configuración de Safari o CSE no funciona correctamente, es posible que tenga que volver a realizar este tutorial."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1699,6 +1813,12 @@
             "value" : "Wenn Sie nur ein Emoji eingeben, können Sie auf Emojipedia.org suchen."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si introduces sólo un emoji, puedes buscarlo en Emojipedia.org."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1743,6 +1863,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wenn Sie in den Safari-Einstellungen eine andere Suchmaschine für das „Private Surfen“ eingestellt haben, können Sie eine andere benutzerdefinierte Suchmaschine für das „Private Surfen“ verwenden."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si configura otro buscador en la navegación privada en la configuración de Safari, puede usar otro buscador en la navegación privada."
           }
         },
         "fr" : {
@@ -1814,6 +1940,12 @@
             "value" : "Schlüsselwort"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Palabra"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1858,6 +1990,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Schlüsselwort kann nicht leer sein"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Palabra clave"
           }
         },
         "fr" : {
@@ -1971,7 +2109,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Más personas podrán seguir utilizando gratuitamente CSE"
+            "value" : "Más personas podrán seguir usando gratuitamente CSE"
           }
         },
         "fr" : {
@@ -2023,6 +2161,12 @@
             "value" : "Name"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2067,6 +2211,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nächste"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siguiente"
           }
         },
         "fr" : {
@@ -2115,6 +2265,12 @@
             "value" : "Öffnen Sie Safari, gehen Sie zu Safari → Einstellungen... und wählen Sie den Reiter „Suchen“, um diese Einstellungen zu finden."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abra Safari, vaya a Safari → Ajustes... y seleccione la pestaña «Buscar» para encontrar estos ajustes."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2159,6 +2315,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Öffnen Sie Safari, gehen Sie zu Safari → Einstellungen..., wählen Sie den Reiter „Erweiterungen“ und erlauben Sie CSE. Dann lassen Sie die folgende Webseite über die Schaltfläche „Websites bearbeiten...“ zu."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abra Safari, vaya a Safari → Ajustes..., seleccione la pestaña «Extensiones» y active CSE. A continuación, «Permitir» la siguiente página web desde el botón «Editar sitios web...»."
           }
         },
         "fr" : {
@@ -2207,6 +2369,12 @@
             "value" : "Aktion"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operación"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2251,6 +2419,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bitte erlauben Sie CSE, die folgende Webseite bearbeiten"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, permita a CSE en la siguiente página web"
           }
         },
         "fr" : {
@@ -2299,6 +2473,12 @@
             "value" : "Bitte vergewissern Sie sich, dass die folgenden Punkte mit Ihren Safari-Einstellungen übereinstimmen"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asegúrese de que los siguientes elementos coinciden con la configuración de Safari"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2343,6 +2523,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "POST-Daten (optional)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datos POST (Opcional)"
           }
         },
         "fr" : {
@@ -2446,7 +2632,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Buscador en la navegación privada"
+            "value" : "Buscador privado"
           }
         },
         "fr" : {
@@ -2545,6 +2731,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Der Kauf ist derzeit nicht möglich."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La compra no está disponible actualmente."
           }
         },
         "fr" : {
@@ -2697,6 +2889,12 @@
             "value" : "Schnellsuche"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Búsqueda rápida"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2741,6 +2939,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Schnellsuchmaschinen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscadores rápidos"
           }
         },
         "fr" : {
@@ -2789,6 +2993,12 @@
             "value" : "Ersetze Abfrage durch %s"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sustituir consulta por %s"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2833,6 +3043,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alle erweiterten Einstellungen zurücksetzen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restablecer todos los ajustes avanzados"
           }
         },
         "fr" : {
@@ -3181,6 +3397,12 @@
             "value" : "URL der Suchmaschine"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscador URL"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3227,6 +3449,12 @@
             "value" : "Such-URL"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar URL"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3271,6 +3499,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Such-URL kann nicht leer sein"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar URL no puede estar en blanco"
           }
         },
         "fr" : {
@@ -3325,6 +3559,12 @@
             "value" : "Standard-Suchmaschine einstellen"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Buscador defecto"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3369,6 +3609,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Einstellung der Standard-Suchmaschine auf ${cseURL}"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Establecer Buscador defecto a ${cseURL}"
           }
         },
         "fr" : {
@@ -3417,6 +3663,12 @@
             "value" : "Emoji-Suche einstellen"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Búsqueda emoji"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3461,6 +3713,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "„Privates Surfen\"-Suchmaschine einstellen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Buscador privado"
           }
         },
         "fr" : {
@@ -3509,6 +3767,12 @@
             "value" : "Einstellung der „Privates Surfen“-Suchmaschine auf ${cseURL}"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Establecer Buscador privado a ${cseURL}"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3553,6 +3817,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Schnellsuche einstellen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Búsqueda rápida"
           }
         },
         "fr" : {
@@ -3601,6 +3871,12 @@
             "value" : "Suchmaschine einstellen"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Buscador"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3645,6 +3921,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Einstellungen einer Standard-Suchmaschine auf CSE."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configura un Buscador defecto en CSE."
           }
         },
         "fr" : {
@@ -3693,6 +3975,12 @@
             "value" : "Einstellungen einer „Privates Surfen“-Suchmaschine auf CSE."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configura un Buscador privado en CSE."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3739,6 +4027,12 @@
             "value" : "Legt ein Suchmaschine fest, die bei diesem Fokus verwendet werden soll."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Define qué Buscador se usará cuando se active este modo de concentración."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3783,6 +4077,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Überspringen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Omitir"
           }
         },
         "fr" : {
@@ -3941,6 +4241,12 @@
             "value" : "Status"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4039,6 +4345,12 @@
             "value" : "Dieses Schlüsselwort wird bereits in anderen"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta palabra clave ya se usa en otros"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4083,6 +4395,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "schalten"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alternar"
           }
         },
         "fr" : {
@@ -4131,6 +4449,12 @@
             "value" : "ein/aus"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activar/desactivar"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4177,6 +4501,12 @@
             "value" : "Schalten Sie die Emoji-Suche auf CSE ein/aus."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activar o desactivar Búsqueda emoji en el CSE."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4221,6 +4551,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Schalten Sie die Schnellsuche auf CSE ein/aus."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activar o desactivar Búsqueda rápida en el CSE."
           }
         },
         "fr" : {
@@ -4319,6 +4655,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Andere Suchmaschine im „Privates Surfen“ verwenden"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usar un buscador diferente en Navegación privada"
           }
         },
         "fr" : {
@@ -4420,6 +4762,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Willkommen bei CSE"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenido a CSE"
           }
         },
         "fr" : {
@@ -4583,6 +4931,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sie finden diese Einstellungen unter Einstellungen → Apps → Safari."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Encontrará estos ajustes en Configuración → Apps → Safari."
           }
         },
         "fr" : {
