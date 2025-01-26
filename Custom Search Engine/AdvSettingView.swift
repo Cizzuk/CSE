@@ -9,45 +9,94 @@ import SwiftUI
 
 struct AdvSettingView: View {
     //Load advanced settings
-    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     @AppStorage("adv_disablechecker", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var disablechecker: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_disablechecker")
-    @AppStorage("adv_redirectat", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var redirectat: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "adv_redirectat") ?? "loading"
-    //loading, interactive, complete
+    @AppStorage("adv_ignoreFocusFilter", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var ignoreFocusFilter: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_ignoreFocusFilter")
+    @AppStorage("adv_ignorePOSTFallback", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var ignorePOSTFallback: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_ignorePOSTFallback")
+    @AppStorage("adv_resetCSEs", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var resetCSEs: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "adv_resetCSEs") ?? ""
+    @State private var allowReset: Bool = false
     
     var body: some View {
-        NavigationView {
-            List {
-                Section {
-                    Button("adv_resetall") {
-                        userDefaults!.set(false, forKey: "adv_disablechecker")
-                        userDefaults!.set("loading", forKey: "adv_redirectat")
-                    }
-                }
-                Section {
-                    Toggle(isOn: $disablechecker, label: {
-                        Text("adv_disablechecker")
-                    })
-                    .onChange(of: disablechecker) { newValue in
-                        userDefaults!.set(newValue, forKey: "adv_disablechecker")
-                    }
-                } footer: {
-                    Text("adv_disablechecker-Desc-1")
-                }
-                Section {
-                    Picker("adv_redirectat", selection: $redirectat) {
-                        Text("loading").tag("loading")
-                        Text("interactive").tag("interactive")
-                        Text("complete").tag("complete")
-                    }
-                    .onChange(of: redirectat) { entered in
-                        userDefaults!.set(entered, forKey: "adv_redirectat")
-                    }
-                } footer: {
-                    Text("adv_redirectat-Desc-1")
+        List {
+            Section {
+                Button("Reset All Advanced Settings") {
+                    disablechecker = false
+                    ignoreFocusFilter = false
+                    #if macOS
+                    ignorePOSTFallback = true
+                    #else
+                    ignorePOSTFallback = false
+                    #endif
+                    resetCSEs = ""
+                    allowReset = false
                 }
             }
+            
+            Section {
+                Toggle(isOn: $disablechecker, label: {
+                    Text("Disable Checker")
+                })
+            } footer: {
+                Text("CSE will not check that you have searched from the search bar.")
+            }
+            
+            Section {
+                Toggle(isOn: $ignoreFocusFilter, label: {
+                    Text("Ignore Focus Filter")
+                })
+            } footer: {
+                Text("CSE will ignore all Focus Filters.")
+            }
+            
+            Section {
+                Toggle(isOn: $ignorePOSTFallback, label: {
+                    Text("Ignore POST Fallback")
+                })
+            } footer: {
+                Text("When using custom search engines with POST, to bypass CSP restrictions, the process redirects to a page created by CSE and then redirects again to your custom search engine. However, this mechanism does not work correctly in some environments (as far as I have researched, macOS). Enabling this setting will redirect directly to your custom search engine without bypassing CSP restrictions. However, for some Safari search engines with strict CSP settings (as far as I have researched, DuckDuckGo), it will not be possible to use a search engine with POST.")
+            }
+            
+            Section {
+                Toggle(isOn: $allowReset, label: {
+                    Text("Enable Reset Buttons")
+                })
+                .onChange(of: allowReset) { _ in
+                    if !allowReset {
+                        resetCSEs = ""
+                    }
+                }
+                Button(action: {
+                    resetCSEs = "default"
+                }) {
+                    Text("Reset Default Search Engine")
+                }
+                .disabled(!allowReset)
+                Button(action: {
+                    resetCSEs = "private"
+                }) {
+                    Text("Reset Private Search Engine")
+                }
+                .disabled(!allowReset)
+                Button(action: {
+                    resetCSEs = "quick"
+                }) {
+                    Text("Reset Quick Search Engines")
+                }
+                .disabled(!allowReset)
+                Button(action: {
+                    resetCSEs = "all"
+                }) {
+                    Text("Reset All Custom Search Engines")
+                }
+                .disabled(!allowReset)
+            } footer: {
+                Text("Existing data will be deleted at next startup: \(resetCSEs)")
+            }
         }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationViewStyle(.stack)
     }
 }

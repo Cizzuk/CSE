@@ -9,9 +9,7 @@ import SwiftUI
 
 @main
 struct MainView: App {
-#if iOS
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-#endif
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -20,22 +18,35 @@ struct MainView: App {
 }
 
 struct ContentView: View {
+    let currentRegion = Locale.current.regionCode
     
     //Load app settings
-    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
-    @AppStorage("urltop", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var urltop: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "urltop") ?? "https://archive.org/search?query="
-    @AppStorage("urlsuffix", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var urlsuffix: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "urlsuffix") ?? ""
     @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var searchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "google"
+    @AppStorage("alsousepriv", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var alsousepriv: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "alsousepriv")
+    @AppStorage("privsearchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var privsearchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "privsearchengine") ?? "duckduckgo"
     
-#if iOS
+    @AppStorage("usePrivateCSE", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var usePrivateCSE: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "usePrivateCSE")
+    @AppStorage("useQuickCSE", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var useQuickCSE: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "useQuickCSE")
+    @AppStorage("useEmojiSearch", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var useEmojiSearch: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "useEmojiSearch")
+    
+    @AppStorage("needFirstTutorial", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var needFirstTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needFirstTutorial")
+    @State private var openSafariTutorialView = false
+    
+    #if iOS
+    // Icon change for iOS/iPadOS
     @State private var isIconSettingView: Bool = false
+    // Get current icon
     var alternateIconName: String? {
         UIApplication.shared.alternateIconName
     }
-    
+    // Purchased ChangeIcon?
     @ObservedObject var storeManager = StoreManager()
     var linkDestination: some View {
         if UserDefaults().bool(forKey: "haveIconChange") {
@@ -44,7 +55,7 @@ struct ContentView: View {
             return AnyView(PurchaseView())
         }
     }
-#endif
+    #endif
     
     var body: some View {
         #if IOS
@@ -52,98 +63,92 @@ struct ContentView: View {
         #endif
         NavigationView {
             List {
-                // Top Section
+                // Normal CSE Settings
                 Section {
-                    TextField("", text: $urltop)
-                        .disableAutocorrection(true)
-#if iOS
-                        .keyboardType(.URL)
-                        .textInputAutocapitalization(.never)
-                        .submitLabel(.done)
-#endif
-                        .onChange(of: urltop) { entered in
-                            userDefaults!.set(entered, forKey: "urltop")
-                        }
+                    // Default CSE
+                    NavigationLink {
+                        EditSEView(cseType: .constant("default"), cseID: .constant(""))
+                    } label: {
+                        Text("Default Search Engine")
+                    }
                     
-                } header: {
-                    Text("TopUrl")
+                    // Private CSE
+                    // If private CSE is not available due to Safari settings
+                    if alsousepriv || searchengine == privsearchengine {
+                        Toggle(isOn: .constant(false), label: {
+                            Text("Use different search engine in Private Browse")
+                        })
+                        .disabled(true)
+                    } else { // is available
+                        Toggle(isOn: $usePrivateCSE, label: {
+                            Text("Use different search engine in Private Browse")
+                        })
+                        if usePrivateCSE {
+                            NavigationLink {
+                                EditSEView(cseType: .constant("private"), cseID: .constant(""))
+                            } label: {
+                                Text("Private Search Engine")
+                            }
+                        }
+                    }
                 } footer: {
-                    Text("TopUrl-Desc")
+                    if alsousepriv || searchengine == privsearchengine { // is not available
+                        Text("If you set another search engine in private browsing in Safari settings, you can use another custom search engine in private browse.")
+                    }
                 }
                 
-                // Suffix Section
+                // Quick SE Settings
                 Section {
-                    TextField("", text: $urlsuffix)
-                        .disableAutocorrection(true)
-#if iOS
-                        .keyboardType(.URL)
-                        .textInputAutocapitalization(.never)
-                        .submitLabel(.done)
-#endif
-                        .onChange(of: urlsuffix) { entered in
-                            userDefaults!.set(entered, forKey: "urlsuffix")
+                    Toggle(isOn: $useQuickCSE, label: {
+                        Text("Quick Search")
+                    })
+                    if useQuickCSE {
+                        NavigationLink {
+                            QuickSEListView()
+                        } label: {
+                            Text("Quick Search Engines")
                         }
-                } header: {
-                    Text("SuffixUrl")
+                    }
                 } footer: {
-                    Text("SuffixUrl-Desc")
+                    Text("Enter the keyword at the top to switch search engines.")
                 }
                 
-                // Default SE Section
+                // Emojipedia Search Setting
                 Section {
-                    Picker("DefaultSE", selection: $searchengine) {
-                        let currentRegion = Locale.current.regionCode
-                        if currentRegion == "CN" {
-                            Text("Baidu").tag("baidu")
-                            Text("Sogou").tag("sogou")
-                            Text("360 Search").tag("360search")
-                        }
-                        Text("Google").tag("google")
-                        Text("Yahoo").tag("yahoo")
-                        Text("Bing").tag("bing")
-                        if currentRegion == "RU" {
-                            Text("Yandex").tag("yandex")
-                        }
-                        Text("DuckDuckGo").tag("duckduckgo")
-                        Text("Ecosia").tag("ecosia")
-                    }
-                    .onChange(of: searchengine) { entered in
-                        userDefaults!.set(entered, forKey: "searchengine")
-                    }
-                } header: {
-                    Text("SafariSetting")
+                    Toggle(isOn: $useEmojiSearch, label: {
+                        Text("Emoji Search")
+                    })
                 } footer: {
-                    VStack (alignment : .leading) {
-                        #if iOS
-                        Text("DefaultSE-Desc-iOS")
-                        Spacer()
-                        Text("SafariSetting-Desc-iOS")
-                        #elseif macOS
-                        Text("DefaultSE-Desc-macOS")
-                        Spacer()
-                        Text("SafariSetting-Desc-macOS")
-                        #elseif visionOS
-                        Text("DefaultSE-Desc-visionOS")
-                        Spacer()
-                        Text("SafariSetting-Desc-visionOS")
-                        #endif
+                    Text("If you enter only one emoji, you can search on Emojipedia.org.")
+                }
+                
+                // Show Safari Settings Tutorial Button
+                Section {
+                    Button(action: {
+                        openSafariTutorialView = true
+                    }) {
+                        Text("Safari Settings")
                     }
+                } footer: {
+                    Text("If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial.")
                 }
                 
                 #if iOS
+                // Go IconChange View for iOS/iPadOS
                 Section {
                     NavigationLink(destination: linkDestination, isActive: $isIconSettingView) {
                         Image((alternateIconName ?? "appicon") + "-pre")
                             .resizable()
                             .frame(width: 64, height: 64)
+                            .accessibilityHidden(true)
+                            .cornerRadius(14)
+                            .padding(4)
+                            .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
                             .id(isIconSettingView)
-                            .accessibilityIgnoresInvertColors(true)
-                        Text("ChangeAppIcon")
+                        Text("Change App Icon")
                         Spacer()
                     }
                     .contentShape(Rectangle())
-                } header: {
-                    Text("AppIcon")
                 }
                 #endif
                 
@@ -154,17 +159,17 @@ struct ContentView: View {
                         HStack {
                             Image(systemName: "message")
                                 .frame(width: 20.0)
-                            Text("ContactLink")
+                            Text("Contact")
                             Spacer()
                             Image(systemName: "chevron.right")
                         }
                     })
                     // Privacy Policy
-                    Link(destination:URL(string: "https://tsg0o0.com/privacy/")!, label: {
+                    Link(destination:URL(string: "https://i.cizzuk.net/privacy/")!, label: {
                         HStack {
                             Image(systemName: "hand.raised")
                                 .frame(width: 20.0)
-                            Text("PrivacyPolicyLink")
+                            Text("Privacy Policy")
                             Spacer()
                             Image(systemName: "chevron.right")
                         }
@@ -174,7 +179,7 @@ struct ContentView: View {
                         HStack {
                             Image(systemName: "book.closed")
                                 .frame(width: 20.0)
-                            Text("LicenseLink")
+                            Text("License")
                             Spacer()
                             Text("MPL 2.0")
                             Image(systemName: "chevron.right")
@@ -185,25 +190,26 @@ struct ContentView: View {
                         HStack {
                             Image(systemName: "ladybug")
                                 .frame(width: 20.0)
-                            Text("SourceLink")
+                            Text("Source")
                             Spacer()
                             Text("GitHub")
                             Image(systemName: "chevron.right")
                         }
                     })
                 } header: {
-                    Text("SupportLink")
+                    Text("Support")
                 } footer: {
                     HStack {
-                        Text("© Cizzuk")
-                        Spacer()
                         Text("Version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String)")
+                        Spacer()
+                        Text("© Cizzuk")
                     }
                 }
                 
+                // Advanced Settings
                 Section {
-                    NavigationLink(destination: AdvSettingView().navigationTitle("AdvSettings")) {
-                        Text("AdvSettings")
+                    NavigationLink(destination: AdvSettingView().navigationTitle("Advanced Settings")) {
+                        Text("Advanced Settings")
                         Spacer()
                     }
                     .contentShape(Rectangle())
@@ -211,9 +217,16 @@ struct ContentView: View {
                 
             }
             .listStyle(.insetGrouped)
-            .navigationTitle("CSESetting")
+            .navigationTitle("CSE Settings")
         }
         .navigationViewStyle(.stack)
+        // Tutorial sheets
+        .sheet(isPresented: $needFirstTutorial, content: {
+            FullTutorialView(isOpenSheet: $needFirstTutorial)
+        })
+        .sheet(isPresented: $openSafariTutorialView, content: {
+            SafariTutorialView(isOpenSheet: $openSafariTutorialView)
+        })
     }
 }
 

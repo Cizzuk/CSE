@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "glitch.png",
+      "filename" : "pixel.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -13,7 +13,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "glitch 1.png",
+      "filename" : "pixel 2.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -25,7 +25,7 @@
           "value" : "tinted"
         }
       ],
-      "filename" : "glitch 2.png",
+      "filename" : "pixel 1.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"

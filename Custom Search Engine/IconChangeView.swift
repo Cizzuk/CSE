@@ -19,7 +19,7 @@ struct IconSettingView: View {
                 iconItem(iconName: "White", iconID: "gray-white")
                 iconItem(iconName: "Pride", iconID: "pride")
                 iconItem(iconName: "General", iconID: "light")
-                iconItem(iconName: "Glitch", iconID: "glitch")
+                iconItem(iconName: "Pixel", iconID: "pixel")
                 iconItem(iconName: "Dark Blue", iconID: "blue-dark")
                 iconItem(iconName: "Dark Red", iconID: "red-dark")
                 iconItem(iconName: "Dark Green", iconID: "green-dark")
@@ -27,21 +27,24 @@ struct IconSettingView: View {
             }
         }
         .listStyle(.insetGrouped)
-        .navigationTitle("ChangeAppIcon")
+        .navigationTitle("Change App Icon")
         .navigationBarTitleDisplayMode(.inline)
     }
     func iconItem(iconName: String, iconID: String) -> some View {
         HStack {
             Image(iconID + "-pre")
                 .resizable()
-                .frame(width: 80, height: 80)
+                .frame(width: 64, height: 64)
                 .accessibilityHidden(true)
-                .accessibilityIgnoresInvertColors(true)
+                .cornerRadius(14)
+                .padding(8)
+                .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
             Text(iconName)
             Spacer()
         }
         .contentShape(Rectangle())
         .onTapGesture {
+            // Change App Icon
             if iconID == "appicon" {
                 UIApplication.shared.setAlternateIconName(nil)
             }else{
@@ -55,53 +58,55 @@ struct PurchaseView: View {
     @ObservedObject var storeManager = StoreManager()
     @State private var showSucAlert = false
     @State private var showFailAlert = false
+    @State private var showRestoreSucAlert = false
     var body: some View {
         List {
-            //Purchase Section
+            // Purchase Section
             Section {
                 HStack {
                     Image(systemName: "checkmark.circle")
                         .accessibilityHidden(true)
-                    Text("Purchase-Desc1")
+                    Text("You will be able to change the application icon")
                 }
                 HStack {
                     Image(systemName: "checkmark.circle")
                         .accessibilityHidden(true)
-                    Text("Purchase-Desc2")
+                    Text("Your purchase will support the development of CSE")
                 }
                 HStack {
                     Image(systemName: "checkmark.circle")
                         .accessibilityHidden(true)
-                    Text("Purchase-Desc3")
+                    Text("More people will be able to continue using CSE for free")
                 }
-                //Purchase Button
+                
+                // Purchase Button
                 Button(action: {
                     if let product = self.storeManager.products.first {
                         self.storeManager.purchase(product: product)
                     }
                 }) {
                     HStack {
-                        Text("PurchaseButton")
-                            .fontWeight(.bold)
-                            .padding(10)
-                        ForEach(storeManager.products, id: \.self) { product in
-                            Text(self.localizedPrice(for: product))
+                        if !storeManager.products.isEmpty {
+                            Text("Purchase:")
+                                .fontWeight(.bold)
+                                .padding(10)
+                            ForEach(storeManager.products, id: \.self) { product in
+                                Text(self.localizedPrice(for: product))
+                            }
+                        } else {
+                            Text("Purchase is currently not available.")
+                                .padding(10)
                         }
                     }
                     .frame(maxWidth: .infinity)
                 }
-                .alert(isPresented: $showSucAlert) {
-                    Alert(title: Text("Purchase Success!"))
-                }
+                .alert("Purchase Success!", isPresented: $showSucAlert, actions: {})
                 .onReceive(storeManager.$purchaseCompleted) { purchaseCompleted in
                     if purchaseCompleted {
                         showSucAlert = true
                     }
                 }
-                .alert(isPresented: $showFailAlert) {
-                    Alert(title: Text("Purchase Failed"
-                                     ))
-                }
+                .alert("Purchase Failed", isPresented: $showFailAlert, actions: {})
                 .onReceive(storeManager.$purchaseFailed) { purchaseFailed in
                     if purchaseFailed {
                         showFailAlert = true
@@ -109,18 +114,25 @@ struct PurchaseView: View {
                 }
                 .disabled(storeManager.products.isEmpty)
             }
+            
+            // Restore Button
             Section {
-                //Restore Button
                 Button(action: {
                     self.storeManager.restorePurchases()
                 }) {
-                    Text("RestorePurchase")
+                    Text("Restore Purchase")
                         .font(.subheadline)
                         .frame(maxWidth: .infinity)
                 }
+                .alert("Restore Success!", isPresented: $showRestoreSucAlert, actions: {})
+                .onReceive(storeManager.$restoreCompleted) { restoreCompleted in
+                    if restoreCompleted {
+                        showRestoreSucAlert = true
+                    }
+                }
             }
             
-            //Icon Preview Section
+            // Icon Preview Section
             Section {
                 iconItem(iconName: "CSE", iconID: "appicon")
                 iconItem(iconName: "Red", iconID: "red-white")
@@ -128,30 +140,35 @@ struct PurchaseView: View {
                 iconItem(iconName: "White", iconID: "gray-white")
                 iconItem(iconName: "Pride", iconID: "pride")
                 iconItem(iconName: "General", iconID: "light")
-                iconItem(iconName: "Glitch", iconID: "glitch")
+                iconItem(iconName: "Pixel", iconID: "pixel")
                 iconItem(iconName: "Dark Blue", iconID: "blue-dark")
                 iconItem(iconName: "Dark Red", iconID: "red-dark")
                 iconItem(iconName: "Dark Green", iconID: "green-dark")
                 iconItem(iconName: "Black", iconID: "gray-dark")
             } header: {
-                Text("AvailableIcon")
+                Text("Available Icons")
             } footer: {
-                Text("ChangeAppIcon-Desc")
+                Text("Available icons may change in the future.")
             }
         }
         .listStyle(.insetGrouped)
-        .navigationTitle("ChangeAppIcon")
+        .navigationTitle("Change App Icon")
         .navigationBarTitleDisplayMode(.inline)
     }
     func iconItem(iconName: String, iconID: String) -> some View {
         HStack {
             Image(iconID + "-pre")
                 .resizable()
-                .frame(width: 80, height: 80)
+                .frame(width: 64, height: 64)
                 .accessibilityHidden(true)
+                .cornerRadius(14)
+                .padding(8)
+                .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
             Text(iconName)
         }
     }
+    
+    // Get Localized Price
     private func localizedPrice(for product: SKProduct) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
@@ -165,6 +182,7 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
     var presentationMode: Binding<PresentationMode>?
     @Published var purchaseCompleted = false
     @Published var purchaseFailed = false
+    @Published var restoreCompleted = false
     
     override init() {
         super.init()
@@ -197,7 +215,7 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
             switch transaction.transactionState {
-            case .purchased, .restored:
+            case .purchased:
                 SKPaymentQueue.default().finishTransaction(transaction)
                 // Success!!!
                 handlePurchaseSuccess()
@@ -205,18 +223,27 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
                 SKPaymentQueue.default().finishTransaction(transaction)
                 // Failed...
                 handlePurchaseFailure()
+            case .restored:
+                SKPaymentQueue.default().finishTransaction(transaction)
+                // Success!!!
+                handleRestoreSuccess()
             default:
                 break
             }
         }
     }
     
+    // Handlers
     func handlePurchaseSuccess() {
         UserDefaults.standard.set(true, forKey: "haveIconChange")
         purchaseCompleted = true
     }
     func handlePurchaseFailure() {
         purchaseFailed = true
+    }
+    func handleRestoreSuccess() {
+        UserDefaults.standard.set(true, forKey: "haveIconChange")
+        restoreCompleted = true
     }
 }
 #endif

@@ -11,7 +11,6 @@
 		903A4A212BA1D87F005E346B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903A4A202BA1D87F005E346B /* MainView.swift */; };
 		908FBC952BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */; };
 		908FBC962BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */; };
-		90ACB07B2BA5157A000E315D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 90ACB07A2BA5157A000E315D /* Localizable.xcstrings */; };
 		90C9BE16288BE17000E22FB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9BE15288BE17000E22FB8 /* AppDelegate.swift */; };
 		90C9BE30288BE17300E22FB8 /* Customize Search Engine Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 90C9BE2F288BE17300E22FB8 /* Customize Search Engine Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		90C9BE35288BE17300E22FB8 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9BE34288BE17300E22FB8 /* SafariWebExtensionHandler.swift */; };
@@ -21,10 +20,16 @@
 		90C9BE3E288BE17300E22FB8 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE3D288BE17300E22FB8 /* background.js */; };
 		90C9BE40288BE17300E22FB8 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE3F288BE17300E22FB8 /* content.js */; };
 		90C9BE42288BE17300E22FB8 /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE41288BE17300E22FB8 /* popup.html */; };
-		90C9BE44288BE17300E22FB8 /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE43288BE17300E22FB8 /* popup.css */; };
 		90C9BE48288BE17300E22FB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE29288BE17200E22FB8 /* Assets.xcassets */; };
+		BE1642DF2D23D69E008A42F8 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1642DE2D23D696008A42F8 /* Tutorial.swift */; };
 		BE5342E32C9E338F00AE1DB3 /* IconChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5342E22C9E338F00AE1DB3 /* IconChangeView.swift */; };
 		BE5342E52C9E36FA00AE1DB3 /* AdvSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */; };
+		BE866B682D3F688900C506E5 /* EditSEView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE866B672D3F688900C506E5 /* EditSEView.swift */; };
+		BE866B6A2D3F9A1F00C506E5 /* QuickSEListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE866B692D3F9A1F00C506E5 /* QuickSEListView.swift */; };
+		BE866B702D431C5800C506E5 /* post_redirector.html in Resources */ = {isa = PBXBuildFile; fileRef = BE866B6F2D431C5800C506E5 /* post_redirector.html */; };
+		BE866B722D431FA400C506E5 /* post_redirector.js in Resources */ = {isa = PBXBuildFile; fileRef = BE866B712D431FA400C506E5 /* post_redirector.js */; };
+		BEE22EE52D44E93000EDA51A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */; };
+		BEE22EE62D44E93000EDA51A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +60,6 @@
 		90240FAE2BA54E68003C264A /* Customize Search Engine.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Customize Search Engine.storekit"; sourceTree = "<group>"; };
 		903A4A202BA1D87F005E346B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		90ACB07A2BA5157A000E315D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		90AD4058288E74CD00C5E21A /* Custom Search Engine Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Custom Search Engine Extension.entitlements"; sourceTree = "<group>"; };
 		90C9BE12288BE17000E22FB8 /* Customize Search Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Customize Search Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90C9BE15288BE17000E22FB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,26 +73,42 @@
 		90C9BE3D288BE17300E22FB8 /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = background.js; sourceTree = "<group>"; };
 		90C9BE3F288BE17300E22FB8 /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = content.js; sourceTree = "<group>"; };
 		90C9BE41288BE17300E22FB8 /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = popup.html; sourceTree = "<group>"; };
-		90C9BE43288BE17300E22FB8 /* popup.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = popup.css; sourceTree = "<group>"; };
 		90C9BE47288BE17300E22FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90C9BE52288D09DB00E22FB8 /* Custom Search Engine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Custom Search Engine.entitlements"; sourceTree = "<group>"; };
+		BE1642DE2D23D696008A42F8 /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 		BE5342E22C9E338F00AE1DB3 /* IconChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconChangeView.swift; sourceTree = "<group>"; };
 		BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvSettingView.swift; sourceTree = "<group>"; };
-		BE8E1D2D2C16EB3000B31EA1 /* Customize Search EngineRelease visionOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Customize Search EngineRelease visionOS.entitlements"; sourceTree = "<group>"; };
+		BE866B672D3F688900C506E5 /* EditSEView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSEView.swift; sourceTree = "<group>"; };
+		BE866B692D3F9A1F00C506E5 /* QuickSEListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSEListView.swift; sourceTree = "<group>"; };
+		BE866B6F2D431C5800C506E5 /* post_redirector.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = post_redirector.html; sourceTree = "<group>"; };
+		BE866B712D431FA400C506E5 /* post_redirector.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = post_redirector.js; sourceTree = "<group>"; };
+		BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		BE07A84E2D4405AB00469317 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				SetFocusSE.swift,
+			);
+			target = 90C9BE2E288BE17300E22FB8 /* Customize Search Engine Extension */;
+		};
 		BE289FE22C8DAE07005BBDC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				DefaultSearchEngine.swift,
+				Enums.swift,
+				SetDefaultSE.swift,
+				SetFocusSE.swift,
+				SetPrivateSE.swift,
+				SetUseEmojiSearch.swift,
+				SetUseQuickSearch.swift,
 			);
 			target = 90C9BE11288BE17000E22FB8 /* Customize Search Engine */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		BE289FCD2C8DA7C8005BBDC6 /* Intent */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (BE289FE22C8DAE07005BBDC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Intent; sourceTree = "<group>"; };
+		BE289FCD2C8DA7C8005BBDC6 /* Intent */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (BE289FE22C8DAE07005BBDC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, BE07A84E2D4405AB00469317 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Intent; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,10 +132,9 @@
 		90C9BE09288BE17000E22FB8 = {
 			isa = PBXGroup;
 			children = (
+				BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */,
 				BE289FCD2C8DA7C8005BBDC6 /* Intent */,
-				BE8E1D2D2C16EB3000B31EA1 /* Customize Search EngineRelease visionOS.entitlements */,
 				908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */,
-				90ACB07A2BA5157A000E315D /* Localizable.xcstrings */,
 				90C9BE14288BE17000E22FB8 /* Custom Search Engine */,
 				90C9BE33288BE17300E22FB8 /* Custom Search Engine Extension */,
 				90C9BE13288BE17000E22FB8 /* Products */,
@@ -137,8 +156,11 @@
 				90C9BE52288D09DB00E22FB8 /* Custom Search Engine.entitlements */,
 				90C9BE15288BE17000E22FB8 /* AppDelegate.swift */,
 				903A4A202BA1D87F005E346B /* MainView.swift */,
-				BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */,
+				BE866B672D3F688900C506E5 /* EditSEView.swift */,
+				BE866B692D3F9A1F00C506E5 /* QuickSEListView.swift */,
+				BE1642DE2D23D696008A42F8 /* Tutorial.swift */,
 				BE5342E22C9E338F00AE1DB3 /* IconChangeView.swift */,
+				BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */,
 				90240FAE2BA54E68003C264A /* Customize Search Engine.storekit */,
 				90C9BE29288BE17200E22FB8 /* Assets.xcassets */,
 				90C9BE2A288BE17200E22FB8 /* Info.plist */,
@@ -165,8 +187,9 @@
 				90C9BE3B288BE17300E22FB8 /* manifest.json */,
 				90C9BE3D288BE17300E22FB8 /* background.js */,
 				90C9BE3F288BE17300E22FB8 /* content.js */,
+				BE866B712D431FA400C506E5 /* post_redirector.js */,
+				BE866B6F2D431C5800C506E5 /* post_redirector.html */,
 				90C9BE41288BE17300E22FB8 /* popup.html */,
-				90C9BE43288BE17300E22FB8 /* popup.css */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -236,13 +259,13 @@
 				en,
 				Base,
 				ja,
-				es,
 				"zh-Hans",
 				"zh-Hant",
 				fr,
 				de,
-				ru,
 				ko,
+				ru,
+				es,
 			);
 			mainGroup = 90C9BE09288BE17000E22FB8;
 			productRefGroup = 90C9BE13288BE17000E22FB8 /* Products */;
@@ -262,8 +285,8 @@
 			files = (
 				90240FAF2BA54E68003C264A /* Customize Search Engine.storekit in Resources */,
 				90C9BE48288BE17300E22FB8 /* Assets.xcassets in Resources */,
+				BEE22EE62D44E93000EDA51A /* Localizable.xcstrings in Resources */,
 				908FBC952BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */,
-				90ACB07B2BA5157A000E315D /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,13 +295,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				90C9BE3E288BE17300E22FB8 /* background.js in Resources */,
-				90C9BE44288BE17300E22FB8 /* popup.css in Resources */,
 				90C9BE42288BE17300E22FB8 /* popup.html in Resources */,
 				90C9BE3A288BE17300E22FB8 /* images in Resources */,
 				90C9BE3C288BE17300E22FB8 /* manifest.json in Resources */,
+				BEE22EE52D44E93000EDA51A /* Localizable.xcstrings in Resources */,
 				90C9BE38288BE17300E22FB8 /* _locales in Resources */,
 				908FBC962BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */,
+				BE866B702D431C5800C506E5 /* post_redirector.html in Resources */,
 				90C9BE40288BE17300E22FB8 /* content.js in Resources */,
+				BE866B722D431FA400C506E5 /* post_redirector.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,9 +315,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				903A4A212BA1D87F005E346B /* MainView.swift in Sources */,
+				BE1642DF2D23D69E008A42F8 /* Tutorial.swift in Sources */,
+				BE866B682D3F688900C506E5 /* EditSEView.swift in Sources */,
 				BE5342E52C9E36FA00AE1DB3 /* AdvSettingView.swift in Sources */,
 				90C9BE16288BE17000E22FB8 /* AppDelegate.swift in Sources */,
 				BE5342E32C9E338F00AE1DB3 /* IconChangeView.swift in Sources */,
+				BE866B6A2D3F9A1F00C506E5 /* QuickSEListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +396,7 @@
 				SDKROOT = xros;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = visionOS;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 				XROS_DEPLOYMENT_TARGET = 1.0;
@@ -381,9 +410,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = "Customize Search EngineRelease visionOS.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Custom Search Engine/Custom Search Engine.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_TEAM = Z8R89S24YT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Custom Search Engine/Info.plist";
@@ -397,7 +426,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 3.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -413,7 +442,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 7;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = "Release visionOS";
@@ -424,7 +453,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Custom Search Engine Extension/Custom Search Engine Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_TEAM = Z8R89S24YT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Custom Search Engine Extension/Info.plist";
@@ -436,7 +465,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 3.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -509,6 +538,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = iOS;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 				XROS_DEPLOYMENT_TARGET = 1.0;
@@ -524,7 +554,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Custom Search Engine/Custom Search Engine.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_TEAM = Z8R89S24YT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Custom Search Engine/Info.plist";
@@ -538,7 +568,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 3.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -554,7 +584,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = "Release iOS";
@@ -565,7 +595,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Custom Search Engine Extension/Custom Search Engine Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_TEAM = Z8R89S24YT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Custom Search Engine Extension/Info.plist";
@@ -577,7 +607,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 3.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -655,6 +685,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
@@ -713,6 +744,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = macOS;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 				XROS_DEPLOYMENT_TARGET = 1.0;
@@ -725,7 +757,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Custom Search Engine Extension/Custom Search Engine Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_TEAM = Z8R89S24YT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Custom Search Engine Extension/Info.plist";
@@ -737,7 +769,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 3.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -762,7 +794,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Custom Search Engine Extension/Custom Search Engine Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_TEAM = Z8R89S24YT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Custom Search Engine Extension/Info.plist";
@@ -774,7 +806,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 3.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -802,7 +834,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Custom Search Engine/Custom Search Engine.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_TEAM = Z8R89S24YT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Custom Search Engine/Info.plist";
@@ -816,7 +848,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 3.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -832,7 +864,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,6,7";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Debug;
@@ -846,7 +878,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Custom Search Engine/Custom Search Engine.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_TEAM = Z8R89S24YT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Custom Search Engine/Info.plist";
@@ -860,7 +892,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 3.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -876,7 +908,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,6";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = "Release macOS";

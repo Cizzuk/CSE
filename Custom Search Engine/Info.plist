@@ -13,8 +13,8 @@
 			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>net.cizzuk.cse</string>
 				<string>com.tsg0o0.cse</string>
-				<string>tsg0o0.cse</string>
 				<string>cse</string>
 				<string>customizesearchengine</string>
 				<string>customize-search-engine</string>
@@ -23,6 +23,7 @@
 	</array>
 	<key>NSUserActivityTypes</key>
 	<array>
+		<string>PrivateSearchEngineIntent</string>
 		<string>DefaultSearchEngineIntent</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
