@@ -20,7 +20,6 @@
 		90C9BE3E288BE17300E22FB8 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE3D288BE17300E22FB8 /* background.js */; };
 		90C9BE40288BE17300E22FB8 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE3F288BE17300E22FB8 /* content.js */; };
 		90C9BE42288BE17300E22FB8 /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE41288BE17300E22FB8 /* popup.html */; };
-		90C9BE44288BE17300E22FB8 /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE43288BE17300E22FB8 /* popup.css */; };
 		90C9BE48288BE17300E22FB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE29288BE17200E22FB8 /* Assets.xcassets */; };
 		BE1642DF2D23D69E008A42F8 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1642DE2D23D696008A42F8 /* Tutorial.swift */; };
 		BE5342E32C9E338F00AE1DB3 /* IconChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5342E22C9E338F00AE1DB3 /* IconChangeView.swift */; };
@@ -74,7 +73,6 @@
 		90C9BE3D288BE17300E22FB8 /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = background.js; sourceTree = "<group>"; };
 		90C9BE3F288BE17300E22FB8 /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = content.js; sourceTree = "<group>"; };
 		90C9BE41288BE17300E22FB8 /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = popup.html; sourceTree = "<group>"; };
-		90C9BE43288BE17300E22FB8 /* popup.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = popup.css; sourceTree = "<group>"; };
 		90C9BE47288BE17300E22FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90C9BE52288D09DB00E22FB8 /* Custom Search Engine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Custom Search Engine.entitlements"; sourceTree = "<group>"; };
 		BE1642DE2D23D696008A42F8 /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
@@ -192,7 +190,6 @@
 				BE866B712D431FA400C506E5 /* post_redirector.js */,
 				BE866B6F2D431C5800C506E5 /* post_redirector.html */,
 				90C9BE41288BE17300E22FB8 /* popup.html */,
-				90C9BE43288BE17300E22FB8 /* popup.css */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -298,7 +295,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				90C9BE3E288BE17300E22FB8 /* background.js in Resources */,
-				90C9BE44288BE17300E22FB8 /* popup.css in Resources */,
 				90C9BE42288BE17300E22FB8 /* popup.html in Resources */,
 				90C9BE3A288BE17300E22FB8 /* images in Resources */,
 				90C9BE3C288BE17300E22FB8 /* manifest.json in Resources */,
