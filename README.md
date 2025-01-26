@@ -1,10 +1,38 @@
 # Customize Search Engine
 
-This is an extension to customize Safari's search engine.
+Safari Extension to customize your search engine.  
 
-It allows you to change to other search engines other than the default engines such as Google and Bing.
+**[Download on the App Store](https://apps.apple.com/app/customize-search-engine/id6445840140)**
 
-For example, you can change to a search engine such as Startpage, search within sites such as Wikipedia or GitHub, or use DeepL translation from the search bar.
+## Features
+
+### Customize your Search Engine
+
+Change Safari's default search engine.  
+This is the most basic feature.
+
+### CSE for Private Browse
+
+Switch search engines in Private Browse.  
+
+### Quick Search
+
+Enter the keyword at the top to switch search engines.
+
+Example:
+- Search [`br something`](https://search.brave.com/search?q=something) to search in Brave Search
+- Search [`wiki Safari`](https://en.wikipedia.org/w/index.php?title=Special:Search&search=Safari) to find Safari on Wikipedia
+- Search [`yt Me at the zoo`](https://www.youtube.com/results?search_query=Me+at+the+zoo) to find the oldest videos on YouTube
+- Search [`chatgpt Hello!`](https://chatgpt.com/?q=Hello!&hints=search) to say hello to ChatGPT
+- Search [`wbm apple.com`](https://web.archive.org/web/*/apple.com) to see the old Apple website
+
+### Emoji Search
+
+If you enter only one emoji, you can search on [Emojipedia.org](https://emojipedia.org).
+
+### Switch Search Engines by Shortcuts and Focus
+
+You can use a different custom search engine or disable CSE while at work, school, etc.
 
 ## How it works
 
@@ -23,12 +51,6 @@ Due to [CSP restrictions](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
 > [!IMPORTANT]
 > I know this method is not available in macOS Safari, so this feature is disabled by default in CSE on macOS.  
 > Therefore, if you set a search engine with strict CSP restrictions (such as DuckDuckGo) as the default for Safari, custom search engines with POST Data will not be available.
-
-## Install
-
-### App Store
-
-[Download on the App Store](https://apps.apple.com/app/customize-search-engine/id6445840140)
 
 ## License
 
