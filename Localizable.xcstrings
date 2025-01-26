@@ -38,6 +38,12 @@
             "value" : "絵文字検索を${toggle}"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle}: 이모티콘 검색"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -70,6 +76,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "絵文字検索を${state}に${toggle}"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle}: 이모티콘 검색 ${state}"
           }
         },
         "zh-Hans" : {
@@ -106,6 +118,12 @@
             "value" : "クイック検索を${toggle}"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle}: 빠른 검색"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -140,6 +158,12 @@
             "value" : "クイック検索を${state}に${toggle}"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle}: 빠른 검색 ${state}"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -169,6 +193,12 @@
           }
         },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "360 Search"
+          }
+        },
+        "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "360 Search"
@@ -208,6 +238,12 @@
             "value" : "検索エンジンを追加"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검색 엔진 추가"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -240,6 +276,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "POSTデータを追加"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "POST 데이터 추가"
           }
         },
         "zh-Hans" : {
@@ -276,6 +318,12 @@
             "value" : "高度な設定"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "고급 설정"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -308,6 +356,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "プライベートブラウズでも使用"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개인정보 보호 브라우징에서도 사용"
           }
         },
         "zh-Hans" : {
@@ -344,6 +398,12 @@
             "value" : "データをロードまたはアップデート中にエラーが発生しました"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "데이터를 로드하거나 업데이트하는 동안 오류가 발생했습니다."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -376,6 +436,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "利用可能なアイコン"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사용 가능한 아이콘"
           }
         },
         "zh-Hans" : {
@@ -412,6 +478,12 @@
             "value" : "利用可能なアイコンは今後変更される可能性があります。"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사용 가능한 아이콘은 향후 변경될 수 있습니다."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -444,6 +516,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "バイドゥ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baidu"
           }
         },
         "zh-Hans" : {
@@ -483,6 +561,12 @@
             "value" : "CSEを使い始める前に、いくつかの設定が必要です。"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE를 사용하기 전에 몇 가지 설정이 필요합니다."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -512,6 +596,12 @@
           }
         },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bing"
+          }
+        },
+        "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bing"
@@ -554,6 +644,12 @@
             "value" : "アイコンを変更"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 아이콘"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -586,6 +682,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "問い合わせ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "문의"
           }
         },
         "zh-Hans" : {
@@ -623,6 +725,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSE設定"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE 설정"
           }
         },
         "zh-Hans" : {
@@ -679,6 +787,12 @@
             "value" : "デフォルトの検索エンジン"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기본 검색 엔진"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -723,6 +837,12 @@
             "value" : "CSEを無効化"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE 비활성화"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -755,6 +875,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "デフォルトの検索エンジンを無効化"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기본 검색 엔진 비활성화"
           }
         },
         "zh-Hans" : {
@@ -791,6 +917,12 @@
             "value" : "完了"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "완료"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -820,6 +952,12 @@
           }
         },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuckDuckGo"
+          }
+        },
+        "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "DuckDuckGo"
@@ -862,6 +1000,12 @@
             "value" : "Ecosia"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ecosia"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -899,6 +1043,12 @@
             "value" : "検索エンジンを編集"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검색 엔진 편집"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -931,6 +1081,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "絵文字検索"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이모티콘 검색"
           }
         },
         "zh-Hans" : {
@@ -977,6 +1133,12 @@
             "value" : "キーワードを先頭に入力して、検索エンジンを切り替えます。"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "키워드를 맨 앞에 입력하고 검색엔진을 전환합니다."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1011,6 +1173,12 @@
             "value" : "このキーワードを先頭に入力すると、この検索エンジンで検索します。"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 키워드를 맨 앞에 입력하면 이 검색엔진에서 검색됩니다."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1043,6 +1211,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "例: 「%@ 検索 方法」"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "예: \"%@ 검색 방법\""
           }
         },
         "zh-Hans" : {
@@ -1089,6 +1263,12 @@
             "value" : "GitHub"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1123,6 +1303,12 @@
             "value" : "設定 → アプリ → Safari →　拡張機能 → Customize Search Engine から拡張機能を許可してください。それから以下のWebページへのアクセスを「許可」してください。"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설정 → 앱 → Safari → 확장 프로그램 → Customize Search Engine 에서 확장 프로그램을 허용해 주세요. 그리고 다음 웹페이지에 대한 접근을 '허용'하십시오."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1152,6 +1338,12 @@
           }
         },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Google"
+          }
+        },
+        "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Google"
@@ -1197,6 +1389,12 @@
             "value" : "Safariの設定を変更したり、CSEがうまく動作しない場合は、このチュートリアルをやり直す必要があるかもしれません。"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safari 설정을 변경하거나 CSE가 제대로 작동하지 않는 경우 이 튜토리얼을 다시 시작해야 할 수도 있습니다."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1231,6 +1429,12 @@
             "value" : "絵文字を一文字だけ入力すると、Emojipedia.orgで検索します。"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이모티콘을 한 글자만 입력하면 Emojipedia.org에서 검색합니다."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1263,6 +1467,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Safariのプライベートブラウズの設定で別の検索エンジンを選択すると、プライベートブラウズ用に異なるカスタム検索エンジンを設定できるようになります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safari의 개인정보 보호 브라우징 설정에서 다른 검색 엔진을 선택하면 개인정보 보호 브라우징을 위해 다른 사용자 지정 검색 엔진을 설정할 수 있다."
           }
         },
         "zh-Hans" : {
@@ -1322,6 +1532,12 @@
             "value" : "キーワード"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "키워드"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1356,6 +1572,12 @@
             "value" : "キーワードは空白にできません"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "키워드는 비워둘 수 없습니다"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1388,6 +1610,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ライセンス"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "라이선스"
           }
         },
         "zh-Hans" : {
@@ -1434,6 +1662,12 @@
             "value" : "より多くの人がCSEを無料で使い続けられるようになります。"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "더 많은 사람들이 CSE를 무료로 계속 사용할 수 있습니다"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1471,6 +1705,12 @@
             "value" : "名前"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이름"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1503,6 +1743,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "次へ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다음"
           }
         },
         "zh-Hans" : {
@@ -1539,6 +1785,12 @@
             "value" : "Safariを開いて、Safari → 設定… と選択して「検索」タブを選ぶと、これらの設定を確認できます。"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safari를 열고 Safari → 설정...을 선택한 후 '검색' 탭을 선택하면 이러한 설정을 확인할 수 있습니다."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1571,6 +1823,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Safariを開いて、Safari → 設定… と選択して「拡張機能」タブからCSEを有効にします。それから以下のWebページを「Webサイトを編集」ボタンから「許可」してください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safari를 열고 Safari → 설정...을 선택한 후 '확장 프로그램' 탭에서 CSE를 활성화합니다. 그리고 아래 웹페이지를 '웹 사이트 편집…' 버튼에서 '허용'하십시오."
           }
         },
         "zh-Hans" : {
@@ -1607,6 +1865,12 @@
             "value" : "操作"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "작업"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1639,6 +1903,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "以下のWebページでCSEを許可してください"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아래 웹페이지에서 CSE를 허용해 주세요."
           }
         },
         "zh-Hans" : {
@@ -1675,6 +1945,12 @@
             "value" : "以下の項目をあなたのSafariの設定と同じものにしてください。"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아래 항목을 Safari의 설정과 동일하게 설정해 주세요."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1707,6 +1983,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "POSTデータ (オプション)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "POST 데이터 (옵션)"
           }
         },
         "zh-Hans" : {
@@ -1743,6 +2025,12 @@
             "value" : "プライバシーポリシー"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개인정보 보호정책"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1775,6 +2063,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "プライベート検索エンジン"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "aaaa 검색 엔진"
           }
         },
         "zh-Hans" : {
@@ -1811,6 +2105,12 @@
             "value" : "購入に失敗しました"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "구매 실패"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1843,6 +2143,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "現在購入できません。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "현재 구매할 수 없습니다."
           }
         },
         "zh-Hans" : {
@@ -1879,6 +2185,12 @@
             "value" : "購入に成功しました！"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "구매 완료!"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1911,6 +2223,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "購入:"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "구매 완료!"
           }
         },
         "zh-Hans" : {
@@ -1947,6 +2265,12 @@
             "value" : "クイック検索"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "빠른 검색"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1979,6 +2303,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "クイック検索エンジン"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "빠른 검색 엔진"
           }
         },
         "zh-Hans" : {
@@ -2015,6 +2345,12 @@
             "value" : "クエリを%sで置き換えます"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "쿼리를 %s로 대체합니다."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2047,6 +2383,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "全ての高度な設定をリセット"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모든 고급 설정 재설정하기"
           }
         },
         "zh-Hans" : {
@@ -2123,6 +2465,12 @@
             "value" : "購入を復元"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "구매 복원"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2155,6 +2503,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "復元に成功しました！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "복원에 성공했습니다!"
           }
         },
         "zh-Hans" : {
@@ -2191,6 +2545,12 @@
             "value" : "Safariの設定"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safari 설정"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2223,6 +2583,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "保存"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "저장"
           }
         },
         "zh-Hans" : {
@@ -2259,6 +2625,12 @@
             "value" : "検索エンジン"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검색 엔진"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2291,6 +2663,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "検索エンジンのURL"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검색 엔진 URL"
           }
         },
         "zh-Hans" : {
@@ -2327,6 +2705,12 @@
             "value" : "検索URL"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검색 URL"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2359,6 +2743,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "検索URLは空欄にできません"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검색 URL은 비워둘 수 없습니다."
           }
         },
         "zh-Hans" : {
@@ -2401,6 +2791,12 @@
             "value" : "デフォルトの検索エンジンを設定"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기본 검색 엔진 설정"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2433,6 +2829,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "デフォルトの検索エンジンを${cseURL}に設定"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기본 검색 엔진을 ${cseURL}로 설정합니다."
           }
         },
         "zh-Hans" : {
@@ -2469,6 +2871,12 @@
             "value" : "絵文字検索を設定"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이모티콘 검색 설정"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2501,6 +2909,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "プライベート検索エンジンを設定"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개인정보 보호 검색 엔진 설정"
           }
         },
         "zh-Hans" : {
@@ -2537,6 +2951,12 @@
             "value" : "プライベート検索エンジンを${cseURL}に設定"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개인정보 보호 검색 엔진을 ${cseURL}로 설정합니다"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2569,6 +2989,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "クイック検索を設定"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "빠른 검색 설정"
           }
         },
         "zh-Hans" : {
@@ -2605,6 +3031,12 @@
             "value" : "検索エンジンを設定"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검색 엔진 설정"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2637,6 +3069,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSEでデフォルトのカスタム検索エンジンを設定します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE에서 기본 검색 엔진을 설정합니다."
           }
         },
         "zh-Hans" : {
@@ -2673,6 +3111,12 @@
             "value" : "CSEプライベートカスタム検索エンジンを設定します。"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE에서 개인정보 보호 검색 엔진을 설정합니다."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2707,6 +3151,12 @@
             "value" : "この集中モード中に使用するカスタム検索エンジンを設定します。"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 집중 모드 중에 사용할 사용자 지정 검색 엔진을 설정합니다."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2739,6 +3189,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "スキップ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "건너뛰기"
           }
         },
         "zh-Hans" : {
@@ -2778,6 +3234,12 @@
             "value" : "捜狗"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sogou"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2815,6 +3277,12 @@
             "value" : "ソースコード"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "소스 코드"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2847,6 +3315,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "状態"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "상태"
           }
         },
         "zh-Hans" : {
@@ -2883,6 +3357,12 @@
             "value" : "サポート"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지원"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2915,6 +3395,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "このキーワードはすでに使用されています"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 키워드는 이미 다른"
           }
         },
         "zh-Hans" : {
@@ -2951,6 +3437,12 @@
             "value" : "切り替える"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "토글"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2983,6 +3475,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "変更"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "전환"
           }
         },
         "zh-Hans" : {
@@ -3019,6 +3517,12 @@
             "value" : "CSEで絵文字検索をオンまたはオフに変更します。"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE에서 이모티콘 검색을 켜거나 끕니다."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3053,6 +3557,12 @@
             "value" : "CSEでクイック検索をオンまたはオフに変更します。"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE에서 빠른 검색을 켜거나 끕니다."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3082,6 +3592,12 @@
           }
         },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL"
+          }
+        },
+        "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL"
@@ -3121,6 +3637,12 @@
             "value" : "プライベートブラウズで別の検索エンジンを使用する"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개인정보 보호 브라우징으로 다른 검색 엔진 사용하기"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3158,6 +3680,12 @@
             "value" : "バージョン: %@"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "버전: %@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3190,6 +3718,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSEへようこそ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE에 오신 것을 환영합니다"
           }
         },
         "zh-Hans" : {
@@ -3236,6 +3770,12 @@
             "value" : "Yahoo"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yahoo"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3265,6 +3805,12 @@
           }
         },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex"
+          }
+        },
+        "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yandex"
@@ -3307,6 +3853,12 @@
             "value" : "設定 → アプリ → Safariから設定を確認できます。"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설정 → 앱 → Safari에서 설정을 확인할 수 있습니다."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3341,6 +3893,12 @@
             "value" : "アプリのアイコンを変更できるようになります"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 아이콘을 변경할 수 있습니다"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3373,6 +3931,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "購入することでCSEの開発をサポートできます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "구매를 통해 CSE의 개발을 지원할 수 있습니다"
           }
         },
         "zh-Hans" : {
