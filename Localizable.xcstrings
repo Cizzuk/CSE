@@ -2137,10 +2137,52 @@
     },
     "May not work with some Safari search engines." : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funktioniert möglicherweise nicht mit einigen Safari-Suchmaschinen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puede que no funcione con algunos buscadores de Safari."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peut ne pas fonctionner avec certains moteurs de recherche Safari."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "いくつかのSafariの検索エンジンで動作しません。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "일부 Safari 검색 엔진에서는 작동하지 않습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Может не работать с некоторыми поисковыми машинами Safari."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可能不适用于某些 Safari 浏览器搜索引擎。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可能無法使用某些 Safari 搜尋引擎。"
           }
         }
       }
