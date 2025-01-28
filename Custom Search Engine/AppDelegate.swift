@@ -182,26 +182,6 @@ func resetCSE(target: String) {
             "url": "https://www.youtube.com/results?search_query=%s",
             "post": []
         ],
-        "x": [
-            "name": "X",
-            "url": "https://x.com/search?q=%s",
-            "post": []
-        ],
-        "mstdn": [
-            "name": "Mastodon (mastodon.social)",
-            "url": "https://mastodon.social/search?q=%s",
-            "post": []
-        ],
-        "bsky": [
-            "name": "Bluesky (bsky.app)",
-            "url": "https://bsky.app/search?q=%s",
-            "post": []
-        ],
-        "rddt": [
-            "name": "Reddit",
-            "url": "https://www.reddit.com/search/?q=%s",
-            "post": []
-        ],
         "gh": [
             "name": "GitHub",
             "url": "https://github.com/search?q=%s",
@@ -212,19 +192,9 @@ func resetCSE(target: String) {
             "url": "https://" + wikiLang + ".wikipedia.org/w/index.php?title=Special:Search&search=%s",
             "post": []
         ],
-        "archive": [
-            "name": "Internet Archive",
-            "url": "https://archive.org/search?query=%s",
-            "post": []
-        ],
         "wbm": [
             "name": "Wayback Machine",
             "url": "https://web.archive.org/web/*/%s",
-            "post": []
-        ],
-        "chatgpt": [
-            "name": "ChatGPT",
-            "url": "https://chatgpt.com/?q=%s&hints=search",
             "post": []
         ]
     ]
@@ -252,11 +222,6 @@ func resetCSE(target: String) {
         "weibo": [
             "name": "微博",
             "url": "https://s.weibo.com/weibo?q=%s",
-            "post": []
-        ],
-        "douyin": [
-            "name": "抖音",
-            "url": "https://www.douyin.com/search/%s",
             "post": []
         ],
         "bili": [

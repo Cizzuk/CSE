@@ -24,6 +24,8 @@ struct EditSEView: View {
     @State private var showKeyBlankAlert: Bool = false
     @State private var showURLBlankAlert: Bool = false
     
+    @State private var editMode: EditMode = .inactive
+    
     var body: some View {
         NavigationView {
             List {
@@ -86,7 +88,11 @@ struct EditSEView: View {
                     }
                     .onDelete {
                         postEntries.remove(atOffsets: $0)
+                        if postEntries.count == 0 {
+                            editMode = .inactive
+                        }
                     }
+                    
                     Button(action: {
                         postEntries.append((key: "", value: ""))
                     })  {
@@ -97,7 +103,19 @@ struct EditSEView: View {
                         }
                     }
                 } header: {
-                    Text("POST Data (Option)")
+                    HStack {
+                        Text("POST Data (Option)")
+                        if postEntries.count != 0 {
+                            Spacer()
+                            Button(action: {
+                                editMode = (editMode == .active) ? .inactive : .active
+                            }) {
+                                Text(editMode == .active ? "Done" : "Edit")
+                            }
+                            .textCase(nil)
+                            .font(.footnote)
+                        }
+                    }
                 } footer: {
                     VStack(alignment: .leading) {
                         Text("Replace query with %s")
@@ -107,6 +125,7 @@ struct EditSEView: View {
                     }
                 }
             }
+            .environment(\.editMode, $editMode)
             // Error alerts
             .alert("An error occurred while loading or updating data", isPresented: $showFailAlert, actions:{})
             .alert("This keyword is already used in other", isPresented: $showKeyUsedAlert, actions:{})
