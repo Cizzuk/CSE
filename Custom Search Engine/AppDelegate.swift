@@ -221,11 +221,6 @@ func resetCSE(target: String) {
             "name": "Wayback Machine",
             "url": "https://web.archive.org/web/*/%s",
             "post": []
-        ],
-        "chatgpt": [
-            "name": "ChatGPT",
-            "url": "https://chatgpt.com/?q=%s&hints=search",
-            "post": []
         ]
     ]
     
