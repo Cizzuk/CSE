@@ -88,6 +88,9 @@ struct EditSEView: View {
                     }
                     .onDelete {
                         postEntries.remove(atOffsets: $0)
+                        if postEntries.count == 0 {
+                            editMode = .inactive
+                        }
                     }
                     
                     Button(action: {
@@ -102,13 +105,16 @@ struct EditSEView: View {
                 } header: {
                     HStack {
                         Text("POST Data (Option)")
-                        Spacer()
-                        Button(action: {
-                            editMode = (editMode == .active) ? .inactive : .active
-                        }) {
-                            Text(editMode == .active ? "Done" : "Edit")
+                        if postEntries.count != 0 {
+                            Spacer()
+                            Button(action: {
+                                editMode = (editMode == .active) ? .inactive : .active
+                            }) {
+                                Text(editMode == .active ? "Done" : "Edit")
+                            }
+                            .textCase(nil)
+                            .font(.footnote)
                         }
-                        .textCase(nil)
                     }
                 } footer: {
                     VStack(alignment: .leading) {
