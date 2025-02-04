@@ -57,4 +57,4 @@ This software is licensed under the terms of the [Mozilla Public License 2.0](ht
 
 ## Tip
 
-Did you like it? [Send me a tip](https://cizzuk.net/en/tip/) if you like!
+Do you like it? please [send me a tip](https://cizzuk.net/tip/)!
