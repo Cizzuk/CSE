@@ -2240,6 +2240,7 @@
       }
     },
     "More people will be able to continue using CSE for free" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2397,6 +2398,9 @@
           }
         }
       }
+    },
+    "Only available if you have previously purchased this." : {
+
     },
     "Open Safari, go to Safari → Settings... and select 'Search' tab to find these settings." : {
       "localizations" : {
@@ -2815,6 +2819,7 @@
       }
     },
     "Purchase Failed" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2919,6 +2924,7 @@
       }
     },
     "Purchase Success!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2971,6 +2977,7 @@
       }
     },
     "Purchase:" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5119,6 +5126,7 @@
       }
     },
     "You will be able to change the application icon" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5171,6 +5179,7 @@
       }
     },
     "Your purchase will support the development of CSE" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

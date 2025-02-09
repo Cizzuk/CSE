@@ -61,59 +61,60 @@ struct PurchaseView: View {
     @State private var showRestoreSucAlert = false
     var body: some View {
         List {
-            // Purchase Section
-            Section {
-                HStack {
-                    Image(systemName: "checkmark.circle")
-                        .accessibilityHidden(true)
-                    Text("You will be able to change the application icon")
-                }
-                HStack {
-                    Image(systemName: "checkmark.circle")
-                        .accessibilityHidden(true)
-                    Text("Your purchase will support the development of CSE")
-                }
-                HStack {
-                    Image(systemName: "checkmark.circle")
-                        .accessibilityHidden(true)
-                    Text("More people will be able to continue using CSE for free")
-                }
-                
-                // Purchase Button
-                Button(action: {
-                    if let product = self.storeManager.products.first {
-                        self.storeManager.purchase(product: product)
-                    }
-                }) {
-                    HStack {
-                        if !storeManager.products.isEmpty {
-                            Text("Purchase:")
-                                .fontWeight(.bold)
-                                .padding(10)
-                            ForEach(storeManager.products, id: \.self) { product in
-                                Text(self.localizedPrice(for: product))
-                            }
-                        } else {
-                            Text("Purchase is currently not available.")
-                                .padding(10)
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
-                }
-                .alert("Purchase Success!", isPresented: $showSucAlert, actions: {})
-                .onReceive(storeManager.$purchaseCompleted) { purchaseCompleted in
-                    if purchaseCompleted {
-                        showSucAlert = true
-                    }
-                }
-                .alert("Purchase Failed", isPresented: $showFailAlert, actions: {})
-                .onReceive(storeManager.$purchaseFailed) { purchaseFailed in
-                    if purchaseFailed {
-                        showFailAlert = true
-                    }
-                }
-                .disabled(storeManager.products.isEmpty)
-            }
+//            TODO: Remove comments if CTF issues are resolved. (issue#24)
+//            // Purchase Section
+//            Section {
+//                HStack {
+//                    Image(systemName: "checkmark.circle")
+//                        .accessibilityHidden(true)
+//                    Text("You will be able to change the application icon")
+//                }
+//                HStack {
+//                    Image(systemName: "checkmark.circle")
+//                        .accessibilityHidden(true)
+//                    Text("Your purchase will support the development of CSE")
+//                }
+//                HStack {
+//                    Image(systemName: "checkmark.circle")
+//                        .accessibilityHidden(true)
+//                    Text("More people will be able to continue using CSE for free")
+//                }
+//                
+//                // Purchase Button
+//                Button(action: {
+//                    if let product = self.storeManager.products.first {
+//                        self.storeManager.purchase(product: product)
+//                    }
+//                }) {
+//                    HStack {
+//                        if !storeManager.products.isEmpty {
+//                            Text("Purchase:")
+//                                .fontWeight(.bold)
+//                                .padding(10)
+//                            ForEach(storeManager.products, id: \.self) { product in
+//                                Text(self.localizedPrice(for: product))
+//                            }
+//                        } else {
+//                            Text("Purchase is currently not available.")
+//                                .padding(10)
+//                        }
+//                    }
+//                    .frame(maxWidth: .infinity)
+//                }
+//                .alert("Purchase Success!", isPresented: $showSucAlert, actions: {})
+//                .onReceive(storeManager.$purchaseCompleted) { purchaseCompleted in
+//                    if purchaseCompleted {
+//                        showSucAlert = true
+//                    }
+//                }
+//                .alert("Purchase Failed", isPresented: $showFailAlert, actions: {})
+//                .onReceive(storeManager.$purchaseFailed) { purchaseFailed in
+//                    if purchaseFailed {
+//                        showFailAlert = true
+//                    }
+//                }
+//                .disabled(storeManager.products.isEmpty)
+//            }
             
             // Restore Button
             Section {
@@ -129,6 +130,12 @@ struct PurchaseView: View {
                     if restoreCompleted {
                         showRestoreSucAlert = true
                     }
+                }
+            } footer: {
+                // TODO: Remove these texts if CTF issues are resolved. (issue#24)
+                VStack (alignment: .leading) {
+                    Text("Purchase is currently not available.")
+                    Text("Only available if you have previously purchased this.")
                 }
             }
             
