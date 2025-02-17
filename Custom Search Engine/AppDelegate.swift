@@ -19,9 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Get userDefaults
         let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
-        let lastVersion = userDefaults.string(forKey: "LastAppVer") ?? ""
-        let searchengine = userDefaults.string(forKey: "searchengine") ?? nil
-        let privsearchengine = userDefaults.string(forKey: "privsearchengine") ?? nil
+        let lastVersion: String = userDefaults.string(forKey: "LastAppVer") ?? ""
+        let searchengine: String? = userDefaults.string(forKey: "searchengine") ?? nil
+        let privsearchengine: String? = userDefaults.string(forKey: "privsearchengine") ?? nil
         let urltop: String = userDefaults.string(forKey: "urltop") ?? ""
         let urlsuffix: String = userDefaults.string(forKey: "urlsuffix") ?? ""
         let defaultCSE = userDefaults.dictionary(forKey: "defaultCSE")
