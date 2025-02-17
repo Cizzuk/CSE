@@ -37,7 +37,7 @@ struct ContentView: View {
     
     @AppStorage("needFirstTutorial", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var needFirstTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needFirstTutorial")
-    @State private var openSafariTutorialView = false
+    @State private var openSafariTutorialView: Bool = false
     
     #if iOS
     // Icon change for iOS/iPadOS
