@@ -250,15 +250,27 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         // Get param name
         let mainParam = engine.param(host)
         
-        // Get query
-        let queryItems = urlComponents.queryItems ?? []
-        let queryValue = queryItems.first(where: { $0.name == mainParam })?.value
+        // Get %encoded query
+        guard let encodedQuery = urlComponents.percentEncodedQuery else { return nil }
         
-        // Return query
-        return queryValue
+        // Split with '&'
+        let queryPairs = encodedQuery.components(separatedBy: "&")
+        for pair in queryPairs {
+            // Split into key and value with '='
+            let parts = pair.components(separatedBy: "=")
+            if parts.count == 2, parts[0] == mainParam {
+                return parts[1]
+            }
+        }
+        
+        return nil
     }
     
     func makeSearchURL(windowName: String, query: String) -> (type: String, url: String, post: [[String: String]]) {
+        
+        // Get decoded query
+        let decodedQuery: String = query.removingPercentEncoding ?? ""
+        
         // Is useEmojiSearch Enabled?
         var useEmojiSearch: Bool = userDefaults.bool(forKey: "useEmojiSearch")
         if focusSettings != nil {
@@ -271,9 +283,9 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         
         // Check Emoji Search
         if useEmojiSearch &&
-           query.count == 1 &&
-           query.unicodeScalars.first!.properties.isEmoji &&
-           (query.unicodeScalars.first!.value >= 0x203C || query.unicodeScalars.count > 1) {
+           decodedQuery.count == 1 &&
+           decodedQuery.unicodeScalars.first!.properties.isEmoji &&
+           (decodedQuery.unicodeScalars.first!.value >= 0x203C || decodedQuery.unicodeScalars.count > 1) {
             
             // Check Language
             let preferredLanguages = Locale.preferredLanguages
@@ -287,13 +299,17 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
                 }
             }
             
+            // Make URL
             let redirectURL = "https://emojipedia.org/" + emojipediaLang + query
             return ("redirect", redirectURL, [])
         }
         
-        // Load Settings
-        var fixedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
+        // ↓--- if !EmojiSearch ---↓
+        
+        var fixedQuery: String = query
+        
+        // Load Settings
         var CSEData: Dictionary<String, Any> = windowName == "private" ?
             userDefaults.dictionary(forKey: "privateCSE") ?? [:] :
             userDefaults.dictionary(forKey: "defaultCSE") ?? [:]
