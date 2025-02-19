@@ -37,7 +37,7 @@ struct ContentView: View {
     
     @AppStorage("needFirstTutorial", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var needFirstTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needFirstTutorial")
-    @State private var openSafariTutorialView = false
+    @State private var openSafariTutorialView: Bool = false
     
     #if iOS
     // Icon change for iOS/iPadOS
@@ -133,24 +133,25 @@ struct ContentView: View {
                     Text("If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial.")
                 }
                 
-                #if iOS
-                // Go IconChange View for iOS/iPadOS
-                Section {
-                    NavigationLink(destination: linkDestination, isActive: $isIconSettingView) {
-                        Image((alternateIconName ?? "appicon") + "-pre")
-                            .resizable()
-                            .frame(width: 64, height: 64)
-                            .accessibilityHidden(true)
-                            .cornerRadius(14)
-                            .padding(4)
-                            .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
-                            .id(isIconSettingView)
-                        Text("Change App Icon")
-                        Spacer()
-                    }
-                    .contentShape(Rectangle())
-                }
-                #endif
+//                TODO: Remove comments if CTF issues are resolved. (issue#24)
+//                #if iOS
+//                // Go IconChange View for iOS/iPadOS
+//                Section {
+//                    NavigationLink(destination: linkDestination, isActive: $isIconSettingView) {
+//                        Image((alternateIconName ?? "appicon") + "-pre")
+//                            .resizable()
+//                            .frame(width: 64, height: 64)
+//                            .accessibilityHidden(true)
+//                            .cornerRadius(14)
+//                            .padding(4)
+//                            .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
+//                            .id(isIconSettingView)
+//                        Text("Change App Icon")
+//                        Spacer()
+//                    }
+//                    .contentShape(Rectangle())
+//                }
+//                #endif
                 
                 // Support Section
                 Section {
@@ -208,6 +209,16 @@ struct ContentView: View {
                 
                 // Advanced Settings
                 Section {
+                    // TODO: Remove this button if CTF issues are resolved. (issue#24)
+                    #if iOS
+                    // Go IconChange View for iOS/iPadOS
+                    NavigationLink(destination: linkDestination, isActive: $isIconSettingView) {
+                        Text("Change App Icon")
+                        Spacer()
+                    }
+                    .contentShape(Rectangle())
+                    #endif
+                    
                     NavigationLink(destination: AdvSettingView().navigationTitle("Advanced Settings")) {
                         Text("Advanced Settings")
                         Spacer()
