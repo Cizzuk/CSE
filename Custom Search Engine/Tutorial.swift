@@ -50,8 +50,9 @@ struct FullTutorialView: View {
                     isOpenSheet = false
                 }) {
                     Text("Skip")
+                        .bold()
                 }
-                .padding(EdgeInsets(top: 12, leading: 0, bottom: 24, trailing: 0))
+                .padding(EdgeInsets(top: 10, leading: 0, bottom: 24, trailing: 0))
             }
             #if !visionOS
             .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
