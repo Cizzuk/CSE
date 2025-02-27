@@ -35,6 +35,7 @@ struct QuickSEListView: View {
                     if let cseData = quickCSE[cseID],
                         // If cse has no name, use URL instead
                         let cseName = cseData["name"] as? String ?? "" != "" ? cseData["name"] : cseData["url"] {
+                        let keywordTranslation = NSLocalizedString("Keyword", comment: "")
                         NavigationLink {
                             EditSEView(cseType: .constant("quick"), cseID: .constant(cseID))
                         } label: {
@@ -45,6 +46,7 @@ struct QuickSEListView: View {
                                     .lineLimit(1)
                             }
                         }
+                        .accessibilityLabel("\(cseName as? String ?? ""), " + keywordTranslation + ", \(cseID)")
                     }
                 }
                 .onDelete(perform: deleteSE)
