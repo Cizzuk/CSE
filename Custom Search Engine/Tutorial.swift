@@ -50,9 +50,13 @@ struct FullTutorialView: View {
                     isOpenSheet = false
                 }) {
                     Text("Skip")
+                        .bold()
                 }
-                .padding(EdgeInsets(top: 12, leading: 0, bottom: 24, trailing: 0))
+                .padding(EdgeInsets(top: 10, leading: 0, bottom: 24, trailing: 0))
             }
+            #if !visionOS
+            .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
+            #endif
         }
         .interactiveDismissDisabled()
     }
@@ -140,6 +144,9 @@ struct SafariTutorialView: View {
                 }
                 .padding([.horizontal, .bottom], 24)
             }
+            #if !visionOS
+            .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
+            #endif
         }
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden(true)
@@ -221,6 +228,9 @@ struct SafariTutorialSecondView: View {
                 }
                 .padding([.horizontal, .bottom], 24)
             }
+            #if !visionOS
+            .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
+            #endif
         }
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden(true)
