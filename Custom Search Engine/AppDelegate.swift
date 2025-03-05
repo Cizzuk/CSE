@@ -281,7 +281,7 @@ func resetCSE(target: String) {
 
 // Version high and low
 func isUpdated(updateVer: String, lastVer: String) -> Bool {
-    if lastVer == "" {
+    guard lastVer != "" else {
         return false
     }
     
