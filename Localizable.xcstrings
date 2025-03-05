@@ -2008,6 +2008,16 @@
         }
       }
     },
+    "If you set Google as your search engine, please set another search engine." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Googleを検索エンジンとして設定していた場合は、別の検索エンジンに変更してください。"
+          }
+        }
+      }
+    },
     "Ignore Focus Filter" : {
       "localizations" : {
         "ja" : {

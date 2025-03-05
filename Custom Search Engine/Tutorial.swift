@@ -92,7 +92,9 @@ struct SafariTutorialView: View {
                                 Text("Sogou").tag("sogou")
                                 Text("360 Search").tag("360search")
                             }
-                            Text("Google").tag("google")
+                            if #available(iOS 17.0, macOS 14.0, *) {
+                                Text("Google").tag("google")
+                            }
                             Text("Yahoo").tag("yahoo")
                             Text("Bing").tag("bing")
                             if currentRegion == "RU" {
@@ -102,26 +104,28 @@ struct SafariTutorialView: View {
                             Text("Ecosia").tag("ecosia")
                         }
                         
-                        Toggle(isOn: $alsousepriv, label: {
-                            Text("Also Use in Private Browsing")
-                        })
-                        
-                        // Private SE
-                        if !alsousepriv {
-                            Picker("Private Search Engine", selection: $privsearchengine) {
-                                if currentRegion == "CN" {
-                                    Text("Baidu").tag("baidu")
-                                    Text("Sogou").tag("sogou")
-                                    Text("360 Search").tag("360search")
+                        if #available(iOS 17.0, macOS 14.0, *) {
+                            Toggle(isOn: $alsousepriv, label: {
+                                Text("Also Use in Private Browsing")
+                            })
+                            
+                            // Private SE
+                            if !alsousepriv {
+                                Picker("Private Search Engine", selection: $privsearchengine) {
+                                    if currentRegion == "CN" {
+                                        Text("Baidu").tag("baidu")
+                                        Text("Sogou").tag("sogou")
+                                        Text("360 Search").tag("360search")
+                                    }
+                                    Text("Google").tag("google")
+                                    Text("Yahoo").tag("yahoo")
+                                    Text("Bing").tag("bing")
+                                    if currentRegion == "RU" {
+                                        Text("Yandex").tag("yandex")
+                                    }
+                                    Text("DuckDuckGo").tag("duckduckgo")
+                                    Text("Ecosia").tag("ecosia")
                                 }
-                                Text("Google").tag("google")
-                                Text("Yahoo").tag("yahoo")
-                                Text("Bing").tag("bing")
-                                if currentRegion == "RU" {
-                                    Text("Yandex").tag("yandex")
-                                }
-                                Text("DuckDuckGo").tag("duckduckgo")
-                                Text("Ecosia").tag("ecosia")
                             }
                         }
                     } footer: {
@@ -132,7 +136,12 @@ struct SafariTutorialView: View {
                             Text("You can find these settings in Settings → Apps → Safari.")
                             #endif
                             Spacer()
-                            Text("If you set another search engine in private browsing in Safari settings, you can use another custom search engine in private browse.")
+                            if #available(iOS 17.0, macOS 14.0, *) {
+                                Text("If you set another search engine in private browsing in Safari settings, you can use another custom search engine in private browse.")
+                            } else {
+                                // Show warning if Google is selected in iOS 16 or earlier.
+                                Text("If you set Google as your search engine, please set another search engine.")
+                            }
                         }
                     }
                 }
