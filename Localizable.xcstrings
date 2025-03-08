@@ -51,6 +51,12 @@
             "value" : "© Cizzuk"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "© Cizzuk"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
