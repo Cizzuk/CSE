@@ -399,6 +399,12 @@
             "value" : "Добавить новую Поисковую машину"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати нову Пошукову систему"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -449,6 +455,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Добавить данные POST"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати POST-дані"
           }
         },
         "zh-Hans" : {
@@ -503,6 +515,12 @@
             "value" : "Дополнительные настройки"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додаткові параметри"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -553,6 +571,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Также в режиме частного доступа"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Також у Приватному перегляді"
           }
         },
         "zh-Hans" : {
@@ -607,6 +631,12 @@
             "value" : "При загрузке или обновлении данных произошла ошибка"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Виникла помилка під час завантаження або оновлення даних"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -659,6 +689,12 @@
             "value" : "Доступные значки"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доступні іконки"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -709,6 +745,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Доступные значки могут измениться в будущем."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доступні іконки можуть змінюватися в майбутньому."
           }
         },
         "zh-Hans" : {
@@ -824,6 +866,12 @@
             "value" : "Доступные значки могут измениться в будущем."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перш ніж почати користуватися CSE, вам потрібно виконати деякі налаштування."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -937,6 +985,12 @@
             "value" : "Изменить значок приложения"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Змінити іконку програми"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -987,6 +1041,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Связаться с"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зв'язатися з"
           }
         },
         "zh-Hans" : {
@@ -1042,6 +1102,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Настройки CSE"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Параметри CSE"
           }
         },
         "zh-Hans" : {
@@ -2968,7 +3034,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "aaaa 검색 엔진"
+            "value" : "개인정보 보호 검색 엔진"
           }
         },
         "ru" : {
@@ -2980,7 +3046,7 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Пошукова система приватного перегляду"
+            "value" : "Приватна пошукова система"
           }
         },
         "zh-Hans" : {
