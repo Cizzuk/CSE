@@ -83,10 +83,10 @@ struct SafariTutorialView: View {
                 .frame(maxWidth: .infinity)
                     
                 List {
+                    let currentRegion = Locale.current.regionCode
                     Section {
                         // Default SE
                         Picker("Search Engine", selection: $searchengine) {
-                            let currentRegion = Locale.current.regionCode
                             if currentRegion == "CN" {
                                 Text("Baidu").tag("baidu")
                                 Text("Sogou").tag("sogou")
@@ -141,6 +141,11 @@ struct SafariTutorialView: View {
                             } else {
                                 // Show warning if Google is selected in iOS 16 or earlier.
                                 Text("If you set Google as your search engine, please set another search engine.")
+                            }
+                            if currentRegion == "UA" {
+                                // yandex.ua can't connect
+                                Spacer()
+                                Text("Yandex is currently unavailable.")
                             }
                         }
                     }
