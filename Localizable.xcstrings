@@ -1548,6 +1548,12 @@
             "value" : "Поиск эмодзи"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пошук емодзі"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2883,6 +2889,12 @@
             "value" : "Политика конфиденциальности"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Політика конфіденційності"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2933,6 +2945,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Поисковая машина Частного доступа"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пошукова система приватного перегляду"
           }
         },
         "zh-Hans" : {
@@ -3198,6 +3216,12 @@
             "value" : "Быстрый поиск"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Швидкий пошук"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3248,6 +3272,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Быстрый поисковые машины"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Швидкий пошукова система"
           }
         },
         "zh-Hans" : {
@@ -3550,6 +3580,12 @@
             "value" : "Настройка Safari"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Параметри Safari"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3600,6 +3636,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Готово"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зберегти"
           }
         },
         "zh-Hans" : {
@@ -3654,6 +3696,12 @@
             "value" : "Поисковая машина"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пошукова система"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3706,6 +3754,12 @@
             "value" : "URL Поисковой машины"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL-адреса Пошукової системи"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3756,6 +3810,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL поиска"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пошук URL"
           }
         },
         "zh-Hans" : {
