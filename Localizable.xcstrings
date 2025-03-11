@@ -2232,16 +2232,52 @@
     },
     "If you set Google as your search engine, please set another search engine." : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wenn Sie Google als Suchmaschine eingestellt haben, stellen Sie bitte eine andere Suchmaschine ein."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si vous avez choisi Google comme moteur de recherche, veuillez choisir un autre moteur de recherche."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Googleを検索エンジンとして設定していた場合は、別の検索エンジンに変更してください。"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Google을 검색엔진으로 설정한 경우 다른 검색엔진으로 변경하세요."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Если вы установили Google в качестве поисковой системы, установите другую поисковую систему."
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Якщо ви встановили Google як пошукову систему, будь ласка, встановіть іншу пошукову систему."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果您将 Google 设置为搜索引擎，请设置其他搜索引擎。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果您設定 Google 為搜尋引擎，請設定其他搜尋引擎。"
           }
         }
       }
@@ -5683,16 +5719,52 @@
     },
     "Yandex is currently unavailable." : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex ist derzeit nicht verfügbar."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex est actuellement indisponible."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yandexは現在利用できません。"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex는 현재 사용할 수 없습니다."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Яндекс в настоящее время недоступен."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Яндекс наразі недоступний."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex 目前不可用。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex 目前不可用。"
           }
         }
       }
@@ -5736,6 +5808,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Эти настройки можно найти в разделе Настройки → Приложения → Safari."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ці налаштування можна знайти в розділі Параметри → Програми → Safari."
           }
         },
         "zh-Hans" : {
