@@ -109,6 +109,12 @@
             "value" : "${toggle} Поиск эмодзи"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} Пошук емодзі"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -159,6 +165,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "${state} Поиск эмодзи"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} Пошук емодзі ${state}"
           }
         },
         "zh-Hans" : {
@@ -213,6 +225,12 @@
             "value" : "${toggle} Быстрый поиск"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} Швидкий пошук"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -263,6 +281,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "${state} Быстрый поиск"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} Швидкий пошук ${state}"
           }
         },
         "zh-Hans" : {
@@ -2681,6 +2705,12 @@
             "value" : "Операция"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Операція"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4570,6 +4600,12 @@
             "value" : "Исходный код"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вихідний код"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4622,6 +4658,12 @@
             "value" : "Состояние"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стан"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4672,6 +4714,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Помощь"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Підтримки"
           }
         },
         "zh-Hans" : {
@@ -4778,6 +4826,12 @@
             "value" : "Переключить"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перемкнути"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4828,6 +4882,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Изменить"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перемінити"
           }
         },
         "zh-Hans" : {
@@ -4882,6 +4942,12 @@
             "value" : "Включите или выключите Поиск эмодзи на CSE."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Увімкніть або вимкніть Пошук емодзі на CSE."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4932,6 +4998,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Включите или выключите Быстрый поиск на CSE."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Увімкніть або вимкніть Швидкий пошук на CSE."
           }
         },
         "zh-Hans" : {
