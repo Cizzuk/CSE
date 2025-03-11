@@ -2238,6 +2238,12 @@
             "value" : "Wenn Sie Google als Suchmaschine eingestellt haben, stellen Sie bitte eine andere Suchmaschine ein."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si ha configurado Google como motor de búsqueda, configure otro motor de búsqueda."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5723,6 +5729,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yandex ist derzeit nicht verfügbar."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex no está disponible actualmente."
           }
         },
         "fr" : {
