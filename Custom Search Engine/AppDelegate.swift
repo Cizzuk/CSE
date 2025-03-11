@@ -40,18 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             #endif
             userDefaults.set(true, forKey: "needFirstTutorial")
             userDefaults.set(true, forKey: "alsousepriv")
-            if searchengine == "duckduckgo" {
-                if currentRegion == "CN" {
-                    userDefaults.set("baidu", forKey: "privsearchengine")
-                } else {
-                    userDefaults.set("google", forKey: "privsearchengine")
-                }
-            } else {
-                if searchengine == nil {
-                    userDefaults.set("google", forKey: "searchengine")
-                }
-                userDefaults.set("duckduckgo", forKey: "privsearchengine")
+            if searchengine == nil {
+                userDefaults.set("google", forKey: "searchengine")
             }
+            userDefaults.set("duckduckgo", forKey: "privsearchengine")
             resetCSE(target: "all")
             
             // Update old CSE
@@ -67,6 +59,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        // Automatically corrects settings to match OS version
+        if #unavailable(iOS 17.0, macOS 14.0) {
+            if searchengine == "google" {
+                if currentRegion == "CN" {
+                    userDefaults.set("baidu", forKey: "searchengine")
+                } else {
+                    userDefaults.set("duckduckgo", forKey: "searchengine")
+                }
+                if isUpdated(updateVer: "3.3", lastVer: lastVersion) {
+                    userDefaults.set(true, forKey: "needFirstTutorial")
+                }
+            }
+            userDefaults.set(true, forKey: "alsousepriv")
+        }
+        
         // Fix Default SE by region
         if (currentRegion != "CN" && ["baidu", "sogou", "360search"].contains(searchengine))
            || (currentRegion != "RU" && ["yandex"].contains(searchengine)) {
@@ -79,20 +86,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Fix Private SE by region
         if (currentRegion != "CN" && ["baidu", "sogou", "360search"].contains(privsearchengine))
-           || (currentRegion != "RU" && ["yandex"].contains(privsearchengine)) {
-            if currentRegion == "CN" {
-                if searchengine == "duckduckgo" {
-                    userDefaults.set("baidu", forKey: "privsearchengine")
-                } else {
-                    userDefaults.set("duckduckgo", forKey: "privsearchengine")
-                }
-            } else {
-                if searchengine == "duckduckgo" {
-                    userDefaults.set("google", forKey: "privsearchengine")
-                } else {
-                    userDefaults.set("duckduckgo", forKey: "privsearchengine")
-                }
-            }
+            || (currentRegion != "RU" && ["yandex"].contains(privsearchengine)) {
+            userDefaults.set("duckduckgo", forKey: "privsearchengine")
         }
 
         // Save last opened version
@@ -286,8 +281,8 @@ func resetCSE(target: String) {
 
 // Version high and low
 func isUpdated(updateVer: String, lastVer: String) -> Bool {
-    if lastVer == "" {
-        return true
+    guard lastVer != "" else {
+        return false
     }
     
     let updateComponents = updateVer.split(separator: ".").compactMap { Int($0) }

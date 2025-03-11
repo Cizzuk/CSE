@@ -46,7 +46,7 @@ struct QuickSEListView: View {
                                     .lineLimit(1)
                             }
                         }
-                        .accessibilityLabel("\(cseName as? String ?? ""), " + keywordTranslation + ", \(cseID)")
+                        .accessibilityLabel("\(cseName as? String ?? ""). " + keywordTranslation + ". \(cseID)")
                     }
                 }
                 .onDelete(perform: deleteSE)

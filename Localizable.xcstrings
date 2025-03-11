@@ -51,6 +51,12 @@
             "value" : "© Cizzuk"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "© Cizzuk"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -101,6 +107,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "${toggle} Поиск эмодзи"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} Пошук емодзі"
           }
         },
         "zh-Hans" : {
@@ -155,6 +167,12 @@
             "value" : "${state} Поиск эмодзи"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} Пошук емодзі ${state}"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -205,6 +223,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "${toggle} Быстрый поиск"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} Швидкий пошук"
           }
         },
         "zh-Hans" : {
@@ -259,6 +283,12 @@
             "value" : "${state} Быстрый поиск"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} Швидкий пошук ${state}"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -306,6 +336,12 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "360 Search"
+          }
+        },
+        "uk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "360 Search"
@@ -363,6 +399,12 @@
             "value" : "Добавить новую Поисковую машину"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати нову Пошукову систему"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -413,6 +455,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Добавить данные POST"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати POST-дані"
           }
         },
         "zh-Hans" : {
@@ -467,6 +515,12 @@
             "value" : "Дополнительные настройки"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додаткові параметри"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -517,6 +571,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Также в режиме частного доступа"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Також у Приватному перегляді"
           }
         },
         "zh-Hans" : {
@@ -571,6 +631,12 @@
             "value" : "При загрузке или обновлении данных произошла ошибка"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Виникла помилка під час завантаження або оновлення даних"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -621,6 +687,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Доступные значки"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доступні іконки"
           }
         },
         "zh-Hans" : {
@@ -675,6 +747,12 @@
             "value" : "Доступные значки могут измениться в будущем."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доступні іконки можуть змінюватися в майбутньому."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -722,6 +800,12 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baidu"
+          }
+        },
+        "uk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Baidu"
@@ -782,6 +866,12 @@
             "value" : "Доступные значки могут измениться в будущем."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перш ніж почати користуватися CSE, вам потрібно виконати деякі налаштування."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -829,6 +919,12 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bing"
+          }
+        },
+        "uk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bing"
@@ -889,6 +985,12 @@
             "value" : "Изменить значок приложения"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Змінити іконку програми"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -939,6 +1041,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Связаться с"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зв'язатися з"
           }
         },
         "zh-Hans" : {
@@ -994,6 +1102,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Настройки CSE"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Параметри CSE"
           }
         },
         "zh-Hans" : {
@@ -1068,6 +1182,12 @@
             "value" : "Поисковая машина по умолчанию"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пошукова система за замовчуванням"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1130,6 +1250,12 @@
             "value" : "Отключить CSE"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вимкнути CSE"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1180,6 +1306,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отключите поисковую машину по умолчанию"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вимкнути пошукову систему за замовчуванням"
           }
         },
         "zh-Hans" : {
@@ -1234,6 +1366,12 @@
             "value" : "Готово"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Готово"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1281,6 +1419,12 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuckDuckGo"
+          }
+        },
+        "uk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "DuckDuckGo"
@@ -1341,6 +1485,12 @@
             "value" : "Ecosia"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ecosia"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1396,6 +1546,12 @@
             "value" : "Править"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Змінити"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1448,6 +1604,12 @@
             "value" : "Редактирование Поисковая машина"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Змінити Пошукову систему"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1498,6 +1660,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Поиск эмодзи"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пошук емодзі"
           }
         },
         "zh-Hans" : {
@@ -1562,6 +1730,12 @@
             "value" : "Введите ключевое слово в верхней части страницы, чтобы переключить поисковую систему."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введіть ключове слово вгорі, щоб переключити пошукові системи."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1614,6 +1788,12 @@
             "value" : "Введите это ключевое слово в верхней части страницы для поиска с помощью этой поисковой системы."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введіть це ключове слово вгорі, щоб шукати в цій пошуковій системі."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1664,6 +1844,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пример: '%@ ваш поиск'"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Приклад: '%@ ваш пошук'"
           }
         },
         "zh-Hans" : {
@@ -1728,6 +1914,12 @@
             "value" : "GitHub"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1780,6 +1972,12 @@
             "value" : "Перейдите в Настройки → Приложения → Safari → Расширения → Customize Search Engine и разрешите расширение. Затем «Разрешить» следующую веб-страницу."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перейдіть до Параметри → Програми → Safari → Розширення → Customize Search Engine і дозвольте розширення. Потім «Дозволити» наступну веб-сторінку."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1827,6 +2025,12 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Google"
+          }
+        },
+        "uk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Google"
@@ -1890,6 +2094,12 @@
             "value" : "Если вы измените настройки Safari или CSE не будет работать должным образом, вам, возможно, придется повторить этот урок."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Якщо ви змінили параметри Safari або CSE не працює належним чином, можливо, вам доведеться повторити цей посібник."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1940,6 +2150,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Если вы вводите только один эмодзи, то можете воспользоваться поиском на сайте Emojipedia.org."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Якщо ви ввели лише один смайлик, ви можете здійснити пошук на Emojipedia.org."
           }
         },
         "zh-Hans" : {
@@ -1994,6 +2210,12 @@
             "value" : "Если вы установили другую поисковую систему в режиме частного доступа в настройках Safari, вы можете использовать другую пользовательскую поисковую систему в режиме частного доступа."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Якщо в параметрах Safari ви встановите іншу пошукову систему в приватному перегляді, ви зможете використовувати іншу користувацьку пошукову систему в приватному перегляді."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2004,6 +2226,64 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "如果您在 Safari 設定中「私密瀏覽」設定了另一個搜尋引擎，您可以在「私密瀏覽」中使用另一個自訂搜尋引擎。"
+          }
+        }
+      }
+    },
+    "If you set Google as your search engine, please set another search engine." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wenn Sie Google als Suchmaschine eingestellt haben, stellen Sie bitte eine andere Suchmaschine ein."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si ha configurado Google como motor de búsqueda, configure otro motor de búsqueda."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si vous avez choisi Google comme moteur de recherche, veuillez choisir un autre moteur de recherche."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Googleを検索エンジンとして設定していた場合は、別の検索エンジンに変更してください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Google을 검색엔진으로 설정한 경우 다른 검색엔진으로 변경하세요."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Если вы установили Google в качестве поисковой системы, установите другую поисковую систему."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Якщо ви встановили Google як пошукову систему, будь ласка, встановіть іншу пошукову систему."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果您将 Google 设置为搜索引擎，请设置其他搜索引擎。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果您設定 Google 為搜尋引擎，請設定其他搜尋引擎。"
           }
         }
       }
@@ -2069,6 +2349,12 @@
             "value" : "Ключевое слово"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ключове слово"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2119,6 +2405,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ключевое слово не может быть пустым"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ключове слово не може бути порожнім"
           }
         },
         "zh-Hans" : {
@@ -2173,6 +2465,12 @@
             "value" : "Лицензия"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ліцензія"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2223,6 +2521,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Может не работать с некоторыми поисковыми машинами Safari."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Може не працювати з деякими пошуковими системами Safari."
           }
         },
         "zh-Hans" : {
@@ -2333,6 +2637,12 @@
             "value" : "Имя"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Назва"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2383,6 +2693,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Следующая"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Наступний"
           }
         },
         "zh-Hans" : {
@@ -2437,6 +2753,12 @@
             "value" : "Доступно только в том случае, если вы уже приобрели эту книгу."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доступно лише за умови попередньої покупки."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2487,6 +2809,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Откройте Safari, перейдите в меню Safari → Настройки... и выберите вкладку «Поиск», чтобы найти эти настройки."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відкрийте Safari, перейдіть до Safari → Параметри... і виберіть вкладку «Пошук», щоб знайти ці налаштування."
           }
         },
         "zh-Hans" : {
@@ -2541,6 +2869,12 @@
             "value" : "Откройте Safari, перейдите в меню Safari → Настройки..., выберите вкладку «Расширения» и включите CSE. Затем «Разрешить» следующую веб-страницу с помощью кнопки «Изменить веб-сайты...»."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відкрийте Safari, перейдіть до Safari → Параметри..., виберіть вкладку «Розширення» та увімкніть CSE. Потім «Дозволити» наступну веб-сторінку за допомогою кнопки «Редагувати вебсайти...»."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2591,6 +2925,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Операция"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Операція"
           }
         },
         "zh-Hans" : {
@@ -2645,6 +2985,12 @@
             "value" : "Пожалуйста, разрешите проведение ЕГЭ на следующей веб-странице"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Будь ласка, дозвольте CSE на наступній веб-сторінці"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2695,6 +3041,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Убедитесь, что следующие пункты совпадают с настройками Safari"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Будь ласка, переконайтеся, що наступні пункти збігаються з параметрами вашого браузера Safari"
           }
         },
         "zh-Hans" : {
@@ -2749,6 +3101,12 @@
             "value" : "Данные POST (необязательно)"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "POST-дані (необов'язково)"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2801,6 +3159,12 @@
             "value" : "Политика конфиденциальности"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Політика конфіденційності"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2844,13 +3208,19 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "aaaa 검색 엔진"
+            "value" : "개인정보 보호 검색 엔진"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Поисковая машина Частного доступа"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Приватна пошукова система"
           }
         },
         "zh-Hans" : {
@@ -2956,6 +3326,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "В настоящее время покупка недоступна."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Наразі покупка недоступна."
           }
         },
         "zh-Hans" : {
@@ -3116,6 +3492,12 @@
             "value" : "Быстрый поиск"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Швидкий пошук"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3166,6 +3548,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Быстрый поисковые машины"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Швидкий пошукова система"
           }
         },
         "zh-Hans" : {
@@ -3220,6 +3608,12 @@
             "value" : "Замените запрос на %s"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Замініть запит на %s"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3270,6 +3664,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сброс всех дополнительных настроек"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скидання всіх додаткових параметрів"
           }
         },
         "zh-Hans" : {
@@ -3364,6 +3764,12 @@
             "value" : "Восстановить покупку"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відновити покупку"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3414,6 +3820,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Восстановите успех!"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відновити успіх!"
           }
         },
         "zh-Hans" : {
@@ -3468,6 +3880,12 @@
             "value" : "Настройка Safari"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Параметри Safari"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3518,6 +3936,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Готово"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зберегти"
           }
         },
         "zh-Hans" : {
@@ -3572,6 +3996,12 @@
             "value" : "Поисковая машина"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пошукова система"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3622,6 +4052,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL Поисковой машины"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL-адреса Пошукової системи"
           }
         },
         "zh-Hans" : {
@@ -3676,6 +4112,12 @@
             "value" : "URL поиска"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пошук URL"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3726,6 +4168,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL поиска не может быть пустым"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пошук URL не може бути порожньою"
           }
         },
         "zh-Hans" : {
@@ -3786,6 +4234,12 @@
             "value" : "Настройка поисковой машины по умолчанию"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Встановити Пошукову систему за замовчуванням"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3836,6 +4290,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Настройка Поисковой машины по умолчанию на ${cseURL}"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Встановити Пошукову систему за замовчуванням на ${cseURL}"
           }
         },
         "zh-Hans" : {
@@ -3890,6 +4350,12 @@
             "value" : "Настройка поиска эмодзи"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Налаштувати Пошук емодзі"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3940,6 +4406,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Настройка Поисковой машины Частного доступа"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Параметри Пошук емодзі"
           }
         },
         "zh-Hans" : {
@@ -3994,6 +4466,12 @@
             "value" : "Настройка Поисковая машина Частного доступа на ${cseURL}"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Встановити Приватну пошукову систему на ${cseURL}"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4044,6 +4522,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Настройка быстрого поиска"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Параметри Швидкий пошук"
           }
         },
         "zh-Hans" : {
@@ -4098,6 +4582,12 @@
             "value" : "Настройка Поисковую машину"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Налаштування Пошукової системи"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4148,6 +4638,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Настройка пользовательской поисковой машины по умолчанию на CSE."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Встановлює власної Пошукову систему за замовчуванням для CSE."
           }
         },
         "zh-Hans" : {
@@ -4202,6 +4698,12 @@
             "value" : "Настройка пользовательской Поисковой машины Частного доступа на CSE."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Встановлення власної Приватної пошукової системи для CSE."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4252,6 +4754,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Настройка Поисковую машину для использования во время этого фокусирования."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дозволяє встановити власної пошукову систему, яка буде використовуватися під час цього Зосередження."
           }
         },
         "zh-Hans" : {
@@ -4306,6 +4814,12 @@
             "value" : "Пропустить"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пропустити"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4356,6 +4870,12 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sogou"
+          }
+        },
+        "uk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sogou"
@@ -4416,6 +4936,12 @@
             "value" : "Исходный код"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вихідний код"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4466,6 +4992,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Состояние"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стан"
           }
         },
         "zh-Hans" : {
@@ -4520,6 +5052,12 @@
             "value" : "Помощь"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Підтримки"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4570,6 +5108,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Это ключевое слово уже используется в других"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Це ключове слово вже використовується в інших"
           }
         },
         "zh-Hans" : {
@@ -4624,6 +5168,12 @@
             "value" : "Переключить"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перемкнути"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4674,6 +5224,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Изменить"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перемінити"
           }
         },
         "zh-Hans" : {
@@ -4728,6 +5284,12 @@
             "value" : "Включите или выключите Поиск эмодзи на CSE."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Увімкніть або вимкніть Пошук емодзі на CSE."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4780,6 +5342,12 @@
             "value" : "Включите или выключите Быстрый поиск на CSE."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Увімкніть або вимкніть Швидкий пошук на CSE."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4827,6 +5395,12 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL"
+          }
+        },
+        "uk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL"
@@ -4884,6 +5458,12 @@
             "value" : "Используйте различные поисковые машины в режиме частного доступа"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Використовуйте іншу пошукову систему в приватному перегляді"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4939,6 +5519,12 @@
             "value" : "Версия: %@"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Версія: %@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4989,6 +5575,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Добро пожаловать в CSE"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ласкаво просимо до CSE"
           }
         },
         "zh-Hans" : {
@@ -5053,6 +5645,12 @@
             "value" : "Yahoo"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yahoo"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5105,6 +5703,12 @@
             "value" : "Яндекс"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Яндекс"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5115,6 +5719,64 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yandex"
+          }
+        }
+      }
+    },
+    "Yandex is currently unavailable." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex ist derzeit nicht verfügbar."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex no está disponible actualmente."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex est actuellement indisponible."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandexは現在利用できません。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex는 현재 사용할 수 없습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Яндекс в настоящее время недоступен."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Яндекс наразі недоступний."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex 目前不可用。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex 目前不可用。"
           }
         }
       }
@@ -5158,6 +5820,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Эти настройки можно найти в разделе Настройки → Приложения → Safari."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ці налаштування можна знайти в розділі Параметри → Програми → Safari."
           }
         },
         "zh-Hans" : {

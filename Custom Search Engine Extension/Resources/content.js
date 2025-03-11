@@ -1,7 +1,5 @@
 browser.runtime.sendMessage({ type: "content" }, function(response) {
-    if (response == "kill") {
-        return;
-    } else if (!response.redirectTo) {
+    if (response == "kill" || !response.redirectTo) {
         return;
     }
     
