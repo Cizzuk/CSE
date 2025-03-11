@@ -5244,7 +5244,20 @@
       }
     },
     "Yandex is currently unavailable." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandexは現在利用できません。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Яндекс в настоящее время недоступен."
+          }
+        }
+      }
     },
     "yandex.ru" : {
       "shouldTranslate" : false
