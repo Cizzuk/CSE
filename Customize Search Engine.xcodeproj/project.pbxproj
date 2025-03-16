@@ -24,6 +24,7 @@
 		BE1642DF2D23D69E008A42F8 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1642DE2D23D696008A42F8 /* Tutorial.swift */; };
 		BE5342E32C9E338F00AE1DB3 /* IconChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5342E22C9E338F00AE1DB3 /* IconChangeView.swift */; };
 		BE5342E52C9E36FA00AE1DB3 /* AdvSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */; };
+		BE7374D52D86DDF300976342 /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7374D42D86DDF300976342 /* LicenseView.swift */; };
 		BE866B682D3F688900C506E5 /* EditSEView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE866B672D3F688900C506E5 /* EditSEView.swift */; };
 		BE866B6A2D3F9A1F00C506E5 /* QuickSEListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE866B692D3F9A1F00C506E5 /* QuickSEListView.swift */; };
 		BE866B702D431C5800C506E5 /* post_redirector.html in Resources */ = {isa = PBXBuildFile; fileRef = BE866B6F2D431C5800C506E5 /* post_redirector.html */; };
@@ -78,6 +79,7 @@
 		BE1642DE2D23D696008A42F8 /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 		BE5342E22C9E338F00AE1DB3 /* IconChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconChangeView.swift; sourceTree = "<group>"; };
 		BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvSettingView.swift; sourceTree = "<group>"; };
+		BE7374D42D86DDF300976342 /* LicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
 		BE866B672D3F688900C506E5 /* EditSEView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSEView.swift; sourceTree = "<group>"; };
 		BE866B692D3F9A1F00C506E5 /* QuickSEListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSEListView.swift; sourceTree = "<group>"; };
 		BE866B6F2D431C5800C506E5 /* post_redirector.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = post_redirector.html; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				BE866B672D3F688900C506E5 /* EditSEView.swift */,
 				BE866B692D3F9A1F00C506E5 /* QuickSEListView.swift */,
 				BE1642DE2D23D696008A42F8 /* Tutorial.swift */,
+				BE7374D42D86DDF300976342 /* LicenseView.swift */,
 				BE5342E22C9E338F00AE1DB3 /* IconChangeView.swift */,
 				BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */,
 				90240FAE2BA54E68003C264A /* Customize Search Engine.storekit */,
@@ -316,6 +319,7 @@
 			files = (
 				903A4A212BA1D87F005E346B /* MainView.swift in Sources */,
 				BE1642DF2D23D69E008A42F8 /* Tutorial.swift in Sources */,
+				BE7374D52D86DDF300976342 /* LicenseView.swift in Sources */,
 				BE866B682D3F688900C506E5 /* EditSEView.swift in Sources */,
 				BE5342E52C9E36FA00AE1DB3 /* AdvSettingView.swift in Sources */,
 				90C9BE16288BE17000E22FB8 /* AppDelegate.swift in Sources */,

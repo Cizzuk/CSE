@@ -164,8 +164,6 @@ struct ContentView: View {
                             Image(systemName: "message")
                                 .frame(width: 20.0)
                             Text("Contact")
-                            Spacer()
-                            Image(systemName: "chevron.right")
                         }
                     })
                     // Privacy Policy
@@ -174,21 +172,19 @@ struct ContentView: View {
                             Image(systemName: "hand.raised")
                                 .frame(width: 20.0)
                             Text("Privacy Policy")
-                            Spacer()
-                            Image(systemName: "chevron.right")
                         }
                     })
                     // License Link
-                    Link(destination:URL(string: "https://www.mozilla.org/en-US/MPL/2.0/")!, label: {
+                    NavigationLink {
+                        LicenseView()
+                    } label: {
                         HStack {
                             Image(systemName: "book.closed")
                                 .frame(width: 20.0)
                             Text("License")
-                            Spacer()
-                            Text("MPL 2.0")
-                            Image(systemName: "chevron.right")
                         }
-                    })
+                        .foregroundColor(.accentColor)
+                    }
                     // GitHub Source Link
                     Link(destination:URL(string: "https://github.com/Cizzuk/CSE")!, label: {
                         HStack {
@@ -196,8 +192,6 @@ struct ContentView: View {
                                 .frame(width: 20.0)
                             Text("Source")
                             Spacer()
-                            Text("GitHub")
-                            Image(systemName: "chevron.right")
                         }
                     })
                 } header: {
