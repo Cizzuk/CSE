@@ -150,6 +150,7 @@ struct SafariTutorialView: View {
                         }
                     }
                 }
+                .animation(.easeOut(duration: 0.2), value: alsousepriv)
                 
                 NavigationLink {
                     SafariTutorialSecondView(isOpenSheet: self.$isOpenSheet)

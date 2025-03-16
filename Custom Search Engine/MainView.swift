@@ -95,7 +95,7 @@ struct ContentView: View {
                     }
                 } footer: {
                     if #available(iOS 17.0, macOS 14.0, *),
-                    (alsousepriv || searchengine == privsearchengine) { // is not available
+                       (alsousepriv || searchengine == privsearchengine) { // is not available
                         Text("If you set another search engine in private browsing in Safari settings, you can use another custom search engine in private browse.")
                     }
                 }
@@ -115,6 +115,7 @@ struct ContentView: View {
                 } footer: {
                     Text("Enter the keyword at the top to switch search engines.")
                 }
+                
                 
                 // Emojipedia Search Setting
                 Section {
@@ -224,8 +225,10 @@ struct ContentView: View {
                 }
                 
             }
-            .listStyle(.insetGrouped)
             .navigationTitle("CSE Settings")
+            .listStyle(.insetGrouped)
+            .animation(.easeOut(duration: 0.2), value: usePrivateCSE)
+            .animation(.easeOut(duration: 0.2), value: useQuickCSE)
         }
         .navigationViewStyle(.stack)
         // Tutorial sheets
