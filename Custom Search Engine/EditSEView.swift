@@ -24,7 +24,9 @@ struct EditSEView: View {
     @State private var showKeyBlankAlert: Bool = false
     @State private var showURLBlankAlert: Bool = false
     
+    @State private var showAdvSettings: Bool = false
     @State private var editMode: EditMode = .inactive
+    
     
     var body: some View {
         NavigationView {
@@ -78,49 +80,64 @@ struct EditSEView: View {
                     Text("Replace query with %s")
                 }
                 
-                // POST Data
-                Section() {
-                    ForEach(postEntries.indices, id: \.self) { index in
-                        HStack {
-                            TextField("Key", text: $postEntries[index].key)
-                            TextField("Value", text: $postEntries[index].value)
+                // Advanced Settings
+                if !showAdvSettings {
+                    Section {} footer: {
+                        Button(action: {
+                            showAdvSettings = true
+                        }) {
+                            Text("Advanced Settings")
                         }
+                        .textCase(nil)
+                        .font(.footnote)
                     }
-                    .onDelete {
-                        postEntries.remove(atOffsets: $0)
-                        if postEntries.count == 0 {
-                            editMode = .inactive
-                        }
-                    }
-                    
-                    Button(action: {
-                        postEntries.append((key: "", value: ""))
-                    })  {
-                        HStack {
-                            Image(systemName: "plus.circle")
-                                .accessibilityHidden(true)
-                            Text("Add POST Data")
-                        }
-                    }
-                } header: {
-                    HStack {
-                        Text("POST Data (Option)")
-                        if postEntries.count != 0 {
-                            Spacer()
-                            Button(action: {
-                                editMode = (editMode == .active) ? .inactive : .active
-                            }) {
-                                Text(editMode == .active ? "Done" : "Edit")
+                }
+                
+                if showAdvSettings {
+                    // POST Data
+                    Section {
+                        ForEach(postEntries.indices, id: \.self) { index in
+                            HStack {
+                                TextField("Key", text: $postEntries[index].key)
+                                TextField("Value", text: $postEntries[index].value)
                             }
-                            .textCase(nil)
-                            .font(.footnote)
                         }
-                    }
-                } footer: {
-                    VStack(alignment: .leading) {
-                        Text("Replace query with %s")
-                        if userDefaults.bool(forKey: "adv_ignorePOSTFallback") {
-                            Text("May not work with some Safari search engines.")
+                        .onDelete {
+                            postEntries.remove(atOffsets: $0)
+                            if postEntries.count == 0 {
+                                editMode = .inactive
+                            }
+                        }
+                        
+                        Button(action: {
+                            postEntries.append((key: "", value: ""))
+                        })  {
+                            HStack {
+                                Image(systemName: "plus.circle")
+                                    .accessibilityHidden(true)
+                                Text("Add POST Data")
+                            }
+                        }
+                    } header: {
+                        HStack {
+                            Text("POST Data (Option)")
+                            if postEntries.count != 0 {
+                                Spacer()
+                                Button(action: {
+                                    editMode = (editMode == .active) ? .inactive : .active
+                                }) {
+                                    Text(editMode == .active ? "Done" : "Edit")
+                                }
+                                .textCase(nil)
+                                .font(.footnote)
+                            }
+                        }
+                    } footer: {
+                        VStack(alignment: .leading) {
+                            Text("Replace query with %s")
+                            if userDefaults.bool(forKey: "adv_ignorePOSTFallback") {
+                                Text("May not work with some Safari search engines.")
+                            }
                         }
                     }
                 }
@@ -131,6 +148,8 @@ struct EditSEView: View {
             .alert("This keyword is already used in other", isPresented: $showKeyUsedAlert, actions:{})
             .alert("Keyword cannot be blank", isPresented: $showKeyBlankAlert, actions:{})
             .alert("Search URL cannot be blank", isPresented: $showURLBlankAlert, actions:{})
+            .animation(.easeOut(duration: 0.2), value: showAdvSettings)
+            .animation(.easeOut(duration: 0.2), value: postEntries.count)
         }
         .navigationTitle("Edit Search Engine")
         .navigationBarTitleDisplayMode(.inline)
@@ -250,6 +269,11 @@ struct EditSEView: View {
             }
         } else {
             postEntries = []
+        }
+        
+        // Show Advanced Settings
+        if postEntries.count > 0 {
+            showAdvSettings = true
         }
     }
 }
