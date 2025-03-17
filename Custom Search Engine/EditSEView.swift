@@ -18,6 +18,7 @@ struct EditSEView: View {
     @State private var quickID: String = ""
     @State private var cseURL: String = ""
     @State private var postEntries: [(key: String, value: String)] = []
+    @State private var disablePercentEncoding: Bool = false
 
     @State private var showFailAlert: Bool = false
     @State private var showKeyUsedAlert: Bool = false
@@ -140,6 +141,11 @@ struct EditSEView: View {
                             }
                         }
                     }
+                    
+                    // Disable %encode
+                    Section {
+                        Toggle("Disable Percent-encoding", isOn: $disablePercentEncoding)
+                    }
                 }
             }
             .environment(\.editMode, $editMode)
@@ -190,6 +196,7 @@ struct EditSEView: View {
         // Create temporary data
         var CSEData: [String: Any] = [
             "url": cseURL,
+            "disablePercentEncoding": disablePercentEncoding,
             "post": postArray
         ]
         
@@ -253,9 +260,10 @@ struct EditSEView: View {
             return
         }
         
-        // Get Name & URL
+        // Get Data
         cseName = CSEData["name"] as? String ?? ""
         cseURL = CSEData["url"] as? String ?? ""
+        disablePercentEncoding = CSEData["disablePercentEncoding"] as? Bool ?? false
         
         // Get POST Data
         // If POST Data exists
@@ -272,7 +280,7 @@ struct EditSEView: View {
         }
         
         // Show Advanced Settings
-        if postEntries.count > 0 {
+        if postEntries.count > 0 || CSEData["disablePercentEncoding"] as? Bool == true {
             showAdvSettings = true
         }
     }
