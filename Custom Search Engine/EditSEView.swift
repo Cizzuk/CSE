@@ -87,7 +87,11 @@ struct EditSEView: View {
                         Button(action: {
                             showAdvSettings = true
                         }) {
-                            Text("Advanced Settings")
+                            HStack {
+                                Text("Advanced Settings")
+                                Image(systemName: "chevron.down")
+                                    .accessibilityHidden(true)
+                            }
                         }
                         .textCase(nil)
                         .font(.footnote)
@@ -154,7 +158,7 @@ struct EditSEView: View {
             .alert("This keyword is already used in other", isPresented: $showKeyUsedAlert, actions:{})
             .alert("Keyword cannot be blank", isPresented: $showKeyBlankAlert, actions:{})
             .alert("Search URL cannot be blank", isPresented: $showURLBlankAlert, actions:{})
-            .animation(.easeOut(duration: 0.2), value: showAdvSettings)
+            .animation(.easeOut(duration: 0.1), value: showAdvSettings)
             .animation(.easeOut(duration: 0.2), value: postEntries.count)
         }
         .navigationTitle("Edit Search Engine")
