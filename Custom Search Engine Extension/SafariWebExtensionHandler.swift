@@ -355,7 +355,9 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         let decodedFixedQuery: String = fixedQuery.removingPercentEncoding ?? ""
         
         // Replace %s with query
-        let redirectURL: String = (CSEData["url"] as? String)!.replacingOccurrences(of: "%s", with: fixedQuery)
+        let redirectQuery: String = CSEData["disablePercentEncoding"] as? Bool ?? false ? decodedFixedQuery : fixedQuery
+        let redirectURL: String = (CSEData["url"] as? String)!.replacingOccurrences(of: "%s", with: redirectQuery)
+        
         var postData: [[String: String]] = CSEData["post"] as? [[String : String]] ?? [[:]]
         for i in 0..<postData.count {
             postData[i]["key"] = postData[i]["key"]?.replacingOccurrences(of: "%s", with: decodedFixedQuery)
