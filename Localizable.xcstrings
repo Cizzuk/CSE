@@ -3063,60 +3063,60 @@
         }
       }
     },
-    "POST Data (Option)" : {
+    "POST Data" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "POST-Daten (optional)"
+            "value" : "POST-Daten"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Datos POST (Opcional)"
+            "value" : "Datos POST"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Données POST (optionnel)"
+            "value" : "Données POST"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "POSTデータ (オプション)"
+            "value" : "POSTデータ"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "POST 데이터 (옵션)"
+            "value" : "POST 데이터"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Данные POST (необязательно)"
+            "value" : "Данные POST"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "POST-дані (необов'язково)"
+            "value" : "POST-дані"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "POST 数据（可选）"
+            "value" : "POST 数据"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "POST 資料（可選）"
+            "value" : "POST 資料"
           }
         }
       }

@@ -120,7 +120,7 @@ struct EditSEView: View {
                         }
                     } header: {
                         HStack {
-                            Text("POST Data (Option)")
+                            Text("POST Data")
                             if postEntries.count != 0 {
                                 Spacer()
                                 Button(action: {
