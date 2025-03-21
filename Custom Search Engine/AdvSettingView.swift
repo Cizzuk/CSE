@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AdvSettingView: View {
     //Load advanced settings
+    @AppStorage("needFirstTutorial", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var needFirstTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needFirstTutorial")
     @AppStorage("adv_disablechecker", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var disablechecker: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_disablechecker")
     @AppStorage("adv_ignoreFocusFilter", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
@@ -32,6 +34,12 @@ struct AdvSettingView: View {
                     #endif
                     resetCSEs = ""
                     allowReset = false
+                }
+            }
+            
+            Section {
+                Button("Redo First Tutorial") {
+                    needFirstTutorial = true
                 }
             }
             

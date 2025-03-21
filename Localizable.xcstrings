@@ -3928,6 +3928,16 @@
         }
       }
     },
+    "Redo First Tutorial" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最初のチュートリアルをやり直す"
+          }
+        }
+      }
+    },
     "Replace query with %s" : {
       "localizations" : {
         "de" : {
