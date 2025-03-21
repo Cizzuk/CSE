@@ -41,42 +41,40 @@ struct FullTutorialView: View {
                 .padding(.horizontal, 32)
                 .frame(maxWidth: .infinity)
                 
-                VStack(alignment: .leading) {
-                    HStack {
-                        Image(systemName: "gear")
-                            .resizable()
-                            .frame(width: 32, height: 32)
-                            .accessibilityHidden(true)
-                            .foregroundColor(.accentColor)
-                            .padding(4)
-                        Text("Enable Extension in Safari")
-                            .font(.headline)
+                List {
+                    Section {
+                        HStack {
+                            Image(systemName: "gear")
+                                .resizable()
+                                .frame(width: 32, height: 32)
+                                .accessibilityHidden(true)
+                                .foregroundColor(.accentColor)
+                                .padding(4)
+                            Text("Enable Extension in Safari")
+                                .font(.headline)
+                        }
+                        HStack {
+                            Image(systemName: "sparkle.magnifyingglass")
+                                .resizable()
+                                .frame(width: 32, height: 32)
+                                .accessibilityHidden(true)
+                                .foregroundColor(.accentColor)
+                                .padding(4)
+                            Text("Setup Custom Search Engine")
+                                .font(.headline)
+                        }
+                        HStack {
+                            Image(systemName: "safari")
+                                .resizable()
+                                .frame(width: 32, height: 32)
+                                .accessibilityHidden(true)
+                                .foregroundColor(.accentColor)
+                                .padding(4)
+                            Text("Enjoy your Search Life!")
+                                .font(.headline)
+                        }
                     }
-                    .padding(.vertical, 8)
-                    HStack {
-                        Image(systemName: "sparkle.magnifyingglass")
-                            .resizable()
-                            .frame(width: 32, height: 32)
-                            .accessibilityHidden(true)
-                            .foregroundColor(.accentColor)
-                            .padding(4)
-                        Text("Setup Custom Search Engine")
-                            .font(.headline)
-                    }
-                    .padding(.vertical, 8)
-                    HStack {
-                        Image(systemName: "safari")
-                            .resizable()
-                            .frame(width: 32, height: 32)
-                            .accessibilityHidden(true)
-                            .foregroundColor(.accentColor)
-                            .padding(4)
-                        Text("Enjoy your Search Life!")
-                            .font(.headline)
-                    }
-                    .padding(.vertical, 8)
                 }
-                .padding(EdgeInsets(top: 24, leading: 32, bottom: 0, trailing: 32))
                 
                 Spacer()
                 Button(action: {
