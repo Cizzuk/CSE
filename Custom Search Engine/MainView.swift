@@ -133,7 +133,12 @@ struct ContentView: View {
                     Button(action: {
                         openSafariTutorialView = true
                     }) {
-                        Text("Safari Settings")
+                        HStack {
+                            Image(systemName: "safari")
+                                .frame(width: 20.0)
+                                .accessibilityHidden(true)
+                            Text("Safari Settings")
+                        }
                     }
                 } footer: {
                     Text("If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial.")
