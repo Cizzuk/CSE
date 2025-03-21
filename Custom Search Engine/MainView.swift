@@ -191,7 +191,9 @@ struct ContentView: View {
                                 .frame(width: 20.0)
                             Text("License")
                         }
+                        #if !visionOS
                         .foregroundColor(.accentColor)
+                        #endif
                     }
                     // GitHub Source Link
                     Link(destination:URL(string: "https://github.com/Cizzuk/CSE")!, label: {
