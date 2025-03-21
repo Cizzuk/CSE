@@ -18,13 +18,16 @@ struct EditSEView: View {
     @State private var quickID: String = ""
     @State private var cseURL: String = ""
     @State private var postEntries: [(key: String, value: String)] = []
+    @State private var disablePercentEncoding: Bool = false
 
     @State private var showFailAlert: Bool = false
     @State private var showKeyUsedAlert: Bool = false
     @State private var showKeyBlankAlert: Bool = false
     @State private var showURLBlankAlert: Bool = false
     
+    @State private var showAdvSettings: Bool = false
     @State private var editMode: EditMode = .inactive
+    @State private var openRecommendSEView: Bool = false
     
     var body: some View {
         NavigationView {
@@ -75,53 +78,95 @@ struct EditSEView: View {
                 } header: {
                     Text("Search URL")
                 } footer: {
-                    Text("Replace query with %s")
-                }
-                
-                // POST Data
-                Section() {
-                    ForEach(postEntries.indices, id: \.self) { index in
-                        HStack {
-                            TextField("Key", text: $postEntries[index].key)
-                            TextField("Value", text: $postEntries[index].value)
+                    VStack(alignment: .leading) {
+                        Text("Replace query with %s")
+                        if cseType == "default" || cseType == "private" {
+                            Text("Blank to disable CSE")
                         }
                     }
-                    .onDelete {
-                        postEntries.remove(atOffsets: $0)
-                        if postEntries.count == 0 {
-                            editMode = .inactive
+                }
+                
+                if cseType == "default" || cseType == "private" {
+                    Button(action: {
+                        openRecommendSEView = true
+                    }) {
+                        HStack {
+                            Image(systemName: "sparkle.magnifyingglass")
+                                .frame(width: 20.0)
+                                .accessibilityHidden(true)
+                            Text("Recommended Search Engines")
+                        }
+                    }
+                }
+                
+                // Advanced Settings
+                if !showAdvSettings {
+                    Section {} footer: {
+                        Button(action: {
+                            showAdvSettings = true
+                        }) {
+                            HStack {
+                                Text("Advanced Settings")
+                                Image(systemName: "chevron.down")
+                                    .accessibilityHidden(true)
+                            }
+                        }
+                        .textCase(nil)
+                        .font(.footnote)
+                    }
+                }
+                
+                if showAdvSettings {
+                    // POST Data
+                    Section {
+                        ForEach(postEntries.indices, id: \.self) { index in
+                            HStack {
+                                TextField("Key", text: $postEntries[index].key)
+                                TextField("Value", text: $postEntries[index].value)
+                            }
+                        }
+                        .onDelete {
+                            postEntries.remove(atOffsets: $0)
+                            if postEntries.count == 0 {
+                                editMode = .inactive
+                            }
+                        }
+                        
+                        Button(action: {
+                            postEntries.append((key: "", value: ""))
+                        })  {
+                            HStack {
+                                Image(systemName: "plus.circle")
+                                    .accessibilityHidden(true)
+                                Text("Add POST Data")
+                            }
+                        }
+                    } header: {
+                        HStack {
+                            Text("POST Data")
+                            if postEntries.count != 0 {
+                                Spacer()
+                                Button(action: {
+                                    editMode = (editMode == .active) ? .inactive : .active
+                                }) {
+                                    Text(editMode == .active ? "Done" : "Edit")
+                                }
+                                .textCase(nil)
+                                .font(.footnote)
+                            }
+                        }
+                    } footer: {
+                        VStack(alignment: .leading) {
+                            Text("Replace query with %s")
+                            if userDefaults.bool(forKey: "adv_ignorePOSTFallback") {
+                                Text("May not work with some Safari search engines.")
+                            }
                         }
                     }
                     
-                    Button(action: {
-                        postEntries.append((key: "", value: ""))
-                    })  {
-                        HStack {
-                            Image(systemName: "plus.circle")
-                                .accessibilityHidden(true)
-                            Text("Add POST Data")
-                        }
-                    }
-                } header: {
-                    HStack {
-                        Text("POST Data (Option)")
-                        if postEntries.count != 0 {
-                            Spacer()
-                            Button(action: {
-                                editMode = (editMode == .active) ? .inactive : .active
-                            }) {
-                                Text(editMode == .active ? "Done" : "Edit")
-                            }
-                            .textCase(nil)
-                            .font(.footnote)
-                        }
-                    }
-                } footer: {
-                    VStack(alignment: .leading) {
-                        Text("Replace query with %s")
-                        if userDefaults.bool(forKey: "adv_ignorePOSTFallback") {
-                            Text("May not work with some Safari search engines.")
-                        }
+                    // Disable %encode
+                    Section {
+                        Toggle("Disable Percent-encoding", isOn: $disablePercentEncoding)
                     }
                 }
             }
@@ -131,16 +176,29 @@ struct EditSEView: View {
             .alert("This keyword is already used in other", isPresented: $showKeyUsedAlert, actions:{})
             .alert("Keyword cannot be blank", isPresented: $showKeyBlankAlert, actions:{})
             .alert("Search URL cannot be blank", isPresented: $showURLBlankAlert, actions:{})
+            .animation(.easeOut(duration: 0.1), value: showAdvSettings)
+            .animation(.easeOut(duration: 0.2), value: postEntries.count)
         }
         .navigationTitle("Edit Search Engine")
         .navigationBarTitleDisplayMode(.inline)
         .navigationViewStyle(.stack)
+        .navigationBarBackButtonHidden(true)
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Cancel") {
+                    dismiss()
+                }
+            }
+            ToolbarItem(placement: .confirmationAction) {
                 Button("Save") {
                     saveCSEData()
                 }
             }
+        }
+        .sheet(isPresented : $openRecommendSEView , onDismiss : {
+            loadCSEData()
+        }) {
+            RecommendSEView(isOpenSheet: $openRecommendSEView, isFirstTutorial: .constant(false), cseType: $cseType)
         }
         .onAppear {
             loadCSEData()
@@ -171,6 +229,7 @@ struct EditSEView: View {
         // Create temporary data
         var CSEData: [String: Any] = [
             "url": cseURL,
+            "disablePercentEncoding": disablePercentEncoding,
             "post": postArray
         ]
         
@@ -234,9 +293,10 @@ struct EditSEView: View {
             return
         }
         
-        // Get Name & URL
+        // Get Data
         cseName = CSEData["name"] as? String ?? ""
         cseURL = CSEData["url"] as? String ?? ""
+        disablePercentEncoding = CSEData["disablePercentEncoding"] as? Bool ?? false
         
         // Get POST Data
         // If POST Data exists
@@ -250,6 +310,11 @@ struct EditSEView: View {
             }
         } else {
             postEntries = []
+        }
+        
+        // Show Advanced Settings
+        if postEntries.count > 0 || CSEData["disablePercentEncoding"] as? Bool == true {
+            showAdvSettings = true
         }
     }
 }

@@ -23,7 +23,7 @@ Example:
 - Search [`br something`](https://search.brave.com/search?q=something) to search in Brave Search
 - Search [`wiki Safari`](https://en.wikipedia.org/w/index.php?title=Special:Search&search=Safari) to find Safari on Wikipedia
 - Search [`yt Me at the zoo`](https://www.youtube.com/results?search_query=Me+at+the+zoo) to find the oldest videos on YouTube
-- Search [`wbm apple.com`](https://web.archive.org/web/*/apple.com) to see the old Apple website
+- Search [`wbm example.com`](https://web.archive.org/web/*/example.com) to see past versions of the website
 
 ### Emoji Search
 

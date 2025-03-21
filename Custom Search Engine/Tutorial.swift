@@ -7,11 +7,12 @@
 
 import SwiftUI
 
+let currentRegion = Locale.current.regionCode
 private func HeaderText(text: String) -> some View {
     Text(text)
-        .font(.largeTitle)
+        .font(.title)
         .fontWeight(.bold)
-        .padding(.top, 40)
+        .padding(EdgeInsets(top: 32, leading: 32, bottom: 4, trailing: 32))
 }
 
 private func NextButton(text: String) -> some View {
@@ -26,33 +27,84 @@ private func NextButton(text: String) -> some View {
         #endif
 }
 
+private func NextButtonDim(text: String) -> some View {
+    Text(text)
+        .font(.headline)
+        .padding()
+        #if !visionOS
+        .foregroundColor(.accentColor)
+        .frame(maxWidth: .infinity)
+        .background(Color(UIColor.tertiarySystemBackground))
+        .cornerRadius(12)
+        #endif
+}
+
 // First Tutorial
 struct FullTutorialView: View {
     @Binding var isOpenSheet: Bool
+    @Binding var isFirstTutorial: Bool
     var body: some View {
         NavigationView {
             VStack() {
-                HeaderText(text: NSLocalizedString("Welcome to CSE", comment: ""))
+                Text("Welcome to CSE")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(EdgeInsets(top: 36, leading: 32, bottom: 8, trailing: 32))
                 VStack() {
                     Text("Before you can start using CSE, you need to do some setup.")
                 }
                 .padding(.horizontal, 32)
                 .frame(maxWidth: .infinity)
                 
-                Spacer()
-                NavigationLink {
-                    SafariTutorialView(isOpenSheet: $isOpenSheet)
-                } label: {
-                    NextButton(text: NSLocalizedString("Next", comment: ""))
+                List {
+                    Section {
+                        HStack {
+                            Image(systemName: "gear")
+                                .resizable()
+                                .frame(width: 28, height: 28)
+                                .accessibilityHidden(true)
+                                .foregroundColor(.accentColor)
+                                .padding(6)
+                            Text("Enable Extension in Safari")
+                                .font(.headline)
+                        }
+                        HStack {
+                            Image(systemName: "sparkle.magnifyingglass")
+                                .resizable()
+                                .frame(width: 28, height: 28)
+                                .accessibilityHidden(true)
+                                .foregroundColor(.accentColor)
+                                .padding(6)
+                            Text("Setup Custom Search Engine")
+                                .font(.headline)
+                        }
+                        HStack {
+                            Image(systemName: "safari")
+                                .resizable()
+                                .frame(width: 28, height: 28)
+                                .accessibilityHidden(true)
+                                .foregroundColor(.accentColor)
+                                .padding(6)
+                            Text("Enjoy your Search Life!")
+                                .font(.headline)
+                        }
+                    }
                 }
-                .padding(.horizontal, 24)
+                
+                Spacer()
                 Button(action: {
                     isOpenSheet = false
                 }) {
                     Text("Skip")
                         .bold()
                 }
-                .padding(EdgeInsets(top: 10, leading: 0, bottom: 24, trailing: 0))
+                .padding(.top, 10)
+                NavigationLink {
+                    SafariTutorialView(isOpenSheet: $isOpenSheet, isFirstTutorial: $isFirstTutorial)
+                } label: {
+                    NextButton(text: NSLocalizedString("Next", comment: ""))
+                }
+                .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
             }
             #if !visionOS
             .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
@@ -64,8 +116,8 @@ struct FullTutorialView: View {
 
 // Set Safari settings
 struct SafariTutorialView: View {
-    let currentRegion = Locale.current.regionCode
     @Binding var isOpenSheet: Bool
+    @Binding var isFirstTutorial: Bool
     @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var searchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "google"
     @AppStorage("alsousepriv", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
@@ -150,9 +202,10 @@ struct SafariTutorialView: View {
                         }
                     }
                 }
+                .animation(.easeOut(duration: 0.2), value: alsousepriv)
                 
                 NavigationLink {
-                    SafariTutorialSecondView(isOpenSheet: self.$isOpenSheet)
+                    SafariTutorialSecondView(isOpenSheet: $isOpenSheet, isFirstTutorial: $isFirstTutorial)
                 } label: {
                     NextButton(text: NSLocalizedString("Next", comment: ""))
                 }
@@ -168,8 +221,8 @@ struct SafariTutorialView: View {
 }
 
 struct SafariTutorialSecondView: View {
-    let currentRegion = Locale.current.regionCode
     @Binding var isOpenSheet: Bool
+    @Binding var isFirstTutorial: Bool
     @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var searchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "google"
     @AppStorage("alsousepriv", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
@@ -235,12 +288,21 @@ struct SafariTutorialSecondView: View {
                     }
                 }
                 
-                Button(action: {
-                    isOpenSheet = false
-                }) {
-                    NextButton(text: NSLocalizedString("Done", comment: ""))
+                if isFirstTutorial {
+                    NavigationLink {
+                        RecommendSEView(isOpenSheet: $isOpenSheet, isFirstTutorial: $isFirstTutorial, cseType: .constant("default"))
+                    } label: {
+                        NextButton(text: NSLocalizedString("Next", comment: ""))
+                    }
+                    .padding([.horizontal, .bottom], 24)
+                } else {
+                    Button(action: {
+                        isOpenSheet = false
+                    }) {
+                        NextButton(text: NSLocalizedString("Done", comment: ""))
+                    }
+                    .padding([.horizontal, .bottom], 24)
                 }
-                .padding([.horizontal, .bottom], 24)
             }
             #if !visionOS
             .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
@@ -250,3 +312,179 @@ struct SafariTutorialSecondView: View {
         .navigationBarBackButtonHidden(true)
     }
 }
+
+struct RecommendSEView: View {
+    @Binding var isOpenSheet: Bool
+    @Binding var isFirstTutorial: Bool
+    @Binding var cseType: String
+    @State private var selectedIndex: Int = -1
+    var recommendCSEList: [[String: Any]] = [
+        [
+            "name": "Startpage",
+            "url": "https://www.startpage.com/sp/search?query=%s",
+            "post": [],
+            "disablePercentEncoding": false
+        ],
+        [
+            "name": "Brave Search",
+            "url": "https://search.brave.com/search?q=%s",
+            "post": [],
+            "disablePercentEncoding": false
+        ],
+        [
+            "name": "Google &udm=14",
+            "url": "https://www.google.com/search?q=%s&udm=14",
+            "post": [],
+            "disablePercentEncoding": false
+        ],
+        [
+            "name": "Kagi",
+            "url": "https://kagi.com/search?q=%s",
+            "post": [],
+            "disablePercentEncoding": false
+        ],
+        [
+            "name": "Qwant",
+            "url": "https://www.qwant.com/?q=%s",
+            "post": [],
+            "disablePercentEncoding": false
+        ],
+        [
+            "name": "NAVER",
+            "url": "https://search.naver.com/search.naver?query=%s",
+            "post": [],
+            "disablePercentEncoding": false
+        ],
+        [
+            "name": "Cốc Cốc",
+            "url": "https://coccoc.com/search#query=%s",
+            "post": [],
+            "disablePercentEncoding": false
+        ],
+        [
+            "name": "Google",
+            "url": "https://www.google.com/search?q=%s",
+            "post": [],
+            "disablePercentEncoding": false
+        ],
+        [
+            "name": "Bing",
+            "url": "https://www.bing.com/search?q=%s",
+            "post": [],
+            "disablePercentEncoding": false
+        ],
+        [
+            "name": "Yahoo",
+            "url": "https://search.yahoo.com/search?p=%s",
+            "post": [],
+            "disablePercentEncoding": false
+        ],
+        [
+            "name": "DuckDuckGo",
+            "url": "https://duckduckgo.com/?q=%s",
+            "post": [],
+            "disablePercentEncoding": false
+        ],
+        [
+            "name": "Ecosia",
+            "url": "https://www.ecosia.org/search?q=%s",
+            "post": [],
+            "disablePercentEncoding": false
+        ],
+        [
+            "name": "百度",
+            "url": "https://www.baidu.com/s?wd=%s",
+            "post": [],
+            "disablePercentEncoding": false
+        ],
+        [
+            "name": "Yandex",
+            "url": "https://yandex.ru/search/?text=%s",
+            "post": [],
+            "disablePercentEncoding": false
+        ]
+    ]
+    
+    var body: some View {
+        NavigationView {
+            VStack() {
+                HeaderText(text: NSLocalizedString("Recommended Search Engines", comment: ""))
+                if isFirstTutorial {
+                    VStack() {
+                        Text("Choose from the recommended search engines below or customize it yourself later.")
+                    }
+                    .padding(.horizontal, 32)
+                    .frame(maxWidth: .infinity)
+                }
+                
+                List {
+                    Section {
+                        // Search Engine Selector
+                        ForEach(recommendCSEList.indices, id: \.self, content: { index in
+                            let cse = recommendCSEList[index]
+                            let cseName = cse["name"] as! String
+                            let cseURL = cse["url"] as! String
+                            Button {
+                                if selectedIndex == index {
+                                    selectedIndex = -1
+                                } else {
+                                    selectedIndex = index
+                                }
+                            } label: {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text(cseName)
+                                            .bold()
+                                        Text(cseURL)
+                                            .lineLimit(1)
+                                            .accessibilityHidden(true)
+                                    }
+                                    Spacer()
+                                    Image(systemName: selectedIndex == index ? "checkmark.circle.fill" : "circle")
+                                        .foregroundColor(.blue)
+                                        .animation(.easeOut(duration: 0.15), value: selectedIndex)
+                                }
+                            }
+                            .accessibilityLabel(cseName)
+                            .foregroundColor(.primary)
+                        })
+                    }
+                }
+                
+                Button(action: {
+                    if selectedIndex != -1 {
+                        let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
+                        if cseType == "default" {
+                            userDefaults.set(recommendCSEList[selectedIndex], forKey: "defaultCSE")
+                        } else if cseType == "private" {
+                            userDefaults.set(recommendCSEList[selectedIndex], forKey: "privateCSE")
+                        }
+                    }
+                    isOpenSheet = false
+                }) {
+                    if selectedIndex == -1 {
+                        if isFirstTutorial {
+                            NextButtonDim(text: NSLocalizedString("Skip", comment: ""))
+                        } else {
+                            NextButtonDim(text: NSLocalizedString("Cancel", comment: ""))
+                        }
+                    } else {
+                        if isFirstTutorial {
+                            NextButton(text: NSLocalizedString("Done", comment: ""))
+                        } else {
+                            NextButton(text: NSLocalizedString("Save", comment: ""))
+                        }
+                    }
+                }
+                .animation(.easeOut(duration: 0.15), value: selectedIndex)
+                .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
+            }
+            #if !visionOS
+            .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
+            #endif
+        }
+        .navigationViewStyle(.stack)
+        .navigationBarBackButtonHidden(true)
+    }
+}
+

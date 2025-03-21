@@ -37,6 +37,8 @@ struct ContentView: View {
     
     @AppStorage("needFirstTutorial", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var needFirstTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needFirstTutorial")
+    @AppStorage("needSafariTutorial", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var needSafariTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needSafariTutorial")
     @State private var openSafariTutorialView: Bool = false
     
     #if iOS
@@ -95,7 +97,7 @@ struct ContentView: View {
                     }
                 } footer: {
                     if #available(iOS 17.0, macOS 14.0, *),
-                    (alsousepriv || searchengine == privsearchengine) { // is not available
+                       (alsousepriv || searchengine == privsearchengine) { // is not available
                         Text("If you set another search engine in private browsing in Safari settings, you can use another custom search engine in private browse.")
                     }
                 }
@@ -116,6 +118,7 @@ struct ContentView: View {
                     Text("Enter the keyword at the top to switch search engines.")
                 }
                 
+                
                 // Emojipedia Search Setting
                 Section {
                     Toggle(isOn: $useEmojiSearch, label: {
@@ -130,7 +133,12 @@ struct ContentView: View {
                     Button(action: {
                         openSafariTutorialView = true
                     }) {
-                        Text("Safari Settings")
+                        HStack {
+                            Image(systemName: "safari")
+                                .frame(width: 20.0)
+                                .accessibilityHidden(true)
+                            Text("Safari Settings")
+                        }
                     }
                 } footer: {
                     Text("If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial.")
@@ -164,8 +172,6 @@ struct ContentView: View {
                             Image(systemName: "message")
                                 .frame(width: 20.0)
                             Text("Contact")
-                            Spacer()
-                            Image(systemName: "chevron.right")
                         }
                     })
                     // Privacy Policy
@@ -174,21 +180,21 @@ struct ContentView: View {
                             Image(systemName: "hand.raised")
                                 .frame(width: 20.0)
                             Text("Privacy Policy")
-                            Spacer()
-                            Image(systemName: "chevron.right")
                         }
                     })
                     // License Link
-                    Link(destination:URL(string: "https://www.mozilla.org/en-US/MPL/2.0/")!, label: {
+                    NavigationLink {
+                        LicenseView()
+                    } label: {
                         HStack {
                             Image(systemName: "book.closed")
                                 .frame(width: 20.0)
                             Text("License")
-                            Spacer()
-                            Text("MPL 2.0")
-                            Image(systemName: "chevron.right")
                         }
-                    })
+                        #if !visionOS
+                        .foregroundColor(.accentColor)
+                        #endif
+                    }
                     // GitHub Source Link
                     Link(destination:URL(string: "https://github.com/Cizzuk/CSE")!, label: {
                         HStack {
@@ -196,8 +202,6 @@ struct ContentView: View {
                                 .frame(width: 20.0)
                             Text("Source")
                             Spacer()
-                            Text("GitHub")
-                            Image(systemName: "chevron.right")
                         }
                     })
                 } header: {
@@ -230,16 +234,21 @@ struct ContentView: View {
                 }
                 
             }
-            .listStyle(.insetGrouped)
             .navigationTitle("CSE Settings")
+            .listStyle(.insetGrouped)
+            .animation(.easeOut(duration: 0.2), value: usePrivateCSE)
+            .animation(.easeOut(duration: 0.2), value: useQuickCSE)
         }
         .navigationViewStyle(.stack)
         // Tutorial sheets
         .sheet(isPresented: $needFirstTutorial, content: {
-            FullTutorialView(isOpenSheet: $needFirstTutorial)
+            FullTutorialView(isOpenSheet: $needFirstTutorial, isFirstTutorial: .constant(true))
+        })
+        .sheet(isPresented: $needSafariTutorial, content: {
+            SafariTutorialView(isOpenSheet: $needSafariTutorial, isFirstTutorial: .constant(false))
         })
         .sheet(isPresented: $openSafariTutorialView, content: {
-            SafariTutorialView(isOpenSheet: $openSafariTutorialView)
+            SafariTutorialView(isOpenSheet: $openSafariTutorialView, isFirstTutorial: .constant(false))
         })
     }
 }

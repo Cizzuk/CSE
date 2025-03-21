@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     userDefaults.set("duckduckgo", forKey: "searchengine")
                 }
                 if isUpdated(updateVer: "3.3", lastVer: lastVersion) {
-                    userDefaults.set(true, forKey: "needFirstTutorial")
+                    userDefaults.set(true, forKey: "needSafariTutorial")
                 }
             }
             userDefaults.set(true, forKey: "alsousepriv")
@@ -82,12 +82,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 userDefaults.set("google", forKey: "searchengine")
             }
+            userDefaults.set(true, forKey: "needSafariTutorial")
         }
         
         // Fix Private SE by region
         if (currentRegion != "CN" && ["baidu", "sogou", "360search"].contains(privsearchengine))
             || (currentRegion != "RU" && ["yandex"].contains(privsearchengine)) {
             userDefaults.set("duckduckgo", forKey: "privsearchengine")
+            userDefaults.set(true, forKey: "needSafariTutorial")
         }
 
         // Save last opened version
@@ -119,78 +121,83 @@ func resetCSE(target: String) {
     }
     
     let defaultCSE: [String: Any] = [
-        "url": "https://www.google.com/search?q=%s",
-        "post": []
-    ]
-    
-    // Only for China mainland
-    let defaultCSECN: [String: Any] = [
-        "url": "https://www.baidu.com/s?wd=%s",
-        "post": []
+        "url": "",
+        "post": [],
+        "disablePercentEncoding": false
     ]
 
     let privateCSE: [String: Any] = [
-        "url": "https://duckduckgo.com/?q=%s",
-        "post": []
+        "url": "",
+        "post": [],
+        "disablePercentEncoding": false
     ]
 
     var quickCSE: [String: [String: Any]] = [
         "g": [
             "name": "Google",
             "url": "https://www.google.com/search?q=%s",
-            "post": []
+            "post": [],
+            "disablePercentEncoding": false
         ],
         "b": [
             "name": "Bing",
             "url": "https://www.bing.com/search?q=%s",
-            "post": []
+            "post": [],
+            "disablePercentEncoding": false
         ],
         "y": [
             "name": "Yahoo",
             "url": "https://search.yahoo.com/search?p=%s",
-            "post": []
+            "post": [],
+            "disablePercentEncoding": false
         ],
         "ddg": [
             "name": "DuckDuckGo",
             "url": "https://duckduckgo.com/?q=%s",
-            "post": []
+            "post": [],
+            "disablePercentEncoding": false
         ],
         "eco": [
             "name": "Ecosia",
             "url": "https://www.ecosia.org/search?q=%s",
-            "post": []
+            "post": [],
+            "disablePercentEncoding": false
         ],
         "sp": [
             "name": "Startpage",
-            "url": "https://www.startpage.com/sp/search",
-            "post": [
-                ["key": "query", "value": "%s"]
-            ]
+            "url": "https://www.startpage.com/sp/search?query=%s",
+            "post": [],
+            "disablePercentEncoding": false
         ],
         "br": [
             "name": "Brave Search",
             "url": "https://search.brave.com/search?q=%s",
-            "post": []
+            "post": [],
+            "disablePercentEncoding": false
         ],
         "yt": [
             "name": "YouTube",
             "url": "https://www.youtube.com/results?search_query=%s",
-            "post": []
+            "post": [],
+            "disablePercentEncoding": false
         ],
         "gh": [
             "name": "GitHub",
             "url": "https://github.com/search?q=%s",
-            "post": []
+            "post": [],
+            "disablePercentEncoding": false
         ],
         "wiki": [
             "name": "Wikipedia (" + wikiLang + ")",
             "url": "https://" + wikiLang + ".wikipedia.org/w/index.php?title=Special:Search&search=%s",
-            "post": []
+            "post": [],
+            "disablePercentEncoding": false
         ],
         "wbm": [
             "name": "Wayback Machine",
             "url": "https://web.archive.org/web/*/%s",
-            "post": []
+            "post": [],
+            "disablePercentEncoding": true
         ]
     ]
     
@@ -199,12 +206,14 @@ func resetCSE(target: String) {
         "y": [
             "name": "Yahoo! Japan",
             "url": "https://search.yahoo.co.jp/search?p=%s",
-            "post": []
+            "post": [],
+            "disablePercentEncoding": false
         ],
         "nico": [
             "name": "ニコニコ動画",
             "url": "https://www.nicovideo.jp/search/%s",
-            "post": []
+            "post": [],
+            "disablePercentEncoding": false
         ]
     ]
     
@@ -212,17 +221,20 @@ func resetCSE(target: String) {
         "baidu": [
             "name": "百度",
             "url": "https://www.baidu.com/s?wd=%s",
-            "post": []
+            "post": [],
+            "disablePercentEncoding": false
         ],
         "weibo": [
             "name": "微博",
             "url": "https://s.weibo.com/weibo?q=%s",
-            "post": []
+            "post": [],
+            "disablePercentEncoding": false
         ],
         "bili": [
             "name": "哔哩哔哩",
             "url": "https://search.bilibili.com/all?keyword=%s",
-            "post": []
+            "post": [],
+            "disablePercentEncoding": false
         ]
     ]
     
@@ -230,7 +242,8 @@ func resetCSE(target: String) {
         "qwant": [
             "name": "Qwant",
             "url": "https://www.qwant.com/?q=%s",
-            "post": []
+            "post": [],
+            "disablePercentEncoding": false
         ]
     ]
             
@@ -238,7 +251,17 @@ func resetCSE(target: String) {
         "naver": [
             "name": "NAVER",
             "url": "https://search.naver.com/search.naver?query=%s",
-            "post": []
+            "post": [],
+            "disablePercentEncoding": false
+        ]
+    ]
+    
+    let quickCSEVN: [String: [String: Any]] = [
+        "naver": [
+            "name": "Cốc Cốc",
+            "url": "https://coccoc.com/search#query=%s",
+            "post": [],
+            "disablePercentEncoding": false
         ]
     ]
     
@@ -259,17 +282,17 @@ func resetCSE(target: String) {
         for (key, value) in quickCSEKR {
             quickCSE[key] = value
         }
+    } else if currentRegion == "VN" {
+        for (key, value) in quickCSEVN {
+            quickCSE[key] = value
+        }
     }
     
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
     
     // Save Data
     if target == "default" || target == "all" {
-        if currentRegion == "CN" {
-            userDefaults.set(defaultCSECN, forKey: "defaultCSE")
-        } else {
-            userDefaults.set(defaultCSE, forKey: "defaultCSE")
-        }
+        userDefaults.set(defaultCSE, forKey: "defaultCSE")
     }
     if target == "private" || target == "all" {
         userDefaults.set(privateCSE, forKey: "privateCSE")
