@@ -27,7 +27,7 @@ struct EditSEView: View {
     
     @State private var showAdvSettings: Bool = false
     @State private var editMode: EditMode = .inactive
-    
+    @State private var openRecommendSEView: Bool = false
     
     var body: some View {
         NavigationView {
@@ -83,6 +83,12 @@ struct EditSEView: View {
                         if cseType == "default" || cseType == "private" {
                             Text("Blank to disable CSE")
                         }
+                    }
+                }
+                
+                if cseType == "default" || cseType == "private" {
+                    Button("Show Recommended Search Engines") {
+                        openRecommendSEView = true
                     }
                 }
                 
@@ -169,6 +175,11 @@ struct EditSEView: View {
         .navigationTitle("Edit Search Engine")
         .navigationBarTitleDisplayMode(.inline)
         .navigationViewStyle(.stack)
+        .sheet(isPresented : $openRecommendSEView , onDismiss : {
+            loadCSEData()
+        }) {
+            RecommendSEView(isOpenSheet: $openRecommendSEView, isFirstTutorial: .constant(false), cseType: $cseType)
+        }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Save") {

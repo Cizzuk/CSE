@@ -240,7 +240,7 @@ struct SafariTutorialSecondView: View {
                 
                 if isFirstTutorial {
                     NavigationLink {
-                        RecommendSEView(isOpenSheet: $isOpenSheet, isFirstTutorial: $isFirstTutorial)
+                        RecommendSEView(isOpenSheet: $isOpenSheet, isFirstTutorial: $isFirstTutorial, cseType: .constant("default"))
                     } label: {
                         NextButton(text: NSLocalizedString("Next", comment: ""))
                     }
@@ -266,6 +266,7 @@ struct SafariTutorialSecondView: View {
 struct RecommendSEView: View {
     @Binding var isOpenSheet: Bool
     @Binding var isFirstTutorial: Bool
+    @Binding var cseType: String
     @State private var selectedIndex: Int = -1
     var recommendCSEList: [[String: Any]] = [
         [
@@ -316,11 +317,13 @@ struct RecommendSEView: View {
         NavigationView {
             VStack() {
                 HeaderText(text: NSLocalizedString("Recommended CSE", comment: ""))
-                VStack() {
-                    Text("Choose from the recommended search engines below or customize it yourself later.")
+                if isFirstTutorial {
+                    VStack() {
+                        Text("Choose from the recommended search engines below or customize it yourself later.")
+                    }
+                    .padding(.horizontal, 32)
+                    .frame(maxWidth: .infinity)
                 }
-                .padding(.horizontal, 32)
-                .frame(maxWidth: .infinity)
                 
                 List {
                     Section {
@@ -353,7 +356,12 @@ struct RecommendSEView: View {
                 }
                 
                 Button(action: {
-                    UserDefaults(suiteName: "group.com.tsg0o0.cse")!.set(recommendCSEList[selectedIndex], forKey: "defaultCSE")
+                    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
+                    if cseType == "default" {
+                        userDefaults.set(recommendCSEList[selectedIndex], forKey: "defaultCSE")
+                    } else if cseType == "private" {
+                        userDefaults.set(recommendCSEList[selectedIndex], forKey: "privateCSE")
+                    }
                     isOpenSheet = false
                 }) {
                     NextButton(text: NSLocalizedString("Done", comment: ""))
