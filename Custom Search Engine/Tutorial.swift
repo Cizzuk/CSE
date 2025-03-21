@@ -12,7 +12,7 @@ private func HeaderText(text: String) -> some View {
     Text(text)
         .font(.largeTitle)
         .fontWeight(.bold)
-        .padding(.top, 40)
+        .padding(EdgeInsets(top: 36, leading: 32, bottom: 8, trailing: 32))
 }
 
 private func NextButton(text: String) -> some View {
@@ -76,7 +76,7 @@ struct FullTutorialView: View {
                     }
                     .padding(.vertical, 8)
                 }
-                .padding(.top, 24)
+                .padding(EdgeInsets(top: 24, leading: 32, bottom: 0, trailing: 32))
                 
                 Spacer()
                 Button(action: {
