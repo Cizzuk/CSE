@@ -388,7 +388,7 @@ struct RecommendSEView: View {
                                     Spacer()
                                     Image(systemName: selectedIndex == index ? "checkmark.circle.fill" : "circle")
                                         .foregroundColor(.blue)
-                                        .animation(.easeOut(duration: 0.1), value: selectedIndex == index)
+                                        .animation(.easeOut(duration: 0.15), value: selectedIndex == index)
                                 }
                             }
                             .accessibilityLabel(cseName)
