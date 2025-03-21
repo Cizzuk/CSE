@@ -182,17 +182,23 @@ struct EditSEView: View {
         .navigationTitle("Edit Search Engine")
         .navigationBarTitleDisplayMode(.inline)
         .navigationViewStyle(.stack)
-        .sheet(isPresented : $openRecommendSEView , onDismiss : {
-            loadCSEData()
-        }) {
-            RecommendSEView(isOpenSheet: $openRecommendSEView, isFirstTutorial: .constant(false), cseType: $cseType)
-        }
+        .navigationBarBackButtonHidden(true)
         .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button("Cancel") {
+                    dismiss()
+                }
+            }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Save") {
                     saveCSEData()
                 }
             }
+        }
+        .sheet(isPresented : $openRecommendSEView , onDismiss : {
+            loadCSEData()
+        }) {
+            RecommendSEView(isOpenSheet: $openRecommendSEView, isFirstTutorial: .constant(false), cseType: $cseType)
         }
         .onAppear {
             loadCSEData()
