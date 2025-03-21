@@ -332,7 +332,7 @@ struct RecommendSEView: View {
             "disablePercentEncoding": false
         ],
         [
-            "name": "Google udm14 (no AI summary)",
+            "name": "Google &udm=14",
             "url": "https://www.google.com/search?q=%s&udm=14",
             "post": [],
             "disablePercentEncoding": false
