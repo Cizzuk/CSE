@@ -310,6 +310,48 @@ struct RecommendSEView: View {
             "url": "https://coccoc.com/search#query=%s",
             "post": [],
             "disablePercentEncoding": false
+        ],
+        [
+            "name": "Google",
+            "url": "https://www.google.com/search?q=%s",
+            "post": [],
+            "disablePercentEncoding": false
+        ],
+        [
+            "name": "Bing",
+            "url": "https://www.bing.com/search?q=%s",
+            "post": [],
+            "disablePercentEncoding": false
+        ],
+        [
+            "name": "Yahoo",
+            "url": "https://search.yahoo.com/search?p=%s",
+            "post": [],
+            "disablePercentEncoding": false
+        ],
+        [
+            "name": "DuckDuckGo",
+            "url": "https://duckduckgo.com/?q=%s",
+            "post": [],
+            "disablePercentEncoding": false
+        ],
+        [
+            "name": "Ecosia",
+            "url": "https://www.ecosia.org/search?q=%s",
+            "post": [],
+            "disablePercentEncoding": false
+        ],
+        [
+            "name": "百度",
+            "url": "https://www.baidu.com/s?wd=%s",
+            "post": [],
+            "disablePercentEncoding": false
+        ],
+        [
+            "name": "Yandex",
+            "url": "https://yandex.ru/search/?text=%s",
+            "post": [],
+            "disablePercentEncoding": false
         ]
     ]
     
