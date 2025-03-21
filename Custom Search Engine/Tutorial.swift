@@ -61,30 +61,30 @@ struct FullTutorialView: View {
                         HStack {
                             Image(systemName: "gear")
                                 .resizable()
-                                .frame(width: 32, height: 32)
+                                .frame(width: 28, height: 28)
                                 .accessibilityHidden(true)
                                 .foregroundColor(.accentColor)
-                                .padding(4)
+                                .padding(6)
                             Text("Enable Extension in Safari")
                                 .font(.headline)
                         }
                         HStack {
                             Image(systemName: "sparkle.magnifyingglass")
                                 .resizable()
-                                .frame(width: 32, height: 32)
+                                .frame(width: 28, height: 28)
                                 .accessibilityHidden(true)
                                 .foregroundColor(.accentColor)
-                                .padding(4)
+                                .padding(6)
                             Text("Setup Custom Search Engine")
                                 .font(.headline)
                         }
                         HStack {
                             Image(systemName: "safari")
                                 .resizable()
-                                .frame(width: 32, height: 32)
+                                .frame(width: 28, height: 28)
                                 .accessibilityHidden(true)
                                 .foregroundColor(.accentColor)
-                                .padding(4)
+                                .padding(6)
                             Text("Enjoy your Search Life!")
                                 .font(.headline)
                         }
