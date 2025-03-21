@@ -41,20 +41,57 @@ struct FullTutorialView: View {
                 .padding(.horizontal, 32)
                 .frame(maxWidth: .infinity)
                 
-                Spacer()
-                NavigationLink {
-                    SafariTutorialView(isOpenSheet: $isOpenSheet, isFirstTutorial: $isFirstTutorial)
-                } label: {
-                    NextButton(text: NSLocalizedString("Next", comment: ""))
+                VStack(alignment: .leading) {
+                    HStack {
+                        Image(systemName: "gear")
+                            .resizable()
+                            .frame(width: 32, height: 32)
+                            .accessibilityHidden(true)
+                            .foregroundColor(.accentColor)
+                            .padding(4)
+                        Text("Enable Extension in Safari")
+                            .font(.headline)
+                    }
+                    .padding(.vertical, 8)
+                    HStack {
+                        Image(systemName: "sparkle.magnifyingglass")
+                            .resizable()
+                            .frame(width: 32, height: 32)
+                            .accessibilityHidden(true)
+                            .foregroundColor(.accentColor)
+                            .padding(4)
+                        Text("Setup Custom Search Engine")
+                            .font(.headline)
+                    }
+                    .padding(.vertical, 8)
+                    HStack {
+                        Image(systemName: "safari")
+                            .resizable()
+                            .frame(width: 32, height: 32)
+                            .accessibilityHidden(true)
+                            .foregroundColor(.accentColor)
+                            .padding(4)
+                        Text("Enjoy your Search Life!")
+                            .font(.headline)
+                    }
+                    .padding(.vertical, 8)
                 }
-                .padding(.horizontal, 24)
+                .padding(.top, 24)
+                
+                Spacer()
                 Button(action: {
                     isOpenSheet = false
                 }) {
                     Text("Skip")
                         .bold()
                 }
-                .padding(EdgeInsets(top: 10, leading: 0, bottom: 24, trailing: 0))
+                .padding(.top, 10)
+                NavigationLink {
+                    SafariTutorialView(isOpenSheet: $isOpenSheet, isFirstTutorial: $isFirstTutorial)
+                } label: {
+                    NextButton(text: NSLocalizedString("Next", comment: ""))
+                }
+                .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
             }
             #if !visionOS
             .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
@@ -398,6 +435,13 @@ struct RecommendSEView: View {
                 }
                 
                 Button(action: {
+                    isOpenSheet = false
+                }) {
+                    Text("Skip")
+                        .bold()
+                }
+                .padding(.top, 10)
+                Button(action: {
                     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
                     if cseType == "default" {
                         userDefaults.set(recommendCSEList[selectedIndex], forKey: "defaultCSE")
@@ -408,15 +452,8 @@ struct RecommendSEView: View {
                 }) {
                     NextButton(text: NSLocalizedString("Done", comment: ""))
                 }
-                .padding(EdgeInsets(top: 12, leading: 24, bottom: 0, trailing: 24))
                 .disabled((selectedIndex == -1))
-                Button(action: {
-                    isOpenSheet = false
-                }) {
-                    Text("Skip")
-                        .bold()
-                }
-                .padding(EdgeInsets(top: 10, leading: 0, bottom: 24, trailing: 0))
+                .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
             }
             #if !visionOS
             .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
