@@ -87,8 +87,15 @@ struct EditSEView: View {
                 }
                 
                 if cseType == "default" || cseType == "private" {
-                    Button("Show Recommended Search Engines") {
+                    Button(action: {
                         openRecommendSEView = true
+                    }) {
+                        HStack {
+                            Image(systemName: "sparkle.magnifyingglass")
+                                .frame(width: 20.0)
+                                .accessibilityHidden(true)
+                            Text("Recommended Search Engines")
+                        }
                     }
                 }
                 
