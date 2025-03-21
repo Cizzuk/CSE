@@ -947,6 +947,16 @@
     "bing.com" : {
       "shouldTranslate" : false
     },
+    "Blank to disable CSE" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "空白にするとCSEを無効化"
+          }
+        }
+      }
+    },
     "Change App Icon" : {
       "localizations" : {
         "de" : {

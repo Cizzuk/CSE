@@ -78,7 +78,12 @@ struct EditSEView: View {
                 } header: {
                     Text("Search URL")
                 } footer: {
-                    Text("Replace query with %s")
+                    VStack(alignment: .leading) {
+                        Text("Replace query with %s")
+                        if cseType == "default" || cseType == "private" {
+                            Text("Blank to disable CSE")
+                        }
+                    }
                 }
                 
                 // Advanced Settings
