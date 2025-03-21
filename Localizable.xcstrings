@@ -1760,12 +1760,32 @@
         }
       }
     },
+    "Enable Extension in Safari" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safariで拡張機能を有効化"
+          }
+        }
+      }
+    },
     "Enable Reset Buttons" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "リセットボタンを有効化"
+          }
+        }
+      }
+    },
+    "Enjoy your Search Life!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索を楽しむ！"
           }
         }
       }
@@ -3658,6 +3678,16 @@
         }
       }
     },
+    "Recommended Search Engines" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "おすすめの検索エンジン"
+          }
+        }
+      }
+    },
     "Replace query with %s" : {
       "localizations" : {
         "de" : {
@@ -4864,8 +4894,15 @@
         }
       }
     },
-    "Show Recommended Search Engines" : {
-
+    "Setup Custom Search Engine" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カスタム検索エンジンを設定"
+          }
+        }
+      }
     },
     "Skip" : {
       "localizations" : {
