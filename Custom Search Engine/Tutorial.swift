@@ -27,6 +27,18 @@ private func NextButton(text: String) -> some View {
         #endif
 }
 
+private func NextButtonDim(text: String) -> some View {
+    Text(text)
+        .font(.headline)
+        .padding()
+        #if !visionOS
+        .foregroundColor(.accentColor)
+        .frame(maxWidth: .infinity)
+        .background(Color(UIColor.tertiarySystemBackground))
+        .cornerRadius(12)
+        #endif
+}
+
 // First Tutorial
 struct FullTutorialView: View {
     @Binding var isOpenSheet: Bool
@@ -430,7 +442,7 @@ struct RecommendSEView: View {
                                     Spacer()
                                     Image(systemName: selectedIndex == index ? "checkmark.circle.fill" : "circle")
                                         .foregroundColor(.blue)
-                                        .animation(.easeOut(duration: 0.15), value: selectedIndex == index)
+                                        .animation(.easeOut(duration: 0.15), value: selectedIndex)
                                 }
                             }
                             .accessibilityLabel(cseName)
@@ -451,11 +463,20 @@ struct RecommendSEView: View {
                     isOpenSheet = false
                 }) {
                     if selectedIndex == -1 {
-                        NextButton(text: NSLocalizedString("Skip", comment: ""))
+                        if isFirstTutorial {
+                            NextButtonDim(text: NSLocalizedString("Skip", comment: ""))
+                        } else {
+                            NextButtonDim(text: NSLocalizedString("Cancel", comment: ""))
+                        }
                     } else {
-                        NextButton(text: NSLocalizedString("Done", comment: ""))
+                        if isFirstTutorial {
+                            NextButton(text: NSLocalizedString("Done", comment: ""))
+                        } else {
+                            NextButton(text: NSLocalizedString("Save", comment: ""))
+                        }
                     }
                 }
+                .animation(.easeOut(duration: 0.15), value: selectedIndex)
                 .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
             }
             #if !visionOS
