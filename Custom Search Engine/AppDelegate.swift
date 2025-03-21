@@ -263,6 +263,15 @@ func resetCSE(target: String) {
         ]
     ]
     
+    let quickCSEVN: [String: [String: Any]] = [
+        "naver": [
+            "name": "Cốc Cốc",
+            "url": "https://coccoc.com/search#query=%s",
+            "post": [],
+            "disablePercentEncoding": false
+        ]
+    ]
+    
     // Edit QuickSE by country/region
     if currentRegion == "JP" {
         for (key, value) in quickCSEJP {
@@ -278,6 +287,10 @@ func resetCSE(target: String) {
         }
     } else if currentRegion == "KR" {
         for (key, value) in quickCSEKR {
+            quickCSE[key] = value
+        }
+    } else if currentRegion == "VN" {
+        for (key, value) in quickCSEVN {
             quickCSE[key] = value
         }
     }
