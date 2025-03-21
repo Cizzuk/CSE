@@ -172,10 +172,8 @@ func resetCSE(target: String) {
         ],
         "sp": [
             "name": "Startpage",
-            "url": "https://www.startpage.com/sp/search",
-            "post": [
-                ["key": "query", "value": "%s"]
-            ],
+            "url": "https://www.startpage.com/sp/search?query=%s",
+            "post": [],
             "disablePercentEncoding": false
         ],
         "br": [
