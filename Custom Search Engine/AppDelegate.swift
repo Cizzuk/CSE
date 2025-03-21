@@ -82,12 +82,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 userDefaults.set("google", forKey: "searchengine")
             }
+            userDefaults.set(true, forKey: "needFirstTutorial")
         }
         
         // Fix Private SE by region
         if (currentRegion != "CN" && ["baidu", "sogou", "360search"].contains(privsearchengine))
             || (currentRegion != "RU" && ["yandex"].contains(privsearchengine)) {
             userDefaults.set("duckduckgo", forKey: "privsearchengine")
+            userDefaults.set(true, forKey: "needFirstTutorial")
         }
 
         // Save last opened version
