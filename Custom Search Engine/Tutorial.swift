@@ -408,7 +408,7 @@ struct RecommendSEView: View {
     var body: some View {
         NavigationView {
             VStack() {
-                HeaderText(text: NSLocalizedString("Recommended CSE", comment: ""))
+                HeaderText(text: NSLocalizedString("Recommended Search Engines", comment: ""))
                 if isFirstTutorial {
                     VStack() {
                         Text("Choose from the recommended search engines below or customize it yourself later.")
