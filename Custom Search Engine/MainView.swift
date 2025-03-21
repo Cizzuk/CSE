@@ -37,6 +37,8 @@ struct ContentView: View {
     
     @AppStorage("needFirstTutorial", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var needFirstTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needFirstTutorial")
+    @AppStorage("needSafariTutorial", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var needSafariTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needSafariTutorial")
     @State private var openSafariTutorialView: Bool = false
     
     #if iOS
@@ -233,10 +235,13 @@ struct ContentView: View {
         .navigationViewStyle(.stack)
         // Tutorial sheets
         .sheet(isPresented: $needFirstTutorial, content: {
-            FullTutorialView(isOpenSheet: $needFirstTutorial)
+            FullTutorialView(isOpenSheet: $needFirstTutorial, isFirstTutorial: .constant(true))
+        })
+        .sheet(isPresented: $needSafariTutorial, content: {
+            SafariTutorialView(isOpenSheet: $needSafariTutorial, isFirstTutorial: .constant(false))
         })
         .sheet(isPresented: $openSafariTutorialView, content: {
-            SafariTutorialView(isOpenSheet: $openSafariTutorialView)
+            SafariTutorialView(isOpenSheet: $openSafariTutorialView, isFirstTutorial: .constant(false))
         })
     }
 }

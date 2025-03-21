@@ -1005,6 +1005,16 @@
         }
       }
     },
+    "Choose from the recommended search engines below or customize it yourself later." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "以下のおすすめの検索エンジンから選択するか、あとでご自身でカスタマイズできます。"
+          }
+        }
+      }
+    },
     "Contact" : {
       "localizations" : {
         "de" : {
@@ -3624,6 +3634,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "快速搜尋引擎"
+          }
+        }
+      }
+    },
+    "Recommended CSE" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "おすすめのCSE"
           }
         }
       }
