@@ -10,9 +10,9 @@ import SwiftUI
 let currentRegion = Locale.current.regionCode
 private func HeaderText(text: String) -> some View {
     Text(text)
-        .font(.largeTitle)
+        .font(.title)
         .fontWeight(.bold)
-        .padding(EdgeInsets(top: 36, leading: 32, bottom: 8, trailing: 32))
+        .padding(EdgeInsets(top: 32, leading: 32, bottom: 4, trailing: 32))
 }
 
 private func NextButton(text: String) -> some View {
@@ -34,7 +34,10 @@ struct FullTutorialView: View {
     var body: some View {
         NavigationView {
             VStack() {
-                HeaderText(text: NSLocalizedString("Welcome to CSE", comment: ""))
+                Text("Welcome to CSE")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(EdgeInsets(top: 36, leading: 32, bottom: 8, trailing: 32))
                 VStack() {
                     Text("Before you can start using CSE, you need to do some setup.")
                 }
@@ -410,7 +413,11 @@ struct RecommendSEView: View {
                             let cseName = cse["name"] as! String
                             let cseURL = cse["url"] as! String
                             Button {
-                                selectedIndex = index
+                                if selectedIndex == index {
+                                    selectedIndex = -1
+                                } else {
+                                    selectedIndex = index
+                                }
                             } label: {
                                 HStack {
                                     VStack(alignment: .leading) {
@@ -433,24 +440,22 @@ struct RecommendSEView: View {
                 }
                 
                 Button(action: {
-                    isOpenSheet = false
-                }) {
-                    Text("Skip")
-                        .bold()
-                }
-                .padding(.top, 10)
-                Button(action: {
-                    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
-                    if cseType == "default" {
-                        userDefaults.set(recommendCSEList[selectedIndex], forKey: "defaultCSE")
-                    } else if cseType == "private" {
-                        userDefaults.set(recommendCSEList[selectedIndex], forKey: "privateCSE")
+                    if selectedIndex != -1 {
+                        let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
+                        if cseType == "default" {
+                            userDefaults.set(recommendCSEList[selectedIndex], forKey: "defaultCSE")
+                        } else if cseType == "private" {
+                            userDefaults.set(recommendCSEList[selectedIndex], forKey: "privateCSE")
+                        }
                     }
                     isOpenSheet = false
                 }) {
-                    NextButton(text: NSLocalizedString("Done", comment: ""))
+                    if selectedIndex == -1 {
+                        NextButton(text: NSLocalizedString("Skip", comment: ""))
+                    } else {
+                        NextButton(text: NSLocalizedString("Done", comment: ""))
+                    }
                 }
-                .disabled((selectedIndex == -1))
                 .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
             }
             #if !visionOS
