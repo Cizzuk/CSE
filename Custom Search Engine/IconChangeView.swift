@@ -61,7 +61,7 @@ struct PurchaseView: View {
     @State private var showRestoreSucAlert = false
     var body: some View {
         List {
-//            TODO: Remove comments if CTF issues are resolved. (issue#24)
+//            IMPORTANT: This code is not currently used, but it is kept here for future reference.
 //            // Purchase Section
 //            Section {
 //                HStack {

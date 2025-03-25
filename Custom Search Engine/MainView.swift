@@ -144,7 +144,7 @@ struct ContentView: View {
                     Text("If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial.")
                 }
                 
-//                TODO: Remove comments if CTF issues are resolved. (issue#24)
+//                IMPORTANT: This code is not currently used, but it is kept here for future reference.
 //                #if iOS
 //                // Go IconChange View for iOS/iPadOS
 //                Section {
