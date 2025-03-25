@@ -4,6 +4,8 @@ Safari Extension to customize your search engine.
 
 **[Download on the App Store](https://apps.apple.com/app/customize-search-engine/id6445840140)**
 
+[AltStore PAL Source](https://i.cizzuk.net/altstore/source.pal.json)
+
 ## Features
 
 ### Customize your Search Engine
