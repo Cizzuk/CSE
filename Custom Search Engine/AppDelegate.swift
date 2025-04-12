@@ -123,13 +123,15 @@ func resetCSE(target: String) {
     let defaultCSE: [String: Any] = [
         "url": "",
         "post": [],
-        "disablePercentEncoding": false
+        "disablePercentEncoding": false,
+        "maxQueryLength": -1
     ]
 
     let privateCSE: [String: Any] = [
         "url": "",
         "post": [],
-        "disablePercentEncoding": false
+        "disablePercentEncoding": false,
+        "maxQueryLength": -1
     ]
 
     var quickCSE: [String: [String: Any]] = [
