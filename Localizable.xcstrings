@@ -303,6 +303,9 @@
         }
       }
     },
+    "32" : {
+      "shouldTranslate" : false
+    },
     "360 Search" : {
       "localizations" : {
         "de" : {
@@ -2829,6 +2832,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "許可證"
+          }
+        }
+      }
+    },
+    "Max Query Length" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クエリの最大文字数"
           }
         }
       }

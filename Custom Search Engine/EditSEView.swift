@@ -19,6 +19,7 @@ struct EditSEView: View {
     @State private var cseURL: String = ""
     @State private var postEntries: [(key: String, value: String)] = []
     @State private var disablePercentEncoding: Bool = false
+    @State private var maxQueryLength: Int? = nil
 
     @State private var showFailAlert: Bool = false
     @State private var showKeyUsedAlert: Bool = false
@@ -32,15 +33,31 @@ struct EditSEView: View {
     var body: some View {
         NavigationView {
             List {
-                if cseType == "default" {
+                if cseType == "default" || cseType == "private" {
                     Section {
-                        Text("Default Search Engine")
+                        // Search Engine Name
+                        if cseType == "default" {
+                            Text("Default Search Engine")
+                        } else {
+                            Text("Private Search Engine")
+                        }
                     }
-                } else if cseType == "private" {
+                    
                     Section {
-                        Text("Private Search Engine")
+                        Button(action: {
+                            openRecommendSEView = true
+                        }) {
+                            HStack {
+                                Image(systemName: "sparkle.magnifyingglass")
+                                    .frame(width: 20.0)
+                                    .accessibilityHidden(true)
+                                Text("Recommended Search Engines")
+                            }
+                        }
                     }
-                } else if cseType == "quick" {
+                }
+                
+                if cseType == "quick" {
                     // Search Engine Name
                     Section {
                         TextField("Name", text: $cseName)
@@ -82,19 +99,6 @@ struct EditSEView: View {
                         Text("Replace query with %s")
                         if cseType == "default" || cseType == "private" {
                             Text("Blank to disable CSE")
-                        }
-                    }
-                }
-                
-                if cseType == "default" || cseType == "private" {
-                    Button(action: {
-                        openRecommendSEView = true
-                    }) {
-                        HStack {
-                            Image(systemName: "sparkle.magnifyingglass")
-                                .frame(width: 20.0)
-                                .accessibilityHidden(true)
-                            Text("Recommended Search Engines")
                         }
                     }
                 }
@@ -168,6 +172,19 @@ struct EditSEView: View {
                     Section {
                         Toggle("Disable Percent-encoding", isOn: $disablePercentEncoding)
                     }
+                    
+                    // Cut query
+                    Section {
+                        HStack {
+                            Text("Max Query Length")
+                            Spacer()
+                            //Input max query length
+                            TextField("32", value: $maxQueryLength, formatter: NumberFormatter())
+                                .keyboardType(.numberPad)
+                                .multilineTextAlignment(.trailing)
+                                .submitLabel(.done)
+                        }
+                    }
                 }
             }
             .environment(\.editMode, $editMode)
@@ -230,6 +247,7 @@ struct EditSEView: View {
         var CSEData: [String: Any] = [
             "url": cseURL,
             "disablePercentEncoding": disablePercentEncoding,
+            "maxQueryLength": maxQueryLength ?? -1,
             "post": postArray
         ]
         
@@ -297,6 +315,10 @@ struct EditSEView: View {
         cseName = CSEData["name"] as? String ?? ""
         cseURL = CSEData["url"] as? String ?? ""
         disablePercentEncoding = CSEData["disablePercentEncoding"] as? Bool ?? false
+        maxQueryLength = CSEData["maxQueryLength"] as? Int ?? -1
+        if maxQueryLength ?? -1 < 0 {
+            maxQueryLength = nil
+        }
         
         // Get POST Data
         // If POST Data exists
@@ -313,7 +335,7 @@ struct EditSEView: View {
         }
         
         // Show Advanced Settings
-        if postEntries.count > 0 || CSEData["disablePercentEncoding"] as? Bool == true {
+        if postEntries.count > 0 || CSEData["disablePercentEncoding"] as? Bool == true || maxQueryLength != nil {
             showAdvSettings = true
         }
     }
