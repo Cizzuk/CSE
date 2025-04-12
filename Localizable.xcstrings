@@ -5546,6 +5546,16 @@
         }
       }
     },
+    "The search engine you select here can know your search queries. If you have concerns about privacy, I recommend choosing DuckDuckGo." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ここで選択した検索エンジンはあなたの検索内容を知ることができます。プライバシーについて懸念がある場合はDuckDuckGoを選択することを推奨します。"
+          }
+        }
+      }
+    },
     "This keyword is already used in other" : {
       "localizations" : {
         "de" : {

@@ -188,17 +188,23 @@ struct SafariTutorialView: View {
                             Text("You can find these settings in Settings → Apps → Safari.")
                             #endif
                             Spacer()
+                            
                             if #available(iOS 17.0, macOS 14.0, *) {
                                 Text("If you set another search engine in private browsing in Safari settings, you can use another custom search engine in private browse.")
                             } else {
                                 // Show warning if Google is selected in iOS 16 or earlier.
                                 Text("If you set Google as your search engine, please set another search engine.")
                             }
+                            Spacer()
+                            
+                            // Show warning if Yandex is selected in Ukraine
                             if currentRegion == "UA" {
-                                // yandex.ua can't connect
-                                Spacer()
                                 Text("Yandex is currently unavailable.")
+                                Spacer()
                             }
+                            
+                            // Queries leak warning
+                            Text("The search engine you select here can know your search queries. If you have concerns about privacy, I recommend choosing DuckDuckGo.")
                         }
                     }
                 }
