@@ -318,7 +318,9 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         if focusSettings != nil {
             CSEData = [
                 "url": focusSettings?.cseURL ?? "",
-                "post": []
+                "post": [],
+                "disablePercentEncoding": false,
+                "maxQueryLength": -1
             ]
         }
         
@@ -358,7 +360,14 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         }
         
         // Get decoded fixedQuery
-        let decodedFixedQuery: String = fixedQuery.removingPercentEncoding ?? ""
+        var decodedFixedQuery: String = fixedQuery.removingPercentEncoding ?? ""
+        
+        // Get maxQueryLength
+        let maxQueryLength: Int = CSEData["maxQueryLength"] as? Int ?? -1
+        if maxQueryLength > -1 && decodedFixedQuery.count > maxQueryLength {
+            decodedFixedQuery = String(decodedFixedQuery.prefix(maxQueryLength))
+            fixedQuery = String(fixedQuery.prefix(maxQueryLength))
+        }
         
         // Replace %s with query
         let redirectQuery: String = CSEData["disablePercentEncoding"] as? Bool ?? false ? decodedFixedQuery : fixedQuery
