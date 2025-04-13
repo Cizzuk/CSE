@@ -457,6 +457,8 @@ struct RecommendSEView: View {
                                             .bold()
                                         Text(cseURL)
                                             .lineLimit(1)
+                                            .foregroundColor(.secondary)
+                                            .font(.subheadline)
                                             .accessibilityHidden(true)
                                     }
                                     Spacer()
