@@ -122,6 +122,27 @@ struct EditSEView: View {
                 }
                 
                 if showAdvSettings {
+                    Section {
+                        // Disable %encode
+                        Toggle("Disable Percent-encoding", isOn: $disablePercentEncoding)
+                        // Cut query
+                        Toggle("Cut Long Query", isOn: $maxQueryLengthToggle)
+                        if maxQueryLengthToggle {
+                            HStack {
+                                Text("Max Query Length")
+                                Spacer()
+                                //Input max query length
+                                TextField("32", value: $maxQueryLength, formatter: NumberFormatter())
+                                    .frame(width: 100)
+                                    .multilineTextAlignment(.trailing)
+                                    .keyboardType(.numberPad)
+                                    .submitLabel(.done)
+                            }
+                        }
+                    } header: {
+                        Text("Advanced Settings")
+                    }
+                    
                     // POST Data
                     Section {
                         ForEach(postEntries.indices, id: \.self) { index in
@@ -147,47 +168,30 @@ struct EditSEView: View {
                             }
                         }
                     } header: {
-                        HStack {
-                            Text("POST Data")
-                            if postEntries.count != 0 {
-                                Spacer()
-                                Button(action: {
-                                    editMode = (editMode == .active) ? .inactive : .active
-                                }) {
-                                    Text(editMode == .active ? "Done" : "Edit")
+                        if postEntries.count != 0 {
+                            HStack {
+                                Text("POST Data")
+                                if postEntries.count != 0 {
+                                    Spacer()
+                                    Button(action: {
+                                        editMode = (editMode == .active) ? .inactive : .active
+                                    }) {
+                                        Text(editMode == .active ? "Done" : "Edit")
+                                    }
+                                    .textCase(nil)
+                                    .font(.footnote)
                                 }
-                                .textCase(nil)
-                                .font(.footnote)
                             }
                         }
                     } footer: {
-                        VStack(alignment: .leading) {
-                            Text("Replace query with %s")
-                            if userDefaults.bool(forKey: "adv_ignorePOSTFallback") {
-                                Text("May not work with some Safari search engines.")
+                        if postEntries.count != 0 {
+                            VStack(alignment: .leading) {
+                                Text("Replace query with %s")
+                                if userDefaults.bool(forKey: "adv_ignorePOSTFallback") {
+                                    Text("May not work with some Safari search engines.")
+                                }
                             }
                         }
-                    }
-                    
-                    Section {
-                        // Disable %encode
-                        Toggle("Disable Percent-encoding", isOn: $disablePercentEncoding)
-                        // Cut query
-                        Toggle("Cut Long Query", isOn: $maxQueryLengthToggle)
-                        if maxQueryLengthToggle {
-                            HStack {
-                                Text("Max Query Length")
-                                Spacer()
-                                //Input max query length
-                                TextField("32", value: $maxQueryLength, formatter: NumberFormatter())
-                                    .frame(width: 100)
-                                    .multilineTextAlignment(.trailing)
-                                    .keyboardType(.numberPad)
-                                    .submitLabel(.done)
-                            }
-                        }
-                    } header: {
-                        Text("Advanced Settings")
                     }
                 }
             }
