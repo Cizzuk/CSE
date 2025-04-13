@@ -183,8 +183,9 @@ struct EditSEView: View {
                                 Spacer()
                                 //Input max query length
                                 TextField("32", value: $maxQueryLength, formatter: NumberFormatter())
-                                    .keyboardType(.numberPad)
+                                    .frame(width: 100)
                                     .multilineTextAlignment(.trailing)
+                                    .keyboardType(.numberPad)
                                     .submitLabel(.done)
                             }
                         }
