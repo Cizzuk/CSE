@@ -169,13 +169,10 @@ struct EditSEView: View {
                         }
                     }
                     
-                    // Disable %encode
                     Section {
+                        // Disable %encode
                         Toggle("Disable Percent-encoding", isOn: $disablePercentEncoding)
-                    }
-                    
-                    // Cut query
-                    Section {
+                        // Cut query
                         Toggle("Cut Long Query", isOn: $maxQueryLengthToggle)
                         if maxQueryLengthToggle {
                             HStack {
@@ -189,6 +186,8 @@ struct EditSEView: View {
                                     .submitLabel(.done)
                             }
                         }
+                    } header: {
+                        Text("Advanced Settings")
                     }
                 }
             }
