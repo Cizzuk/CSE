@@ -331,15 +331,21 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
                 useQuickCSE = false
             }
         }
+        if !(decodedQuery.count > 1 && query.contains("+")) {
+            useQuickCSE = false
+        }
         
         // Check quick search
         if useQuickCSE {
             var cseID: String
             let quickCSEData = userDefaults.dictionary(forKey: "quickCSE") as? [String: [String: Any]] ?? [:]
             for key in quickCSEData.keys {
+                // percent encoded key (all characters including + or &)
+                guard let encodedKey = key.addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._")))
+                else { continue }
                 // If query has maybe quick search keyword
-                if query.hasPrefix(key) && (key.count + 1 < query.count) {
-                    let queryNoKey = String(query.dropFirst(key.count))
+                if query.hasPrefix(encodedKey) && (encodedKey.count + 1 < query.count) {
+                    let queryNoKey = String(query.dropFirst(encodedKey.count))
                     // If query has space
                     if queryNoKey.hasPrefix("+") {
                         cseID = key
