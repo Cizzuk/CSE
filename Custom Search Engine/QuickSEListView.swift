@@ -44,6 +44,7 @@ struct QuickSEListView: View {
                                     .bold()
                                 Text(cseName as? String ?? "")
                                     .lineLimit(1)
+                                    .foregroundColor(.secondary)
                             }
                         }
                         .accessibilityLabel("\(cseName as? String ?? ""). " + keywordTranslation + ". \(cseID)")
