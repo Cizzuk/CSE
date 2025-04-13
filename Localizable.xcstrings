@@ -1321,6 +1321,16 @@
         }
       }
     },
+    "Cut Long Query" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "長いクエリをカット"
+          }
+        }
+      }
+    },
     "Default Search Engine" : {
       "localizations" : {
         "de" : {
