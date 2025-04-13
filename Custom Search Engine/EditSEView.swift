@@ -114,6 +114,7 @@ struct EditSEView: View {
                             Text("POST Data")
                             Spacer()
                             Text("\(postEntries.count)")
+                                .foregroundColor(.secondary)
                         }
                     }
                     // Disable %encode
