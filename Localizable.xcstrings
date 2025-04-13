@@ -1323,10 +1323,58 @@
     },
     "Cut Long Query" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lange Abfrage abschneiden"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cortar consulta larga"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couper la requête longue"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "長いクエリをカット"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "긴 검색어 줄이기"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вырезать длинный запрос"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скоротити довгий запит"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "剪切长查询"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "切長查詢"
           }
         }
       }
@@ -2848,10 +2896,58 @@
     },
     "Max Query Length" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximale Abfragelänge"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Longitud máxima"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Longueur max de la requête"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "クエリの最大文字数"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검색어 최대 문자 수"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Максимальная длина запроса"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Макс. довжина запиту"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最大查询长度"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最大查詢長度"
           }
         }
       }
@@ -5571,10 +5667,58 @@
     },
     "The search engine you select here can know your search queries. If you have concerns about privacy, I recommend choosing DuckDuckGo." : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Suchmaschine, die Sie hier auswählen, kann Ihre Suchanfragen kennen. Wenn Sie Bedenken bezüglich des Datenschutzes haben, empfehle ich Ihnen DuckDuckGo."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El motor de búsqueda que selecciones aquí puede conocer tus consultas de búsqueda. Si te preocupa la privacidad, te recomiendo que elijas DuckDuckGo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le moteur de recherche que vous sélectionnez ici peut connaître vos requêtes de recherche. Si vous avez des inquiétudes concernant la confidentialité, je vous recommande de choisir DuckDuckGo."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ここで選択した検索エンジンはあなたの検索内容を知ることができます。プライバシーについて懸念がある場合はDuckDuckGoを選択することを推奨します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "여기서 선택한 검색 엔진은 당신의 검색 내용을 알 수 있습니다. 프라이버시가 걱정된다면 DuckDuckGo를 선택하는 것이 좋다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выбранная вами поисковая система может знать ваши поисковые запросы. Если вы беспокоитесь о конфиденциальности, я рекомендую выбрать DuckDuckGo."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пошукова система, яку ви обираєте тут, може знати ваші пошукові запити. Якщо ви турбуєтеся про конфіденційність, я рекомендую вибрати DuckDuckGo."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您在此选择的搜索引擎可以知道您的搜索查询。如果你担心隐私问题，我建议你选择 DuckDuckGo。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您在此選擇的搜尋引擎可以知道您的搜尋查詢。如果您對隱私有所顧慮，我建議您選擇 DuckDuckGo。"
           }
         }
       }
