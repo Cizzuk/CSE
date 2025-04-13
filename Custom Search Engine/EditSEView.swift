@@ -217,7 +217,7 @@ struct EditSEView: View {
                 }
             }
         }
-        .sheet(isPresented : $openRecommendSEView , onDismiss : {
+        .sheet(isPresented : $openRecommendSEView , onDismiss: {
             loadCSEData()
         }) {
             RecommendSEView(isOpenSheet: $openRecommendSEView, isFirstTutorial: .constant(false), cseType: $cseType)
@@ -233,7 +233,8 @@ struct EditSEView: View {
             "https://google.com": "https://www.google.com",
             "https://bing.com": "https://www.bing.com",
             "https://www.duckduckgo.com": "https://duckduckgo.com",
-            "https://ecosia.com": "https://www.ecosia.com"
+            "https://ecosia.com": "https://www.ecosia.com",
+            "https://baidu.com": "https://www.baidu.com"
         ]
         for (original, replacement) in replacements {
             if cseURL.hasPrefix(original) {
