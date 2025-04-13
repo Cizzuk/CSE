@@ -19,6 +19,7 @@ struct EditSEView: View {
     @State private var cseURL: String = ""
     @State private var postEntries: [(key: String, value: String)] = []
     @State private var disablePercentEncoding: Bool = false
+    @State private var maxQueryLengthToggle: Bool = false
     @State private var maxQueryLength: Int? = nil
 
     @State private var showFailAlert: Bool = false
@@ -175,14 +176,17 @@ struct EditSEView: View {
                     
                     // Cut query
                     Section {
-                        HStack {
-                            Text("Max Query Length")
-                            Spacer()
-                            //Input max query length
-                            TextField("32", value: $maxQueryLength, formatter: NumberFormatter())
-                                .keyboardType(.numberPad)
-                                .multilineTextAlignment(.trailing)
-                                .submitLabel(.done)
+                        Toggle("Cut Long Query", isOn: $maxQueryLengthToggle)
+                        if maxQueryLengthToggle {
+                            HStack {
+                                Text("Max Query Length")
+                                Spacer()
+                                //Input max query length
+                                TextField("32", value: $maxQueryLength, formatter: NumberFormatter())
+                                    .keyboardType(.numberPad)
+                                    .multilineTextAlignment(.trailing)
+                                    .submitLabel(.done)
+                            }
                         }
                     }
                 }
@@ -195,6 +199,7 @@ struct EditSEView: View {
             .alert("Search URL cannot be blank", isPresented: $showURLBlankAlert, actions:{})
             .animation(.easeOut(duration: 0.1), value: showAdvSettings)
             .animation(.easeOut(duration: 0.2), value: postEntries.count)
+            .animation(.easeOut(duration: 0.2), value: maxQueryLengthToggle)
         }
         .navigationTitle("Edit Search Engine")
         .navigationBarTitleDisplayMode(.inline)
@@ -243,11 +248,13 @@ struct EditSEView: View {
             .filter { !$0["key"]!.isEmpty }
             .filter { !$0["value"]!.isEmpty }
         
+        let fixedMaxQueryLength: Int = maxQueryLengthToggle ? maxQueryLength ?? -1 : -1
+        
         // Create temporary data
         var CSEData: [String: Any] = [
             "url": cseURL,
             "disablePercentEncoding": disablePercentEncoding,
-            "maxQueryLength": maxQueryLength ?? -1,
+            "maxQueryLength": fixedMaxQueryLength,
             "post": postArray
         ]
         
@@ -318,6 +325,8 @@ struct EditSEView: View {
         maxQueryLength = CSEData["maxQueryLength"] as? Int ?? -1
         if maxQueryLength ?? -1 < 0 {
             maxQueryLength = nil
+        } else {
+            maxQueryLengthToggle = true
         }
         
         // Get POST Data
