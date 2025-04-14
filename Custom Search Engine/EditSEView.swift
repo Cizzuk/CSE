@@ -295,6 +295,14 @@ struct EditSEViewPostData: View {
     @Binding var postEntries: [(key: String, value: String)]
     var body: some View {
         List {
+            Section {} footer: {
+                VStack(alignment: .leading) {
+                    Text("This is typically used when a search engine requires an authentication token or special parameters. If not configured correctly, CSE may not work properly.")
+                    if userDefaults.bool(forKey: "adv_ignorePOSTFallback") {
+                        Text("May not work with some Safari search engines.")
+                    }
+                }
+            }
             // POST Data
             Section {
                 ForEach(postEntries.indices, id: \.self) { index in
@@ -317,12 +325,7 @@ struct EditSEViewPostData: View {
                     }
                 }
             } footer: {
-                VStack(alignment: .leading) {
-                    Text("Replace query with %s")
-                    if userDefaults.bool(forKey: "adv_ignorePOSTFallback") {
-                        Text("May not work with some Safari search engines.")
-                    }
-                }
+                Text("Replace query with %s")
             }
         }
         .animation(.easeOut(duration: 0.2), value: postEntries.count)
