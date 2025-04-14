@@ -27,7 +27,6 @@ struct EditSEView: View {
     @State private var showKeyBlankAlert: Bool = false
     @State private var showURLBlankAlert: Bool = false
     
-    @State private var showAdvSettings: Bool = false
     @State private var openRecommendSEView: Bool = false
     @State private var isFirstLoad: Bool = true
     
@@ -104,52 +103,36 @@ struct EditSEView: View {
             }
             
             // Advanced Settings
-            if showAdvSettings {
-                Section {
-                    // POST Data
-                    NavigationLink {
-                        EditSEViewPostData(postEntries: $postEntries)
-                    } label: {
-                        HStack {
-                            Text("POST Data")
-                            Spacer()
-                            Text("\(postEntries.count)")
-                                .foregroundColor(.secondary)
-                        }
+            Section {
+                // POST Data
+                NavigationLink {
+                    EditSEViewPostData(postEntries: $postEntries)
+                } label: {
+                    HStack {
+                        Text("POST Data")
+                        Spacer()
+                        Text("\(postEntries.count)")
+                            .foregroundColor(.secondary)
                     }
-                    // Disable %encode
-                    Toggle("Disable Percent-encoding", isOn: $disablePercentEncoding)
-                    // Cut query
-                    Toggle("Cut Long Query", isOn: $maxQueryLengthToggle)
-                    if maxQueryLengthToggle {
-                        HStack {
-                            Text("Max Query Length")
-                            Spacer()
-                            //Input max query length
-                            TextField("32", value: $maxQueryLength, formatter: NumberFormatter())
-                                .frame(width: 100)
-                                .multilineTextAlignment(.trailing)
-                                .keyboardType(.numberPad)
-                                .submitLabel(.done)
-                        }
-                    }
-                } header: {
-                    Text("Advanced Settings")
                 }
-            } else {
-                Section {} footer: {
-                    Button(action: {
-                        showAdvSettings = true
-                    }) {
-                        HStack {
-                            Text("Advanced Settings")
-                            Image(systemName: "chevron.down")
-                                .accessibilityHidden(true)
-                        }
+                // Disable %encode
+                Toggle("Disable Percent-encoding", isOn: $disablePercentEncoding)
+                // Cut query
+                Toggle("Cut Long Query", isOn: $maxQueryLengthToggle)
+                if maxQueryLengthToggle {
+                    HStack {
+                        Text("Max Query Length")
+                        Spacer()
+                        //Input max query length
+                        TextField("32", value: $maxQueryLength, formatter: NumberFormatter())
+                            .frame(width: 100)
+                            .multilineTextAlignment(.trailing)
+                            .keyboardType(.numberPad)
+                            .submitLabel(.done)
                     }
-                    .textCase(nil)
-                    .font(.footnote)
                 }
+            } header: {
+                Text("Advanced Settings")
             }
         }
         // Error alerts
@@ -157,7 +140,6 @@ struct EditSEView: View {
         .alert("This keyword is already used in other", isPresented: $showKeyUsedAlert, actions:{})
         .alert("Keyword cannot be blank", isPresented: $showKeyBlankAlert, actions:{})
         .alert("Search URL cannot be blank", isPresented: $showURLBlankAlert, actions:{})
-        .animation(.easeOut(duration: 0.1), value: showAdvSettings)
         .animation(.easeOut(duration: 0.2), value: maxQueryLengthToggle)
         .navigationTitle("Edit Search Engine")
         .navigationBarTitleDisplayMode(.inline)
@@ -304,11 +286,6 @@ struct EditSEView: View {
             }
         } else {
             postEntries = []
-        }
-        
-        // Show Advanced Settings
-        if postEntries.count > 0 || CSEData["disablePercentEncoding"] as? Bool == true || maxQueryLength != nil {
-            showAdvSettings = true
         }
     }
 }
