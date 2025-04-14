@@ -1,5 +1,5 @@
 browser.runtime.sendMessage({ type: "post_redirector" }, function(response) {
-    if (response.length === 0) {
+    if (response.length === 0 || response == "kill") {
         window.history.go(-3);
         return;
     }

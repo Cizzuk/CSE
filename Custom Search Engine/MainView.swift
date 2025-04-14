@@ -76,29 +76,16 @@ struct ContentView: View {
                     
                     // Private CSE
                     if #available(iOS 17.0, macOS 14.0, *) {
-                        // If private CSE is not available due to Safari settings
-                        if alsousepriv || searchengine == privsearchengine {
-                            Toggle(isOn: .constant(false), label: {
-                                Text("Use different search engine in Private Browse")
-                            })
-                            .disabled(true)
-                        } else { // is available
-                            Toggle(isOn: $usePrivateCSE, label: {
-                                Text("Use different search engine in Private Browse")
-                            })
-                            if usePrivateCSE {
-                                NavigationLink {
-                                    EditSEView(cseType: .constant("private"), cseID: .constant(""))
-                                } label: {
-                                    Text("Private Search Engine")
-                                }
+                        Toggle(isOn: $usePrivateCSE, label: {
+                            Text("Use different search engine in Private Browse")
+                        })
+                        if usePrivateCSE {
+                            NavigationLink {
+                                EditSEView(cseType: .constant("private"), cseID: .constant(""))
+                            } label: {
+                                Text("Private Search Engine")
                             }
                         }
-                    }
-                } footer: {
-                    if #available(iOS 17.0, macOS 14.0, *),
-                       (alsousepriv || searchengine == privsearchengine) { // is not available
-                        Text("If you set another search engine in private browsing in Safari settings, you can use another custom search engine in private browse.")
                     }
                 }
                 

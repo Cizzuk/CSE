@@ -16,8 +16,9 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     func beginRequest(with context: NSExtensionContext) {
         // Get Search URL from content.js
         let item = context.inputItems.first as! NSExtensionItem
-        let message = item.userInfo?[SFExtensionMessageKey] as? String
-        guard let searchURL = message else {
+        guard let message = item.userInfo?[SFExtensionMessageKey] as? [String: Any],
+              let searchURL: String = message["url"] as? String,
+              let isIncognito: Bool = message["incognito"] as? Bool else {
             return
         }
         
@@ -40,22 +41,25 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             // Check current focus filter
             try await getFocusFilter()
             
+            var searchQuery: String? = nil
+            
             // Get Redirect URL
             if checkEngineURL(engineName: searchengine, url: searchURL) {
-                guard let searchQuery: String = getQueryValue(engineName: searchengine, url: searchURL) else {
-                    sendData(context: context, data: ["type" : "error"])
-                    return
-                }
-                redirectData = makeSearchURL(windowName: "default", query: searchQuery)
-            } else if usePrivateCSE && !alsousepriv && checkEngineURL(engineName: privsearchengine, url: searchURL) {
-                guard let searchQuery: String = getQueryValue(engineName: privsearchengine, url: searchURL) else {
-                    sendData(context: context, data: ["type" : "error"])
-                    return
-                }
-                redirectData = makeSearchURL(windowName: "private", query: searchQuery)
-            } else {
+                searchQuery = getQueryValue(engineName: searchengine, url: searchURL)
+            } else if checkEngineURL(engineName: privsearchengine, url: searchURL) {
+                searchQuery = getQueryValue(engineName: privsearchengine, url: searchURL)
+            }
+            
+            // Check if searchQuery is available
+            guard let query = searchQuery else {
                 sendData(context: context, data: ["type" : "cancel"])
                 return
+            }
+            
+            if isIncognito && usePrivateCSE {
+                redirectData = makeSearchURL(windowName: "private", query: query)
+            } else {
+                redirectData = makeSearchURL(windowName: "default", query: query)
             }
             
             // Check Redirect URL exists

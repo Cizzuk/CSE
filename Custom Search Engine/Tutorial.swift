@@ -189,9 +189,7 @@ struct SafariTutorialView: View {
                             #endif
                             Spacer()
                             
-                            if #available(iOS 17.0, macOS 14.0, *) {
-                                Text("If you set another search engine in private browsing in Safari settings, you can use another custom search engine in private browse.")
-                            } else {
+                            if #unavailable(iOS 17.0, macOS 14.0) {
                                 // Show warning if Google is selected in iOS 16 or earlier.
                                 Text("If you set Google as your search engine, please set another search engine.")
                             }
