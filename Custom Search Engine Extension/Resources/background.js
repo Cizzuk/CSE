@@ -1,10 +1,10 @@
 let holdData = [];
 const postRedirectorURL = location.protocol + "//" + location.host + "/post_redirector.html";
 
-browser.tabs.onUpdated.addListener((tabId, sender, sendResponse) => {
-    // If this request is from content
-    if (sender.url && sender.url != postRedirectorURL && sender.url != "") {
-        browser.runtime.sendNativeMessage("com.tsg0o0.cse.Extension", sender.url, function(response) {
+browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
+    // If the URL is updated
+    if (updatedData.url && updatedData.url != postRedirectorURL && updatedData.url != "") {
+        browser.runtime.sendNativeMessage("com.tsg0o0.cse.Extension", updatedData.url, function(response) {
             const cseData = JSON.parse(response);
             
             // type handler
@@ -28,8 +28,7 @@ browser.tabs.onUpdated.addListener((tabId, sender, sendResponse) => {
                 console.log("Operation canceled.");
                 
             }
-            
-            sendResponse("kill");
+
             return;
         });
     }
@@ -37,7 +36,7 @@ browser.tabs.onUpdated.addListener((tabId, sender, sendResponse) => {
     return true;
 });
 
-// If POST Redirect
+// POST Redirect with adv_ignorePOSTFallback
 browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if ((request.type == "post_redirector" || request.type == "content") && holdData.type == "haspost") {
         console.log("Run redirect (with POST).");
