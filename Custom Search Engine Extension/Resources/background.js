@@ -44,10 +44,12 @@ browser.tabs.onUpdated.addListener((tabId, sender, sendResponse) => {
 
 // If POST Redirect
 browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.type == "post_redirector" || request.type == "content") {
+    if ((request.type == "post_redirector" || request.type == "content") && holdData.type == "haspost") {
         console.log("Run redirect (with POST).");
         sendResponse(holdData);
         holdData = [];
+    } else {
+        sendResponse("kill");
     }
 });
     
