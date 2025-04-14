@@ -2527,6 +2527,7 @@
       }
     },
     "If you set another search engine in private browsing in Safari settings, you can use another custom search engine in private browse." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
