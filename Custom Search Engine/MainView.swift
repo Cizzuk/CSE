@@ -19,6 +19,7 @@ struct MainView: App {
 
 struct ContentView: View {
     let currentRegion = Locale.current.regionCode
+    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     
     //Load app settings
     @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
@@ -40,6 +41,9 @@ struct ContentView: View {
     @AppStorage("needSafariTutorial", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var needSafariTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needSafariTutorial")
     @State private var openSafariTutorialView: Bool = false
+    
+    @State private var defaultCSE: [String: Any] = [:]
+    @State private var privateCSE: [String: Any] = [:]
     
     #if iOS
     // Icon change for iOS/iPadOS
@@ -69,7 +73,7 @@ struct ContentView: View {
                 Section {
                     // Default CSE
                     NavigationLink {
-                        EditSEView(cseType: .constant("default"), cseID: .constant(""))
+                        EditSEView(cseType: .constant("default"), cseID: .constant(""), exCSEData: .constant(defaultCSE))
                     } label: {
                         Text("Default Search Engine")
                     }
@@ -81,7 +85,7 @@ struct ContentView: View {
                         })
                         if usePrivateCSE {
                             NavigationLink {
-                                EditSEView(cseType: .constant("private"), cseID: .constant(""))
+                                EditSEView(cseType: .constant("private"), cseID: .constant(""), exCSEData: .constant(privateCSE))
                             } label: {
                                 Text("Private Search Engine")
                             }
@@ -225,6 +229,10 @@ struct ContentView: View {
             .listStyle(.insetGrouped)
             .animation(.easeOut(duration: 0.2), value: usePrivateCSE)
             .animation(.easeOut(duration: 0.2), value: useQuickCSE)
+            .onAppear {
+                defaultCSE = userDefaults?.dictionary(forKey: "defaultCSE") ?? [:]
+                privateCSE = userDefaults?.dictionary(forKey: "privateCSE") ?? [:]
+            }
         }
         .navigationViewStyle(.stack)
         // Tutorial sheets

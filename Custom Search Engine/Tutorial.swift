@@ -322,106 +322,7 @@ struct RecommendSEView: View {
     @Binding var isFirstTutorial: Bool
     @Binding var cseType: String
     @State private var selectedIndex: Int = -1
-    var recommendCSEList: [[String: Any]] = [
-        [
-            "name": "Startpage",
-            "url": "https://www.startpage.com/sp/search?query=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        [
-            "name": "Brave Search",
-            "url": "https://search.brave.com/search?q=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        [
-            "name": "Google &udm=14",
-            "url": "https://www.google.com/search?q=%s&udm=14",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        [
-            "name": "Kagi",
-            "url": "https://kagi.com/search?q=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        [
-            "name": "Qwant",
-            "url": "https://www.qwant.com/?q=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        [
-            "name": "NAVER",
-            "url": "https://search.naver.com/search.naver?query=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        [
-            "name": "Cốc Cốc",
-            "url": "https://coccoc.com/search#query=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        [
-            "name": "Google",
-            "url": "https://www.google.com/search?q=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        [
-            "name": "Bing",
-            "url": "https://www.bing.com/search?q=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        [
-            "name": "Yahoo",
-            "url": "https://search.yahoo.com/search?p=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        [
-            "name": "DuckDuckGo",
-            "url": "https://duckduckgo.com/?q=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": 500
-        ],
-        [
-            "name": "Ecosia",
-            "url": "https://www.ecosia.org/search?q=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        [
-            "name": "百度",
-            "url": "https://www.baidu.com/s?wd=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        [
-            "name": "Yandex",
-            "url": "https://yandex.ru/search/?text=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ]
-    ]
+    let cseList: [[String: Any]] = recommendCSEList.data
     
     var body: some View {
         NavigationView {
@@ -438,8 +339,8 @@ struct RecommendSEView: View {
                 List {
                     Section {
                         // Search Engine Selector
-                        ForEach(recommendCSEList.indices, id: \.self, content: { index in
-                            let cse = recommendCSEList[index]
+                        ForEach(cseList.indices, id: \.self, content: { index in
+                            let cse = cseList[index]
                             let cseName = cse["name"] as! String
                             let cseURL = cse["url"] as! String
                             Button {
@@ -475,9 +376,9 @@ struct RecommendSEView: View {
                     if selectedIndex != -1 {
                         let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
                         if cseType == "default" {
-                            userDefaults.set(recommendCSEList[selectedIndex], forKey: "defaultCSE")
+                            userDefaults.set(cseList[selectedIndex], forKey: "defaultCSE")
                         } else if cseType == "private" {
-                            userDefaults.set(recommendCSEList[selectedIndex], forKey: "privateCSE")
+                            userDefaults.set(cseList[selectedIndex], forKey: "privateCSE")
                         }
                     }
                     isOpenSheet = false

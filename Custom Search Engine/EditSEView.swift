@@ -12,6 +12,9 @@ struct EditSEView: View {
     //Load settings
     @Binding var cseType: String
     @Binding var cseID: String
+    @Binding var exCSEData: [String: Any]
+    @State var CSEData: [String: Any] = [:]
+    
     let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
     
     @State private var cseName: String = ""
@@ -21,13 +24,14 @@ struct EditSEView: View {
     @State private var disablePercentEncoding: Bool = false
     @State private var maxQueryLengthToggle: Bool = false
     @State private var maxQueryLength: Int? = nil
+    @State private var toggledMaxQueryLength: Bool = false
 
     @State private var showFailAlert: Bool = false
     @State private var showKeyUsedAlert: Bool = false
     @State private var showKeyBlankAlert: Bool = false
     @State private var showURLBlankAlert: Bool = false
     
-    @State private var openRecommendSEView: Bool = false
+    @State private var openEditSEViewRecommend: Bool = false
     @State private var isFirstLoad: Bool = true
     
     var body: some View {
@@ -39,19 +43,6 @@ struct EditSEView: View {
                         Text("Default Search Engine")
                     } else {
                         Text("Private Search Engine")
-                    }
-                }
-                
-                Section {
-                    Button(action: {
-                        openRecommendSEView = true
-                    }) {
-                        HStack {
-                            Image(systemName: "sparkle.magnifyingglass")
-                                .frame(width: 20.0)
-                                .accessibilityHidden(true)
-                            Text("Recommended Search Engines")
-                        }
                     }
                 }
             }
@@ -119,6 +110,9 @@ struct EditSEView: View {
                 Toggle("Disable Percent-encoding", isOn: $disablePercentEncoding)
                 // Cut query
                 Toggle("Cut Long Query", isOn: $maxQueryLengthToggle)
+                    .onChange(of: maxQueryLengthToggle) { _ in
+                        toggledMaxQueryLength = true
+                    }
                 if maxQueryLengthToggle {
                     HStack {
                         Text("Max Query Length")
@@ -134,13 +128,26 @@ struct EditSEView: View {
             } header: {
                 Text("Advanced Settings")
             }
+            
+            Section {
+                Button(action: {
+                    openEditSEViewRecommend = true
+                }) {
+                    HStack {
+                        Image(systemName: "sparkle.magnifyingglass")
+                            .frame(width: 20.0)
+                            .accessibilityHidden(true)
+                        Text("Recommended Search Engines")
+                    }
+                }
+            }
         }
         // Error alerts
         .alert("An error occurred while loading or updating data", isPresented: $showFailAlert, actions:{})
         .alert("This keyword is already used in other", isPresented: $showKeyUsedAlert, actions:{})
         .alert("Keyword cannot be blank", isPresented: $showKeyBlankAlert, actions:{})
         .alert("Search URL cannot be blank", isPresented: $showURLBlankAlert, actions:{})
-        .animation(.easeOut(duration: 0.2), value: maxQueryLengthToggle)
+        .animation(toggledMaxQueryLength ? .easeOut(duration: 0.2) : .none, value: maxQueryLengthToggle)
         .navigationTitle("Edit Search Engine")
         .navigationBarTitleDisplayMode(.inline)
         .navigationViewStyle(.stack)
@@ -149,21 +156,24 @@ struct EditSEView: View {
             ToolbarItem(placement: .cancellationAction) {
                 Button("Cancel") {
                     dismiss()
+                    isFirstLoad = true
                 }
             }
             ToolbarItem(placement: .confirmationAction) {
                 Button("Save") {
                     saveCSEData()
+                    isFirstLoad = true
                 }
             }
         }
-        .sheet(isPresented : $openRecommendSEView , onDismiss: {
+        .sheet(isPresented : $openEditSEViewRecommend , onDismiss: {
             loadCSEData()
         }) {
-            RecommendSEView(isOpenSheet: $openRecommendSEView, isFirstTutorial: .constant(false), cseType: $cseType)
+            EditSEViewRecommend(isOpenSheet: $openEditSEViewRecommend, CSEData: $CSEData)
         }
         .onAppear {
             if isFirstLoad {
+                CSEData = exCSEData
                 loadCSEData()
                 isFirstLoad = false
             }
@@ -195,7 +205,7 @@ struct EditSEView: View {
         let fixedMaxQueryLength: Int = maxQueryLengthToggle ? maxQueryLength ?? -1 : -1
         
         // Create temporary data
-        var CSEData: [String: Any] = [
+        var tmpCSEData: [String: Any] = [
             "url": cseURL,
             "disablePercentEncoding": disablePercentEncoding,
             "maxQueryLength": fixedMaxQueryLength,
@@ -205,9 +215,9 @@ struct EditSEView: View {
         // Save for Search Engine type
         switch cseType {
         case "default":
-            userDefaults.set(CSEData, forKey: "defaultCSE")
+            userDefaults.set(tmpCSEData, forKey: "defaultCSE")
         case "private":
-            userDefaults.set(CSEData, forKey: "privateCSE")
+            userDefaults.set(tmpCSEData, forKey: "privateCSE")
         case "quick":
             // If Keyword is blank
             if quickID == "" {
@@ -234,8 +244,8 @@ struct EditSEView: View {
             }
             // Replace this QuickSE
             quickCSEData.removeValue(forKey: quickID)
-            CSEData["name"] = cseName
-            quickCSEData[quickID] = CSEData
+            tmpCSEData["name"] = cseName
+            quickCSEData[quickID] = tmpCSEData
             userDefaults.set(quickCSEData, forKey: "quickCSE")
         default: // If unknown CSE type
             showFailAlert = true
@@ -246,17 +256,9 @@ struct EditSEView: View {
     }
     
     private func loadCSEData() {
-        var CSEData: Dictionary<String, Any>
         // Get Data for Search Engine type
-        if cseType == "default" {
-            CSEData = userDefaults.dictionary(forKey: "defaultCSE") ?? [:]
-        } else if cseType == "private" {
-            CSEData = userDefaults.dictionary(forKey: "privateCSE") ?? [:]
-        } else if cseType == "quick" {
-            let quickCSEData = userDefaults.dictionary(forKey: "quickCSE") ?? [:]
-            CSEData = quickCSEData[cseID] as? Dictionary<String, Any> ?? [:]
-            quickID = cseID // Get Keyword(=ID)
-        } else { // If unknown CSE type
+        quickID = cseID
+        if cseType != "default" && cseType != "private" && cseType != "quick" { // If unknown CSE type
             showFailAlert = true
             dismiss()
             return
@@ -335,5 +337,69 @@ struct EditSEViewPostData: View {
         .toolbar {
             EditButton()
         }
+    }
+}
+
+struct EditSEViewRecommend: View {
+    @Binding var isOpenSheet: Bool
+    @Binding var CSEData: [String: Any]
+    @State private var selectedIndex: Int = -1
+    let cseList: [[String: Any]] = recommendCSEList.data
+    
+    var body: some View {
+        NavigationView {
+            List {
+                Section {
+                    // Search Engine Selector
+                    ForEach(cseList.indices, id: \.self, content: { index in
+                        let cse = cseList[index]
+                        let cseName = cse["name"] as! String
+                        let cseURL = cse["url"] as! String
+                        Button {
+                            if selectedIndex == index {
+                                selectedIndex = -1
+                            } else {
+                                selectedIndex = index
+                            }
+                        } label: {
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(cseName)
+                                        .bold()
+                                    Text(cseURL)
+                                        .lineLimit(1)
+                                        .foregroundColor(.secondary)
+                                        .font(.subheadline)
+                                        .accessibilityHidden(true)
+                                }
+                                Spacer()
+                                Image(systemName: selectedIndex == index ? "checkmark.circle.fill" : "circle")
+                                    .foregroundColor(.blue)
+                                    .animation(.easeOut(duration: 0.15), value: selectedIndex)
+                            }
+                        }
+                        .accessibilityLabel(cseName)
+                        .foregroundColor(.primary)
+                    })
+                }
+            }
+            .navigationTitle("Recommended Search Engines")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        isOpenSheet = false
+                    }
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done") {
+                        CSEData = cseList[selectedIndex]
+                        isOpenSheet = false
+                    }
+                    .disabled(selectedIndex == -1)
+                }
+            }
+        }
+        .navigationViewStyle(.stack)
     }
 }
