@@ -24,7 +24,6 @@ struct EditSEView: View {
     @State private var disablePercentEncoding: Bool = false
     @State private var maxQueryLengthToggle: Bool = false
     @State private var maxQueryLength: Int? = nil
-    @State private var toggledMaxQueryLength: Bool = false
 
     @State private var showFailAlert: Bool = false
     @State private var showKeyUsedAlert: Bool = false
@@ -110,9 +109,6 @@ struct EditSEView: View {
                 Toggle("Disable Percent-encoding", isOn: $disablePercentEncoding)
                 // Cut query
                 Toggle("Cut Long Query", isOn: $maxQueryLengthToggle)
-                    .onChange(of: maxQueryLengthToggle) { _ in
-                        toggledMaxQueryLength = true
-                    }
                 if maxQueryLengthToggle {
                     HStack {
                         Text("Max Query Length")
@@ -147,7 +143,7 @@ struct EditSEView: View {
         .alert("This keyword is already used in other", isPresented: $showKeyUsedAlert, actions:{})
         .alert("Keyword cannot be blank", isPresented: $showKeyBlankAlert, actions:{})
         .alert("Search URL cannot be blank", isPresented: $showURLBlankAlert, actions:{})
-        .animation(toggledMaxQueryLength ? .easeOut(duration: 0.2) : .none, value: maxQueryLengthToggle)
+        .animation(.easeOut(duration: 0.2), value: maxQueryLengthToggle)
         .navigationTitle("Edit Search Engine")
         .navigationBarTitleDisplayMode(.inline)
         .navigationViewStyle(.stack)
