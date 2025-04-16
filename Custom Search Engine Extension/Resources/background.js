@@ -13,7 +13,6 @@ browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
                 console.log("Run redirect.");
                 browser.tabs.update(tabId, {url: cseData.redirectTo});
                 browser.tabs.sendMessage(tabId, {type: "curtain"});
-                return;
                 
             } else if (cseData.type == "haspost") {
                 holdData = cseData;
@@ -22,7 +21,6 @@ browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
                     browser.tabs.update(tabId, {url: postRedirectorURL});
                     browser.tabs.sendMessage(tabId, {type: "curtain"});
                 }
-                return;
                 
             } else if (cseData.type == "error") {
                 console.log("Aborted due to an error.");
@@ -35,13 +33,13 @@ browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
             return;
         });
     }
-    
-    return true;
 });
 
 // POST Redirect
 browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if ((request.type == "post_redirector" || request.type == "content") && holdData.type == "haspost") {
+    if (request.type == "goBack") {
+        browser.tabs.goBack(sender.tab.id);
+    } else if ((request.type == "post_redirector" || request.type == "content") && holdData.type == "haspost") {
         console.log("Run redirect (with POST).");
         sendResponse(holdData);
         holdData = [];
