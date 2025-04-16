@@ -1,3 +1,4 @@
+'use strict';
 let holdData = [];
 const postRedirectorURL = location.protocol + "//" + location.host + "/post_redirector.html";
 
@@ -11,6 +12,7 @@ browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
             if (cseData.type == "redirect") {
                 console.log("Run redirect.");
                 browser.tabs.update(tabId, {url: cseData.redirectTo});
+                browser.tabs.sendMessage(tabId, {type: "curtain"});
                 return;
                 
             } else if (cseData.type == "haspost") {
@@ -18,6 +20,7 @@ browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
                 if (!cseData.adv_ignorePOSTFallback) {
                     console.log("Open POST Redirector.");
                     browser.tabs.update(tabId, {url: postRedirectorURL});
+                    browser.tabs.sendMessage(tabId, {type: "curtain"});
                 }
                 return;
                 
@@ -36,7 +39,7 @@ browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
     return true;
 });
 
-// POST Redirect with adv_ignorePOSTFallback
+// POST Redirect
 browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if ((request.type == "post_redirector" || request.type == "content") && holdData.type == "haspost") {
         console.log("Run redirect (with POST).");
@@ -46,4 +49,3 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
         sendResponse("kill");
     }
 });
-    
