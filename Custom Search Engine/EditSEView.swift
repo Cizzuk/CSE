@@ -115,9 +115,10 @@ struct EditSEView: View {
                         Spacer()
                         //Input max query length
                         TextField("32", value: $maxQueryLength, formatter: NumberFormatter())
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .keyboardType(.numbersAndPunctuation)
                             .frame(width: 100)
                             .multilineTextAlignment(.trailing)
-                            .keyboardType(.numberPad)
                             .submitLabel(.done)
                     }
                 }
@@ -308,6 +309,8 @@ struct EditSEViewPostData: View {
                         TextField("Key", text: $postEntries[index].key)
                         TextField("Value", text: $postEntries[index].value)
                     }
+                    .disableAutocorrection(true)
+                    .textInputAutocapitalization(.never)
                 }
                 .onDelete(perform: { indexSet in
                     postEntries.remove(atOffsets: indexSet)
