@@ -3,7 +3,6 @@ let holdData = [];
 const postRedirectorURL = location.protocol + "//" + location.host + "/post_redirector.html";
 
 browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
-    console.log(tabData);
     // If the URL is updated
     if (tabData.url && tabData.url != postRedirectorURL && tabData.url != "") {
         browser.runtime.sendNativeMessage("com.tsg0o0.cse.Extension", tabData, function(response) {
