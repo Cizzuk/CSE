@@ -1,6 +1,6 @@
 browser.runtime.sendMessage({ type: "post_redirector" }, function(response) {
-    if (response.length === 0) {
-        window.history.go(-3);
+    if (response.length === 0 || response == "kill") {
+        browser.runtime.sendMessage({ type: "goBack" });
         return;
     }
     

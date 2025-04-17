@@ -1,23 +1,26 @@
-let holdData = []
-browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    
-    // If this request is from content
-    if (request.type == "content") {
-        browser.runtime.sendNativeMessage("com.tsg0o0.cse.Extension", sender.url, function(response) {
+'use strict';
+let holdData = [];
+const postRedirectorURL = location.protocol + "//" + location.host + "/post_redirector.html";
+
+browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
+    // Ignore if not a valid URL
+    if (tabData.url && tabData.url != postRedirectorURL && tabData.url != "") {
+        browser.runtime.sendNativeMessage("com.tsg0o0.cse.Extension", tabData, function(response) {
             const cseData = JSON.parse(response);
             
             // type handler
-            if (cseData.type == "redirect" || cseData.adv_ignorePOSTFallback) {
+            if (cseData.type == "redirect") {
                 console.log("Run redirect.");
-                sendResponse(cseData);
-                return;
+                browser.tabs.update(tabId, {url: cseData.redirectTo});
+                browser.tabs.sendMessage(tabId, {type: "curtain"});
                 
             } else if (cseData.type == "haspost") {
                 holdData = cseData;
-                const postRedirectorURL = location.protocol + "//" + location.host + "/post_redirector.html";
-                console.log("Open POST Redirector.");
-                sendResponse({type: "redirect", redirectTo: postRedirectorURL});
-                return;
+                if (!cseData.adv_ignorePOSTFallback) {
+                    console.log("Open POST Redirector.");
+                    browser.tabs.update(tabId, {url: postRedirectorURL});
+                    browser.tabs.sendMessage(tabId, {type: "curtain"});
+                }
                 
             } else if (cseData.type == "error") {
                 console.log("Aborted due to an error.");
@@ -26,17 +29,21 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
                 console.log("Operation canceled.");
                 
             }
-            
-            sendResponse("kill");
+
             return;
         });
-        
-    // If this request is from post_redirector
-    } else if (request.type == "post_redirector") {
+    }
+});
+
+// POST Redirect
+browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.type == "goBack") {
+        browser.tabs.goBack(sender.tab.id);
+    } else if ((request.type == "post_redirector" || request.type == "content") && holdData.type == "haspost") {
         console.log("Run redirect (with POST).");
         sendResponse(holdData);
-        holdData = []
+        holdData = [];
+    } else {
+        sendResponse("kill");
     }
-    
-    return true;
 });

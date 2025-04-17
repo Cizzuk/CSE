@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-let currentRegion = Locale.current.regionCode
+let currentRegion = Locale.current.region?.identifier
 private func HeaderText(text: String) -> some View {
     Text(text)
         .font(.title)
@@ -135,7 +135,7 @@ struct SafariTutorialView: View {
                 .frame(maxWidth: .infinity)
                     
                 List {
-                    let currentRegion = Locale.current.regionCode
+                    let currentRegion = Locale.current.region?.identifier
                     Section {
                         // Default SE
                         Picker("Search Engine", selection: $searchengine) {
@@ -188,17 +188,21 @@ struct SafariTutorialView: View {
                             Text("You can find these settings in Settings → Apps → Safari.")
                             #endif
                             Spacer()
-                            if #available(iOS 17.0, macOS 14.0, *) {
-                                Text("If you set another search engine in private browsing in Safari settings, you can use another custom search engine in private browse.")
-                            } else {
+                            
+                            if #unavailable(iOS 17.0, macOS 14.0) {
                                 // Show warning if Google is selected in iOS 16 or earlier.
                                 Text("If you set Google as your search engine, please set another search engine.")
                             }
+                            Spacer()
+                            
+                            // Show warning if Yandex is selected in Ukraine
                             if currentRegion == "UA" {
-                                // yandex.ua can't connect
-                                Spacer()
                                 Text("Yandex is currently unavailable.")
+                                Spacer()
                             }
+                            
+                            // Queries leak warning
+                            Text("The search engine you select here can know your search queries. If you have concerns about privacy, I recommend choosing DuckDuckGo.")
                         }
                     }
                 }
@@ -318,92 +322,7 @@ struct RecommendSEView: View {
     @Binding var isFirstTutorial: Bool
     @Binding var cseType: String
     @State private var selectedIndex: Int = -1
-    var recommendCSEList: [[String: Any]] = [
-        [
-            "name": "Startpage",
-            "url": "https://www.startpage.com/sp/search?query=%s",
-            "post": [],
-            "disablePercentEncoding": false
-        ],
-        [
-            "name": "Brave Search",
-            "url": "https://search.brave.com/search?q=%s",
-            "post": [],
-            "disablePercentEncoding": false
-        ],
-        [
-            "name": "Google &udm=14",
-            "url": "https://www.google.com/search?q=%s&udm=14",
-            "post": [],
-            "disablePercentEncoding": false
-        ],
-        [
-            "name": "Kagi",
-            "url": "https://kagi.com/search?q=%s",
-            "post": [],
-            "disablePercentEncoding": false
-        ],
-        [
-            "name": "Qwant",
-            "url": "https://www.qwant.com/?q=%s",
-            "post": [],
-            "disablePercentEncoding": false
-        ],
-        [
-            "name": "NAVER",
-            "url": "https://search.naver.com/search.naver?query=%s",
-            "post": [],
-            "disablePercentEncoding": false
-        ],
-        [
-            "name": "Cốc Cốc",
-            "url": "https://coccoc.com/search#query=%s",
-            "post": [],
-            "disablePercentEncoding": false
-        ],
-        [
-            "name": "Google",
-            "url": "https://www.google.com/search?q=%s",
-            "post": [],
-            "disablePercentEncoding": false
-        ],
-        [
-            "name": "Bing",
-            "url": "https://www.bing.com/search?q=%s",
-            "post": [],
-            "disablePercentEncoding": false
-        ],
-        [
-            "name": "Yahoo",
-            "url": "https://search.yahoo.com/search?p=%s",
-            "post": [],
-            "disablePercentEncoding": false
-        ],
-        [
-            "name": "DuckDuckGo",
-            "url": "https://duckduckgo.com/?q=%s",
-            "post": [],
-            "disablePercentEncoding": false
-        ],
-        [
-            "name": "Ecosia",
-            "url": "https://www.ecosia.org/search?q=%s",
-            "post": [],
-            "disablePercentEncoding": false
-        ],
-        [
-            "name": "百度",
-            "url": "https://www.baidu.com/s?wd=%s",
-            "post": [],
-            "disablePercentEncoding": false
-        ],
-        [
-            "name": "Yandex",
-            "url": "https://yandex.ru/search/?text=%s",
-            "post": [],
-            "disablePercentEncoding": false
-        ]
-    ]
+    let cseList: [[String: Any]] = recommendCSEList.data
     
     var body: some View {
         NavigationView {
@@ -420,8 +339,8 @@ struct RecommendSEView: View {
                 List {
                     Section {
                         // Search Engine Selector
-                        ForEach(recommendCSEList.indices, id: \.self, content: { index in
-                            let cse = recommendCSEList[index]
+                        ForEach(cseList.indices, id: \.self, content: { index in
+                            let cse = cseList[index]
                             let cseName = cse["name"] as! String
                             let cseURL = cse["url"] as! String
                             Button {
@@ -437,6 +356,8 @@ struct RecommendSEView: View {
                                             .bold()
                                         Text(cseURL)
                                             .lineLimit(1)
+                                            .foregroundColor(.secondary)
+                                            .font(.subheadline)
                                             .accessibilityHidden(true)
                                     }
                                     Spacer()
@@ -455,9 +376,9 @@ struct RecommendSEView: View {
                     if selectedIndex != -1 {
                         let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
                         if cseType == "default" {
-                            userDefaults.set(recommendCSEList[selectedIndex], forKey: "defaultCSE")
+                            userDefaults.set(cseList[selectedIndex], forKey: "defaultCSE")
                         } else if cseType == "private" {
-                            userDefaults.set(recommendCSEList[selectedIndex], forKey: "privateCSE")
+                            userDefaults.set(cseList[selectedIndex], forKey: "privateCSE")
                         }
                     }
                     isOpenSheet = false

@@ -16,7 +16,7 @@ struct QuickSEListView: View {
             // Add new SE Button
             Section {
                 NavigationLink {
-                    EditSEView(cseType: .constant("quick"), cseID: .constant(""))
+                    EditSEView(cseType: .constant("quick"), cseID: .constant(""), exCSEData: .constant([:]))
                 } label: {
                     HStack {
                         Image(systemName: "plus.circle")
@@ -37,13 +37,14 @@ struct QuickSEListView: View {
                         let cseName = cseData["name"] as? String ?? "" != "" ? cseData["name"] : cseData["url"] {
                         let keywordTranslation = NSLocalizedString("Keyword", comment: "")
                         NavigationLink {
-                            EditSEView(cseType: .constant("quick"), cseID: .constant(cseID))
+                            EditSEView(cseType: .constant("quick"), cseID: .constant(cseID), exCSEData: .constant(cseData))
                         } label: {
                             VStack(alignment : .leading) {
                                 Text(cseID)
                                     .bold()
                                 Text(cseName as? String ?? "")
                                     .lineLimit(1)
+                                    .foregroundColor(.secondary)
                             }
                         }
                         .accessibilityLabel("\(cseName as? String ?? ""). " + keywordTranslation + ". \(cseID)")

@@ -16,8 +16,9 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     func beginRequest(with context: NSExtensionContext) {
         // Get Search URL from content.js
         let item = context.inputItems.first as! NSExtensionItem
-        let message = item.userInfo?[SFExtensionMessageKey] as? String
-        guard let searchURL = message else {
+        guard let message = item.userInfo?[SFExtensionMessageKey] as? [String: Any],
+              let searchURL: String = message["url"] as? String,
+              let isIncognito: Bool = message["incognito"] as? Bool else {
             return
         }
         
@@ -40,22 +41,25 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             // Check current focus filter
             try await getFocusFilter()
             
+            var searchQuery: String? = nil
+            
             // Get Redirect URL
             if checkEngineURL(engineName: searchengine, url: searchURL) {
-                guard let searchQuery: String = getQueryValue(engineName: searchengine, url: searchURL) else {
-                    sendData(context: context, data: ["type" : "error"])
-                    return
-                }
-                redirectData = makeSearchURL(windowName: "default", query: searchQuery)
-            } else if usePrivateCSE && !alsousepriv && checkEngineURL(engineName: privsearchengine, url: searchURL) {
-                guard let searchQuery: String = getQueryValue(engineName: privsearchengine, url: searchURL) else {
-                    sendData(context: context, data: ["type" : "error"])
-                    return
-                }
-                redirectData = makeSearchURL(windowName: "private", query: searchQuery)
-            } else {
+                searchQuery = getQueryValue(engineName: searchengine, url: searchURL)
+            } else if checkEngineURL(engineName: privsearchengine, url: searchURL) && !alsousepriv {
+                searchQuery = getQueryValue(engineName: privsearchengine, url: searchURL)
+            }
+            
+            // Check if searchQuery is available
+            guard let query = searchQuery else {
                 sendData(context: context, data: ["type" : "cancel"])
                 return
+            }
+            
+            if isIncognito && usePrivateCSE {
+                redirectData = makeSearchURL(windowName: "private", query: query)
+            } else {
+                redirectData = makeSearchURL(windowName: "default", query: query)
             }
             
             // Check Redirect URL exists
@@ -318,7 +322,9 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         if focusSettings != nil {
             CSEData = [
                 "url": focusSettings?.cseURL ?? "",
-                "post": []
+                "post": [],
+                "disablePercentEncoding": false,
+                "maxQueryLength": -1
             ]
         }
         
@@ -331,15 +337,21 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
                 useQuickCSE = false
             }
         }
+        if !(decodedQuery.count > 1 && query.contains("+")) {
+            useQuickCSE = false
+        }
         
         // Check quick search
         if useQuickCSE {
             var cseID: String
             let quickCSEData = userDefaults.dictionary(forKey: "quickCSE") as? [String: [String: Any]] ?? [:]
             for key in quickCSEData.keys {
+                // percent encoded key (all characters including + or &)
+                guard let encodedKey = key.addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._")))
+                else { continue }
                 // If query has maybe quick search keyword
-                if query.hasPrefix(key) && (key.count + 1 < query.count) {
-                    let queryNoKey = String(query.dropFirst(key.count))
+                if query.hasPrefix(encodedKey) && (encodedKey.count + 1 < query.count) {
+                    let queryNoKey = String(query.dropFirst(encodedKey.count))
                     // If query has space
                     if queryNoKey.hasPrefix("+") {
                         cseID = key
@@ -352,7 +364,14 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         }
         
         // Get decoded fixedQuery
-        let decodedFixedQuery: String = fixedQuery.removingPercentEncoding ?? ""
+        var decodedFixedQuery: String = fixedQuery.removingPercentEncoding ?? ""
+        
+        // Get maxQueryLength
+        let maxQueryLength: Int = CSEData["maxQueryLength"] as? Int ?? -1
+        if maxQueryLength > -1 && decodedFixedQuery.count > maxQueryLength {
+            decodedFixedQuery = String(decodedFixedQuery.prefix(maxQueryLength))
+            fixedQuery = String(fixedQuery.prefix(maxQueryLength))
+        }
         
         // Replace %s with query
         let redirectQuery: String = CSEData["disablePercentEncoding"] as? Bool ?? false ? decodedFixedQuery : fixedQuery

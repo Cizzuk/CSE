@@ -30,7 +30,11 @@ struct AdvSettingView: View {
                     #if macOS
                     ignorePOSTFallback = true
                     #else
-                    ignorePOSTFallback = false
+                    if #unavailable(iOS 17.0) {
+                        ignorePOSTFallback = true
+                    } else {
+                        ignorePOSTFallback = false
+                    }
                     #endif
                     resetCSEs = ""
                     allowReset = false

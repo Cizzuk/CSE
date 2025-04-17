@@ -18,7 +18,8 @@ struct MainView: App {
 }
 
 struct ContentView: View {
-    let currentRegion = Locale.current.regionCode
+    let currentRegion = Locale.current.region?.identifier
+    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
     
     //Load app settings
     @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
@@ -40,6 +41,9 @@ struct ContentView: View {
     @AppStorage("needSafariTutorial", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var needSafariTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needSafariTutorial")
     @State private var openSafariTutorialView: Bool = false
+    
+    @State private var defaultCSE: [String: Any] = [:]
+    @State private var privateCSE: [String: Any] = [:]
     
     #if iOS
     // Icon change for iOS/iPadOS
@@ -69,36 +73,21 @@ struct ContentView: View {
                 Section {
                     // Default CSE
                     NavigationLink {
-                        EditSEView(cseType: .constant("default"), cseID: .constant(""))
+                        EditSEView(cseType: .constant("default"), cseID: .constant(""), exCSEData: .constant(defaultCSE))
                     } label: {
                         Text("Default Search Engine")
                     }
                     
                     // Private CSE
-                    if #available(iOS 17.0, macOS 14.0, *) {
-                        // If private CSE is not available due to Safari settings
-                        if alsousepriv || searchengine == privsearchengine {
-                            Toggle(isOn: .constant(false), label: {
-                                Text("Use different search engine in Private Browse")
-                            })
-                            .disabled(true)
-                        } else { // is available
-                            Toggle(isOn: $usePrivateCSE, label: {
-                                Text("Use different search engine in Private Browse")
-                            })
-                            if usePrivateCSE {
-                                NavigationLink {
-                                    EditSEView(cseType: .constant("private"), cseID: .constant(""))
-                                } label: {
-                                    Text("Private Search Engine")
-                                }
-                            }
+                    Toggle(isOn: $usePrivateCSE, label: {
+                        Text("Use different search engine in Private Browse")
+                    })
+                    if usePrivateCSE {
+                        NavigationLink {
+                            EditSEView(cseType: .constant("private"), cseID: .constant(""), exCSEData: .constant(privateCSE))
+                        } label: {
+                            Text("Private Search Engine")
                         }
-                    }
-                } footer: {
-                    if #available(iOS 17.0, macOS 14.0, *),
-                       (alsousepriv || searchengine == privsearchengine) { // is not available
-                        Text("If you set another search engine in private browsing in Safari settings, you can use another custom search engine in private browse.")
                     }
                 }
                 
@@ -238,6 +227,10 @@ struct ContentView: View {
             .listStyle(.insetGrouped)
             .animation(.easeOut(duration: 0.2), value: usePrivateCSE)
             .animation(.easeOut(duration: 0.2), value: useQuickCSE)
+            .onAppear {
+                defaultCSE = userDefaults?.dictionary(forKey: "defaultCSE") ?? [:]
+                privateCSE = userDefaults?.dictionary(forKey: "privateCSE") ?? [:]
+            }
         }
         .navigationViewStyle(.stack)
         // Tutorial sheets

@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-        let currentRegion = Locale.current.regionCode
+        let currentRegion = Locale.current.region?.identifier
         
         // Get userDefaults
         let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
@@ -36,8 +36,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Update/Create database for v3.0 or later
         if lastVersion == "" || isUpdated(updateVer: "3.0", lastVer: lastVersion) {
             #if macOS
-            userDefaults.set(true, forKey: "ignorePOSTFallback")
+            userDefaults.set(true, forKey: "adv_ignorePOSTFallback")
             #endif
+            if #unavailable(iOS 17.0) {
+                print("iOS 17.0 or later")
+                userDefaults.set(true, forKey: "adv_ignorePOSTFallback")
+            }
             userDefaults.set(true, forKey: "needFirstTutorial")
             userDefaults.set(true, forKey: "alsousepriv")
             if searchengine == nil {
@@ -61,11 +65,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Automatically corrects settings to match OS version
         if #unavailable(iOS 17.0, macOS 14.0) {
-            if searchengine == "google" {
+            if searchengine == "google" || searchengine == nil {
                 if currentRegion == "CN" {
                     userDefaults.set("baidu", forKey: "searchengine")
                 } else {
-                    userDefaults.set("duckduckgo", forKey: "searchengine")
+                    userDefaults.set("bing", forKey: "searchengine")
                 }
                 if isUpdated(updateVer: "3.3", lastVer: lastVersion) {
                     userDefaults.set(true, forKey: "needSafariTutorial")
@@ -106,7 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 // Reset CSEs | target == 'all' or 'default' or 'private' or 'quick'
 func resetCSE(target: String) {
-    let currentRegion = Locale.current.regionCode
+    let currentRegion = Locale.current.region?.identifier
     
     // Wikipedia
     let preferredLanguages = Locale.preferredLanguages
@@ -123,13 +127,15 @@ func resetCSE(target: String) {
     let defaultCSE: [String: Any] = [
         "url": "",
         "post": [],
-        "disablePercentEncoding": false
+        "disablePercentEncoding": false,
+        "maxQueryLength": -1
     ]
 
     let privateCSE: [String: Any] = [
         "url": "",
         "post": [],
-        "disablePercentEncoding": false
+        "disablePercentEncoding": false,
+        "maxQueryLength": -1
     ]
 
     var quickCSE: [String: [String: Any]] = [
@@ -137,67 +143,78 @@ func resetCSE(target: String) {
             "name": "Google",
             "url": "https://www.google.com/search?q=%s",
             "post": [],
-            "disablePercentEncoding": false
+            "disablePercentEncoding": false,
+            "maxQueryLength": -1
         ],
         "b": [
             "name": "Bing",
             "url": "https://www.bing.com/search?q=%s",
             "post": [],
-            "disablePercentEncoding": false
+            "disablePercentEncoding": false,
+            "maxQueryLength": -1
         ],
         "y": [
             "name": "Yahoo",
             "url": "https://search.yahoo.com/search?p=%s",
             "post": [],
-            "disablePercentEncoding": false
+            "disablePercentEncoding": false,
+            "maxQueryLength": -1
         ],
         "ddg": [
             "name": "DuckDuckGo",
             "url": "https://duckduckgo.com/?q=%s",
             "post": [],
-            "disablePercentEncoding": false
+            "disablePercentEncoding": false,
+            "maxQueryLength": 500
         ],
         "eco": [
             "name": "Ecosia",
             "url": "https://www.ecosia.org/search?q=%s",
             "post": [],
-            "disablePercentEncoding": false
+            "disablePercentEncoding": false,
+            "maxQueryLength": -1
         ],
         "sp": [
             "name": "Startpage",
             "url": "https://www.startpage.com/sp/search?query=%s",
             "post": [],
-            "disablePercentEncoding": false
+            "disablePercentEncoding": false,
+            "maxQueryLength": -1
         ],
         "br": [
             "name": "Brave Search",
             "url": "https://search.brave.com/search?q=%s",
             "post": [],
-            "disablePercentEncoding": false
+            "disablePercentEncoding": false,
+            "maxQueryLength": -1
         ],
         "yt": [
             "name": "YouTube",
             "url": "https://www.youtube.com/results?search_query=%s",
             "post": [],
-            "disablePercentEncoding": false
+            "disablePercentEncoding": false,
+            "maxQueryLength": -1
         ],
         "gh": [
             "name": "GitHub",
             "url": "https://github.com/search?q=%s",
             "post": [],
-            "disablePercentEncoding": false
+            "disablePercentEncoding": false,
+            "maxQueryLength": -1
         ],
         "wiki": [
             "name": "Wikipedia (" + wikiLang + ")",
             "url": "https://" + wikiLang + ".wikipedia.org/w/index.php?title=Special:Search&search=%s",
             "post": [],
-            "disablePercentEncoding": false
+            "disablePercentEncoding": false,
+            "maxQueryLength": 300
         ],
         "wbm": [
             "name": "Wayback Machine",
             "url": "https://web.archive.org/web/*/%s",
             "post": [],
-            "disablePercentEncoding": true
+            "disablePercentEncoding": true,
+            "maxQueryLength": -1
         ]
     ]
     
@@ -207,13 +224,15 @@ func resetCSE(target: String) {
             "name": "Yahoo! Japan",
             "url": "https://search.yahoo.co.jp/search?p=%s",
             "post": [],
-            "disablePercentEncoding": false
+            "disablePercentEncoding": false,
+            "maxQueryLength": -1
         ],
         "nico": [
             "name": "ニコニコ動画",
             "url": "https://www.nicovideo.jp/search/%s",
             "post": [],
-            "disablePercentEncoding": false
+            "disablePercentEncoding": false,
+            "maxQueryLength": 256
         ]
     ]
     
@@ -222,19 +241,22 @@ func resetCSE(target: String) {
             "name": "百度",
             "url": "https://www.baidu.com/s?wd=%s",
             "post": [],
-            "disablePercentEncoding": false
+            "disablePercentEncoding": false,
+            "maxQueryLength": -1
         ],
         "weibo": [
             "name": "微博",
             "url": "https://s.weibo.com/weibo?q=%s",
             "post": [],
-            "disablePercentEncoding": false
+            "disablePercentEncoding": false,
+            "maxQueryLength": -1
         ],
         "bili": [
             "name": "哔哩哔哩",
             "url": "https://search.bilibili.com/all?keyword=%s",
             "post": [],
-            "disablePercentEncoding": false
+            "disablePercentEncoding": false,
+            "maxQueryLength": -1
         ]
     ]
     
@@ -243,7 +265,8 @@ func resetCSE(target: String) {
             "name": "Qwant",
             "url": "https://www.qwant.com/?q=%s",
             "post": [],
-            "disablePercentEncoding": false
+            "disablePercentEncoding": false,
+            "maxQueryLength": -1
         ]
     ]
             
@@ -252,16 +275,18 @@ func resetCSE(target: String) {
             "name": "NAVER",
             "url": "https://search.naver.com/search.naver?query=%s",
             "post": [],
-            "disablePercentEncoding": false
+            "disablePercentEncoding": false,
+            "maxQueryLength": -1
         ]
     ]
     
     let quickCSEVN: [String: [String: Any]] = [
-        "naver": [
+        "coc": [
             "name": "Cốc Cốc",
             "url": "https://coccoc.com/search#query=%s",
             "post": [],
-            "disablePercentEncoding": false
+            "disablePercentEncoding": false,
+            "maxQueryLength": -1
         ]
     ]
     
