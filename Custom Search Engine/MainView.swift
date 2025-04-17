@@ -79,16 +79,14 @@ struct ContentView: View {
                     }
                     
                     // Private CSE
-                    if #available(iOS 17.0, macOS 14.0, *) {
-                        Toggle(isOn: $usePrivateCSE, label: {
-                            Text("Use different search engine in Private Browse")
-                        })
-                        if usePrivateCSE {
-                            NavigationLink {
-                                EditSEView(cseType: .constant("private"), cseID: .constant(""), exCSEData: .constant(privateCSE))
-                            } label: {
-                                Text("Private Search Engine")
-                            }
+                    Toggle(isOn: $usePrivateCSE, label: {
+                        Text("Use different search engine in Private Browse")
+                    })
+                    if usePrivateCSE {
+                        NavigationLink {
+                            EditSEView(cseType: .constant("private"), cseID: .constant(""), exCSEData: .constant(privateCSE))
+                        } label: {
+                            Text("Private Search Engine")
                         }
                     }
                 }

@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Automatically corrects settings to match OS version
         if #unavailable(iOS 17.0, macOS 14.0) {
-            if searchengine == "google" {
+            if searchengine == "google" || searchengine == nil {
                 if currentRegion == "CN" {
                     userDefaults.set("baidu", forKey: "searchengine")
                 } else {
