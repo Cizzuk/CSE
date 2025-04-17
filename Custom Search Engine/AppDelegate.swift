@@ -36,8 +36,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Update/Create database for v3.0 or later
         if lastVersion == "" || isUpdated(updateVer: "3.0", lastVer: lastVersion) {
             #if macOS
-            userDefaults.set(true, forKey: "ignorePOSTFallback")
+            userDefaults.set(true, forKey: "adv_ignorePOSTFallback")
             #endif
+            if #unavailable(iOS 17.0) {
+                print("iOS 17.0 or later")
+                userDefaults.set(true, forKey: "adv_ignorePOSTFallback")
+            }
             userDefaults.set(true, forKey: "needFirstTutorial")
             userDefaults.set(true, forKey: "alsousepriv")
             if searchengine == nil {
@@ -65,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if currentRegion == "CN" {
                     userDefaults.set("baidu", forKey: "searchengine")
                 } else {
-                    userDefaults.set("duckduckgo", forKey: "searchengine")
+                    userDefaults.set("bing", forKey: "searchengine")
                 }
                 if isUpdated(updateVer: "3.3", lastVer: lastVersion) {
                     userDefaults.set(true, forKey: "needSafariTutorial")
