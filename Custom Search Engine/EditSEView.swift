@@ -23,7 +23,6 @@ struct EditSEView: View {
     @State private var postEntries: [(key: String, value: String)] = []
     @State private var disablePercentEncoding: Bool = false
     @State private var maxQueryLengthToggle: Bool = false
-    @State private var maxQueryLengthInput: String? = nil
     @State private var maxQueryLength: Int? = nil
 
     @State private var showFailAlert: Bool = false
