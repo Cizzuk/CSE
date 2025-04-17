@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-let currentRegion = Locale.current.regionCode
+let currentRegion = Locale.current.region?.identifier
 private func HeaderText(text: String) -> some View {
     Text(text)
         .font(.title)
@@ -135,7 +135,7 @@ struct SafariTutorialView: View {
                 .frame(maxWidth: .infinity)
                     
                 List {
-                    let currentRegion = Locale.current.regionCode
+                    let currentRegion = Locale.current.region?.identifier
                     Section {
                         // Default SE
                         Picker("Search Engine", selection: $searchengine) {

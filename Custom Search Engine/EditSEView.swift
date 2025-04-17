@@ -23,6 +23,7 @@ struct EditSEView: View {
     @State private var postEntries: [(key: String, value: String)] = []
     @State private var disablePercentEncoding: Bool = false
     @State private var maxQueryLengthToggle: Bool = false
+    @State private var maxQueryLengthInput: String? = nil
     @State private var maxQueryLength: Int? = nil
 
     @State private var showFailAlert: Bool = false
@@ -114,7 +115,7 @@ struct EditSEView: View {
                         Text("Max Query Length")
                         Spacer()
                         //Input max query length
-                        TextField("32", value: $maxQueryLength, formatter: NumberFormatter())
+                        TextField("32", value: $maxQueryLength, format: .number)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .keyboardType(.numbersAndPunctuation)
                             .frame(width: 100)

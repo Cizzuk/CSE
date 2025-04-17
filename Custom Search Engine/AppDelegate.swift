@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-        let currentRegion = Locale.current.regionCode
+        let currentRegion = Locale.current.region?.identifier
         
         // Get userDefaults
         let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
@@ -106,7 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 // Reset CSEs | target == 'all' or 'default' or 'private' or 'quick'
 func resetCSE(target: String) {
-    let currentRegion = Locale.current.regionCode
+    let currentRegion = Locale.current.region?.identifier
     
     // Wikipedia
     let preferredLanguages = Locale.preferredLanguages
