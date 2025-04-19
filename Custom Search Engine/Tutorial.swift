@@ -290,7 +290,7 @@ struct SafariTutorialSecondView: View {
                             Text("yandex.ru")
                         }
                     } footer: {
-                        Text("And recommended to disable for Other Websites.")
+                        Text("And recommended to Deny for Other Websites.")
                     }
                 }
                 
