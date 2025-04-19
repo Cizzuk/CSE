@@ -4,7 +4,7 @@
 
     "name": "__MSG_extension_name__",
     "description": "__MSG_extension_description__",
-    "version": "3.5",
+    "version": "3.6",
 
     "icons": {
         "48": "images/icon-48.png",
@@ -49,6 +49,20 @@
         }
     },
 
-    "permissions": [ "nativeMessaging" ]
+    "permissions": [ "nativeMessaging" ],
+    
+    "host_permissions": [
+        "https://www.google.com/search",
+        "https://www.google.cn/search",
+        "https://*.search.yahoo.com/search",
+        "https://search.yahoo.co.jp/search",
+        "https://www.bing.com/search",
+        "https://duckduckgo.com/",
+        "https://www.ecosia.org/search",
+        "https://*.baidu.com/s",
+        "https://*.sogou.com/web/*",
+        "https://*.so.com/s",
+        "https://yandex.ru/search"
+    ]
     
 }

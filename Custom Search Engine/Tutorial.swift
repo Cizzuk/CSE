@@ -289,6 +289,8 @@ struct SafariTutorialSecondView: View {
                         if searchengine == "yandex" || (!alsousepriv && privsearchengine == "yandex") {
                             Text("yandex.ru")
                         }
+                    } footer: {
+                        Text("And recommended to disable for Other Websites.")
                     }
                 }
                 
