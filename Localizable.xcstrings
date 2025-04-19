@@ -657,6 +657,64 @@
         }
       }
     },
+    "And recommended to Deny for Other Websites." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Und empfohlen, für andere Websites zu verweigern."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Y se recomienda Denegar para Otros Sitios Web."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il est recommandé de refuser l'accès à d'autres sites web."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "また、ほかのWebサイトでは「拒否」にすることを推奨します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "또한 다른 웹사이트에서는 '거부'로 설정하는 것이 좋습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "И рекомендовано запретить для других веб-сайтов."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "І рекомендовано заборонити для інших веб-сайтів."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "并建议拒绝其他网站。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "並建議拒絕其他網站。"
+          }
+        }
+      }
+    },
     "Available Icons" : {
       "localizations" : {
         "de" : {
