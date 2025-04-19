@@ -296,7 +296,7 @@ struct SafariTutorialSecondView: View {
                 
                 if isFirstTutorial {
                     NavigationLink {
-                        RecommendSEView(isOpenSheet: $isOpenSheet, isFirstTutorial: $isFirstTutorial)
+                        RecommendSEView(isOpenSheet: $isOpenSheet)
                     } label: {
                         NextButton(text: NSLocalizedString("Next", comment: ""))
                     }
