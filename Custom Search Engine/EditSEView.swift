@@ -31,7 +31,9 @@ struct EditSEView: View {
     @State private var showURLBlankAlert: Bool = false
     
     @State private var openEditSEViewRecommend: Bool = false
+    @State private var openEditSEViewCloudImport: Bool = false
     @State private var isFirstLoad: Bool = true
+    @State private var isNeedLoad: Bool = false
     
     var body: some View {
         List {
@@ -137,6 +139,16 @@ struct EditSEView: View {
                         Text("Recommended Search Engines")
                     }
                 }
+                Button(action: {
+                    openEditSEViewCloudImport = true
+                }) {
+                    HStack {
+                        Image(systemName: "icloud")
+                            .frame(width: 20.0)
+                            .accessibilityHidden(true)
+                        Text("Import from Other Device")
+                    }
+                }
             }
         }
         // Error alerts
@@ -164,11 +176,22 @@ struct EditSEView: View {
             }
         }
         .sheet(isPresented : $openEditSEViewRecommend , onDismiss: {
-            loadCSEData()
+            if isNeedLoad {
+                loadCSEData()
+                isNeedLoad = false
+            }
         }) {
-            EditSEViewRecommend(isOpenSheet: $openEditSEViewRecommend, CSEData: $CSEData)
+            EditSEViewRecommend(isOpenSheet: $openEditSEViewRecommend, isNeedLoad: $isNeedLoad, CSEData: $CSEData)
         }
-        .onAppear {
+        .sheet(isPresented : $openEditSEViewCloudImport , onDismiss: {
+            if isNeedLoad {
+                loadCSEData()
+                isNeedLoad = false
+            }
+        }) {
+            EditSEViewCloudImport(isOpenSheet: $openEditSEViewCloudImport, isNeedLoad: $isNeedLoad, CSEData: $CSEData)
+        }
+        .task {
             if isFirstLoad {
                 CSEData = exCSEData
                 loadCSEData()
@@ -249,6 +272,9 @@ struct EditSEView: View {
             dismiss()
             return
         }
+        
+        CloudKitManager().saveAll()
+        
         dismiss()
     }
     
@@ -341,8 +367,8 @@ struct EditSEViewPostData: View {
 
 struct EditSEViewRecommend: View {
     @Binding var isOpenSheet: Bool
+    @Binding var isNeedLoad: Bool
     @Binding var CSEData: [String: Any]
-    @State private var selectedIndex: Int = -1
     let cseList: [[String: Any]] = recommendCSEList.data
     
     var body: some View {
@@ -355,26 +381,18 @@ struct EditSEViewRecommend: View {
                         let cseName = cse["name"] as! String
                         let cseURL = cse["url"] as! String
                         Button {
-                            if selectedIndex == index {
-                                selectedIndex = -1
-                            } else {
-                                selectedIndex = index
-                            }
+                            CSEData = cse
+                            isNeedLoad = true
+                            isOpenSheet = false
                         } label: {
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text(cseName)
-                                        .bold()
-                                    Text(cseURL)
-                                        .lineLimit(1)
-                                        .foregroundColor(.secondary)
-                                        .font(.subheadline)
-                                        .accessibilityHidden(true)
-                                }
-                                Spacer()
-                                Image(systemName: selectedIndex == index ? "checkmark.circle.fill" : "circle")
-                                    .foregroundColor(.blue)
-                                    .animation(.easeOut(duration: 0.15), value: selectedIndex)
+                            VStack(alignment: .leading) {
+                                Text(cseName)
+                                    .bold()
+                                Text(cseURL)
+                                    .lineLimit(1)
+                                    .foregroundColor(.secondary)
+                                    .font(.subheadline)
+                                    .accessibilityHidden(true)
                             }
                         }
                         .accessibilityLabel(cseName)
@@ -390,15 +408,169 @@ struct EditSEViewRecommend: View {
                         isOpenSheet = false
                     }
                 }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Done") {
-                        CSEData = cseList[selectedIndex]
+            }
+        }
+        .navigationViewStyle(.stack)
+    }
+}
+
+struct EditSEViewCloudImport: View {
+    @Binding var isOpenSheet: Bool
+    @Binding var isNeedLoad: Bool
+    @Binding var CSEData: [String: Any]
+    @State private var isFirstLoad: Bool = true
+    
+    @StateObject private var ck = CloudKitManager()
+    
+    var body: some View {
+        NavigationView {
+            List() {
+                if ck.isLoading {
+                    ProgressView()
+                } else if ck.error != nil {
+                    Text(ck.error!.localizedDescription)
+                } else if ck.allCSEs.isEmpty {
+                    Text("No devices found.")
+                } else {
+                    ForEach(ck.allCSEs) { ds in
+                        NavigationLink {
+                            // Convert JSON string to Dictionary
+                            let defaultCSE = ds.defaultCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: Any] ?? [:]
+                            let privateCSE = ds.privateCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: Any] ?? [:]
+                            let quickCSE = ds.quickCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: [String: Any]] ?? [:]
+                            EditSEViewCloudImportChooseCSE(
+                                isOpenSheet: $isOpenSheet,
+                                isNeedLoad: $isNeedLoad,
+                                CSEData: $CSEData, defaultCSE: .constant(defaultCSE),
+                                privateCSE: .constant(privateCSE),
+                                quickCSE: .constant(quickCSE)
+                            )
+                            .navigationTitle(ds.deviceName)
+                        } label: {
+                            VStack(alignment: .leading) {
+                                Text(ds.deviceName)
+                                // Modified Time
+                                if let modificationDate: Date = ds.modificationDate {
+                                    Text("Last Updated: \(modificationDate.formatted(date: .abbreviated, time: .shortened))")
+                                        .foregroundColor(.secondary)
+                                        .font(.subheadline)
+                                }
+                            }
+                        }
+                    }
+                    .onDelete(perform: { indexSet in
+                        for index in indexSet {
+                            let ds = ck.allCSEs[index]
+                            ck.delete(recordID: ds.id)
+                        }
+                    })
+                }
+            }
+            .navigationTitle("Choose Device")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .automatic) {
+                    EditButton()
+                        .disabled(ck.isLoading || ck.error != nil || ck.allCSEs.isEmpty)
+                }
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
                         isOpenSheet = false
                     }
-                    .disabled(selectedIndex == -1)
+                    .disabled(ck.isLocked)
+                }
+            }
+            .task {
+                if isFirstLoad {
+                    ck.fetchAll()
+                    isFirstLoad = false
                 }
             }
         }
         .navigationViewStyle(.stack)
+        .interactiveDismissDisabled(ck.isLocked)
+    }
+}
+
+struct EditSEViewCloudImportChooseCSE: View {
+    @Binding var isOpenSheet: Bool
+    @Binding var isNeedLoad: Bool
+    @Binding var CSEData: [String: Any]
+    @Binding var defaultCSE: [String: Any]
+    @Binding var privateCSE: [String: Any]
+    @Binding var quickCSE: [String: [String: Any]]
+    
+    var body: some View {
+        List {
+            // Default Search Engine
+            if defaultCSE["url"] as? String ?? "" != "" {
+                Section {
+                    Button {
+                        CSEData = defaultCSE
+                        isNeedLoad = true
+                        isOpenSheet = false
+                    } label: {
+                        VStack(alignment: .leading) {
+                            Text("Default Search Engine")
+                                .bold()
+                                .foregroundColor(.primary)
+                            Text(defaultCSE["url"] as? String ?? "")
+                                .lineLimit(1)
+                                .foregroundColor(.secondary)
+                                .font(.subheadline)
+                        }
+                    }
+                }
+            }
+            
+            // Private Search Engine
+            if privateCSE["url"] as? String ?? "" != "" {
+                Section {
+                    Button {
+                        CSEData = privateCSE
+                        isNeedLoad = true
+                        isOpenSheet = false
+                    } label: {
+                        VStack(alignment: .leading) {
+                            Text("Private Search Engine")
+                                .bold()
+                                .foregroundColor(.primary)
+                            Text(privateCSE["url"] as? String ?? "")
+                                .lineLimit(1)
+                                .foregroundColor(.secondary)
+                                .font(.subheadline)
+                        }
+                    }
+                }
+            }
+            
+            // Quick Search Engines
+            if quickCSE.count > 0 {
+                Section {
+                    ForEach(quickCSE.keys.sorted(), id: \.self) { cseID in
+                        if let cseData = quickCSE[cseID],
+                           let cseName = cseData["name"] as? String ?? "" != "" ? cseData["name"] : cseID {
+                            Button {
+                                CSEData = cseData
+                                isNeedLoad = true
+                                isOpenSheet = false
+                            } label: {
+                                VStack(alignment: .leading) {
+                                    Text(cseName as? String ?? "")
+                                        .bold()
+                                        .foregroundColor(.primary)
+                                    Text(cseData["url"] as? String ?? "")
+                                        .lineLimit(1)
+                                        .foregroundColor(.secondary)
+                                        .font(.subheadline)
+                                }
+                            }
+                        }
+                    }
+                } header: {
+                    Text("Quick Search Engines")
+                }
+            }
+        }
     }
 }

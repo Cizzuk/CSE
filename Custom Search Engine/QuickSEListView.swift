@@ -59,7 +59,7 @@ struct QuickSEListView: View {
         .toolbar {
             EditButton()
         }
-        .onAppear {
+        .task {
             // (Re)load Data
             quickCSE = userDefaults.dictionary(forKey: "quickCSE") as? [String: [String: Any]] ?? [:]
         }

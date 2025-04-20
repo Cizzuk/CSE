@@ -657,6 +657,64 @@
         }
       }
     },
+    "And recommended to Deny for Other Websites." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Und empfohlen, für andere Websites zu verweigern."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Y se recomienda Denegar para Otros Sitios Web."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il est recommandé de refuser l'accès à d'autres sites web."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "また、ほかのWebサイトでは「拒否」にすることを推奨します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "또한 다른 웹사이트에서는 '거부'로 설정하는 것이 좋습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "И рекомендовано запретить для других веб-сайтов."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "І рекомендовано заборонити для інших веб-сайтів."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "并建议拒绝其他网站。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "並建議拒絕其他網站。"
+          }
+        }
+      }
+    },
     "Available Icons" : {
       "localizations" : {
         "de" : {
@@ -1127,60 +1185,118 @@
         }
       }
     },
-    "Choose from the recommended search engines below or customize it yourself later." : {
+    "Choose a search engine below or customize it later." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wählen Sie eine der unten empfohlenen Suchmaschinen aus oder passen Sie sie später selbst an."
+            "value" : "Wählen Sie unten eine Suchmaschine aus oder passen Sie sie später an."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Elija uno de los motores de búsqueda recomendados a continuación o personalícelo usted mismo más adelante."
+            "value" : "Elige un buscador a continuación o personalízalo más tarde."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choisissez parmi les moteurs de recherche recommandés ci-dessous ou personnalisez-le vous-même ultérieurement."
+            "value" : "Choisissez un moteur de recherche ci-dessous ou personnalisez-le ultérieurement."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "以下のおすすめの検索エンジンから選択するか、あとでご自身でカスタマイズできます。"
+            "value" : "以下から検索エンジンを選択するか、あとでご自身でカスタマイズできます。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "아래 추천 검색 엔진 중에서 선택하거나 나중에 직접 설정할 수 있습니다."
+            "value" : "아래에서 검색엔진을 선택하거나 나중에 직접 커스터마이징할 수 있습니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Выберите одну из рекомендуемых ниже поисковых систем или настройте ее самостоятельно."
+            "value" : "Выберите поисковую систему ниже или настройте ее позже."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Виберіть одну з рекомендованих пошукових систем нижче або налаштуйте її самостійно пізніше."
+            "value" : "Виберіть пошукову систему нижче або налаштуйте її пізніше."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "从下面推荐的搜索引擎中选择，或稍后自行定制。"
+            "value" : "在下面选择一个搜索引擎，或稍后自定义。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "從以下推薦的搜尋引擎中選擇，或稍後自訂。"
+            "value" : "在下方選擇搜尋引擎，或稍後自訂。"
+          }
+        }
+      }
+    },
+    "Choose Device" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerät auswählen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elegir dispositivo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisir un appareil"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイスを選択"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "장치 선택"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите устройство"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Виберіть пристрій"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择设备"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選擇裝置"
           }
         }
       }
@@ -1620,6 +1736,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "停用百分比編碼"
+          }
+        }
+      }
+    },
+    "Disable Uploading CSE to iCloud" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloudへのCSEのアップロードを停止"
           }
         }
       }
@@ -2230,6 +2356,16 @@
         }
       }
     },
+    "Force Upload CSE to iCloud" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSEを強制的にiCloudへアップロード"
+          }
+        }
+      }
+    },
     "GitHub" : {
       "localizations" : {
         "de" : {
@@ -2526,65 +2662,6 @@
         }
       }
     },
-    "If you set another search engine in private browsing in Safari settings, you can use another custom search engine in private browse." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wenn Sie in den Safari-Einstellungen eine andere Suchmaschine für das „Private Surfen“ eingestellt haben, können Sie eine andere benutzerdefinierte Suchmaschine für das „Private Surfen“ verwenden."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Si configura otro buscador en la navegación privada en la configuración de Safari, puede usar otro buscador en la navegación privada."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Si vous avez défini un autre moteur de recherche dans la navigation privée dans les paramètres de Safari, vous pouvez utiliser un autre moteur de recherche personnalisé dans la navigation privée."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Safariのプライベートブラウズの設定で別の検索エンジンを選択すると、プライベートブラウズ用に異なるカスタム検索エンジンを設定できるようになります。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Safari의 개인정보 보호 브라우징 설정에서 다른 검색 엔진을 선택하면 개인정보 보호 브라우징을 위해 다른 사용자 지정 검색 엔진을 설정할 수 있다."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Если вы установили другую поисковую систему в режиме частного доступа в настройках Safari, вы можете использовать другую пользовательскую поисковую систему в режиме частного доступа."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Якщо в параметрах Safari ви встановите іншу пошукову систему в приватному перегляді, ви зможете використовувати іншу користувацьку пошукову систему в приватному перегляді."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "如果在 Safari 浏览器设置中的无痕浏览中设置了另一个搜索引擎，则可以在无痕浏览中使用另一个自定义搜索引擎。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "如果您在 Safari 設定中「私密瀏覽」設定了另一個搜尋引擎，您可以在「私密瀏覽」中使用另一個自訂搜尋引擎。"
-          }
-        }
-      }
-    },
     "If you set Google as your search engine, please set another search engine." : {
       "localizations" : {
         "de" : {
@@ -2659,6 +2736,64 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "POSTフォールバックを無視"
+          }
+        }
+      }
+    },
+    "Import from Other Device" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Von anderem Gerät importieren"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importar desde otro dispositivo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importer depuis un autre appareil"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ほかのデバイスから読み込む"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다른 기기에서 가져오기"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Импорт с другого устройства"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Імпорт з іншого пристрою"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从其他设备导入"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "從其他裝置匯入"
           }
         }
       }
@@ -2778,6 +2913,64 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "關鍵字不能為空"
+          }
+        }
+      }
+    },
+    "Last Updated: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zuletzt aktualisiert: %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Última actualización: %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dernière mise à jour : %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最終更新: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "최종 업데이트: %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Последнее обновление: %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Останнє оновлення: %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最后更新: %@"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最後更新: %@"
           }
         }
       }
@@ -3124,6 +3317,64 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "下一頁"
+          }
+        }
+      }
+    },
+    "No devices found." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Geräte gefunden."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se han encontrado dispositivos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun appareil n'a été trouvé."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイスが見つかりませんでした。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "장치를 찾을 수 없습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Устройства не найдены."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пристроїв не знайдено."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未找到设备。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沒有找到裝置。"
           }
         }
       }
@@ -5315,6 +5566,64 @@
         }
       }
     },
+    "Setup Search Engine" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suchmaschine einrichten"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configurar Buscador"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuration du moteur de recherche"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索エンジンを設定"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검색 엔진 설정"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройка поисковой системы"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Налаштування пошукової системи"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置搜索引擎"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定搜尋引擎"
+          }
+        }
+      }
+    },
     "Skip" : {
       "localizations" : {
         "de" : {
@@ -5680,7 +5989,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Esto se utiliza normalmente cuando un motor de búsqueda requiere un token de autenticación o parámetros especiales. Si no se configura correctamente, es posible que CSE no funcione correctamente."
+            "value" : "Esto se utiliza normalmente cuando un buscador requiere un token de autenticación o parámetros especiales. Si no se configura correctamente, es posible que CSE no funcione correctamente."
           }
         },
         "fr" : {
