@@ -138,8 +138,6 @@ final class CloudKitManager: ObservableObject {
     func delete(recordID: CKRecord.ID) {
         isLocked = true
         let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [recordID])
-        // 'modifyRecordsCompletionBlock' was deprecated in Mac Catalyst 15.0: Use modifyRecordsResultBlock instead
-        //operation.modifyRecordsCompletionBlock = { savedRecords, deletedRecordIDs, error in
         operation.modifyRecordsResultBlock = { result in
             DispatchQueue.main.async {
                 switch result {
