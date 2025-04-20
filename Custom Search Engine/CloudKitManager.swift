@@ -68,33 +68,10 @@ final class CloudKitManager: ObservableObject {
             record["quickCSE"] = ""
         }
         
-        let op = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
-        op.savePolicy = .allKeys
-        op.modifyRecordsCompletionBlock = { savedRecords, _, opError in
-            DispatchQueue.main.async {
-                if let err = opError {
-                    self.error = err
-                    return
-                }
-
-                if let rec = savedRecords?.first {
-                    let ds = DeviceCSEs(
-                        id: rec.recordID,
-                        deviceName: rec["deviceName"] as! String,
-                        defaultCSE: rec["defaultCSE"] as! String,
-                        privateCSE: rec["privateCSE"] as! String,
-                        quickCSE: rec["quickCSE"] as! String
-                    )
-                    if let idx = self.allCSEs.firstIndex(of: ds) {
-                        self.allCSEs[idx] = ds
-                    } else {
-                        self.allCSEs.append(ds)
-                    }
-                }
-            }
-        }
+        let operation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
+        operation.savePolicy = .allKeys
         
-        self.database.add(op)
+        database.add(operation)
     }
     
     func cseDataToJSONString(dictionary: Any) -> String {
