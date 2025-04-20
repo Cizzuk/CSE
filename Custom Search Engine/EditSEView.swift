@@ -448,7 +448,13 @@ struct EditSEViewCloudImport: View {
                         let defaultCSE = ds.defaultCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: Any] ?? [:]
                         let privateCSE = ds.privateCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: Any] ?? [:]
                         let quickCSE = ds.quickCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: [String: Any]] ?? [:]
-                        EditSEViewCloudImportChooseCSE(isOpenSheet: $isOpenSheet, isNeedLoad: $isNeedLoad, CSEData: $CSEData, defaultCSE: .constant(defaultCSE), privateCSE: .constant(privateCSE), quickCSE: .constant(quickCSE))
+                        EditSEViewCloudImportChooseCSE(
+                            isOpenSheet: $isOpenSheet,
+                            isNeedLoad: $isNeedLoad,
+                            CSEData: $CSEData, defaultCSE: .constant(defaultCSE),
+                            privateCSE: .constant(privateCSE),
+                            quickCSE: .constant(quickCSE)
+                        )
                             .navigationTitle(ds.deviceName)
                     } label: {
                         Text(ds.deviceName)
