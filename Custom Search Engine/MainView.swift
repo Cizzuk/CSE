@@ -46,8 +46,6 @@ struct ContentView: View {
     @State private var privateCSE: [String: Any] = [:]
     
     #if iOS
-    // Icon change for iOS/iPadOS
-    @State private var isIconSettingView: Bool = false
     // Get current icon
     var alternateIconName: String? {
         UIApplication.shared.alternateIconName
@@ -137,7 +135,7 @@ struct ContentView: View {
 //                #if iOS
 //                // Go IconChange View for iOS/iPadOS
 //                Section {
-//                    NavigationLink(destination: linkDestination, isActive: $isIconSettingView) {
+//                    NavigationLink(destination: linkDestination) {
 //                        Image((alternateIconName ?? "appicon") + "-pre")
 //                            .resizable()
 //                            .frame(width: 64, height: 64)
@@ -145,7 +143,6 @@ struct ContentView: View {
 //                            .cornerRadius(14)
 //                            .padding(4)
 //                            .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
-//                            .id(isIconSettingView)
 //                        Text("Change App Icon")
 //                        Spacer()
 //                    }
@@ -208,7 +205,7 @@ struct ContentView: View {
                     // TODO: Remove this button if CTF issues are resolved. (issue#24)
                     #if iOS
                     // Go IconChange View for iOS/iPadOS
-                    NavigationLink(destination: linkDestination, isActive: $isIconSettingView) {
+                    NavigationLink(destination: linkDestination) {
                         Text("Change App Icon")
                         Spacer()
                     }
