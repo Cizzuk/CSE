@@ -478,6 +478,9 @@ struct SafariTutorialImportView: View {
                 .animation(.easeOut(duration: 0.15), value: selected)
                 .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
             }
+            #if !visionOS
+            .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
+            #endif
             .task {
                 ck.fetchAll()
             }
