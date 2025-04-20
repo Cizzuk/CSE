@@ -444,7 +444,7 @@ struct EditSEViewCloudImport: View {
             List(selection: $selected) {
                 ForEach(ck.allCSEs) { ds in
                     NavigationLink {
-                        // JSONを辞書[String:Any]に変換
+                        // Convert JSON string to Dictionary
                         let defaultCSE = ds.defaultCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: Any] ?? [:]
                         let privateCSE = ds.privateCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: Any] ?? [:]
                         let quickCSE = ds.quickCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: [String: Any]] ?? [:]
