@@ -52,7 +52,12 @@ final class CloudKitManager: ObservableObject {
         let recordID = CKRecord.ID(recordName: deviceID)
         let record = CKRecord(recordType: "DeviceCSEs", recordID: recordID)
         
+        // macOS Catalyst support
+        #if macOS
+        let deviceName = "Mac Catalyst / " + UIDevice.current.systemName + " " + UIDevice.current.systemVersion
+        #else
         let deviceName = UIDevice.current.name + " / " + UIDevice.current.systemName + " " + UIDevice.current.systemVersion
+        #endif
         
         record["deviceName"] = deviceName
         record["defaultCSE"] = defaultCSEJSON
@@ -83,7 +88,10 @@ final class CloudKitManager: ObservableObject {
     
     // fetch CSEs from other devices
     func fetchAll() {
+        // Reset
         isLoading = true
+        self.allCSEs.removeAll()
+        
         let query = CKQuery(recordType: "DeviceCSEs", predicate: NSPredicate(value: true))
         let operation = CKQueryOperation(query: query)
         
@@ -99,7 +107,6 @@ final class CloudKitManager: ObservableObject {
                     quickCSE: record["quickCSE"] as? String ?? ""
                 )
                 self.error = nil
-                self.allCSEs.removeAll()
                 self.allCSEs.append(fetchedRecord)
             case .failure(let error):
                 self.error = error
