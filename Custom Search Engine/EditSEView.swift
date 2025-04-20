@@ -429,7 +429,7 @@ struct EditSEViewCloudImport: View {
                     ProgressView()
                 } else if ck.error != nil {
                     Text(ck.error!.localizedDescription)
-                } else if ck.allCSEs.count == 0 {
+                } else if ck.allCSEs.isEmpty {
                     Text("No devices found.")
                 } else {
                     ForEach(ck.allCSEs) { ds in
@@ -471,7 +471,7 @@ struct EditSEViewCloudImport: View {
             .toolbar {
                 ToolbarItem(placement: .automatic) {
                     EditButton()
-                        .disabled(ck.isLoading || ck.error != nil || ck.allCSEs.count == 0)
+                        .disabled(ck.isLoading || ck.error != nil || ck.allCSEs.isEmpty)
                 }
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
