@@ -57,8 +57,16 @@ final class CloudKitManager: ObservableObject {
         
         record["deviceName"] = deviceName
         record["defaultCSE"] = defaultCSEJSON
-        record["privateCSE"] = privateCSEJSON
-        record["quickCSE"] = quickCSEJSON
+        if userDefaults.bool(forKey: "usePrivateCSE") {
+            record["privateCSE"] = privateCSEJSON
+        } else {
+            record["privateCSE"] = ""
+        }
+        if userDefaults.bool(forKey: "useQuickCSE") {
+            record["quickCSE"] = quickCSEJSON
+        } else {
+            record["quickCSE"] = ""
+        }
         
         let op = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
         op.savePolicy = .allKeys
