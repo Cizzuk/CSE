@@ -227,7 +227,7 @@ struct ContentView: View {
             .listStyle(.insetGrouped)
             .animation(.easeOut(duration: 0.2), value: usePrivateCSE)
             .animation(.easeOut(duration: 0.2), value: useQuickCSE)
-            .onAppear {
+            .task {
                 defaultCSE = userDefaults?.dictionary(forKey: "defaultCSE") ?? [:]
                 privateCSE = userDefaults?.dictionary(forKey: "privateCSE") ?? [:]
             }

@@ -191,7 +191,7 @@ struct EditSEView: View {
         }) {
             EditSEViewCloudImport(isOpenSheet: $openEditSEViewCloudImport, isNeedLoad: $isNeedLoad, CSEData: $CSEData)
         }
-        .onAppear {
+        .task {
             if isFirstLoad {
                 CSEData = exCSEData
                 loadCSEData()
@@ -489,7 +489,7 @@ struct EditSEViewCloudImport: View {
                     }
                 }
             }
-            .onAppear {
+            .task {
                 if isFirstLoad {
                     ck.fetchAll()
                     isFirstLoad = false
