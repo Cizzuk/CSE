@@ -296,7 +296,7 @@ struct SafariTutorialSecondView: View {
                 
                 if isFirstTutorial {
                     NavigationLink {
-                        RecommendSEView(isOpenSheet: $isOpenSheet)
+                        SafariTutorialRecommendSEView(isOpenSheet: $isOpenSheet)
                     } label: {
                         NextButton(text: NSLocalizedString("Next", comment: ""))
                     }
@@ -319,7 +319,7 @@ struct SafariTutorialSecondView: View {
     }
 }
 
-struct RecommendSEView: View {
+struct SafariTutorialRecommendSEView: View {
     @Binding var isOpenSheet: Bool
     @State private var selectedIndex: Int = -1
     let cseList: [[String: Any]] = recommendCSEList.data
@@ -327,14 +327,28 @@ struct RecommendSEView: View {
     var body: some View {
         NavigationView {
             VStack() {
-                HeaderText(text: NSLocalizedString("Recommended Search Engines", comment: ""))
+                HeaderText(text: NSLocalizedString("Setup Search Engine", comment: ""))
                 VStack() {
-                    Text("Choose from the recommended search engines below or customize it yourself later.")
+                    Text("Choose a search engine below or customize it later.")
                 }
                 .padding(.horizontal, 32)
                 .frame(maxWidth: .infinity)
                 
                 List {
+                    Section {
+                        NavigationLink {
+                            SafariTutorialImportView(isOpenSheet: $isOpenSheet)
+                        } label: {
+                            HStack {
+                                Image(systemName: "icloud")
+                                    .frame(width: 20.0)
+                                    .accessibilityHidden(true)
+                                Text("Import from Other Device")
+                            }
+                            .foregroundColor(.accentColor)
+                        }
+                    }
+                    
                     Section {
                         // Search Engine Selector
                         ForEach(cseList.indices, id: \.self, content: { index in
@@ -367,6 +381,8 @@ struct RecommendSEView: View {
                             .accessibilityLabel(cseName)
                             .foregroundColor(.primary)
                         })
+                    } header: {
+                        Text("Recommended Search Engines")
                     }
                 }
                 
@@ -391,6 +407,84 @@ struct RecommendSEView: View {
         }
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden(true)
+    }
+}
+
+struct SafariTutorialImportView: View {
+    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
+    @Binding var isOpenSheet: Bool
+    @StateObject var ck = CloudKitManager()
+    @State private var selected: String? = nil
+    
+    var body: some View {
+        NavigationView {
+            VStack() {
+                List() {
+                    if ck.isLoading {
+                        ProgressView()
+                    } else if ck.error != nil {
+                        Text(ck.error!.localizedDescription)
+                    } else if ck.allCSEs.isEmpty {
+                        Text("No devices found.")
+                    } else {
+                        ForEach(ck.allCSEs) { ds in
+                            Button {
+                                if selected == ds.id.recordName {
+                                    selected = nil
+                                } else {
+                                    selected = ds.id.recordName
+                                }
+                            } label: {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text(ds.deviceName)
+                                            .foregroundColor(.primary)
+                                        // Modified Time
+                                        if let modificationDate: Date = ds.modificationDate {
+                                            Text("Last Updated: \(modificationDate.formatted(date: .abbreviated, time: .shortened))")
+                                                .foregroundColor(.secondary)
+                                                .font(.subheadline)
+                                        }
+                                    }
+                                    Spacer()
+                                    Image(systemName: selected == ds.id.recordName ? "checkmark.circle.fill" : "circle")
+                                        .foregroundColor(.blue)
+                                        .animation(.easeOut(duration: 0.15), value: selected)
+                                }
+                            }
+                        }
+                    }
+                }
+                Button(action: {
+                    print("Selected: \(selected ?? "nil")")
+                    print(ck.allCSEs.first(where: { $0.id.recordName == selected })?.defaultCSE ?? "nil")
+                    if selected != nil {
+                        // JSON to Dictionary
+                        let defaultCSE = ck.allCSEs.first(where: { $0.id.recordName == selected })?.defaultCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: Any] ?? [:]
+                        let privateCSE = ck.allCSEs.first(where: { $0.id.recordName == selected })?.privateCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: Any] ?? [:]
+                        let quickCSE = ck.allCSEs.first(where: { $0.id.recordName == selected })?.quickCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: [String: Any]] ?? [:]
+                        userDefaults.set(defaultCSE, forKey: "defaultCSE")
+                        userDefaults.set(privateCSE, forKey: "privateCSE")
+                        userDefaults.set(quickCSE, forKey: "quickCSE")
+                    }
+                    isOpenSheet = false
+                }) {
+                    if selected == nil {
+                        NextButtonDim(text: NSLocalizedString("Skip", comment: ""))
+                    } else {
+                        NextButton(text: NSLocalizedString("Done", comment: ""))
+                    }
+                }
+                .animation(.easeOut(duration: 0.15), value: selected)
+                .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
+            }
+            .task {
+                ck.fetchAll()
+            }
+        }
+        .navigationTitle("Choose Device")
+        .navigationViewStyle(.stack)
+        .interactiveDismissDisabled(ck.isLocked)
     }
 }
 
