@@ -435,6 +435,7 @@ struct EditSEViewCloudImport: View {
     @Binding var isOpenSheet: Bool
     @Binding var isNeedLoad: Bool
     @Binding var CSEData: [String: Any]
+    @State private var isFirstLoad: Bool = true
     
     @StateObject private var ck = CloudKitManager()
     
@@ -489,7 +490,10 @@ struct EditSEViewCloudImport: View {
                 }
             }
             .onAppear {
-                ck.fetchAll()
+                if isFirstLoad {
+                    ck.fetchAll()
+                    isFirstLoad = false
+                }
             }
         }
         .navigationViewStyle(.stack)
@@ -552,14 +556,15 @@ struct EditSEViewCloudImportChooseCSE: View {
             if quickCSE.count > 0 {
                 Section {
                     ForEach(quickCSE.keys.sorted(), id: \.self) { cseID in
-                        if let cseData = quickCSE[cseID] {
+                        if let cseData = quickCSE[cseID],
+                           let cseName = cseData["name"] as? String ?? "" != "" ? cseData["name"] : cseID {
                             Button {
                                 CSEData = cseData
                                 isNeedLoad = true
                                 isOpenSheet = false
                             } label: {
                                 VStack(alignment: .leading) {
-                                    Text(cseData["name"] as? String ?? cseID)
+                                    Text(cseName as? String ?? "")
                                         .bold()
                                         .foregroundColor(.primary)
                                     Text(cseData["url"] as? String ?? "")
