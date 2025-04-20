@@ -461,9 +461,7 @@ struct EditSEViewCloudImport: View {
                     .onDelete(perform: { indexSet in
                         for index in indexSet {
                             let ds = ck.allCSEs[index]
-                            Task {
-                                ck.delete(recordID: ds.id)
-                            }
+                            ck.delete(recordID: ds.id)
                         }
                     })
                 }
@@ -473,11 +471,13 @@ struct EditSEViewCloudImport: View {
             .toolbar {
                 ToolbarItem(placement: .automatic) {
                     EditButton()
+                        .disabled(ck.isLoading || ck.error != nil || ck.allCSEs.count == 0)
                 }
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
                         isOpenSheet = false
                     }
+                    .disabled(ck.isLocked)
                 }
             }
             .task {
@@ -488,6 +488,7 @@ struct EditSEViewCloudImport: View {
             }
         }
         .navigationViewStyle(.stack)
+        .interactiveDismissDisabled(ck.isLocked)
     }
 }
 

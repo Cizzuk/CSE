@@ -32,6 +32,7 @@ final class CloudKitManager: ObservableObject {
     @Published var allCSEs: [DeviceCSEs] = []
     @Published var error: Error?
     @Published var isLoading: Bool = false
+    @Published var isLocked: Bool = false
     
     // Upload CSEs
     func saveAll(mustUpload: Bool = false) {
@@ -135,14 +136,22 @@ final class CloudKitManager: ObservableObject {
     }
     
     func delete(recordID: CKRecord.ID) {
-        database.delete(withRecordID: recordID) { deletedID, err in
+        isLocked = true
+        let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [recordID])
+        // 'modifyRecordsCompletionBlock' was deprecated in Mac Catalyst 15.0: Use modifyRecordsResultBlock instead
+        //operation.modifyRecordsCompletionBlock = { savedRecords, deletedRecordIDs, error in
+        operation.modifyRecordsResultBlock = { result in
             DispatchQueue.main.async {
-                if let err = err {
-                    self.error = err
-                } else if let deletedID = deletedID {
-                    self.allCSEs.removeAll { $0.id == deletedID }
+                switch result {
+                case .success:
+                    self.isLocked = false
+                    self.allCSEs.removeAll { $0.id == recordID }
+                case .failure(let error):
+                    self.error = error
+                    self.isLocked = false
                 }
             }
         }
+        database.add(operation)
     }
 }
