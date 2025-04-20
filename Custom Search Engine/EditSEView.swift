@@ -461,7 +461,9 @@ struct EditSEViewCloudImport: View {
                     .onDelete(perform: { indexSet in
                         for index in indexSet {
                             let ds = ck.allCSEs[index]
-                            ck.delete(recordID: ds.id)
+                            Task {
+                                ck.delete(recordID: ds.id)
+                            }
                         }
                     })
                 }
