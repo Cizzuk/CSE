@@ -1185,6 +1185,9 @@
         }
       }
     },
+    "Choose Device" : {
+
+    },
     "Choose from the recommended search engines below or customize it yourself later." : {
       "localizations" : {
         "de" : {
@@ -2720,6 +2723,9 @@
           }
         }
       }
+    },
+    "Import from Other Devices" : {
+
     },
     "Key" : {
       "shouldTranslate" : false

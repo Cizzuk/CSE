@@ -32,6 +32,7 @@
 		BE866B722D431FA400C506E5 /* post_redirector.js in Resources */ = {isa = PBXBuildFile; fileRef = BE866B712D431FA400C506E5 /* post_redirector.js */; };
 		BEE22EE52D44E93000EDA51A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */; };
 		BEE22EE62D44E93000EDA51A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */; };
+		BEFCDAEE2DB49844009F9C07 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCDAED2DB49844009F9C07 /* CloudKitManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		BE866B6F2D431C5800C506E5 /* post_redirector.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = post_redirector.html; sourceTree = "<group>"; };
 		BE866B712D431FA400C506E5 /* post_redirector.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = post_redirector.js; sourceTree = "<group>"; };
 		BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		BEFCDAED2DB49844009F9C07 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -160,6 +162,7 @@
 				90C9BE52288D09DB00E22FB8 /* Custom Search Engine.entitlements */,
 				BE5CEB632DAE8DCE003A2F3E /* src */,
 				90C9BE15288BE17000E22FB8 /* AppDelegate.swift */,
+				BEFCDAED2DB49844009F9C07 /* CloudKitManager.swift */,
 				903A4A202BA1D87F005E346B /* MainView.swift */,
 				BE866B672D3F688900C506E5 /* EditSEView.swift */,
 				BE866B692D3F9A1F00C506E5 /* QuickSEListView.swift */,
@@ -333,6 +336,7 @@
 				903A4A212BA1D87F005E346B /* MainView.swift in Sources */,
 				BE1642DF2D23D69E008A42F8 /* Tutorial.swift in Sources */,
 				BE7374D52D86DDF300976342 /* LicenseView.swift in Sources */,
+				BEFCDAEE2DB49844009F9C07 /* CloudKitManager.swift in Sources */,
 				BE866B682D3F688900C506E5 /* EditSEView.swift in Sources */,
 				BE5342E52C9E36FA00AE1DB3 /* AdvSettingView.swift in Sources */,
 				90C9BE16288BE17000E22FB8 /* AppDelegate.swift in Sources */,
