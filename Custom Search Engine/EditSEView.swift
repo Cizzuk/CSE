@@ -146,7 +146,7 @@ struct EditSEView: View {
                         Image(systemName: "icloud")
                             .frame(width: 20.0)
                             .accessibilityHidden(true)
-                        Text("Import from Other Devices")
+                        Text("Import from Other Device")
                     }
                 }
             }
