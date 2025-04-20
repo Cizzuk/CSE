@@ -99,6 +99,7 @@ final class CloudKitManager: ObservableObject {
                     quickCSE: record["quickCSE"] as? String ?? ""
                 )
                 self.error = nil
+                self.allCSEs.removeAll()
                 self.allCSEs.append(fetchedRecord)
             case .failure(let error):
                 self.error = error
