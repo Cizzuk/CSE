@@ -124,7 +124,6 @@ final class CloudKitManager: ObservableObject {
                 switch result {
                 case .success:
                     self.isLoading = false
-                    print (self.allCSEs)
                 case .failure(let error):
                     self.error = error
                     self.isLoading = false
