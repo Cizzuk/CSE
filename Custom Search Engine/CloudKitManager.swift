@@ -32,9 +32,15 @@ final class CloudKitManager: ObservableObject {
     @Published var error: Error?
     
     // Upload CSEs
-    func saveAll() {
-        print("saveAll")
+    func saveAll(mustUpload: Bool = false) {
         let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
+        
+        if !mustUpload {
+            if userDefaults.bool(forKey: "adv_icloud_disableUploadCSE") {
+                return
+            }
+        }
+        
         let defaultCSE: [String: Any] = userDefaults.dictionary(forKey: "defaultCSE") ?? [:]
         let privateCSE: [String: Any] = userDefaults.dictionary(forKey: "privateCSE") ?? [:]
         let quickCSE: [String: [String: Any]] = userDefaults.dictionary(forKey: "quickCSE") as? [String: [String: Any]] ?? [:]
@@ -53,8 +59,6 @@ final class CloudKitManager: ObservableObject {
         record["defaultCSE"] = defaultCSEJSON
         record["privateCSE"] = privateCSEJSON
         record["quickCSE"] = quickCSEJSON
-        
-        print("record: \(record)")
         
         let op = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
         op.savePolicy = .allKeys
@@ -80,11 +84,9 @@ final class CloudKitManager: ObservableObject {
                     }
                 }
             }
-            print(savedRecords, opError)
         }
         
         self.database.add(op)
-        print("saveAll end")
     }
     
     func cseDataToJSONString(dictionary: Any) -> String {
@@ -121,5 +123,17 @@ final class CloudKitManager: ObservableObject {
             }
         }
         database.add(op)
+    }
+    
+    func delete(recordID: CKRecord.ID) {
+        database.delete(withRecordID: recordID) { deletedID, err in
+            DispatchQueue.main.async {
+                if let err = err {
+                    self.error = err
+                } else if let deletedID = deletedID {
+                    self.allCSEs.removeAll { $0.id == deletedID }
+                }
+            }
+        }
     }
 }

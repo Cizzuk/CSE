@@ -1685,6 +1685,16 @@
         }
       }
     },
+    "Disable Uploading CSE to iCloud" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloudへのCSEのアップロードを停止"
+          }
+        }
+      }
+    },
     "Done" : {
       "localizations" : {
         "de" : {
@@ -2287,6 +2297,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "次の起動時に既存のデータが削除されます: %@"
+          }
+        }
+      }
+    },
+    "Force Upload CSE to iCloud" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSEを強制的にiCloudへアップロード"
           }
         }
       }
