@@ -461,10 +461,19 @@ struct EditSEViewCloudImport: View {
                         
                     }
                 }
+                .onDelete(perform: { indexSet in
+                    for index in indexSet {
+                        let ds = ck.allCSEs[index]
+                        ck.delete(recordID: ds.id)
+                    }
+                })
             }
             .navigationTitle("Choose Device")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .automatic) {
+                    EditButton()
+                }
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
                         isOpenSheet = false
