@@ -21,6 +21,20 @@
                ReferencedContainer = "container:Customize Search Engine.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "90C9BE2E288BE17300E22FB8"
+               BuildableName = "Customize Search Engine Extension.appex"
+               BlueprintName = "Customize Search Engine Extension"
+               ReferencedContainer = "container:Customize Search Engine.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
