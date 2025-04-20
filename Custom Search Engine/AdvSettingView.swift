@@ -17,6 +17,8 @@ struct AdvSettingView: View {
     var ignoreFocusFilter: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_ignoreFocusFilter")
     @AppStorage("adv_ignorePOSTFallback", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var ignorePOSTFallback: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_ignorePOSTFallback")
+    @AppStorage("adv_icloud_disableUploadCSE", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
+    var icloud_disableUploadCSE: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_icloud_disableUploadCSE")
     @AppStorage("adv_resetCSEs", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var resetCSEs: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "adv_resetCSEs") ?? ""
     @State private var allowReset: Bool = false
@@ -69,6 +71,15 @@ struct AdvSettingView: View {
                 })
             } footer: {
                 Text("When using custom search engines with POST, to bypass CSP restrictions, the process redirects to a page created by CSE and then redirects again to your custom search engine. However, this mechanism does not work correctly in some environments (as far as I have researched, macOS). Enabling this setting will redirect directly to your custom search engine without bypassing CSP restrictions. However, for some Safari search engines with strict CSP settings (as far as I have researched, DuckDuckGo), it will not be possible to use a search engine with POST.")
+            }
+            
+            Section {
+                Toggle(isOn: $icloud_disableUploadCSE, label: {
+                    Text("Disable Uploading CSE to iCloud")
+                })
+                Button("Force Upload CSE to iCloud") {
+                    CloudKitManager().saveAll(mustUpload: true)
+                }
             }
             
             Section {

@@ -296,7 +296,7 @@ struct SafariTutorialSecondView: View {
                 
                 if isFirstTutorial {
                     NavigationLink {
-                        RecommendSEView(isOpenSheet: $isOpenSheet, isFirstTutorial: $isFirstTutorial, cseType: .constant("default"))
+                        RecommendSEView(isOpenSheet: $isOpenSheet)
                     } label: {
                         NextButton(text: NSLocalizedString("Next", comment: ""))
                     }
@@ -321,8 +321,6 @@ struct SafariTutorialSecondView: View {
 
 struct RecommendSEView: View {
     @Binding var isOpenSheet: Bool
-    @Binding var isFirstTutorial: Bool
-    @Binding var cseType: String
     @State private var selectedIndex: Int = -1
     let cseList: [[String: Any]] = recommendCSEList.data
     
@@ -330,13 +328,11 @@ struct RecommendSEView: View {
         NavigationView {
             VStack() {
                 HeaderText(text: NSLocalizedString("Recommended Search Engines", comment: ""))
-                if isFirstTutorial {
-                    VStack() {
-                        Text("Choose from the recommended search engines below or customize it yourself later.")
-                    }
-                    .padding(.horizontal, 32)
-                    .frame(maxWidth: .infinity)
+                VStack() {
+                    Text("Choose from the recommended search engines below or customize it yourself later.")
                 }
+                .padding(.horizontal, 32)
+                .frame(maxWidth: .infinity)
                 
                 List {
                     Section {
@@ -376,27 +372,14 @@ struct RecommendSEView: View {
                 
                 Button(action: {
                     if selectedIndex != -1 {
-                        let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
-                        if cseType == "default" {
-                            userDefaults.set(cseList[selectedIndex], forKey: "defaultCSE")
-                        } else if cseType == "private" {
-                            userDefaults.set(cseList[selectedIndex], forKey: "privateCSE")
-                        }
+                        UserDefaults(suiteName: "group.com.tsg0o0.cse")!.set(cseList[selectedIndex], forKey: "defaultCSE")
                     }
                     isOpenSheet = false
                 }) {
                     if selectedIndex == -1 {
-                        if isFirstTutorial {
-                            NextButtonDim(text: NSLocalizedString("Skip", comment: ""))
-                        } else {
-                            NextButtonDim(text: NSLocalizedString("Cancel", comment: ""))
-                        }
+                        NextButtonDim(text: NSLocalizedString("Skip", comment: ""))
                     } else {
-                        if isFirstTutorial {
-                            NextButton(text: NSLocalizedString("Done", comment: ""))
-                        } else {
-                            NextButton(text: NSLocalizedString("Save", comment: ""))
-                        }
+                        NextButton(text: NSLocalizedString("Done", comment: ""))
                     }
                 }
                 .animation(.easeOut(duration: 0.15), value: selectedIndex)

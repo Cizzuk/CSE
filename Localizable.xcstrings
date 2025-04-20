@@ -1185,6 +1185,9 @@
         }
       }
     },
+    "Choose Device" : {
+
+    },
     "Choose from the recommended search engines below or customize it yourself later." : {
       "localizations" : {
         "de" : {
@@ -1678,6 +1681,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "停用百分比編碼"
+          }
+        }
+      }
+    },
+    "Disable Uploading CSE to iCloud" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloudへのCSEのアップロードを停止"
           }
         }
       }
@@ -2288,6 +2301,16 @@
         }
       }
     },
+    "Force Upload CSE to iCloud" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSEを強制的にiCloudへアップロード"
+          }
+        }
+      }
+    },
     "GitHub" : {
       "localizations" : {
         "de" : {
@@ -2720,6 +2743,9 @@
           }
         }
       }
+    },
+    "Import from Other Devices" : {
+
     },
     "Key" : {
       "shouldTranslate" : false
@@ -3185,6 +3211,9 @@
           }
         }
       }
+    },
+    "No devices found." : {
+
     },
     "Only available if you have previously purchased this." : {
       "localizations" : {
