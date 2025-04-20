@@ -437,36 +437,44 @@ struct EditSEViewCloudImport: View {
     @Binding var CSEData: [String: Any]
     
     @StateObject private var ck = CloudKitManager()
-    @State private var selected: DeviceCSEs?
     
     var body: some View {
         NavigationView {
-            List(selection: $selected) {
-                ForEach(ck.allCSEs) { ds in
-                    NavigationLink {
-                        // Convert JSON string to Dictionary
-                        let defaultCSE = ds.defaultCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: Any] ?? [:]
-                        let privateCSE = ds.privateCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: Any] ?? [:]
-                        let quickCSE = ds.quickCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: [String: Any]] ?? [:]
-                        EditSEViewCloudImportChooseCSE(
-                            isOpenSheet: $isOpenSheet,
-                            isNeedLoad: $isNeedLoad,
-                            CSEData: $CSEData, defaultCSE: .constant(defaultCSE),
-                            privateCSE: .constant(privateCSE),
-                            quickCSE: .constant(quickCSE)
-                        )
+            List() {
+                if ck.isLoading {
+                    ProgressView()
+                } else if ck.error != nil {
+                    Text(ck.error!.localizedDescription)
+                } else if ck.allCSEs.count == 0 {
+                    Text("No devices found.")
+                } else {
+                    ForEach(ck.allCSEs) { ds in
+                        NavigationLink {
+                            // Convert JSON string to Dictionary
+                            let defaultCSE = ds.defaultCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: Any] ?? [:]
+                            let privateCSE = ds.privateCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: Any] ?? [:]
+                            let quickCSE = ds.quickCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: [String: Any]] ?? [:]
+                            EditSEViewCloudImportChooseCSE(
+                                isOpenSheet: $isOpenSheet,
+                                isNeedLoad: $isNeedLoad,
+                                CSEData: $CSEData, defaultCSE: .constant(defaultCSE),
+                                privateCSE: .constant(privateCSE),
+                                quickCSE: .constant(quickCSE)
+                            )
                             .navigationTitle(ds.deviceName)
-                    } label: {
-                        Text(ds.deviceName)
-                        
+                        } label: {
+                            Text(ds.deviceName)
+                            // Modified Time
+                            
+                        }
                     }
+                    .onDelete(perform: { indexSet in
+                        for index in indexSet {
+                            let ds = ck.allCSEs[index]
+                            ck.delete(recordID: ds.id)
+                        }
+                    })
                 }
-                .onDelete(perform: { indexSet in
-                    for index in indexSet {
-                        let ds = ck.allCSEs[index]
-                        ck.delete(recordID: ds.id)
-                    }
-                })
             }
             .navigationTitle("Choose Device")
             .navigationBarTitleDisplayMode(.inline)

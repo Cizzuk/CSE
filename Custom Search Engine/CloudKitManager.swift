@@ -30,15 +30,14 @@ final class CloudKitManager: ObservableObject {
     
     @Published var allCSEs: [DeviceCSEs] = []
     @Published var error: Error?
+    @Published var isLoading: Bool = false
     
     // Upload CSEs
     func saveAll(mustUpload: Bool = false) {
         let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
         
-        if !mustUpload {
-            if userDefaults.bool(forKey: "adv_icloud_disableUploadCSE") {
-                return
-            }
+        if !mustUpload && userDefaults.bool(forKey: "adv_icloud_disableUploadCSE") {
+            return
         }
         
         let defaultCSE: [String: Any] = userDefaults.dictionary(forKey: "defaultCSE") ?? [:]
@@ -84,30 +83,42 @@ final class CloudKitManager: ObservableObject {
     
     // fetch CSEs from other devices
     func fetchAll() {
+        isLoading = true
         let query = CKQuery(recordType: "DeviceCSEs", predicate: NSPredicate(value: true))
-        let op = CKQueryOperation(query: query)
-        var results: [DeviceCSEs] = []
+        let operation = CKQueryOperation(query: query)
         
-        op.recordFetchedBlock = { record in
-            let ds = DeviceCSEs(
-                id: record.recordID,
-                deviceName: record["deviceName"] as! String,
-                defaultCSE: record["defaultCSE"] as! String,
-                privateCSE: record["privateCSE"] as! String,
-                quickCSE: record["quickCSE"] as! String
-            )
-            results.append(ds)
+        // Fetch records
+        operation.recordMatchedBlock = { (recordID: CKRecord.ID, result: Result<CKRecord, Error>) in
+            switch result {
+            case .success(let record):
+                let fetchedRecord = DeviceCSEs(
+                    id: record.recordID,
+                    deviceName: record["deviceName"] as? String ?? "",
+                    defaultCSE: record["defaultCSE"] as? String ?? "",
+                    privateCSE: record["privateCSE"] as? String ?? "",
+                    quickCSE: record["quickCSE"] as? String ?? ""
+                )
+                self.error = nil
+                self.allCSEs.append(fetchedRecord)
+            case .failure(let error):
+                self.error = error
+            }
         }
-        op.queryCompletionBlock = { _, err in
+        
+        // Completion block
+        operation.queryResultBlock = { result in
             DispatchQueue.main.async {
-                if let err = err {
-                    self.error = err
-                } else {
-                    self.allCSEs = results
+                switch result {
+                case .success:
+                    self.isLoading = false
+                case .failure(let error):
+                    self.error = error
+                    self.isLoading = false
                 }
             }
         }
-        database.add(op)
+
+        database.add(operation)
     }
     
     func delete(recordID: CKRecord.ID) {

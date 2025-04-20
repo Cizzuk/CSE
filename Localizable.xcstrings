@@ -3212,6 +3212,9 @@
         }
       }
     },
+    "No devices found." : {
+
+    },
     "Only available if you have previously purchased this." : {
       "localizations" : {
         "de" : {
