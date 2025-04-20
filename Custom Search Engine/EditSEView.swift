@@ -369,7 +369,6 @@ struct EditSEViewRecommend: View {
     @Binding var isOpenSheet: Bool
     @Binding var isNeedLoad: Bool
     @Binding var CSEData: [String: Any]
-    @State private var selectedIndex: Int = -1
     let cseList: [[String: Any]] = recommendCSEList.data
     
     var body: some View {
@@ -382,26 +381,18 @@ struct EditSEViewRecommend: View {
                         let cseName = cse["name"] as! String
                         let cseURL = cse["url"] as! String
                         Button {
-                            if selectedIndex == index {
-                                selectedIndex = -1
-                            } else {
-                                selectedIndex = index
-                            }
+                            CSEData = cse
+                            isNeedLoad = true
+                            isOpenSheet = false
                         } label: {
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text(cseName)
-                                        .bold()
-                                    Text(cseURL)
-                                        .lineLimit(1)
-                                        .foregroundColor(.secondary)
-                                        .font(.subheadline)
-                                        .accessibilityHidden(true)
-                                }
-                                Spacer()
-                                Image(systemName: selectedIndex == index ? "checkmark.circle.fill" : "circle")
-                                    .foregroundColor(.blue)
-                                    .animation(.easeOut(duration: 0.15), value: selectedIndex)
+                            VStack(alignment: .leading) {
+                                Text(cseName)
+                                    .bold()
+                                Text(cseURL)
+                                    .lineLimit(1)
+                                    .foregroundColor(.secondary)
+                                    .font(.subheadline)
+                                    .accessibilityHidden(true)
                             }
                         }
                         .accessibilityLabel(cseName)
@@ -416,14 +407,6 @@ struct EditSEViewRecommend: View {
                     Button("Cancel") {
                         isOpenSheet = false
                     }
-                }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Done") {
-                        CSEData = cseList[selectedIndex]
-                        isNeedLoad = true
-                        isOpenSheet = false
-                    }
-                    .disabled(selectedIndex == -1)
                 }
             }
         }
@@ -464,9 +447,15 @@ struct EditSEViewCloudImport: View {
                             )
                             .navigationTitle(ds.deviceName)
                         } label: {
-                            Text(ds.deviceName)
-                            // Modified Time
-                            
+                            VStack(alignment: .leading) {
+                                Text(ds.deviceName)
+                                // Modified Time
+                                if let modificationDate: Date = ds.modificationDate {
+                                    Text("Last Updated: \(modificationDate.formatted(date: .abbreviated, time: .shortened))")
+                                        .foregroundColor(.secondary)
+                                        .font(.subheadline)
+                                }
+                            }
                         }
                     }
                     .onDelete(perform: { indexSet in

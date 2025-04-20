@@ -2866,6 +2866,9 @@
         }
       }
     },
+    "Last Updated: %@" : {
+
+    },
     "License" : {
       "localizations" : {
         "de" : {

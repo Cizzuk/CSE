@@ -11,6 +11,7 @@ import UIKit
 
 struct DeviceCSEs: Identifiable, Hashable {
     let id: CKRecord.ID
+    let modificationDate: Date?
     let deviceName: String
     let defaultCSE: String
     let privateCSE: String
@@ -93,6 +94,9 @@ final class CloudKitManager: ObservableObject {
         self.allCSEs.removeAll()
         
         let query = CKQuery(recordType: "DeviceCSEs", predicate: NSPredicate(value: true))
+        let sortDescriptor = NSSortDescriptor(key: "modificationDate", ascending: false)
+        query.sortDescriptors = [sortDescriptor]
+        
         let operation = CKQueryOperation(query: query)
         
         // Fetch records
@@ -101,6 +105,7 @@ final class CloudKitManager: ObservableObject {
             case .success(let record):
                 let fetchedRecord = DeviceCSEs(
                     id: record.recordID,
+                    modificationDate: record.modificationDate,
                     deviceName: record["deviceName"] as? String ?? "",
                     defaultCSE: record["defaultCSE"] as? String ?? "",
                     privateCSE: record["privateCSE"] as? String ?? "",
@@ -119,6 +124,7 @@ final class CloudKitManager: ObservableObject {
                 switch result {
                 case .success:
                     self.isLoading = false
+                    print (self.allCSEs)
                 case .failure(let error):
                     self.error = error
                     self.isLoading = false
