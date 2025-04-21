@@ -32,6 +32,7 @@ struct AdvSettingView: View {
                     #if macOS
                     ignorePOSTFallback = true
                     #else
+                     icloud_disableUploadCSE = false
                     if #unavailable(iOS 17.0) {
                         ignorePOSTFallback = true
                     } else {
