@@ -31,7 +31,7 @@ struct IconSettingView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    func iconItem(iconName: String, iconID: String) -> some View {
+    private func iconItem(iconName: String, iconID: String) -> some View {
         HStack {
             Image(iconID + "-pre")
                 .resizable()
@@ -165,7 +165,7 @@ struct PurchaseView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    func iconItem(iconName: String, iconID: String) -> some View {
+    private func iconItem(iconName: String, iconID: String) -> some View {
         HStack {
             Image(iconID + "-pre")
                 .resizable()
@@ -187,7 +187,7 @@ struct PurchaseView: View {
     }
 }
 
-class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+final class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     @Published var products = [SKProduct]()
     var presentationMode: Binding<PresentationMode>?
     @Published var purchaseCompleted = false

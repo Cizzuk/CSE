@@ -18,14 +18,6 @@ struct MainView: App {
 }
 
 struct ContentView: View {
-    let currentRegion = Locale.current.region?.identifier
-    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")
-    
-    //Load app settings
-    @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var searchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "google"
-    @AppStorage("alsousepriv", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var alsousepriv: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "alsousepriv")
     @AppStorage("privsearchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var privsearchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "privsearchengine") ?? "duckduckgo"
     

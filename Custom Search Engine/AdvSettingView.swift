@@ -9,18 +9,18 @@ import SwiftUI
 
 struct AdvSettingView: View {
     //Load advanced settings
-    @AppStorage("needFirstTutorial", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-      var needFirstTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needFirstTutorial")
-    @AppStorage("adv_disablechecker", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-      var disablechecker: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_disablechecker")
-    @AppStorage("adv_ignoreFocusFilter", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-      var ignoreFocusFilter: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_ignoreFocusFilter")
-    @AppStorage("adv_ignorePOSTFallback", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-      var ignorePOSTFallback: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_ignorePOSTFallback")
-    @AppStorage("adv_icloud_disableUploadCSE", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-      var icloud_disableUploadCSE: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_icloud_disableUploadCSE")
-    @AppStorage("adv_resetCSEs", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-      var resetCSEs: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "adv_resetCSEs") ?? ""
+    @AppStorage("needFirstTutorial", store: userDefaults)
+      private var needFirstTutorial: Bool = userDefaults.bool(forKey: "needFirstTutorial")
+    @AppStorage("adv_disablechecker", store: userDefaults)
+      private var disablechecker: Bool = userDefaults.bool(forKey: "adv_disablechecker")
+    @AppStorage("adv_ignoreFocusFilter", store: userDefaults)
+      private var ignoreFocusFilter: Bool = userDefaults.bool(forKey: "adv_ignoreFocusFilter")
+    @AppStorage("adv_ignorePOSTFallback", store: userDefaults)
+      private var ignorePOSTFallback: Bool = userDefaults.bool(forKey: "adv_ignorePOSTFallback")
+    @AppStorage("adv_icloud_disableUploadCSE", store: userDefaults)
+      private var icloud_disableUploadCSE: Bool = userDefaults.bool(forKey: "adv_icloud_disableUploadCSE")
+    @AppStorage("adv_resetCSEs", store: userDefaults)
+      private var resetCSEs: String = userDefaults.string(forKey: "adv_resetCSEs") ?? ""
     @State private var allowReset: Bool = false
     
     var body: some View {

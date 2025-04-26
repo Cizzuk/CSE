@@ -14,9 +14,7 @@ struct EditSEView: View {
     @Binding var cseType: String // "default", "private", or "quick"
     @Binding var cseID: String // If quick search engine, use this ID
     @Binding var exCSEData: [String: Any] // Original CSEData
-    @State var CSEData: [String: Any] = [:] // Current CSEData, Changes when import from recommended search engines and iCloud
-    
-    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
+    @State private var CSEData: [String: Any] = [:] // Current CSEData, Changes when import from recommended search engines and iCloud
     
     // CSE settings variables
     @State private var cseName: String = ""
@@ -208,7 +206,7 @@ struct EditSEView: View {
         }
     }
     
-    func saveCSEData() {
+    private func saveCSEData() {
         // Normalize Safari search engine URLs
         let replacements = [
             "https://google.com": "https://www.google.com",
@@ -328,7 +326,6 @@ struct EditSEView: View {
 
 // POST Data Editor
 struct EditSEViewPostData: View {
-    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
     @Binding var postEntries: [(key: String, value: String)]
     
     var body: some View {
@@ -383,7 +380,7 @@ struct EditSEViewRecommend: View {
     @Binding var isOpenSheet: Bool
     @Binding var isNeedLoad: Bool
     @Binding var CSEData: [String: Any]
-    let cseList: [[String: Any]] = recommendCSEList.data
+    private let cseList: [[String: Any]] = recommendCSEList.data
     
     var body: some View {
         NavigationView {

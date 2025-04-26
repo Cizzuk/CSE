@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct QuickSEListView: View {
-    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
-    @State var quickCSE: [String: [String: Any]] = [:]
+    @State private var quickCSE: [String: [String: Any]] = [:]
     
     var body: some View {
         List {

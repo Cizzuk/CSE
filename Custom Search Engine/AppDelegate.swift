@@ -8,16 +8,18 @@
 import UIKit
 import StoreKit
 
+// Global constants
+let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+let currentRegion = Locale.current.region?.identifier
+let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-        let currentRegion = Locale.current.region?.identifier
         
         // Get userDefaults
-        let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
         let lastVersion: String = userDefaults.string(forKey: "LastAppVer") ?? ""
         let searchengine: String? = userDefaults.string(forKey: "searchengine") ?? nil
         let privsearchengine: String? = userDefaults.string(forKey: "privsearchengine") ?? nil
@@ -111,9 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 // Reset CSEs | target == 'all' or 'default' or 'private' or 'quick'
-func resetCSE(target: String) {
-    let currentRegion = Locale.current.region?.identifier
-    
+fileprivate func resetCSE(target: String) {
     // Wikipedia
     let preferredLanguages = Locale.preferredLanguages
     let wikiLangsList: [String] = ["ar", "de", "en", "es", "fa", "fr", "it", "arz", "nl", "ja", "pl", "pt", "ceb", "sv", "uk", "vi", "war", "zh", "ru"]
@@ -315,8 +315,6 @@ func resetCSE(target: String) {
         }
     }
     
-    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
-    
     // Save Data
     if target == "default" || target == "all" {
         userDefaults.set(defaultCSE, forKey: "defaultCSE")
@@ -330,7 +328,7 @@ func resetCSE(target: String) {
 }
 
 // Version high and low
-func isUpdated(updateVer: String, lastVer: String) -> Bool {
+fileprivate func isUpdated(updateVer: String, lastVer: String) -> Bool {
     guard lastVer != "" else {
         return false
     }

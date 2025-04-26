@@ -7,15 +7,14 @@
 
 import SwiftUI
 
-let currentRegion = Locale.current.region?.identifier
-private func HeaderText(text: String) -> some View {
+fileprivate func HeaderText(text: String) -> some View {
     Text(text)
         .font(.title)
         .fontWeight(.bold)
         .padding(EdgeInsets(top: 32, leading: 32, bottom: 4, trailing: 32))
 }
 
-private func NextButton(text: String) -> some View {
+fileprivate func NextButton(text: String) -> some View {
     Text(text)
         .font(.headline)
         .padding()
@@ -27,7 +26,7 @@ private func NextButton(text: String) -> some View {
         #endif
 }
 
-private func NextButtonDim(text: String) -> some View {
+fileprivate func NextButtonDim(text: String) -> some View {
     Text(text)
         .font(.headline)
         .padding()
@@ -118,12 +117,13 @@ struct FullTutorialView: View {
 struct SafariTutorialView: View {
     @Binding var isOpenSheet: Bool
     @Binding var isFirstTutorial: Bool
-    @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var searchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "google"
-    @AppStorage("alsousepriv", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var alsousepriv: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "alsousepriv")
-    @AppStorage("privsearchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var privsearchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "privsearchengine") ?? "duckduckgo"
+    @AppStorage("searchengine", store: userDefaults)
+      private var searchengine: String = userDefaults.string(forKey: "searchengine") ?? "google"
+    @AppStorage("alsousepriv", store: userDefaults)
+      private var alsousepriv: Bool = userDefaults.bool(forKey: "alsousepriv")
+    @AppStorage("privsearchengine", store: userDefaults)
+      private var privsearchengine: String = userDefaults.string(forKey: "privsearchengine") ?? "duckduckgo"
+    
     var body: some View {
         NavigationView {
             VStack() {
@@ -135,7 +135,6 @@ struct SafariTutorialView: View {
                 .frame(maxWidth: .infinity)
                     
                 List {
-                    let currentRegion = Locale.current.region?.identifier
                     Section {
                         // Default SE
                         Picker("Search Engine", selection: $searchengine) {
@@ -227,12 +226,13 @@ struct SafariTutorialView: View {
 struct SafariTutorialSecondView: View {
     @Binding var isOpenSheet: Bool
     @Binding var isFirstTutorial: Bool
-    @AppStorage("searchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var searchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "searchengine") ?? "google"
-    @AppStorage("alsousepriv", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var alsousepriv: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "alsousepriv")
-    @AppStorage("privsearchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var privsearchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "privsearchengine") ?? "duckduckgo"
+    @AppStorage("searchengine", store: userDefaults)
+      private var searchengine: String = userDefaults.string(forKey: "searchengine") ?? "google"
+    @AppStorage("alsousepriv", store: userDefaults)
+      private var alsousepriv: Bool = userDefaults.bool(forKey: "alsousepriv")
+    @AppStorage("privsearchengine", store: userDefaults)
+      private var privsearchengine: String = userDefaults.string(forKey: "privsearchengine") ?? "duckduckgo"
+    
     var body: some View {
         NavigationView {
             VStack() {
@@ -322,7 +322,7 @@ struct SafariTutorialSecondView: View {
 struct SafariTutorialRecommendSEView: View {
     @Binding var isOpenSheet: Bool
     @State private var selectedIndex: Int = -1
-    let cseList: [[String: Any]] = recommendCSEList.data
+    private let cseList: [[String: Any]] = recommendCSEList.data
     
     var body: some View {
         NavigationView {
@@ -388,7 +388,7 @@ struct SafariTutorialRecommendSEView: View {
                 
                 Button(action: {
                     if selectedIndex != -1 {
-                        UserDefaults(suiteName: "group.com.tsg0o0.cse")!.set(cseList[selectedIndex], forKey: "defaultCSE")
+                        userDefaults.set(cseList[selectedIndex], forKey: "defaultCSE")
                     }
                     isOpenSheet = false
                 }) {
@@ -411,9 +411,8 @@ struct SafariTutorialRecommendSEView: View {
 }
 
 struct SafariTutorialImportView: View {
-    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
     @Binding var isOpenSheet: Bool
-    @StateObject var ck = CloudKitManager()
+    @StateObject private var ck = CloudKitManager()
     @State private var selected: String? = nil
     
     var body: some View {

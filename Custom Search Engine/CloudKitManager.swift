@@ -37,8 +37,6 @@ final class CloudKitManager: ObservableObject {
     
     // Upload CSEs
     func saveAll(mustUpload: Bool = false) {
-        let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
-        
         // Check if upload is disabled
         if !mustUpload && userDefaults.bool(forKey: "adv_icloud_disableUploadCSE") {
             return
