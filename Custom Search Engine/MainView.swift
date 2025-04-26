@@ -18,22 +18,19 @@ struct MainView: App {
 }
 
 struct ContentView: View {
-    @AppStorage("privsearchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var privsearchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "privsearchengine") ?? "duckduckgo"
-    
     // Load app settings
-    @AppStorage("usePrivateCSE", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-      var usePrivateCSE: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "usePrivateCSE")
-    @AppStorage("useQuickCSE", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-      var useQuickCSE: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "useQuickCSE")
-    @AppStorage("useEmojiSearch", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-      var useEmojiSearch: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "useEmojiSearch")
+    @AppStorage("usePrivateCSE", store: userDefaults)
+      private var usePrivateCSE: Bool = userDefaults.bool(forKey: "usePrivateCSE")
+    @AppStorage("useQuickCSE", store: userDefaults)
+      private var useQuickCSE: Bool = userDefaults.bool(forKey: "useQuickCSE")
+    @AppStorage("useEmojiSearch", store: userDefaults)
+      private var useEmojiSearch: Bool = userDefaults.bool(forKey: "useEmojiSearch")
     
     // Sheets
-    @AppStorage("needFirstTutorial", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-      var needFirstTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needFirstTutorial")
-    @AppStorage("needSafariTutorial", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-      var needSafariTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needSafariTutorial")
+    @AppStorage("needFirstTutorial", store: userDefaults)
+      private var needFirstTutorial: Bool = userDefaults.bool(forKey: "needFirstTutorial")
+    @AppStorage("needSafariTutorial", store: userDefaults)
+      private var needSafariTutorial: Bool = userDefaults.bool(forKey: "needSafariTutorial")
     @State private var openSafariTutorialView: Bool = false
     
     @State private var defaultCSE: [String: Any] = [:]
@@ -41,12 +38,12 @@ struct ContentView: View {
     
     #if iOS
     // Get current icon
-    var alternateIconName: String? {
+    private var alternateIconName: String? {
         UIApplication.shared.alternateIconName
     }
     // Purchased ChangeIcon?
     @ObservedObject var storeManager = StoreManager()
-    var linkDestination: some View {
+    private var linkDestination: some View {
         if UserDefaults().bool(forKey: "haveIconChange") {
             return AnyView(IconSettingView())
         } else {
@@ -220,8 +217,8 @@ struct ContentView: View {
             .animation(.easeOut(duration: 0.2), value: useQuickCSE)
             .task {
                 // Initialize
-                defaultCSE = userDefaults?.dictionary(forKey: "defaultCSE") ?? [:]
-                privateCSE = userDefaults?.dictionary(forKey: "privateCSE") ?? [:]
+                defaultCSE = userDefaults.dictionary(forKey: "defaultCSE") ?? [:]
+                privateCSE = userDefaults.dictionary(forKey: "privateCSE") ?? [:]
             }
         }
         .navigationViewStyle(.stack)
