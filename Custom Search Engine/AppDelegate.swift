@@ -13,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         let currentRegion = Locale.current.region?.identifier
         
@@ -35,13 +34,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Update/Create database for v3.0 or later
         if lastVersion == "" || isUpdated(updateVer: "3.0", lastVer: lastVersion) {
+            // Change default settings for macOS or under iOS 17
             #if macOS
             userDefaults.set(true, forKey: "adv_ignorePOSTFallback")
             #endif
             if #unavailable(iOS 17.0) {
-                print("iOS 17.0 or later")
                 userDefaults.set(true, forKey: "adv_ignorePOSTFallback")
             }
+            
+            // Initialize settings
             userDefaults.set(true, forKey: "needFirstTutorial")
             userDefaults.set(true, forKey: "alsousepriv")
             if searchengine == nil {
@@ -50,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userDefaults.set("duckduckgo", forKey: "privsearchengine")
             resetCSE(target: "all")
             
-            // Update old CSE
+            // Update old CSE settings
             if (urltop != "" || urlsuffix != "") && defaultCSE == nil {
                 let defaultCSE: [String: Any] = [
                     "name": "Default Search Engine",
@@ -64,6 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Automatically corrects settings to match OS version
+        // Cannot use Google under iOS 17
         if #unavailable(iOS 17.0, macOS 14.0) {
             if searchengine == "google" || searchengine == nil {
                 if currentRegion == "CN" {

@@ -7,6 +7,8 @@
 
 import Foundation
 
+// This is a list of Recommended Search Engines for use in tutorials and search engine setup.
+
 struct recommendCSEList {
     static let data: [[String: Any]] = [
         [

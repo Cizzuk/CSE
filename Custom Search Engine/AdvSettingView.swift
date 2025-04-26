@@ -10,17 +10,17 @@ import SwiftUI
 struct AdvSettingView: View {
     //Load advanced settings
     @AppStorage("needFirstTutorial", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var needFirstTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needFirstTutorial")
+      var needFirstTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needFirstTutorial")
     @AppStorage("adv_disablechecker", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var disablechecker: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_disablechecker")
+      var disablechecker: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_disablechecker")
     @AppStorage("adv_ignoreFocusFilter", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var ignoreFocusFilter: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_ignoreFocusFilter")
+      var ignoreFocusFilter: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_ignoreFocusFilter")
     @AppStorage("adv_ignorePOSTFallback", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var ignorePOSTFallback: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_ignorePOSTFallback")
+      var ignorePOSTFallback: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_ignorePOSTFallback")
     @AppStorage("adv_icloud_disableUploadCSE", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var icloud_disableUploadCSE: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_icloud_disableUploadCSE")
+      var icloud_disableUploadCSE: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "adv_icloud_disableUploadCSE")
     @AppStorage("adv_resetCSEs", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var resetCSEs: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "adv_resetCSEs") ?? ""
+      var resetCSEs: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "adv_resetCSEs") ?? ""
     @State private var allowReset: Bool = false
     
     var body: some View {

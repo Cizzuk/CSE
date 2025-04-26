@@ -29,17 +29,19 @@ struct ContentView: View {
     @AppStorage("privsearchengine", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
     var privsearchengine: String = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.string(forKey: "privsearchengine") ?? "duckduckgo"
     
+    // Load app settings
     @AppStorage("usePrivateCSE", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var usePrivateCSE: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "usePrivateCSE")
+      var usePrivateCSE: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "usePrivateCSE")
     @AppStorage("useQuickCSE", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var useQuickCSE: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "useQuickCSE")
+      var useQuickCSE: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "useQuickCSE")
     @AppStorage("useEmojiSearch", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var useEmojiSearch: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "useEmojiSearch")
+      var useEmojiSearch: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "useEmojiSearch")
     
+    // Sheets
     @AppStorage("needFirstTutorial", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var needFirstTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needFirstTutorial")
+      var needFirstTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needFirstTutorial")
     @AppStorage("needSafariTutorial", store: UserDefaults(suiteName: "group.com.tsg0o0.cse"))
-    var needSafariTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needSafariTutorial")
+      var needSafariTutorial: Bool = UserDefaults(suiteName: "group.com.tsg0o0.cse")!.bool(forKey: "needSafariTutorial")
     @State private var openSafariTutorialView: Bool = false
     
     @State private var defaultCSE: [String: Any] = [:]
@@ -225,6 +227,7 @@ struct ContentView: View {
             .animation(.easeOut(duration: 0.2), value: usePrivateCSE)
             .animation(.easeOut(duration: 0.2), value: useQuickCSE)
             .task {
+                // Initialize
                 defaultCSE = userDefaults?.dictionary(forKey: "defaultCSE") ?? [:]
                 privateCSE = userDefaults?.dictionary(forKey: "privateCSE") ?? [:]
             }

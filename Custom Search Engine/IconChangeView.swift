@@ -30,6 +30,7 @@ struct IconSettingView: View {
         .navigationTitle("Change App Icon")
         .navigationBarTitleDisplayMode(.inline)
     }
+    
     func iconItem(iconName: String, iconID: String) -> some View {
         HStack {
             Image(iconID + "-pre")
@@ -59,6 +60,7 @@ struct PurchaseView: View {
     @State private var showSucAlert = false
     @State private var showFailAlert = false
     @State private var showRestoreSucAlert = false
+    
     var body: some View {
         List {
 //            IMPORTANT: This code is not currently used, but it is kept here for future reference.
@@ -162,6 +164,7 @@ struct PurchaseView: View {
         .navigationTitle("Change App Icon")
         .navigationBarTitleDisplayMode(.inline)
     }
+    
     func iconItem(iconName: String, iconID: String) -> some View {
         HStack {
             Image(iconID + "-pre")

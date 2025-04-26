@@ -60,11 +60,12 @@ struct QuickSEListView: View {
             EditButton()
         }
         .task {
-            // (Re)load Data
+            // Initialize
             quickCSE = userDefaults.dictionary(forKey: "quickCSE") as? [String: [String: Any]] ?? [:]
         }
     }
     
+    // Delete a Quick Search Engine
     private func deleteSE(at offsets: IndexSet) {
         let keys = quickCSE.keys.sorted()
         for offset in offsets {

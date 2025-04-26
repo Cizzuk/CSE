@@ -9,6 +9,7 @@ import CloudKit
 import Combine
 import UIKit
 
+// Structure of a single device's CSE data
 struct DeviceCSEs: Identifiable, Hashable {
     let id: CKRecord.ID
     let modificationDate: Date?
@@ -29,23 +30,26 @@ struct DeviceCSEs: Identifiable, Hashable {
 final class CloudKitManager: ObservableObject {
     private let database: CKDatabase = CKContainer(identifier: "iCloud.net.cizzuk.cse").privateCloudDatabase
     
-    @Published var allCSEs: [DeviceCSEs] = []
-    @Published var error: Error?
-    @Published var isLoading: Bool = false
-    @Published var isLocked: Bool = false
+    @Published var allCSEs: [DeviceCSEs] = [] // All data from iCloud
+    @Published var error: Error? // Error message
+    @Published var isLoading: Bool = false // Indicates if the CloudKit is loading
+    @Published var isLocked: Bool = false // If the current view is locked
     
     // Upload CSEs
     func saveAll(mustUpload: Bool = false) {
         let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
         
+        // Check if upload is disabled
         if !mustUpload && userDefaults.bool(forKey: "adv_icloud_disableUploadCSE") {
             return
         }
         
+        // Get userDefaults
         let defaultCSE: [String: Any] = userDefaults.dictionary(forKey: "defaultCSE") ?? [:]
         let privateCSE: [String: Any] = userDefaults.dictionary(forKey: "privateCSE") ?? [:]
         let quickCSE: [String: [String: Any]] = userDefaults.dictionary(forKey: "quickCSE") as? [String: [String: Any]] ?? [:]
         
+        // Convert to JSON string
         let defaultCSEJSON = cseDataToJSONString(dictionary: defaultCSE)
         let privateCSEJSON = cseDataToJSONString(dictionary: privateCSE)
         let quickCSEJSON = cseDataToJSONString(dictionary: quickCSE)
@@ -54,13 +58,14 @@ final class CloudKitManager: ObservableObject {
         let recordID = CKRecord.ID(recordName: deviceID)
         let record = CKRecord(recordType: "DeviceCSEs", recordID: recordID)
         
-        // macOS Catalyst support
+        // Create device name
         #if macOS
         let deviceName = "Mac Catalyst / " + UIDevice.current.systemName + " " + UIDevice.current.systemVersion
         #else
         let deviceName = UIDevice.current.name + " / " + UIDevice.current.systemName + " " + UIDevice.current.systemVersion
         #endif
         
+        // Set record values
         record["deviceName"] = deviceName
         record["defaultCSE"] = defaultCSEJSON
         if userDefaults.bool(forKey: "usePrivateCSE") {
@@ -74,13 +79,15 @@ final class CloudKitManager: ObservableObject {
             record["quickCSE"] = ""
         }
         
+        // Save record
         let operation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
         operation.savePolicy = .allKeys
         
         database.add(operation)
     }
     
-    func cseDataToJSONString(dictionary: Any) -> String {
+    // Convert dictionary to JSON string
+    private func cseDataToJSONString(dictionary: Any) -> String {
         guard let jsonData = try? JSONSerialization.data(withJSONObject: dictionary, options: []),
               let jsonString = String(data: jsonData, encoding: .utf8) else {
             return ""
@@ -94,13 +101,14 @@ final class CloudKitManager: ObservableObject {
         isLoading = true
         self.allCSEs.removeAll()
         
+        // Fetch records
         let query = CKQuery(recordType: "DeviceCSEs", predicate: NSPredicate(value: true))
         let sortDescriptor = NSSortDescriptor(key: "modificationDate", ascending: false)
         query.sortDescriptors = [sortDescriptor]
         
         let operation = CKQueryOperation(query: query)
         
-        // Fetch records
+        // Save record or get error
         operation.recordMatchedBlock = { (recordID: CKRecord.ID, result: Result<CKRecord, Error>) in
             switch result {
             case .success(let record):
@@ -119,7 +127,7 @@ final class CloudKitManager: ObservableObject {
             }
         }
         
-        // Completion block
+        // Loading handler
         operation.queryResultBlock = { result in
             DispatchQueue.main.async {
                 switch result {
@@ -135,8 +143,10 @@ final class CloudKitManager: ObservableObject {
         database.add(operation)
     }
     
+    // Delete record
     func delete(recordID: CKRecord.ID) {
         isLocked = true
+        
         let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [recordID])
         operation.modifyRecordsResultBlock = { result in
             DispatchQueue.main.async {
