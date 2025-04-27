@@ -65,7 +65,7 @@
          </BuildableReference>
       </BuildableProductRunnable>
       <StoreKitConfigurationFileReference
-         identifier = "../../Custom Search Engine/Customize Search Engine.storekit">
+         identifier = "../../CSE/CSE.storekit">
       </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
