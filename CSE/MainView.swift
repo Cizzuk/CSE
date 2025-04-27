@@ -217,20 +217,26 @@ struct ContentView: View {
             .animation(.easeOut(duration: 0.2), value: useQuickCSE)
             .task {
                 // Initialize
-                defaultCSE = userDefaults.dictionary(forKey: "defaultCSE") ?? [:]
-                privateCSE = userDefaults.dictionary(forKey: "privateCSE") ?? [:]
+                initialize()
             }
         }
         .navigationViewStyle(.stack)
         // Tutorial sheets
-        .sheet(isPresented: $needFirstTutorial, content: {
+        .sheet(isPresented : $needFirstTutorial , onDismiss: {
+            initialize()
+        }) {
             FullTutorialView(isOpenSheet: $needFirstTutorial, isFirstTutorial: .constant(true))
-        })
+        }
         .sheet(isPresented: $needSafariTutorial, content: {
             SafariTutorialView(isOpenSheet: $needSafariTutorial, isFirstTutorial: .constant(false))
         })
         .sheet(isPresented: $openSafariTutorialView, content: {
             SafariTutorialView(isOpenSheet: $openSafariTutorialView, isFirstTutorial: .constant(false))
         })
+    }
+    
+    private func initialize() {
+        defaultCSE = userDefaults.dictionary(forKey: "defaultCSE") ?? [:]
+        privateCSE = userDefaults.dictionary(forKey: "privateCSE") ?? [:]
     }
 }
