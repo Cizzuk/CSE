@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "90C9BE11288BE17000E22FB8"
-               BuildableName = "Customize Search Engine.app"
-               BlueprintName = "Customize Search Engine"
+               BuildableName = "CSE.app"
+               BlueprintName = "CSE"
                ReferencedContainer = "container:Customize Search Engine.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -30,8 +30,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "90C9BE2E288BE17300E22FB8"
-               BuildableName = "Customize Search Engine Extension.appex"
-               BlueprintName = "Customize Search Engine Extension"
+               BuildableName = "CSE Extension.appex"
+               BlueprintName = "CSE Extension"
                ReferencedContainer = "container:Customize Search Engine.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -59,13 +59,13 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "90C9BE11288BE17000E22FB8"
-            BuildableName = "Customize Search Engine.app"
-            BlueprintName = "Customize Search Engine"
+            BuildableName = "CSE.app"
+            BlueprintName = "CSE"
             ReferencedContainer = "container:Customize Search Engine.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <StoreKitConfigurationFileReference
-         identifier = "../../Custom Search Engine/Customize Search Engine.storekit">
+         identifier = "../../CSE/CSE.storekit">
       </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
@@ -79,8 +79,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "90C9BE11288BE17000E22FB8"
-            BuildableName = "Customize Search Engine.app"
-            BlueprintName = "Customize Search Engine"
+            BuildableName = "CSE.app"
+            BlueprintName = "CSE"
             ReferencedContainer = "container:Customize Search Engine.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

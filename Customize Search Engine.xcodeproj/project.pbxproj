@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		90240FAF2BA54E68003C264A /* Customize Search Engine.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 90240FAE2BA54E68003C264A /* Customize Search Engine.storekit */; };
+		90240FAF2BA54E68003C264A /* CSE.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 90240FAE2BA54E68003C264A /* CSE.storekit */; };
 		903A4A212BA1D87F005E346B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903A4A202BA1D87F005E346B /* MainView.swift */; };
 		908FBC952BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */; };
 		908FBC962BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */; };
 		90C9BE16288BE17000E22FB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9BE15288BE17000E22FB8 /* AppDelegate.swift */; };
-		90C9BE30288BE17300E22FB8 /* Customize Search Engine Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 90C9BE2F288BE17300E22FB8 /* Customize Search Engine Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		90C9BE30288BE17300E22FB8 /* CSE Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 90C9BE2F288BE17300E22FB8 /* CSE Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		90C9BE35288BE17300E22FB8 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9BE34288BE17300E22FB8 /* SafariWebExtensionHandler.swift */; };
 		90C9BE38288BE17300E22FB8 /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE37288BE17300E22FB8 /* _locales */; };
 		90C9BE3A288BE17300E22FB8 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE39288BE17300E22FB8 /* images */; };
@@ -52,7 +52,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				90C9BE30288BE17300E22FB8 /* Customize Search Engine Extension.appex in Embed Foundation Extensions */,
+				90C9BE30288BE17300E22FB8 /* CSE Extension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -60,15 +60,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		90240FAE2BA54E68003C264A /* Customize Search Engine.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Customize Search Engine.storekit"; sourceTree = "<group>"; };
+		90240FAE2BA54E68003C264A /* CSE.storekit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CSE.storekit; sourceTree = "<group>"; };
 		903A4A202BA1D87F005E346B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		90AD4058288E74CD00C5E21A /* Custom Search Engine Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Custom Search Engine Extension.entitlements"; sourceTree = "<group>"; };
-		90C9BE12288BE17000E22FB8 /* Customize Search Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Customize Search Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		90AD4058288E74CD00C5E21A /* CSE Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CSE Extension.entitlements"; sourceTree = "<group>"; };
+		90C9BE12288BE17000E22FB8 /* CSE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90C9BE15288BE17000E22FB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90C9BE29288BE17200E22FB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90C9BE2A288BE17200E22FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		90C9BE2F288BE17300E22FB8 /* Customize Search Engine Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Customize Search Engine Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		90C9BE2F288BE17300E22FB8 /* CSE Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "CSE Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90C9BE34288BE17300E22FB8 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
 		90C9BE37288BE17300E22FB8 /* _locales */ = {isa = PBXFileReference; lastKnownFileType = folder; path = _locales; sourceTree = "<group>"; };
 		90C9BE39288BE17300E22FB8 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
@@ -77,7 +77,7 @@
 		90C9BE3F288BE17300E22FB8 /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = content.js; sourceTree = "<group>"; };
 		90C9BE41288BE17300E22FB8 /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = popup.html; sourceTree = "<group>"; };
 		90C9BE47288BE17300E22FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		90C9BE52288D09DB00E22FB8 /* Custom Search Engine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Custom Search Engine.entitlements"; sourceTree = "<group>"; };
+		90C9BE52288D09DB00E22FB8 /* CSE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CSE.entitlements; sourceTree = "<group>"; };
 		BE1642DE2D23D696008A42F8 /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 		BE5342E22C9E338F00AE1DB3 /* IconChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconChangeView.swift; sourceTree = "<group>"; };
 		BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvSettingView.swift; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 			membershipExceptions = (
 				SetFocusSE.swift,
 			);
-			target = 90C9BE2E288BE17300E22FB8 /* Customize Search Engine Extension */;
+			target = 90C9BE2E288BE17300E22FB8 /* CSE Extension */;
 		};
 		BE289FE22C8DAE07005BBDC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -109,7 +109,7 @@
 				SetUseEmojiSearch.swift,
 				SetUseQuickSearch.swift,
 			);
-			target = 90C9BE11288BE17000E22FB8 /* Customize Search Engine */;
+			target = 90C9BE11288BE17000E22FB8 /* CSE */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -141,8 +141,8 @@
 				BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */,
 				BE289FCD2C8DA7C8005BBDC6 /* Intent */,
 				908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */,
-				90C9BE14288BE17000E22FB8 /* Custom Search Engine */,
-				90C9BE33288BE17300E22FB8 /* Custom Search Engine Extension */,
+				90C9BE14288BE17000E22FB8 /* CSE */,
+				90C9BE33288BE17300E22FB8 /* CSE Extension */,
 				90C9BE13288BE17000E22FB8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -150,16 +150,16 @@
 		90C9BE13288BE17000E22FB8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				90C9BE12288BE17000E22FB8 /* Customize Search Engine.app */,
-				90C9BE2F288BE17300E22FB8 /* Customize Search Engine Extension.appex */,
+				90C9BE12288BE17000E22FB8 /* CSE.app */,
+				90C9BE2F288BE17300E22FB8 /* CSE Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		90C9BE14288BE17000E22FB8 /* Custom Search Engine */ = {
+		90C9BE14288BE17000E22FB8 /* CSE */ = {
 			isa = PBXGroup;
 			children = (
-				90C9BE52288D09DB00E22FB8 /* Custom Search Engine.entitlements */,
+				90C9BE52288D09DB00E22FB8 /* CSE.entitlements */,
 				BE5CEB632DAE8DCE003A2F3E /* src */,
 				90C9BE15288BE17000E22FB8 /* AppDelegate.swift */,
 				BEFCDAED2DB49844009F9C07 /* CloudKitManager.swift */,
@@ -170,22 +170,22 @@
 				BE7374D42D86DDF300976342 /* LicenseView.swift */,
 				BE5342E22C9E338F00AE1DB3 /* IconChangeView.swift */,
 				BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */,
-				90240FAE2BA54E68003C264A /* Customize Search Engine.storekit */,
+				90240FAE2BA54E68003C264A /* CSE.storekit */,
 				90C9BE29288BE17200E22FB8 /* Assets.xcassets */,
 				90C9BE2A288BE17200E22FB8 /* Info.plist */,
 			);
-			path = "Custom Search Engine";
+			path = CSE;
 			sourceTree = "<group>";
 		};
-		90C9BE33288BE17300E22FB8 /* Custom Search Engine Extension */ = {
+		90C9BE33288BE17300E22FB8 /* CSE Extension */ = {
 			isa = PBXGroup;
 			children = (
-				90AD4058288E74CD00C5E21A /* Custom Search Engine Extension.entitlements */,
+				90AD4058288E74CD00C5E21A /* CSE Extension.entitlements */,
 				90C9BE34288BE17300E22FB8 /* SafariWebExtensionHandler.swift */,
 				90C9BE47288BE17300E22FB8 /* Info.plist */,
 				90C9BE36288BE17300E22FB8 /* Resources */,
 			);
-			path = "Custom Search Engine Extension";
+			path = "CSE Extension";
 			sourceTree = "<group>";
 		};
 		90C9BE36288BE17300E22FB8 /* Resources */ = {
@@ -214,9 +214,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		90C9BE11288BE17000E22FB8 /* Customize Search Engine */ = {
+		90C9BE11288BE17000E22FB8 /* CSE */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 90C9BE4F288BE17300E22FB8 /* Build configuration list for PBXNativeTarget "Customize Search Engine" */;
+			buildConfigurationList = 90C9BE4F288BE17300E22FB8 /* Build configuration list for PBXNativeTarget "CSE" */;
 			buildPhases = (
 				90C9BE0E288BE17000E22FB8 /* Sources */,
 				90C9BE0F288BE17000E22FB8 /* Frameworks */,
@@ -228,14 +228,14 @@
 			dependencies = (
 				90C9BE32288BE17300E22FB8 /* PBXTargetDependency */,
 			);
-			name = "Customize Search Engine";
+			name = CSE;
 			productName = "Custom Search Engine";
-			productReference = 90C9BE12288BE17000E22FB8 /* Customize Search Engine.app */;
+			productReference = 90C9BE12288BE17000E22FB8 /* CSE.app */;
 			productType = "com.apple.product-type.application";
 		};
-		90C9BE2E288BE17300E22FB8 /* Customize Search Engine Extension */ = {
+		90C9BE2E288BE17300E22FB8 /* CSE Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 90C9BE4B288BE17300E22FB8 /* Build configuration list for PBXNativeTarget "Customize Search Engine Extension" */;
+			buildConfigurationList = 90C9BE4B288BE17300E22FB8 /* Build configuration list for PBXNativeTarget "CSE Extension" */;
 			buildPhases = (
 				90C9BE2B288BE17300E22FB8 /* Sources */,
 				90C9BE2C288BE17300E22FB8 /* Frameworks */,
@@ -245,9 +245,9 @@
 			);
 			dependencies = (
 			);
-			name = "Customize Search Engine Extension";
+			name = "CSE Extension";
 			productName = "Custom Search Engine Extension";
-			productReference = 90C9BE2F288BE17300E22FB8 /* Customize Search Engine Extension.appex */;
+			productReference = 90C9BE2F288BE17300E22FB8 /* CSE Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -284,14 +284,16 @@
 				es,
 				uk,
 				Base,
+				ar,
+				pt,
 			);
 			mainGroup = 90C9BE09288BE17000E22FB8;
 			productRefGroup = 90C9BE13288BE17000E22FB8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				90C9BE11288BE17000E22FB8 /* Customize Search Engine */,
-				90C9BE2E288BE17300E22FB8 /* Customize Search Engine Extension */,
+				90C9BE11288BE17000E22FB8 /* CSE */,
+				90C9BE2E288BE17300E22FB8 /* CSE Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -301,7 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90240FAF2BA54E68003C264A /* Customize Search Engine.storekit in Resources */,
+				90240FAF2BA54E68003C264A /* CSE.storekit in Resources */,
 				90C9BE48288BE17300E22FB8 /* Assets.xcassets in Resources */,
 				BEE22EE62D44E93000EDA51A /* Localizable.xcstrings in Resources */,
 				908FBC952BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */,
@@ -358,7 +360,7 @@
 /* Begin PBXTargetDependency section */
 		90C9BE32288BE17300E22FB8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 90C9BE2E288BE17300E22FB8 /* Customize Search Engine Extension */;
+			target = 90C9BE2E288BE17300E22FB8 /* CSE Extension */;
 			targetProxy = 90C9BE31288BE17300E22FB8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -431,12 +433,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = "Custom Search Engine/Custom Search Engine.entitlements";
+				CODE_SIGN_ENTITLEMENTS = CSE/CSE.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Custom Search Engine/Info.plist";
+				INFOPLIST_FILE = CSE/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CSE;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
@@ -447,7 +450,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.6;
+				MARKETING_VERSION = 3.7;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -472,12 +475,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Custom Search Engine Extension/Custom Search Engine Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "CSE Extension/CSE Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Custom Search Engine Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = CSE;
+				INFOPLIST_FILE = "CSE Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "CSE Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -486,7 +489,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.6;
+				MARKETING_VERSION = 3.7;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -573,12 +576,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = "Custom Search Engine/Custom Search Engine.entitlements";
+				CODE_SIGN_ENTITLEMENTS = CSE/CSE.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Custom Search Engine/Info.plist";
+				INFOPLIST_FILE = CSE/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CSE;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
@@ -589,7 +593,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.6;
+				MARKETING_VERSION = 3.7;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -614,12 +618,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Custom Search Engine Extension/Custom Search Engine Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "CSE Extension/CSE Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Custom Search Engine Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = CSE;
+				INFOPLIST_FILE = "CSE Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "CSE Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -628,7 +632,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.6;
+				MARKETING_VERSION = 3.7;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -778,12 +782,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Custom Search Engine Extension/Custom Search Engine Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "CSE Extension/CSE Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Custom Search Engine Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = CSE;
+				INFOPLIST_FILE = "CSE Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "CSE Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -792,7 +796,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.6;
+				MARKETING_VERSION = 3.7;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -815,12 +819,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Custom Search Engine Extension/Custom Search Engine Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "CSE Extension/CSE Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Custom Search Engine Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = CSE;
+				INFOPLIST_FILE = "CSE Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "CSE Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -829,7 +833,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.6;
+				MARKETING_VERSION = 3.7;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -854,12 +858,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = "Custom Search Engine/Custom Search Engine.entitlements";
+				CODE_SIGN_ENTITLEMENTS = CSE/CSE.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Custom Search Engine/Info.plist";
+				INFOPLIST_FILE = CSE/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CSE;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
@@ -870,7 +875,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.6;
+				MARKETING_VERSION = 3.7;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -897,12 +902,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = "Custom Search Engine/Custom Search Engine.entitlements";
+				CODE_SIGN_ENTITLEMENTS = CSE/CSE.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Custom Search Engine/Info.plist";
+				INFOPLIST_FILE = CSE/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CSE;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
@@ -913,7 +919,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.6;
+				MARKETING_VERSION = 3.7;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -948,7 +954,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Release macOS";
 		};
-		90C9BE4B288BE17300E22FB8 /* Build configuration list for PBXNativeTarget "Customize Search Engine Extension" */ = {
+		90C9BE4B288BE17300E22FB8 /* Build configuration list for PBXNativeTarget "CSE Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				90C9BE4C288BE17300E22FB8 /* Debug */,
@@ -959,7 +965,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Release macOS";
 		};
-		90C9BE4F288BE17300E22FB8 /* Build configuration list for PBXNativeTarget "Customize Search Engine" */ = {
+		90C9BE4F288BE17300E22FB8 /* Build configuration list for PBXNativeTarget "CSE" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				90C9BE50288BE17300E22FB8 /* Debug */,

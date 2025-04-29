@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct QuickSEListView: View {
-    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
-    @State var quickCSE: [String: [String: Any]] = [:]
+    @State private var quickCSE: [String: [String: Any]] = [:]
     
     var body: some View {
         List {
@@ -60,11 +59,12 @@ struct QuickSEListView: View {
             EditButton()
         }
         .task {
-            // (Re)load Data
+            // Initialize
             quickCSE = userDefaults.dictionary(forKey: "quickCSE") as? [String: [String: Any]] ?? [:]
         }
     }
     
+    // Delete a Quick Search Engine
     private func deleteSE(at offsets: IndexSet) {
         let keys = quickCSE.keys.sorted()
         for offset in offsets {

@@ -12,6 +12,12 @@
     },
     "© Cizzuk" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "© Cizzuk"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -48,6 +54,12 @@
             "value" : "© Cizzuk"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "© Cizzuk"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -76,6 +88,12 @@
     },
     "${toggle} Emoji Search" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} تشغيل إيموجي بحث"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -106,6 +124,12 @@
             "value" : "${toggle}: 이모티콘 검색"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} Busca Emoji"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -134,6 +158,12 @@
     },
     "${toggle} Emoji Search ${state}" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} تشغيل إيموجي بحث ${state}"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -164,6 +194,12 @@
             "value" : "${toggle}: 이모티콘 검색 ${state}"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} Busca Emoji ${state}"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -192,6 +228,12 @@
     },
     "${toggle} Quick Search" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} تشغيل بحث السريع"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -222,6 +264,12 @@
             "value" : "${toggle}: 빠른 검색"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} Busca Rápida"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -250,6 +298,12 @@
     },
     "${toggle} Quick Search ${state}" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} تشغيل بحث السريع ${state}"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -278,6 +332,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "${toggle}: 빠른 검색 ${state}"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} Busca Rápida ${state}"
           }
         },
         "ru" : {
@@ -311,6 +371,12 @@
     },
     "360 Search" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "360 Search"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -336,6 +402,12 @@
           }
         },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "360 Search"
+          }
+        },
+        "pt" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "360 Search"
@@ -369,6 +441,12 @@
     },
     "Add New Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إضافة محرك بحث جديد"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -399,6 +477,12 @@
             "value" : "검색 엔진 추가"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionar Novo Buscador"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -427,6 +511,12 @@
     },
     "Add POST Data" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إضافة بيانات POST"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -457,6 +547,12 @@
             "value" : "POST 데이터 추가"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionar Dados POST"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -485,6 +581,12 @@
     },
     "Advanced Settings" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إعدادات متقدمة"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -515,6 +617,12 @@
             "value" : "고급 설정"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajustes Avançados"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -543,6 +651,12 @@
     },
     "Also Use in Private Browsing" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الاستخدام في التصفح الخاص أيضًا"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -573,6 +687,12 @@
             "value" : "개인정보 보호 브라우징에서도 사용"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usar Também na Navegação Privada"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -601,6 +721,12 @@
     },
     "An error occurred while loading or updating data" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حدث خطأ أثناء تحميل أو تحديث البيانات"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -631,6 +757,12 @@
             "value" : "데이터를 로드하거나 업데이트하는 동안 오류가 발생했습니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ocorreu um erro ao carregar ou atualizar os dados"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -659,6 +791,12 @@
     },
     "And recommended to Deny for Other Websites." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ومن المستحسن الرفض للمواقع الأخرى."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -689,6 +827,12 @@
             "value" : "또한 다른 웹사이트에서는 '거부'로 설정하는 것이 좋습니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E recomendado negar para outros sites."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -717,6 +861,12 @@
     },
     "Available Icons" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الأيقونات المتاحة"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -747,6 +897,12 @@
             "value" : "사용 가능한 아이콘"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ícones Disponíveis"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -775,6 +931,12 @@
     },
     "Available icons may change in the future." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قد تتغير الأيقونات المتاحة في المستقبل."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -805,6 +967,12 @@
             "value" : "사용 가능한 아이콘은 향후 변경될 수 있습니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Os ícones disponíveis podem mudar no futuro."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -833,6 +1001,12 @@
     },
     "Baidu" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baidu"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -858,6 +1032,12 @@
           }
         },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baidu"
+          }
+        },
+        "pt" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Baidu"
@@ -894,6 +1074,12 @@
     },
     "Before you can start using CSE, you need to do some setup." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قبل أن تتمكن من البدء باستخدام CSE، تحتاج إلى إجراء بعض الإعدادات."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -924,6 +1110,12 @@
             "value" : "CSE를 사용하기 전에 몇 가지 설정이 필요합니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Antes de começar a usar o CSE, você precisa fazer algumas configurações."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -952,6 +1144,12 @@
     },
     "Bing" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bing"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -977,6 +1175,12 @@
           }
         },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bing"
+          }
+        },
+        "pt" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bing"
@@ -1013,6 +1217,12 @@
     },
     "Blank to disable CSE" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اتركه فارغاً لتعطيل CSE"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1043,6 +1253,12 @@
             "value" : "공백으로 설정하고 CSE를 비활성화하기"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deixe em branco para desativar o CSE"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1071,6 +1287,12 @@
     },
     "Cancel" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إلغاء"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1101,6 +1323,12 @@
             "value" : "취소"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1129,6 +1357,12 @@
     },
     "Change App Icon" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تغيير أيقونة التطبيق"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1159,6 +1393,12 @@
             "value" : "앱 아이콘"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alterar Ícone do Aplicativo"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1187,6 +1427,12 @@
     },
     "Choose a search engine below or customize it later." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اختر محرك بحث أدناه أو قم بتخصيصه لاحقًا."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1217,6 +1463,12 @@
             "value" : "아래에서 검색엔진을 선택하거나 나중에 직접 커스터마이징할 수 있습니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolha um buscador abaixo ou personalize-o depois."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1245,6 +1497,12 @@
     },
     "Choose Device" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اختر الجهاز"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1275,6 +1533,12 @@
             "value" : "장치 선택"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolher Dispositivo"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1303,6 +1567,12 @@
     },
     "Contact" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اتصل"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1331,6 +1601,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "문의"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contato"
           }
         },
         "ru" : {
@@ -1364,6 +1640,12 @@
     },
     "CSE Settings" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إعدادات CSE"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1392,6 +1674,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSE 설정"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajustes do CSE"
           }
         },
         "ru" : {
@@ -1442,6 +1730,12 @@
     },
     "Cut Long Query" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قص الاستعلام الطويل"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1472,6 +1766,12 @@
             "value" : "긴 검색어 줄이기"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cortar Consulta Longa"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1500,6 +1800,12 @@
     },
     "Default Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "محرك البحث الافتراضي"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1528,6 +1834,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "기본 검색 엔진"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscador Padrão"
           }
         },
         "ru" : {
@@ -1568,6 +1880,12 @@
     },
     "Disable CSE" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعطيل CSE"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1598,6 +1916,12 @@
             "value" : "CSE 비활성화"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desativar CSE"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1626,6 +1950,12 @@
     },
     "Disable Default Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعطيل محرك البحث الافتراضي"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1656,6 +1986,12 @@
             "value" : "기본 검색 엔진 비활성화"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desativar Buscador Padrão"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1684,6 +2020,12 @@
     },
     "Disable Percent-encoding" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعطيل تشفير النسبة المئوية"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1712,6 +2054,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "퍼센트 인코딩 비활성화"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desativar Codificação de Percentual"
           }
         },
         "ru" : {
@@ -1752,6 +2100,12 @@
     },
     "Done" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1782,6 +2136,12 @@
             "value" : "완료"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1810,6 +2170,12 @@
     },
     "DuckDuckGo" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuckDuckGo"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1835,6 +2201,12 @@
           }
         },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuckDuckGo"
+          }
+        },
+        "pt" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "DuckDuckGo"
@@ -1871,6 +2243,12 @@
     },
     "Ecosia" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ecosia"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1896,6 +2274,12 @@
           }
         },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ecosia"
+          }
+        },
+        "pt" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ecosia"
@@ -1932,6 +2316,12 @@
     },
     "Edit Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعديل محرك البحث"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1962,6 +2352,12 @@
             "value" : "검색 엔진 편집"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar Buscador"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1990,6 +2386,12 @@
     },
     "Emoji Search" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إيموجي بحث"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2020,6 +2422,12 @@
             "value" : "이모티콘 검색"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busca Emoji"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2048,6 +2456,12 @@
     },
     "Enable Extension in Safari" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تمكين الإضافة في سفاري"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2076,6 +2490,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Safari에서 확장 프로그램 활성화"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Habilitar Extensão no Safari"
           }
         },
         "ru" : {
@@ -2116,6 +2536,12 @@
     },
     "Enjoy your Search Life!" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استمتع بحياة البحث!"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2146,6 +2572,12 @@
             "value" : "검색을 즐겨보세요!"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aproveite sua Vida de Busca!"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2174,6 +2606,12 @@
     },
     "Enter the keyword at the top to switch search engines." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أدخل الكلمة المفتاحية في الأعلى لتبديل محركات البحث."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2204,6 +2642,12 @@
             "value" : "키워드를 맨 앞에 입력하고 검색엔진을 전환합니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digite a palavra-chave no topo para alternar buscadores."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2232,6 +2676,12 @@
     },
     "Enter this keyword at the top to search with this search engine." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أدخل هذه الكلمة المفتاحية في الأعلى للبحث باستخدام هذا المحرك."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2262,6 +2712,12 @@
             "value" : "이 키워드를 맨 앞에 입력하면 이 검색엔진에서 검색됩니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digite esta palavra-chave no topo para buscar com este buscador."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2290,6 +2746,12 @@
     },
     "Example: '%@ your search'" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مثال: '%@ بحثك'"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2318,6 +2780,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "예: \"%@ 검색 방법\""
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exemplo: '%@ sua busca'"
           }
         },
         "ru" : {
@@ -2368,6 +2836,12 @@
     },
     "GitHub" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2393,6 +2867,12 @@
           }
         },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "pt" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "GitHub"
@@ -2426,6 +2906,12 @@
     },
     "Go to Settings → Apps → Safari → Extensions → Customize Search Engine and allow extension. Then 'Allow' the following webpage." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "انتقل إلى الإعدادات ← التطبيقات ← سفاري ← الملحقات ← Customize Search Engine واسمح بالإضافة. ثم 'السماح' لصفحة الويب التالية."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2447,13 +2933,19 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "設定 → アプリ → Safari →　拡張機能 → Customize Search Engine から拡張機能を許可してください。それから以下のWebページへのアクセスを「許可」してください。"
+            "value" : "設定 → アプリ → Safari → 拡張機能 → Customize Search Engine から拡張機能を許可してください。それから以下のWebページへのアクセスを「許可」してください。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "설정 → 앱 → Safari → 확장 프로그램 → Customize Search Engine 에서 확장 프로그램을 허용해 주세요. 그리고 다음 웹페이지에 대한 접근을 '허용'하십시오."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vá para Ajustes → Apps → Safari → Extensões → Customize Search Engine e permita a extensão. Depois, 'Permitir' a seguinte página da web."
           }
         },
         "ru" : {
@@ -2484,6 +2976,12 @@
     },
     "Google" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Google"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2509,6 +3007,12 @@
           }
         },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Google"
+          }
+        },
+        "pt" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Google"
@@ -2548,6 +3052,12 @@
     },
     "If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إذا قمت بتغيير إعدادات سفاري الخاصة بك أو لم يعمل CSE بشكل صحيح، قد تحتاج إلى إعادة هذا الشرح."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2578,6 +3088,12 @@
             "value" : "Safari 설정을 변경하거나 CSE가 제대로 작동하지 않는 경우 이 튜토리얼을 다시 시작해야 할 수도 있습니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se você alterar suas configurações do Safari ou o CSE não funcionar corretamente, pode ser necessário refazer este tutorial."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2606,6 +3122,12 @@
     },
     "If you enter only one emoji, you can search on Emojipedia.org." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إذا أدخلت إيموجي واحد فقط، يمكنك البحث على Emojipedia.org."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2627,13 +3149,19 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "絵文字を一文字だけ入力すると、Emojipedia.orgで検索します。"
+            "value" : "絵文字を1文字だけ入力すると、Emojipedia.orgで検索します。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "이모티콘을 한 글자만 입력하면 Emojipedia.org에서 검색합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se você digitar apenas um emoji, poderá buscar no Emojipedia.org."
           }
         },
         "ru" : {
@@ -2664,6 +3192,12 @@
     },
     "If you set Google as your search engine, please set another search engine." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إذا قمت بتعيين Google كمحرك بحث، يرجى تعيين محرك بحث آخر."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2692,6 +3226,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Google을 검색엔진으로 설정한 경우 다른 검색엔진으로 변경하세요."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se você configurar o Google como seu buscador, por favor configure outro buscador."
           }
         },
         "ru" : {
@@ -2742,6 +3282,12 @@
     },
     "Import from Other Device" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استيراد من جهاز آخر"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2770,6 +3316,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "다른 기기에서 가져오기"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importar de Outro Dispositivo"
           }
         },
         "ru" : {
@@ -2803,6 +3355,12 @@
     },
     "Keyword" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الكلمة المفتاحية"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2833,6 +3391,12 @@
             "value" : "키워드"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Palavra-chave"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2861,6 +3425,12 @@
     },
     "Keyword cannot be blank" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لا يمكن أن تكون الكلمة المفتاحية فارغة"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2891,6 +3461,12 @@
             "value" : "키워드는 비워둘 수 없습니다"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A palavra-chave não pode estar em branco"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2919,6 +3495,12 @@
     },
     "Last Updated: %@" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "آخر تحديث: %@"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2949,6 +3531,12 @@
             "value" : "최종 업데이트: %@"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Última Atualização: %@"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2977,6 +3565,12 @@
     },
     "License" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الرخصة"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3007,6 +3601,12 @@
             "value" : "라이선스"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Licença"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3035,6 +3635,12 @@
     },
     "Max Query Length" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أقصى طول للاستعلام"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3065,6 +3671,12 @@
             "value" : "검색어 최대 문자 수"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprimento Máximo da Consulta"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3093,6 +3705,12 @@
     },
     "May not work with some Safari search engines." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قد لا يعمل مع بعض محركات البحث في سفاري."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3121,6 +3739,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "일부 Safari 검색 엔진에서는 작동하지 않습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pode não funcionar com alguns buscadores do Safari."
           }
         },
         "ru" : {
@@ -3155,6 +3779,12 @@
     "More people will be able to continue using CSE for free" : {
       "extractionState" : "stale",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سيتمكن المزيد من الأشخاص من الاستمرار في استخدام CSE مجاناً"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3185,6 +3815,12 @@
             "value" : "더 많은 사람들이 CSE를 무료로 계속 사용할 수 있습니다"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mais pessoas poderão continuar usando o CSE gratuitamente"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3207,6 +3843,12 @@
     },
     "Name" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الاسم"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3237,6 +3879,12 @@
             "value" : "이름"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3265,6 +3913,12 @@
     },
     "Next" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "التالي"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3295,6 +3949,12 @@
             "value" : "다음"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Próximo"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3323,6 +3983,12 @@
     },
     "No devices found." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لم يتم العثور على أجهزة."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3353,6 +4019,12 @@
             "value" : "장치를 찾을 수 없습니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nenhum dispositivo encontrado."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3381,6 +4053,12 @@
     },
     "Only available if you have previously purchased this." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "متوفر فقط إذا كنت قد اشتريته سابقاً."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3411,6 +4089,12 @@
             "value" : "이전에 구입한 경우에만 사용할 수 있습니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disponível apenas se você tiver comprado anteriormente."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3439,6 +4123,12 @@
     },
     "Open Safari, go to Safari → Settings... and select 'Search' tab to find these settings." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "افتح سفاري، انتقل إلى سفاري ← الإعدادات... وحدد علامة تبويب 'بحث' للعثور على هذه الإعدادات."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3469,6 +4159,12 @@
             "value" : "Safari를 열고 Safari → 설정...을 선택한 후 '검색' 탭을 선택하면 이러한 설정을 확인할 수 있습니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abra o Safari, vá para Safari → Definições... e selecione a aba 'Busca' para encontrar estas configurações."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3497,6 +4193,12 @@
     },
     "Open Safari, go to Safari → Settings..., select 'Extensions' tab and enable CSE. Then 'Allow' the following webpage from 'Edit Websites...' button." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "افتح سفاري، انتقل إلى سفاري ← الإعدادات...، وحدد علامة تبويب 'الملحقات' وقم بتمكين CSE. ثم 'السماح' لصفحة الويب التالية من زر 'تحرير المواقع...'."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3527,6 +4229,12 @@
             "value" : "Safari를 열고 Safari → 설정...을 선택한 후 '확장 프로그램' 탭에서 CSE를 활성화합니다. 그리고 아래 웹페이지를 '웹 사이트 편집…' 버튼에서 '허용'하십시오."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abra o Safari, vá para Safari → Definições..., selecione a aba 'Extensões' e ative o CSE. Depois, 'Permitir' a seguinte página da web no botão 'Editar Sites...'."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3555,6 +4263,12 @@
     },
     "Operation" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "عملية"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3585,6 +4299,12 @@
             "value" : "작업"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operação"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3613,6 +4333,12 @@
     },
     "Please allow CSE at the following webpage" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يرجى السماح بـ CSE على صفحة الويب التالية"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3643,6 +4369,12 @@
             "value" : "아래 웹페이지에서 CSE를 허용해 주세요."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, permita o CSE na seguinte página da web"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3671,6 +4403,12 @@
     },
     "Please make sure that the following items are the same as your Safari settings" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يرجى التأكد من أن العناصر التالية هي نفسها إعدادات سفاري الخاصة بك"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3701,6 +4439,12 @@
             "value" : "아래 항목을 Safari의 설정과 동일하게 설정해 주세요."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, certifique-se de que os seguintes itens são os mesmos que suas configurações do Safari"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3729,6 +4473,12 @@
     },
     "POST Data" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بيانات POST"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3759,6 +4509,12 @@
             "value" : "POST 데이터"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dados POST"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3787,6 +4543,12 @@
     },
     "Privacy Policy" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سياسة الخصوصية"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3817,6 +4579,12 @@
             "value" : "개인정보 보호정책"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Política de Privacidade"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3845,6 +4613,12 @@
     },
     "Private Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "محرك بحث خاص"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3873,6 +4647,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "개인정보 보호 검색 엔진"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscador Privado"
           }
         },
         "ru" : {
@@ -3904,6 +4684,12 @@
     "Purchase Failed" : {
       "extractionState" : "stale",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فشلت عملية الشراء"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3934,6 +4720,12 @@
             "value" : "구매 실패"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falha na Compra"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3956,6 +4748,12 @@
     },
     "Purchase is currently not available." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الشراء غير متوفر حالياً."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3984,6 +4782,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "현재 구매할 수 없습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A compra não está disponível no momento."
           }
         },
         "ru" : {
@@ -4015,6 +4819,12 @@
     "Purchase Success!" : {
       "extractionState" : "stale",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نجاح عملية الشراء!"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4045,6 +4855,12 @@
             "value" : "구매 완료!"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compra Realizada com Sucesso!"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4068,6 +4884,12 @@
     "Purchase:" : {
       "extractionState" : "stale",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "شراء:"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4098,6 +4920,12 @@
             "value" : "구매 완료!"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compra:"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4120,6 +4948,12 @@
     },
     "Quick Search" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بحث السريع"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4150,6 +4984,12 @@
             "value" : "빠른 검색"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busca Rápida"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4178,6 +5018,12 @@
     },
     "Quick Search Engines" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "محركات بحث السريع"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4208,6 +5054,12 @@
             "value" : "빠른 검색 엔진"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscadores Rápidos"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4236,6 +5088,12 @@
     },
     "Recommended Search Engines" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "محركات البحث الموصى بها"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4264,6 +5122,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "추천 검색 엔진"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscadores Recomendados"
           }
         },
         "ru" : {
@@ -4304,6 +5168,12 @@
     },
     "Replace query with %s" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استبدال الاستعلام بـ %s"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4334,6 +5204,12 @@
             "value" : "쿼리를 %s로 대체합니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Substituir consulta por %s"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4362,6 +5238,12 @@
     },
     "Reset All Advanced Settings" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إعادة ضبط جميع الإعدادات المتقدمة"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4390,6 +5272,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "모든 고급 설정 재설정하기"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redefinir Todos os Ajustes Avançados"
           }
         },
         "ru" : {
@@ -4460,6 +5348,12 @@
     },
     "Restore Purchase" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استعادة الشراء"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4490,6 +5384,12 @@
             "value" : "구매 복원"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurar Compra"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4518,6 +5418,12 @@
     },
     "Restore Success!" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نجاح الاستعادة!"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4548,6 +5454,12 @@
             "value" : "복원에 성공했습니다!"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restauração Bem-sucedida!"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4576,6 +5488,12 @@
     },
     "Safari Settings" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إعدادات سفاري"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4606,6 +5524,12 @@
             "value" : "Safari 설정"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajustes do Safari"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4634,6 +5558,12 @@
     },
     "Save" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حفظ"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4664,6 +5594,12 @@
             "value" : "저장"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salvar"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4692,6 +5628,12 @@
     },
     "Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "محرك البحث"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4722,6 +5664,12 @@
             "value" : "검색 엔진"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscador"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4750,6 +5698,12 @@
     },
     "Search Engine URL" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "رابط محرك البحث"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4780,6 +5734,12 @@
             "value" : "검색 엔진 URL"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL do Buscador"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4808,6 +5768,12 @@
     },
     "Search URL" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "رابط البحث"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4838,6 +5804,12 @@
             "value" : "검색 URL"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL de Busca"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4866,6 +5838,12 @@
     },
     "Search URL cannot be blank" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لا يمكن أن يكون رابط البحث فارغاً"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4894,6 +5872,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "검색 URL은 비워둘 수 없습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A URL de busca não pode estar em branco"
           }
         },
         "ru" : {
@@ -4930,6 +5914,12 @@
     },
     "Set Default Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعيين محرك البحث الافتراضي"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4960,6 +5950,12 @@
             "value" : "기본 검색 엔진 설정"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Buscador Padrão"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4988,6 +5984,12 @@
     },
     "Set Default Search Engine to ${cseURL}" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعيين محرك البحث الافتراضي إلى ${cseURL}"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5018,6 +6020,12 @@
             "value" : "기본 검색 엔진을 ${cseURL}로 설정합니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Buscador Padrão como ${cseURL}"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5046,6 +6054,12 @@
     },
     "Set Emoji Search" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعيين إيموجي بحث"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5076,6 +6090,12 @@
             "value" : "이모티콘 검색 설정"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Busca Emoji"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5104,6 +6124,12 @@
     },
     "Set Private Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعيين محرك بحث خاص"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5134,6 +6160,12 @@
             "value" : "개인정보 보호 검색 엔진 설정"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Buscador Privado"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5162,6 +6194,12 @@
     },
     "Set Private Search Engine to ${cseURL}" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعيين محرك بحث خاص إلى ${cseURL}"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5192,6 +6230,12 @@
             "value" : "개인정보 보호 검색 엔진을 ${cseURL}로 설정합니다"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Buscador Privado como ${cseURL}"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5220,6 +6264,12 @@
     },
     "Set Quick Search" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعيين بحث السريع"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5250,6 +6300,12 @@
             "value" : "빠른 검색 설정"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Busca Rápida"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5278,6 +6334,12 @@
     },
     "Set Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعيين محرك البحث"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5308,6 +6370,12 @@
             "value" : "검색 엔진 설정"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Buscador"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5336,6 +6404,12 @@
     },
     "Sets a Custom Default Search Engine on CSE." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يتم تعيين محرك بحث افتراضي مخصص على CSE."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5366,6 +6440,12 @@
             "value" : "CSE에서 기본 검색 엔진을 설정합니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configura um Buscador Padrão Personalizado no CSE."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5394,6 +6474,12 @@
     },
     "Sets a Custom Private Search Engine on CSE." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يتم تعيين محرك بحث خاص مخصص على CSE."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5424,6 +6510,12 @@
             "value" : "CSE에서 개인정보 보호 검색 엔진을 설정합니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configura um Buscador Privado Personalizado no CSE."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5452,6 +6544,12 @@
     },
     "Sets a Custom Search Engine to be used during this Focus." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يتم تعيين محرك بحث مخصص ليتم استخدامه أثناء هذا التركيز."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5482,6 +6580,12 @@
             "value" : "이 집중 모드 중에 사용할 사용자 지정 검색 엔진을 설정합니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configura um Buscador Personalizado para ser usado durante este Foco."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5510,6 +6614,12 @@
     },
     "Setup Custom Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إعداد محرك بحث مخصص"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5540,6 +6650,12 @@
             "value" : "맞춤 검색 엔진 설정하기"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configurar Buscador Personalizado"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5568,6 +6684,12 @@
     },
     "Setup Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إعداد محرك بحث"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5598,6 +6720,12 @@
             "value" : "검색 엔진 설정"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configurar Buscador"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5626,6 +6754,12 @@
     },
     "Skip" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تخطي"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5654,6 +6788,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "건너뛰기"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pular"
           }
         },
         "ru" : {
@@ -5687,6 +6827,12 @@
     },
     "Sogou" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sogou"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5712,6 +6858,12 @@
           }
         },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sogou"
+          }
+        },
+        "pt" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sogou"
@@ -5748,6 +6900,12 @@
     },
     "Source" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المصدر"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5778,6 +6936,12 @@
             "value" : "소스 코드"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fonte"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5806,6 +6970,12 @@
     },
     "State" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الحالة"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5836,6 +7006,12 @@
             "value" : "상태"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5864,6 +7040,12 @@
     },
     "Support" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الدعم"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5894,6 +7076,12 @@
             "value" : "지원"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suporte"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5922,6 +7110,12 @@
     },
     "The search engine you select here can know your search queries. If you have concerns about privacy, I recommend choosing DuckDuckGo." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "محرك البحث الذي تحدده هنا يمكنه معرفة استفسارات البحث الخاصة بك. إذا كنت قلقًا بشأن الخصوصية، أوصي باختيار DuckDuckGo."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5952,6 +7146,12 @@
             "value" : "여기서 선택한 검색 엔진은 당신의 검색 내용을 알 수 있습니다. 프라이버시가 걱정된다면 DuckDuckGo를 선택하는 것이 좋다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O buscador que você selecionar aqui pode saber suas consultas de busca. Se você tiver preocupações sobre privacidade, recomendo escolher o DuckDuckGo."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5980,6 +7180,12 @@
     },
     "This is typically used when a search engine requires an authentication token or special parameters. If not configured correctly, CSE may not work properly." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يُستخدم هذا عادةً عندما يتطلب محرك البحث رمز توثيق أو معلمات خاصة. إذا لم يتم تكوينه بشكل صحيح، قد لا يعمل CSE بشكل صحيح."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6010,6 +7216,12 @@
             "value" : "이 기능은 일반적으로 검색 엔진에 인증 토큰이 필요하거나 특별한 매개 변수가 필요한 경우에 사용됩니다. 올바르게 설정하지 않으면 CSE가 제대로 작동하지 않을 수 있습니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Isso é tipicamente usado quando um buscador requer um token de autenticação ou parâmetros especiais. Se não for configurado corretamente, o CSE pode não funcionar corretamente."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6038,6 +7250,12 @@
     },
     "This keyword is already used in other" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هذه الكلمة المفتاحية مستخدمة بالفعل في أخرى"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6068,6 +7286,12 @@
             "value" : "이 키워드는 이미 다른"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta palavra-chave já está em uso em outro lugar"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6096,6 +7320,12 @@
     },
     "Toggle" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تبديل"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6126,6 +7356,12 @@
             "value" : "토글"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alternar"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6154,6 +7390,12 @@
     },
     "Turn" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعيين"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6184,6 +7426,12 @@
             "value" : "전환"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6212,6 +7460,12 @@
     },
     "Turn Emoji Search On or Off on CSE." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تشغيل إيموجي بحث تشغيل أو إيقاف على CSE."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6242,6 +7496,12 @@
             "value" : "CSE에서 이모티콘 검색을 켜거나 끕니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir ou Desativar Busca Emoji no CSE."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6270,6 +7530,12 @@
     },
     "Turn Quick Search On or Off on CSE." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تشغيل بحث السريع تشغيل أو إيقاف على CSE."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6300,6 +7566,12 @@
             "value" : "CSE에서 빠른 검색을 켜거나 끕니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir  ou Desativar Busca Rápida no CSE."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6328,6 +7600,12 @@
     },
     "URL" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "رابط"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6353,6 +7631,12 @@
           }
         },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL"
+          }
+        },
+        "pt" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL"
@@ -6386,6 +7670,12 @@
     },
     "Use different search engine in Private Browse" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استخدام محرك بحث مختلف في التصفح الخاص"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6414,6 +7704,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "개인정보 보호 브라우징으로 다른 검색 엔진 사용하기"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usar buscador diferente na Navegação Privada"
           }
         },
         "ru" : {
@@ -6447,6 +7743,12 @@
     },
     "Version: %@" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الإصدار: %@"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6477,6 +7779,12 @@
             "value" : "버전: %@"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versão: %@"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6505,6 +7813,12 @@
     },
     "Welcome to CSE" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مرحباً بك في CSE"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6533,6 +7847,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSE에 오신 것을 환영합니다"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bem-vindo ao CSE"
           }
         },
         "ru" : {
@@ -6573,6 +7893,12 @@
     },
     "Yahoo" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yahoo"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6598,6 +7924,12 @@
           }
         },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yahoo"
+          }
+        },
+        "pt" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yahoo"
@@ -6631,6 +7963,12 @@
     },
     "Yandex" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6656,6 +7994,12 @@
           }
         },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex"
+          }
+        },
+        "pt" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yandex"
@@ -6689,6 +8033,12 @@
     },
     "Yandex is currently unavailable." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex غير متوفر حالياً."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6717,6 +8067,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yandex는 현재 사용할 수 없습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O Yandex não está disponível no momento."
           }
         },
         "ru" : {
@@ -6750,6 +8106,12 @@
     },
     "You can find these settings in Settings → Apps → Safari." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يمكنك العثور على هذه الإعدادات في الإعدادات ← التطبيقات ← سفاري."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6778,6 +8140,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "설정 → 앱 → Safari에서 설정을 확인할 수 있습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Você pode encontrar estas configurações em Ajustes → Apps → Safari."
           }
         },
         "ru" : {
@@ -6809,6 +8177,12 @@
     "You will be able to change the application icon" : {
       "extractionState" : "stale",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ستتمكن من تغيير أيقونة التطبيق"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6839,6 +8213,12 @@
             "value" : "앱 아이콘을 변경할 수 있습니다"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Você poderá alterar o ícone do aplicativo"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6862,6 +8242,12 @@
     "Your purchase will support the development of CSE" : {
       "extractionState" : "stale",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سيدعم شراؤك تطوير CSE"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6890,6 +8276,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "구매를 통해 CSE의 개발을 지원할 수 있습니다"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sua compra apoiará o desenvolvimento do CSE"
           }
         },
         "ru" : {

@@ -9,14 +9,14 @@ import SwiftUI
 
 struct EditSEView: View {
     @Environment(\.dismiss) private var dismiss
-    //Load settings
-    @Binding var cseType: String
-    @Binding var cseID: String
-    @Binding var exCSEData: [String: Any]
-    @State var CSEData: [String: Any] = [:]
     
-    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
+    // Load settings
+    @Binding var cseType: String // "default", "private", or "quick"
+    @Binding var cseID: String // If quick search engine, use this ID
+    @Binding var exCSEData: [String: Any] // Original CSEData
+    @State private var CSEData: [String: Any] = [:] // Current CSEData, Changes when import from recommended search engines and iCloud
     
+    // CSE settings variables
     @State private var cseName: String = ""
     @State private var quickID: String = ""
     @State private var cseURL: String = ""
@@ -25,15 +25,18 @@ struct EditSEView: View {
     @State private var maxQueryLengthToggle: Bool = false
     @State private var maxQueryLength: Int? = nil
 
+    // Alerts
     @State private var showFailAlert: Bool = false
     @State private var showKeyUsedAlert: Bool = false
     @State private var showKeyBlankAlert: Bool = false
     @State private var showURLBlankAlert: Bool = false
     
+    // Sheets
     @State private var openEditSEViewRecommend: Bool = false
     @State private var openEditSEViewCloudImport: Bool = false
-    @State private var isFirstLoad: Bool = true
-    @State private var isNeedLoad: Bool = false
+    
+    @State private var isFirstLoad: Bool = true // Need to load exCSEData
+    @State private var isNeedLoad: Bool = false // Need to load CSEData
     
     var body: some View {
         List {
@@ -82,6 +85,7 @@ struct EditSEView: View {
                     .disableAutocorrection(true)
                     .keyboardType(.URL)
                     .textInputAutocapitalization(.never)
+                    .environment(\.layoutDirection, .leftToRight)
                     .submitLabel(.done)
             } header: {
                 Text("Search URL")
@@ -128,6 +132,7 @@ struct EditSEView: View {
                 Text("Advanced Settings")
             }
             
+            // Import Search Engine
             Section {
                 Button(action: {
                     openEditSEViewRecommend = true
@@ -197,11 +202,12 @@ struct EditSEView: View {
                 loadCSEData()
                 isFirstLoad = false
             }
+            // Remove invalid POST Data
             postEntries = postEntries.filter { !$0.key.isEmpty && !$0.value.isEmpty }
         }
     }
     
-    func saveCSEData() {
+    private func saveCSEData() {
         // Normalize Safari search engine URLs
         let replacements = [
             "https://google.com": "https://www.google.com",
@@ -222,6 +228,7 @@ struct EditSEView: View {
             .map { ["key": $0.key, "value": $0.value] }
             .filter { !$0["key"]!.isEmpty && !$0["value"]!.isEmpty }
         
+        // Check maxQueryLengthToggle is enabled
         let fixedMaxQueryLength: Int = maxQueryLengthToggle ? maxQueryLength ?? -1 : -1
         
         // Create temporary data
@@ -273,6 +280,7 @@ struct EditSEView: View {
             return
         }
         
+        // Upload CSEData to iCloud
         CloudKitManager().saveAll()
         
         dismiss()
@@ -292,6 +300,8 @@ struct EditSEView: View {
         cseURL = CSEData["url"] as? String ?? ""
         disablePercentEncoding = CSEData["disablePercentEncoding"] as? Bool ?? false
         maxQueryLength = CSEData["maxQueryLength"] as? Int ?? -1
+        
+        // Get maxQueryLength
         if maxQueryLength ?? -1 < 0 {
             maxQueryLength = nil
             maxQueryLengthToggle = false
@@ -315,9 +325,10 @@ struct EditSEView: View {
     }
 }
 
+// POST Data Editor
 struct EditSEViewPostData: View {
-    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
     @Binding var postEntries: [(key: String, value: String)]
+    
     var body: some View {
         List {
             Section {} footer: {
@@ -333,7 +344,9 @@ struct EditSEViewPostData: View {
                 ForEach(postEntries.indices, id: \.self) { index in
                     HStack {
                         TextField("Key", text: $postEntries[index].key)
+                            .environment(\.layoutDirection, .leftToRight)
                         TextField("Value", text: $postEntries[index].value)
+                            .environment(\.layoutDirection, .leftToRight)
                     }
                     .disableAutocorrection(true)
                     .textInputAutocapitalization(.never)
@@ -365,17 +378,18 @@ struct EditSEViewPostData: View {
     }
 }
 
+// Import Recommended Search Engines
 struct EditSEViewRecommend: View {
     @Binding var isOpenSheet: Bool
     @Binding var isNeedLoad: Bool
     @Binding var CSEData: [String: Any]
-    let cseList: [[String: Any]] = recommendCSEList.data
+    private let cseList: [[String: Any]] = recommendCSEList.data
     
     var body: some View {
         NavigationView {
             List {
+                // Search Engine List
                 Section {
-                    // Search Engine Selector
                     ForEach(cseList.indices, id: \.self, content: { index in
                         let cse = cseList[index]
                         let cseName = cse["name"] as! String
@@ -414,6 +428,7 @@ struct EditSEViewRecommend: View {
     }
 }
 
+// Import from iCloud
 struct EditSEViewCloudImport: View {
     @Binding var isOpenSheet: Bool
     @Binding var isNeedLoad: Bool

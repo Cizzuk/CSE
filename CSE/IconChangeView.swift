@@ -30,7 +30,8 @@ struct IconSettingView: View {
         .navigationTitle("Change App Icon")
         .navigationBarTitleDisplayMode(.inline)
     }
-    func iconItem(iconName: String, iconID: String) -> some View {
+    
+    private func iconItem(iconName: String, iconID: String) -> some View {
         HStack {
             Image(iconID + "-pre")
                 .resizable()
@@ -59,6 +60,7 @@ struct PurchaseView: View {
     @State private var showSucAlert = false
     @State private var showFailAlert = false
     @State private var showRestoreSucAlert = false
+    
     var body: some View {
         List {
 //            IMPORTANT: This code is not currently used, but it is kept here for future reference.
@@ -162,7 +164,8 @@ struct PurchaseView: View {
         .navigationTitle("Change App Icon")
         .navigationBarTitleDisplayMode(.inline)
     }
-    func iconItem(iconName: String, iconID: String) -> some View {
+    
+    private func iconItem(iconName: String, iconID: String) -> some View {
         HStack {
             Image(iconID + "-pre")
                 .resizable()
@@ -184,7 +187,7 @@ struct PurchaseView: View {
     }
 }
 
-class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+final class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     @Published var products = [SKProduct]()
     var presentationMode: Binding<PresentationMode>?
     @Published var purchaseCompleted = false
