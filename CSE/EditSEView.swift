@@ -85,6 +85,7 @@ struct EditSEView: View {
                     .disableAutocorrection(true)
                     .keyboardType(.URL)
                     .textInputAutocapitalization(.never)
+                    .environment(\.layoutDirection, .leftToRight)
                     .submitLabel(.done)
             } header: {
                 Text("Search URL")
@@ -343,7 +344,9 @@ struct EditSEViewPostData: View {
                 ForEach(postEntries.indices, id: \.self) { index in
                     HStack {
                         TextField("Key", text: $postEntries[index].key)
+                            .environment(\.layoutDirection, .leftToRight)
                         TextField("Value", text: $postEntries[index].value)
+                            .environment(\.layoutDirection, .leftToRight)
                     }
                     .disableAutocorrection(true)
                     .textInputAutocapitalization(.never)
