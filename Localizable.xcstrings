@@ -54,6 +54,12 @@
             "value" : "© Cizzuk"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "© Cizzuk"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -116,6 +122,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "${toggle}: 이모티콘 검색"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} Busca Emoji"
           }
         },
         "ru" : {
@@ -182,6 +194,12 @@
             "value" : "${toggle}: 이모티콘 검색 ${state}"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} Busca Emoji ${state}"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -246,6 +264,12 @@
             "value" : "${toggle}: 빠른 검색"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} Busca Rápida"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -308,6 +332,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "${toggle}: 빠른 검색 ${state}"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} Busca Rápida ${state}"
           }
         },
         "ru" : {
@@ -377,6 +407,12 @@
             "value" : "360 Search"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "360 Search"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -439,6 +475,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "검색 엔진 추가"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionar Novo Buscador"
           }
         },
         "ru" : {
@@ -505,6 +547,12 @@
             "value" : "POST 데이터 추가"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionar Dados POST"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -567,6 +615,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "고급 설정"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajustes Avançados"
           }
         },
         "ru" : {
@@ -633,6 +687,12 @@
             "value" : "개인정보 보호 브라우징에서도 사용"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usar Também na Navegação Privada"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -695,6 +755,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "데이터를 로드하거나 업데이트하는 동안 오류가 발생했습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ocorreu um erro ao carregar ou atualizar os dados"
           }
         },
         "ru" : {
@@ -761,6 +827,12 @@
             "value" : "또한 다른 웹사이트에서는 '거부'로 설정하는 것이 좋습니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E recomendado negar para outros sites."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -823,6 +895,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "사용 가능한 아이콘"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ícones Disponíveis"
           }
         },
         "ru" : {
@@ -889,6 +967,12 @@
             "value" : "사용 가능한 아이콘은 향후 변경될 수 있습니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Os ícones disponíveis podem mudar no futuro."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -948,6 +1032,12 @@
           }
         },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baidu"
+          }
+        },
+        "pt" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Baidu"
@@ -1020,6 +1110,12 @@
             "value" : "CSE를 사용하기 전에 몇 가지 설정이 필요합니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Antes de começar a usar o CSE, você precisa fazer algumas configurações."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1079,6 +1175,12 @@
           }
         },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bing"
+          }
+        },
+        "pt" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bing"
@@ -1151,6 +1253,12 @@
             "value" : "공백으로 설정하고 CSE를 비활성화하기"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deixe em branco para desativar o CSE"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1213,6 +1321,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "취소"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
           }
         },
         "ru" : {
@@ -1279,6 +1393,12 @@
             "value" : "앱 아이콘"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alterar Ícone do Aplicativo"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1341,6 +1461,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "아래에서 검색엔진을 선택하거나 나중에 직접 커스터마이징할 수 있습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolha um buscador abaixo ou personalize-o depois."
           }
         },
         "ru" : {
@@ -1407,6 +1533,12 @@
             "value" : "장치 선택"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolher Dispositivo"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1469,6 +1601,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "문의"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contato"
           }
         },
         "ru" : {
@@ -1536,6 +1674,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSE 설정"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajustes do CSE"
           }
         },
         "ru" : {
@@ -1622,6 +1766,12 @@
             "value" : "긴 검색어 줄이기"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cortar Consulta Longa"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1684,6 +1834,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "기본 검색 엔진"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscador Padrão"
           }
         },
         "ru" : {
@@ -1760,6 +1916,12 @@
             "value" : "CSE 비활성화"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desativar CSE"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1824,6 +1986,12 @@
             "value" : "기본 검색 엔진 비활성화"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desativar Buscador Padrão"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1886,6 +2054,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "퍼센트 인코딩 비활성화"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desativar Codificação de Percentual"
           }
         },
         "ru" : {
@@ -1962,6 +2136,12 @@
             "value" : "완료"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2021,6 +2201,12 @@
           }
         },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuckDuckGo"
+          }
+        },
+        "pt" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "DuckDuckGo"
@@ -2093,6 +2279,12 @@
             "value" : "Ecosia"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ecosia"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2160,6 +2352,12 @@
             "value" : "검색 엔진 편집"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar Buscador"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2224,6 +2422,12 @@
             "value" : "이모티콘 검색"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busca Emoji"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2286,6 +2490,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Safari에서 확장 프로그램 활성화"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Habilitar Extensão no Safari"
           }
         },
         "ru" : {
@@ -2362,6 +2572,12 @@
             "value" : "검색을 즐겨보세요!"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aproveite sua Vida de Busca!"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2424,6 +2640,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "키워드를 맨 앞에 입력하고 검색엔진을 전환합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digite a palavra-chave no topo para alternar buscadores."
           }
         },
         "ru" : {
@@ -2490,6 +2712,12 @@
             "value" : "이 키워드를 맨 앞에 입력하면 이 검색엔진에서 검색됩니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digite esta palavra-chave no topo para buscar com este buscador."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2552,6 +2780,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "예: \"%@ 검색 방법\""
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exemplo: '%@ sua busca'"
           }
         },
         "ru" : {
@@ -2638,6 +2872,12 @@
             "value" : "GitHub"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2702,6 +2942,12 @@
             "value" : "설정 → 앱 → Safari → 확장 프로그램 → Customize Search Engine 에서 확장 프로그램을 허용해 주세요. 그리고 다음 웹페이지에 대한 접근을 '허용'하십시오."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vá para Ajustes → Apps → Safari → Extensões → Customize Search Engine e permita a extensão. Depois, 'Permitir' a seguinte página da web."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2761,6 +3007,12 @@
           }
         },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Google"
+          }
+        },
+        "pt" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Google"
@@ -2836,6 +3088,12 @@
             "value" : "Safari 설정을 변경하거나 CSE가 제대로 작동하지 않는 경우 이 튜토리얼을 다시 시작해야 할 수도 있습니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se você alterar suas configurações do Safari ou o CSE não funcionar corretamente, pode ser necessário refazer este tutorial."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2900,6 +3158,12 @@
             "value" : "이모티콘을 한 글자만 입력하면 Emojipedia.org에서 검색합니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se você digitar apenas um emoji, poderá buscar no Emojipedia.org."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2962,6 +3226,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Google을 검색엔진으로 설정한 경우 다른 검색엔진으로 변경하세요."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se você configurar o Google como seu buscador, por favor configure outro buscador."
           }
         },
         "ru" : {
@@ -3048,6 +3318,12 @@
             "value" : "다른 기기에서 가져오기"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importar de Outro Dispositivo"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3115,6 +3391,12 @@
             "value" : "키워드"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Palavra-chave"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3177,6 +3459,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "키워드는 비워둘 수 없습니다"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A palavra-chave não pode estar em branco"
           }
         },
         "ru" : {
@@ -3243,6 +3531,12 @@
             "value" : "최종 업데이트: %@"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Última Atualização: %@"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3305,6 +3599,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "라이선스"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Licença"
           }
         },
         "ru" : {
@@ -3371,6 +3671,12 @@
             "value" : "검색어 최대 문자 수"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprimento Máximo da Consulta"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3433,6 +3739,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "일부 Safari 검색 엔진에서는 작동하지 않습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pode não funcionar com alguns buscadores do Safari."
           }
         },
         "ru" : {
@@ -3503,6 +3815,12 @@
             "value" : "더 많은 사람들이 CSE를 무료로 계속 사용할 수 있습니다"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mais pessoas poderão continuar usando o CSE gratuitamente"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3559,6 +3877,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "이름"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome"
           }
         },
         "ru" : {
@@ -3625,6 +3949,12 @@
             "value" : "다음"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Próximo"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3687,6 +4017,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "장치를 찾을 수 없습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nenhum dispositivo encontrado."
           }
         },
         "ru" : {
@@ -3753,6 +4089,12 @@
             "value" : "이전에 구입한 경우에만 사용할 수 있습니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disponível apenas se você tiver comprado anteriormente."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3815,6 +4157,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Safari를 열고 Safari → 설정...을 선택한 후 '검색' 탭을 선택하면 이러한 설정을 확인할 수 있습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abra o Safari, vá para Safari → Definições... e selecione a aba 'Busca' para encontrar estas configurações."
           }
         },
         "ru" : {
@@ -3881,6 +4229,12 @@
             "value" : "Safari를 열고 Safari → 설정...을 선택한 후 '확장 프로그램' 탭에서 CSE를 활성화합니다. 그리고 아래 웹페이지를 '웹 사이트 편집…' 버튼에서 '허용'하십시오."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abra o Safari, vá para Safari → Definições..., selecione a aba 'Extensões' e ative o CSE. Depois, 'Permitir' a seguinte página da web no botão 'Editar Sites...'."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3943,6 +4297,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "작업"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operação"
           }
         },
         "ru" : {
@@ -4009,6 +4369,12 @@
             "value" : "아래 웹페이지에서 CSE를 허용해 주세요."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, permita o CSE na seguinte página da web"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4071,6 +4437,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "아래 항목을 Safari의 설정과 동일하게 설정해 주세요."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, certifique-se de que os seguintes itens são os mesmos que suas configurações do Safari"
           }
         },
         "ru" : {
@@ -4137,6 +4509,12 @@
             "value" : "POST 데이터"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dados POST"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4201,6 +4579,12 @@
             "value" : "개인정보 보호정책"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Política de Privacidade"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4263,6 +4647,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "개인정보 보호 검색 엔진"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscador Privado"
           }
         },
         "ru" : {
@@ -4330,6 +4720,12 @@
             "value" : "구매 실패"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falha na Compra"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4386,6 +4782,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "현재 구매할 수 없습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A compra não está disponível no momento."
           }
         },
         "ru" : {
@@ -4453,6 +4855,12 @@
             "value" : "구매 완료!"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compra Realizada com Sucesso!"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4512,6 +4920,12 @@
             "value" : "구매 완료!"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compra:"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4568,6 +4982,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "빠른 검색"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busca Rápida"
           }
         },
         "ru" : {
@@ -4634,6 +5054,12 @@
             "value" : "빠른 검색 엔진"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscadores Rápidos"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4696,6 +5122,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "추천 검색 엔진"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscadores Recomendados"
           }
         },
         "ru" : {
@@ -4772,6 +5204,12 @@
             "value" : "쿼리를 %s로 대체합니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Substituir consulta por %s"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4834,6 +5272,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "모든 고급 설정 재설정하기"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redefinir Todos os Ajustes Avançados"
           }
         },
         "ru" : {
@@ -4940,6 +5384,12 @@
             "value" : "구매 복원"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurar Compra"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5002,6 +5452,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "복원에 성공했습니다!"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restauração Bem-sucedida!"
           }
         },
         "ru" : {
@@ -5068,6 +5524,12 @@
             "value" : "Safari 설정"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajustes do Safari"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5130,6 +5592,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "저장"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salvar"
           }
         },
         "ru" : {
@@ -5196,6 +5664,12 @@
             "value" : "검색 엔진"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscador"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5258,6 +5732,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "검색 엔진 URL"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL do Buscador"
           }
         },
         "ru" : {
@@ -5324,6 +5804,12 @@
             "value" : "검색 URL"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL de Busca"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5386,6 +5872,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "검색 URL은 비워둘 수 없습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A URL de busca não pode estar em branco"
           }
         },
         "ru" : {
@@ -5458,6 +5950,12 @@
             "value" : "기본 검색 엔진 설정"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Buscador Padrão"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5520,6 +6018,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "기본 검색 엔진을 ${cseURL}로 설정합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Buscador Padrão como ${cseURL}"
           }
         },
         "ru" : {
@@ -5586,6 +6090,12 @@
             "value" : "이모티콘 검색 설정"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Busca Emoji"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5648,6 +6158,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "개인정보 보호 검색 엔진 설정"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Buscador Privado"
           }
         },
         "ru" : {
@@ -5714,6 +6230,12 @@
             "value" : "개인정보 보호 검색 엔진을 ${cseURL}로 설정합니다"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Buscador Privado como ${cseURL}"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5776,6 +6298,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "빠른 검색 설정"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Busca Rápida"
           }
         },
         "ru" : {
@@ -5842,6 +6370,12 @@
             "value" : "검색 엔진 설정"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Buscador"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5904,6 +6438,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSE에서 기본 검색 엔진을 설정합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configura um Buscador Padrão Personalizado no CSE."
           }
         },
         "ru" : {
@@ -5970,6 +6510,12 @@
             "value" : "CSE에서 개인정보 보호 검색 엔진을 설정합니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configura um Buscador Privado Personalizado no CSE."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6032,6 +6578,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "이 집중 모드 중에 사용할 사용자 지정 검색 엔진을 설정합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configura um Buscador Personalizado para ser usado durante este Foco."
           }
         },
         "ru" : {
@@ -6098,6 +6650,12 @@
             "value" : "맞춤 검색 엔진 설정하기"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configurar Buscador Personalizado"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6160,6 +6718,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "검색 엔진 설정"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configurar Buscador"
           }
         },
         "ru" : {
@@ -6226,6 +6790,12 @@
             "value" : "건너뛰기"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pular"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6288,6 +6858,12 @@
           }
         },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sogou"
+          }
+        },
+        "pt" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sogou"
@@ -6360,6 +6936,12 @@
             "value" : "소스 코드"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fonte"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6422,6 +7004,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "상태"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado"
           }
         },
         "ru" : {
@@ -6488,6 +7076,12 @@
             "value" : "지원"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suporte"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6550,6 +7144,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "여기서 선택한 검색 엔진은 당신의 검색 내용을 알 수 있습니다. 프라이버시가 걱정된다면 DuckDuckGo를 선택하는 것이 좋다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O buscador que você selecionar aqui pode saber suas consultas de busca. Se você tiver preocupações sobre privacidade, recomendo escolher o DuckDuckGo."
           }
         },
         "ru" : {
@@ -6616,6 +7216,12 @@
             "value" : "이 기능은 일반적으로 검색 엔진에 인증 토큰이 필요하거나 특별한 매개 변수가 필요한 경우에 사용됩니다. 올바르게 설정하지 않으면 CSE가 제대로 작동하지 않을 수 있습니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Isso é tipicamente usado quando um buscador requer um token de autenticação ou parâmetros especiais. Se não for configurado corretamente, o CSE pode não funcionar corretamente."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6678,6 +7284,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "이 키워드는 이미 다른"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta palavra-chave já está em uso em outro lugar"
           }
         },
         "ru" : {
@@ -6744,6 +7356,12 @@
             "value" : "토글"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alternar"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6806,6 +7424,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "전환"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir"
           }
         },
         "ru" : {
@@ -6872,6 +7496,12 @@
             "value" : "CSE에서 이모티콘 검색을 켜거나 끕니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir ou Desativar Busca Emoji no CSE."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6936,6 +7566,12 @@
             "value" : "CSE에서 빠른 검색을 켜거나 끕니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir  ou Desativar Busca Rápida no CSE."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6995,6 +7631,12 @@
           }
         },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL"
+          }
+        },
+        "pt" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL"
@@ -7064,6 +7706,12 @@
             "value" : "개인정보 보호 브라우징으로 다른 검색 엔진 사용하기"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usar buscador diferente na Navegação Privada"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7131,6 +7779,12 @@
             "value" : "버전: %@"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versão: %@"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7193,6 +7847,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSE에 오신 것을 환영합니다"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bem-vindo ao CSE"
           }
         },
         "ru" : {
@@ -7269,6 +7929,12 @@
             "value" : "Yahoo"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yahoo"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7328,6 +7994,12 @@
           }
         },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex"
+          }
+        },
+        "pt" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yandex"
@@ -7397,6 +8069,12 @@
             "value" : "Yandex는 현재 사용할 수 없습니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O Yandex não está disponível no momento."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7464,6 +8142,12 @@
             "value" : "설정 → 앱 → Safari에서 설정을 확인할 수 있습니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Você pode encontrar estas configurações em Ajustes → Apps → Safari."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7529,6 +8213,12 @@
             "value" : "앱 아이콘을 변경할 수 있습니다"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Você poderá alterar o ícone do aplicativo"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7586,6 +8276,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "구매를 통해 CSE의 개발을 지원할 수 있습니다"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sua compra apoiará o desenvolvimento do CSE"
           }
         },
         "ru" : {
