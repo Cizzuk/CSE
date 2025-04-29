@@ -12,6 +12,12 @@
     },
     "© Cizzuk" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "@ Cizzuk"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -76,6 +82,12 @@
     },
     "${toggle} Emoji Search" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} تشغيل إيموجي بحث"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -134,6 +146,12 @@
     },
     "${toggle} Emoji Search ${state}" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} تشغيل إيموجي بحث ${state}"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -192,6 +210,12 @@
     },
     "${toggle} Quick Search" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} تشغيل بحث السريع"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -250,6 +274,12 @@
     },
     "${toggle} Quick Search ${state}" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${toggle} تشغيل بحث السريع ${state}"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -311,6 +341,12 @@
     },
     "360 Search" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "360 Search"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -369,6 +405,12 @@
     },
     "Add New Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إضافة محرك بحث جديد"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -427,6 +469,12 @@
     },
     "Add POST Data" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إضافة بيانات POST"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -485,6 +533,12 @@
     },
     "Advanced Settings" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إعدادات متقدمة"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -543,6 +597,12 @@
     },
     "Also Use in Private Browsing" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الاستخدام في التصفح الخاص أيضًا"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -601,6 +661,12 @@
     },
     "An error occurred while loading or updating data" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حدث خطأ أثناء تحميل أو تحديث البيانات"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -659,6 +725,12 @@
     },
     "And recommended to Deny for Other Websites." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ومن المستحسن الرفض للمواقع الأخرى."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -717,6 +789,12 @@
     },
     "Available Icons" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الأيقونات المتاحة"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -775,6 +853,12 @@
     },
     "Available icons may change in the future." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قد تتغير الأيقونات المتاحة في المستقبل."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -833,6 +917,12 @@
     },
     "Baidu" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baidu"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -894,6 +984,12 @@
     },
     "Before you can start using CSE, you need to do some setup." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قبل أن تتمكن من البدء باستخدام CSE، تحتاج إلى إجراء بعض الإعدادات."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -952,6 +1048,12 @@
     },
     "Bing" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bing"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1013,6 +1115,12 @@
     },
     "Blank to disable CSE" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اتركه فارغاً لتعطيل CSE"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1071,6 +1179,12 @@
     },
     "Cancel" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إلغاء"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1129,6 +1243,12 @@
     },
     "Change App Icon" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تغيير أيقونة التطبيق"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1187,6 +1307,12 @@
     },
     "Choose a search engine below or customize it later." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اختر محرك بحث أدناه أو قم بتخصيصه لاحقًا."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1245,6 +1371,12 @@
     },
     "Choose Device" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اختر الجهاز"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1303,6 +1435,12 @@
     },
     "Contact" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اتصل"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1364,6 +1502,12 @@
     },
     "CSE Settings" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إعدادات CSE"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1442,6 +1586,12 @@
     },
     "Cut Long Query" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قص الاستعلام الطويل"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1500,6 +1650,12 @@
     },
     "Default Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "محرك البحث الافتراضي"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1568,6 +1724,12 @@
     },
     "Disable CSE" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعطيل CSE"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1626,6 +1788,12 @@
     },
     "Disable Default Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعطيل محرك البحث الافتراضي"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1684,6 +1852,12 @@
     },
     "Disable Percent-encoding" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعطيل تشفير النسبة المئوية"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1752,6 +1926,12 @@
     },
     "Done" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1810,6 +1990,12 @@
     },
     "DuckDuckGo" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuckDuckGo"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1871,6 +2057,12 @@
     },
     "Ecosia" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ecosia"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1932,6 +2124,12 @@
     },
     "Edit Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعديل محرك البحث"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1990,6 +2188,12 @@
     },
     "Emoji Search" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إيموجي بحث"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2048,6 +2252,12 @@
     },
     "Enable Extension in Safari" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تمكين الإضافة في سفاري"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2116,6 +2326,12 @@
     },
     "Enjoy your Search Life!" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استمتع بحياة البحث!"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2174,6 +2390,12 @@
     },
     "Enter the keyword at the top to switch search engines." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أدخل الكلمة المفتاحية في الأعلى لتبديل محركات البحث."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2232,6 +2454,12 @@
     },
     "Enter this keyword at the top to search with this search engine." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أدخل هذه الكلمة المفتاحية في الأعلى للبحث باستخدام هذا المحرك."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2290,6 +2518,12 @@
     },
     "Example: '%@ your search'" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مثال: '%@ بحثك'"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2368,6 +2602,12 @@
     },
     "GitHub" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2426,6 +2666,12 @@
     },
     "Go to Settings → Apps → Safari → Extensions → Customize Search Engine and allow extension. Then 'Allow' the following webpage." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "انتقل إلى الإعدادات ← التطبيقات ← سفاري ← الملحقات ← Customize Search Engine واسمح بالإضافة. ثم 'السماح' لصفحة الويب التالية."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2484,6 +2730,12 @@
     },
     "Google" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Google"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2548,6 +2800,12 @@
     },
     "If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إذا قمت بتغيير إعدادات سفاري الخاصة بك أو لم يعمل CSE بشكل صحيح، قد تحتاج إلى إعادة هذا الشرح."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2606,6 +2864,12 @@
     },
     "If you enter only one emoji, you can search on Emojipedia.org." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إذا أدخلت إيموجي واحد فقط، يمكنك البحث على Emojipedia.org."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2664,6 +2928,12 @@
     },
     "If you set Google as your search engine, please set another search engine." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إذا قمت بتعيين Google كمحرك بحث، يرجى تعيين محرك بحث آخر."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2742,6 +3012,12 @@
     },
     "Import from Other Device" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استيراد من جهاز آخر"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2803,6 +3079,12 @@
     },
     "Keyword" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الكلمة المفتاحية"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2861,6 +3143,12 @@
     },
     "Keyword cannot be blank" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لا يمكن أن تكون الكلمة المفتاحية فارغة"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2919,6 +3207,12 @@
     },
     "Last Updated: %@" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "آخر تحديث: %@"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2977,6 +3271,12 @@
     },
     "License" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الرخصة"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3035,6 +3335,12 @@
     },
     "Max Query Length" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أقصى طول للاستعلام"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3093,6 +3399,12 @@
     },
     "May not work with some Safari search engines." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قد لا يعمل مع بعض محركات البحث في سفاري."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3155,6 +3467,12 @@
     "More people will be able to continue using CSE for free" : {
       "extractionState" : "stale",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سيتمكن المزيد من الأشخاص من الاستمرار في استخدام CSE مجاناً"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3207,6 +3525,12 @@
     },
     "Name" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الاسم"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3265,6 +3589,12 @@
     },
     "Next" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "التالي"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3323,6 +3653,12 @@
     },
     "No devices found." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لم يتم العثور على أجهزة."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3381,6 +3717,12 @@
     },
     "Only available if you have previously purchased this." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "متوفر فقط إذا كنت قد اشتريته سابقاً."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3439,6 +3781,12 @@
     },
     "Open Safari, go to Safari → Settings... and select 'Search' tab to find these settings." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "افتح سفاري، انتقل إلى سفاري ← الإعدادات... وحدد علامة تبويب 'بحث' للعثور على هذه الإعدادات."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3497,6 +3845,12 @@
     },
     "Open Safari, go to Safari → Settings..., select 'Extensions' tab and enable CSE. Then 'Allow' the following webpage from 'Edit Websites...' button." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "افتح سفاري، انتقل إلى سفاري ← الإعدادات...، وحدد علامة تبويب 'الملحقات' وقم بتمكين CSE. ثم 'السماح' لصفحة الويب التالية من زر 'تحرير المواقع...'."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3555,6 +3909,12 @@
     },
     "Operation" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "عملية"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3613,6 +3973,12 @@
     },
     "Please allow CSE at the following webpage" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يرجى السماح بـ CSE على صفحة الويب التالية"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3671,6 +4037,12 @@
     },
     "Please make sure that the following items are the same as your Safari settings" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يرجى التأكد من أن العناصر التالية هي نفسها إعدادات سفاري الخاصة بك"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3729,6 +4101,12 @@
     },
     "POST Data" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بيانات POST"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3787,6 +4165,12 @@
     },
     "Privacy Policy" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سياسة الخصوصية"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3845,6 +4229,12 @@
     },
     "Private Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "محرك بحث خاص"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3904,6 +4294,12 @@
     "Purchase Failed" : {
       "extractionState" : "stale",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فشلت عملية الشراء"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3956,6 +4352,12 @@
     },
     "Purchase is currently not available." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الشراء غير متوفر حالياً."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4015,6 +4417,12 @@
     "Purchase Success!" : {
       "extractionState" : "stale",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نجاح عملية الشراء!"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4068,6 +4476,12 @@
     "Purchase:" : {
       "extractionState" : "stale",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "شراء:"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4120,6 +4534,12 @@
     },
     "Quick Search" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بحث السريع"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4178,6 +4598,12 @@
     },
     "Quick Search Engines" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "محركات بحث السريع"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4236,6 +4662,12 @@
     },
     "Recommended Search Engines" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "محركات البحث الموصى بها"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4304,6 +4736,12 @@
     },
     "Replace query with %s" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استبدال الاستعلام بـ %s"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4362,6 +4800,12 @@
     },
     "Reset All Advanced Settings" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إعادة ضبط جميع الإعدادات المتقدمة"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4460,6 +4904,12 @@
     },
     "Restore Purchase" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استعادة الشراء"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4518,6 +4968,12 @@
     },
     "Restore Success!" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نجاح الاستعادة!"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4576,6 +5032,12 @@
     },
     "Safari Settings" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إعدادات سفاري"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4634,6 +5096,12 @@
     },
     "Save" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حفظ"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4692,6 +5160,12 @@
     },
     "Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "محرك البحث"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4750,6 +5224,12 @@
     },
     "Search Engine URL" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "رابط محرك البحث"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4808,6 +5288,12 @@
     },
     "Search URL" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "رابط البحث"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4866,6 +5352,12 @@
     },
     "Search URL cannot be blank" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لا يمكن أن يكون رابط البحث فارغاً"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4930,6 +5422,12 @@
     },
     "Set Default Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعيين محرك البحث الافتراضي"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4988,6 +5486,12 @@
     },
     "Set Default Search Engine to ${cseURL}" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعيين محرك البحث الافتراضي إلى ${cseURL}"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5046,6 +5550,12 @@
     },
     "Set Emoji Search" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعيين إيموجي بحث"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5104,6 +5614,12 @@
     },
     "Set Private Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعيين محرك بحث خاص"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5162,6 +5678,12 @@
     },
     "Set Private Search Engine to ${cseURL}" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعيين محرك بحث خاص إلى ${cseURL}"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5220,6 +5742,12 @@
     },
     "Set Quick Search" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعيين بحث السريع"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5278,6 +5806,12 @@
     },
     "Set Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعيين محرك البحث"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5336,6 +5870,12 @@
     },
     "Sets a Custom Default Search Engine on CSE." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يتم تعيين محرك بحث افتراضي مخصص على CSE."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5394,6 +5934,12 @@
     },
     "Sets a Custom Private Search Engine on CSE." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يتم تعيين محرك بحث خاص مخصص على CSE."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5452,6 +5998,12 @@
     },
     "Sets a Custom Search Engine to be used during this Focus." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يتم تعيين محرك بحث مخصص ليتم استخدامه أثناء هذا التركيز."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5510,6 +6062,12 @@
     },
     "Setup Custom Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إعداد محرك بحث مخصص"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5568,6 +6126,12 @@
     },
     "Setup Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إعداد محرك بحث"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5626,6 +6190,12 @@
     },
     "Skip" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تخطي"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5687,6 +6257,12 @@
     },
     "Sogou" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sogou"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5748,6 +6324,12 @@
     },
     "Source" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المصدر"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5806,6 +6388,12 @@
     },
     "State" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الحالة"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5864,6 +6452,12 @@
     },
     "Support" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الدعم"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5922,6 +6516,12 @@
     },
     "The search engine you select here can know your search queries. If you have concerns about privacy, I recommend choosing DuckDuckGo." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "محرك البحث الذي تحدده هنا يمكنه معرفة استفسارات البحث الخاصة بك. إذا كنت قلقًا بشأن الخصوصية، أوصي باختيار DuckDuckGo."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5980,6 +6580,12 @@
     },
     "This is typically used when a search engine requires an authentication token or special parameters. If not configured correctly, CSE may not work properly." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يُستخدم هذا عادةً عندما يتطلب محرك البحث رمز توثيق أو معلمات خاصة. إذا لم يتم تكوينه بشكل صحيح، قد لا يعمل CSE بشكل صحيح."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6038,6 +6644,12 @@
     },
     "This keyword is already used in other" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هذه الكلمة المفتاحية مستخدمة بالفعل في أخرى"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6096,6 +6708,12 @@
     },
     "Toggle" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تبديل"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6154,6 +6772,12 @@
     },
     "Turn" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعيين"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6212,6 +6836,12 @@
     },
     "Turn Emoji Search On or Off on CSE." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تشغيل إيموجي بحث تشغيل أو إيقاف على CSE."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6270,6 +6900,12 @@
     },
     "Turn Quick Search On or Off on CSE." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تشغيل بحث السريع تشغيل أو إيقاف على CSE."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6328,6 +6964,12 @@
     },
     "URL" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "رابط"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6386,6 +7028,12 @@
     },
     "Use different search engine in Private Browse" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استخدام محرك بحث مختلف في التصفح الخاص"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6447,6 +7095,12 @@
     },
     "Version: %@" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الإصدار: %@"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6505,6 +7159,12 @@
     },
     "Welcome to CSE" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مرحباً بك في CSE"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6573,6 +7233,12 @@
     },
     "Yahoo" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yahoo"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6631,6 +7297,12 @@
     },
     "Yandex" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6689,6 +7361,12 @@
     },
     "Yandex is currently unavailable." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandex غير متوفر حالياً."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6750,6 +7428,12 @@
     },
     "You can find these settings in Settings → Apps → Safari." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يمكنك العثور على هذه الإعدادات في الإعدادات ← التطبيقات ← سفاري."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6809,6 +7493,12 @@
     "You will be able to change the application icon" : {
       "extractionState" : "stale",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ستتمكن من تغيير أيقونة التطبيق"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6862,6 +7552,12 @@
     "Your purchase will support the development of CSE" : {
       "extractionState" : "stale",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سيدعم شراؤك تطوير CSE"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
