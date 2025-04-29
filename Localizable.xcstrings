@@ -2447,7 +2447,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "設定 → アプリ → Safari →　拡張機能 → Customize Search Engine から拡張機能を許可してください。それから以下のWebページへのアクセスを「許可」してください。"
+            "value" : "設定 → アプリ → Safari → 拡張機能 → Customize Search Engine から拡張機能を許可してください。それから以下のWebページへのアクセスを「許可」してください。"
           }
         },
         "ko" : {
@@ -2627,7 +2627,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "絵文字を一文字だけ入力すると、Emojipedia.orgで検索します。"
+            "value" : "絵文字を1文字だけ入力すると、Emojipedia.orgで検索します。"
           }
         },
         "ko" : {
