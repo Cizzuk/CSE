@@ -321,8 +321,9 @@ struct SafariTutorialSecondView: View {
 
 struct SafariTutorialRecommendSEView: View {
     @Binding var isOpenSheet: Bool
-    @State private var selectedIndex: Int = -1
-    private let cseList = RecommendSEs.recommendCSEList()
+    private let recommendPopCSEList = RecommendSEs.recommendPopCSEList()
+    private let recommendAICSEList = RecommendSEs.recommendAICSEList()
+    private let recommendNormalCSEList = RecommendSEs.recommendNormalCSEList()
     
     var body: some View {
         NavigationView {
@@ -349,56 +350,50 @@ struct SafariTutorialRecommendSEView: View {
                         }
                     }
                     
-                    Section {
-                        // Search Engine Selector
-                        ForEach(cseList.indices, id: \.self, content: { index in
-                            let cse = cseList[index]
-                            let cseName = cse.name
-                            let cseURL = cse.url
-                            Button {
-                                if selectedIndex == index {
-                                    selectedIndex = -1
-                                } else {
-                                    selectedIndex = index
-                                }
-                            } label: {
-                                HStack {
-                                    VStack(alignment: .leading) {
-                                        Text(cseName)
-                                            .bold()
-                                        Text(cseURL)
-                                            .lineLimit(1)
-                                            .foregroundColor(.secondary)
-                                            .font(.subheadline)
-                                            .accessibilityHidden(true)
-                                    }
-                                    Spacer()
-                                    Image(systemName: selectedIndex == index ? "checkmark.circle.fill" : "circle")
-                                        .foregroundColor(.blue)
-                                        .animation(.easeOut(duration: 0.15), value: selectedIndex)
-                                }
-                            }
-                            .accessibilityLabel(cseName)
-                            .foregroundColor(.primary)
-                        })
-                    } header: {
-                        Text("Recommended Search Engines")
+                    if !recommendPopCSEList.isEmpty {
+                        Section {
+                            ForEach(recommendPopCSEList.indices, id: \.self, content: { index in
+                                UITemplates.recommendSEButton(action: {
+                                    CSEDataManager.saveCSEData(recommendPopCSEList[index], .defaultCSE)
+                                    isOpenSheet = false
+                                }, cse: recommendPopCSEList[index])
+                            })
+                        } header: {
+                            Text("Recommended Search Engines")
+                        }
                     }
+                    
+                    if !recommendAICSEList.isEmpty {
+                        Section {
+                            ForEach(recommendAICSEList.indices, id: \.self, content: { index in
+                                UITemplates.recommendSEButton(action: {
+                                    CSEDataManager.saveCSEData(recommendAICSEList[index], .defaultCSE)
+                                    isOpenSheet = false
+                                }, cse: recommendAICSEList[index])
+                            })
+                        } header: {
+                            Text("AI Search Engines")
+                        }
+                    }
+                    
+                    if !recommendNormalCSEList.isEmpty {
+                        Section {
+                            ForEach(recommendNormalCSEList.indices, id: \.self, content: { index in
+                                UITemplates.recommendSEButton(action: {
+                                    CSEDataManager.saveCSEData(recommendNormalCSEList[index], .defaultCSE)
+                                    isOpenSheet = false
+                                }, cse: recommendNormalCSEList[index])
+                            })
+                        }
+                    }
+                    
                 }
                 
                 Button(action: {
-                    if selectedIndex != -1 {
-                        CSEDataManager.saveCSEData(cseList[selectedIndex], .defaultCSE)
-                    }
                     isOpenSheet = false
                 }) {
-                    if selectedIndex == -1 {
-                        NextButtonDim(text: NSLocalizedString("Skip", comment: ""))
-                    } else {
-                        NextButton(text: NSLocalizedString("Done", comment: ""))
-                    }
+                    NextButtonDim(text: NSLocalizedString("Skip", comment: ""))
                 }
-                .animation(.easeOut(duration: 0.15), value: selectedIndex)
                 .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
             }
             #if !visionOS

@@ -107,13 +107,18 @@ class RecommendSEs {
                 name: "Cốc Cốc",
                 url: "https://coccoc.com/search#query=%s"
             )
+        } else if currentRegion == "RU" {
+            baseCSEs["yandex"] = CSEDataManager.CSEData(
+                name: "Яндекс",
+                url: "https://yandex.ru/search/?text=%s"
+            )
         }
         
         return baseCSEs
     }
     
-    class func recommendCSEList() -> [CSEDataManager.CSEData] {
-        let baseCSEs: [CSEDataManager.CSEData] = [
+    class func recommendPopCSEList() -> [CSEDataManager.CSEData] {
+        var popCSEs: [CSEDataManager.CSEData] = [
             CSEDataManager.CSEData(
                 name: "Startpage",
                 url: "https://www.startpage.com/sp/search?query=%s",
@@ -126,22 +131,46 @@ class RecommendSEs {
                 name: "Google &udm=14",
                 url: "https://www.google.com/search?q=%s&udm=14",
             ),
-            CSEDataManager.CSEData(
-                name: "Kagi",
-                url: "https://kagi.com/search?q=%s",
-            ),
-            CSEDataManager.CSEData(
+        ]
+        
+        // Add region-specific search engines
+        if currentRegion == "FR" {
+            popCSEs.append(CSEDataManager.CSEData(
                 name: "Qwant",
-                url: "https://www.qwant.com/?q=%s",
-            ),
-            CSEDataManager.CSEData(
+                url: "https://www.qwant.com/?q=%s"
+            ))
+        } else if currentRegion == "KR" {
+            popCSEs.append(CSEDataManager.CSEData(
                 name: "NAVER",
-                url: "https://search.naver.com/search.naver?query=%s",
-            ),
-            CSEDataManager.CSEData(
+                url: "https://search.naver.com/search.naver?query=%s"
+            ))
+        } else if currentRegion == "VN" {
+            popCSEs.append(CSEDataManager.CSEData(
                 name: "Cốc Cốc",
-                url: "https://coccoc.com/search#query=%s",
-            ),
+                url: "https://coccoc.com/search#query=%s"
+            ))
+        }
+        
+        return popCSEs
+    }
+        
+    class func recommendAICSEList() -> [CSEDataManager.CSEData] {
+        var aiCSEs: [CSEDataManager.CSEData] = []
+        if currentRegion != "CN" && currentRegion != "RU" {
+            aiCSEs.append(CSEDataManager.CSEData(
+                name: "Perplexity",
+                url: "https://www.perplexity.ai/?q=%s"
+            ))
+            aiCSEs.append(CSEDataManager.CSEData(
+                name: "ChatGPT",
+                url: "https://chatgpt.com/?q=%s&hints=search",
+            ))
+        }
+        return aiCSEs
+    }
+    
+    class func recommendNormalCSEList() -> [CSEDataManager.CSEData] {
+        var normalCSEs: [CSEDataManager.CSEData] = [
             CSEDataManager.CSEData(
                 name: "Google",
                 url: "https://www.google.com/search?q=%s",
@@ -162,17 +191,27 @@ class RecommendSEs {
             CSEDataManager.CSEData(
                 name: "Ecosia",
                 url: "https://www.ecosia.org/search?q=%s",
-            ),
-            CSEDataManager.CSEData(
-                name: "百度",
-                url: "https://www.baidu.com/s?wd=%s",
-            ),
-            CSEDataManager.CSEData(
-                name: "Yandex",
-                url: "https://yandex.ru/search/?text=%s",
             )
         ]
         
-        return baseCSEs
+        if currentRegion == "JP" {
+            normalCSEs.append(CSEDataManager.CSEData(
+                name: "Yahoo! Japan",
+                url: "https://search.yahoo.co.jp/search?p=%s"
+            ))
+        } else if currentRegion == "CN" {
+            normalCSEs.append(CSEDataManager.CSEData(
+                name: "百度",
+                url: "https://www.baidu.com/s?wd=%s"
+            ))
+        } else if currentRegion == "RU" {
+            normalCSEs.append(CSEDataManager.CSEData(
+                name: "Яндекс",
+                url: "https://yandex.ru/search/?text=%s"
+            ))
+        }
+        
+        return normalCSEs
     }
+        
 }

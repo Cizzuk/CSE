@@ -649,6 +649,9 @@
         }
       }
     },
+    "AI Search Engines" : {
+
+    },
     "Also Use in Private Browsing" : {
       "localizations" : {
         "ar" : {
@@ -4471,6 +4474,9 @@
         }
       }
     },
+    "Popular Search Engines" : {
+
+    },
     "POST Data" : {
       "localizations" : {
         "ar" : {
@@ -5485,6 +5491,9 @@
           }
         }
       }
+    },
+    "Safari Search Engines" : {
+
     },
     "Safari Settings" : {
       "localizations" : {
