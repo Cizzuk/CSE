@@ -359,7 +359,7 @@ struct SafariTutorialRecommendSEView: View {
                                 }, cse: recommendPopCSEList[index])
                             })
                         } header: {
-                            Text("Recommended Search Engines")
+                            Text("Popular Search Engines")
                         }
                     }
                     
@@ -384,6 +384,8 @@ struct SafariTutorialRecommendSEView: View {
                                     isOpenSheet = false
                                 }, cse: recommendNormalCSEList[index])
                             })
+                        } header: {
+                            Text("Safari Search Engines")
                         }
                     }
                     
