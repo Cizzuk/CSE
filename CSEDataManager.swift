@@ -104,7 +104,7 @@ class CSEDataManager {
         return cseDict
     }
     
-    class func QuickCSEDataToDictionary(_ data: [String: CSEData]) -> [String: Any] {
+    class func CSEDataToDictionary(_ data: [String: CSEData]) -> [String: Any] {
         // Convert QuickCSE data to Dictionary
         var quickCSEDict: [String: Any] = [:]
         for (key, value) in data {
@@ -220,7 +220,7 @@ class CSEDataManager {
         quickCSEData[cseData.keyword] = cseData
         
         // Convert to Dictionary
-        let quickCSEDataDict = QuickCSEDataToDictionary(quickCSEData)
+        let quickCSEDataDict = CSEDataToDictionary(quickCSEData)
         userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
         
         // Upload CSEData to iCloud
@@ -229,7 +229,7 @@ class CSEDataManager {
     
     class func replaceQuickCSEData(_ data: [String: CSEData]) {
         // Convert to Dictionary
-        let quickCSEDataDict = QuickCSEDataToDictionary(data)
+        let quickCSEDataDict = CSEDataToDictionary(data)
         userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
     }
     
@@ -240,22 +240,22 @@ class CSEDataManager {
     
     class func deleteQuickCSE(_ id: String) {
         // Get current QuickSEs Data
-        var quickCSEData = getAllQuickCSEData()
+        var quickCSEData: [String: CSEData] = getAllQuickCSEData()
         // Remove this QuickSE
         quickCSEData.removeValue(forKey: id)
         // Convert to Dictionary
-        let quickCSEDataDict = QuickCSEDataToDictionary(quickCSEData)
+        let quickCSEDataDict = CSEDataToDictionary(quickCSEData)
         userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
     }
     
     class func deleteQuickCSE(at offsets: IndexSet) {
-        var quickCSEData = getAllQuickCSEData()
+        var quickCSEData: [String: CSEData] = getAllQuickCSEData()
         let keys = quickCSEData.keys.sorted()
         for offset in offsets {
             let keyToRemove = keys[offset]
             quickCSEData.removeValue(forKey: keyToRemove)
             // Convert to Dictionary
-            let quickCSEDataDict = QuickCSEDataToDictionary(quickCSEData)
+            let quickCSEDataDict = CSEDataToDictionary(quickCSEData)
             userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
         }
     }
