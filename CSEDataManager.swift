@@ -198,6 +198,12 @@ class CSEDataManager {
         CloudKitManager().saveAll()
     }
     
+    class func replaceQuickCSEData(_ data: [String: CSEData]) {
+        // Convert to Dictionary
+        let quickCSEDataDict = QuickCSEDataToDictionary(data)
+        userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
+    }
+    
     class func deleteQuickCSE(_ id: String) {
         // Get current QuickSEs Data
         var quickCSEData = getAllQuickCSEData()

@@ -322,7 +322,7 @@ struct SafariTutorialSecondView: View {
 struct SafariTutorialRecommendSEView: View {
     @Binding var isOpenSheet: Bool
     @State private var selectedIndex: Int = -1
-    private let cseList = recommendCSEList.data
+    private let cseList = RecommendSEs.recommendCSEList()
     
     var body: some View {
         NavigationView {
@@ -388,7 +388,11 @@ struct SafariTutorialRecommendSEView: View {
                 
                 Button(action: {
                     if selectedIndex != -1 {
-                        userDefaults.set(cseList[selectedIndex], forKey: "defaultCSE")
+                        do {
+                            try CSEDataManager.saveCSEData(cseList[selectedIndex], .defaultCSE)
+                        } catch {
+                            print("Error saving CSE data: \(error.localizedDescription)")
+                        }
                     }
                     isOpenSheet = false
                 }) {

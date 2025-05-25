@@ -292,7 +292,7 @@ struct EditSEViewPostData: View {
 struct EditSEViewRecommend: View {
     @Binding var isOpenSheet: Bool
     @Binding var CSEData: CSEDataManager.CSEData
-    private let cseList = recommendCSEList.data
+    private let cseList = RecommendSEs.recommendCSEList()
     
     var body: some View {
         NavigationView {
