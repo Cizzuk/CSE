@@ -190,7 +190,7 @@ class CSEDataManager {
             quickCSEData[cseData.keyword] = cseData
             
             // Convert to Dictionary
-            var quickCSEDataDict = QuickCSEDataToDictionary(quickCSEData)
+            let quickCSEDataDict = QuickCSEDataToDictionary(quickCSEData)
             userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
         }
         
@@ -204,7 +204,7 @@ class CSEDataManager {
         // Remove this QuickSE
         quickCSEData.removeValue(forKey: id)
         // Convert to Dictionary
-        var quickCSEDataDict = QuickCSEDataToDictionary(quickCSEData)
+        let quickCSEDataDict = QuickCSEDataToDictionary(quickCSEData)
         userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
     }
     
