@@ -388,11 +388,7 @@ struct SafariTutorialRecommendSEView: View {
                 
                 Button(action: {
                     if selectedIndex != -1 {
-                        do {
-                            try CSEDataManager.saveCSEData(cseList[selectedIndex], .defaultCSE)
-                        } catch {
-                            print("Error saving CSE data: \(error.localizedDescription)")
-                        }
+                        CSEDataManager.saveCSEData(cseList[selectedIndex], .defaultCSE)
                     }
                     isOpenSheet = false
                 }) {

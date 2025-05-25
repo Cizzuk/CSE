@@ -136,7 +136,7 @@ class CSEDataManager {
         case keyUsed
     }
     
-    class func saveCSEData(_ data: CSEData, _ type: CSEType = .defaultCSE, originalID: String? = nil) throws {
+    class func saveCSEDataCommon(_ data: CSEData) -> CSEData {
         var cseData = data
         
         // Normalize Safari search engine URLs
@@ -157,42 +157,71 @@ class CSEDataManager {
         // Clean up post data
         cseData.post = cleanPostData(cseData.post)
         
-        // Save for Search Engine type
-        switch type {
-        case .defaultCSE, .privateCSE:
+        return cseData
+    }
+    
+    class func saveCSEData(_ data: CSEData, _ type: CSEType = .defaultCSE) {
+        var cseData = saveCSEDataCommon(data)
+        
+        // Normalize Safari search engine URLs
+        let replacements = [
+            "https://google.com": "https://www.google.com",
+            "https://bing.com": "https://www.bing.com",
+            "https://www.duckduckgo.com": "https://duckduckgo.com",
+            "https://ecosia.com": "https://www.ecosia.com",
+            "https://baidu.com": "https://www.baidu.com"
+        ]
+        for (original, replacement) in replacements {
+            if cseData.url.hasPrefix(original) {
+                cseData.url = cseData.url.replacingOccurrences(of: original, with: replacement)
+                break
+            }
+        }
+        
+        // Clean up post data
+        cseData.post = cleanPostData(cseData.post)
+        
+        if type == .defaultCSE || type == .privateCSE {
             cseData.keyword = "" // Default and Private CSEs do not have keywords
             cseData.name = "" // Default and Private CSEs do not have names
             userDefaults.set(CSEDataToDictionary(cseData), forKey: type.rawValue)
-        case .quickCSE:
-            // If Keyword is blank
-            if cseData.keyword == "" {
-                throw saveCSEDataError.keyBlank
-            }
-            // If URL is blank
-            if cseData.url == "" {
-                throw saveCSEDataError.urlBlank
-            }
-            // Get current QuickSEs Data
-            var quickCSEData = getAllQuickCSEData()
-            // If Keyword is changed
-            if cseData.keyword != originalID {
-                // If Keyword is free
-                if quickCSEData[cseData.keyword] == nil {
-                    if originalID != nil {
-                        quickCSEData.removeValue(forKey: originalID!)
-                    }
-                } else {
-                    throw saveCSEDataError.keyUsed
-                }
-            }
-            // Replace this QuickSE
-            quickCSEData.removeValue(forKey: cseData.keyword)
-            quickCSEData[cseData.keyword] = cseData
-            
-            // Convert to Dictionary
-            let quickCSEDataDict = QuickCSEDataToDictionary(quickCSEData)
-            userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
         }
+        
+        // Upload CSEData to iCloud
+        CloudKitManager().saveAll()
+    }
+    
+    class func saveCSEData(_ data: CSEData, _ originalID: String?) throws {
+        let cseData = saveCSEDataCommon(data)
+        
+        // If Keyword is blank
+        if cseData.keyword == "" {
+            throw saveCSEDataError.keyBlank
+        }
+        // If URL is blank
+        if cseData.url == "" {
+            throw saveCSEDataError.urlBlank
+        }
+        // Get current QuickSEs Data
+        var quickCSEData = getAllQuickCSEData()
+        // If Keyword is changed
+        if cseData.keyword != originalID {
+            // If Keyword is free
+            if quickCSEData[cseData.keyword] == nil {
+                if originalID != nil {
+                    quickCSEData.removeValue(forKey: originalID!)
+                }
+            } else {
+                throw saveCSEDataError.keyUsed
+            }
+        }
+        // Replace this QuickSE
+        quickCSEData.removeValue(forKey: cseData.keyword)
+        quickCSEData[cseData.keyword] = cseData
+        
+        // Convert to Dictionary
+        let quickCSEDataDict = QuickCSEDataToDictionary(quickCSEData)
+        userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
         
         // Upload CSEData to iCloud
         CloudKitManager().saveAll()

@@ -54,12 +54,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // Update old CSE settings
             if (urltop != "" || urlsuffix != "") {
-                let defaultCSE: [String: Any] = [
-                    "name": "Default Search Engine",
-                    "url": urltop + "%s" + urlsuffix,
-                    "post": []
-                ]
-                userDefaults.set(defaultCSE, forKey: "defaultCSE")
+                var defaultCSE = CSEDataManager.CSEData()
+                defaultCSE.url = urltop + "%s" + urlsuffix
+                CSEDataManager.saveCSEData(defaultCSE, .defaultCSE)
                 userDefaults.removeObject(forKey: "urltop")
                 userDefaults.removeObject(forKey: "urlsuffix")
             }
@@ -114,10 +111,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Save Data
         if target == "default" || target == "all" {
-            userDefaults.set(defaultCSE, forKey: "defaultCSE")
+            CSEDataManager.saveCSEData(CSEDataManager.CSEData(), .defaultCSE)
         }
         if target == "private" || target == "all" {
-            userDefaults.set(privateCSE, forKey: "privateCSE")
+            CSEDataManager.saveCSEData(CSEDataManager.CSEData(), .privateCSE)
         }
         if target == "quick" || target == "all" {
             CSEDataManager.replaceQuickCSEData(RecommendSEs.quickCSEs())

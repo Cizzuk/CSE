@@ -200,20 +200,24 @@ struct EditSEView: View {
     }
     
     private func saveCSEData() {
-        do {
-            try CSEDataManager.saveCSEData(CSEData, CSEDataManager.CSEType(rawValue: cseType)!, originalID: cseID)
-        } catch CSEDataManager.saveCSEDataError.keyBlank {
-            showKeyBlankAlert = true
-            return
-        } catch CSEDataManager.saveCSEDataError.urlBlank {
-            showURLBlankAlert = true
-            return
-        } catch CSEDataManager.saveCSEDataError.keyUsed {
-            showKeyUsedAlert = true
-            return
-        } catch {
-            showFailAlert = true
-            return
+        if cseType == "defaultCSE" || cseType == "privateCSE" {
+            CSEDataManager.saveCSEData(CSEData, CSEDataManager.CSEType(rawValue: cseType)!)
+        } else if cseType == "quickCSE" {
+            do {
+                try CSEDataManager.saveCSEData(CSEData, cseID)
+            } catch CSEDataManager.saveCSEDataError.keyBlank {
+                showKeyBlankAlert = true
+                return
+            } catch CSEDataManager.saveCSEDataError.urlBlank {
+                showURLBlankAlert = true
+                return
+            } catch CSEDataManager.saveCSEDataError.keyUsed {
+                showKeyUsedAlert = true
+                return
+            } catch {
+                showFailAlert = true
+                return
+            }
         }
         dismiss()
     }
