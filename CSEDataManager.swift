@@ -16,7 +16,7 @@ class CSEDataManager {
     }
     
     // Structure of a CSE data
-    struct CSEData {
+    struct CSEData: Encodable {
         var name: String = ""
         var keyword: String = ""
         var url: String = ""
@@ -86,7 +86,7 @@ class CSEDataManager {
             parsedData.maxQueryLength = maxQueryLength
         }
         if let postEntries = data["post"] as? [[String: String]] {
-            parsedData.post = postEntries
+            parsedData.post = cleanPostData(postEntries)
         }
             
         return parsedData
@@ -145,17 +145,14 @@ class CSEDataManager {
             }
         }
         
-        // POST Data
-//        let postArray: [[String: String]] = postEntries
-//            .map { ["key": $0.key, "value": $0.value] }
-//            .filter { !$0["key"]!.isEmpty && !$0["value"]!.isEmpty }
-        
-        // Check maxQueryLengthToggle is enabled
-//        let fixedMaxQueryLength: Int = maxQueryLengthToggle ? maxQueryLength ?? -1 : -1
+        // Clean up post data
+        cseData.post = cleanPostData(cseData.post)
         
         // Save for Search Engine type
         switch type {
         case .defaultCSE, .privateCSE:
+            cseData.keyword = "" // Default and Private CSEs do not have keywords
+            cseData.name = "" // Default and Private CSEs do not have names
             userDefaults.set(CSEDataToDictionary(cseData), forKey: type.rawValue)
         case .quickCSE:
             // If Keyword is blank
@@ -187,6 +184,12 @@ class CSEDataManager {
         
         // Upload CSEData to iCloud
         CloudKitManager().saveAll()
+    }
+    
+    class func cleanPostData(_ post: [[String: String]]) -> [[String: String]] {
+        return post.filter { entry in
+            !(entry["key"]?.isEmpty ?? true || entry["value"]?.isEmpty ?? true)
+        }
     }
     
 }

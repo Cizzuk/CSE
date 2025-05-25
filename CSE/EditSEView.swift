@@ -17,7 +17,6 @@ struct EditSEView: View {
     @State private var CSEData = CSEDataManager.CSEData() // Current CSEData, Changes when import from recommended search engines and iCloud
     
     // CSE settings variables
-    @State private var postEntries: [(key: String, value: String)] = []
     @State private var maxQueryLengthToggle: Bool = false
 
     // Alerts
@@ -96,7 +95,7 @@ struct EditSEView: View {
             Section {
                 // POST Data
                 NavigationLink {
-                    EditSEViewPostData(postEntries: $postEntries)
+                    EditSEViewPostData(post: $CSEData.post)
                 } label: {
                     HStack {
                         Text("POST Data")
@@ -221,7 +220,6 @@ struct EditSEView: View {
     
     private func loadCSEData() {
         CSEData.keyword = cseID ?? ""
-        postEntries = postEntries.filter { !$0.key.isEmpty && !$0.value.isEmpty }
         maxQueryLengthToggle = CSEData.maxQueryLength >= 0
 //        // Get Data for Search Engine type
 //        quickID = cseID
@@ -263,7 +261,7 @@ struct EditSEView: View {
 
 // POST Data Editor
 struct EditSEViewPostData: View {
-    @Binding var postEntries: [(key: String, value: String)]
+    @Binding var post: [[String: String]]
     
     var body: some View {
         List {
@@ -277,22 +275,22 @@ struct EditSEViewPostData: View {
             }
             // POST Data
             Section {
-                ForEach(postEntries.indices, id: \.self) { index in
+                ForEach(post.indices, id: \.self) { index in
                     HStack {
-                        TextField("Key", text: $postEntries[index].key)
+                        TextField("Key", text: binding(for: index, key: "key"))
                             .environment(\.layoutDirection, .leftToRight)
-                        TextField("Value", text: $postEntries[index].value)
+                        TextField("Value", text: binding(for: index, key: "value"))
                             .environment(\.layoutDirection, .leftToRight)
                     }
                     .disableAutocorrection(true)
                     .textInputAutocapitalization(.never)
                 }
-                .onDelete(perform: { indexSet in
-                    postEntries.remove(atOffsets: indexSet)
+                .onDelete(perform: { index in
+                    post.remove(atOffsets: index)
                 })
                 
                 Button(action: {
-                    postEntries.append((key: "", value: ""))
+                    post.append(["key": "", "value": ""])
                 })  {
                     HStack {
                         Image(systemName: "plus.circle")
@@ -304,13 +302,24 @@ struct EditSEViewPostData: View {
                 Text("Replace query with %s")
             }
         }
-        .animation(.easeOut(duration: 0.2), value: postEntries.count)
+        .animation(.easeOut(duration: 0.2), value: post.count)
         .navigationTitle("POST Data")
         .navigationBarTitleDisplayMode(.inline)
         .navigationViewStyle(.stack)
         .toolbar {
             EditButton()
         }
+    }
+    
+    private func binding(for index: Int, key: String) -> Binding<String> {
+        Binding<String>(
+            get: {
+                return post[index][key] ?? ""
+            },
+            set: { newValue in
+                post[index][key] = newValue
+            }
+        )
     }
 }
 
