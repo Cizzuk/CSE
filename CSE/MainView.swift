@@ -33,8 +33,8 @@ struct ContentView: View {
       private var needSafariTutorial: Bool = userDefaults.bool(forKey: "needSafariTutorial")
     @State private var openSafariTutorialView: Bool = false
     
-    @State private var defaultCSE: CSEDataManager.CSEData = CSEDataManager.getCSEData(cseType: .defaultCSE)
-    @State private var privateCSE: CSEDataManager.CSEData = CSEDataManager.getCSEData(cseType: .privateCSE)
+    @State private var defaultCSE: CSEDataManager.CSEData = CSEDataManager.getCSEData(.defaultCSE)
+    @State private var privateCSE: CSEDataManager.CSEData = CSEDataManager.getCSEData(.privateCSE)
     
     #if iOS
     // Get current icon
@@ -236,7 +236,7 @@ struct ContentView: View {
     }
     
     private func initialize() {
-        defaultCSE = CSEDataManager.getCSEData(cseType: .defaultCSE)
-        privateCSE = CSEDataManager.getCSEData(cseType: .privateCSE)
+        defaultCSE = CSEDataManager.getCSEData(.defaultCSE)
+        privateCSE = CSEDataManager.getCSEData(.privateCSE)
     }
 }

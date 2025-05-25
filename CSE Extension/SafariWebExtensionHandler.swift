@@ -315,8 +315,8 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         
         // Load Settings
         var CSEData: CSEDataManager.CSEData = windowName == "private" ?
-            CSEDataManager.getCSEData(cseType: .privateCSE) :
-            CSEDataManager.getCSEData(cseType: .defaultCSE)
+            CSEDataManager.getCSEData(.privateCSE) :
+            CSEDataManager.getCSEData(.defaultCSE)
         
         // Set focus filter setting
         if focusSettings != nil {

@@ -25,14 +25,22 @@ final class CloudKitManager: ObservableObject {
         }
         
         // Get userDefaults
-        let defaultCSE: CSEDataManager.CSEData = CSEDataManager.getCSEData(cseType: .defaultCSE)
-        let privateCSE: CSEDataManager.CSEData = CSEDataManager.getCSEData(cseType: .privateCSE)
+        let defaultCSE: CSEDataManager.CSEData = CSEDataManager.getCSEData(.defaultCSE)
+        let privateCSE: CSEDataManager.CSEData = CSEDataManager.getCSEData(.privateCSE)
         let quickCSE: [String: CSEDataManager.CSEData] = CSEDataManager.getAllQuickCSEData()
         
+        // Convert CSE data to dictionary
+        let defaultCSEDict = CSEDataManager.CSEDataToDictionary(defaultCSE)
+        let privateCSEDict = CSEDataManager.CSEDataToDictionary(privateCSE)
+        var quickCSEDict: [String: Any] = [:]
+        for (key, value) in quickCSE {
+            quickCSEDict[key] = CSEDataManager.CSEDataToDictionary(value)
+        }
+        
         // Convert to JSON string
-        let defaultCSEJSON = cseDataToJSONString(dictionary: defaultCSE)
-        let privateCSEJSON = cseDataToJSONString(dictionary: privateCSE)
-        let quickCSEJSON = cseDataToJSONString(dictionary: quickCSE)
+        let defaultCSEJSON = cseDataToJSONString(dictionary: defaultCSEDict)
+        let privateCSEJSON = cseDataToJSONString(dictionary: privateCSEDict)
+        let quickCSEJSON = cseDataToJSONString(dictionary: quickCSEDict)
         
         let deviceID = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
         let recordID = CKRecord.ID(recordName: deviceID)

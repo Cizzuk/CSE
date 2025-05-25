@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let privsearchengine: String? = userDefaults.string(forKey: "privsearchengine") ?? nil
         let urltop: String = userDefaults.string(forKey: "urltop") ?? ""
         let urlsuffix: String = userDefaults.string(forKey: "urlsuffix") ?? ""
-        let defaultCSE = CSEDataManager.getCSEData(cseType: .defaultCSE)
+        let defaultCSE = CSEDataManager.getCSEData(.defaultCSE)
         let adv_resetCSEs: String = userDefaults.string(forKey: "adv_resetCSEs") ?? ""
         
         // adv_resetCSEs

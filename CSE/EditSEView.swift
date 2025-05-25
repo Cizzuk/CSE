@@ -273,7 +273,7 @@ struct EditSEView: View {
 //        }
 //        
 //        // Upload CSEData to iCloud
-//        CloudKitManager().saveAll()
+        CloudKitManager().saveAll()
 //        
 //        dismiss()
     }
@@ -439,7 +439,7 @@ struct EditSEViewCloudImport: View {
                     ForEach(ck.allCSEs) { ds in
                         NavigationLink {
                             // Load CSEData from CloudKit
-                            let dsCSEs = CSEDataManager.parseDeviceCSEs(ds: ds)
+                            let dsCSEs = CSEDataManager.parseDeviceCSEs(ds)
                             EditSEViewCloudImportChooseCSE(
                                 isOpenSheet: $isOpenSheet,
                                 CSEData: $CSEData,

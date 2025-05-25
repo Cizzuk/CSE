@@ -43,17 +43,17 @@ class CSEDataManager {
         
     static let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
     
-    class func getCSEData(cseType: CSEType = .defaultCSE, cseID: String? = nil) -> CSEData {
+    class func getCSEData(_ cseType: CSEType = .defaultCSE, cseID: String? = nil) -> CSEData {
         let cseData = userDefaults.dictionary(forKey: cseType.rawValue) ?? [:]
         switch cseType {
         case .defaultCSE, .privateCSE:
-            return parseCSEData(dicData: cseData)
+            return parseCSEData(cseData)
         case .quickCSE:
             guard let id = cseID,
                   let quickDict = cseData as? [String: [String: Any]] else {
                 return CSEData()
             }
-            return parseCSEData(dicData: quickDict[id] ?? [:], cseID: id)
+            return parseCSEData(quickDict[id] ?? [:], id: id)
         }
     }
     
@@ -62,18 +62,18 @@ class CSEDataManager {
         var allQuickCSEs: [String: CSEData] = [:]
         for (key, value) in quickCSEData {
             if let cseDict = value as? [String: Any] {
-                allQuickCSEs[key] = parseCSEData(dicData: cseDict, cseID: key)
+                allQuickCSEs[key] = parseCSEData(cseDict, id: key)
             }
         }
         return allQuickCSEs
     }
     
-    class func parseCSEData(dicData: [String: Any], cseID: String? = nil) -> CSEData {
+    class func parseCSEData(_ dicData: [String: Any], id: String? = nil) -> CSEData {
         var parsedData = CSEData()
         if let name = dicData["name"] as? String {
             parsedData.name = name
         }
-        if let keyword = cseID {
+        if let keyword = id {
             parsedData.keyword = keyword
         }
         if let url = dicData["url"] as? String {
@@ -92,18 +92,30 @@ class CSEDataManager {
         return parsedData
     }
     
-    class func parseDeviceCSEs(ds: DeviceCSEs) -> (defaultCSE: CSEData, privateCSE: CSEData, quickCSE: [String: CSEData]) {
+    class func CSEDataToDictionary(_ data: CSEData) -> [String: Any] {
+        // Convert CSEData to Dictionary
+        var cseDict: [String: Any] = [:]
+        cseDict["name"] = data.name
+        cseDict["keyword"] = data.keyword
+        cseDict["url"] = data.url
+        cseDict["disablePercentEncoding"] = data.disablePercentEncoding
+        cseDict["maxQueryLength"] = data.maxQueryLength
+        cseDict["post"] = data.post
+        return cseDict
+    }
+    
+    class func parseDeviceCSEs(_ ds: DeviceCSEs) -> (defaultCSE: CSEData, privateCSE: CSEData, quickCSE: [String: CSEData]) {
         // Convert JSON string to Dictionary
         let dicDefaultCSE = ds.defaultCSE.isEmpty ? [:] : (try? JSONSerialization.jsonObject(with: Data(ds.defaultCSE.utf8), options: [])) as? [String: Any] ?? [:]
         let dicPrivateCSE = ds.privateCSE.isEmpty ? [:] : (try? JSONSerialization.jsonObject(with: Data(ds.privateCSE.utf8), options: [])) as? [String: Any] ?? [:]
         let dicQuickCSE = ds.quickCSE.isEmpty ? [:] : (try? JSONSerialization.jsonObject(with: Data(ds.quickCSE.utf8), options: [])) as? [String: [String: Any]] ?? [:]
         
         // Parse CSE data
-        let defaultCSE = parseCSEData(dicData: dicDefaultCSE)
-        let privateCSE = parseCSEData(dicData: dicPrivateCSE)
+        let defaultCSE = parseCSEData(dicDefaultCSE)
+        let privateCSE = parseCSEData(dicPrivateCSE)
         var quickCSE: [String: CSEData] = [:]
         for (key, value) in dicQuickCSE {
-            quickCSE[key] = parseCSEData(dicData: value, cseID: key)
+            quickCSE[key] = parseCSEData(value, id: key)
         }
         
         return (defaultCSE, privateCSE, quickCSE)
