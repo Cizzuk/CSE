@@ -110,8 +110,10 @@ struct EditSEView: View {
                 // Cut query
                 Toggle("Cut Long Query", isOn: $maxQueryLengthToggle)
                     .onChange(of: maxQueryLengthToggle) { newValue in
-                        if CSEData.maxQueryLength < 0 {
-                            CSEData.maxQueryLength = 500 // Default max query length
+                        if newValue {
+                            CSEData.maxQueryLength = 500
+                        } else {
+                            CSEData.maxQueryLength = -1
                         }
                     }
                 if maxQueryLengthToggle {
