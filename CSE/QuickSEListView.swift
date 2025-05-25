@@ -15,7 +15,7 @@ struct QuickSEListView: View {
             // Add new SE Button
             Section {
                 NavigationLink {
-                    EditSEView(cseType: .constant("quickCSE"), cseID: .constant(""), exCSEData: .constant(CSEDataManager.CSEData()))
+                    EditSEView(cseType: .constant("quickCSE"), cseID: .constant(nil), exCSEData: .constant(CSEDataManager.CSEData()))
                 } label: {
                     HStack {
                         Image(systemName: "plus.circle")
