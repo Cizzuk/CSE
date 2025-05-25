@@ -29,7 +29,7 @@ struct SetUseEmojiSearch: AppIntent, CustomIntentMigratedAppIntent {
     }
 
     func perform() async throws -> some IntentResult {
-        let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
+        let userDefaults = CSEDataManager.userDefaults
         var useEmojiSearch: Bool = userDefaults.bool(forKey: "useEmojiSearch")
         
         switch toggle {

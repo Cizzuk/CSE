@@ -29,7 +29,7 @@ struct SetUseQuickSearch: AppIntent, CustomIntentMigratedAppIntent {
     }
 
     func perform() async throws -> some IntentResult {
-        let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
+        let userDefaults = CSEDataManager.userDefaults
         var useQuickCSE: Bool = userDefaults.bool(forKey: "useQuickCSE")
         
         switch toggle {

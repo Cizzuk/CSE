@@ -11,7 +11,7 @@ import StoreKit
 // Global constants
 let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
 let currentRegion = Locale.current.region?.identifier
-let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
+let userDefaults = CSEDataManager.userDefaults
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let privsearchengine: String? = userDefaults.string(forKey: "privsearchengine") ?? nil
         let urltop: String = userDefaults.string(forKey: "urltop") ?? ""
         let urlsuffix: String = userDefaults.string(forKey: "urlsuffix") ?? ""
-        let defaultCSE = userDefaults.dictionary(forKey: "defaultCSE")
+        let defaultCSE = CSEDataManager.getCSEData(cseType: .defaultCSE)
         let adv_resetCSEs: String = userDefaults.string(forKey: "adv_resetCSEs") ?? ""
         
         // adv_resetCSEs

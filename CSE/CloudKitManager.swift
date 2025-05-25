@@ -43,9 +43,9 @@ final class CloudKitManager: ObservableObject {
         }
         
         // Get userDefaults
-        let defaultCSE: [String: Any] = userDefaults.dictionary(forKey: "defaultCSE") ?? [:]
-        let privateCSE: [String: Any] = userDefaults.dictionary(forKey: "privateCSE") ?? [:]
-        let quickCSE: [String: [String: Any]] = userDefaults.dictionary(forKey: "quickCSE") as? [String: [String: Any]] ?? [:]
+        let defaultCSE: [String: Any] = CSEDataManager.getCSEData(cseType: .defaultCSE)
+        let privateCSE: [String: Any] = CSEDataManager.getCSEData(cseType: .privateCSE)
+        let quickCSE: [String: [String: Any]] = CSEDataManager.getAllQuickCSEData()
         
         // Convert to JSON string
         let defaultCSEJSON = cseDataToJSONString(dictionary: defaultCSE)

@@ -236,7 +236,7 @@ struct ContentView: View {
     }
     
     private func initialize() {
-        defaultCSE = userDefaults.dictionary(forKey: "defaultCSE") ?? [:]
-        privateCSE = userDefaults.dictionary(forKey: "privateCSE") ?? [:]
+        defaultCSE = CSEDataManager.getCSEData(cseType: .defaultCSE)
+        privateCSE = CSEDataManager.getCSEData(cseType: .privateCSE)
     }
 }

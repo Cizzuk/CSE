@@ -60,7 +60,7 @@ struct QuickSEListView: View {
         }
         .task {
             // Initialize
-            quickCSE = userDefaults.dictionary(forKey: "quickCSE") as? [String: [String: Any]] ?? [:]
+            quickCSE = CSEDataManager.getAllQuickCSEData()
         }
     }
     

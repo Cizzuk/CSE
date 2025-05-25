@@ -10,7 +10,7 @@ import os.log
 
 class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
 
-    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
+    let userDefaults = CSEDataManager.userDefaults
     var focusSettings: (cseURL: String?, useQuickCSE: Bool?, useEmojiSearch: Bool?)? = nil
     
     func beginRequest(with context: NSExtensionContext) {
@@ -315,8 +315,8 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         
         // Load Settings
         var CSEData: Dictionary<String, Any> = windowName == "private" ?
-            userDefaults.dictionary(forKey: "privateCSE") ?? [:] :
-            userDefaults.dictionary(forKey: "defaultCSE") ?? [:]
+            CSEDataManager.getCSEData(cseType: .privateCSE) :
+            CSEDataManager.getCSEData(cseType: .defaultCSE)
         
         // Set focus filter setting
         if focusSettings != nil {
@@ -344,7 +344,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         // Check quick search
         if useQuickCSE {
             var cseID: String
-            let quickCSEData = userDefaults.dictionary(forKey: "quickCSE") as? [String: [String: Any]] ?? [:]
+            let quickCSEData = CSEDataManager.getAllQuickCSEData()
             for key in quickCSEData.keys {
                 // percent encoded key (all characters including + or &)
                 guard let encodedKey = key.addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._")))
