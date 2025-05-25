@@ -20,7 +20,7 @@ class CSEDataManager {
         var name: String = ""
         var keyword: String = ""
         var url: String = ""
-        var post: [[String: String]] = [[:]]
+        var post: [[String: String]] = []
         var disablePercentEncoding: Bool = false
         var maxQueryLength: Int = -1
     }
@@ -104,6 +104,15 @@ class CSEDataManager {
         return cseDict
     }
     
+    class func QuickCSEDataToDictionary(_ data: [String: CSEData]) -> [String: Any] {
+        // Convert QuickCSE data to Dictionary
+        var quickCSEDict: [String: Any] = [:]
+        for (key, value) in data {
+            quickCSEDict[key] = CSEDataToDictionary(value)
+        }
+        return quickCSEDict
+    }
+    
     class func parseDeviceCSEs(_ ds: DeviceCSEs) -> (defaultCSE: CSEData, privateCSE: CSEData, quickCSE: [String: CSEData]) {
         // Convert JSON string to Dictionary
         let dicDefaultCSE = ds.defaultCSE.isEmpty ? [:] : (try? JSONSerialization.jsonObject(with: Data(ds.defaultCSE.utf8), options: [])) as? [String: Any] ?? [:]
@@ -179,16 +188,32 @@ class CSEDataManager {
             // Replace this QuickSE
             quickCSEData.removeValue(forKey: cseData.keyword)
             quickCSEData[cseData.keyword] = cseData
-            userDefaults.set(quickCSEData, forKey: "quickCSE")
+            
+            // Convert to Dictionary
+            var quickCSEDataDict = QuickCSEDataToDictionary(quickCSEData)
+            userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
         }
         
         // Upload CSEData to iCloud
         CloudKitManager().saveAll()
     }
     
+    class func deleteQuickCSE(_ id: String) {
+        // Get current QuickSEs Data
+        var quickCSEData = getAllQuickCSEData()
+        // Remove this QuickSE
+        quickCSEData.removeValue(forKey: id)
+        // Convert to Dictionary
+        var quickCSEDataDict = QuickCSEDataToDictionary(quickCSEData)
+        userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
+    }
+    
     class func cleanPostData(_ post: [[String: String]]) -> [[String: String]] {
         return post.filter { entry in
-            !(entry["key"]?.isEmpty ?? true || entry["value"]?.isEmpty ?? true)
+            if let key = entry["key"], let value = entry["value"] {
+                return !key.isEmpty && !value.isEmpty
+            }
+            return false
         }
     }
     

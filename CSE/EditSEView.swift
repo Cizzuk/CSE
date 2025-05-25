@@ -221,41 +221,6 @@ struct EditSEView: View {
     private func loadCSEData() {
         CSEData.keyword = cseID ?? ""
         maxQueryLengthToggle = CSEData.maxQueryLength >= 0
-//        // Get Data for Search Engine type
-//        quickID = cseID
-//        if cseType != "default" && cseType != "private" && cseType != "quick" { // If unknown CSE type
-//            showFailAlert = true
-//            dismiss()
-//            return
-//        }
-//        
-//        // Get Data
-//        cseName = CSEData["name"] as? String ?? ""
-//        cseURL = CSEData["url"] as? String ?? ""
-//        disablePercentEncoding = CSEData["disablePercentEncoding"] as? Bool ?? false
-//        maxQueryLength = CSEData["maxQueryLength"] as? Int ?? -1
-//        
-//        // Get maxQueryLength
-//        if maxQueryLength ?? -1 < 0 {
-//            maxQueryLength = nil
-//            maxQueryLengthToggle = false
-//        } else {
-//            maxQueryLengthToggle = true
-//        }
-//        
-//        // Get POST Data
-//        // If POST Data exists
-//        if let postArray = CSEData["post"] as? [[String: String]] {
-//            postEntries = postArray.compactMap { item in
-//                if let key = item["key"], let value = item["value"] {
-//                    return (key: key, value: value)
-//                } else {
-//                    return nil
-//                }
-//            }
-//        } else {
-//            postEntries = []
-//        }
     }
 }
 

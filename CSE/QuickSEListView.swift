@@ -48,7 +48,12 @@ struct QuickSEListView: View {
                         .accessibilityLabel("\(displayName). " + keywordTranslation + ". \(cseID)")
                     }
                 }
-                .onDelete(perform: deleteSE)
+                .onDelete { indexSet in
+                    for index in indexSet {
+                        let cseID = quickCSE.keys.sorted()[index]
+                        CSEDataManager.deleteQuickCSE(cseID)
+                    }
+                }
             }
         }
         .navigationTitle("Quick Search Engines")
@@ -60,16 +65,6 @@ struct QuickSEListView: View {
         .task {
             // Initialize
             quickCSE = CSEDataManager.getAllQuickCSEData()
-        }
-    }
-    
-    // Delete a Quick Search Engine
-    private func deleteSE(at offsets: IndexSet) {
-        let keys = quickCSE.keys.sorted()
-        for offset in offsets {
-            let keyToRemove = keys[offset]
-            quickCSE.removeValue(forKey: keyToRemove)
-            userDefaults.set(quickCSE, forKey: "quickCSE")
         }
     }
 }
