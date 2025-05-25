@@ -62,7 +62,7 @@ struct ContentView: View {
                 Section {
                     // Default CSE
                     NavigationLink {
-                        EditSEView(cseType: .constant("default"), cseID: .constant(""), exCSEData: .constant(defaultCSE))
+                        EditSEView(cseType: .constant("defaultCSE"), cseID: .constant(nil), exCSEData: .constant(defaultCSE))
                     } label: {
                         Text("Default Search Engine")
                     }
@@ -73,7 +73,7 @@ struct ContentView: View {
                     })
                     if usePrivateCSE {
                         NavigationLink {
-                            EditSEView(cseType: .constant("private"), cseID: .constant(""), exCSEData: .constant(privateCSE))
+                            EditSEView(cseType: .constant("privateCSE"), cseID: .constant(nil), exCSEData: .constant(privateCSE))
                         } label: {
                             Text("Private Search Engine")
                         }

@@ -11,6 +11,7 @@ import UIKit
 
 final class CloudKitManager: ObservableObject {
     private let database: CKDatabase = CKContainer(identifier: "iCloud.net.cizzuk.cse").privateCloudDatabase
+    private let userDefaults = CSEDataManager.userDefaults
     
     @Published var allCSEs: [CSEDataManager.DeviceCSEs] = [] // All data from iCloud
     @Published var error: Error? // Error message

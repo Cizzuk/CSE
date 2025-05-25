@@ -11,8 +11,8 @@ struct EditSEView: View {
     @Environment(\.dismiss) private var dismiss
     
     // Load settings
-    @Binding var cseType: String // "default", "private", or "quick"
-    @Binding var cseID: String // If quick search engine, use this ID
+    @Binding var cseType: String // "defaultCSE", "privateCSE", "quickCSE"
+    @Binding var cseID: String? // If quick search engine, use this ID
     @Binding var exCSEData: CSEDataManager.CSEData // Original CSEData
     @State private var CSEData = CSEDataManager.CSEData() // Current CSEData, Changes when import from recommended search engines and iCloud
     
@@ -31,14 +31,13 @@ struct EditSEView: View {
     @State private var openEditSEViewCloudImport: Bool = false
     
     @State private var isFirstLoad: Bool = true // Need to load exCSEData
-    @State private var isNeedLoad: Bool = false // Need to load CSEData
     
     var body: some View {
         List {
-            if cseType == "default" || cseType == "private" {
+            if cseType == "defaultCSE" || cseType == "privateCSE" {
                 Section {
                     // Search Engine Name
-                    if cseType == "default" {
+                    if cseType == "defaultCSE" {
                         Text("Default Search Engine")
                     } else {
                         Text("Private Search Engine")
@@ -46,7 +45,7 @@ struct EditSEView: View {
                 }
             }
             
-            if cseType == "quick" {
+            if cseType == "quickCSE" {
                 // Search Engine Name
                 Section {
                     TextField("Name", text: $CSEData.name)
@@ -200,85 +199,26 @@ struct EditSEView: View {
     }
     
     private func saveCSEData() {
-//        // Normalize Safari search engine URLs
-//        let replacements = [
-//            "https://google.com": "https://www.google.com",
-//            "https://bing.com": "https://www.bing.com",
-//            "https://www.duckduckgo.com": "https://duckduckgo.com",
-//            "https://ecosia.com": "https://www.ecosia.com",
-//            "https://baidu.com": "https://www.baidu.com"
-//        ]
-//        for (original, replacement) in replacements {
-//            if cseURL.hasPrefix(original) {
-//                cseURL = cseURL.replacingOccurrences(of: original, with: replacement)
-//                break
-//            }
-//        }
-//        
-//        // POST Data
-//        let postArray: [[String: String]] = postEntries
-//            .map { ["key": $0.key, "value": $0.value] }
-//            .filter { !$0["key"]!.isEmpty && !$0["value"]!.isEmpty }
-//        
-//        // Check maxQueryLengthToggle is enabled
-//        let fixedMaxQueryLength: Int = maxQueryLengthToggle ? maxQueryLength ?? -1 : -1
-//        
-//        // Create temporary data
-//        var tmpCSEData: [String: Any] = [
-//            "url": cseURL,
-//            "disablePercentEncoding": disablePercentEncoding,
-//            "maxQueryLength": fixedMaxQueryLength,
-//            "post": postArray
-//        ]
-//        
-//        // Save for Search Engine type
-//        switch cseType {
-//        case "default":
-//            userDefaults.set(tmpCSEData, forKey: "defaultCSE")
-//        case "private":
-//            userDefaults.set(tmpCSEData, forKey: "privateCSE")
-//        case "quick":
-//            // If Keyword is blank
-//            if quickID == "" {
-//                showKeyBlankAlert = true
-//                return
-//            }
-//            // If URL is blank
-//            if cseURL == "" {
-//                showURLBlankAlert = true
-//                return
-//            }
-//            // Get current QuickSEs Data
-//            var quickCSEData = userDefaults.dictionary(forKey: "quickCSE") ?? [:]
-//            // If Keyword is changed
-//            if cseID != quickID {
-//                // If Keyword is free
-//                if quickCSEData[quickID] == nil {
-//                    quickCSEData.removeValue(forKey: cseID)
-//                    cseID = quickID
-//                } else {
-//                    showKeyUsedAlert = true
-//                    return
-//                }
-//            }
-//            // Replace this QuickSE
-//            quickCSEData.removeValue(forKey: quickID)
-//            tmpCSEData["name"] = cseName
-//            quickCSEData[quickID] = tmpCSEData
-//            userDefaults.set(quickCSEData, forKey: "quickCSE")
-//        default: // If unknown CSE type
-//            showFailAlert = true
-//            dismiss()
-//            return
-//        }
-//        
-//        // Upload CSEData to iCloud
-        CloudKitManager().saveAll()
-//        
-//        dismiss()
+        do {
+            try CSEDataManager.saveCSEData(CSEData, CSEDataManager.CSEType(rawValue: cseType)!, originalID: cseID)
+        } catch CSEDataManager.saveCSEDataError.keyBlank {
+            showKeyBlankAlert = true
+            return
+        } catch CSEDataManager.saveCSEDataError.urlBlank {
+            showURLBlankAlert = true
+            return
+        } catch CSEDataManager.saveCSEDataError.keyUsed {
+            showKeyUsedAlert = true
+            return
+        } catch {
+            showFailAlert = true
+            return
+        }
+        dismiss()
     }
     
     private func loadCSEData() {
+        CSEData.keyword = cseID ?? ""
         postEntries = postEntries.filter { !$0.key.isEmpty && !$0.value.isEmpty }
         maxQueryLengthToggle = CSEData.maxQueryLength >= 0
 //        // Get Data for Search Engine type
