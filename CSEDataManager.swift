@@ -104,9 +104,9 @@ class CSEDataManager {
         return cseDict
     }
     
-    class func CSEDataToDictionary(_ data: [String: CSEData]) -> [String: Any] {
+    class func CSEDataToDictionary(_ data: [String: CSEData]) -> [String: [String: Any]] {
         // Convert QuickCSE data to Dictionary
-        var quickCSEDict: [String: Any] = [:]
+        var quickCSEDict: [String: [String: Any]] = [:]
         for (key, value) in data {
             quickCSEDict[key] = CSEDataToDictionary(value)
         }
