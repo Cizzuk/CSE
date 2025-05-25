@@ -48,12 +48,7 @@ struct QuickSEListView: View {
                         .accessibilityLabel("\(displayName). " + keywordTranslation + ". \(cseID)")
                     }
                 }
-                .onDelete { indexSet in
-                    for index in indexSet {
-                        let cseID = quickCSE.keys.sorted()[index]
-                        CSEDataManager.deleteQuickCSE(cseID)
-                    }
-                }
+                .onDelete(perform: CSEDataManager.deleteQuickCSE)
             }
         }
         .navigationTitle("Quick Search Engines")
