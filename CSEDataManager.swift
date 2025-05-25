@@ -233,6 +233,11 @@ class CSEDataManager {
         userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
     }
     
+    class func replaceQuickCSEData(_ data: [String: [String: Any]]) {
+        userDefaults.set(data, forKey: "quickCSE")
+    }
+        
+    
     class func deleteQuickCSE(_ id: String) {
         // Get current QuickSEs Data
         var quickCSEData = getAllQuickCSEData()

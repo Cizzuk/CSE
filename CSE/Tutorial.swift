@@ -455,9 +455,13 @@ struct SafariTutorialImportView: View {
                         let defaultCSE = ck.allCSEs.first(where: { $0.id.recordName == selected })?.defaultCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: Any] ?? [:]
                         let privateCSE = ck.allCSEs.first(where: { $0.id.recordName == selected })?.privateCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: Any] ?? [:]
                         let quickCSE = ck.allCSEs.first(where: { $0.id.recordName == selected })?.quickCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: [String: Any]] ?? [:]
-                        userDefaults.set(defaultCSE, forKey: "defaultCSE")
-                        userDefaults.set(privateCSE, forKey: "privateCSE")
-                        userDefaults.set(quickCSE, forKey: "quickCSE")
+                        
+                        let parsedDefaultCSE = CSEDataManager.parseCSEData(defaultCSE)
+                        let parsedPrivateCSE = CSEDataManager.parseCSEData(privateCSE)
+                        
+                        CSEDataManager.saveCSEData(parsedDefaultCSE, .defaultCSE)
+                        CSEDataManager.saveCSEData(parsedPrivateCSE, .privateCSE)
+                        CSEDataManager.replaceQuickCSEData(quickCSE)
                     }
                     isOpenSheet = false
                 }) {
