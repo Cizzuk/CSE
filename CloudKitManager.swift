@@ -33,7 +33,7 @@ final class CloudKitManager: ObservableObject {
         // Convert CSE data to dictionary
         let defaultCSEDict = CSEDataManager.CSEDataToDictionary(defaultCSE)
         let privateCSEDict = CSEDataManager.CSEDataToDictionary(privateCSE)
-        let quickCSEDict = CSEDataManager.QuickCSEDataToDictionary(quickCSE)
+        let quickCSEDict = CSEDataManager.CSEDataToDictionary(quickCSE)
         
         // Convert to JSON string
         let defaultCSEJSON = cseDataToJSONString(dictionary: defaultCSEDict)
