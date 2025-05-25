@@ -350,17 +350,15 @@ struct SafariTutorialRecommendSEView: View {
                         }
                     }
                     
-                    if !recommendPopCSEList.isEmpty {
-                        Section {
-                            ForEach(recommendPopCSEList.indices, id: \.self, content: { index in
-                                UITemplates.recommendSEButton(action: {
-                                    CSEDataManager.saveCSEData(recommendPopCSEList[index], .defaultCSE)
-                                    isOpenSheet = false
-                                }, cse: recommendPopCSEList[index])
-                            })
-                        } header: {
-                            Text("Popular Search Engines")
-                        }
+                    Section {
+                        ForEach(recommendPopCSEList.indices, id: \.self, content: { index in
+                            UITemplates.recommendSEButton(action: {
+                                CSEDataManager.saveCSEData(recommendPopCSEList[index], .defaultCSE)
+                                isOpenSheet = false
+                            }, cse: recommendPopCSEList[index])
+                        })
+                    } header: {
+                        Text("Popular Search Engines")
                     }
                     
                     if !recommendAICSEList.isEmpty {
@@ -376,17 +374,15 @@ struct SafariTutorialRecommendSEView: View {
                         }
                     }
                     
-                    if !recommendNormalCSEList.isEmpty {
-                        Section {
-                            ForEach(recommendNormalCSEList.indices, id: \.self, content: { index in
-                                UITemplates.recommendSEButton(action: {
-                                    CSEDataManager.saveCSEData(recommendNormalCSEList[index], .defaultCSE)
-                                    isOpenSheet = false
-                                }, cse: recommendNormalCSEList[index])
-                            })
-                        } header: {
-                            Text("Safari Search Engines")
-                        }
+                    Section {
+                        ForEach(recommendNormalCSEList.indices, id: \.self, content: { index in
+                            UITemplates.recommendSEButton(action: {
+                                CSEDataManager.saveCSEData(recommendNormalCSEList[index], .defaultCSE)
+                                isOpenSheet = false
+                            }, cse: recommendNormalCSEList[index])
+                        })
+                    } header: {
+                        Text("Safari Search Engines")
                     }
                     
                 }

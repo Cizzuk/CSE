@@ -304,18 +304,16 @@ struct EditSEViewRecommend: View {
         NavigationView {
             List {
                 // Search Engine List
-                if !recommendPopCSEList.isEmpty {
-                    Section {
-                        ForEach(recommendPopCSEList.indices, id: \.self, content: { index in
-                            let cse = recommendPopCSEList[index]
-                            UITemplates.recommendSEButton(action: {
-                                CSEData = cse
-                                isOpenSheet = false
-                            }, cse: cse)
-                        })
-                    } header: {
-                        Text("Popular Search Engines")
-                    }
+                Section {
+                    ForEach(recommendPopCSEList.indices, id: \.self, content: { index in
+                        let cse = recommendPopCSEList[index]
+                        UITemplates.recommendSEButton(action: {
+                            CSEData = cse
+                            isOpenSheet = false
+                        }, cse: cse)
+                    })
+                } header: {
+                    Text("Popular Search Engines")
                 }
                 // AI Search Engine List
                 if !recommendAICSEList.isEmpty {
@@ -332,18 +330,16 @@ struct EditSEViewRecommend: View {
                     }
                 }
                 // Normal Search Engine List
-                if !recommendNormalCSEList.isEmpty {
-                    Section {
-                        ForEach(recommendNormalCSEList.indices, id: \.self, content: { index in
-                            let cse = recommendNormalCSEList[index]
-                            UITemplates.recommendSEButton(action: {
-                                CSEData = cse
-                                isOpenSheet = false
-                            }, cse: cse)
-                        })
-                    } header: {
-                        Text("Safari Search Engines")
-                    }
+                Section {
+                    ForEach(recommendNormalCSEList.indices, id: \.self, content: { index in
+                        let cse = recommendNormalCSEList[index]
+                        UITemplates.recommendSEButton(action: {
+                            CSEData = cse
+                            isOpenSheet = false
+                        }, cse: cse)
+                    })
+                } header: {
+                    Text("Safari Search Engines")
                 }
             }
             .navigationTitle("Recommended Search Engines")

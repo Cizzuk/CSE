@@ -162,8 +162,17 @@ class RecommendSEs {
                 url: "https://www.perplexity.ai/?q=%s"
             ))
             aiCSEs.append(CSEDataManager.CSEData(
+                name: "Microsoft Copilot",
+                url: "https://www.bing.com/copilotsearch?q=%s"
+            ))
+            aiCSEs.append(CSEDataManager.CSEData(
                 name: "ChatGPT",
                 url: "https://chatgpt.com/?q=%s&hints=search",
+            ))
+        } else if currentRegion == "CN" {
+            aiCSEs.append(CSEDataManager.CSEData(
+                name: "百度AI搜索",
+                url: "https://chat.baidu.com/search?query=%s"
             ))
         }
         return aiCSEs
