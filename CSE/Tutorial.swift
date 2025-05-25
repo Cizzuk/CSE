@@ -322,7 +322,7 @@ struct SafariTutorialSecondView: View {
 struct SafariTutorialRecommendSEView: View {
     @Binding var isOpenSheet: Bool
     @State private var selectedIndex: Int = -1
-    private let cseList: [[String: Any]] = recommendCSEList.data
+    private let cseList = recommendCSEList.data
     
     var body: some View {
         NavigationView {
@@ -353,8 +353,8 @@ struct SafariTutorialRecommendSEView: View {
                         // Search Engine Selector
                         ForEach(cseList.indices, id: \.self, content: { index in
                             let cse = cseList[index]
-                            let cseName = cse["name"] as! String
-                            let cseURL = cse["url"] as! String
+                            let cseName = cse.name
+                            let cseURL = cse.url
                             Button {
                                 if selectedIndex == index {
                                     selectedIndex = -1

@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             resetCSE(target: "all")
             
             // Update old CSE settings
-            if (urltop != "" || urlsuffix != "") && defaultCSE == nil {
+            if (urltop != "" || urlsuffix != "") {
                 let defaultCSE: [String: Any] = [
                     "name": "Default Search Engine",
                     "url": urltop + "%s" + urlsuffix,

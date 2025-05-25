@@ -314,18 +314,14 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         var fixedQuery: String = query
         
         // Load Settings
-        var CSEData: Dictionary<String, Any> = windowName == "private" ?
+        var CSEData: CSEDataManager.CSEData = windowName == "private" ?
             CSEDataManager.getCSEData(cseType: .privateCSE) :
             CSEDataManager.getCSEData(cseType: .defaultCSE)
         
         // Set focus filter setting
         if focusSettings != nil {
-            CSEData = [
-                "url": focusSettings?.cseURL ?? "",
-                "post": [],
-                "disablePercentEncoding": false,
-                "maxQueryLength": -1
-            ]
+            CSEData = CSEDataManager.CSEData()
+            CSEData.url = focusSettings?.cseURL ?? ""
         }
         
         // Is useQuickCSE Enabled?
@@ -367,17 +363,17 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         var decodedFixedQuery: String = fixedQuery.removingPercentEncoding ?? ""
         
         // Get maxQueryLength
-        let maxQueryLength: Int = CSEData["maxQueryLength"] as? Int ?? -1
+        let maxQueryLength: Int = CSEData.maxQueryLength
         if maxQueryLength > -1 && decodedFixedQuery.count > maxQueryLength {
             decodedFixedQuery = String(decodedFixedQuery.prefix(maxQueryLength))
             fixedQuery = String(fixedQuery.prefix(maxQueryLength))
         }
         
         // Replace %s with query
-        let redirectQuery: String = CSEData["disablePercentEncoding"] as? Bool ?? false ? decodedFixedQuery : fixedQuery
-        let redirectURL: String = (CSEData["url"] as? String)!.replacingOccurrences(of: "%s", with: redirectQuery)
+        let redirectQuery: String = CSEData.disablePercentEncoding ? decodedFixedQuery : fixedQuery
+        let redirectURL: String = CSEData.url.replacingOccurrences(of: "%s", with: redirectQuery)
         
-        var postData: [[String: String]] = CSEData["post"] as? [[String : String]] ?? [[:]]
+        var postData: [[String: String]] = CSEData.post
         for i in 0..<postData.count {
             postData[i]["key"] = postData[i]["key"]?.replacingOccurrences(of: "%s", with: decodedFixedQuery)
             postData[i]["value"] = postData[i]["value"]?.replacingOccurrences(of: "%s", with: decodedFixedQuery)

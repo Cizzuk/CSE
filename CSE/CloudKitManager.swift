@@ -9,28 +9,10 @@ import CloudKit
 import Combine
 import UIKit
 
-// Structure of a single device's CSE data
-struct DeviceCSEs: Identifiable, Hashable {
-    let id: CKRecord.ID
-    let modificationDate: Date?
-    let deviceName: String
-    let defaultCSE: String
-    let privateCSE: String
-    let quickCSE: String
-    
-    static func == (lhs: DeviceCSEs, rhs: DeviceCSEs) -> Bool {
-            return lhs.id.recordName == rhs.id.recordName
-        }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id.recordName)
-    }
-}
-
 final class CloudKitManager: ObservableObject {
     private let database: CKDatabase = CKContainer(identifier: "iCloud.net.cizzuk.cse").privateCloudDatabase
     
-    @Published var allCSEs: [DeviceCSEs] = [] // All data from iCloud
+    @Published var allCSEs: [CSEDataManager.DeviceCSEs] = [] // All data from iCloud
     @Published var error: Error? // Error message
     @Published var isLoading: Bool = false // Indicates if the CloudKit is loading
     @Published var isLocked: Bool = false // If the current view is locked
@@ -43,9 +25,9 @@ final class CloudKitManager: ObservableObject {
         }
         
         // Get userDefaults
-        let defaultCSE: [String: Any] = CSEDataManager.getCSEData(cseType: .defaultCSE)
-        let privateCSE: [String: Any] = CSEDataManager.getCSEData(cseType: .privateCSE)
-        let quickCSE: [String: [String: Any]] = CSEDataManager.getAllQuickCSEData()
+        let defaultCSE: CSEDataManager.CSEData = CSEDataManager.getCSEData(cseType: .defaultCSE)
+        let privateCSE: CSEDataManager.CSEData = CSEDataManager.getCSEData(cseType: .privateCSE)
+        let quickCSE: [String: CSEDataManager.CSEData] = CSEDataManager.getAllQuickCSEData()
         
         // Convert to JSON string
         let defaultCSEJSON = cseDataToJSONString(dictionary: defaultCSE)
@@ -110,7 +92,7 @@ final class CloudKitManager: ObservableObject {
         operation.recordMatchedBlock = { (recordID: CKRecord.ID, result: Result<CKRecord, Error>) in
             switch result {
             case .success(let record):
-                let fetchedRecord = DeviceCSEs(
+                let fetchedRecord = CSEDataManager.DeviceCSEs(
                     id: record.recordID,
                     modificationDate: record.modificationDate,
                     deviceName: record["deviceName"] as? String ?? "",
