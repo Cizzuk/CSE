@@ -1218,6 +1218,9 @@
     "bing.com" : {
       "shouldTranslate" : false
     },
+    "Blank to disable" : {
+
+    },
     "Blank to disable CSE" : {
       "localizations" : {
         "ar" : {
@@ -1732,6 +1735,7 @@
       }
     },
     "Cut Long Query" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -5706,6 +5710,7 @@
       }
     },
     "Search Engine URL" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -5992,6 +5997,7 @@
       }
     },
     "Set Default Search Engine to ${cseURL}" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -6202,6 +6208,7 @@
       }
     },
     "Set Private Search Engine to ${cseURL}" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
