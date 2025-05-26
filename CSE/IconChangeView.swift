@@ -20,10 +20,6 @@ struct IconSettingView: View {
                 iconItem(iconName: "Pride", iconID: "pride")
                 iconItem(iconName: "General", iconID: "light")
                 iconItem(iconName: "Pixel", iconID: "pixel")
-                iconItem(iconName: "Dark Blue", iconID: "blue-dark")
-                iconItem(iconName: "Dark Red", iconID: "red-dark")
-                iconItem(iconName: "Dark Green", iconID: "green-dark")
-                iconItem(iconName: "Black", iconID: "gray-dark")
             }
         }
         .listStyle(.insetGrouped)
@@ -150,10 +146,6 @@ struct PurchaseView: View {
                 iconItem(iconName: "Pride", iconID: "pride")
                 iconItem(iconName: "General", iconID: "light")
                 iconItem(iconName: "Pixel", iconID: "pixel")
-                iconItem(iconName: "Dark Blue", iconID: "blue-dark")
-                iconItem(iconName: "Dark Red", iconID: "red-dark")
-                iconItem(iconName: "Dark Green", iconID: "green-dark")
-                iconItem(iconName: "Black", iconID: "gray-dark")
             } header: {
                 Text("Available Icons")
             } footer: {
