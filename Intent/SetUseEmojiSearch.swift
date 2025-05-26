@@ -7,6 +7,9 @@
 
 import Foundation
 import AppIntents
+#if iOS
+import WidgetKit
+#endif
 
 struct SetUseEmojiSearch: AppIntent, CustomIntentMigratedAppIntent {
     static let intentClassName = "SetUseEmojiSearch"
@@ -41,6 +44,12 @@ struct SetUseEmojiSearch: AppIntent, CustomIntentMigratedAppIntent {
         }
         
         userDefaults.set(useEmojiSearch, forKey: "useEmojiSearch")
+        
+        #if iOS
+        if #available(iOS 18.0, *) {
+            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.EmojiSearch")
+        }
+        #endif
         
         return .result()
     }

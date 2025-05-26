@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+#if iOS
+import WidgetKit
+#endif
 
 @main
 struct MainView: App {
@@ -82,6 +85,13 @@ struct ContentView: View {
                     Toggle(isOn: $useQuickCSE, label: {
                         Text("Quick Search")
                     })
+                    #if iOS
+                    .onChange(of: useQuickCSE) { _ in
+                        if #available(iOS 18.0, *) {
+                            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
+                        }
+                    }
+                    #endif
                     if useQuickCSE {
                         NavigationLink {
                             QuickSEListView()
@@ -99,6 +109,13 @@ struct ContentView: View {
                     Toggle(isOn: $useEmojiSearch, label: {
                         Text("Emoji Search")
                     })
+                    #if iOS
+                    .onChange(of: useEmojiSearch) { _ in
+                        if #available(iOS 18.0, *) {
+                            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.EmojiSearch")
+                        }
+                    }
+                    #endif
                 } footer: {
                     Text("If you enter only one emoji, you can search on Emojipedia.org.")
                 }
