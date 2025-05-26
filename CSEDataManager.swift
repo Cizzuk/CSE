@@ -22,7 +22,7 @@ class CSEDataManager {
         var url: String = ""
         var post: [[String: String]] = []
         var disablePercentEncoding: Bool = false
-        var maxQueryLength: Int = -1
+        var maxQueryLength: Int? = -1
     }
     
     // Structure of a single device's CSE data
@@ -82,7 +82,7 @@ class CSEDataManager {
         if let disablePercentEncoding = data["disablePercentEncoding"] as? Bool {
             parsedData.disablePercentEncoding = disablePercentEncoding
         }
-        if let maxQueryLength = data["maxQueryLength"] as? Int {
+        if let maxQueryLength = data["maxQueryLength"] as? Int? {
             parsedData.maxQueryLength = maxQueryLength
         }
         if let postEntries = data["post"] as? [[String: String]] {
@@ -156,6 +156,10 @@ class CSEDataManager {
         
         // Clean up post data
         cseData.post = cleanPostData(cseData.post)
+        
+        if cseData.maxQueryLength ?? -1 < 0 {
+            cseData.maxQueryLength = nil // Default value for maxQueryLength
+        }
         
         return cseData
     }

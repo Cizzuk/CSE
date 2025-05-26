@@ -14,9 +14,6 @@ struct EditSEView: View {
     @Binding var cseType: String // "defaultCSE", "privateCSE", "quickCSE"
     @Binding var cseID: String? // If quick search engine, use this ID
     @State private var CSEData = CSEDataManager.CSEData() // Current CSEData, Changes when import from recommended search engines and iCloud
-    
-    // CSE settings variables
-    @State private var maxQueryLengthToggle: Bool = false
 
     // Alerts
     @State private var showFailAlert: Bool = false
@@ -105,30 +102,21 @@ struct EditSEView: View {
                 }
                 // Disable %encode
                 Toggle("Disable Percent-encoding", isOn: $CSEData.disablePercentEncoding)
-                // Cut query
-                Toggle("Cut Long Query", isOn: $maxQueryLengthToggle)
-                    .onChange(of: maxQueryLengthToggle) { newValue in
-                        if newValue {
-                            CSEData.maxQueryLength = 500
-                        } else {
-                            CSEData.maxQueryLength = -1
-                        }
-                    }
-                if maxQueryLengthToggle {
-                    HStack {
-                        Text("Max Query Length")
-                        Spacer()
-                        //Input max query length
-                        TextField("32", value: $CSEData.maxQueryLength, format: .number)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .keyboardType(.numbersAndPunctuation)
-                            .frame(width: 100)
-                            .multilineTextAlignment(.trailing)
-                            .submitLabel(.done)
-                    }
+                HStack {
+                    Text("Max Query Length")
+                    Spacer()
+                    //Input max query length
+                    TextField("32", value: $CSEData.maxQueryLength, format: .number)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .keyboardType(.numbersAndPunctuation)
+                        .frame(width: 100)
+                        .multilineTextAlignment(.trailing)
+                        .submitLabel(.done)
                 }
             } header: {
                 Text("Advanced Settings")
+            } footer: {
+                Text("Blank to disable")
             }
             
             // Import Search Engine
@@ -160,7 +148,6 @@ struct EditSEView: View {
         .alert("This keyword is already used in other", isPresented: $showKeyUsedAlert, actions:{})
         .alert("Keyword cannot be blank", isPresented: $showKeyBlankAlert, actions:{})
         .alert("Search URL cannot be blank", isPresented: $showURLBlankAlert, actions:{})
-        .animation(.easeOut(duration: 0.2), value: maxQueryLengthToggle)
         .navigationTitle("Edit Search Engine")
         .navigationBarTitleDisplayMode(.inline)
         .navigationViewStyle(.stack)
@@ -229,9 +216,9 @@ struct EditSEView: View {
                     CSEData = CSEDataManager.CSEData() // Empty CSEData
                 }
             }
+            isFirstLoad = false
         }
         CSEData.keyword = cseID ?? ""
-        maxQueryLengthToggle = CSEData.maxQueryLength >= 0
     }
 }
 
