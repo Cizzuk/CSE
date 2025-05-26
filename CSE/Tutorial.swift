@@ -21,7 +21,7 @@ fileprivate func NextButton(text: String) -> some View {
         #if !visionOS
         .foregroundColor(.white)
         .frame(maxWidth: .infinity)
-        .background(Color.blue)
+        .background(Color.accentColor)
         .cornerRadius(16)
         #endif
 }
