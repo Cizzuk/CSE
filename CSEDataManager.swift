@@ -22,7 +22,7 @@ class CSEDataManager {
         var url: String = ""
         var post: [[String: String]] = []
         var disablePercentEncoding: Bool = false
-        var maxQueryLength: Int? = -1
+        var maxQueryLength: Int? = nil
     }
     
     // Structure of a single device's CSE data
