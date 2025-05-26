@@ -12,8 +12,8 @@ struct SetPrivateSE: AppIntent, CustomIntentMigratedAppIntent {
     static let intentClassName = "SetPrivateSE"
     static var title: LocalizedStringResource = "Set Private Search Engine"
     static var description: LocalizedStringResource = "Sets a Custom Private Search Engine on CSE."
-
-    @Parameter(title: "URL", default: "")
+    
+    @Parameter(title: "URL", description: "Blank to disable", default: "")
         var cseURL: String
     
     @Parameter(title: "Disable Percent-encoding", default: false)
@@ -23,6 +23,13 @@ struct SetPrivateSE: AppIntent, CustomIntentMigratedAppIntent {
         var maxQueryLength: Int?
 
     func perform() async throws -> some IntentResult {
+        let userDefaults = CSEDataManager.userDefaults
+        if cseURL.isEmpty {
+            userDefaults.set(false, forKey: "usePrivateCSE")
+        } else {
+            userDefaults.set(true, forKey: "usePrivateCSE")
+        }
+        
         let cseData = CSEDataManager.CSEData(
             url: cseURL,
             disablePercentEncoding: disablePercentEncoding,
