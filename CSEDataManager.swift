@@ -195,7 +195,7 @@ class CSEDataManager {
         CloudKitManager().saveAll()
     }
     
-    class func saveCSEData(_ data: CSEData, _ originalID: String?) throws {
+    class func saveCSEData(_ data: CSEData, _ originalID: String?, replace: Bool = false) throws {
         let cseData = saveCSEDataCommon(data)
         
         // If Keyword is blank
@@ -216,7 +216,11 @@ class CSEDataManager {
                     quickCSEData.removeValue(forKey: originalID!)
                 }
             } else {
-                throw saveCSEDataError.keyUsed
+                if replace {
+                    quickCSEData.removeValue(forKey: cseData.keyword)
+                } else {
+                    throw saveCSEDataError.keyUsed
+                }
             }
         }
         // Replace this QuickSE

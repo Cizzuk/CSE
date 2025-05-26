@@ -579,6 +579,12 @@
         }
       }
     },
+    "Add Quick Search Engine" : {
+
+    },
+    "Adds a Custom Quick Search Engine on CSE." : {
+
+    },
     "Advanced Settings" : {
       "localizations" : {
         "ar" : {
@@ -1875,6 +1881,12 @@
         }
       }
     },
+    "Delete a Custom Quick Search Engine with Keyword." : {
+
+    },
+    "Delete Quick Search Engine" : {
+
+    },
     "Disable Checker" : {
       "localizations" : {
         "ja" : {
@@ -3056,6 +3068,9 @@
     },
     "google.com" : {
       "shouldTranslate" : false
+    },
+    "If the keyword is already in use, replace and save" : {
+
     },
     "If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial." : {
       "localizations" : {
@@ -5175,6 +5190,9 @@
           }
         }
       }
+    },
+    "Replace" : {
+
     },
     "Replace query with %s" : {
       "localizations" : {

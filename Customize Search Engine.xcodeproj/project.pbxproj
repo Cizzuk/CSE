@@ -108,6 +108,8 @@
 		BE289FE22C8DAE07005BBDC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				AddQuickSE.swift,
+				DeleteQuickSE.swift,
 				Enums.swift,
 				SetDefaultSE.swift,
 				SetFocusSE.swift,
