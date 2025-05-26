@@ -41,7 +41,6 @@ fileprivate func NextButtonDim(text: String) -> some View {
 // First Tutorial
 struct FullTutorialView: View {
     @Binding var isOpenSheet: Bool
-    @Binding var isFirstTutorial: Bool
     var body: some View {
         NavigationView {
             VStack() {
@@ -99,7 +98,7 @@ struct FullTutorialView: View {
                 }
                 .padding(.top, 10)
                 NavigationLink {
-                    SafariTutorialView(isOpenSheet: $isOpenSheet, isFirstTutorial: $isFirstTutorial)
+                    SafariTutorialView(isOpenSheet: $isOpenSheet, isFirstTutorial: .constant(true))
                 } label: {
                     NextButton(text: NSLocalizedString("Next", comment: ""))
                 }

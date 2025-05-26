@@ -233,7 +233,7 @@ struct ContentView: View {
         .navigationViewStyle(.stack)
         // Tutorial sheets
         .sheet(isPresented : $needFirstTutorial, content: {
-            SafariTutorialView(isOpenSheet: $needSafariTutorial, isFirstTutorial: .constant(false))
+            FullTutorialView(isOpenSheet: $needFirstTutorial)
         })
         .sheet(isPresented: $needSafariTutorial, content: {
             SafariTutorialView(isOpenSheet: $needSafariTutorial, isFirstTutorial: .constant(false))
