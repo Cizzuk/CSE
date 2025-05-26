@@ -83,7 +83,11 @@ class CSEDataManager {
             parsedData.disablePercentEncoding = disablePercentEncoding
         }
         if let maxQueryLength = data["maxQueryLength"] as? Int? {
-            parsedData.maxQueryLength = maxQueryLength
+            if maxQueryLength == nil || maxQueryLength ?? -1 < 0 {
+                parsedData.maxQueryLength = nil
+            } else {
+                parsedData.maxQueryLength = maxQueryLength
+            }
         }
         if let postEntries = data["post"] as? [[String: String]] {
             parsedData.post = cleanPostData(postEntries)
