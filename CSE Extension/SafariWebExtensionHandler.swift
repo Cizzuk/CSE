@@ -362,8 +362,8 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         var decodedFixedQuery: String = fixedQuery.removingPercentEncoding ?? ""
         
         // Get maxQueryLength
-        let maxQueryLength: Int = CSEData.maxQueryLength ?? -1
-        if maxQueryLength > -1 && decodedFixedQuery.count > maxQueryLength {
+        if let maxQueryLength: Int = CSEData.maxQueryLength,
+           decodedFixedQuery.count > maxQueryLength {
             decodedFixedQuery = String(decodedFixedQuery.prefix(maxQueryLength))
             fixedQuery = String(fixedQuery.prefix(maxQueryLength))
         }
