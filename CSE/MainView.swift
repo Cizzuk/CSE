@@ -33,9 +33,6 @@ struct ContentView: View {
       private var needSafariTutorial: Bool = userDefaults.bool(forKey: "needSafariTutorial")
     @State private var openSafariTutorialView: Bool = false
     
-    @State private var defaultCSE: CSEDataManager.CSEData = CSEDataManager.getCSEData(.defaultCSE)
-    @State private var privateCSE: CSEDataManager.CSEData = CSEDataManager.getCSEData(.privateCSE)
-    
     #if iOS
     // Get current icon
     private var alternateIconName: String? {
@@ -62,7 +59,7 @@ struct ContentView: View {
                 Section {
                     // Default CSE
                     NavigationLink {
-                        EditSEView(cseType: .constant("defaultCSE"), cseID: .constant(nil), exCSEData: .constant(defaultCSE))
+                        EditSEView(cseType: .constant("defaultCSE"), cseID: .constant(nil))
                     } label: {
                         Text("Default Search Engine")
                     }
@@ -73,7 +70,7 @@ struct ContentView: View {
                     })
                     if usePrivateCSE {
                         NavigationLink {
-                            EditSEView(cseType: .constant("privateCSE"), cseID: .constant(nil), exCSEData: .constant(privateCSE))
+                            EditSEView(cseType: .constant("privateCSE"), cseID: .constant(nil))
                         } label: {
                             Text("Private Search Engine")
                         }
@@ -215,28 +212,17 @@ struct ContentView: View {
             .listStyle(.insetGrouped)
             .animation(.easeOut(duration: 0.2), value: usePrivateCSE)
             .animation(.easeOut(duration: 0.2), value: useQuickCSE)
-            .task {
-                // Initialize
-                initialize()
-            }
         }
         .navigationViewStyle(.stack)
         // Tutorial sheets
-        .sheet(isPresented : $needFirstTutorial , onDismiss: {
-            initialize()
-        }) {
-            FullTutorialView(isOpenSheet: $needFirstTutorial, isFirstTutorial: .constant(true))
-        }
+        .sheet(isPresented : $needFirstTutorial, content: {
+            SafariTutorialView(isOpenSheet: $needSafariTutorial, isFirstTutorial: .constant(false))
+        })
         .sheet(isPresented: $needSafariTutorial, content: {
             SafariTutorialView(isOpenSheet: $needSafariTutorial, isFirstTutorial: .constant(false))
         })
         .sheet(isPresented: $openSafariTutorialView, content: {
             SafariTutorialView(isOpenSheet: $openSafariTutorialView, isFirstTutorial: .constant(false))
         })
-    }
-    
-    private func initialize() {
-        defaultCSE = CSEDataManager.getCSEData(.defaultCSE)
-        privateCSE = CSEDataManager.getCSEData(.privateCSE)
     }
 }

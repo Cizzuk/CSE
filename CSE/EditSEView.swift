@@ -13,7 +13,6 @@ struct EditSEView: View {
     // Load settings
     @Binding var cseType: String // "defaultCSE", "privateCSE", "quickCSE"
     @Binding var cseID: String? // If quick search engine, use this ID
-    @Binding var exCSEData: CSEDataManager.CSEData // Original CSEData
     @State private var CSEData = CSEDataManager.CSEData() // Current CSEData, Changes when import from recommended search engines and iCloud
     
     // CSE settings variables
@@ -191,10 +190,6 @@ struct EditSEView: View {
             EditSEViewCloudImport(isOpenSheet: $openEditSEViewCloudImport, CSEData: $CSEData)
         }
         .task {
-            if isFirstLoad {
-                CSEData = exCSEData
-                isFirstLoad = false
-            }
             loadCSEData()
         }
     }
@@ -223,6 +218,18 @@ struct EditSEView: View {
     }
     
     private func loadCSEData() {
+        if isFirstLoad {
+            // Load existing CSEData
+            if cseType == "defaultCSE" || cseType == "privateCSE" {
+                CSEData = CSEDataManager.getCSEData(CSEDataManager.CSEType(rawValue: cseType) ?? .defaultCSE)
+            } else if cseType == "quickCSE" {
+                if let cseID = cseID {
+                    CSEData = CSEDataManager.getCSEData(.quickCSE, id: cseID)
+                } else {
+                    CSEData = CSEDataManager.CSEData() // Empty CSEData
+                }
+            }
+        }
         CSEData.keyword = cseID ?? ""
         maxQueryLengthToggle = CSEData.maxQueryLength >= 0
     }
