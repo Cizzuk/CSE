@@ -580,10 +580,24 @@
       }
     },
     "Add Quick Search Engine" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クイック検索エンジンを追加"
+          }
+        }
+      }
     },
     "Adds a Custom Quick Search Engine on CSE." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSEでカスタムクイック検索エンジンを追加します。"
+          }
+        }
+      }
     },
     "Advanced Settings" : {
       "localizations" : {
@@ -656,7 +670,14 @@
       }
     },
     "AI Search Engines" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI検索エンジン"
+          }
+        }
+      }
     },
     "Also Use in Private Browsing" : {
       "localizations" : {
@@ -1225,7 +1246,14 @@
       "shouldTranslate" : false
     },
     "Blank to disable" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "空白にすると無効化"
+          }
+        }
+      }
     },
     "Blank to disable CSE" : {
       "localizations" : {
@@ -1882,13 +1910,34 @@
       }
     },
     "Delete a Custom Quick Search Engine with Keyword." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キーワードで特定のクイック検索エンジンを削除します。"
+          }
+        }
+      }
     },
     "Delete Quick Search Engine" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クイック検索エンジンを削除"
+          }
+        }
+      }
     },
     "Delete Quick Search Engine for Keyword ${cseID}" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キーワード ${cseID} のクイック検索エンジンを削除"
+          }
+        }
+      }
     },
     "Disable Checker" : {
       "localizations" : {
@@ -2857,16 +2906,44 @@
       }
     },
     "Get ${settings} for ${type}" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${type} の ${settings} を取得"
+          }
+        }
+      }
     },
     "Get ${settings} for ${type} with Keyword ${cseID}" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キーワード ${cseID} の ${type} の ${settings} を取得"
+          }
+        }
+      }
     },
     "Get Search Engine Settings" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索エンジンの設定を取得"
+          }
+        }
+      }
     },
     "Gets the current Custom Search Engine setting." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選択したカスタム検索エンジンの現在の設定を取得します。"
+          }
+        }
+      }
     },
     "GitHub" : {
       "localizations" : {
@@ -3085,7 +3162,14 @@
       "shouldTranslate" : false
     },
     "If the keyword is already in use, replace and save" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キーワードがすでに使用されている場合は、置き換えて保存します。"
+          }
+        }
+      }
     },
     "If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial." : {
       "localizations" : {
@@ -4089,10 +4173,24 @@
       }
     },
     "Off" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オフ"
+          }
+        }
+      }
     },
     "On" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オン"
+          }
+        }
+      }
     },
     "Only available if you have previously purchased this." : {
       "localizations" : {
@@ -4515,7 +4613,14 @@
       }
     },
     "Popular Search Engines" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "人気の検索エンジン"
+          }
+        }
+      }
     },
     "POST Data" : {
       "localizations" : {
@@ -5063,7 +5168,14 @@
       }
     },
     "Quick Search Engine" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クイック検索エンジン"
+          }
+        }
+      }
     },
     "Quick Search Engines" : {
       "localizations" : {
@@ -5216,7 +5328,14 @@
       }
     },
     "Replace" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "置き換え"
+          }
+        }
+      }
     },
     "Replace query with %s" : {
       "localizations" : {
@@ -5539,7 +5658,14 @@
       }
     },
     "Safari Search Engines" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safariの検索エンジン"
+          }
+        }
+      }
     },
     "Safari Settings" : {
       "localizations" : {
@@ -5752,7 +5878,14 @@
       }
     },
     "Search Engine Type" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索エンジンの種類"
+          }
+        }
+      }
     },
     "Search Engine URL" : {
       "extractionState" : "stale",
