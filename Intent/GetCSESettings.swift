@@ -1,0 +1,38 @@
+//
+//  GetCSESettings.swift
+//  Customize Search Engine
+//
+//  Created by Cizzuk on 2025/06/02.
+//
+
+import Foundation
+import AppIntents
+
+struct GetCSESettings: AppIntent, CustomIntentMigratedAppIntent {
+    static let intentClassName = "GetCSESettings"
+    static var title: LocalizedStringResource = "Get Search Engine Settings"
+    static var description: LocalizedStringResource = "Gets the current Custom Search Engine setting."
+    
+    @Parameter(title: "Search Engine Type", default: .defaultCSE)
+        var type: IntentCSETypeEnum
+    
+    @Parameter(title: "Keyword", default: "")
+        var cseID: String
+    
+    @Parameter(title: "CSE Settings", default: .url)
+        var settings: IntentCSESettingsEnum
+    
+    static var parameterSummary: some ParameterSummary {
+        When(\Self.$type, .equalTo, .quickCSE) {
+            Summary("Get \(\.$settings) for \(\.$type) with Keyword: \(\.$cseID)")
+        } otherwise: {
+            Summary("Get \(\.$settings) for \(\.$type)")
+        }
+    }
+
+    func perform() async throws -> some IntentResult & ReturnsValue<Bool?> & ReturnsValue<String?> {
+        
+        
+        return .result(value: nil)
+    }
+}

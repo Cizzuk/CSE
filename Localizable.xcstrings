@@ -2853,6 +2853,18 @@
         }
       }
     },
+    "Get ${settings} for ${type}" : {
+
+    },
+    "Get ${settings} for ${type} with Keyword: ${cseID}" : {
+
+    },
+    "Get Search Engine Settings" : {
+
+    },
+    "Gets the current Custom Search Engine setting." : {
+
+    },
     "GitHub" : {
       "localizations" : {
         "ar" : {
@@ -5047,6 +5059,9 @@
         }
       }
     },
+    "Quick Search Engine" : {
+
+    },
     "Quick Search Engines" : {
       "localizations" : {
         "ar" : {
@@ -5732,6 +5747,9 @@
           }
         }
       }
+    },
+    "Search Engine Type" : {
+
     },
     "Search Engine URL" : {
       "extractionState" : "stale",
