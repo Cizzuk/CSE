@@ -24,7 +24,7 @@ struct GetCSESettings: AppIntent, CustomIntentMigratedAppIntent {
     
     static var parameterSummary: some ParameterSummary {
         When(\Self.$type, .equalTo, .quickCSE) {
-            Summary("Get \(\.$settings) for \(\.$type) with Keyword: \(\.$cseID)")
+            Summary("Get \(\.$settings) for \(\.$type) with Keyword \(\.$cseID)")
         } otherwise: {
             Summary("Get \(\.$settings) for \(\.$type)")
         }

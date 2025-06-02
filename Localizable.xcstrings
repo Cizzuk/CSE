@@ -1887,6 +1887,9 @@
     "Delete Quick Search Engine" : {
 
     },
+    "Delete Quick Search Engine for keyword ${cseID}" : {
+
+    },
     "Disable Checker" : {
       "localizations" : {
         "ja" : {

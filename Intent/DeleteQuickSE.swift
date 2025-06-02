@@ -15,6 +15,10 @@ struct DeleteQuickSE: AppIntent, CustomIntentMigratedAppIntent {
     
     @Parameter(title: "Keyword", default: "")
         var cseID: String
+    
+    static var parameterSummary: some ParameterSummary {
+        Summary("Delete Quick Search Engine for Keyword \(\.$cseID)")
+    }
 
     func perform() async throws -> some IntentResult & ReturnsValue<String?> {
         if cseID.isEmpty {
