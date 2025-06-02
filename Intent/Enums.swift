@@ -19,23 +19,9 @@ enum IntentTurnEnum: String, AppEnum {
     ]
 }
 
-enum IntentCSETypeEnum: String, AppEnum {
-    case defaultCSE
-    case privateCSE
-    case quickCSE
-    
-    static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "Search Engine Type")
-    static var caseDisplayRepresentations: [Self: DisplayRepresentation] = [
-        .defaultCSE: "Default Search Engine",
-        .privateCSE: "Private Search Engine",
-        .quickCSE: "Quick Search Engine"
-    ]
-}
-
 enum IntentCSESettingsEnum: String, AppEnum {
     case url
     case name
-    case postData
     case disablePercentEncoding
     case maxQueryLength
     
@@ -43,7 +29,6 @@ enum IntentCSESettingsEnum: String, AppEnum {
     static var caseDisplayRepresentations: [Self: DisplayRepresentation] = [
         .url: "URL",
         .name: "Name",
-        .postData: "POST Data",
         .disablePercentEncoding: "Disable Percent-encoding",
         .maxQueryLength: "Max Query Length"
     ]

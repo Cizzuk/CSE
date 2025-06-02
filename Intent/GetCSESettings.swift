@@ -14,7 +14,7 @@ struct GetCSESettings: AppIntent, CustomIntentMigratedAppIntent {
     static var description: LocalizedStringResource = "Gets the current Custom Search Engine setting."
     
     @Parameter(title: "Search Engine Type", default: .defaultCSE)
-        var type: IntentCSETypeEnum
+        var type: CSEDataManager.CSEType
     
     @Parameter(title: "Keyword", default: "")
         var cseID: String
@@ -30,9 +30,28 @@ struct GetCSESettings: AppIntent, CustomIntentMigratedAppIntent {
         }
     }
 
-    func perform() async throws -> some IntentResult & ReturnsValue<Bool?> & ReturnsValue<String?> {
+    func perform() async throws -> some IntentResult & ReturnsValue<String> {
+        var cseData: CSEDataManager.CSEData
         
+        if type == .quickCSE {
+            cseData = CSEDataManager.getCSEData(.quickCSE, id: cseID)
+        } else {
+            cseData = CSEDataManager.getCSEData(type)
+        }
         
-        return .result(value: nil)
+        switch settings {
+        case .url:
+            return .result(value: cseData.url)
+        case .name:
+            return .result(value: cseData.name)
+        case .disablePercentEncoding:
+            return .result(value: cseData.disablePercentEncoding ? "Yes" : "No")
+        case .maxQueryLength:
+            if let maxQueryLength = cseData.maxQueryLength {
+                return .result(value: String(maxQueryLength))
+            } else {
+                return .result(value: "No")
+            }
+        }
     }
 }

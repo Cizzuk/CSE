@@ -7,12 +7,22 @@
 
 import Foundation
 import CloudKit
+import AppIntents
 
 class CSEDataManager {
     static let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
     
-    enum CSEType: String {
-        case defaultCSE, privateCSE, quickCSE
+    enum CSEType: String, AppEnum {
+        case defaultCSE
+        case privateCSE
+        case quickCSE
+        
+        static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "Search Engine Type")
+        static var caseDisplayRepresentations: [Self: DisplayRepresentation] = [
+            .defaultCSE: "Default Search Engine",
+            .privateCSE: "Private Search Engine",
+            .quickCSE: "Quick Search Engine"
+        ]
     }
     
     // Structure of a CSE data
