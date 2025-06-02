@@ -1887,7 +1887,7 @@
     "Delete Quick Search Engine" : {
 
     },
-    "Delete Quick Search Engine for keyword ${cseID}" : {
+    "Delete Quick Search Engine for Keyword ${cseID}" : {
 
     },
     "Disable Checker" : {
@@ -2859,7 +2859,7 @@
     "Get ${settings} for ${type}" : {
 
     },
-    "Get ${settings} for ${type} with Keyword: ${cseID}" : {
+    "Get ${settings} for ${type} with Keyword ${cseID}" : {
 
     },
     "Get Search Engine Settings" : {
