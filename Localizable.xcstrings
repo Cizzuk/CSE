@@ -581,6 +581,12 @@
     },
     "Add Quick Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إضافة محرك بحث السريع"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -591,6 +597,12 @@
     },
     "Adds a Custom Quick Search Engine on CSE." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يضيف محرك بحث السريع مخصص على CSE."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -671,6 +683,12 @@
     },
     "AI Search Engines" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "محركات بحث الذكاء الاصطناعي"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1247,6 +1265,12 @@
     },
     "Blank to disable" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اتركه فارغًا للتعطيل"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1911,6 +1935,12 @@
     },
     "Delete a Custom Quick Search Engine with Keyword." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حذف محرك بحث السريع مخصص باستخدام الكلمة المفتاحية."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1921,6 +1951,12 @@
     },
     "Delete Quick Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حذف محرك بحث السريع"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1931,6 +1967,12 @@
     },
     "Delete Quick Search Engine for Keyword ${cseID}" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حذف محرك بحث السريع للكلمة المفتاحية ${cseID}"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2907,6 +2949,12 @@
     },
     "Get ${settings} for ${type}" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الحصول على ${settings} لـ ${type}"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2917,6 +2965,12 @@
     },
     "Get ${settings} for ${type} with Keyword ${cseID}" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الحصول على ${settings} لـ ${type} باستخدام الكلمة المفتاحية ${cseID}"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2927,6 +2981,12 @@
     },
     "Get Search Engine Settings" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الحصول على إعدادات محرك البحث"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2937,6 +2997,12 @@
     },
     "Gets the current Custom Search Engine setting." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يسترجع إعداد محرك البحث المخصص الحالي."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3163,6 +3229,12 @@
     },
     "If the keyword is already in use, replace and save" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إذا كانت الكلمة المفتاحية مستخدمة بالفعل، فاستبدلها واحفظ\nإيقاف"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4174,6 +4246,12 @@
     },
     "Off" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إيقاف"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4184,6 +4262,12 @@
     },
     "On" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تشغيل"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4614,6 +4698,12 @@
     },
     "Popular Search Engines" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "محركات البحث الشائعة"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5169,6 +5259,12 @@
     },
     "Quick Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "محرك بحث السريع"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5329,6 +5425,12 @@
     },
     "Replace" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استبدال"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5659,6 +5761,12 @@
     },
     "Safari Search Engines" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "محركات بحث سفاري"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
