@@ -593,6 +593,12 @@
             "value" : "Schnellsuchmaschine hinzufügen"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar Buscador rápido"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -649,6 +655,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fügt eine benutzerdefinierte Schnellsuchmaschine in CSE hinzu."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agrega un Buscador rápido personalizado en CSE."
           }
         },
         "fr" : {
@@ -777,6 +789,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "KI-Suchmaschinen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscadores de IA"
           }
         },
         "fr" : {
@@ -1401,6 +1419,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Leer lassen, um zu deaktivieren"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En blanco para desactivar"
           }
         },
         "fr" : {
@@ -2115,6 +2139,12 @@
             "value" : "Eine benutzerdefinierte Schnellsuchmaschine mit Schlüsselwort löschen."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar un Buscador rápido personalizado con la Palabra."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2173,6 +2203,12 @@
             "value" : "Schnellsuchmaschine löschen"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar Buscador rápido"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2229,6 +2265,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Schnellsuchmaschine für Schlüsselwort ${cseID} löschen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar Buscador rápido para la Palabra ${cseID}"
           }
         },
         "fr" : {
@@ -3255,6 +3297,12 @@
             "value" : "${settings} für ${type} abrufen"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtener ${settings} para ${type}"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3311,6 +3359,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "${settings} für ${type} mit Schlüsselwort ${cseID} abrufen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtener ${settings} para ${type} con la Palabra ${cseID}"
           }
         },
         "fr" : {
@@ -3371,6 +3425,12 @@
             "value" : "Suchmaschineneinstellungen abrufen"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtener la configuración del Buscador"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3427,6 +3487,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ruft die aktuelle Einstellung der benutzerdefinierten Suchmaschine ab."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtiene la configuración actual del Buscador personalizado."
           }
         },
         "fr" : {
@@ -3701,6 +3767,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wenn das Schlüsselwort bereits verwendet wird, ersetzen und speichern"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si la Palabra ya está en uso, reemplazar y guardar"
           }
         },
         "fr" : {
@@ -4762,6 +4834,12 @@
             "value" : "Aus"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desactivado"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4818,6 +4896,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ein"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activado"
           }
         },
         "fr" : {
@@ -5296,6 +5380,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Beliebte Suchmaschinen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscadores populares"
           }
         },
         "fr" : {
@@ -5901,6 +5991,12 @@
             "value" : "Schnellsuchmaschine"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscador rápido"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6107,6 +6203,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ersetzen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reemplazar"
           }
         },
         "fr" : {
@@ -6487,6 +6589,12 @@
             "value" : "Safari-Suchmaschinen"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscadores de Safari"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6753,6 +6861,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Typ der Suchmaschine"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo de Buscador"
           }
         },
         "fr" : {
