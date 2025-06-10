@@ -8,7 +8,6 @@
 import Foundation
 import AppIntents
 
-@available(iOS 16.0, macOS 13.0, visionOS 1.0, *)
 enum IntentTurnEnum: String, AppEnum {
     case turn
     case toggle
@@ -19,3 +18,19 @@ enum IntentTurnEnum: String, AppEnum {
         .toggle: "Toggle"
     ]
 }
+
+enum IntentCSESettingsEnum: String, AppEnum {
+    case url
+    case name
+    case disablePercentEncoding
+    case maxQueryLength
+    
+    static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "CSE Settings")
+    static var caseDisplayRepresentations: [Self: DisplayRepresentation] = [
+        .url: "URL",
+        .name: "Name",
+        .disablePercentEncoding: "Disable Percent-encoding",
+        .maxQueryLength: "Max Query Length"
+    ]
+}
+    

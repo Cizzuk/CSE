@@ -11,19 +11,9 @@ struct EditSEView: View {
     @Environment(\.dismiss) private var dismiss
     
     // Load settings
-    @Binding var cseType: String // "default", "private", or "quick"
-    @Binding var cseID: String // If quick search engine, use this ID
-    @Binding var exCSEData: [String: Any] // Original CSEData
-    @State private var CSEData: [String: Any] = [:] // Current CSEData, Changes when import from recommended search engines and iCloud
-    
-    // CSE settings variables
-    @State private var cseName: String = ""
-    @State private var quickID: String = ""
-    @State private var cseURL: String = ""
-    @State private var postEntries: [(key: String, value: String)] = []
-    @State private var disablePercentEncoding: Bool = false
-    @State private var maxQueryLengthToggle: Bool = false
-    @State private var maxQueryLength: Int? = nil
+    @Binding var cseType: String // "defaultCSE", "privateCSE", "quickCSE"
+    @Binding var cseID: String? // If quick search engine, use this ID
+    @State private var CSEData = CSEDataManager.CSEData() // Current CSEData, Changes when import from recommended search engines and iCloud
 
     // Alerts
     @State private var showFailAlert: Bool = false
@@ -36,14 +26,13 @@ struct EditSEView: View {
     @State private var openEditSEViewCloudImport: Bool = false
     
     @State private var isFirstLoad: Bool = true // Need to load exCSEData
-    @State private var isNeedLoad: Bool = false // Need to load CSEData
     
     var body: some View {
         List {
-            if cseType == "default" || cseType == "private" {
+            if cseType == "defaultCSE" || cseType == "privateCSE" {
                 Section {
                     // Search Engine Name
-                    if cseType == "default" {
+                    if cseType == "defaultCSE" {
                         Text("Default Search Engine")
                     } else {
                         Text("Private Search Engine")
@@ -51,37 +40,37 @@ struct EditSEView: View {
                 }
             }
             
-            if cseType == "quick" {
+            if cseType == "quickCSE" {
                 // Search Engine Name
                 Section {
-                    TextField("Name", text: $cseName)
+                    TextField("Name", text: $CSEData.name)
                         .submitLabel(.done)
                 } header: {
                     Text("Name")
                 }
                 // Quick Search Key
                 Section() {
-                    TextField("cse", text: $quickID)
+                    TextField("cse", text: $CSEData.keyword)
                         .submitLabel(.done)
-                        .onChange(of: quickID) { newValue in
+                        .onChange(of: CSEData.keyword) { newValue in
                             if newValue.count > 25 {
-                                quickID = String(newValue.prefix(25))
+                                CSEData.keyword = String(newValue.prefix(25))
                             }
-                            quickID = quickID.filter { $0 != " " && $0 != "　" }
+                            CSEData.keyword = CSEData.keyword.filter { $0 != " " && $0 != "　" }
                         }
                 } header: {
                     Text("Keyword")
                 } footer: {
                     VStack(alignment : .leading) {
                         Text("Enter this keyword at the top to search with this search engine.")
-                        Text("Example: '\(quickID == "" ? "cse" : quickID) your search'")
+                        Text("Example: '\(CSEData.keyword == "" ? "cse" : CSEData.keyword) your search'")
                     }
                 }
             }
             
             // Search URL
             Section {
-                TextField("", text: $cseURL, prompt: Text(verbatim: "https://example.com/search?q=%s"))
+                TextField("", text: $CSEData.url, prompt: Text(verbatim: "https://example.com/search?q=%s"))
                     .disableAutocorrection(true)
                     .keyboardType(.URL)
                     .textInputAutocapitalization(.never)
@@ -102,34 +91,32 @@ struct EditSEView: View {
             Section {
                 // POST Data
                 NavigationLink {
-                    EditSEViewPostData(postEntries: $postEntries)
+                    EditSEViewPostData(post: $CSEData.post)
                 } label: {
                     HStack {
                         Text("POST Data")
                         Spacer()
-                        Text("\(postEntries.count)")
+                        Text("\(CSEData.post.count)")
                             .foregroundColor(.secondary)
                     }
                 }
                 // Disable %encode
-                Toggle("Disable Percent-encoding", isOn: $disablePercentEncoding)
-                // Cut query
-                Toggle("Cut Long Query", isOn: $maxQueryLengthToggle)
-                if maxQueryLengthToggle {
-                    HStack {
-                        Text("Max Query Length")
-                        Spacer()
-                        //Input max query length
-                        TextField("32", value: $maxQueryLength, format: .number)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .keyboardType(.numbersAndPunctuation)
-                            .frame(width: 100)
-                            .multilineTextAlignment(.trailing)
-                            .submitLabel(.done)
-                    }
+                Toggle("Disable Percent-encoding", isOn: $CSEData.disablePercentEncoding)
+                HStack {
+                    Text("Max Query Length")
+                    Spacer()
+                    //Input max query length
+                    TextField("32", value: $CSEData.maxQueryLength, format: .number)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .keyboardType(.numbersAndPunctuation)
+                        .frame(width: 100)
+                        .multilineTextAlignment(.trailing)
+                        .submitLabel(.done)
                 }
             } header: {
                 Text("Advanced Settings")
+            } footer: {
+                Text("Blank to disable")
             }
             
             // Import Search Engine
@@ -161,7 +148,6 @@ struct EditSEView: View {
         .alert("This keyword is already used in other", isPresented: $showKeyUsedAlert, actions:{})
         .alert("Keyword cannot be blank", isPresented: $showKeyBlankAlert, actions:{})
         .alert("Search URL cannot be blank", isPresented: $showURLBlankAlert, actions:{})
-        .animation(.easeOut(duration: 0.2), value: maxQueryLengthToggle)
         .navigationTitle("Edit Search Engine")
         .navigationBarTitleDisplayMode(.inline)
         .navigationViewStyle(.stack)
@@ -181,153 +167,64 @@ struct EditSEView: View {
             }
         }
         .sheet(isPresented : $openEditSEViewRecommend , onDismiss: {
-            if isNeedLoad {
-                loadCSEData()
-                isNeedLoad = false
-            }
+            loadCSEData()
         }) {
-            EditSEViewRecommend(isOpenSheet: $openEditSEViewRecommend, isNeedLoad: $isNeedLoad, CSEData: $CSEData)
+            EditSEViewRecommend(isOpenSheet: $openEditSEViewRecommend, CSEData: $CSEData)
         }
         .sheet(isPresented : $openEditSEViewCloudImport , onDismiss: {
-            if isNeedLoad {
-                loadCSEData()
-                isNeedLoad = false
-            }
+            loadCSEData()
         }) {
-            EditSEViewCloudImport(isOpenSheet: $openEditSEViewCloudImport, isNeedLoad: $isNeedLoad, CSEData: $CSEData)
+            EditSEViewCloudImport(isOpenSheet: $openEditSEViewCloudImport, CSEData: $CSEData)
         }
         .task {
-            if isFirstLoad {
-                CSEData = exCSEData
-                loadCSEData()
-                isFirstLoad = false
-            }
-            // Remove invalid POST Data
-            postEntries = postEntries.filter { !$0.key.isEmpty && !$0.value.isEmpty }
+            loadCSEData()
         }
     }
     
     private func saveCSEData() {
-        // Normalize Safari search engine URLs
-        let replacements = [
-            "https://google.com": "https://www.google.com",
-            "https://bing.com": "https://www.bing.com",
-            "https://www.duckduckgo.com": "https://duckduckgo.com",
-            "https://ecosia.com": "https://www.ecosia.com",
-            "https://baidu.com": "https://www.baidu.com"
-        ]
-        for (original, replacement) in replacements {
-            if cseURL.hasPrefix(original) {
-                cseURL = cseURL.replacingOccurrences(of: original, with: replacement)
-                break
-            }
-        }
-        
-        // POST Data
-        let postArray: [[String: String]] = postEntries
-            .map { ["key": $0.key, "value": $0.value] }
-            .filter { !$0["key"]!.isEmpty && !$0["value"]!.isEmpty }
-        
-        // Check maxQueryLengthToggle is enabled
-        let fixedMaxQueryLength: Int = maxQueryLengthToggle ? maxQueryLength ?? -1 : -1
-        
-        // Create temporary data
-        var tmpCSEData: [String: Any] = [
-            "url": cseURL,
-            "disablePercentEncoding": disablePercentEncoding,
-            "maxQueryLength": fixedMaxQueryLength,
-            "post": postArray
-        ]
-        
-        // Save for Search Engine type
-        switch cseType {
-        case "default":
-            userDefaults.set(tmpCSEData, forKey: "defaultCSE")
-        case "private":
-            userDefaults.set(tmpCSEData, forKey: "privateCSE")
-        case "quick":
-            // If Keyword is blank
-            if quickID == "" {
+        if cseType == "defaultCSE" || cseType == "privateCSE" {
+            CSEDataManager.saveCSEData(CSEData, CSEDataManager.CSEType(rawValue: cseType)!)
+        } else if cseType == "quickCSE" {
+            do {
+                try CSEDataManager.saveCSEData(CSEData, cseID)
+            } catch CSEDataManager.saveCSEDataError.keyBlank {
                 showKeyBlankAlert = true
                 return
-            }
-            // If URL is blank
-            if cseURL == "" {
+            } catch CSEDataManager.saveCSEDataError.urlBlank {
                 showURLBlankAlert = true
                 return
+            } catch CSEDataManager.saveCSEDataError.keyUsed {
+                showKeyUsedAlert = true
+                return
+            } catch {
+                showFailAlert = true
+                return
             }
-            // Get current QuickSEs Data
-            var quickCSEData = userDefaults.dictionary(forKey: "quickCSE") ?? [:]
-            // If Keyword is changed
-            if cseID != quickID {
-                // If Keyword is free
-                if quickCSEData[quickID] == nil {
-                    quickCSEData.removeValue(forKey: cseID)
-                    cseID = quickID
-                } else {
-                    showKeyUsedAlert = true
-                    return
-                }
-            }
-            // Replace this QuickSE
-            quickCSEData.removeValue(forKey: quickID)
-            tmpCSEData["name"] = cseName
-            quickCSEData[quickID] = tmpCSEData
-            userDefaults.set(quickCSEData, forKey: "quickCSE")
-        default: // If unknown CSE type
-            showFailAlert = true
-            dismiss()
-            return
         }
-        
-        // Upload CSEData to iCloud
-        CloudKitManager().saveAll()
-        
         dismiss()
     }
     
     private func loadCSEData() {
-        // Get Data for Search Engine type
-        quickID = cseID
-        if cseType != "default" && cseType != "private" && cseType != "quick" { // If unknown CSE type
-            showFailAlert = true
-            dismiss()
-            return
-        }
-        
-        // Get Data
-        cseName = CSEData["name"] as? String ?? ""
-        cseURL = CSEData["url"] as? String ?? ""
-        disablePercentEncoding = CSEData["disablePercentEncoding"] as? Bool ?? false
-        maxQueryLength = CSEData["maxQueryLength"] as? Int ?? -1
-        
-        // Get maxQueryLength
-        if maxQueryLength ?? -1 < 0 {
-            maxQueryLength = nil
-            maxQueryLengthToggle = false
-        } else {
-            maxQueryLengthToggle = true
-        }
-        
-        // Get POST Data
-        // If POST Data exists
-        if let postArray = CSEData["post"] as? [[String: String]] {
-            postEntries = postArray.compactMap { item in
-                if let key = item["key"], let value = item["value"] {
-                    return (key: key, value: value)
+        if isFirstLoad {
+            // Load existing CSEData
+            if cseType == "defaultCSE" || cseType == "privateCSE" {
+                CSEData = CSEDataManager.getCSEData(CSEDataManager.CSEType(rawValue: cseType) ?? .defaultCSE)
+            } else if cseType == "quickCSE" {
+                if let cseID = cseID {
+                    CSEData = CSEDataManager.getCSEData(.quickCSE, id: cseID)
                 } else {
-                    return nil
+                    CSEData = CSEDataManager.CSEData() // Empty CSEData
                 }
             }
-        } else {
-            postEntries = []
+            isFirstLoad = false
         }
+        CSEData.keyword = cseID ?? ""
     }
 }
 
 // POST Data Editor
 struct EditSEViewPostData: View {
-    @Binding var postEntries: [(key: String, value: String)]
+    @Binding var post: [[String: String]]
     
     var body: some View {
         List {
@@ -341,22 +238,22 @@ struct EditSEViewPostData: View {
             }
             // POST Data
             Section {
-                ForEach(postEntries.indices, id: \.self) { index in
+                ForEach(post.indices, id: \.self) { index in
                     HStack {
-                        TextField("Key", text: $postEntries[index].key)
+                        TextField("Key", text: binding(for: index, key: "key"))
                             .environment(\.layoutDirection, .leftToRight)
-                        TextField("Value", text: $postEntries[index].value)
+                        TextField("Value", text: binding(for: index, key: "value"))
                             .environment(\.layoutDirection, .leftToRight)
                     }
                     .disableAutocorrection(true)
                     .textInputAutocapitalization(.never)
                 }
-                .onDelete(perform: { indexSet in
-                    postEntries.remove(atOffsets: indexSet)
+                .onDelete(perform: { index in
+                    post.remove(atOffsets: index)
                 })
                 
                 Button(action: {
-                    postEntries.append((key: "", value: ""))
+                    post.append(["key": "", "value": ""])
                 })  {
                     HStack {
                         Image(systemName: "plus.circle")
@@ -368,7 +265,7 @@ struct EditSEViewPostData: View {
                 Text("Replace query with %s")
             }
         }
-        .animation(.easeOut(duration: 0.2), value: postEntries.count)
+        .animation(.easeOut(duration: 0.2), value: post.count)
         .navigationTitle("POST Data")
         .navigationBarTitleDisplayMode(.inline)
         .navigationViewStyle(.stack)
@@ -376,42 +273,67 @@ struct EditSEViewPostData: View {
             EditButton()
         }
     }
+    
+    private func binding(for index: Int, key: String) -> Binding<String> {
+        Binding<String>(
+            get: {
+                return post[index][key] ?? ""
+            },
+            set: { newValue in
+                post[index][key] = newValue
+            }
+        )
+    }
 }
 
 // Import Recommended Search Engines
 struct EditSEViewRecommend: View {
     @Binding var isOpenSheet: Bool
-    @Binding var isNeedLoad: Bool
-    @Binding var CSEData: [String: Any]
-    private let cseList: [[String: Any]] = recommendCSEList.data
+    @Binding var CSEData: CSEDataManager.CSEData
+    private let recommendPopCSEList = RecommendSEs.recommendPopCSEList()
+    private let recommendAICSEList = RecommendSEs.recommendAICSEList()
+    private let recommendNormalCSEList = RecommendSEs.recommendNormalCSEList()
     
     var body: some View {
         NavigationView {
             List {
                 // Search Engine List
                 Section {
-                    ForEach(cseList.indices, id: \.self, content: { index in
-                        let cse = cseList[index]
-                        let cseName = cse["name"] as! String
-                        let cseURL = cse["url"] as! String
-                        Button {
+                    ForEach(recommendPopCSEList.indices, id: \.self, content: { index in
+                        let cse = recommendPopCSEList[index]
+                        UITemplates.recommendSEButton(action: {
                             CSEData = cse
-                            isNeedLoad = true
                             isOpenSheet = false
-                        } label: {
-                            VStack(alignment: .leading) {
-                                Text(cseName)
-                                    .bold()
-                                Text(cseURL)
-                                    .lineLimit(1)
-                                    .foregroundColor(.secondary)
-                                    .font(.subheadline)
-                                    .accessibilityHidden(true)
-                            }
-                        }
-                        .accessibilityLabel(cseName)
-                        .foregroundColor(.primary)
+                        }, cse: cse)
                     })
+                } header: {
+                    Text("Popular Search Engines")
+                }
+                // AI Search Engine List
+                if !recommendAICSEList.isEmpty {
+                    Section {
+                        ForEach(recommendAICSEList.indices, id: \.self, content: { index in
+                            let cse = recommendAICSEList[index]
+                            UITemplates.recommendSEButton(action: {
+                                CSEData = cse
+                                isOpenSheet = false
+                            }, cse: cse)
+                        })
+                    } header: {
+                        Text("AI Search Engines")
+                    }
+                }
+                // Normal Search Engine List
+                Section {
+                    ForEach(recommendNormalCSEList.indices, id: \.self, content: { index in
+                        let cse = recommendNormalCSEList[index]
+                        UITemplates.recommendSEButton(action: {
+                            CSEData = cse
+                            isOpenSheet = false
+                        }, cse: cse)
+                    })
+                } header: {
+                    Text("Safari Search Engines")
                 }
             }
             .navigationTitle("Recommended Search Engines")
@@ -431,10 +353,9 @@ struct EditSEViewRecommend: View {
 // Import from iCloud
 struct EditSEViewCloudImport: View {
     @Binding var isOpenSheet: Bool
-    @Binding var isNeedLoad: Bool
-    @Binding var CSEData: [String: Any]
-    @State private var isFirstLoad: Bool = true
+    @Binding var CSEData: CSEDataManager.CSEData
     
+    @State private var isFirstLoad: Bool = true
     @StateObject private var ck = CloudKitManager()
     
     var body: some View {
@@ -449,16 +370,14 @@ struct EditSEViewCloudImport: View {
                 } else {
                     ForEach(ck.allCSEs) { ds in
                         NavigationLink {
-                            // Convert JSON string to Dictionary
-                            let defaultCSE = ds.defaultCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: Any] ?? [:]
-                            let privateCSE = ds.privateCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: Any] ?? [:]
-                            let quickCSE = ds.quickCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: [String: Any]] ?? [:]
+                            // Load CSEData from CloudKit
+                            let dsCSEs = CSEDataManager.parseDeviceCSEs(ds)
                             EditSEViewCloudImportChooseCSE(
                                 isOpenSheet: $isOpenSheet,
-                                isNeedLoad: $isNeedLoad,
-                                CSEData: $CSEData, defaultCSE: .constant(defaultCSE),
-                                privateCSE: .constant(privateCSE),
-                                quickCSE: .constant(quickCSE)
+                                CSEData: $CSEData,
+                                defaultCSE: .constant(dsCSEs.defaultCSE),
+                                privateCSE: .constant(dsCSEs.privateCSE),
+                                quickCSE: .constant(dsCSEs.quickCSE)
                             )
                             .navigationTitle(ds.deviceName)
                         } label: {
@@ -509,27 +428,25 @@ struct EditSEViewCloudImport: View {
 
 struct EditSEViewCloudImportChooseCSE: View {
     @Binding var isOpenSheet: Bool
-    @Binding var isNeedLoad: Bool
-    @Binding var CSEData: [String: Any]
-    @Binding var defaultCSE: [String: Any]
-    @Binding var privateCSE: [String: Any]
-    @Binding var quickCSE: [String: [String: Any]]
+    @Binding var CSEData: CSEDataManager.CSEData
+    @Binding var defaultCSE: CSEDataManager.CSEData
+    @Binding var privateCSE: CSEDataManager.CSEData
+    @Binding var quickCSE: [String: CSEDataManager.CSEData]
     
     var body: some View {
         List {
             // Default Search Engine
-            if defaultCSE["url"] as? String ?? "" != "" {
+            if defaultCSE.url != "" {
                 Section {
                     Button {
                         CSEData = defaultCSE
-                        isNeedLoad = true
                         isOpenSheet = false
                     } label: {
                         VStack(alignment: .leading) {
                             Text("Default Search Engine")
                                 .bold()
                                 .foregroundColor(.primary)
-                            Text(defaultCSE["url"] as? String ?? "")
+                            Text(defaultCSE.url)
                                 .lineLimit(1)
                                 .foregroundColor(.secondary)
                                 .font(.subheadline)
@@ -539,18 +456,17 @@ struct EditSEViewCloudImportChooseCSE: View {
             }
             
             // Private Search Engine
-            if privateCSE["url"] as? String ?? "" != "" {
+            if privateCSE.url != "" {
                 Section {
                     Button {
                         CSEData = privateCSE
-                        isNeedLoad = true
                         isOpenSheet = false
                     } label: {
                         VStack(alignment: .leading) {
                             Text("Private Search Engine")
                                 .bold()
                                 .foregroundColor(.primary)
-                            Text(privateCSE["url"] as? String ?? "")
+                            Text(privateCSE.url)
                                 .lineLimit(1)
                                 .foregroundColor(.secondary)
                                 .font(.subheadline)
@@ -563,18 +479,17 @@ struct EditSEViewCloudImportChooseCSE: View {
             if quickCSE.count > 0 {
                 Section {
                     ForEach(quickCSE.keys.sorted(), id: \.self) { cseID in
-                        if let cseData = quickCSE[cseID],
-                           let cseName = cseData["name"] as? String ?? "" != "" ? cseData["name"] : cseID {
+                        if let cseData = quickCSE[cseID] {
+                            let displayName = cseData.name != "" ? cseData.name : cseID
                             Button {
                                 CSEData = cseData
-                                isNeedLoad = true
                                 isOpenSheet = false
                             } label: {
                                 VStack(alignment: .leading) {
-                                    Text(cseName as? String ?? "")
+                                    Text(displayName)
                                         .bold()
                                         .foregroundColor(.primary)
-                                    Text(cseData["url"] as? String ?? "")
+                                    Text(cseData.url)
                                         .lineLimit(1)
                                         .foregroundColor(.secondary)
                                         .font(.subheadline)

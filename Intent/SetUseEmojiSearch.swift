@@ -7,8 +7,10 @@
 
 import Foundation
 import AppIntents
+#if iOS
+import WidgetKit
+#endif
 
-@available(iOS 16.0, macOS 13.0, visionOS 1.0, *)
 struct SetUseEmojiSearch: AppIntent, CustomIntentMigratedAppIntent {
     static let intentClassName = "SetUseEmojiSearch"
     static var title: LocalizedStringResource = "Set Emoji Search"
@@ -29,7 +31,7 @@ struct SetUseEmojiSearch: AppIntent, CustomIntentMigratedAppIntent {
     }
 
     func perform() async throws -> some IntentResult {
-        let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
+        let userDefaults = CSEDataManager.userDefaults
         var useEmojiSearch: Bool = userDefaults.bool(forKey: "useEmojiSearch")
         
         switch toggle {
@@ -42,6 +44,12 @@ struct SetUseEmojiSearch: AppIntent, CustomIntentMigratedAppIntent {
         }
         
         userDefaults.set(useEmojiSearch, forKey: "useEmojiSearch")
+        
+        #if iOS
+        if #available(iOS 18.0, *) {
+            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.EmojiSearch")
+        }
+        #endif
         
         return .result()
     }

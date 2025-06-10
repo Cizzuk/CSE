@@ -7,8 +7,10 @@
 
 import Foundation
 import AppIntents
+#if iOS
+import WidgetKit
+#endif
 
-@available(iOS 16.0, macOS 13.0, visionOS 1.0, *)
 struct SetUseQuickSearch: AppIntent, CustomIntentMigratedAppIntent {
     static let intentClassName = "SetUseQuickSearch"
     static var title: LocalizedStringResource = "Set Quick Search"
@@ -29,7 +31,7 @@ struct SetUseQuickSearch: AppIntent, CustomIntentMigratedAppIntent {
     }
 
     func perform() async throws -> some IntentResult {
-        let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
+        let userDefaults = CSEDataManager.userDefaults
         var useQuickCSE: Bool = userDefaults.bool(forKey: "useQuickCSE")
         
         switch toggle {
@@ -42,6 +44,12 @@ struct SetUseQuickSearch: AppIntent, CustomIntentMigratedAppIntent {
         }
         
         userDefaults.set(useQuickCSE, forKey: "useQuickCSE")
+        
+        #if iOS
+        if #available(iOS 18.0, *) {
+            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
+        }
+        #endif
         
         return .result()
     }

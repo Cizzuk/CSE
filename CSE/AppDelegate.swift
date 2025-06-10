@@ -11,12 +11,12 @@ import StoreKit
 // Global constants
 let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
 let currentRegion = Locale.current.region?.identifier
-let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
+let userDefaults = CSEDataManager.userDefaults
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // Get userDefaults
@@ -25,7 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let privsearchengine: String? = userDefaults.string(forKey: "privsearchengine") ?? nil
         let urltop: String = userDefaults.string(forKey: "urltop") ?? ""
         let urlsuffix: String = userDefaults.string(forKey: "urlsuffix") ?? ""
-        let defaultCSE = userDefaults.dictionary(forKey: "defaultCSE")
         let adv_resetCSEs: String = userDefaults.string(forKey: "adv_resetCSEs") ?? ""
         
         // adv_resetCSEs
@@ -54,13 +53,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             resetCSE(target: "all")
             
             // Update old CSE settings
-            if (urltop != "" || urlsuffix != "") && defaultCSE == nil {
-                let defaultCSE: [String: Any] = [
-                    "name": "Default Search Engine",
-                    "url": urltop + "%s" + urlsuffix,
-                    "post": []
-                ]
-                userDefaults.set(defaultCSE, forKey: "defaultCSE")
+            if (urltop != "" || urlsuffix != "") {
+                var defaultCSE = CSEDataManager.CSEData()
+                defaultCSE.url = urltop + "%s" + urlsuffix
+                CSEDataManager.saveCSEData(defaultCSE, .defaultCSE)
                 userDefaults.removeObject(forKey: "urltop")
                 userDefaults.removeObject(forKey: "urlsuffix")
             }
@@ -84,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Fix Default SE by region
         if (currentRegion != "CN" && ["baidu", "sogou", "360search"].contains(searchengine))
-           || (currentRegion != "RU" && ["yandex"].contains(searchengine)) {
+            || (currentRegion != "RU" && ["yandex"].contains(searchengine)) {
             if currentRegion == "CN" {
                 userDefaults.set("baidu", forKey: "searchengine")
             } else {
@@ -99,250 +95,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userDefaults.set("duckduckgo", forKey: "privsearchengine")
             userDefaults.set(true, forKey: "needSafariTutorial")
         }
-
+        
         // Save last opened version
         userDefaults.set(currentVersion, forKey: "LastAppVer")
         
         return true
     }
-
+    
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-
-}
-
-// Reset CSEs | target == 'all' or 'default' or 'private' or 'quick'
-fileprivate func resetCSE(target: String) {
-    // Wikipedia
-    let preferredLanguages = Locale.preferredLanguages
-    let wikiLangsList: [String] = ["ar", "de", "en", "es", "fa", "fr", "it", "arz", "nl", "ja", "pl", "pt", "ceb", "sv", "uk", "vi", "war", "zh", "ru"]
-    var wikiLang: String = "en"
-    for language in preferredLanguages {
-        let languageCode = language.components(separatedBy: "-").first ?? language
-        if wikiLangsList.contains(languageCode) {
-            wikiLang = languageCode
-            break
+    
+    // Reset CSEs | target == 'all' or 'default' or 'private' or 'quick'
+    private func resetCSE(target: String) {
+        
+        // Save Data
+        if target == "default" || target == "all" {
+            CSEDataManager.saveCSEData(CSEDataManager.CSEData(), .defaultCSE)
+        }
+        if target == "private" || target == "all" {
+            CSEDataManager.saveCSEData(CSEDataManager.CSEData(), .privateCSE)
+        }
+        if target == "quick" || target == "all" {
+            CSEDataManager.replaceQuickCSEData(RecommendSEs.quickCSEs())
         }
     }
     
-    let defaultCSE: [String: Any] = [
-        "url": "",
-        "post": [],
-        "disablePercentEncoding": false,
-        "maxQueryLength": -1
-    ]
-
-    let privateCSE: [String: Any] = [
-        "url": "",
-        "post": [],
-        "disablePercentEncoding": false,
-        "maxQueryLength": -1
-    ]
-
-    var quickCSE: [String: [String: Any]] = [
-        "g": [
-            "name": "Google",
-            "url": "https://www.google.com/search?q=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        "b": [
-            "name": "Bing",
-            "url": "https://www.bing.com/search?q=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        "y": [
-            "name": "Yahoo",
-            "url": "https://search.yahoo.com/search?p=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        "ddg": [
-            "name": "DuckDuckGo",
-            "url": "https://duckduckgo.com/?q=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": 500
-        ],
-        "eco": [
-            "name": "Ecosia",
-            "url": "https://www.ecosia.org/search?q=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        "sp": [
-            "name": "Startpage",
-            "url": "https://www.startpage.com/sp/search?query=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        "br": [
-            "name": "Brave Search",
-            "url": "https://search.brave.com/search?q=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        "yt": [
-            "name": "YouTube",
-            "url": "https://www.youtube.com/results?search_query=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        "gh": [
-            "name": "GitHub",
-            "url": "https://github.com/search?q=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        "wiki": [
-            "name": "Wikipedia (" + wikiLang + ")",
-            "url": "https://" + wikiLang + ".wikipedia.org/w/index.php?title=Special:Search&search=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": 300
-        ],
-        "wbm": [
-            "name": "Wayback Machine",
-            "url": "https://web.archive.org/web/*/%s",
-            "post": [],
-            "disablePercentEncoding": true,
-            "maxQueryLength": -1
-        ]
-    ]
-    
-    // ↓ country/region based Quick SE ↓
-    let quickCSEJP: [String: [String: Any]] = [
-        "y": [
-            "name": "Yahoo! Japan",
-            "url": "https://search.yahoo.co.jp/search?p=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        "nico": [
-            "name": "ニコニコ動画",
-            "url": "https://www.nicovideo.jp/search/%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": 256
-        ]
-    ]
-    
-    let quickCSECN: [String: [String: Any]] = [
-        "baidu": [
-            "name": "百度",
-            "url": "https://www.baidu.com/s?wd=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        "weibo": [
-            "name": "微博",
-            "url": "https://s.weibo.com/weibo?q=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ],
-        "bili": [
-            "name": "哔哩哔哩",
-            "url": "https://search.bilibili.com/all?keyword=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ]
-    ]
-    
-    let quickCSEFR: [String: [String: Any]] = [
-        "qwant": [
-            "name": "Qwant",
-            "url": "https://www.qwant.com/?q=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ]
-    ]
-            
-    let quickCSEKR: [String: [String: Any]] = [
-        "naver": [
-            "name": "NAVER",
-            "url": "https://search.naver.com/search.naver?query=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ]
-    ]
-    
-    let quickCSEVN: [String: [String: Any]] = [
-        "coc": [
-            "name": "Cốc Cốc",
-            "url": "https://coccoc.com/search#query=%s",
-            "post": [],
-            "disablePercentEncoding": false,
-            "maxQueryLength": -1
-        ]
-    ]
-    
-    // Edit QuickSE by country/region
-    if currentRegion == "JP" {
-        for (key, value) in quickCSEJP {
-            quickCSE[key] = value
-        }
-    } else if currentRegion == "CN" {
-        for (key, value) in quickCSECN {
-            quickCSE[key] = value
-        }
-    } else if currentRegion == "FR" {
-        for (key, value) in quickCSEFR {
-            quickCSE[key] = value
-        }
-    } else if currentRegion == "KR" {
-        for (key, value) in quickCSEKR {
-            quickCSE[key] = value
-        }
-    } else if currentRegion == "VN" {
-        for (key, value) in quickCSEVN {
-            quickCSE[key] = value
-        }
-    }
-    
-    // Save Data
-    if target == "default" || target == "all" {
-        userDefaults.set(defaultCSE, forKey: "defaultCSE")
-    }
-    if target == "private" || target == "all" {
-        userDefaults.set(privateCSE, forKey: "privateCSE")
-    }
-    if target == "quick" || target == "all" {
-        userDefaults.set(quickCSE, forKey: "quickCSE")
-    }
-}
-
-// Version high and low
-fileprivate func isUpdated(updateVer: String, lastVer: String) -> Bool {
-    guard lastVer != "" else {
-        return false
-    }
-    
-    let updateComponents = updateVer.split(separator: ".").compactMap { Int($0) }
-    let lastComponents = lastVer.split(separator: ".").compactMap { Int($0) }
-    
-    for (update, last) in zip(updateComponents, lastComponents) {
-        if update > last {
-            return true
-        } else if update < last {
+    // Version high and low
+    private func isUpdated(updateVer: String, lastVer: String) -> Bool {
+        guard lastVer != "" else {
             return false
         }
+        
+        let updateComponents = updateVer.split(separator: ".").compactMap { Int($0) }
+        let lastComponents = lastVer.split(separator: ".").compactMap { Int($0) }
+        
+        for (update, last) in zip(updateComponents, lastComponents) {
+            if update > last {
+                return true
+            } else if update < last {
+                return false
+            }
+        }
+        
+        return updateComponents.count > lastComponents.count
     }
-    
-    return updateComponents.count > lastComponents.count
 }

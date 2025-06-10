@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+#if iOS
+import WidgetKit
+#endif
 
 @main
 struct MainView: App {
@@ -33,9 +36,6 @@ struct ContentView: View {
       private var needSafariTutorial: Bool = userDefaults.bool(forKey: "needSafariTutorial")
     @State private var openSafariTutorialView: Bool = false
     
-    @State private var defaultCSE: [String: Any] = [:]
-    @State private var privateCSE: [String: Any] = [:]
-    
     #if iOS
     // Get current icon
     private var alternateIconName: String? {
@@ -62,7 +62,7 @@ struct ContentView: View {
                 Section {
                     // Default CSE
                     NavigationLink {
-                        EditSEView(cseType: .constant("default"), cseID: .constant(""), exCSEData: .constant(defaultCSE))
+                        EditSEView(cseType: .constant("defaultCSE"), cseID: .constant(nil))
                     } label: {
                         Text("Default Search Engine")
                     }
@@ -73,7 +73,7 @@ struct ContentView: View {
                     })
                     if usePrivateCSE {
                         NavigationLink {
-                            EditSEView(cseType: .constant("private"), cseID: .constant(""), exCSEData: .constant(privateCSE))
+                            EditSEView(cseType: .constant("privateCSE"), cseID: .constant(nil))
                         } label: {
                             Text("Private Search Engine")
                         }
@@ -85,6 +85,13 @@ struct ContentView: View {
                     Toggle(isOn: $useQuickCSE, label: {
                         Text("Quick Search")
                     })
+                    #if iOS
+                    .onChange(of: useQuickCSE) { _ in
+                        if #available(iOS 18.0, *) {
+                            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
+                        }
+                    }
+                    #endif
                     if useQuickCSE {
                         NavigationLink {
                             QuickSEListView()
@@ -102,6 +109,13 @@ struct ContentView: View {
                     Toggle(isOn: $useEmojiSearch, label: {
                         Text("Emoji Search")
                     })
+                    #if iOS
+                    .onChange(of: useEmojiSearch) { _ in
+                        if #available(iOS 18.0, *) {
+                            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.EmojiSearch")
+                        }
+                    }
+                    #endif
                 } footer: {
                     Text("If you enter only one emoji, you can search on Emojipedia.org.")
                 }
@@ -215,28 +229,17 @@ struct ContentView: View {
             .listStyle(.insetGrouped)
             .animation(.easeOut(duration: 0.2), value: usePrivateCSE)
             .animation(.easeOut(duration: 0.2), value: useQuickCSE)
-            .task {
-                // Initialize
-                initialize()
-            }
         }
         .navigationViewStyle(.stack)
         // Tutorial sheets
-        .sheet(isPresented : $needFirstTutorial , onDismiss: {
-            initialize()
-        }) {
-            FullTutorialView(isOpenSheet: $needFirstTutorial, isFirstTutorial: .constant(true))
-        }
+        .sheet(isPresented : $needFirstTutorial, content: {
+            FullTutorialView(isOpenSheet: $needFirstTutorial)
+        })
         .sheet(isPresented: $needSafariTutorial, content: {
             SafariTutorialView(isOpenSheet: $needSafariTutorial, isFirstTutorial: .constant(false))
         })
         .sheet(isPresented: $openSafariTutorialView, content: {
             SafariTutorialView(isOpenSheet: $openSafariTutorialView, isFirstTutorial: .constant(false))
         })
-    }
-    
-    private func initialize() {
-        defaultCSE = userDefaults.dictionary(forKey: "defaultCSE") ?? [:]
-        privateCSE = userDefaults.dictionary(forKey: "privateCSE") ?? [:]
     }
 }

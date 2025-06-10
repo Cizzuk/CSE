@@ -114,4 +114,24 @@ Yandex is currently unavailable.
 You can find these settings in Settings → Apps → Safari.
 You will be able to change the application icon
 Your purchase will support the development of CSE
+
+Add Quick Search Engine
+Adds a Custom Quick Search Engine on CSE.
+AI Search Engines
+Blank to disable
+Delete a Custom Quick Search Engine with Keyword.
+Delete Quick Search Engine
+Delete Quick Search Engine for Keyword ${cseID}
+Get ${settings} for ${type}
+Get ${settings} for ${type} with Keyword ${cseID}
+Get Search Engine Settings
+Gets the current Custom Search Engine setting.
+If the keyword is already in use, replace and save
+Off
+On
+Popular Search Engines
+Quick Search Engine
+Replace
+Safari Search Engines
+Search Engine Type
 ```

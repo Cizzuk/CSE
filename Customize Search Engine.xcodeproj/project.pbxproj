@@ -30,6 +30,17 @@
 		BE866B6A2D3F9A1F00C506E5 /* QuickSEListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE866B692D3F9A1F00C506E5 /* QuickSEListView.swift */; };
 		BE866B702D431C5800C506E5 /* post_redirector.html in Resources */ = {isa = PBXBuildFile; fileRef = BE866B6F2D431C5800C506E5 /* post_redirector.html */; };
 		BE866B722D431FA400C506E5 /* post_redirector.js in Resources */ = {isa = PBXBuildFile; fileRef = BE866B712D431FA400C506E5 /* post_redirector.js */; };
+		BE8F7FDB2DE2ABDA003906F4 /* CSEDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8F7FDA2DE2ABDA003906F4 /* CSEDataManager.swift */; };
+		BE8F7FDC2DE2ABDA003906F4 /* CSEDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8F7FDA2DE2ABDA003906F4 /* CSEDataManager.swift */; };
+		BE8F7FDD2DE2D81F003906F4 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCDAED2DB49844009F9C07 /* CloudKitManager.swift */; };
+		BE8F7FE12DE31A43003906F4 /* UITemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8F7FE02DE31A43003906F4 /* UITemplates.swift */; };
+		BE8F7FF02DE41F0E003906F4 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8F7FEF2DE41F0E003906F4 /* WidgetKit.framework */; };
+		BE8F7FF22DE41F0E003906F4 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8F7FF12DE41F0E003906F4 /* SwiftUI.framework */; };
+		BE8F7FFF2DE41F0F003906F4 /* CSE CCWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BE8F7FED2DE41F0E003906F4 /* CSE CCWidgetExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BE8F80062DE4200A003906F4 /* CSEDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8F7FDA2DE2ABDA003906F4 /* CSEDataManager.swift */; };
+		BE8F80072DE42049003906F4 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCDAED2DB49844009F9C07 /* CloudKitManager.swift */; };
+		BE8F800D2DE4857C003906F4 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */; };
+		BE8F800E2DE4A29D003906F4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */; };
 		BEE22EE52D44E93000EDA51A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */; };
 		BEE22EE62D44E93000EDA51A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */; };
 		BEFCDAEE2DB49844009F9C07 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCDAED2DB49844009F9C07 /* CloudKitManager.swift */; };
@@ -43,6 +54,13 @@
 			remoteGlobalIDString = 90C9BE2E288BE17300E22FB8;
 			remoteInfo = "Custom Search Engine Extension";
 		};
+		BE8F7FFD2DE41F0F003906F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90C9BE0A288BE17000E22FB8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE8F7FEC2DE41F0E003906F4;
+			remoteInfo = "CSE CCWidgetExtension";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +71,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				90C9BE30288BE17300E22FB8 /* CSE Extension.appex in Embed Foundation Extensions */,
+				BE8F7FFF2DE41F0F003906F4 /* CSE CCWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,6 +106,11 @@
 		BE866B692D3F9A1F00C506E5 /* QuickSEListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSEListView.swift; sourceTree = "<group>"; };
 		BE866B6F2D431C5800C506E5 /* post_redirector.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = post_redirector.html; sourceTree = "<group>"; };
 		BE866B712D431FA400C506E5 /* post_redirector.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = post_redirector.js; sourceTree = "<group>"; };
+		BE8F7FDA2DE2ABDA003906F4 /* CSEDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSEDataManager.swift; sourceTree = "<group>"; };
+		BE8F7FE02DE31A43003906F4 /* UITemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITemplates.swift; sourceTree = "<group>"; };
+		BE8F7FED2DE41F0E003906F4 /* CSE CCWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "CSE CCWidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE8F7FEF2DE41F0E003906F4 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		BE8F7FF12DE41F0E003906F4 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		BEFCDAED2DB49844009F9C07 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,7 +126,10 @@
 		BE289FE22C8DAE07005BBDC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				AddQuickSE.swift,
+				DeleteQuickSE.swift,
 				Enums.swift,
+				GetCSESettings.swift,
 				SetDefaultSE.swift,
 				SetFocusSE.swift,
 				SetPrivateSE.swift,
@@ -111,10 +138,18 @@
 			);
 			target = 90C9BE11288BE17000E22FB8 /* CSE */;
 		};
+		BE8F80052DE41F0F003906F4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = BE8F7FEC2DE41F0E003906F4 /* CSE CCWidgetExtension */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BE289FCD2C8DA7C8005BBDC6 /* Intent */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (BE289FE22C8DAE07005BBDC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, BE07A84E2D4405AB00469317 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Intent; sourceTree = "<group>"; };
+		BE8F7FF32DE41F0E003906F4 /* CSE CCWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (BE8F80052DE41F0F003906F4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "CSE CCWidget"; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,17 +167,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BE8F7FEA2DE41F0E003906F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE8F7FF22DE41F0E003906F4 /* SwiftUI.framework in Frameworks */,
+				BE8F7FF02DE41F0E003906F4 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		90C9BE09288BE17000E22FB8 = {
 			isa = PBXGroup;
 			children = (
+				BE8F7FDA2DE2ABDA003906F4 /* CSEDataManager.swift */,
+				BEFCDAED2DB49844009F9C07 /* CloudKitManager.swift */,
+				908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */,
 				BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */,
 				BE289FCD2C8DA7C8005BBDC6 /* Intent */,
-				908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */,
 				90C9BE14288BE17000E22FB8 /* CSE */,
 				90C9BE33288BE17300E22FB8 /* CSE Extension */,
+				BE8F7FF32DE41F0E003906F4 /* CSE CCWidget */,
+				BE8F7FEE2DE41F0E003906F4 /* Frameworks */,
 				90C9BE13288BE17000E22FB8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -152,6 +200,7 @@
 			children = (
 				90C9BE12288BE17000E22FB8 /* CSE.app */,
 				90C9BE2F288BE17300E22FB8 /* CSE Extension.appex */,
+				BE8F7FED2DE41F0E003906F4 /* CSE CCWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -162,7 +211,6 @@
 				90C9BE52288D09DB00E22FB8 /* CSE.entitlements */,
 				BE5CEB632DAE8DCE003A2F3E /* src */,
 				90C9BE15288BE17000E22FB8 /* AppDelegate.swift */,
-				BEFCDAED2DB49844009F9C07 /* CloudKitManager.swift */,
 				903A4A202BA1D87F005E346B /* MainView.swift */,
 				BE866B672D3F688900C506E5 /* EditSEView.swift */,
 				BE866B692D3F9A1F00C506E5 /* QuickSEListView.swift */,
@@ -207,8 +255,18 @@
 			isa = PBXGroup;
 			children = (
 				BE5CEB612DAE8DC6003A2F3E /* RecommendSEs.swift */,
+				BE8F7FE02DE31A43003906F4 /* UITemplates.swift */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		BE8F7FEE2DE41F0E003906F4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BE8F7FEF2DE41F0E003906F4 /* WidgetKit.framework */,
+				BE8F7FF12DE41F0E003906F4 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,6 +285,7 @@
 			);
 			dependencies = (
 				90C9BE32288BE17300E22FB8 /* PBXTargetDependency */,
+				BE8F7FFE2DE41F0F003906F4 /* PBXTargetDependency */,
 			);
 			name = CSE;
 			productName = "Custom Search Engine";
@@ -250,6 +309,28 @@
 			productReference = 90C9BE2F288BE17300E22FB8 /* CSE Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		BE8F7FEC2DE41F0E003906F4 /* CSE CCWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE8F80002DE41F0F003906F4 /* Build configuration list for PBXNativeTarget "CSE CCWidgetExtension" */;
+			buildPhases = (
+				BE8F7FE92DE41F0E003906F4 /* Sources */,
+				BE8F7FEA2DE41F0E003906F4 /* Frameworks */,
+				BE8F7FEB2DE41F0E003906F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				BE8F7FF32DE41F0E003906F4 /* CSE CCWidget */,
+			);
+			name = "CSE CCWidgetExtension";
+			packageProductDependencies = (
+			);
+			productName = "CSE CCWidgetExtension";
+			productReference = BE8F7FED2DE41F0E003906F4 /* CSE CCWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -257,7 +338,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1630;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					90C9BE11288BE17000E22FB8 = {
@@ -265,6 +346,9 @@
 					};
 					90C9BE2E288BE17300E22FB8 = {
 						CreatedOnToolsVersion = 14.0;
+					};
+					BE8F7FEC2DE41F0E003906F4 = {
+						CreatedOnToolsVersion = 16.3;
 					};
 				};
 			};
@@ -294,6 +378,7 @@
 			targets = (
 				90C9BE11288BE17000E22FB8 /* CSE */,
 				90C9BE2E288BE17300E22FB8 /* CSE Extension */,
+				BE8F7FEC2DE41F0E003906F4 /* CSE CCWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -327,6 +412,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BE8F7FEB2DE41F0E003906F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE8F800E2DE4A29D003906F4 /* PrivacyInfo.xcprivacy in Resources */,
+				BE8F800D2DE4857C003906F4 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -340,10 +434,12 @@
 				BE7374D52D86DDF300976342 /* LicenseView.swift in Sources */,
 				BEFCDAEE2DB49844009F9C07 /* CloudKitManager.swift in Sources */,
 				BE866B682D3F688900C506E5 /* EditSEView.swift in Sources */,
+				BE8F7FDB2DE2ABDA003906F4 /* CSEDataManager.swift in Sources */,
 				BE5342E52C9E36FA00AE1DB3 /* AdvSettingView.swift in Sources */,
 				90C9BE16288BE17000E22FB8 /* AppDelegate.swift in Sources */,
 				BE5342E32C9E338F00AE1DB3 /* IconChangeView.swift in Sources */,
 				BE866B6A2D3F9A1F00C506E5 /* QuickSEListView.swift in Sources */,
+				BE8F7FE12DE31A43003906F4 /* UITemplates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +448,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				90C9BE35288BE17300E22FB8 /* SafariWebExtensionHandler.swift in Sources */,
+				BE8F7FDD2DE2D81F003906F4 /* CloudKitManager.swift in Sources */,
+				BE8F7FDC2DE2ABDA003906F4 /* CSEDataManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE8F7FE92DE41F0E003906F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE8F80062DE4200A003906F4 /* CSEDataManager.swift in Sources */,
+				BE8F80072DE42049003906F4 /* CloudKitManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +469,12 @@
 			isa = PBXTargetDependency;
 			target = 90C9BE2E288BE17300E22FB8 /* CSE Extension */;
 			targetProxy = 90C9BE31288BE17300E22FB8 /* PBXContainerItemProxy */;
+		};
+		BE8F7FFE2DE41F0F003906F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = BE8F7FEC2DE41F0E003906F4 /* CSE CCWidgetExtension */;
+			targetProxy = BE8F7FFD2DE41F0F003906F4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -435,7 +548,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = CSE/CSE.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 38;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CSE/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CSE;
@@ -450,7 +563,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.7;
+				MARKETING_VERSION = 3.8;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -477,7 +590,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "CSE Extension/CSE Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 38;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "CSE Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "CSE Extension";
@@ -489,7 +602,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.7;
+				MARKETING_VERSION = 3.8;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -578,7 +691,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = CSE/CSE.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 38;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CSE/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CSE;
@@ -593,7 +706,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.7;
+				MARKETING_VERSION = 3.8;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -620,7 +733,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "CSE Extension/CSE Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 38;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "CSE Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "CSE Extension";
@@ -632,7 +745,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.7;
+				MARKETING_VERSION = 3.8;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -784,7 +897,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "CSE Extension/CSE Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 38;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "CSE Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "CSE Extension";
@@ -796,7 +909,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.7;
+				MARKETING_VERSION = 3.8;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -821,7 +934,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "CSE Extension/CSE Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 38;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "CSE Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "CSE Extension";
@@ -833,7 +946,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.7;
+				MARKETING_VERSION = 3.8;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -860,7 +973,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = CSE/CSE.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 38;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CSE/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CSE;
@@ -875,7 +988,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.7;
+				MARKETING_VERSION = 3.8;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -904,7 +1017,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = CSE/CSE.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 38;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CSE/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CSE;
@@ -919,7 +1032,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.7;
+				MARKETING_VERSION = 3.8;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -939,6 +1052,285 @@
 				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = "Release macOS";
+		};
+		BE8F80012DE41F0F003906F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "CSE CCWidget/CSE CCWidgetExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 38;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CSE CCWidget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "CSE CCWidget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 3.8;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tsg0o0.cse.CCWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BE8F80022DE41F0F003906F4 /* Release macOS */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "CSE CCWidget/CSE CCWidgetExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 38;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CSE CCWidget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "CSE CCWidget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 3.8;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tsg0o0.cse.CCWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release macOS";
+		};
+		BE8F80032DE41F0F003906F4 /* Release visionOS */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "CSE CCWidget/CSE CCWidgetExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 38;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CSE CCWidget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "CSE CCWidget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 3.8;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tsg0o0.cse.CCWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release visionOS";
+		};
+		BE8F80042DE41F0F003906F4 /* Release iOS */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "CSE CCWidget/CSE CCWidgetExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 38;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CSE CCWidget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "CSE CCWidget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 3.8;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tsg0o0.cse.CCWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release iOS";
 		};
 /* End XCBuildConfiguration section */
 
@@ -972,6 +1364,17 @@
 				90C9BE51288BE17300E22FB8 /* Release macOS */,
 				908FBC922BAD802B00D77AE5 /* Release visionOS */,
 				90BC1A372BAD2CC700961F3B /* Release iOS */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Release macOS";
+		};
+		BE8F80002DE41F0F003906F4 /* Build configuration list for PBXNativeTarget "CSE CCWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE8F80012DE41F0F003906F4 /* Debug */,
+				BE8F80022DE41F0F003906F4 /* Release macOS */,
+				BE8F80032DE41F0F003906F4 /* Release visionOS */,
+				BE8F80042DE41F0F003906F4 /* Release iOS */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Release macOS";

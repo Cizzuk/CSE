@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct QuickSEListView: View {
-    @State private var quickCSE: [String: [String: Any]] = [:]
+    @State private var quickCSE: [String: CSEDataManager.CSEData] = CSEDataManager.getAllQuickCSEData()
     
     var body: some View {
         List {
             // Add new SE Button
             Section {
                 NavigationLink {
-                    EditSEView(cseType: .constant("quick"), cseID: .constant(""), exCSEData: .constant([:]))
+                    EditSEView(cseType: .constant("quickCSE"), cseID: .constant(nil))
                 } label: {
                     HStack {
                         Image(systemName: "plus.circle")
@@ -28,28 +28,27 @@ struct QuickSEListView: View {
                 }
             }
             
-            // Current Quick SEs List
+            // Current Quick SEs ListdisplayName
             Section {
                 ForEach(quickCSE.keys.sorted(), id: \.self) { cseID in
-                    if let cseData = quickCSE[cseID],
-                        // If cse has no name, use URL instead
-                        let cseName = cseData["name"] as? String ?? "" != "" ? cseData["name"] : cseData["url"] {
+                    if let cseData: CSEDataManager.CSEData = quickCSE[cseID] {
+                        let displayName: String = cseData.name != "" ? cseData.name : cseData.url
                         let keywordTranslation = NSLocalizedString("Keyword", comment: "")
                         NavigationLink {
-                            EditSEView(cseType: .constant("quick"), cseID: .constant(cseID), exCSEData: .constant(cseData))
+                            EditSEView(cseType: .constant("quickCSE"), cseID: .constant(cseID))
                         } label: {
                             VStack(alignment : .leading) {
                                 Text(cseID)
                                     .bold()
-                                Text(cseName as? String ?? "")
+                                Text(displayName)
                                     .lineLimit(1)
                                     .foregroundColor(.secondary)
                             }
                         }
-                        .accessibilityLabel("\(cseName as? String ?? ""). " + keywordTranslation + ". \(cseID)")
+                        .accessibilityLabel("\(displayName). " + keywordTranslation + ". \(cseID)")
                     }
                 }
-                .onDelete(perform: deleteSE)
+                .onDelete(perform: CSEDataManager.deleteQuickCSE)
             }
         }
         .navigationTitle("Quick Search Engines")
@@ -60,17 +59,7 @@ struct QuickSEListView: View {
         }
         .task {
             // Initialize
-            quickCSE = userDefaults.dictionary(forKey: "quickCSE") as? [String: [String: Any]] ?? [:]
-        }
-    }
-    
-    // Delete a Quick Search Engine
-    private func deleteSE(at offsets: IndexSet) {
-        let keys = quickCSE.keys.sorted()
-        for offset in offsets {
-            let keyToRemove = keys[offset]
-            quickCSE.removeValue(forKey: keyToRemove)
-            userDefaults.set(quickCSE, forKey: "quickCSE")
+            quickCSE = CSEDataManager.getAllQuickCSEData()
         }
     }
 }

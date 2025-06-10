@@ -35,6 +35,20 @@
                ReferencedContainer = "container:Customize Search Engine.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BE8F7FEC2DE41F0E003906F4"
+               BuildableName = "CSE CCWidgetExtension.appex"
+               BlueprintName = "CSE CCWidgetExtension"
+               ReferencedContainer = "container:Customize Search Engine.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

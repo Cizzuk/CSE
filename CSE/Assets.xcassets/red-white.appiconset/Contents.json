@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "red-white 1.png",
+      "filename" : "cse-r.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -13,7 +13,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "red.png",
+      "filename" : "cse-r-d.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -25,7 +25,7 @@
           "value" : "tinted"
         }
       ],
-      "filename" : "tinted.png",
+      "filename" : "cse-t.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"

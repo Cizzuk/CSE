@@ -8,25 +8,35 @@
 import Foundation
 import AppIntents
 
-@available(iOS 16.0, macOS 13.0, visionOS 1.0, *)
 struct SetPrivateSE: AppIntent, CustomIntentMigratedAppIntent {
     static let intentClassName = "SetPrivateSE"
     static var title: LocalizedStringResource = "Set Private Search Engine"
     static var description: LocalizedStringResource = "Sets a Custom Private Search Engine on CSE."
-
-    @Parameter(title: "Search Engine URL", default: "")
-    var cseURL: String
-
-    static var parameterSummary: some ParameterSummary {
-        Summary("Set Private Search Engine to \(\.$cseURL)")
-    }
+    
+    @Parameter(title: "URL", description: "Blank to disable", default: "")
+        var cseURL: String
+    
+    @Parameter(title: "Disable Percent-encoding", default: false)
+        var disablePercentEncoding: Bool
+    
+    @Parameter(title: "Max Query Length", description: "Blank to disable", default: nil)
+        var maxQueryLength: Int?
 
     func perform() async throws -> some IntentResult {
-        let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
-        var CSEData: Dictionary<String, Any> = userDefaults.dictionary(forKey: "privateCSE") ?? [:]
+        let userDefaults = CSEDataManager.userDefaults
+        if cseURL.isEmpty {
+            userDefaults.set(false, forKey: "usePrivateCSE")
+        } else {
+            userDefaults.set(true, forKey: "usePrivateCSE")
+        }
         
-        CSEData["url"] = cseURL
-        userDefaults.set(CSEData, forKey: "privateCSE")
+        let cseData = CSEDataManager.CSEData(
+            url: cseURL,
+            disablePercentEncoding: disablePercentEncoding,
+            maxQueryLength: maxQueryLength
+        )
+        
+        CSEDataManager.saveCSEData(cseData, .privateCSE)
         
         return .result()
     }

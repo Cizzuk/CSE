@@ -10,8 +10,8 @@ import os.log
 
 class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
 
-    let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
-    var focusSettings: (cseURL: String?, useQuickCSE: Bool?, useEmojiSearch: Bool?)? = nil
+    let userDefaults = CSEDataManager.userDefaults
+    var focusSettings: (cseData: CSEDataManager.CSEData, useQuickCSE: Bool?, useEmojiSearch: Bool?)? = nil
     
     func beginRequest(with context: NSExtensionContext) {
         // Get Search URL from content.js
@@ -314,18 +314,13 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         var fixedQuery: String = query
         
         // Load Settings
-        var CSEData: Dictionary<String, Any> = windowName == "private" ?
-            userDefaults.dictionary(forKey: "privateCSE") ?? [:] :
-            userDefaults.dictionary(forKey: "defaultCSE") ?? [:]
+        var CSEData: CSEDataManager.CSEData = windowName == "private" ?
+            CSEDataManager.getCSEData(.privateCSE) :
+            CSEDataManager.getCSEData(.defaultCSE)
         
         // Set focus filter setting
         if focusSettings != nil {
-            CSEData = [
-                "url": focusSettings?.cseURL ?? "",
-                "post": [],
-                "disablePercentEncoding": false,
-                "maxQueryLength": -1
-            ]
+            CSEData = focusSettings!.cseData
         }
         
         // Is useQuickCSE Enabled?
@@ -344,7 +339,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         // Check quick search
         if useQuickCSE {
             var cseID: String
-            let quickCSEData = userDefaults.dictionary(forKey: "quickCSE") as? [String: [String: Any]] ?? [:]
+            let quickCSEData = CSEDataManager.getAllQuickCSEData()
             for key in quickCSEData.keys {
                 // percent encoded key (all characters including + or &)
                 guard let encodedKey = key.addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._")))
@@ -367,17 +362,17 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         var decodedFixedQuery: String = fixedQuery.removingPercentEncoding ?? ""
         
         // Get maxQueryLength
-        let maxQueryLength: Int = CSEData["maxQueryLength"] as? Int ?? -1
-        if maxQueryLength > -1 && decodedFixedQuery.count > maxQueryLength {
+        if let maxQueryLength: Int = CSEData.maxQueryLength,
+           decodedFixedQuery.count > maxQueryLength {
             decodedFixedQuery = String(decodedFixedQuery.prefix(maxQueryLength))
             fixedQuery = String(fixedQuery.prefix(maxQueryLength))
         }
         
         // Replace %s with query
-        let redirectQuery: String = CSEData["disablePercentEncoding"] as? Bool ?? false ? decodedFixedQuery : fixedQuery
-        let redirectURL: String = (CSEData["url"] as? String)!.replacingOccurrences(of: "%s", with: redirectQuery)
+        let redirectQuery: String = CSEData.disablePercentEncoding ? decodedFixedQuery : fixedQuery
+        let redirectURL: String = CSEData.url.replacingOccurrences(of: "%s", with: redirectQuery)
         
-        var postData: [[String: String]] = CSEData["post"] as? [[String : String]] ?? [[:]]
+        var postData: [[String: String]] = CSEData.post
         for i in 0..<postData.count {
             postData[i]["key"] = postData[i]["key"]?.replacingOccurrences(of: "%s", with: decodedFixedQuery)
             postData[i]["value"] = postData[i]["value"]?.replacingOccurrences(of: "%s", with: decodedFixedQuery)
@@ -391,12 +386,15 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     func getFocusFilter() async throws {
         focusSettings = nil
         if userDefaults.bool(forKey: "adv_ignoreFocusFilter") { return }
-        if #available(iOS 16.0, macOS 13.0, *) {
-            do {
-                let filter: SetFocusSE = try await SetFocusSE.current
-                if filter.useQuickCSE != nil && filter.useEmojiSearch != nil {
-                    focusSettings = (filter.cseURL, filter.useQuickCSE, filter.useEmojiSearch)
-                }
+        do {
+            let filter: SetFocusSE = try await SetFocusSE.current
+            if filter.useQuickCSE != nil && filter.useEmojiSearch != nil {
+                let focusCSE = CSEDataManager.CSEData(
+                    url: filter.cseURL,
+                    disablePercentEncoding: filter.disablePercentEncoding,
+                    maxQueryLength: filter.maxQueryLength
+                )
+                focusSettings = (focusCSE, useQuickCSE: filter.useQuickCSE, useEmojiSearch: filter.useEmojiSearch)
             }
         }
     }
