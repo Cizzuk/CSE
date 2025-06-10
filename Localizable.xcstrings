@@ -611,6 +611,12 @@
             "value" : "빠른 검색 엔진 추가"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionar Buscador Rápido"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -655,6 +661,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSE에 사용자 정의 빠른 검색 엔진을 추가합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adiciona um Buscador Rápido Personalizado no CSE."
           }
         },
         "zh-Hans" : {
@@ -771,6 +783,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "AI 검색 엔진"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscadores de IA"
           }
         },
         "zh-Hans" : {
@@ -1383,6 +1401,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "비워 두면 사용 안 함"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Em branco para desativar"
           }
         },
         "zh-Hans" : {
@@ -2085,6 +2109,12 @@
             "value" : "키워드가 있는 사용자 정의 빠른 검색 엔진을 삭제합니다."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Excluir um Buscador Rápido Personalizado com Palavra-chave."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2131,6 +2161,12 @@
             "value" : "빠른 검색 엔진 삭제"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Excluir Buscador Rápido"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2175,6 +2211,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "키워드 ${cseID}용 빠른 검색 엔진 삭제"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Excluir Buscador Rápido para Palavra-chave ${cseID}"
           }
         },
         "zh-Hans" : {
@@ -3189,6 +3231,12 @@
             "value" : "${type}의 ${settings} 가져오기"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obter ${settings} para ${type}"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3233,6 +3281,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "키워드 ${cseID}가 있는 ${type}의 ${settings} 가져오기"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obter ${settings} para ${type} com Palavra-chave ${cseID}"
           }
         },
         "zh-Hans" : {
@@ -3281,6 +3335,12 @@
             "value" : "검색 엔진 설정 가져오기"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obter Configurações do Buscador"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3325,6 +3385,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "현재 사용자 정의 검색 엔진 설정을 가져옵니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtém a configuração atual do Buscador Personalizado."
           }
         },
         "zh-Hans" : {
@@ -3587,6 +3653,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "키워드가 이미 사용 중인 경우 교체하고 저장합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se a palavra-chave já estiver em uso, substitua e salve"
           }
         },
         "zh-Hans" : {
@@ -4636,6 +4708,12 @@
             "value" : "끔"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desativado"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4680,6 +4758,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "켬"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ativado"
           }
         },
         "zh-Hans" : {
@@ -5146,6 +5230,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "인기 검색 엔진"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscadores Populares"
           }
         },
         "zh-Hans" : {
@@ -5739,6 +5829,12 @@
             "value" : "빠른 검색 엔진"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscador Rápido"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5933,6 +6029,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "교체"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Substituir"
           }
         },
         "zh-Hans" : {
@@ -6301,6 +6403,12 @@
             "value" : "Safari 검색 엔진"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscadores do Safari"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6555,6 +6663,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "검색 엔진 유형"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo de Buscador"
           }
         },
         "zh-Hans" : {
