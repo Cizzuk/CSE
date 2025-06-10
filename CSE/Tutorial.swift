@@ -21,21 +21,23 @@ fileprivate func NextButton(text: String) -> some View {
         #if !visionOS
         .foregroundColor(.white)
         .frame(maxWidth: .infinity)
-        #endif
         .glassEffectButton()
+        #endif
 }
 
 fileprivate extension View {
     func glassEffectButton() -> some View {
-        if #available(iOS 26, *) {
+        if #available(iOS 26, macOS 26, *) {
+            #if !os(visionOS)
             return AnyView(self.glassEffect(.regular.tint(.accentColor).interactive()))
+            #else
+            return AnyView(self)
+            #endif
         } else {
             return AnyView(self)
-                #if !visionOS
                 .frame(maxWidth: .infinity)
                 .background(Color.accentColor)
                 .cornerRadius(16)
-                #endif
         }
     }
 }

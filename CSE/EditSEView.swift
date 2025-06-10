@@ -150,13 +150,13 @@ struct EditSEView: View {
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Button("Cancel") {
+                Button("Cancel", systemImage: "xmark") {
                     dismiss()
                     isFirstLoad = true
                 }
             }
             ToolbarItem(placement: .confirmationAction) {
-                Button("Save") {
+                Button("Save", systemImage: "checkmark") {
                     saveCSEData()
                     isFirstLoad = true
                 }
@@ -336,7 +336,7 @@ struct EditSEViewRecommend: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
+                    Button("Cancel", systemImage: "xmark") {
                         isOpenSheet = false
                     }
                 }
@@ -404,7 +404,7 @@ struct EditSEViewCloudImport: View {
                         .disabled(ck.isLoading || ck.error != nil || ck.allCSEs.isEmpty)
                 }
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
+                    Button("Cancel", systemImage: "xmark") {
                         isOpenSheet = false
                     }
                     .disabled(ck.isLocked)
