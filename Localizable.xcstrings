@@ -5987,6 +5987,12 @@
     },
     "Search Engine Type" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نوع محرك البحث"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
