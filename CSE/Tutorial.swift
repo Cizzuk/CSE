@@ -99,9 +99,7 @@ struct FullTutorialView: View {
                         .bold()
                 }
                 .padding(.top, 10)
-                NavigationLink {
-                    SafariTutorialView(isOpenSheet: $isOpenSheet, isFirstTutorial: .constant(true))
-                } label: {
+                NavigationLink(destination: SafariTutorialView(isOpenSheet: $isOpenSheet, isFirstTutorial: true)) {
                     NextButton(text: NSLocalizedString("Next", comment: ""))
                 }
                 .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
@@ -117,7 +115,7 @@ struct FullTutorialView: View {
 // Set Safari settings
 struct SafariTutorialView: View {
     @Binding var isOpenSheet: Bool
-    @Binding var isFirstTutorial: Bool
+    var isFirstTutorial: Bool = false
     @AppStorage("searchengine", store: userDefaults)
       private var searchengine: String = userDefaults.string(forKey: "searchengine") ?? "google"
     @AppStorage("alsousepriv", store: userDefaults)
@@ -208,9 +206,7 @@ struct SafariTutorialView: View {
                 }
                 .animation(.easeOut(duration: 0.2), value: alsousepriv)
                 
-                NavigationLink {
-                    SafariTutorialSecondView(isOpenSheet: $isOpenSheet, isFirstTutorial: $isFirstTutorial)
-                } label: {
+                NavigationLink(destination: SafariTutorialSecondView(isOpenSheet: $isOpenSheet, isFirstTutorial: isFirstTutorial)) {
                     NextButton(text: NSLocalizedString("Next", comment: ""))
                 }
                 .padding([.horizontal, .bottom], 24)
@@ -226,7 +222,7 @@ struct SafariTutorialView: View {
 
 struct SafariTutorialSecondView: View {
     @Binding var isOpenSheet: Bool
-    @Binding var isFirstTutorial: Bool
+    var isFirstTutorial: Bool = false
     @AppStorage("searchengine", store: userDefaults)
       private var searchengine: String = userDefaults.string(forKey: "searchengine") ?? "google"
     @AppStorage("alsousepriv", store: userDefaults)
@@ -296,9 +292,7 @@ struct SafariTutorialSecondView: View {
                 }
                 
                 if isFirstTutorial {
-                    NavigationLink {
-                        SafariTutorialRecommendSEView(isOpenSheet: $isOpenSheet)
-                    } label: {
+                    NavigationLink(destination: SafariTutorialRecommendSEView(isOpenSheet: $isOpenSheet)) {
                         NextButton(text: NSLocalizedString("Next", comment: ""))
                     }
                     .padding([.horizontal, .bottom], 24)
@@ -338,9 +332,7 @@ struct SafariTutorialRecommendSEView: View {
                 
                 List {
                     Section {
-                        NavigationLink {
-                            SafariTutorialImportView(isOpenSheet: $isOpenSheet)
-                        } label: {
+                        NavigationLink(destination: SafariTutorialImportView(isOpenSheet: $isOpenSheet)) {
                             HStack {
                                 Image(systemName: "icloud")
                                     .frame(width: 20.0)

@@ -11,8 +11,8 @@ struct EditSEView: View {
     @Environment(\.dismiss) private var dismiss
     
     // Load settings
-    @Binding var cseType: String // "defaultCSE", "privateCSE", "quickCSE"
-    @Binding var cseID: String? // If quick search engine, use this ID
+    var cseType: CSEDataManager.CSEType = .defaultCSE // "defaultCSE", "privateCSE", "quickCSE"
+    var cseID: String? = nil // If quick search engine, use this ID
     @State private var CSEData = CSEDataManager.CSEData() // Current CSEData, Changes when import from recommended search engines and iCloud
 
     // Alerts
@@ -29,18 +29,7 @@ struct EditSEView: View {
     
     var body: some View {
         List {
-            if cseType == "defaultCSE" || cseType == "privateCSE" {
-                Section {
-                    // Search Engine Name
-                    if cseType == "defaultCSE" {
-                        Text("Default Search Engine")
-                    } else {
-                        Text("Private Search Engine")
-                    }
-                }
-            }
-            
-            if cseType == "quickCSE" {
+            if cseType == .quickCSE {
                 // Search Engine Name
                 Section {
                     TextField("Name", text: $CSEData.name)
@@ -66,6 +55,15 @@ struct EditSEView: View {
                         Text("Example: '\(CSEData.keyword == "" ? "cse" : CSEData.keyword) your search'")
                     }
                 }
+            } else {
+                Section {
+                    // Search Engine Name
+                    if cseType == .defaultCSE {
+                        Text("Default Search Engine")
+                    } else {
+                        Text("Private Search Engine")
+                    }
+                }
             }
             
             // Search URL
@@ -81,7 +79,7 @@ struct EditSEView: View {
             } footer: {
                 VStack(alignment: .leading) {
                     Text("Replace query with %s")
-                    if cseType == "default" || cseType == "private" {
+                    if cseType == .defaultCSE || cseType == .privateCSE {
                         Text("Blank to disable CSE")
                     }
                 }
@@ -90,9 +88,7 @@ struct EditSEView: View {
             // Advanced Settings
             Section {
                 // POST Data
-                NavigationLink {
-                    EditSEViewPostData(post: $CSEData.post)
-                } label: {
+                NavigationLink(destination: EditSEViewPostData(post: $CSEData.post)) {
                     HStack {
                         Text("POST Data")
                         Spacer()
@@ -182,9 +178,7 @@ struct EditSEView: View {
     }
     
     private func saveCSEData() {
-        if cseType == "defaultCSE" || cseType == "privateCSE" {
-            CSEDataManager.saveCSEData(CSEData, CSEDataManager.CSEType(rawValue: cseType)!)
-        } else if cseType == "quickCSE" {
+        if cseType == .quickCSE {
             do {
                 try CSEDataManager.saveCSEData(CSEData, cseID)
             } catch CSEDataManager.saveCSEDataError.keyBlank {
@@ -200,6 +194,8 @@ struct EditSEView: View {
                 showFailAlert = true
                 return
             }
+        } else {
+            CSEDataManager.saveCSEData(CSEData, cseType)
         }
         dismiss()
     }
@@ -207,14 +203,14 @@ struct EditSEView: View {
     private func loadCSEData() {
         if isFirstLoad {
             // Load existing CSEData
-            if cseType == "defaultCSE" || cseType == "privateCSE" {
-                CSEData = CSEDataManager.getCSEData(CSEDataManager.CSEType(rawValue: cseType) ?? .defaultCSE)
-            } else if cseType == "quickCSE" {
+            if cseType == .quickCSE {
                 if let cseID = cseID {
                     CSEData = CSEDataManager.getCSEData(.quickCSE, id: cseID)
                 } else {
                     CSEData = CSEDataManager.CSEData() // Empty CSEData
                 }
+            } else {
+                CSEData = CSEDataManager.getCSEData(cseType)
             }
             isFirstLoad = false
         }
