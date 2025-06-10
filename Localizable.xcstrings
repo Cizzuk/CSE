@@ -617,6 +617,12 @@
             "value" : "Adicionar Buscador Rápido"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить Быстрый поиск Поисковая машина"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -667,6 +673,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Adiciona um Buscador Rápido Personalizado no CSE."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавляет пользовательскую Быстрый поиск Поисковая машина в CSE."
           }
         },
         "zh-Hans" : {
@@ -789,6 +801,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Buscadores de IA"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI Поисковые машины"
           }
         },
         "zh-Hans" : {
@@ -1407,6 +1425,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Em branco para desativar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оставьте пустым, чтобы отключить"
           }
         },
         "zh-Hans" : {
@@ -2115,6 +2139,12 @@
             "value" : "Excluir um Buscador Rápido Personalizado com Palavra-chave."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить пользовательскую Быстрый поиск Поисковая машина с Ключевым словом."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2167,6 +2197,12 @@
             "value" : "Excluir Buscador Rápido"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить Быстрый поиск Поисковая машина"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2217,6 +2253,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Excluir Buscador Rápido para Palavra-chave ${cseID}"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить Быстрый поиск Поисковая машина для Ключевого слова ${cseID}"
           }
         },
         "zh-Hans" : {
@@ -3237,6 +3279,12 @@
             "value" : "Obter ${settings} para ${type}"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Получить ${settings} для ${type}"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3287,6 +3335,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Obter ${settings} para ${type} com Palavra-chave ${cseID}"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Получить ${settings} для ${type} с Ключевым словом ${cseID}"
           }
         },
         "zh-Hans" : {
@@ -3341,6 +3395,12 @@
             "value" : "Obter Configurações do Buscador"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Получить настройки Поисковой машины"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3391,6 +3451,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Obtém a configuração atual do Buscador Personalizado."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Получает текущую пользовательскую настройку Поисковой машины."
           }
         },
         "zh-Hans" : {
@@ -3659,6 +3725,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Se a palavra-chave já estiver em uso, substitua e salve"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Если Ключевое слово уже используется, замените и сохраните"
           }
         },
         "zh-Hans" : {
@@ -4714,6 +4786,12 @@
             "value" : "Desativado"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выкл"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4764,6 +4842,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ativado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вкл"
           }
         },
         "zh-Hans" : {
@@ -5236,6 +5320,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Buscadores Populares"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Популярные Поисковые машины"
           }
         },
         "zh-Hans" : {
@@ -5835,6 +5925,12 @@
             "value" : "Buscador Rápido"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Быстрый поиск Поисковая машина"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6035,6 +6131,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Substituir"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Заменить"
           }
         },
         "zh-Hans" : {
@@ -6409,6 +6511,12 @@
             "value" : "Buscadores do Safari"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поисковые машины Safari"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6669,6 +6777,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tipo de Buscador"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тип Поисковой машины"
           }
         },
         "zh-Hans" : {
