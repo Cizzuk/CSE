@@ -587,6 +587,12 @@
             "value" : "إضافة محرك بحث السريع"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schnellsuchmaschine hinzufügen"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -619,6 +625,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "يضيف محرك بحث السريع مخصص على CSE."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fügt eine benutzerdefinierte Schnellsuchmaschine in CSE hinzu."
           }
         },
         "fr" : {
@@ -723,6 +735,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "محركات بحث الذكاء الاصطناعي"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "KI-Suchmaschinen"
           }
         },
         "fr" : {
@@ -1323,6 +1341,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "اتركه فارغًا للتعطيل"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leer lassen, um zu deaktivieren"
           }
         },
         "fr" : {
@@ -2013,6 +2037,12 @@
             "value" : "حذف محرك بحث السريع مخصص باستخدام الكلمة المفتاحية."
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine benutzerdefinierte Schnellsuchmaschine mit Schlüsselwort löschen."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2047,6 +2077,12 @@
             "value" : "حذف محرك بحث السريع"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schnellsuchmaschine löschen"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2079,6 +2115,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "حذف محرك بحث السريع للكلمة المفتاحية ${cseID}"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schnellsuchmaschine für Schlüsselwort ${cseID} löschen"
           }
         },
         "fr" : {
@@ -3081,6 +3123,12 @@
             "value" : "الحصول على ${settings} لـ ${type}"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${settings} für ${type} abrufen"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3113,6 +3161,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "الحصول على ${settings} لـ ${type} باستخدام الكلمة المفتاحية ${cseID}"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${settings} für ${type} mit Schlüsselwort ${cseID} abrufen"
           }
         },
         "fr" : {
@@ -3149,6 +3203,12 @@
             "value" : "الحصول على إعدادات محرك البحث"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suchmaschineneinstellungen abrufen"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3181,6 +3241,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "يسترجع إعداد محرك البحث المخصص الحالي."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ruft die aktuelle Einstellung der benutzerdefinierten Suchmaschine ab."
           }
         },
         "fr" : {
@@ -3431,6 +3497,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "إذا كانت الكلمة المفتاحية مستخدمة بالفعل، فاستبدلها واحفظ\nإيقاف"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wenn das Schlüsselwort bereits verwendet wird, ersetzen und speichern"
           }
         },
         "fr" : {
@@ -4468,6 +4540,12 @@
             "value" : "إيقاف"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aus"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4500,6 +4578,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تشغيل"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein"
           }
         },
         "fr" : {
@@ -4954,6 +5038,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "محركات البحث الشائعة"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beliebte Suchmaschinen"
           }
         },
         "fr" : {
@@ -5535,6 +5625,12 @@
             "value" : "محرك بحث السريع"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schnellsuchmaschine"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5717,6 +5813,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "استبدال"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ersetzen"
           }
         },
         "fr" : {
@@ -6073,6 +6175,12 @@
             "value" : "محركات بحث سفاري"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safari-Suchmaschinen"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6317,10 +6425,16 @@
             "value" : "نوع محرك البحث"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Typ der Suchmaschine"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Type de Moteur de recherche"
+            "value" : "Type de Moteur de recherch"
           }
         },
         "ja" : {
