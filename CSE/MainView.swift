@@ -230,6 +230,7 @@ struct ContentView: View {
             .animation(.easeOut(duration: 0.2), value: usePrivateCSE)
             .animation(.easeOut(duration: 0.2), value: useQuickCSE)
         }
+        .autoGlassEffect()
         .navigationViewStyle(.stack)
         // Tutorial sheets
         .sheet(isPresented : $needFirstTutorial, content: {
@@ -241,5 +242,15 @@ struct ContentView: View {
         .sheet(isPresented: $openSafariTutorialView, content: {
             SafariTutorialView(isOpenSheet: $openSafariTutorialView, isFirstTutorial: .constant(false))
         })
+    }
+}
+
+extension View {
+    func autoGlassEffect() -> some View {
+        if #available(iOS 26, *) {
+            return AnyView(self.glassEffect())
+        } else {
+            return AnyView(self)
+        }
     }
 }
