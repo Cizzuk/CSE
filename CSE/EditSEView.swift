@@ -16,10 +16,8 @@ struct EditSEView: View {
     @State private var CSEData = CSEDataManager.CSEData() // Current CSEData, Changes when import from recommended search engines and iCloud
 
     // Alerts
-    @State private var showFailAlert: Bool = false
-    @State private var showKeyUsedAlert: Bool = false
-    @State private var showKeyBlankAlert: Bool = false
-    @State private var showURLBlankAlert: Bool = false
+    @State private var showAlert: Bool = false
+    @State private var alertTitle: String = ""
     
     // Sheets
     @State private var openEditSEViewRecommend: Bool = false
@@ -140,10 +138,7 @@ struct EditSEView: View {
             }
         }
         // Error alerts
-        .alert("An error occurred while loading or updating data", isPresented: $showFailAlert, actions:{})
-        .alert("This keyword is already used in other", isPresented: $showKeyUsedAlert, actions:{})
-        .alert("Keyword cannot be blank", isPresented: $showKeyBlankAlert, actions:{})
-        .alert("Search URL cannot be blank", isPresented: $showURLBlankAlert, actions:{})
+        .alert(alertTitle, isPresented: $showAlert, actions:{})
         .navigationTitle("Edit Search Engine")
         .navigationBarTitleDisplayMode(.inline)
         .navigationViewStyle(.stack)
@@ -162,18 +157,26 @@ struct EditSEView: View {
                 }
             }
         }
-        .sheet(isPresented : $openEditSEViewRecommend , onDismiss: {
-            loadCSEData()
-        }) {
+        .sheet(isPresented: $openEditSEViewRecommend, content: {
             EditSEViewRecommend(isOpenSheet: $openEditSEViewRecommend, CSEData: $CSEData)
-        }
-        .sheet(isPresented : $openEditSEViewCloudImport , onDismiss: {
-            loadCSEData()
-        }) {
+        })
+        .sheet(isPresented: $openEditSEViewCloudImport, content: {
             EditSEViewCloudImport(isOpenSheet: $openEditSEViewCloudImport, CSEData: $CSEData)
-        }
+        })
         .task {
-            loadCSEData()
+            // Load existing CSEData
+            if isFirstLoad {
+                if cseType == .quickCSE {
+                    if let cseID = cseID {
+                        CSEData = CSEDataManager.getCSEData(.quickCSE, id: cseID)
+                    } else {
+                        CSEData = CSEDataManager.CSEData() // Empty CSEData
+                    }
+                } else {
+                    CSEData = CSEDataManager.getCSEData(cseType)
+                }
+                isFirstLoad = false
+            }
         }
     }
     
@@ -182,39 +185,26 @@ struct EditSEView: View {
             do {
                 try CSEDataManager.saveCSEData(CSEData, cseID)
             } catch CSEDataManager.saveCSEDataError.keyBlank {
-                showKeyBlankAlert = true
+                alertTitle = NSLocalizedString("Keyword cannot be blank", comment: "")
+                showAlert = true
                 return
             } catch CSEDataManager.saveCSEDataError.urlBlank {
-                showURLBlankAlert = true
+                alertTitle = NSLocalizedString("Search URL cannot be blank", comment: "")
+                showAlert = true
                 return
             } catch CSEDataManager.saveCSEDataError.keyUsed {
-                showKeyUsedAlert = true
+                alertTitle = NSLocalizedString("This keyword is already used in other", comment: "")
+                showAlert = true
                 return
             } catch {
-                showFailAlert = true
+                alertTitle = NSLocalizedString("An error occurred while loading or updating data", comment: "")
+                showAlert = true
                 return
             }
         } else {
             CSEDataManager.saveCSEData(CSEData, cseType)
         }
         dismiss()
-    }
-    
-    private func loadCSEData() {
-        if isFirstLoad {
-            // Load existing CSEData
-            if cseType == .quickCSE {
-                if let cseID = cseID {
-                    CSEData = CSEDataManager.getCSEData(.quickCSE, id: cseID)
-                } else {
-                    CSEData = CSEDataManager.CSEData() // Empty CSEData
-                }
-            } else {
-                CSEData = CSEDataManager.getCSEData(cseType)
-            }
-            isFirstLoad = false
-        }
-        CSEData.keyword = cseID ?? ""
     }
 }
 
