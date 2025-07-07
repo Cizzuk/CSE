@@ -21,21 +21,25 @@ fileprivate func NextButton(text: String) -> some View {
         #if !visionOS
         .foregroundColor(.white)
         .frame(maxWidth: .infinity)
-        .background(Color.accentColor)
-        .cornerRadius(16)
+        .glassEffectButton()
         #endif
 }
 
-fileprivate func NextButtonDim(text: String) -> some View {
-    Text(text)
-        .font(.headline)
-        .padding()
-        #if !visionOS
-        .foregroundColor(.accentColor)
-        .frame(maxWidth: .infinity)
-        .background(Color(UIColor.tertiarySystemBackground))
-        .cornerRadius(16)
-        #endif
+fileprivate extension View {
+    func glassEffectButton() -> some View {
+        if #available(iOS 26, macOS 26, *) {
+            #if !os(visionOS)
+            return AnyView(self.glassEffect(.regular.tint(.accentColor).interactive()))
+            #else
+            return AnyView(self)
+            #endif
+        } else {
+            return AnyView(self)
+                .frame(maxWidth: .infinity)
+                .background(Color.accentColor)
+                .cornerRadius(16)
+        }
+    }
 }
 
 // First Tutorial
@@ -381,7 +385,7 @@ struct SafariTutorialRecommendSEView: View {
                 Button(action: {
                     isOpenSheet = false
                 }) {
-                    NextButtonDim(text: NSLocalizedString("Skip", comment: ""))
+                    NextButton(text: NSLocalizedString("Skip", comment: ""))
                 }
                 .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
             }
@@ -457,7 +461,7 @@ struct SafariTutorialImportView: View {
                     isOpenSheet = false
                 }) {
                     if selected == nil {
-                        NextButtonDim(text: NSLocalizedString("Skip", comment: ""))
+                        NextButton(text: NSLocalizedString("Skip", comment: ""))
                     } else {
                         NextButton(text: NSLocalizedString("Done", comment: ""))
                     }
