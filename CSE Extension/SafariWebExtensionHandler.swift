@@ -271,6 +271,12 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     }
     
     func makeSearchURL(windowName: String, query: String) -> (type: String, url: String, post: [[String: String]]) {
+        // --- Description of some Query variables ---
+        //  query: %encoding, Full Search Query
+        //  decodedQuery: Decoded, Full Search Query
+        //  fixedQuery: %encoding, without Quick Search Keyword
+        //  decodedFixedQuery: Decoded, without Quick Search Keyword
+        //  decodedFixedQueryForPOST: Decoded but + replaced with Space first, without Quick Search Keyword
         
         // Get decoded query
         let decodedQuery: String = query.removingPercentEncoding ?? ""
@@ -372,12 +378,16 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         let redirectQuery: String = CSEData.disablePercentEncoding ? decodedFixedQuery : fixedQuery
         let redirectURL: String = CSEData.url.replacingOccurrences(of: "%s", with: redirectQuery)
         
+        // POST
         var postData: [[String: String]] = CSEData.post
-        for i in 0..<postData.count {
-            postData[i]["key"] = postData[i]["key"]?.replacingOccurrences(of: "%s", with: decodedFixedQuery)
-            postData[i]["value"] = postData[i]["value"]?.replacingOccurrences(of: "%s", with: decodedFixedQuery)
+        if postData.count > 0 {
+            let decodedFixedQueryForPOST: String = fixedQuery.replacingOccurrences(of: "+", with: " ").removingPercentEncoding ?? ""
+            for i in 0..<postData.count {
+                postData[i]["key"] = postData[i]["key"]?.replacingOccurrences(of: "%s", with: decodedFixedQueryForPOST)
+                postData[i]["value"] = postData[i]["value"]?.replacingOccurrences(of: "%s", with: decodedFixedQueryForPOST)
+            }
         }
-        let redirectType: String = postData == [] ? "redirect" : "haspost"
+        let redirectType: String = postData.count > 0 ? "haspost" : "redirect"
         
         return (redirectType, redirectURL, postData)
     }
