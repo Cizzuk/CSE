@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-    browser.runtime.sendMessage({ type: "content" }, function(response) {
+    browser.runtime.sendMessage({ type: "canPostRedirect" }, function(response) {
         if (response == "kill") {
             return;
         }

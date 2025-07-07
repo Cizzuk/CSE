@@ -4,7 +4,8 @@ const postRedirectorURL = location.protocol + "//" + location.host + "/post_redi
 
 browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
     // Ignore if not a valid URL
-    if (tabData.url && tabData.url != postRedirectorURL && tabData.url != "") {
+    console.log(tabId, updatedData, tabData)
+    if (updatedData.url && updatedData.url != postRedirectorURL && tabData.status == "loading") {
         browser.runtime.sendNativeMessage("com.tsg0o0.cse.Extension", tabData, function(response) {
             const cseData = JSON.parse(response);
             
@@ -29,17 +30,19 @@ browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
                 console.log("Operation canceled.");
                 
             }
-
+            
             return;
         });
     }
+    
+    return;
 });
 
 // POST Redirect
 browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.type == "goBack") {
         browser.tabs.goBack(sender.tab.id);
-    } else if (sender.tab.id in holdData) {
+    } else if (request.type == "canPostRedirect" && sender.tab.id in holdData) {
         console.log("Run redirect (with POST).");
         sendResponse(holdData[sender.tab.id]);
         delete holdData[sender.tab.id];
