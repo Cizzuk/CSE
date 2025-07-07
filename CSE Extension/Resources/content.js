@@ -17,13 +17,14 @@
             response.postData.forEach(item => {
                 formDOM += '<input type="hidden" name="' + item.key + '" value="' + item.value + '"></input>';
             })
-            
             formDOM += '</form>';
             
             // Submit form
             document.getElementsByTagName("body")[0].innerHTML = formDOM;
             cseForm.submit();
+            
             setTimeout(function() {
+                showCurtain()
                 document.getElementsByTagName("body")[0].innerHTML += '<p><b>CSE: </b>If the redirect does not work, try changing Safari default search engine.</p>';
             }, 5000);
         }
@@ -37,7 +38,7 @@
         }
     });
     
-    function showCurtain() {
+    const showCurtain = () => {
         // Screen curtain
         const textColor = window.matchMedia("(prefers-color-scheme: dark)").matches ? "#fff" : "#000"
         const bgColor = window.matchMedia("(prefers-color-scheme: dark)").matches ? "#1c1c1e" : "#f2f2f7"
