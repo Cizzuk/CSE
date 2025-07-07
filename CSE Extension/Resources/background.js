@@ -4,7 +4,6 @@ const postRedirectorURL = location.protocol + "//" + location.host + "/post_redi
 
 browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
     // Ignore if not a valid URL
-    console.log(tabId, updatedData, tabData)
     if (updatedData.url && updatedData.url != postRedirectorURL && tabData.status == "loading") {
         browser.runtime.sendNativeMessage("com.tsg0o0.cse.Extension", tabData, function(response) {
             const cseData = JSON.parse(response);
