@@ -108,13 +108,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Reset CSEs | target == 'all' or 'default' or 'private' or 'quick'
     private func resetCSE(target: String) {
-        
         // Save Data
         if target == "default" || target == "all" {
-            CSEDataManager.saveCSEData(CSEDataManager.CSEData(), .defaultCSE)
+            CSEDataManager.saveCSEData(CSEDataManager.CSEData(), .defaultCSE, uploadCloud: false)
         }
         if target == "private" || target == "all" {
-            CSEDataManager.saveCSEData(CSEDataManager.CSEData(), .privateCSE)
+            CSEDataManager.saveCSEData(CSEDataManager.CSEData(), .privateCSE, uploadCloud: false)
         }
         if target == "quick" || target == "all" {
             CSEDataManager.replaceQuickCSEData(RecommendSEs.quickCSEs())

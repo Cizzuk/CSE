@@ -178,7 +178,7 @@ class CSEDataManager {
         return cseData
     }
     
-    class func saveCSEData(_ data: CSEData, _ type: CSEType = .defaultCSE) {
+    class func saveCSEData(_ data: CSEData, _ type: CSEType = .defaultCSE, uploadCloud: Bool = true) {
         var cseData = saveCSEDataCommon(data)
         
         // Normalize Safari search engine URLs
@@ -206,10 +206,12 @@ class CSEDataManager {
         }
         
         // Upload CSEData to iCloud
-        CloudKitManager().saveAll()
+        if uploadCloud {
+            CloudKitManager().saveAll()
+        }
     }
     
-    class func saveCSEData(_ data: CSEData, _ originalID: String?, replace: Bool = false) throws {
+    class func saveCSEData(_ data: CSEData, _ originalID: String?, replace: Bool = false, uploadCloud: Bool = true) throws {
         let cseData = saveCSEDataCommon(data)
         
         // If Keyword is blank
@@ -246,7 +248,9 @@ class CSEDataManager {
         userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
         
         // Upload CSEData to iCloud
-        CloudKitManager().saveAll()
+        if uploadCloud {
+            CloudKitManager().saveAll()
+        }
     }
     
     class func replaceQuickCSEData(_ data: [String: CSEData]) {
