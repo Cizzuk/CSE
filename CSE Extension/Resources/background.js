@@ -16,7 +16,6 @@ browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
                 
             } else if (cseData.type == "haspost") {
                 holdData[tabId] = cseData;
-                console.log(holdData[tabId])
                 if (!cseData.adv_ignorePOSTFallback) {
                     console.log("Open POST Redirector.");
                     browser.tabs.update(tabId, {url: postRedirectorURL});
