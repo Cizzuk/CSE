@@ -56,14 +56,12 @@ struct ContentView: View {
         #if IOS
         @ObservedObject var storeManager = StoreManager()
         #endif
-        NavigationView {
+        NavigationStack {
             List {
                 // Normal CSE Settings
                 Section {
                     // Default CSE
-                    NavigationLink {
-                        EditSEView(cseType: .constant("defaultCSE"), cseID: .constant(nil))
-                    } label: {
+                    NavigationLink(destination: EditSEView(cseType: .defaultCSE)) {
                         Text("Default Search Engine")
                     }
                     
@@ -72,9 +70,7 @@ struct ContentView: View {
                         Text("Use different search engine in Private Browse")
                     })
                     if usePrivateCSE {
-                        NavigationLink {
-                            EditSEView(cseType: .constant("privateCSE"), cseID: .constant(nil))
-                        } label: {
+                        NavigationLink(destination: EditSEView(cseType: .privateCSE)) {
                             Text("Private Search Engine")
                         }
                     }
@@ -93,9 +89,7 @@ struct ContentView: View {
                     }
                     #endif
                     if useQuickCSE {
-                        NavigationLink {
-                            QuickSEListView()
-                        } label: {
+                        NavigationLink(destination: QuickSEListView()) {
                             Text("Quick Search Engines")
                         }
                     }
@@ -174,9 +168,7 @@ struct ContentView: View {
                         }
                     })
                     // License Link
-                    NavigationLink {
-                        LicenseView()
-                    } label: {
+                    NavigationLink(destination: LicenseView()) {
                         HStack {
                             Image(systemName: "book.closed")
                                 .frame(width: 20.0)
@@ -236,10 +228,10 @@ struct ContentView: View {
             FullTutorialView(isOpenSheet: $needFirstTutorial)
         })
         .sheet(isPresented: $needSafariTutorial, content: {
-            SafariTutorialView(isOpenSheet: $needSafariTutorial, isFirstTutorial: .constant(false))
+            SafariTutorialView(isOpenSheet: $needSafariTutorial)
         })
         .sheet(isPresented: $openSafariTutorialView, content: {
-            SafariTutorialView(isOpenSheet: $openSafariTutorialView, isFirstTutorial: .constant(false))
+            SafariTutorialView(isOpenSheet: $openSafariTutorialView)
         })
     }
 }
