@@ -28,10 +28,10 @@ struct QuickSEListView: View {
             
             // Current Quick SEs ListdisplayName
             Section {
+                let keywordTranslation = NSLocalizedString("Keyword", comment: "")
                 ForEach(quickCSE.keys.sorted(), id: \.self) { cseID in
                     if let cseData: CSEDataManager.CSEData = quickCSE[cseID] {
                         let displayName: String = cseData.name != "" ? cseData.name : cseData.url
-                        let keywordTranslation = NSLocalizedString("Keyword", comment: "")
                         NavigationLink(destination: EditSEView(cseType: .quickCSE, cseID: cseID)) {
                             VStack(alignment : .leading) {
                                 Text(cseID)
@@ -42,6 +42,14 @@ struct QuickSEListView: View {
                             }
                         }
                         .accessibilityLabel("\(displayName). " + keywordTranslation + ". \(cseID)")
+                        .contextMenu {
+                            Button() {
+                                CSEDataManager.deleteQuickCSE(cseID)
+                                quickCSE.removeValue(forKey: cseID)
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        }
                     }
                 }
                 .onDelete(perform: CSEDataManager.deleteQuickCSE)

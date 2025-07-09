@@ -377,6 +377,13 @@ struct EditSEViewCloudImport: View {
                                 }
                             }
                         }
+                        .contextMenu {
+                            Button(action: {
+                                ck.delete(recordID: ds.id)
+                            }) {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        }
                     }
                     .onDelete(perform: { indexSet in
                         for index in indexSet {
