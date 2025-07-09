@@ -23,8 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let lastVersion: String = userDefaults.string(forKey: "LastAppVer") ?? ""
         let searchengine: String? = userDefaults.string(forKey: "searchengine") ?? nil
         let privsearchengine: String? = userDefaults.string(forKey: "privsearchengine") ?? nil
-        let urltop: String = userDefaults.string(forKey: "urltop") ?? ""
-        let urlsuffix: String = userDefaults.string(forKey: "urlsuffix") ?? ""
         let adv_resetCSEs: String = userDefaults.string(forKey: "adv_resetCSEs") ?? ""
         
         // adv_resetCSEs
@@ -44,18 +42,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
             // Initialize settings
-            userDefaults.set(true, forKey: "needFirstTutorial")
-            userDefaults.set(true, forKey: "alsousepriv")
-            if searchengine == nil {
-                userDefaults.set("google", forKey: "searchengine")
-            }
-            userDefaults.set("duckduckgo", forKey: "privsearchengine")
             resetCSE(target: "all")
             
             // Update old CSE settings
+            let urltop: String = userDefaults.string(forKey: "urltop") ?? ""
+            let urlsuffix: String = userDefaults.string(forKey: "urlsuffix") ?? ""
             if (urltop != "" || urlsuffix != "") {
-                var defaultCSE = CSEDataManager.CSEData()
-                defaultCSE.url = urltop + "%s" + urlsuffix
+                let defaultCSE = CSEDataManager.CSEData(url: urltop + "%s" + urlsuffix)
                 CSEDataManager.saveCSEData(defaultCSE, .defaultCSE)
                 userDefaults.removeObject(forKey: "urltop")
                 userDefaults.removeObject(forKey: "urlsuffix")

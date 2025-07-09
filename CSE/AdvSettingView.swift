@@ -9,18 +9,12 @@ import SwiftUI
 
 struct AdvSettingView: View {
     //Load advanced settings
-    @AppStorage("needFirstTutorial", store: userDefaults)
-      private var needFirstTutorial: Bool = userDefaults.bool(forKey: "needFirstTutorial")
-    @AppStorage("adv_disablechecker", store: userDefaults)
-      private var disablechecker: Bool = userDefaults.bool(forKey: "adv_disablechecker")
-    @AppStorage("adv_ignoreFocusFilter", store: userDefaults)
-      private var ignoreFocusFilter: Bool = userDefaults.bool(forKey: "adv_ignoreFocusFilter")
-    @AppStorage("adv_ignorePOSTFallback", store: userDefaults)
-      private var ignorePOSTFallback: Bool = userDefaults.bool(forKey: "adv_ignorePOSTFallback")
-    @AppStorage("adv_icloud_disableUploadCSE", store: userDefaults)
-      private var icloud_disableUploadCSE: Bool = userDefaults.bool(forKey: "adv_icloud_disableUploadCSE")
-    @AppStorage("adv_resetCSEs", store: userDefaults)
-      private var resetCSEs: String = userDefaults.string(forKey: "adv_resetCSEs") ?? ""
+    @AppStorage("needFirstTutorial", store: userDefaults) private var needFirstTutorial: Bool = true
+    @AppStorage("adv_disablechecker", store: userDefaults) private var disablechecker: Bool = false
+    @AppStorage("adv_ignoreFocusFilter", store: userDefaults) private var ignoreFocusFilter: Bool = false
+    @AppStorage("adv_ignorePOSTFallback", store: userDefaults) private var ignorePOSTFallback: Bool = false
+    @AppStorage("adv_icloud_disableUploadCSE", store: userDefaults) private var icloud_disableUploadCSE: Bool = false
+    @AppStorage("adv_resetCSEs", store: userDefaults) private var resetCSEs: String = ""
     @State private var allowReset: Bool = false
     
     var body: some View {

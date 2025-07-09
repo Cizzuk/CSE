@@ -118,12 +118,9 @@ struct FullTutorialView: View {
 struct SafariTutorialView: View {
     @Binding var isOpenSheet: Bool
     var isFirstTutorial: Bool = false
-    @AppStorage("searchengine", store: userDefaults)
-      private var searchengine: String = userDefaults.string(forKey: "searchengine") ?? "google"
-    @AppStorage("alsousepriv", store: userDefaults)
-      private var alsousepriv: Bool = userDefaults.bool(forKey: "alsousepriv")
-    @AppStorage("privsearchengine", store: userDefaults)
-      private var privsearchengine: String = userDefaults.string(forKey: "privsearchengine") ?? "duckduckgo"
+    @AppStorage("searchengine", store: userDefaults) private var searchengine: String = "google"
+    @AppStorage("alsousepriv", store: userDefaults) private var alsousepriv: Bool = true
+    @AppStorage("privsearchengine", store: userDefaults) private var privsearchengine: String = "duckduckgo"
     
     var body: some View {
         NavigationView {
@@ -225,12 +222,9 @@ struct SafariTutorialView: View {
 struct SafariTutorialSecondView: View {
     @Binding var isOpenSheet: Bool
     var isFirstTutorial: Bool = false
-    @AppStorage("searchengine", store: userDefaults)
-      private var searchengine: String = userDefaults.string(forKey: "searchengine") ?? "google"
-    @AppStorage("alsousepriv", store: userDefaults)
-      private var alsousepriv: Bool = userDefaults.bool(forKey: "alsousepriv")
-    @AppStorage("privsearchengine", store: userDefaults)
-      private var privsearchengine: String = userDefaults.string(forKey: "privsearchengine") ?? "duckduckgo"
+    @AppStorage("searchengine", store: userDefaults) private var searchengine: String = "google"
+    @AppStorage("alsousepriv", store: userDefaults) private var alsousepriv: Bool = true
+    @AppStorage("privsearchengine", store: userDefaults) private var privsearchengine: String = "duckduckgo"
     
     var body: some View {
         NavigationView {
