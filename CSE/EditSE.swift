@@ -155,10 +155,19 @@ class EditSE {
             .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
+                    Menu("Back", systemImage: "chevron.backward") {
+                        Button(action: {
+                            saveCSEData(isDismiss: true)
+                        }) {
+                            Label("Save", systemImage: "checkmark")
+                        }
+                        Button(action: {
+                            dismissView()
+                        }) {
+                            Label("Discard", systemImage: "xmark")
+                        }
+                    } primaryAction: {
                         saveCSEData(isDismiss: true)
-                    }) {
-                        Label("Back", systemImage: "chevron.backward")
                     }
                 }
             }
