@@ -235,11 +235,15 @@ struct EditSEViewPostData: View {
                     .textInputAutocapitalization(.never)
                 }
                 .onDelete(perform: { index in
-                    post.remove(atOffsets: index)
+                    withAnimation {
+                        post.remove(atOffsets: index)
+                    }
                 })
                 
                 Button(action: {
-                    post.append(["key": "", "value": ""])
+                    withAnimation {
+                        post.append(["key": "", "value": ""])
+                    }
                 })  {
                     HStack {
                         Image(systemName: "plus.circle")
@@ -251,7 +255,6 @@ struct EditSEViewPostData: View {
                 Text("Replace query with %s")
             }
         }
-        .animation(.easeOut(duration: 0.2), value: post.count)
         .navigationTitle("POST Data")
         .navigationBarTitleDisplayMode(.inline)
         .navigationViewStyle(.stack)

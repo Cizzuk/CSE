@@ -120,6 +120,7 @@ struct SafariTutorialView: View {
     var isFirstTutorial: Bool = false
     @AppStorage("searchengine", store: userDefaults) private var searchengine: String = "google"
     @AppStorage("alsousepriv", store: userDefaults) private var alsousepriv: Bool = true
+    @State private var alsouseprivToggle: Bool = true
     @AppStorage("privsearchengine", store: userDefaults) private var privsearchengine: String = "duckduckgo"
     
     var body: some View {
@@ -154,12 +155,20 @@ struct SafariTutorialView: View {
                         }
                         
                         if #available(iOS 17.0, macOS 14.0, *) {
-                            Toggle(isOn: $alsousepriv, label: {
+                            Toggle(isOn: $alsousepriv.animation()) {
                                 Text("Also Use in Private Browsing")
-                            })
+                            }
+                            .onChange(of: alsousepriv) { _ in
+                                withAnimation {
+                                    alsouseprivToggle = alsousepriv
+                                }
+                            }
+                            .onAppear {
+                                alsouseprivToggle = alsousepriv
+                            }
                             
                             // Private SE
-                            if !alsousepriv {
+                            if !alsouseprivToggle {
                                 Picker("Private Search Engine", selection: $privsearchengine) {
                                     if currentRegion == "CN" {
                                         Text("Baidu").tag("baidu")
@@ -203,7 +212,6 @@ struct SafariTutorialView: View {
                         }
                     }
                 }
-                .animation(.easeOut(duration: 0.2), value: alsousepriv)
                 
                 NavigationLink(destination: SafariTutorialSecondView(isOpenSheet: $isOpenSheet, isFirstTutorial: isFirstTutorial)) {
                     NextButton(text: NSLocalizedString("Next", comment: ""))

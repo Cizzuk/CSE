@@ -22,18 +22,15 @@ struct MainView: App {
 
 struct ContentView: View {
     // Load app settings
-    @AppStorage("usePrivateCSE", store: userDefaults)
-      private var usePrivateCSE: Bool = userDefaults.bool(forKey: "usePrivateCSE")
-    @AppStorage("useQuickCSE", store: userDefaults)
-      private var useQuickCSE: Bool = userDefaults.bool(forKey: "useQuickCSE")
-    @AppStorage("useEmojiSearch", store: userDefaults)
-      private var useEmojiSearch: Bool = userDefaults.bool(forKey: "useEmojiSearch")
+    @AppStorage("usePrivateCSE", store: userDefaults) private var usePrivateCSE: Bool = false
+    @State private var usePrivateCSEToggle: Bool = false
+    @AppStorage("useQuickCSE", store: userDefaults) private var useQuickCSE: Bool = false
+    @State private var useQuickCSEToggle: Bool = false
+    @AppStorage("useEmojiSearch", store: userDefaults) private var useEmojiSearch: Bool = false
     
     // Sheets
-    @AppStorage("needFirstTutorial", store: userDefaults)
-      private var needFirstTutorial: Bool = userDefaults.bool(forKey: "needFirstTutorial")
-    @AppStorage("needSafariTutorial", store: userDefaults)
-      private var needSafariTutorial: Bool = userDefaults.bool(forKey: "needSafariTutorial")
+    @AppStorage("needFirstTutorial", store: userDefaults) private var needFirstTutorial: Bool = true
+    @AppStorage("needSafariTutorial", store: userDefaults) private var needSafariTutorial: Bool = false
     @State private var openSafariTutorialView: Bool = false
     
     #if iOS
@@ -66,10 +63,15 @@ struct ContentView: View {
                     }
                     
                     // Private CSE
-                    Toggle(isOn: $usePrivateCSE, label: {
+                    Toggle(isOn: $usePrivateCSE.animation()) {
                         Text("Use different search engine in Private Browse")
-                    })
-                    if usePrivateCSE {
+                    }
+                    .onChange(of: usePrivateCSE) { _ in
+                        withAnimation {
+                            usePrivateCSEToggle = usePrivateCSE
+                        }
+                    }
+                    if usePrivateCSEToggle {
                         NavigationLink(destination: EditSEView(cseType: .privateCSE)) {
                             Text("Private Search Engine")
                         }
@@ -78,17 +80,20 @@ struct ContentView: View {
                 
                 // Quick SE Settings
                 Section {
-                    Toggle(isOn: $useQuickCSE, label: {
+                    Toggle(isOn: $useQuickCSE.animation()) {
                         Text("Quick Search")
-                    })
+                    }
                     #if iOS
                     .onChange(of: useQuickCSE) { _ in
+                        withAnimation {
+                            useQuickCSEToggle = useQuickCSE
+                        }
                         if #available(iOS 18.0, *) {
                             ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
                         }
                     }
                     #endif
-                    if useQuickCSE {
+                    if useQuickCSEToggle {
                         NavigationLink(destination: QuickSEListView()) {
                             Text("Quick Search Engines")
                         }
@@ -100,9 +105,9 @@ struct ContentView: View {
                 
                 // Emojipedia Search Setting
                 Section {
-                    Toggle(isOn: $useEmojiSearch, label: {
+                    Toggle(isOn: $useEmojiSearch) {
                         Text("Emoji Search")
-                    })
+                    }
                     #if iOS
                     .onChange(of: useEmojiSearch) { _ in
                         if #available(iOS 18.0, *) {
@@ -219,8 +224,11 @@ struct ContentView: View {
             }
             .navigationTitle("CSE Settings")
             .listStyle(.insetGrouped)
-            .animation(.easeOut(duration: 0.2), value: usePrivateCSE)
-            .animation(.easeOut(duration: 0.2), value: useQuickCSE)
+            .task {
+                // Initialize
+                usePrivateCSEToggle = usePrivateCSE
+                useQuickCSEToggle = useQuickCSE
+            }
         }
         .navigationViewStyle(.stack)
         // Tutorial sheets
