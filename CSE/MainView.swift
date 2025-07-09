@@ -83,16 +83,16 @@ struct ContentView: View {
                     Toggle(isOn: $useQuickCSE.animation()) {
                         Text("Quick Search")
                     }
-                    #if iOS
                     .onChange(of: useQuickCSE) { _ in
                         withAnimation {
                             useQuickCSEToggle = useQuickCSE
                         }
+                        #if iOS
                         if #available(iOS 18.0, *) {
                             ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
                         }
+                        #endif
                     }
-                    #endif
                     if useQuickCSEToggle {
                         NavigationLink(destination: QuickSEListView()) {
                             Text("Quick Search Engines")
