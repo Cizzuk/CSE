@@ -14,7 +14,7 @@ struct QuickSEListView: View {
         List {
             // Add new SE Button
             Section {
-                NavigationLink(destination: EditSEView(cseType: .quickCSE)) {
+                NavigationLink(destination: EditSE.EditSEView(cseType: .quickCSE)) {
                     HStack {
                         Image(systemName: "plus.circle")
                             .accessibilityHidden(true)
@@ -32,7 +32,7 @@ struct QuickSEListView: View {
                 ForEach(quickCSE.keys.sorted(), id: \.self) { cseID in
                     if let cseData: CSEDataManager.CSEData = quickCSE[cseID] {
                         let displayName: String = cseData.name != "" ? cseData.name : cseData.url
-                        NavigationLink(destination: EditSEView(cseType: .quickCSE, cseID: cseID)) {
+                        NavigationLink(destination: EditSE.EditSEView(cseType: .quickCSE, cseID: cseID)) {
                             VStack(alignment : .leading) {
                                 Text(cseID)
                                     .bold()

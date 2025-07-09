@@ -58,7 +58,7 @@ struct ContentView: View {
                 // Normal CSE Settings
                 Section {
                     // Default CSE
-                    NavigationLink(destination: EditSEView(cseType: .defaultCSE)) {
+                    NavigationLink(destination: EditSE.EditSEView(cseType: .defaultCSE)) {
                         Text("Default Search Engine")
                     }
                     
@@ -72,7 +72,7 @@ struct ContentView: View {
                         }
                     }
                     if usePrivateCSEToggle {
-                        NavigationLink(destination: EditSEView(cseType: .privateCSE)) {
+                        NavigationLink(destination: EditSE.EditSEView(cseType: .privateCSE)) {
                             Text("Private Search Engine")
                         }
                     }

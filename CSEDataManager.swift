@@ -26,7 +26,7 @@ class CSEDataManager {
     }
     
     // Structure of a CSE data
-    struct CSEData: Encodable {
+    struct CSEData: Encodable, Equatable {
         var name: String = ""
         var keyword: String = ""
         var url: String = ""
