@@ -139,6 +139,7 @@ struct EditSEView: View {
         }
         // Error alerts
         .alert(alertTitle, isPresented: $showAlert, actions:{})
+        .scrollDismissesKeyboard(.interactively)
         .navigationTitle("Edit Search Engine")
         .navigationBarTitleDisplayMode(.inline)
         .navigationViewStyle(.stack)
@@ -235,7 +236,7 @@ struct EditSEViewPostData: View {
                     .textInputAutocapitalization(.never)
                 }
                 .onDelete(perform: { index in
-                    withAnimation {
+                    withAnimation() {
                         post.remove(atOffsets: index)
                     }
                 })
@@ -255,6 +256,7 @@ struct EditSEViewPostData: View {
                 Text("Replace query with %s")
             }
         }
+        .scrollDismissesKeyboard(.interactively)
         .navigationTitle("POST Data")
         .navigationBarTitleDisplayMode(.inline)
         .navigationViewStyle(.stack)
