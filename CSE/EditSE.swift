@@ -15,6 +15,7 @@ class EditSE {
         var cseType: CSEDataManager.CSEType = .defaultCSE // "defaultCSE", "privateCSE", "quickCSE"
         var cseID: String? = nil // If quick search engine, use this ID
         @State private var CSEData = CSEDataManager.CSEData() // Current CSEData
+        @State private var originalCSEData = CSEDataManager.CSEData() // Original CSEData
         
         // Alerts
         @State private var showAlert: Bool = false
@@ -33,6 +34,9 @@ class EditSE {
                     Section {
                         TextField("Name", text: $CSEData.name)
                             .submitLabel(.done)
+                            .onSubmit {
+                                saveCSEData()
+                            }
                     } header: {
                         Text("Name")
                     }
@@ -40,6 +44,9 @@ class EditSE {
                     Section() {
                         TextField("cse", text: $CSEData.keyword)
                             .submitLabel(.done)
+                            .onSubmit {
+                                saveCSEData()
+                            }
                             .onChange(of: CSEData.keyword) { newValue in
                                 if newValue.count > 25 {
                                     CSEData.keyword = String(newValue.prefix(25))
@@ -73,6 +80,9 @@ class EditSE {
                         .textInputAutocapitalization(.never)
                         .environment(\.layoutDirection, .leftToRight)
                         .submitLabel(.done)
+                        .onSubmit {
+                            saveCSEData()
+                        }
                 } header: {
                     Text("Search URL")
                 } footer: {
@@ -97,6 +107,9 @@ class EditSE {
                     }
                     // Disable %encode
                     Toggle("Disable Percent-encoding", isOn: $CSEData.disablePercentEncoding)
+                        .onChange(of: CSEData.disablePercentEncoding) { _ in
+                            saveCSEData()
+                        }
                     HStack {
                         Text("Max Query Length")
                         Spacer()
@@ -107,6 +120,9 @@ class EditSE {
                             .frame(width: 100)
                             .multilineTextAlignment(.trailing)
                             .submitLabel(.done)
+                            .onSubmit {
+                                saveCSEData()
+                            }
                     }
                 } header: {
                     Text("Advanced Settings")
@@ -162,7 +178,8 @@ class EditSE {
                             Label("Save", systemImage: "checkmark")
                         }
                         Button(action: {
-                            dismissView()
+                            CSEData = originalCSEData // Restore original data
+                            saveCSEData(isDismiss: true)
                         }) {
                             Label("Discard", systemImage: "xmark")
                         }
@@ -189,6 +206,7 @@ class EditSE {
                     } else {
                         CSEData = CSEDataManager.getCSEData(cseType)
                     }
+                    originalCSEData = CSEData // Save original data
                     isFirstLoad = false
                 }
             }
@@ -221,10 +239,10 @@ class EditSE {
                         return
                     }
                 } else {
-                    try? CSEDataManager.saveCSEData(CSEData, cseID)
+                    try? CSEDataManager.saveCSEData(CSEData, cseID, uploadCloud: false)
                 }
             } else {
-                CSEDataManager.saveCSEData(CSEData, cseType)
+                CSEDataManager.saveCSEData(CSEData, cseType, uploadCloud: isDismiss)
             }
             if isDismiss {
                 dismissView()
