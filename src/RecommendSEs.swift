@@ -8,6 +8,8 @@
 import Foundation
 
 class RecommendSEs {
+    static let currentRegion = Locale.current.region?.identifier
+    
     class func quickCSEs() -> [String: CSEDataManager.CSEData] {
         let preferredLanguages = Locale.preferredLanguages
         let wikiLangsList: [String] = ["ar", "de", "en", "es", "fa", "fr", "it", "arz", "nl", "ja", "pl", "pt", "ceb", "sv", "uk", "vi", "war", "zh", "ru"]

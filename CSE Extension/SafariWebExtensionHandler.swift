@@ -14,6 +14,9 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     var focusSettings: (cseData: CSEDataManager.CSEData, useQuickCSE: Bool?, useEmojiSearch: Bool?)? = nil
     
     func beginRequest(with context: NSExtensionContext) {
+        // Initialize app data and perform necessary updates
+        AppInitializer.initializeApp()
+        
         // Get Search URL from content.js
         let item = context.inputItems.first as! NSExtensionItem
         guard let message = item.userInfo?[SFExtensionMessageKey] as? [String: Any],
