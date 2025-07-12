@@ -10,6 +10,7 @@ import SwiftUI
 class EditSE {
     struct EditSEView: View {
         @Environment(\.dismiss) private var dismiss
+        @Environment(\.scenePhase) private var scenePhase
         
         // Load settings
         var cseType: CSEDataManager.CSEType = .defaultCSE // "defaultCSE", "privateCSE", "quickCSE"
@@ -194,6 +195,12 @@ class EditSE {
             .sheet(isPresented: $openCloudImportView, content: {
                 CloudImportView(isOpenSheet: $openCloudImportView, CSEData: $CSEData)
             })
+            .onChange(of: scenePhase) { newPhase in
+                // Save CSEData when app goes to background or becomes inactive
+                if newPhase == .background || newPhase == .inactive {
+                    saveCSEData()
+                }
+            }
             .task {
                 // Load existing CSEData
                 if isFirstLoad {
