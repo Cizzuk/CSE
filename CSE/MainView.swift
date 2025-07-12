@@ -196,7 +196,7 @@ struct ContentView: View {
                     Text("Support")
                 } footer: {
                     HStack {
-                        Text("Version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String)")
+                        Text("Version: \(currentVersion!)")
                         Spacer()
                         Text("© Cizzuk")
                     }
