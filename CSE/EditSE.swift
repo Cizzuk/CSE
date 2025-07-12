@@ -215,6 +215,8 @@ class EditSE {
                     }
                     originalCSEData = CSEData // Save original data
                     isFirstLoad = false
+                } else {
+                    saveCSEData()
                 }
             }
         }
