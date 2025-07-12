@@ -447,8 +447,6 @@ class Tutorial {
                         }
                     }
                     Button(action: {
-                        print("Selected: \(selected ?? "nil")")
-                        print(ck.allCSEs.first(where: { $0.id.recordName == selected })?.defaultCSE ?? "nil")
                         if selected != nil {
                             // JSON to Dictionary
                             let defaultCSE = ck.allCSEs.first(where: { $0.id.recordName == selected })?.defaultCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: Any] ?? [:]
