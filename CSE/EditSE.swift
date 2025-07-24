@@ -28,6 +28,9 @@ class EditSE {
         
         @State private var isFirstLoad: Bool = true // Need to load exCSEData
         
+        @AppStorage("useDefaultCSE", store: userDefaults) private var useDefaultCSE: Bool = true
+        @AppStorage("usePrivateCSE", store: userDefaults) private var usePrivateCSE: Bool = false
+        
         var body: some View {
             NavigationStack {
                 List {
@@ -63,14 +66,19 @@ class EditSE {
                                 Text("Example: '\(CSEData.keyword == "" ? "cse" : CSEData.keyword) your search'")
                             }
                         }
-                    } else {
+                    } else if cseType == .defaultCSE {
                         Section {
-                            // Search Engine Name
-                            if cseType == .defaultCSE {
+                            Toggle(isOn: $useDefaultCSE) {
                                 Text("Default Search Engine")
-                            } else {
+                            }
+                        }
+                    } else if cseType == .privateCSE {
+                        Section {
+                            Toggle(isOn: $usePrivateCSE) {
                                 Text("Private Search Engine")
                             }
+                        } footer: {
+                            Text("Use different search engine in Private Browse")
                         }
                     }
                     
@@ -88,12 +96,7 @@ class EditSE {
                     } header: {
                         Text("Search URL")
                     } footer: {
-                        VStack(alignment: .leading) {
-                            Text("Replace query with %s")
-                            if cseType == .defaultCSE || cseType == .privateCSE {
-                                Text("Blank to disable CSE")
-                            }
-                        }
+                        Text("Replace query with %s")
                     }
                     
                     // Advanced Settings

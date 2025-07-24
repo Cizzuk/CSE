@@ -22,10 +22,9 @@ struct MainView: App {
 
 struct ContentView: View {
     // Load app settings
+    @AppStorage("useDefaultCSE", store: userDefaults) private var useDefaultCSE: Bool = true
     @AppStorage("usePrivateCSE", store: userDefaults) private var usePrivateCSE: Bool = false
-    @State private var usePrivateCSEToggle: Bool = false
     @AppStorage("useQuickCSE", store: userDefaults) private var useQuickCSE: Bool = false
-    @State private var useQuickCSEToggle: Bool = false
     @AppStorage("useEmojiSearch", store: userDefaults) private var useEmojiSearch: Bool = false
     
     // Sheets
@@ -55,56 +54,42 @@ struct ContentView: View {
         #endif
         NavigationSplitView {
             List {
-                // Normal CSE Settings
+                // Default SE Settings
                 Section {
-                    // Default CSE
                     NavigationLink(destination: EditSE.EditSEView(cseType: .defaultCSE)) {
-                        Text("Default Search Engine")
+                        HStack {
+                            Text("Default Search Engine")
+                            Spacer()
+                            Text(useDefaultCSE ? "On" : "Off")
+                                .foregroundColor(.secondary)
+                                .multilineTextAlignment(.trailing)
+                        }
                     }
                     
-                    // Private CSE
-                    Toggle(isOn: $usePrivateCSE.animation()) {
-                        Text("Use different search engine in Private Browse")
-                    }
-                    .onChange(of: usePrivateCSE) { _ in
-                        withAnimation {
-                            usePrivateCSEToggle = usePrivateCSE
-                        }
-                    }
-                    if usePrivateCSEToggle {
-                        NavigationLink(destination: EditSE.EditSEView(cseType: .privateCSE)) {
+                    // Private SE Settings
+                    NavigationLink(destination: EditSE.EditSEView(cseType: .privateCSE)) {
+                        HStack {
                             Text("Private Search Engine")
+                            Spacer()
+                            Text(usePrivateCSE ? "On" : "Off")
+                                .foregroundColor(.secondary)
+                                .multilineTextAlignment(.trailing)
                         }
                     }
-                }
-                
-                // Quick SE Settings
-                Section {
-                    Toggle(isOn: $useQuickCSE.animation()) {
-                        Text("Quick Search")
-                    }
-                    .onChange(of: useQuickCSE) { _ in
-                        withAnimation {
-                            useQuickCSEToggle = useQuickCSE
-                        }
-                        #if iOS
-                        if #available(iOS 18.0, *) {
-                            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
-                        }
-                        #endif
-                    }
-                    if useQuickCSEToggle {
-                        NavigationLink(destination: QuickSEListView()) {
-                            Text("Quick Search Engines")
+                    
+                    // Quick SE Settings
+                    NavigationLink(destination: QuickSEListView()) {
+                        HStack {
+                            Text("Quick Search")
+                            Spacer()
+                            Text(useQuickCSE ? "On" : "Off")
+                                .foregroundColor(.secondary)
+                                .multilineTextAlignment(.trailing)
                         }
                     }
-                } footer: {
-                    Text("Enter the keyword at the top to switch search engines.")
-                }
-                
-                
-                // Emojipedia Search Setting
-                Section {
+                    
+                    
+                    // Emoji Search Setting
                     Toggle(isOn: $useEmojiSearch) {
                         Text("Emoji Search")
                     }
@@ -220,11 +205,6 @@ struct ContentView: View {
             }
             .navigationTitle("CSE Settings")
             //.listStyle(.insetGrouped)
-            .task {
-                // Initialize
-                usePrivateCSEToggle = usePrivateCSE
-                useQuickCSEToggle = useQuickCSE
-            }
         } detail: {
         }
         // Tutorial sheets
