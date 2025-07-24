@@ -9,6 +9,14 @@ import SwiftUI
 
 class EditSE {
     
+    // Save mode for EditSE
+    enum SaveMode {
+        case autosave   // Auto save (not upload to iCloud)
+        case background // Save and upload to iCloud (also use for cmd+s)
+        case dismiss    // Save and exit
+        case discard    // Discard and save original data
+    }
+    
     // Common search URL section
     @ViewBuilder
     static func searchURLSection(cseData: Binding<CSEDataManager.CSEData>, onSubmit: (() -> Void)? = nil) -> some View {
@@ -31,11 +39,7 @@ class EditSE {
     
     // Common Advanced Settings section
     @ViewBuilder
-    static func advancedSettingsSection(
-        cseData: Binding<CSEDataManager.CSEData>,
-        onToggleChange: (() -> Void)? = nil,
-        onSubmit: (() -> Void)? = nil
-    ) -> some View {
+    static func advancedSettingsSection(cseData: Binding<CSEDataManager.CSEData>, onSubmit: (() -> Void)? = nil) -> some View {
         Section {
             NavigationLink(destination: PostDataView(post: cseData.post)) {
                 HStack {
@@ -47,7 +51,7 @@ class EditSE {
             }
             Toggle("Disable Percent-encoding", isOn: cseData.disablePercentEncoding)
                 .onChange(of: cseData.wrappedValue.disablePercentEncoding) { _ in
-                    onToggleChange?()
+                    onSubmit?()
                 }
             HStack {
                 Text("Max Query Length")
@@ -139,10 +143,14 @@ class EditSE {
                         }
                         
                         // Search URL
-                        EditSE.searchURLSection(cseData: $CSEData)
+                        EditSE.searchURLSection(cseData: $CSEData) {
+                            saveCSEData(.autosave)
+                        }
                         
                         // Advanced Settings
-                        EditSE.advancedSettingsSection(cseData: $CSEData)
+                        EditSE.advancedSettingsSection(cseData: $CSEData) {
+                            saveCSEData(.autosave)
+                        }
                         
                         // Import Search Engine
                         EditSE.importSearchEngineSection(
@@ -159,23 +167,33 @@ class EditSE {
                 cseData: $CSEData
             )
             .onChange(of: scenePhase) { newPhase in
-                if newPhase == .background || newPhase == .inactive {
-                    saveCSEData()
+                if newPhase == .inactive {
+                    saveCSEData(.background)
                 }
             }
             .onDisappear {
-                saveCSEData()
+                saveCSEData(.dismiss)
             }
             .task {
                 if isFirstLoad {
                     CSEData = CSEDataManager.getCSEData(.defaultCSE)
                     isFirstLoad = false
+                } else {
+                    saveCSEData(.autosave)
                 }
             }
         }
         
-        private func saveCSEData() {
-            CSEDataManager.saveCSEData(CSEData, .defaultCSE, uploadCloud: true)
+        private func saveCSEData(_ mode: SaveMode) {
+            switch mode {
+            case .autosave:
+                CSEDataManager.saveCSEData(CSEData, .defaultCSE, uploadCloud: false)
+            case .background, .dismiss:
+                CSEDataManager.saveCSEData(CSEData, .defaultCSE, uploadCloud: true)
+            case .discard:
+                // No discard action needed for default CSE
+                break
+            }
         }
     }
     
@@ -204,10 +222,14 @@ class EditSE {
                         }
                         
                         // Search URL
-                        EditSE.searchURLSection(cseData: $CSEData)
+                        EditSE.searchURLSection(cseData: $CSEData) {
+                            saveCSEData(.autosave)
+                        }
                         
                         // Advanced Settings
-                        EditSE.advancedSettingsSection(cseData: $CSEData)
+                        EditSE.advancedSettingsSection(cseData: $CSEData) {
+                            saveCSEData(.autosave)
+                        }
                         
                         // Import Search Engine
                         EditSE.importSearchEngineSection(
@@ -224,23 +246,33 @@ class EditSE {
                 cseData: $CSEData
             )
             .onChange(of: scenePhase) { newPhase in
-                if newPhase == .background || newPhase == .inactive {
-                    saveCSEData()
+                if newPhase == .inactive {
+                    saveCSEData(.background)
                 }
             }
             .onDisappear {
-                saveCSEData()
+                saveCSEData(.dismiss)
             }
             .task {
                 if isFirstLoad {
                     CSEData = CSEDataManager.getCSEData(.privateCSE)
                     isFirstLoad = false
+                } else {
+                    saveCSEData(.autosave)
                 }
             }
         }
         
-        private func saveCSEData() {
-            CSEDataManager.saveCSEData(CSEData, .privateCSE, uploadCloud: true)
+        private func saveCSEData(_ mode: SaveMode) {
+            switch mode {
+            case .autosave:
+                CSEDataManager.saveCSEData(CSEData, .privateCSE, uploadCloud: false)
+            case .background, .dismiss:
+                CSEDataManager.saveCSEData(CSEData, .privateCSE, uploadCloud: true)
+            case .discard:
+                // No discard action needed for private CSE
+                break
+            }
         }
     }
     
@@ -248,12 +280,6 @@ class EditSE {
     struct EditQuickCSEView: View {
         @Environment(\.dismiss) private var dismiss
         @Environment(\.scenePhase) private var scenePhase
-        
-        enum SaveMode {
-            case autosave  // Auto save (background, etc.)
-            case dismiss   // Save and exit
-            case discard   // Discard and save original data
-        }
         
         @State var cseID: String? = nil
         @State private var CSEData = CSEDataManager.CSEData()
@@ -312,15 +338,9 @@ class EditSE {
                         }
                         
                         // Advanced Settings
-                        EditSE.advancedSettingsSection(
-                            cseData: $CSEData,
-                            onToggleChange: {
-                                saveCSEData(.autosave)
-                            },
-                            onSubmit: {
-                                saveCSEData(.autosave)
-                            }
-                        )
+                        EditSE.advancedSettingsSection(cseData: $CSEData) {
+                            saveCSEData(.autosave)
+                        }
                         
                         // Import Search Engine
                         EditSE.importSearchEngineSection(
@@ -366,8 +386,8 @@ class EditSE {
                 cseData: $CSEData
             )
             .onChange(of: scenePhase) { newPhase in
-                if newPhase == .background || newPhase == .inactive {
-                    saveCSEData(.autosave)
+                if newPhase == .inactive {
+                    saveCSEData(.background)
                 }
             }
             .task {
@@ -390,6 +410,13 @@ class EditSE {
             case .autosave:
                 do {
                     try CSEDataManager.saveCSEData(CSEData, cseID, uploadCloud: false)
+                    cseID = CSEData.keyword
+                } catch {
+                }
+                
+            case .background:
+                do {
+                    try CSEDataManager.saveCSEData(CSEData, cseID, uploadCloud: true)
                     cseID = CSEData.keyword
                 } catch {
                 }
