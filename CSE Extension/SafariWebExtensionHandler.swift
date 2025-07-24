@@ -25,9 +25,9 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             return
         }
         
-        let searchengine: String = userDefaults.string(forKey: "searchengine") ?? ""
+        let searchengine: String = userDefaults.string(forKey: "searchengine") ?? "google"
         let alsousepriv: Bool = userDefaults.bool(forKey: "alsousepriv")
-        let privsearchengine: String = userDefaults.string(forKey: "privsearchengine") ?? ""
+        let privsearchengine: String = userDefaults.string(forKey: "privsearchengine") ?? "duckduckgo"
         let usePrivateCSE: Bool = userDefaults.bool(forKey: "usePrivateCSE")
         
         var redirectData: (type: String, url: String, post: [[String: String]]) = ("error", "", [])
