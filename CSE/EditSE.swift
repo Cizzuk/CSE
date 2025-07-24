@@ -12,7 +12,6 @@ class EditSE {
     // Save mode for EditSE
     enum SaveMode {
         case autosave   // Auto save (not upload to iCloud)
-        case background // Save and upload to iCloud (also use for cmd+s)
         case dismiss    // Save and exit
         case discard    // Discard and save original data
     }
@@ -168,7 +167,7 @@ class EditSE {
             )
             .onChange(of: scenePhase) { newPhase in
                 if newPhase == .inactive {
-                    saveCSEData(.background)
+                    saveCSEData(.autosave)
                 }
             }
             .onDisappear {
@@ -188,7 +187,7 @@ class EditSE {
             switch mode {
             case .autosave:
                 CSEDataManager.saveCSEData(CSEData, .defaultCSE, uploadCloud: false)
-            case .background, .dismiss:
+            case .dismiss:
                 CSEDataManager.saveCSEData(CSEData, .defaultCSE, uploadCloud: true)
             case .discard:
                 // No discard action needed for default CSE
@@ -247,7 +246,7 @@ class EditSE {
             )
             .onChange(of: scenePhase) { newPhase in
                 if newPhase == .inactive {
-                    saveCSEData(.background)
+                    saveCSEData(.autosave)
                 }
             }
             .onDisappear {
@@ -267,7 +266,7 @@ class EditSE {
             switch mode {
             case .autosave:
                 CSEDataManager.saveCSEData(CSEData, .privateCSE, uploadCloud: false)
-            case .background, .dismiss:
+            case .dismiss:
                 CSEDataManager.saveCSEData(CSEData, .privateCSE, uploadCloud: true)
             case .discard:
                 // No discard action needed for private CSE
@@ -387,7 +386,7 @@ class EditSE {
             )
             .onChange(of: scenePhase) { newPhase in
                 if newPhase == .inactive {
-                    saveCSEData(.background)
+                    saveCSEData(.autosave)
                 }
             }
             .task {
@@ -410,13 +409,6 @@ class EditSE {
             case .autosave:
                 do {
                     try CSEDataManager.saveCSEData(CSEData, cseID, uploadCloud: false)
-                    cseID = CSEData.keyword
-                } catch {
-                }
-                
-            case .background:
-                do {
-                    try CSEDataManager.saveCSEData(CSEData, cseID, uploadCloud: true)
                     cseID = CSEData.keyword
                 } catch {
                 }
