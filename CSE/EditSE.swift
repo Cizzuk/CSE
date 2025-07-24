@@ -130,6 +130,7 @@ class EditSE {
         @State private var isFirstLoad: Bool = true
         
         @AppStorage("useDefaultCSE", store: userDefaults) private var useDefaultCSE: Bool = true
+        @State private var useDefaultCSEToggle: Bool = true
         
         var body: some View {
             EditSE.commonSheets(
@@ -138,23 +139,30 @@ class EditSE {
                         Toggle(isOn: $useDefaultCSE) {
                             Text("Default Search Engine")
                         }
+                        .onChange(of: useDefaultCSE) { _ in
+                            withAnimation {
+                                useDefaultCSEToggle = useDefaultCSE
+                            }
+                        }
                     }
                     
-                    // Search URL
-                    EditSE.searchURLSection(cseData: $CSEData) {
-                        saveCSEData(.autosave)
+                    if useDefaultCSEToggle {
+                        // Search URL
+                        EditSE.searchURLSection(cseData: $CSEData) {
+                            saveCSEData(.autosave)
+                        }
+                        
+                        // Advanced Settings
+                        EditSE.advancedSettingsSection(cseData: $CSEData) {
+                            saveCSEData(.autosave)
+                        }
+                        
+                        // Import Search Engine
+                        EditSE.importSearchEngineSection(
+                            openRecommendView: $openRecommendView,
+                            openCloudImportView: $openCloudImportView
+                        )
                     }
-                    
-                    // Advanced Settings
-                    EditSE.advancedSettingsSection(cseData: $CSEData) {
-                        saveCSEData(.autosave)
-                    }
-                    
-                    // Import Search Engine
-                    EditSE.importSearchEngineSection(
-                        openRecommendView: $openRecommendView,
-                        openCloudImportView: $openCloudImportView
-                    )
                 }
                 .scrollToDismissesKeyboard()
                 .navigationTitle("Default Search Engine")
@@ -178,6 +186,7 @@ class EditSE {
                 } else {
                     saveCSEData(.autosave)
                 }
+                useDefaultCSEToggle = useDefaultCSE
             }
         }
         
@@ -205,6 +214,7 @@ class EditSE {
         @State private var isFirstLoad: Bool = true
         
         @AppStorage("usePrivateCSE", store: userDefaults) private var usePrivateCSE: Bool = false
+        @State private var usePrivateCSEToggle: Bool = false
         
         var body: some View {
             EditSE.commonSheets(
@@ -213,25 +223,32 @@ class EditSE {
                         Toggle(isOn: $usePrivateCSE) {
                             Text("Private Search Engine")
                         }
+                        .onChange(of: usePrivateCSE) { _ in
+                            withAnimation {
+                                usePrivateCSEToggle = usePrivateCSE
+                            }
+                        }
                     } footer: {
                         Text("Use different search engine in Private Browse")
                     }
                     
-                    // Search URL
-                    EditSE.searchURLSection(cseData: $CSEData) {
-                        saveCSEData(.autosave)
+                    if usePrivateCSEToggle {
+                        // Search URL
+                        EditSE.searchURLSection(cseData: $CSEData) {
+                            saveCSEData(.autosave)
+                        }
+                        
+                        // Advanced Settings
+                        EditSE.advancedSettingsSection(cseData: $CSEData) {
+                            saveCSEData(.autosave)
+                        }
+                        
+                        // Import Search Engine
+                        EditSE.importSearchEngineSection(
+                            openRecommendView: $openRecommendView,
+                            openCloudImportView: $openCloudImportView
+                        )
                     }
-                    
-                    // Advanced Settings
-                    EditSE.advancedSettingsSection(cseData: $CSEData) {
-                        saveCSEData(.autosave)
-                    }
-                    
-                    // Import Search Engine
-                    EditSE.importSearchEngineSection(
-                        openRecommendView: $openRecommendView,
-                        openCloudImportView: $openCloudImportView
-                    )
                 }
                 .scrollToDismissesKeyboard()
                 .navigationTitle("Private Search Engine")
@@ -255,6 +272,7 @@ class EditSE {
                 } else {
                     saveCSEData(.autosave)
                 }
+                usePrivateCSEToggle = usePrivateCSE
             }
         }
         
