@@ -111,7 +111,9 @@ struct ContentView: View {
                     }) {
                         VStack(alignment: .leading) {
                             Text("Safari Settings")
+                                #if !visionOS
                                 .foregroundColor(.accentColor)
+                                #endif
                             Text("If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial.")
                                 .foregroundColor(.secondary)
                                 .font(.caption)

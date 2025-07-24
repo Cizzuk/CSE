@@ -31,6 +31,7 @@ extension View {
                 .cornerRadius(16)
         }
     }
+    
     // listStyle must be .insetGrouped under iOS 17
     func listStyleFallback() -> some View {
         if #unavailable(iOS 17.0, macOS 14.0) {
