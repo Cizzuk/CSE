@@ -8,6 +8,7 @@
 import CloudKit
 import Combine
 import UIKit
+import CryptoKit
 
 final class CloudKitManager: ObservableObject {
     private let database: CKDatabase = CKContainer(identifier: "iCloud.net.cizzuk.cse").privateCloudDatabase
@@ -40,6 +41,20 @@ final class CloudKitManager: ObservableObject {
         let defaultCSEJSON = cseDataToJSONString(dictionary: defaultCSEDict)
         let privateCSEJSON = cseDataToJSONString(dictionary: privateCSEDict)
         let quickCSEJSON = cseDataToJSONString(dictionary: quickCSEDict)
+        
+        let combinedString = "\(defaultCSEJSON)|\(privateCSEJSON)|\(quickCSEJSON)|\(useEmojiSearch)"
+        let currentRecordHash = generateHash(from: combinedString)
+        print("Current record hash: \(currentRecordHash)")
+        
+        // Check if the record is the same as the last uploaded
+        if !mustUpload {
+            let lastUploadedRecordHash = userDefaults.string(forKey: "lastUploadedCloudKitRecordHash") ?? ""
+            if currentRecordHash == lastUploadedRecordHash {
+                // Same record, skip upload
+                print("No changes detected, skipping CloudKit upload.")
+                return
+            }
+        }
         
         let deviceID = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
         let recordID = CKRecord.ID(recordName: deviceID)
@@ -75,16 +90,37 @@ final class CloudKitManager: ObservableObject {
         let operation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
         operation.savePolicy = .allKeys
         
+        // Set completion handler to save the record data after successful upload
+        operation.modifyRecordsResultBlock = { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    // Save the current record hash to UserDefaults for future comparison
+                    self.userDefaults.set(currentRecordHash, forKey: "lastUploadedCloudKitRecordHash")
+                    print("CloudKit upload successful", currentRecordHash)
+                case .failure(let error):
+                    print("CloudKit upload failed: \(error)")
+                }
+            }
+        }
+        
         database.add(operation)
     }
     
-    // Convert dictionary to JSON string
+    // Convert dictionary to JSON string (sorted for consistency)
     private func cseDataToJSONString(dictionary: Any) -> String {
-        guard let jsonData = try? JSONSerialization.data(withJSONObject: dictionary, options: []),
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: dictionary, options: [.sortedKeys]),
               let jsonString = String(data: jsonData, encoding: .utf8) else {
             return ""
         }
         return jsonString
+    }
+    
+    // Generate SHA256 hash from string
+    private func generateHash(from string: String) -> String {
+        let data = Data(string.utf8)
+        let hash = SHA256.hash(data: data)
+        return hash.compactMap { String(format: "%02x", $0) }.joined()
     }
     
     // fetch CSEs from other devices
