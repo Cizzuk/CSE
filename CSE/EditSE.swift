@@ -415,6 +415,9 @@ class EditSE {
                     saveCSEData(.autosave)
                 }
             }
+            .accessibilityAction(.escape) {
+                saveCSEData(.dismiss)
+            }
             .task {
                 if isFirstLoad {
                     if let cseID = cseID {
