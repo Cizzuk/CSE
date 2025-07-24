@@ -6,9 +6,6 @@
 //
 
 import SwiftUI
-#if iOS
-import WidgetKit
-#endif
 
 @main
 struct MainView: App {
@@ -96,18 +93,15 @@ struct ContentView: View {
                     
                     
                     // Emoji Search Setting
-                    Toggle(isOn: $useEmojiSearch) {
-                        Text("Emoji Search")
-                    }
-                    #if iOS
-                    .onChange(of: useEmojiSearch) { _ in
-                        if #available(iOS 18.0, *) {
-                            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.EmojiSearch")
+                    NavigationLink(destination: EmojiSearchView()) {
+                        HStack {
+                            Text("Emoji Search")
+                            Spacer()
+                            Text(useEmojiSearch ? "On" : "Off")
+                                .foregroundColor(.secondary)
+                                .multilineTextAlignment(.trailing)
                         }
                     }
-                    #endif
-                } footer: {
-                    Text("If you enter only one emoji, you can search on Emojipedia.org.")
                 }
                 
                 // Show Safari Settings Tutorial Button
@@ -116,19 +110,11 @@ struct ContentView: View {
                         openSafariTutorialView = true
                     }) {
                         VStack(alignment: .leading) {
-                            HStack {
-                                Image(systemName: "safari")
-                                    .frame(width: 20.0)
-                                    .accessibilityHidden(true)
-                                Text("Safari Settings")
-                            }
-                            #if !visionOS
-                            .foregroundColor(.accentColor)
-                            #endif
-                            Spacer()
+                            Text("Safari Settings")
+                                .foregroundColor(.accentColor)
                             Text("If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial.")
                                 .foregroundColor(.secondary)
-                                .font(.subheadline)
+                                .font(.caption)
                         }
                     }
                 }
@@ -154,39 +140,44 @@ struct ContentView: View {
                 
                 // Support Section
                 Section {
-                    // Contact Link
-                    Link(destination:URL(string: "https://cizzuk.net/contact/")!, label: {
-                        HStack {
-                            Image(systemName: "message")
-                                .frame(width: 20.0)
-                            Text("Contact")
-                        }
-                    })
-                    // GitHub Source Link
-                    Link(destination:URL(string: "https://github.com/Cizzuk/CSE")!, label: {
-                        HStack {
-                            Image(systemName: "ladybug")
-                                .frame(width: 20.0)
-                            Text("Source")
-                            Spacer()
-                        }
-                    })
-                    // Privacy Policy
-                    Link(destination:URL(string: "https://i.cizzuk.net/privacy/")!, label: {
-                        HStack {
-                            Image(systemName: "hand.raised")
-                                .frame(width: 20.0)
-                            Text("Privacy Policy")
-                        }
-                    })
-                    // License Link
-                    NavigationLink(destination: LicenseView()) {
-                        HStack {
-                            Image(systemName: "book.closed")
-                                .frame(width: 20.0)
-                            Text("License")
+                    Group {
+                        // Contact Link
+                        Link(destination:URL(string: "https://cizzuk.net/contact/")!, label: {
+                            HStack {
+                                Image(systemName: "message")
+                                    .frame(width: 20.0)
+                                Text("Contact")
+                            }
+                        })
+                        // GitHub Source Link
+                        Link(destination:URL(string: "https://github.com/Cizzuk/CSE")!, label: {
+                            HStack {
+                                Image(systemName: "ladybug")
+                                    .frame(width: 20.0)
+                                Text("Source")
+                                Spacer()
+                            }
+                        })
+                        // Privacy Policy
+                        Link(destination:URL(string: "https://i.cizzuk.net/privacy/")!, label: {
+                            HStack {
+                                Image(systemName: "hand.raised")
+                                    .frame(width: 20.0)
+                                Text("Privacy Policy")
+                            }
+                        })
+                        // License Link
+                        NavigationLink(destination: LicenseView()) {
+                            HStack {
+                                Image(systemName: "book.closed")
+                                    .frame(width: 20.0)
+                                Text("License")
+                            }
                         }
                     }
+                    #if !visionOS
+                    .foregroundColor(.accentColor)
+                    #endif
                 } header: {
                     Text("Support")
                 } footer: {
@@ -219,6 +210,7 @@ struct ContentView: View {
                 Spacer()
             }
         }
+        .listStyleFallback()
         // Tutorial sheets
         .sheet(isPresented : $needFirstTutorial, content: {
             Tutorial.FirstView(isOpenSheet: $needFirstTutorial)
