@@ -52,13 +52,16 @@ struct QuickSEListView: View {
                                         .foregroundColor(.secondary)
                                 }
                             }
-                            .accessibilityLabel("\(displayName). " + keywordTranslation + ". \(cseID)")
+                            .accessibilityLabel("\(displayName), " + keywordTranslation + ", \(cseID)")
                             .contextMenu {
                                 Button() {
                                     CSEDataManager.deleteQuickCSE(cseID)
                                     quickCSE.removeValue(forKey: cseID)
                                 } label: {
                                     Label("Delete", systemImage: "trash")
+                                }
+                                NavigationLink(destination: EditSE.EditQuickCSEView()) {
+                                    Label("Add New Search Engine", systemImage: "plus.circle")
                                 }
                             }
                         }
