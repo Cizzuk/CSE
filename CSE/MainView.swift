@@ -115,18 +115,21 @@ struct ContentView: View {
                     Button(action: {
                         openSafariTutorialView = true
                     }) {
-                        HStack {
-                            Image(systemName: "safari")
-                                .frame(width: 20.0)
-                                .accessibilityHidden(true)
-                            Text("Safari Settings")
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Image(systemName: "safari")
+                                    .frame(width: 20.0)
+                                    .accessibilityHidden(true)
+                                Text("Safari Settings")
+                            }
+                            #if !visionOS
+                            .foregroundColor(.accentColor)
+                            #endif
+                            Spacer()
+                            Text("If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial.")
+                                .foregroundColor(.secondary)
                         }
-                        #if !visionOS
-                        .foregroundColor(.accentColor)
-                        #endif
                     }
-                } footer: {
-                    Text("If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial.")
                 }
                 
 //                IMPORTANT: This code is not currently used, but it is kept here for future reference.
