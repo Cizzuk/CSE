@@ -438,6 +438,10 @@ class Tutorial {
                             CSEDataManager.saveCSEData(parsedDefaultCSE, .defaultCSE)
                             CSEDataManager.saveCSEData(parsedPrivateCSE, .privateCSE)
                             CSEDataManager.replaceQuickCSEData(quickCSE)
+                            
+                            userDefaults.set((parsedDefaultCSE.url != ""), forKey: "useDefaultCSE")
+                            userDefaults.set((parsedPrivateCSE.url != ""), forKey: "usePrivateCSE")
+                            userDefaults.set(!quickCSE.isEmpty, forKey: "useQuickCSE")
                         }
                         isOpenSheet = false
                     }) {

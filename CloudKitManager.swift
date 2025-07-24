@@ -53,7 +53,11 @@ final class CloudKitManager: ObservableObject {
         
         // Set record values
         record["deviceName"] = deviceName
-        record["defaultCSE"] = defaultCSEJSON
+        if userDefaults.bool(forKey: "useDefaultCSE") {
+            record["defaultCSE"] = defaultCSEJSON
+        } else {
+            record["defaultCSE"] = ""
+        }
         if userDefaults.bool(forKey: "usePrivateCSE") {
             record["privateCSE"] = privateCSEJSON
         } else {

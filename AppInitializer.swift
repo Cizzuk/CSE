@@ -25,6 +25,13 @@ class AppInitializer {
             userDefaults.set("", forKey: "adv_resetCSEs")
         }
         
+        // Create useDefaultCSE for v4.0 or later
+        if lastVersion == "" || isUpdated(updateVer: "4.0", lastVer: lastVersion) {
+            if userDefaults.string(forKey: "useDefaultCSE") == nil {
+                userDefaults.set(true, forKey: "useDefaultCSE")
+            }
+        }
+        
         // Update/Create database for v3.0 or later
         if lastVersion == "" || isUpdated(updateVer: "3.0", lastVer: lastVersion) {
             performV3Updates()
