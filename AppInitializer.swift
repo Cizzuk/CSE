@@ -18,11 +18,26 @@ class AppInitializer {
         let searchengine: String? = userDefaults.string(forKey: "searchengine") ?? nil
         let privsearchengine: String? = userDefaults.string(forKey: "privsearchengine") ?? nil
         let adv_resetCSEs: String = userDefaults.string(forKey: "adv_resetCSEs") ?? ""
+        let needSafariTutorial: Bool = userDefaults.bool(forKey: "needSafariTutorial")
+        let needFirstTutorial: Bool = userDefaults.bool(forKey: "needFirstTutorial")
         
         // adv_resetCSEs
         if adv_resetCSEs != "" {
             resetCSE(target: adv_resetCSEs)
             userDefaults.set("", forKey: "adv_resetCSEs")
+        }
+        
+        // Initialize default settings
+        if lastVersion == "" {
+            userDefaults.set("google", forKey: "searchengine")
+            userDefaults.set("duckduckgo", forKey: "privsearchengine")
+            userDefaults.set(true, forKey: "alsousepriv")
+        }
+        
+        // Update/Create database for v3.0 or later
+        if lastVersion == "" || isUpdated(updateVer: "3.0", lastVer: lastVersion) {
+            performV3Updates()
+            migrateOldCSESettings()
         }
         
         // Create useDefaultCSE for v4.0 or later
@@ -32,17 +47,16 @@ class AppInitializer {
             }
         }
         
-        // Update/Create database for v3.0 or later
-        if lastVersion == "" || isUpdated(updateVer: "3.0", lastVer: lastVersion) {
-            performV3Updates()
-            migrateOldCSESettings()
-        }
-        
         // Automatically corrects settings to match OS version
         performOSVersionCorrections(lastVersion: lastVersion, searchengine: searchengine, currentRegion: currentRegion)
         
         // Fix search engines by region
         fixSearchEnginesByRegion(searchengine: searchengine, privsearchengine: privsearchengine, currentRegion: currentRegion)
+        
+        if needFirstTutorial && needSafariTutorial {
+            userDefaults.set(true, forKey: "needFirstTutorial")
+            userDefaults.set(false, forKey: "needSafariTutorial")
+        }
         
         // Save last opened version
         userDefaults.set(currentVersion, forKey: "LastAppVer")
