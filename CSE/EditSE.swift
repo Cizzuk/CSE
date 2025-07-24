@@ -305,7 +305,7 @@ class EditSE {
                     }
                     
                     // Quick Search Key
-                    Section() {
+                    Section {
                         TextField("cse", text: $CSEData.keyword)
                             .submitLabel(.done)
                             .onSubmit {
