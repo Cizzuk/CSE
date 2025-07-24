@@ -251,7 +251,7 @@ class EditSE {
         @Environment(\.dismiss) private var dismiss
         @Environment(\.scenePhase) private var scenePhase
         
-        var cseID: String? = nil
+        @State var cseID: String? = nil
         @State private var CSEData = CSEDataManager.CSEData()
         @State private var originalCSEData = CSEDataManager.CSEData()
         
@@ -401,7 +401,7 @@ class EditSE {
                         }
                         Button(action: {
                             CSEData = originalCSEData
-                            saveCSEData(isDismiss: true)
+                            saveCSEDataWithSpecificID(originalCSEData, originalCSEID: cseID, isDismiss: true)
                         }) {
                             Label("Discard", systemImage: "xmark")
                         }
@@ -442,34 +442,34 @@ class EditSE {
                     dismissView()
                     return
                 }
-                do {
-                    try CSEDataManager.saveCSEData(CSEData, cseID)
-                } catch CSEDataManager.saveCSEDataError.keyBlank {
-                    alertTitle = NSLocalizedString("Keyword cannot be blank", comment: "")
-                    showAlert = true
-                    return
-                } catch CSEDataManager.saveCSEDataError.urlBlank {
-                    alertTitle = NSLocalizedString("Search URL cannot be blank", comment: "")
-                    showAlert = true
-                    return
-                } catch CSEDataManager.saveCSEDataError.keyUsed {
-                    alertTitle = NSLocalizedString("This keyword is already used in other", comment: "")
-                    showAlert = true
-                    return
-                } catch {
-                    alertTitle = NSLocalizedString("An error occurred while loading or updating data", comment: "")
-                    showAlert = true
-                    return
-                }
+                saveCSEDataWithSpecificID(CSEData, originalCSEID: cseID, isDismiss: true)
             } else {
                 do {
                     try CSEDataManager.saveCSEData(CSEData, cseID, uploadCloud: false)
+                    cseID = CSEData.keyword
                 } catch {
-                    
                 }
             }
-            if isDismiss {
-                dismissView()
+        }
+        
+        private func saveCSEDataWithSpecificID(_ data: CSEDataManager.CSEData, originalCSEID: String?, isDismiss: Bool) {
+            do {
+                try CSEDataManager.saveCSEData(data, originalCSEID)
+                if isDismiss {
+                    dismissView()
+                }
+            } catch CSEDataManager.saveCSEDataError.keyBlank {
+                alertTitle = NSLocalizedString("Keyword cannot be blank", comment: "")
+                showAlert = true
+            } catch CSEDataManager.saveCSEDataError.urlBlank {
+                alertTitle = NSLocalizedString("Search URL cannot be blank", comment: "")
+                showAlert = true
+            } catch CSEDataManager.saveCSEDataError.keyUsed {
+                alertTitle = NSLocalizedString("This keyword is already used in other", comment: "")
+                showAlert = true
+            } catch {
+                alertTitle = NSLocalizedString("An error occurred while loading or updating data", comment: "")
+                showAlert = true
             }
         }
         
