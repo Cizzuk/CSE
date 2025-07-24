@@ -8,6 +8,116 @@
 import SwiftUI
 
 class EditSE {
+    // Common navigation settings
+    static func applyCommonNavigationStyle<Content: View>(_ content: Content) -> some View {
+        content
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationViewStyle(.stack)
+    }
+    
+    // Common scroll settings
+    static func applyCommonScrollBehavior<Content: View>(_ content: Content) -> some View {
+        content
+            .scrollDismissesKeyboard(.interactively)
+    }
+    
+    // Common search URL section
+    @ViewBuilder
+    static func searchURLSection(cseData: Binding<CSEDataManager.CSEData>, onSubmit: (() -> Void)? = nil) -> some View {
+        Section {
+            TextField("", text: cseData.url, prompt: Text(verbatim: "https://example.com/search?q=%s"))
+                .disableAutocorrection(true)
+                .keyboardType(.URL)
+                .textInputAutocapitalization(.never)
+                .environment(\.layoutDirection, .leftToRight)
+                .submitLabel(.done)
+                .onSubmit {
+                    onSubmit?()
+                }
+        } header: {
+            Text("Search URL")
+        } footer: {
+            Text("Replace query with %s")
+        }
+    }
+    
+    // Common Advanced Settings section
+    @ViewBuilder
+    static func advancedSettingsSection(cseData: Binding<CSEDataManager.CSEData>) -> some View {
+        Section {
+            NavigationLink(destination: PostDataView(post: cseData.post)) {
+                HStack {
+                    Text("POST Data")
+                    Spacer()
+                    Text("\(cseData.wrappedValue.post.count)")
+                        .foregroundColor(.secondary)
+                }
+            }
+            Toggle("Disable Percent-encoding", isOn: cseData.disablePercentEncoding)
+            HStack {
+                Text("Max Query Length")
+                Spacer()
+                TextField("32", value: cseData.maxQueryLength, format: .number)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .keyboardType(.numberPad)
+                    .frame(width: 100)
+                    .multilineTextAlignment(.trailing)
+                    .submitLabel(.done)
+            }
+        } header: {
+            Text("Advanced Settings")
+        } footer: {
+            Text("Blank to disable")
+        }
+    }
+    
+    // Common Import Search Engine section
+    @ViewBuilder
+    static func importSearchEngineSection(
+        openRecommendView: Binding<Bool>,
+        openCloudImportView: Binding<Bool>
+    ) -> some View {
+        Section {
+            Button(action: {
+                openRecommendView.wrappedValue = true
+            }) {
+                HStack {
+                    Image(systemName: "sparkle.magnifyingglass")
+                        .frame(width: 20.0)
+                        .accessibilityHidden(true)
+                    Text("Recommended Search Engines")
+                }
+            }
+            Button(action: {
+                openCloudImportView.wrappedValue = true
+            }) {
+                HStack {
+                    Image(systemName: "icloud")
+                        .frame(width: 20.0)
+                        .accessibilityHidden(true)
+                    Text("Import from Other Device")
+                }
+            }
+        }
+    }
+    
+    // Common sheet settings
+    @ViewBuilder
+    static func commonSheets<Content: View>(
+        _ content: Content,
+        openRecommendView: Binding<Bool>,
+        openCloudImportView: Binding<Bool>,
+        cseData: Binding<CSEDataManager.CSEData>
+    ) -> some View {
+        content
+            .sheet(isPresented: openRecommendView, content: {
+                RecommendView(isOpenSheet: openRecommendView, CSEData: cseData)
+            })
+            .sheet(isPresented: openCloudImportView, content: {
+                CloudImportView(isOpenSheet: openCloudImportView, CSEData: cseData)
+            })
+    }
+    
     // DefaultCSE Edit View
     struct EditDefaultCSEView: View {
         @Environment(\.dismiss) private var dismiss
@@ -21,90 +131,37 @@ class EditSE {
         @AppStorage("useDefaultCSE", store: userDefaults) private var useDefaultCSE: Bool = true
         
         var body: some View {
-            NavigationStack {
-                List {
-                    Section {
-                        Toggle(isOn: $useDefaultCSE) {
-                            Text("Default Search Engine")
-                        }
-                    }
-                    
-                    // Search URL
-                    Section {
-                        TextField("", text: $CSEData.url, prompt: Text(verbatim: "https://example.com/search?q=%s"))
-                            .disableAutocorrection(true)
-                            .keyboardType(.URL)
-                            .textInputAutocapitalization(.never)
-                            .environment(\.layoutDirection, .leftToRight)
-                            .submitLabel(.done)
-                    } header: {
-                        Text("Search URL")
-                    } footer: {
-                        Text("Replace query with %s")
-                    }
-                    
-                    // Advanced Settings
-                    Section {
-                        NavigationLink(destination: PostDataView(post: $CSEData.post)) {
-                            HStack {
-                                Text("POST Data")
-                                Spacer()
-                                Text("\(CSEData.post.count)")
-                                    .foregroundColor(.secondary)
+            EditSE.commonSheets(
+                EditSE.applyCommonNavigationStyle(
+                    NavigationStack {
+                        EditSE.applyCommonScrollBehavior(
+                            List {
+                                Section {
+                                    Toggle(isOn: $useDefaultCSE) {
+                                        Text("Default Search Engine")
+                                    }
+                                }
+                                
+                                // Search URL
+                                EditSE.searchURLSection(cseData: $CSEData)
+                                
+                                // Advanced Settings
+                                EditSE.advancedSettingsSection(cseData: $CSEData)
+                                
+                                // Import Search Engine
+                                EditSE.importSearchEngineSection(
+                                    openRecommendView: $openRecommendView,
+                                    openCloudImportView: $openCloudImportView
+                                )
                             }
-                        }
-                        Toggle("Disable Percent-encoding", isOn: $CSEData.disablePercentEncoding)
-                        HStack {
-                            Text("Max Query Length")
-                            Spacer()
-                            TextField("32", value: $CSEData.maxQueryLength, format: .number)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .keyboardType(.numberPad)
-                                .frame(width: 100)
-                                .multilineTextAlignment(.trailing)
-                                .submitLabel(.done)
-                        }
-                    } header: {
-                        Text("Advanced Settings")
-                    } footer: {
-                        Text("Blank to disable")
+                        )
                     }
-                    
-                    // Import Search Engine
-                    Section {
-                        Button(action: {
-                            openRecommendView = true
-                        }) {
-                            HStack {
-                                Image(systemName: "sparkle.magnifyingglass")
-                                    .frame(width: 20.0)
-                                    .accessibilityHidden(true)
-                                Text("Recommended Search Engines")
-                            }
-                        }
-                        Button(action: {
-                            openCloudImportView = true
-                        }) {
-                            HStack {
-                                Image(systemName: "icloud")
-                                    .frame(width: 20.0)
-                                    .accessibilityHidden(true)
-                                Text("Import from Other Device")
-                            }
-                        }
-                    }
-                }
-                .scrollDismissesKeyboard(.interactively)
-            }
-            .navigationTitle("Default Search Engine")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationViewStyle(.stack)
-            .sheet(isPresented: $openRecommendView, content: {
-                RecommendView(isOpenSheet: $openRecommendView, CSEData: $CSEData)
-            })
-            .sheet(isPresented: $openCloudImportView, content: {
-                CloudImportView(isOpenSheet: $openCloudImportView, CSEData: $CSEData)
-            })
+                    .navigationTitle("Default Search Engine")
+                ),
+                openRecommendView: $openRecommendView,
+                openCloudImportView: $openCloudImportView,
+                cseData: $CSEData
+            )
             .onChange(of: scenePhase) { newPhase in
                 if newPhase == .background || newPhase == .inactive {
                     saveCSEData()
@@ -139,92 +196,39 @@ class EditSE {
         @AppStorage("usePrivateCSE", store: userDefaults) private var usePrivateCSE: Bool = false
         
         var body: some View {
-            NavigationStack {
-                List {
-                    Section {
-                        Toggle(isOn: $usePrivateCSE) {
-                            Text("Private Search Engine")
-                        }
-                    } footer: {
-                        Text("Use different search engine in Private Browse")
-                    }
-                    
-                    // Search URL
-                    Section {
-                        TextField("", text: $CSEData.url, prompt: Text(verbatim: "https://example.com/search?q=%s"))
-                            .disableAutocorrection(true)
-                            .keyboardType(.URL)
-                            .textInputAutocapitalization(.never)
-                            .environment(\.layoutDirection, .leftToRight)
-                            .submitLabel(.done)
-                    } header: {
-                        Text("Search URL")
-                    } footer: {
-                        Text("Replace query with %s")
-                    }
-                    
-                    // Advanced Settings
-                    Section {
-                        NavigationLink(destination: PostDataView(post: $CSEData.post)) {
-                            HStack {
-                                Text("POST Data")
-                                Spacer()
-                                Text("\(CSEData.post.count)")
-                                    .foregroundColor(.secondary)
+            EditSE.commonSheets(
+                EditSE.applyCommonNavigationStyle(
+                    NavigationStack {
+                        EditSE.applyCommonScrollBehavior(
+                            List {
+                                Section {
+                                    Toggle(isOn: $usePrivateCSE) {
+                                        Text("Private Search Engine")
+                                    }
+                                } footer: {
+                                    Text("Use different search engine in Private Browse")
+                                }
+                                
+                                // Search URL
+                                EditSE.searchURLSection(cseData: $CSEData)
+                                
+                                // Advanced Settings
+                                EditSE.advancedSettingsSection(cseData: $CSEData)
+                                
+                                // Import Search Engine
+                                EditSE.importSearchEngineSection(
+                                    openRecommendView: $openRecommendView,
+                                    openCloudImportView: $openCloudImportView
+                                )
                             }
-                        }
-                        Toggle("Disable Percent-encoding", isOn: $CSEData.disablePercentEncoding)
-                        HStack {
-                            Text("Max Query Length")
-                            Spacer()
-                            TextField("32", value: $CSEData.maxQueryLength, format: .number)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .keyboardType(.numberPad)
-                                .frame(width: 100)
-                                .multilineTextAlignment(.trailing)
-                                .submitLabel(.done)
-                        }
-                    } header: {
-                        Text("Advanced Settings")
-                    } footer: {
-                        Text("Blank to disable")
+                        )
                     }
-                    
-                    // Import Search Engine
-                    Section {
-                        Button(action: {
-                            openRecommendView = true
-                        }) {
-                            HStack {
-                                Image(systemName: "sparkle.magnifyingglass")
-                                    .frame(width: 20.0)
-                                    .accessibilityHidden(true)
-                                Text("Recommended Search Engines")
-                            }
-                        }
-                        Button(action: {
-                            openCloudImportView = true
-                        }) {
-                            HStack {
-                                Image(systemName: "icloud")
-                                    .frame(width: 20.0)
-                                    .accessibilityHidden(true)
-                                Text("Import from Other Device")
-                            }
-                        }
-                    }
-                }
-                .scrollDismissesKeyboard(.interactively)
-            }
-            .navigationTitle("Private Search Engine")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationViewStyle(.stack)
-            .sheet(isPresented: $openRecommendView, content: {
-                RecommendView(isOpenSheet: $openRecommendView, CSEData: $CSEData)
-            })
-            .sheet(isPresented: $openCloudImportView, content: {
-                CloudImportView(isOpenSheet: $openCloudImportView, CSEData: $CSEData)
-            })
+                    .navigationTitle("Private Search Engine")
+                ),
+                openRecommendView: $openRecommendView,
+                openCloudImportView: $openCloudImportView,
+                cseData: $CSEData
+            )
             .onChange(of: scenePhase) { newPhase in
                 if newPhase == .background || newPhase == .inactive {
                     saveCSEData()
@@ -251,6 +255,12 @@ class EditSE {
         @Environment(\.dismiss) private var dismiss
         @Environment(\.scenePhase) private var scenePhase
         
+        enum SaveMode {
+            case autosave  // Auto save (background, etc.)
+            case dismiss   // Save and exit
+            case discard   // Discard and save original data
+        }
+        
         @State var cseID: String? = nil
         @State private var CSEData = CSEDataManager.CSEData()
         @State private var originalCSEData = CSEDataManager.CSEData()
@@ -273,7 +283,7 @@ class EditSE {
                         TextField("Name", text: $CSEData.name)
                             .submitLabel(.done)
                             .onSubmit {
-                                saveCSEData()
+                                saveCSEData(.autosave)
                             }
                     } header: {
                         Text("Name")
@@ -284,7 +294,7 @@ class EditSE {
                         TextField("cse", text: $CSEData.keyword)
                             .submitLabel(.done)
                             .onSubmit {
-                                saveCSEData()
+                                saveCSEData(.autosave)
                             }
                             .onChange(of: CSEData.keyword) { newValue in
                                 if newValue.count > 25 {
@@ -302,20 +312,8 @@ class EditSE {
                     }
                     
                     // Search URL
-                    Section {
-                        TextField("", text: $CSEData.url, prompt: Text(verbatim: "https://example.com/search?q=%s"))
-                            .disableAutocorrection(true)
-                            .keyboardType(.URL)
-                            .textInputAutocapitalization(.never)
-                            .environment(\.layoutDirection, .leftToRight)
-                            .submitLabel(.done)
-                            .onSubmit {
-                                saveCSEData()
-                            }
-                    } header: {
-                        Text("Search URL")
-                    } footer: {
-                        Text("Replace query with %s")
+                    EditSE.searchURLSection(cseData: $CSEData) {
+                        saveCSEData(.autosave)
                     }
                     
                     // Advanced Settings
@@ -330,7 +328,7 @@ class EditSE {
                         }
                         Toggle("Disable Percent-encoding", isOn: $CSEData.disablePercentEncoding)
                             .onChange(of: CSEData.disablePercentEncoding) { _ in
-                                saveCSEData()
+                                saveCSEData(.autosave)
                             }
                         HStack {
                             Text("Max Query Length")
@@ -342,7 +340,7 @@ class EditSE {
                                 .multilineTextAlignment(.trailing)
                                 .submitLabel(.done)
                                 .onSubmit {
-                                    saveCSEData()
+                                    saveCSEData(.autosave)
                                 }
                         }
                     } header: {
@@ -352,28 +350,10 @@ class EditSE {
                     }
                     
                     // Import Search Engine
-                    Section {
-                        Button(action: {
-                            openRecommendView = true
-                        }) {
-                            HStack {
-                                Image(systemName: "sparkle.magnifyingglass")
-                                    .frame(width: 20.0)
-                                    .accessibilityHidden(true)
-                                Text("Recommended Search Engines")
-                            }
-                        }
-                        Button(action: {
-                            openCloudImportView = true
-                        }) {
-                            HStack {
-                                Image(systemName: "icloud")
-                                    .frame(width: 20.0)
-                                    .accessibilityHidden(true)
-                                Text("Import from Other Device")
-                            }
-                        }
-                    }
+                    EditSE.importSearchEngineSection(
+                        openRecommendView: $openRecommendView,
+                        openCloudImportView: $openCloudImportView
+                    )
                 }
                 .scrollDismissesKeyboard(.interactively)
                 .alert(isPresented: $showAlert) {
@@ -395,18 +375,17 @@ class EditSE {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Menu("Back", systemImage: "chevron.backward") {
                         Button(action: {
-                            saveCSEData(isDismiss: true)
+                            saveCSEData(.dismiss)
                         }) {
                             Label("Save", systemImage: "checkmark")
                         }
                         Button(action: {
-                            CSEData = originalCSEData
-                            saveCSEDataWithSpecificID(originalCSEData, originalCSEID: cseID, isDismiss: true)
+                            saveCSEData(.discard)
                         }) {
                             Label("Discard", systemImage: "xmark")
                         }
                     } primaryAction: {
-                        saveCSEData(isDismiss: true)
+                        saveCSEData(.dismiss)
                     }
                 }
             }
@@ -418,7 +397,7 @@ class EditSE {
             })
             .onChange(of: scenePhase) { newPhase in
                 if newPhase == .background || newPhase == .inactive {
-                    saveCSEData()
+                    saveCSEData(.autosave)
                 }
             }
             .task {
@@ -431,31 +410,37 @@ class EditSE {
                     originalCSEData = CSEData
                     isFirstLoad = false
                 } else {
-                    saveCSEData()
+                    saveCSEData(.autosave)
                 }
             }
         }
         
-        private func saveCSEData(isDismiss: Bool = false) {
-            if isDismiss {
-                if cseID == nil && CSEData == CSEDataManager.CSEData() {
-                    dismissView()
-                    return
-                }
-                saveCSEDataWithSpecificID(CSEData, originalCSEID: cseID, isDismiss: true)
-            } else {
+        private func saveCSEData(_ mode: SaveMode) {
+            switch mode {
+            case .autosave:
                 do {
                     try CSEDataManager.saveCSEData(CSEData, cseID, uploadCloud: false)
                     cseID = CSEData.keyword
                 } catch {
                 }
+                
+            case .dismiss:
+                if cseID == nil && CSEData == CSEDataManager.CSEData() {
+                    dismissView()
+                    return
+                }
+                saveCSEDataWithErrorHandling(CSEData, targetCSEID: cseID, shouldDismiss: true)
+                
+            case .discard:
+                CSEData = originalCSEData
+                saveCSEDataWithErrorHandling(originalCSEData, targetCSEID: cseID, shouldDismiss: true)
             }
         }
         
-        private func saveCSEDataWithSpecificID(_ data: CSEDataManager.CSEData, originalCSEID: String?, isDismiss: Bool) {
+        private func saveCSEDataWithErrorHandling(_ data: CSEDataManager.CSEData, targetCSEID: String?, shouldDismiss: Bool) {
             do {
-                try CSEDataManager.saveCSEData(data, originalCSEID)
-                if isDismiss {
+                try CSEDataManager.saveCSEData(data, targetCSEID)
+                if shouldDismiss {
                     dismissView()
                 }
             } catch CSEDataManager.saveCSEDataError.keyBlank {
