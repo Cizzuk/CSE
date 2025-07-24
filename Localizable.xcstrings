@@ -2819,6 +2819,7 @@
       "shouldTranslate" : false
     },
     "Edit Search Engine" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {

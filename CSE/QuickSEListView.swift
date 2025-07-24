@@ -43,7 +43,7 @@ struct QuickSEListView: View {
                     ForEach(quickCSE.keys.sorted(), id: \.self) { cseID in
                         if let cseData: CSEDataManager.CSEData = quickCSE[cseID] {
                             let displayName: String = cseData.name != "" ? cseData.name : cseData.url
-                            NavigationLink(destination: EditSE.EditSEView(cseType: .quickCSE, cseID: cseID)) {
+                            NavigationLink(destination: EditSE.EditQuickCSEView(cseID: cseID)) {
                                 VStack(alignment : .leading) {
                                     Text(cseID)
                                         .bold()
@@ -70,7 +70,7 @@ struct QuickSEListView: View {
                 
                 // Add new SE Button
                 Section {
-                    NavigationLink(destination: EditSE.EditSEView(cseType: .quickCSE)) {
+                    NavigationLink(destination: EditSE.EditQuickCSEView()) {
                         HStack {
                             Image(systemName: "plus.circle")
                                 .accessibilityHidden(true)

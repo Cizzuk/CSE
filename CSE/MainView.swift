@@ -56,7 +56,7 @@ struct ContentView: View {
             List {
                 // Default SE Settings
                 Section {
-                    NavigationLink(destination: EditSE.EditSEView(cseType: .defaultCSE)) {
+                    NavigationLink(destination: EditSE.EditDefaultCSEView()) {
                         HStack {
                             Text("Default Search Engine")
                             Spacer()
@@ -67,7 +67,7 @@ struct ContentView: View {
                     }
                     
                     // Private SE Settings
-                    NavigationLink(destination: EditSE.EditSEView(cseType: .privateCSE)) {
+                    NavigationLink(destination: EditSE.EditPrivateCSEView()) {
                         HStack {
                             Text("Private Search Engine")
                             Spacer()
