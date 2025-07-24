@@ -10,6 +10,7 @@ import StoreKit
 
 // Global constants
 let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+let currentBuild = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
 let currentRegion = Locale.current.region?.identifier
 let userDefaults = CSEDataManager.userDefaults
 

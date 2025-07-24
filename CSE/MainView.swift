@@ -160,7 +160,7 @@ struct ContentView: View {
                                 Spacer()
                             }
                         })
-                        // Privacy Policy
+                        // Privacy Policy Link
                         Link(destination:URL(string: "https://i.cizzuk.net/privacy/")!, label: {
                             HStack {
                                 Image(systemName: "hand.raised")
@@ -168,12 +168,12 @@ struct ContentView: View {
                                 Text("Privacy Policy")
                             }
                         })
-                        // License Link
-                        NavigationLink(destination: LicenseView()) {
+                        // About View
+                        NavigationLink(destination: AboutView()) {
                             HStack {
-                                Image(systemName: "book.closed")
+                                Image(systemName: "info.circle")
                                     .frame(width: 20.0)
-                                Text("License")
+                                Text("About")
                             }
                         }
                     }
@@ -182,12 +182,6 @@ struct ContentView: View {
                     #endif
                 } header: {
                     Text("Support")
-                } footer: {
-                    HStack {
-                        Text("Version: \(currentVersion!)")
-                        Spacer()
-                        Text("© Cizzuk")
-                    }
                 }
                 
                 // Advanced Settings
