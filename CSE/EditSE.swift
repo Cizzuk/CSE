@@ -29,142 +29,144 @@ class EditSE {
         @State private var isFirstLoad: Bool = true // Need to load exCSEData
         
         var body: some View {
-            List {
-                if cseType == .quickCSE {
-                    // Search Engine Name
-                    Section {
-                        TextField("Name", text: $CSEData.name)
-                            .submitLabel(.done)
-                            .onSubmit {
-                                saveCSEData()
-                            }
-                    } header: {
-                        Text("Name")
-                    }
-                    // Quick Search Key
-                    Section() {
-                        TextField("cse", text: $CSEData.keyword)
-                            .submitLabel(.done)
-                            .onSubmit {
-                                saveCSEData()
-                            }
-                            .onChange(of: CSEData.keyword) { newValue in
-                                if newValue.count > 25 {
-                                    CSEData.keyword = String(newValue.prefix(25))
-                                }
-                                CSEData.keyword = CSEData.keyword.filter { $0 != " " && $0 != "　" }
-                            }
-                    } header: {
-                        Text("Keyword")
-                    } footer: {
-                        VStack(alignment : .leading) {
-                            Text("Enter this keyword at the top to search with this search engine.")
-                            Text("Example: '\(CSEData.keyword == "" ? "cse" : CSEData.keyword) your search'")
-                        }
-                    }
-                } else {
-                    Section {
+            NavigationStack {
+                List {
+                    if cseType == .quickCSE {
                         // Search Engine Name
-                        if cseType == .defaultCSE {
-                            Text("Default Search Engine")
-                        } else {
-                            Text("Private Search Engine")
+                        Section {
+                            TextField("Name", text: $CSEData.name)
+                                .submitLabel(.done)
+                                .onSubmit {
+                                    saveCSEData()
+                                }
+                        } header: {
+                            Text("Name")
+                        }
+                        // Quick Search Key
+                        Section() {
+                            TextField("cse", text: $CSEData.keyword)
+                                .submitLabel(.done)
+                                .onSubmit {
+                                    saveCSEData()
+                                }
+                                .onChange(of: CSEData.keyword) { newValue in
+                                    if newValue.count > 25 {
+                                        CSEData.keyword = String(newValue.prefix(25))
+                                    }
+                                    CSEData.keyword = CSEData.keyword.filter { $0 != " " && $0 != "　" }
+                                }
+                        } header: {
+                            Text("Keyword")
+                        } footer: {
+                            VStack(alignment : .leading) {
+                                Text("Enter this keyword at the top to search with this search engine.")
+                                Text("Example: '\(CSEData.keyword == "" ? "cse" : CSEData.keyword) your search'")
+                            }
+                        }
+                    } else {
+                        Section {
+                            // Search Engine Name
+                            if cseType == .defaultCSE {
+                                Text("Default Search Engine")
+                            } else {
+                                Text("Private Search Engine")
+                            }
                         }
                     }
-                }
-                
-                // Search URL
-                Section {
-                    TextField("", text: $CSEData.url, prompt: Text(verbatim: "https://example.com/search?q=%s"))
-                        .disableAutocorrection(true)
-                        .keyboardType(.URL)
-                        .textInputAutocapitalization(.never)
-                        .environment(\.layoutDirection, .leftToRight)
-                        .submitLabel(.done)
-                        .onSubmit {
-                            saveCSEData()
-                        }
-                } header: {
-                    Text("Search URL")
-                } footer: {
-                    VStack(alignment: .leading) {
-                        Text("Replace query with %s")
-                        if cseType == .defaultCSE || cseType == .privateCSE {
-                            Text("Blank to disable CSE")
-                        }
-                    }
-                }
-                
-                // Advanced Settings
-                Section {
-                    // POST Data
-                    NavigationLink(destination: PostDataView(post: $CSEData.post)) {
-                        HStack {
-                            Text("POST Data")
-                            Spacer()
-                            Text("\(CSEData.post.count)")
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                    // Disable %encode
-                    Toggle("Disable Percent-encoding", isOn: $CSEData.disablePercentEncoding)
-                        .onChange(of: CSEData.disablePercentEncoding) { _ in
-                            saveCSEData()
-                        }
-                    HStack {
-                        Text("Max Query Length")
-                        Spacer()
-                        //Input max query length
-                        TextField("32", value: $CSEData.maxQueryLength, format: .number)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .keyboardType(.numberPad)
-                            .frame(width: 100)
-                            .multilineTextAlignment(.trailing)
+                    
+                    // Search URL
+                    Section {
+                        TextField("", text: $CSEData.url, prompt: Text(verbatim: "https://example.com/search?q=%s"))
+                            .disableAutocorrection(true)
+                            .keyboardType(.URL)
+                            .textInputAutocapitalization(.never)
+                            .environment(\.layoutDirection, .leftToRight)
                             .submitLabel(.done)
                             .onSubmit {
                                 saveCSEData()
                             }
-                    }
-                } header: {
-                    Text("Advanced Settings")
-                } footer: {
-                    Text("Blank to disable")
-                }
-                
-                // Import Search Engine
-                Section {
-                    Button(action: {
-                        openRecommendView = true
-                    }) {
-                        HStack {
-                            Image(systemName: "sparkle.magnifyingglass")
-                                .frame(width: 20.0)
-                                .accessibilityHidden(true)
-                            Text("Recommended Search Engines")
+                    } header: {
+                        Text("Search URL")
+                    } footer: {
+                        VStack(alignment: .leading) {
+                            Text("Replace query with %s")
+                            if cseType == .defaultCSE || cseType == .privateCSE {
+                                Text("Blank to disable CSE")
+                            }
                         }
                     }
-                    Button(action: {
-                        openCloudImportView = true
-                    }) {
+                    
+                    // Advanced Settings
+                    Section {
+                        // POST Data
+                        NavigationLink(destination: PostDataView(post: $CSEData.post)) {
+                            HStack {
+                                Text("POST Data")
+                                Spacer()
+                                Text("\(CSEData.post.count)")
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                        // Disable %encode
+                        Toggle("Disable Percent-encoding", isOn: $CSEData.disablePercentEncoding)
+                            .onChange(of: CSEData.disablePercentEncoding) { _ in
+                                saveCSEData()
+                            }
                         HStack {
-                            Image(systemName: "icloud")
-                                .frame(width: 20.0)
-                                .accessibilityHidden(true)
-                            Text("Import from Other Device")
+                            Text("Max Query Length")
+                            Spacer()
+                            //Input max query length
+                            TextField("32", value: $CSEData.maxQueryLength, format: .number)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .keyboardType(.numberPad)
+                                .frame(width: 100)
+                                .multilineTextAlignment(.trailing)
+                                .submitLabel(.done)
+                                .onSubmit {
+                                    saveCSEData()
+                                }
+                        }
+                    } header: {
+                        Text("Advanced Settings")
+                    } footer: {
+                        Text("Blank to disable")
+                    }
+                    
+                    // Import Search Engine
+                    Section {
+                        Button(action: {
+                            openRecommendView = true
+                        }) {
+                            HStack {
+                                Image(systemName: "sparkle.magnifyingglass")
+                                    .frame(width: 20.0)
+                                    .accessibilityHidden(true)
+                                Text("Recommended Search Engines")
+                            }
+                        }
+                        Button(action: {
+                            openCloudImportView = true
+                        }) {
+                            HStack {
+                                Image(systemName: "icloud")
+                                    .frame(width: 20.0)
+                                    .accessibilityHidden(true)
+                                Text("Import from Other Device")
+                            }
                         }
                     }
                 }
-            }
-            .scrollDismissesKeyboard(.interactively)
-            .alert(isPresented: $showAlert) {
-                Alert(
-                    title: Text(alertTitle),
-                    message: Text("Are you sure you want to discard changes?"),
-                    primaryButton: .destructive(Text("Discard")) {
-                        dismissView()
-                    },
-                    secondaryButton: .cancel()
-                )
+                .scrollDismissesKeyboard(.interactively)
+                .alert(isPresented: $showAlert) {
+                    Alert(
+                        title: Text(alertTitle),
+                        message: Text("Are you sure you want to discard changes?"),
+                        primaryButton: .destructive(Text("Discard")) {
+                            dismissView()
+                        },
+                        secondaryButton: .cancel()
+                    )
+                }
             }
             .navigationTitle("Edit Search Engine")
             .navigationBarTitleDisplayMode(.inline)

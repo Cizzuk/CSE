@@ -53,7 +53,7 @@ struct ContentView: View {
         #if IOS
         @ObservedObject var storeManager = StoreManager()
         #endif
-        NavigationStack {
+        NavigationSplitView {
             List {
                 // Normal CSE Settings
                 Section {
@@ -130,6 +130,9 @@ struct ContentView: View {
                                 .accessibilityHidden(true)
                             Text("Safari Settings")
                         }
+                        #if !visionOS
+                        .foregroundColor(.accentColor)
+                        #endif
                     }
                 } footer: {
                     Text("If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial.")
@@ -164,6 +167,15 @@ struct ContentView: View {
                             Text("Contact")
                         }
                     })
+                    // GitHub Source Link
+                    Link(destination:URL(string: "https://github.com/Cizzuk/CSE")!, label: {
+                        HStack {
+                            Image(systemName: "ladybug")
+                                .frame(width: 20.0)
+                            Text("Source")
+                            Spacer()
+                        }
+                    })
                     // Privacy Policy
                     Link(destination:URL(string: "https://i.cizzuk.net/privacy/")!, label: {
                         HStack {
@@ -179,19 +191,7 @@ struct ContentView: View {
                                 .frame(width: 20.0)
                             Text("License")
                         }
-                        #if !visionOS
-                        .foregroundColor(.accentColor)
-                        #endif
                     }
-                    // GitHub Source Link
-                    Link(destination:URL(string: "https://github.com/Cizzuk/CSE")!, label: {
-                        HStack {
-                            Image(systemName: "ladybug")
-                                .frame(width: 20.0)
-                            Text("Source")
-                            Spacer()
-                        }
-                    })
                 } header: {
                     Text("Support")
                 } footer: {
@@ -209,28 +209,24 @@ struct ContentView: View {
                     // Go IconChange View for iOS/iPadOS
                     NavigationLink(destination: linkDestination) {
                         Text("Change App Icon")
-                        Spacer()
                     }
-                    .contentShape(Rectangle())
                     #endif
                     
-                    NavigationLink(destination: AdvSettingView().navigationTitle("Advanced Settings")) {
+                    NavigationLink(destination: AdvSettingView()) {
                         Text("Advanced Settings")
-                        Spacer()
                     }
-                    .contentShape(Rectangle())
                 }
                 
             }
             .navigationTitle("CSE Settings")
-            .listStyle(.insetGrouped)
+            //.listStyle(.insetGrouped)
             .task {
                 // Initialize
                 usePrivateCSEToggle = usePrivateCSE
                 useQuickCSEToggle = useQuickCSE
             }
+        } detail: {
         }
-        .navigationViewStyle(.stack)
         // Tutorial sheets
         .sheet(isPresented : $needFirstTutorial, content: {
             Tutorial.FirstView(isOpenSheet: $needFirstTutorial)
