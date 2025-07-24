@@ -115,7 +115,6 @@ struct AdvSettingView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
-        .navigationViewStyle(.stack)
         .navigationTitle("Advanced Settings")
     }
 }

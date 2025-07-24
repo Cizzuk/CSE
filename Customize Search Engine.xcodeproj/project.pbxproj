@@ -45,6 +45,7 @@
 		BEAE0F412E2268F2007704AE /* AppInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAE0F3F2E2268F2007704AE /* AppInitializer.swift */; };
 		BEAE0F422E2268F2007704AE /* AppInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAE0F3F2E2268F2007704AE /* AppInitializer.swift */; };
 		BEAE0F432E226B6D007704AE /* RecommendSEs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5CEB612DAE8DC6003A2F3E /* RecommendSEs.swift */; };
+		BED82F142E31EF9200820213 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED82F132E31EF8F00820213 /* Extensions.swift */; };
 		BEE22EE52D44E93000EDA51A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */; };
 		BEE22EE62D44E93000EDA51A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */; };
 		BEFCDAEE2DB49844009F9C07 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCDAED2DB49844009F9C07 /* CloudKitManager.swift */; };
@@ -117,6 +118,7 @@
 		BE8F7FEF2DE41F0E003906F4 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		BE8F7FF12DE41F0E003906F4 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		BEAE0F3F2E2268F2007704AE /* AppInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInitializer.swift; sourceTree = "<group>"; };
+		BED82F132E31EF8F00820213 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		BEFCDAED2DB49844009F9C07 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -262,6 +264,7 @@
 		BE5CEB632DAE8DCE003A2F3E /* src */ = {
 			isa = PBXGroup;
 			children = (
+				BED82F132E31EF8F00820213 /* Extensions.swift */,
 				BE5CEB612DAE8DC6003A2F3E /* RecommendSEs.swift */,
 				BE8F7FE02DE31A43003906F4 /* UITemplates.swift */,
 			);
@@ -437,6 +440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BED82F142E31EF9200820213 /* Extensions.swift in Sources */,
 				BE5CEB622DAE8DC6003A2F3E /* RecommendSEs.swift in Sources */,
 				903A4A212BA1D87F005E346B /* MainView.swift in Sources */,
 				BEAE0F422E2268F2007704AE /* AppInitializer.swift in Sources */,

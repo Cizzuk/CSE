@@ -7,24 +7,6 @@
 
 import SwiftUI
 
-// Buttons
-fileprivate extension View {
-    func glassEffectButton() -> some View {
-        if #available(iOS 26, macOS 26, *) {
-            #if !os(visionOS)
-            return AnyView(self.glassEffect(.regular.tint(.accentColor).interactive()))
-            #else
-            return AnyView(self)
-            #endif
-        } else {
-            return AnyView(self)
-                .frame(maxWidth: .infinity)
-                .background(Color.accentColor)
-                .cornerRadius(16)
-        }
-    }
-}
-
 fileprivate func HeaderText(text: String) -> some View {
     Text(text)
         .font(.title)
@@ -39,7 +21,7 @@ fileprivate func NextButton(text: String) -> some View {
         #if !visionOS
         .foregroundColor(.white)
         .frame(maxWidth: .infinity)
-        .glassEffectButton()
+        .glassEffectTutorialButton()
         #endif
 }
 
@@ -224,7 +206,6 @@ class Tutorial {
                 .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
                 #endif
             }
-            .navigationViewStyle(.stack)
             .navigationBarBackButtonHidden(true)
         }
     }
@@ -315,7 +296,6 @@ class Tutorial {
                 .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
                 #endif
             }
-            .navigationViewStyle(.stack)
             .navigationBarBackButtonHidden(true)
         }
     }
@@ -397,7 +377,6 @@ class Tutorial {
                 .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
                 #endif
             }
-            .navigationViewStyle(.stack)
             .navigationBarBackButtonHidden(true)
         }
     }
@@ -479,7 +458,6 @@ class Tutorial {
                 }
             }
             .navigationTitle("Choose Device")
-            .navigationViewStyle(.stack)
             .interactiveDismissDisabled(ck.isLocked)
         }
     }

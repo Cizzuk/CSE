@@ -85,7 +85,6 @@ struct QuickSEListView: View {
         }
         .navigationTitle("Quick Search")
         .navigationBarTitleDisplayMode(.inline)
-        .navigationViewStyle(.stack)
         .toolbar {
             EditButton()
         }

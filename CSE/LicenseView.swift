@@ -17,6 +17,5 @@ struct LicenseView: View {
         }
         .navigationTitle("License")
         .navigationBarTitleDisplayMode(.inline)
-        .navigationViewStyle(.stack)
     }
 }

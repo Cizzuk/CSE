@@ -8,18 +8,6 @@
 import SwiftUI
 
 class EditSE {
-    // Common navigation settings
-    static func applyCommonNavigationStyle<Content: View>(_ content: Content) -> some View {
-        content
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationViewStyle(.stack)
-    }
-    
-    // Common scroll settings
-    static func applyCommonScrollBehavior<Content: View>(_ content: Content) -> some View {
-        content
-            .scrollDismissesKeyboard(.interactively)
-    }
     
     // Common search URL section
     @ViewBuilder
@@ -132,32 +120,30 @@ class EditSE {
         
         var body: some View {
             EditSE.commonSheets(
-                EditSE.applyCommonNavigationStyle(
-                    NavigationStack {
-                        EditSE.applyCommonScrollBehavior(
-                            List {
-                                Section {
-                                    Toggle(isOn: $useDefaultCSE) {
-                                        Text("Default Search Engine")
-                                    }
-                                }
-                                
-                                // Search URL
-                                EditSE.searchURLSection(cseData: $CSEData)
-                                
-                                // Advanced Settings
-                                EditSE.advancedSettingsSection(cseData: $CSEData)
-                                
-                                // Import Search Engine
-                                EditSE.importSearchEngineSection(
-                                    openRecommendView: $openRecommendView,
-                                    openCloudImportView: $openCloudImportView
-                                )
+                NavigationStack {
+                    List {
+                        Section {
+                            Toggle(isOn: $useDefaultCSE) {
+                                Text("Default Search Engine")
                             }
+                        }
+                        
+                        // Search URL
+                        EditSE.searchURLSection(cseData: $CSEData)
+                        
+                        // Advanced Settings
+                        EditSE.advancedSettingsSection(cseData: $CSEData)
+                        
+                        // Import Search Engine
+                        EditSE.importSearchEngineSection(
+                            openRecommendView: $openRecommendView,
+                            openCloudImportView: $openCloudImportView
                         )
                     }
-                    .navigationTitle("Default Search Engine")
-                ),
+                    .scrollToDismissesKeyboard()
+                }
+                .navigationTitle("Default Search Engine")
+                .navigationBarTitleDisplayMode(.inline),
                 openRecommendView: $openRecommendView,
                 openCloudImportView: $openCloudImportView,
                 cseData: $CSEData
@@ -197,34 +183,32 @@ class EditSE {
         
         var body: some View {
             EditSE.commonSheets(
-                EditSE.applyCommonNavigationStyle(
-                    NavigationStack {
-                        EditSE.applyCommonScrollBehavior(
-                            List {
-                                Section {
-                                    Toggle(isOn: $usePrivateCSE) {
-                                        Text("Private Search Engine")
-                                    }
-                                } footer: {
-                                    Text("Use different search engine in Private Browse")
-                                }
-                                
-                                // Search URL
-                                EditSE.searchURLSection(cseData: $CSEData)
-                                
-                                // Advanced Settings
-                                EditSE.advancedSettingsSection(cseData: $CSEData)
-                                
-                                // Import Search Engine
-                                EditSE.importSearchEngineSection(
-                                    openRecommendView: $openRecommendView,
-                                    openCloudImportView: $openCloudImportView
-                                )
+                NavigationStack {
+                    List {
+                        Section {
+                            Toggle(isOn: $usePrivateCSE) {
+                                Text("Private Search Engine")
                             }
+                        } footer: {
+                            Text("Use different search engine in Private Browse")
+                        }
+                        
+                        // Search URL
+                        EditSE.searchURLSection(cseData: $CSEData)
+                        
+                        // Advanced Settings
+                        EditSE.advancedSettingsSection(cseData: $CSEData)
+                        
+                        // Import Search Engine
+                        EditSE.importSearchEngineSection(
+                            openRecommendView: $openRecommendView,
+                            openCloudImportView: $openCloudImportView
                         )
                     }
-                    .navigationTitle("Private Search Engine")
-                ),
+                    .scrollToDismissesKeyboard()
+                }
+                .navigationTitle("Private Search Engine")
+                .navigationBarTitleDisplayMode(.inline),
                 openRecommendView: $openRecommendView,
                 openCloudImportView: $openCloudImportView,
                 cseData: $CSEData
@@ -355,7 +339,7 @@ class EditSE {
                         openCloudImportView: $openCloudImportView
                     )
                 }
-                .scrollDismissesKeyboard(.interactively)
+                .scrollToDismissesKeyboard()
                 .alert(isPresented: $showAlert) {
                     Alert(
                         title: Text(alertTitle),
@@ -369,7 +353,6 @@ class EditSE {
             }
             .navigationTitle("Quick Search Engine")
             .navigationBarTitleDisplayMode(.inline)
-            .navigationViewStyle(.stack)
             .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -511,10 +494,9 @@ class EditSE {
                     Text("Replace query with %s")
                 }
             }
-            .scrollDismissesKeyboard(.interactively)
+            .scrollToDismissesKeyboard()
             .navigationTitle("POST Data")
             .navigationBarTitleDisplayMode(.inline)
-            .navigationViewStyle(.stack)
             .toolbar {
                 EditButton()
             }
@@ -592,7 +574,6 @@ class EditSE {
                     }
                 }
             }
-            .navigationViewStyle(.stack)
         }
     }
     
@@ -674,7 +655,6 @@ class EditSE {
                     }
                 }
             }
-            .navigationViewStyle(.stack)
             .interactiveDismissDisabled(ck.isLocked)
         }
     }
