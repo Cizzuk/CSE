@@ -28,6 +28,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         let searchengine: String = userDefaults.string(forKey: "searchengine") ?? "google"
         let alsousepriv: Bool = userDefaults.bool(forKey: "alsousepriv")
         let privsearchengine: String = userDefaults.string(forKey: "privsearchengine") ?? "duckduckgo"
+        let useDefaultCSE: Bool = userDefaults.bool(forKey: "useDefaultCSE")
         let usePrivateCSE: Bool = userDefaults.bool(forKey: "usePrivateCSE")
         
         var redirectData: (type: String, url: String, post: [[String: String]]) = ("error", "", [])
@@ -60,9 +61,11 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             }
             
             if isIncognito && usePrivateCSE {
-                redirectData = makeSearchURL(windowName: "private", query: query)
+                redirectData = makeSearchURL(baseCSE: CSEDataManager.getCSEData(.privateCSE), query: query)
+            } else if useDefaultCSE {
+                redirectData = makeSearchURL(baseCSE: CSEDataManager.getCSEData(.defaultCSE), query: query)
             } else {
-                redirectData = makeSearchURL(windowName: "default", query: query)
+                redirectData = makeSearchURL(baseCSE: CSEDataManager.CSEData(), query: query)
             }
             
             // Check Redirect URL exists
@@ -273,7 +276,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         return nil
     }
     
-    func makeSearchURL(windowName: String, query: String) -> (type: String, url: String, post: [[String: String]]) {
+    func makeSearchURL(baseCSE: CSEDataManager.CSEData, query: String) -> (type: String, url: String, post: [[String: String]]) {
         // --- Description of some Query variables ---
         //  query: %encoding, Full Search Query
         //  decodedQuery: Decoded, Full Search Query
@@ -323,9 +326,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         var fixedQuery: String = query
         
         // Load Settings
-        var CSEData: CSEDataManager.CSEData = windowName == "private" ?
-            CSEDataManager.getCSEData(.privateCSE) :
-            CSEDataManager.getCSEData(.defaultCSE)
+        var CSEData: CSEDataManager.CSEData = baseCSE
         
         // Set focus filter setting
         if focusSettings != nil {
