@@ -31,7 +31,11 @@ class EditSE {
     
     // Common Advanced Settings section
     @ViewBuilder
-    static func advancedSettingsSection(cseData: Binding<CSEDataManager.CSEData>) -> some View {
+    static func advancedSettingsSection(
+        cseData: Binding<CSEDataManager.CSEData>,
+        onToggleChange: (() -> Void)? = nil,
+        onSubmit: (() -> Void)? = nil
+    ) -> some View {
         Section {
             NavigationLink(destination: PostDataView(post: cseData.post)) {
                 HStack {
@@ -42,6 +46,9 @@ class EditSE {
                 }
             }
             Toggle("Disable Percent-encoding", isOn: cseData.disablePercentEncoding)
+                .onChange(of: cseData.wrappedValue.disablePercentEncoding) { _ in
+                    onToggleChange?()
+                }
             HStack {
                 Text("Max Query Length")
                 Spacer()
@@ -51,6 +58,9 @@ class EditSE {
                     .frame(width: 100)
                     .multilineTextAlignment(.trailing)
                     .submitLabel(.done)
+                    .onSubmit {
+                        onSubmit?()
+                    }
             }
         } header: {
             Text("Advanced Settings")
@@ -260,124 +270,101 @@ class EditSE {
         @State private var isFirstLoad: Bool = true
         
         var body: some View {
-            NavigationStack {
-                List {
-                    // Search Engine Name
-                    Section {
-                        TextField("Name", text: $CSEData.name)
-                            .submitLabel(.done)
-                            .onSubmit {
-                                saveCSEData(.autosave)
-                            }
-                    } header: {
-                        Text("Name")
-                    }
-                    
-                    // Quick Search Key
-                    Section() {
-                        TextField("cse", text: $CSEData.keyword)
-                            .submitLabel(.done)
-                            .onSubmit {
-                                saveCSEData(.autosave)
-                            }
-                            .onChange(of: CSEData.keyword) { newValue in
-                                if newValue.count > 25 {
-                                    CSEData.keyword = String(newValue.prefix(25))
-                                }
-                                CSEData.keyword = CSEData.keyword.filter { $0 != " " && $0 != "　" }
-                            }
-                    } header: {
-                        Text("Keyword")
-                    } footer: {
-                        VStack(alignment : .leading) {
-                            Text("Enter this keyword at the top to search with this search engine.")
-                            Text("Example: '\(CSEData.keyword == "" ? "cse" : CSEData.keyword) your search'")
-                        }
-                    }
-                    
-                    // Search URL
-                    EditSE.searchURLSection(cseData: $CSEData) {
-                        saveCSEData(.autosave)
-                    }
-                    
-                    // Advanced Settings
-                    Section {
-                        NavigationLink(destination: PostDataView(post: $CSEData.post)) {
-                            HStack {
-                                Text("POST Data")
-                                Spacer()
-                                Text("\(CSEData.post.count)")
-                                    .foregroundColor(.secondary)
-                            }
-                        }
-                        Toggle("Disable Percent-encoding", isOn: $CSEData.disablePercentEncoding)
-                            .onChange(of: CSEData.disablePercentEncoding) { _ in
-                                saveCSEData(.autosave)
-                            }
-                        HStack {
-                            Text("Max Query Length")
-                            Spacer()
-                            TextField("32", value: $CSEData.maxQueryLength, format: .number)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .keyboardType(.numberPad)
-                                .frame(width: 100)
-                                .multilineTextAlignment(.trailing)
+            EditSE.commonSheets(
+                NavigationStack {
+                    List {
+                        // Search Engine Name
+                        Section {
+                            TextField("Name", text: $CSEData.name)
                                 .submitLabel(.done)
                                 .onSubmit {
                                     saveCSEData(.autosave)
                                 }
+                        } header: {
+                            Text("Name")
                         }
-                    } header: {
-                        Text("Advanced Settings")
-                    } footer: {
-                        Text("Blank to disable")
+                        
+                        // Quick Search Key
+                        Section() {
+                            TextField("cse", text: $CSEData.keyword)
+                                .submitLabel(.done)
+                                .onSubmit {
+                                    saveCSEData(.autosave)
+                                }
+                                .onChange(of: CSEData.keyword) { newValue in
+                                    if newValue.count > 25 {
+                                        CSEData.keyword = String(newValue.prefix(25))
+                                    }
+                                    CSEData.keyword = CSEData.keyword.filter { $0 != " " && $0 != "　" }
+                                }
+                        } header: {
+                            Text("Keyword")
+                        } footer: {
+                            VStack(alignment : .leading) {
+                                Text("Enter this keyword at the top to search with this search engine.")
+                                Text("Example: '\(CSEData.keyword == "" ? "cse" : CSEData.keyword) your search'")
+                            }
+                        }
+                        
+                        // Search URL
+                        EditSE.searchURLSection(cseData: $CSEData) {
+                            saveCSEData(.autosave)
+                        }
+                        
+                        // Advanced Settings
+                        EditSE.advancedSettingsSection(
+                            cseData: $CSEData,
+                            onToggleChange: {
+                                saveCSEData(.autosave)
+                            },
+                            onSubmit: {
+                                saveCSEData(.autosave)
+                            }
+                        )
+                        
+                        // Import Search Engine
+                        EditSE.importSearchEngineSection(
+                            openRecommendView: $openRecommendView,
+                            openCloudImportView: $openCloudImportView
+                        )
                     }
-                    
-                    // Import Search Engine
-                    EditSE.importSearchEngineSection(
-                        openRecommendView: $openRecommendView,
-                        openCloudImportView: $openCloudImportView
-                    )
+                    .scrollToDismissesKeyboard()
+                    .alert(isPresented: $showAlert) {
+                        Alert(
+                            title: Text(alertTitle),
+                            message: Text("Are you sure you want to discard changes?"),
+                            primaryButton: .destructive(Text("Discard")) {
+                                dismissView()
+                            },
+                            secondaryButton: .cancel()
+                        )
+                    }
                 }
-                .scrollToDismissesKeyboard()
-                .alert(isPresented: $showAlert) {
-                    Alert(
-                        title: Text(alertTitle),
-                        message: Text("Are you sure you want to discard changes?"),
-                        primaryButton: .destructive(Text("Discard")) {
-                            dismissView()
-                        },
-                        secondaryButton: .cancel()
-                    )
-                }
-            }
-            .navigationTitle("Quick Search Engine")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Menu("Back", systemImage: "chevron.backward") {
-                        Button(action: {
+                .navigationTitle("Quick Search Engine")
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarBackButtonHidden(true)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Menu("Back", systemImage: "chevron.backward") {
+                            Button(action: {
+                                saveCSEData(.dismiss)
+                            }) {
+                                Label("Save", systemImage: "checkmark")
+                            }
+                            Button(action: {
+                                saveCSEData(.discard)
+                            }) {
+                                Label("Discard", systemImage: "xmark")
+                            }
+                        } primaryAction: {
                             saveCSEData(.dismiss)
-                        }) {
-                            Label("Save", systemImage: "checkmark")
                         }
-                        Button(action: {
-                            saveCSEData(.discard)
-                        }) {
-                            Label("Discard", systemImage: "xmark")
-                        }
-                    } primaryAction: {
-                        saveCSEData(.dismiss)
                     }
-                }
-            }
-            .sheet(isPresented: $openRecommendView, content: {
-                RecommendView(isOpenSheet: $openRecommendView, CSEData: $CSEData)
-            })
-            .sheet(isPresented: $openCloudImportView, content: {
-                CloudImportView(isOpenSheet: $openCloudImportView, CSEData: $CSEData)
-            })
+                },
+                openRecommendView: $openRecommendView,
+                openCloudImportView: $openCloudImportView,
+                cseData: $CSEData
+            )
             .onChange(of: scenePhase) { newPhase in
                 if newPhase == .background || newPhase == .inactive {
                     saveCSEData(.autosave)
