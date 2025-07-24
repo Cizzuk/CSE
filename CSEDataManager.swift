@@ -43,6 +43,7 @@ class CSEDataManager {
         let defaultCSE: String
         let privateCSE: String
         let quickCSE: String
+        let useEmojiSearch: Bool
         
         static func == (lhs: DeviceCSEs, rhs: DeviceCSEs) -> Bool {
                 return lhs.id.recordName == rhs.id.recordName

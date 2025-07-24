@@ -431,6 +431,7 @@ class Tutorial {
                             let defaultCSE = ck.allCSEs.first(where: { $0.id.recordName == selected })?.defaultCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: Any] ?? [:]
                             let privateCSE = ck.allCSEs.first(where: { $0.id.recordName == selected })?.privateCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: Any] ?? [:]
                             let quickCSE = ck.allCSEs.first(where: { $0.id.recordName == selected })?.quickCSE.data(using: .utf8).flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) } as? [String: [String: Any]] ?? [:]
+                            let useEmojiSearch = ck.allCSEs.first(where: { $0.id.recordName == selected })?.useEmojiSearch ?? false
                             
                             let parsedDefaultCSE = CSEDataManager.parseCSEData(defaultCSE)
                             let parsedPrivateCSE = CSEDataManager.parseCSEData(privateCSE)
@@ -442,6 +443,7 @@ class Tutorial {
                             userDefaults.set((parsedDefaultCSE.url != ""), forKey: "useDefaultCSE")
                             userDefaults.set((parsedPrivateCSE.url != ""), forKey: "usePrivateCSE")
                             userDefaults.set(!quickCSE.isEmpty, forKey: "useQuickCSE")
+                            userDefaults.set(useEmojiSearch, forKey: "useEmojiSearch")
                         }
                         isOpenSheet = false
                     }) {

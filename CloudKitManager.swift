@@ -29,6 +29,7 @@ final class CloudKitManager: ObservableObject {
         let defaultCSE: CSEDataManager.CSEData = CSEDataManager.getCSEData(.defaultCSE)
         let privateCSE: CSEDataManager.CSEData = CSEDataManager.getCSEData(.privateCSE)
         let quickCSE: [String: CSEDataManager.CSEData] = CSEDataManager.getAllQuickCSEData()
+        let useEmojiSearch: Bool = userDefaults.bool(forKey: "useEmojiSearch")
         
         // Convert CSE data to dictionary
         let defaultCSEDict = CSEDataManager.CSEDataToDictionary(defaultCSE)
@@ -68,6 +69,7 @@ final class CloudKitManager: ObservableObject {
         } else {
             record["quickCSE"] = ""
         }
+        record["useEmojiSearch"] = useEmojiSearch
         
         // Save record
         let operation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
@@ -108,7 +110,8 @@ final class CloudKitManager: ObservableObject {
                     deviceName: record["deviceName"] as? String ?? "",
                     defaultCSE: record["defaultCSE"] as? String ?? "",
                     privateCSE: record["privateCSE"] as? String ?? "",
-                    quickCSE: record["quickCSE"] as? String ?? ""
+                    quickCSE: record["quickCSE"] as? String ?? "",
+                    useEmojiSearch: record["useEmojiSearch"] as? Bool ?? false
                 )
                 self.error = nil
                 self.allCSEs.append(fetchedRecord)
