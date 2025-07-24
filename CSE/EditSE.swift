@@ -541,7 +541,7 @@ class EditSE {
         private let recommendNormalCSEList = RecommendSEs.recommendNormalCSEList()
         
         var body: some View {
-            NavigationView {
+            NavigationStack {
                 List {
                     // Search Engine List
                     Section {
@@ -604,7 +604,7 @@ class EditSE {
         @StateObject private var ck = CloudKitManager()
         
         var body: some View {
-            NavigationView {
+            NavigationStack {
                 List() {
                     if ck.isLoading {
                         ProgressView()

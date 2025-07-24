@@ -30,7 +30,7 @@ class Tutorial {
     struct FirstView: View {
         @Binding var isOpenSheet: Bool
         var body: some View {
-            NavigationView {
+            NavigationStack {
                 VStack() {
                     Text("Welcome to CSE")
                         .font(.largeTitle)
@@ -108,7 +108,7 @@ class Tutorial {
         @AppStorage("privsearchengine", store: userDefaults) private var privsearchengine: String = "duckduckgo"
         
         var body: some View {
-            NavigationView {
+            NavigationStack {
                 VStack() {
                     HeaderText(text: NSLocalizedString("Safari Settings", comment: ""))
                     VStack() {
@@ -218,7 +218,7 @@ class Tutorial {
         @AppStorage("privsearchengine", store: userDefaults) private var privsearchengine: String = "duckduckgo"
         
         var body: some View {
-            NavigationView {
+            NavigationStack {
                 VStack() {
                     HeaderText(text: NSLocalizedString("Safari Settings", comment: ""))
                     VStack() {
@@ -307,7 +307,7 @@ class Tutorial {
         private let recommendNormalCSEList = RecommendSEs.recommendNormalCSEList()
         
         var body: some View {
-            NavigationView {
+            NavigationStack {
                 VStack() {
                     HeaderText(text: NSLocalizedString("Setup Search Engine", comment: ""))
                     VStack() {
@@ -387,7 +387,7 @@ class Tutorial {
         @State private var selected: String? = nil
         
         var body: some View {
-            NavigationView {
+            NavigationStack {
                 VStack() {
                     List() {
                         if ck.isLoading {
