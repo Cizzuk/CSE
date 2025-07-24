@@ -108,15 +108,20 @@ class EditSE {
         _ content: Content,
         openRecommendView: Binding<Bool>,
         openCloudImportView: Binding<Bool>,
-        cseData: Binding<CSEDataManager.CSEData>
+        cseData: Binding<CSEDataManager.CSEData>,
+        onDismiss: (() -> Void)? = nil
     ) -> some View {
         content
-            .sheet(isPresented: openRecommendView, content: {
+            .sheet(isPresented: openRecommendView, onDismiss: {
+                onDismiss?()
+            }) {
                 RecommendView(isOpenSheet: openRecommendView, CSEData: cseData)
-            })
-            .sheet(isPresented: openCloudImportView, content: {
+            }
+            .sheet(isPresented: openCloudImportView, onDismiss: {
+                onDismiss?()
+            }) {
                 CloudImportView(isOpenSheet: openCloudImportView, CSEData: cseData)
-            })
+            }
     }
     
     // DefaultCSE Edit View
@@ -169,7 +174,10 @@ class EditSE {
                 .navigationBarTitleDisplayMode(.inline),
                 openRecommendView: $openRecommendView,
                 openCloudImportView: $openCloudImportView,
-                cseData: $CSEData
+                cseData: $CSEData,
+                onDismiss: {
+                    saveCSEData(.autosave)
+                }
             )
             .onChange(of: scenePhase) { newPhase in
                 if newPhase == .inactive {
@@ -255,7 +263,10 @@ class EditSE {
                 .navigationBarTitleDisplayMode(.inline),
                 openRecommendView: $openRecommendView,
                 openCloudImportView: $openCloudImportView,
-                cseData: $CSEData
+                cseData: $CSEData,
+                onDismiss: {
+                    saveCSEData(.autosave)
+                }
             )
             .onChange(of: scenePhase) { newPhase in
                 if newPhase == .inactive {
@@ -394,7 +405,10 @@ class EditSE {
                 },
                 openRecommendView: $openRecommendView,
                 openCloudImportView: $openCloudImportView,
-                cseData: $CSEData
+                cseData: $CSEData,
+                onDismiss: {
+                    saveCSEData(.autosave)
+                }
             )
             .onChange(of: scenePhase) { newPhase in
                 if newPhase == .inactive {
@@ -536,6 +550,7 @@ class EditSE {
     private struct RecommendView: View {
         @Binding var isOpenSheet: Bool
         @Binding var CSEData: CSEDataManager.CSEData
+        
         private let recommendPopCSEList = RecommendSEs.recommendPopCSEList()
         private let recommendAICSEList = RecommendSEs.recommendAICSEList()
         private let recommendNormalCSEList = RecommendSEs.recommendNormalCSEList()
@@ -684,6 +699,8 @@ class EditSE {
         @Binding var privateCSE: CSEDataManager.CSEData
         @Binding var quickCSE: [String: CSEDataManager.CSEData]
         
+        @State private var originalID: String?
+        
         var body: some View {
             List {
                 // Default Search Engine
@@ -691,6 +708,7 @@ class EditSE {
                     Section {
                         Button {
                             CSEData = defaultCSE
+                            CSEData.keyword = originalID ?? defaultCSE.keyword
                             isOpenSheet = false
                         } label: {
                             VStack(alignment: .leading) {
@@ -711,6 +729,7 @@ class EditSE {
                     Section {
                         Button {
                             CSEData = privateCSE
+                            CSEData.keyword = originalID ?? privateCSE.keyword
                             isOpenSheet = false
                         } label: {
                             VStack(alignment: .leading) {
@@ -752,6 +771,9 @@ class EditSE {
                         Text("Quick Search Engines")
                     }
                 }
+            }
+            .task {
+                originalID = CSEData.keyword
             }
         }
     }
