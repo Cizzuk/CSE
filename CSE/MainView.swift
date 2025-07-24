@@ -128,6 +128,7 @@ struct ContentView: View {
                             Spacer()
                             Text("If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial.")
                                 .foregroundColor(.secondary)
+                                .font(.subheadline)
                         }
                     }
                 }
@@ -213,7 +214,6 @@ struct ContentView: View {
                 
             }
             .navigationTitle("CSE Settings")
-            //.listStyle(.insetGrouped)
         } detail: {
             NavigationStack {
                 Spacer()

@@ -22,7 +22,6 @@ struct IconSettingView: View {
                 iconItem(iconName: "Pixel", iconID: "pixel")
             }
         }
-        .listStyle(.insetGrouped)
         .navigationTitle("Change App Icon")
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -120,7 +119,6 @@ struct PurchaseView: View {
                     self.storeManager.restorePurchases()
                 }) {
                     Text("Restore Purchase")
-                        .font(.subheadline)
                         .frame(maxWidth: .infinity)
                 }
                 .alert("Restore Success!", isPresented: $showRestoreSucAlert, actions: {})
@@ -152,7 +150,6 @@ struct PurchaseView: View {
                 Text("Available icons may change in the future.")
             }
         }
-        .listStyle(.insetGrouped)
         .navigationTitle("Change App Icon")
         .navigationBarTitleDisplayMode(.inline)
     }
