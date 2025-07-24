@@ -133,32 +133,30 @@ class EditSE {
         
         var body: some View {
             EditSE.commonSheets(
-                NavigationStack {
-                    List {
-                        Section {
-                            Toggle(isOn: $useDefaultCSE) {
-                                Text("Default Search Engine")
-                            }
+                List {
+                    Section {
+                        Toggle(isOn: $useDefaultCSE) {
+                            Text("Default Search Engine")
                         }
-                        
-                        // Search URL
-                        EditSE.searchURLSection(cseData: $CSEData) {
-                            saveCSEData(.autosave)
-                        }
-                        
-                        // Advanced Settings
-                        EditSE.advancedSettingsSection(cseData: $CSEData) {
-                            saveCSEData(.autosave)
-                        }
-                        
-                        // Import Search Engine
-                        EditSE.importSearchEngineSection(
-                            openRecommendView: $openRecommendView,
-                            openCloudImportView: $openCloudImportView
-                        )
                     }
-                    .scrollToDismissesKeyboard()
+                    
+                    // Search URL
+                    EditSE.searchURLSection(cseData: $CSEData) {
+                        saveCSEData(.autosave)
+                    }
+                    
+                    // Advanced Settings
+                    EditSE.advancedSettingsSection(cseData: $CSEData) {
+                        saveCSEData(.autosave)
+                    }
+                    
+                    // Import Search Engine
+                    EditSE.importSearchEngineSection(
+                        openRecommendView: $openRecommendView,
+                        openCloudImportView: $openCloudImportView
+                    )
                 }
+                .scrollToDismissesKeyboard()
                 .navigationTitle("Default Search Engine")
                 .navigationBarTitleDisplayMode(.inline),
                 openRecommendView: $openRecommendView,
@@ -210,34 +208,32 @@ class EditSE {
         
         var body: some View {
             EditSE.commonSheets(
-                NavigationStack {
-                    List {
-                        Section {
-                            Toggle(isOn: $usePrivateCSE) {
-                                Text("Private Search Engine")
-                            }
-                        } footer: {
-                            Text("Use different search engine in Private Browse")
+                List {
+                    Section {
+                        Toggle(isOn: $usePrivateCSE) {
+                            Text("Private Search Engine")
                         }
-                        
-                        // Search URL
-                        EditSE.searchURLSection(cseData: $CSEData) {
-                            saveCSEData(.autosave)
-                        }
-                        
-                        // Advanced Settings
-                        EditSE.advancedSettingsSection(cseData: $CSEData) {
-                            saveCSEData(.autosave)
-                        }
-                        
-                        // Import Search Engine
-                        EditSE.importSearchEngineSection(
-                            openRecommendView: $openRecommendView,
-                            openCloudImportView: $openCloudImportView
-                        )
+                    } footer: {
+                        Text("Use different search engine in Private Browse")
                     }
-                    .scrollToDismissesKeyboard()
+                    
+                    // Search URL
+                    EditSE.searchURLSection(cseData: $CSEData) {
+                        saveCSEData(.autosave)
+                    }
+                    
+                    // Advanced Settings
+                    EditSE.advancedSettingsSection(cseData: $CSEData) {
+                        saveCSEData(.autosave)
+                    }
+                    
+                    // Import Search Engine
+                    EditSE.importSearchEngineSection(
+                        openRecommendView: $openRecommendView,
+                        openCloudImportView: $openCloudImportView
+                    )
                 }
+                .scrollToDismissesKeyboard()
                 .navigationTitle("Private Search Engine")
                 .navigationBarTitleDisplayMode(.inline),
                 openRecommendView: $openRecommendView,
@@ -296,68 +292,66 @@ class EditSE {
         
         var body: some View {
             EditSE.commonSheets(
-                NavigationStack {
-                    List {
-                        // Search Engine Name
-                        Section {
-                            TextField("Name", text: $CSEData.name)
-                                .submitLabel(.done)
-                                .onSubmit {
-                                    saveCSEData(.autosave)
-                                }
-                        } header: {
-                            Text("Name")
-                        }
-                        
-                        // Quick Search Key
-                        Section() {
-                            TextField("cse", text: $CSEData.keyword)
-                                .submitLabel(.done)
-                                .onSubmit {
-                                    saveCSEData(.autosave)
-                                }
-                                .onChange(of: CSEData.keyword) { newValue in
-                                    if newValue.count > 25 {
-                                        CSEData.keyword = String(newValue.prefix(25))
-                                    }
-                                    CSEData.keyword = CSEData.keyword.filter { $0 != " " && $0 != "　" }
-                                }
-                        } header: {
-                            Text("Keyword")
-                        } footer: {
-                            VStack(alignment : .leading) {
-                                Text("Enter this keyword at the top to search with this search engine.")
-                                Text("Example: '\(CSEData.keyword == "" ? "cse" : CSEData.keyword) your search'")
+                List {
+                    // Search Engine Name
+                    Section {
+                        TextField("Name", text: $CSEData.name)
+                            .submitLabel(.done)
+                            .onSubmit {
+                                saveCSEData(.autosave)
                             }
-                        }
-                        
-                        // Search URL
-                        EditSE.searchURLSection(cseData: $CSEData) {
-                            saveCSEData(.autosave)
-                        }
-                        
-                        // Advanced Settings
-                        EditSE.advancedSettingsSection(cseData: $CSEData) {
-                            saveCSEData(.autosave)
-                        }
-                        
-                        // Import Search Engine
-                        EditSE.importSearchEngineSection(
-                            openRecommendView: $openRecommendView,
-                            openCloudImportView: $openCloudImportView
-                        )
+                    } header: {
+                        Text("Name")
                     }
-                    .scrollToDismissesKeyboard()
-                    .alert(isPresented: $showAlert) {
-                        Alert(
-                            title: Text(alertTitle),
-                            message: Text("Are you sure you want to discard changes?"),
-                            primaryButton: .destructive(Text("Discard")) {
-                                dismissView()
-                            },
-                            secondaryButton: .cancel()
-                        )
+                    
+                    // Quick Search Key
+                    Section() {
+                        TextField("cse", text: $CSEData.keyword)
+                            .submitLabel(.done)
+                            .onSubmit {
+                                saveCSEData(.autosave)
+                            }
+                            .onChange(of: CSEData.keyword) { newValue in
+                                if newValue.count > 25 {
+                                    CSEData.keyword = String(newValue.prefix(25))
+                                }
+                                CSEData.keyword = CSEData.keyword.filter { $0 != " " && $0 != "　" }
+                            }
+                    } header: {
+                        Text("Keyword")
+                    } footer: {
+                        VStack(alignment : .leading) {
+                            Text("Enter this keyword at the top to search with this search engine.")
+                            Text("Example: '\(CSEData.keyword == "" ? "cse" : CSEData.keyword) your search'")
+                        }
                     }
+                    
+                    // Search URL
+                    EditSE.searchURLSection(cseData: $CSEData) {
+                        saveCSEData(.autosave)
+                    }
+                    
+                    // Advanced Settings
+                    EditSE.advancedSettingsSection(cseData: $CSEData) {
+                        saveCSEData(.autosave)
+                    }
+                    
+                    // Import Search Engine
+                    EditSE.importSearchEngineSection(
+                        openRecommendView: $openRecommendView,
+                        openCloudImportView: $openCloudImportView
+                    )
+                }
+                .scrollToDismissesKeyboard()
+                .alert(isPresented: $showAlert) {
+                    Alert(
+                        title: Text(alertTitle),
+                        message: Text("Are you sure you want to discard changes?"),
+                        primaryButton: .destructive(Text("Discard")) {
+                            dismissView()
+                        },
+                        secondaryButton: .cancel()
+                    )
                 }
                 .navigationTitle("Quick Search Engine")
                 .navigationBarTitleDisplayMode(.inline)

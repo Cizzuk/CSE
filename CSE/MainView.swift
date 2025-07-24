@@ -212,6 +212,9 @@ struct ContentView: View {
             .navigationTitle("CSE Settings")
             //.listStyle(.insetGrouped)
         } detail: {
+            NavigationStack {
+                Spacer()
+            }
         }
         // Tutorial sheets
         .sheet(isPresented : $needFirstTutorial, content: {
