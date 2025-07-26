@@ -29,4 +29,19 @@ class UITemplates {
             .foregroundColor(.primary)
         }
     }
+    
+    struct tutorialButton: View {
+        let text: String
+        
+        var body: some View {
+            Text(text)
+                .font(.headline)
+                .padding()
+                #if !visionOS
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity)
+                .glassEffectTutorialButton()
+                #endif
+        }
+    }
 }

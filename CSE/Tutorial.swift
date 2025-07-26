@@ -14,17 +14,6 @@ fileprivate func HeaderText(text: String) -> some View {
         .padding(EdgeInsets(top: 32, leading: 32, bottom: 4, trailing: 32))
 }
 
-fileprivate func NextButton(text: String) -> some View {
-    Text(text)
-        .font(.headline)
-        .padding()
-        #if !visionOS
-        .foregroundColor(.white)
-        .frame(maxWidth: .infinity)
-        .glassEffectTutorialButton()
-        #endif
-}
-
 class Tutorial {
     // First Tutorial
     struct FirstView: View {
@@ -86,7 +75,7 @@ class Tutorial {
                     }
                     .padding(.top, 10)
                     NavigationLink(destination: SafariSEView(isOpenSheet: $isOpenSheet, isFirstTutorial: true)) {
-                        NextButton(text: NSLocalizedString("Next", comment: ""))
+                        UITemplates.tutorialButton(text: NSLocalizedString("Next", comment: ""))
                     }
                     .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
                 }
@@ -198,7 +187,7 @@ class Tutorial {
                     }
                     
                     NavigationLink(destination: SafariPermissionView(isOpenSheet: $isOpenSheet, isFirstTutorial: isFirstTutorial)) {
-                        NextButton(text: NSLocalizedString("Next", comment: ""))
+                        UITemplates.tutorialButton(text: NSLocalizedString("Next", comment: ""))
                     }
                     .padding([.horizontal, .bottom], 24)
                 }
@@ -280,14 +269,14 @@ class Tutorial {
                     
                     if isFirstTutorial {
                         NavigationLink(destination: RecommendView(isOpenSheet: $isOpenSheet)) {
-                            NextButton(text: NSLocalizedString("Next", comment: ""))
+                            UITemplates.tutorialButton(text: NSLocalizedString("Next", comment: ""))
                         }
                         .padding([.horizontal, .bottom], 24)
                     } else {
                         Button(action: {
                             isOpenSheet = false
                         }) {
-                            NextButton(text: NSLocalizedString("Done", comment: ""))
+                            UITemplates.tutorialButton(text: NSLocalizedString("Done", comment: ""))
                         }
                         .padding([.horizontal, .bottom], 24)
                     }
@@ -369,7 +358,7 @@ class Tutorial {
                     Button(action: {
                         isOpenSheet = false
                     }) {
-                        NextButton(text: NSLocalizedString("Skip", comment: ""))
+                        UITemplates.tutorialButton(text: NSLocalizedString("Skip", comment: ""))
                     }
                     .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
                 }
@@ -434,9 +423,9 @@ class Tutorial {
                         isOpenSheet = false
                     }) {
                         if selected == nil {
-                            NextButton(text: NSLocalizedString("Skip", comment: ""))
+                            UITemplates.tutorialButton(text: NSLocalizedString("Skip", comment: ""))
                         } else {
-                            NextButton(text: NSLocalizedString("Done", comment: ""))
+                            UITemplates.tutorialButton(text: NSLocalizedString("Done", comment: ""))
                         }
                     }
                     .animation(.easeOut(duration: 0.15), value: selected)
