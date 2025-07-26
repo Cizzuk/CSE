@@ -19,6 +19,15 @@ final class CloudKitManager: ObservableObject {
     @Published var isLoading: Bool = false // Indicates if the CloudKit is loading
     @Published var isLocked: Bool = false // If the current view is locked
     
+    // Create device name
+    func createDeviceName() -> String {
+        #if macOS
+        return "Mac Catalyst / " + UIDevice.current.systemName + " " + UIDevice.current.systemVersion
+        #else
+        return UIDevice.current.name + " / " + UIDevice.current.systemName + " " + UIDevice.current.systemVersion
+        #endif
+    }
+    
     // Upload CSEs
     func saveAll(mustUpload: Bool = false) {
         // Check if upload is disabled
@@ -60,15 +69,8 @@ final class CloudKitManager: ObservableObject {
         let recordID = CKRecord.ID(recordName: deviceID)
         let record = CKRecord(recordType: "DeviceCSEs", recordID: recordID)
         
-        // Create device name
-        #if macOS
-        let deviceName = "Mac Catalyst / " + UIDevice.current.systemName + " " + UIDevice.current.systemVersion
-        #else
-        let deviceName = UIDevice.current.name + " / " + UIDevice.current.systemName + " " + UIDevice.current.systemVersion
-        #endif
-        
         // Set record values
-        record["deviceName"] = deviceName
+        record["deviceName"] = createDeviceName()
         if userDefaults.bool(forKey: "useDefaultCSE") {
             record["defaultCSE"] = defaultCSEJSON
         } else {
