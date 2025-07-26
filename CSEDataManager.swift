@@ -295,4 +295,19 @@ class CSEDataManager {
         }
     }
     
+    class func importDeviceCSEs(from deviceCSE: DeviceCSEs) {
+        // Parse device CSE data using existing function
+        let (defaultCSE, privateCSE, quickCSE) = parseDeviceCSEs(deviceCSE)
+        
+        // Save CSEs
+        saveCSEData(defaultCSE, .defaultCSE, uploadCloud: false)
+        saveCSEData(privateCSE, .privateCSE, uploadCloud: false)
+        replaceQuickCSEData(quickCSE)
+        
+        // Update Toggles
+        userDefaults.set(!defaultCSE.url.isEmpty, forKey: "useDefaultCSE")
+        userDefaults.set(!privateCSE.url.isEmpty, forKey: "usePrivateCSE")
+        userDefaults.set(!quickCSE.isEmpty, forKey: "useQuickCSE")
+        userDefaults.set(deviceCSE.useEmojiSearch, forKey: "useEmojiSearch")
+    }
 }
