@@ -26,15 +26,7 @@ struct AboutView: View {
                 HStack {
                     Text("Version")
                     Spacer()
-                    Text(currentVersion ?? "Unknown")
-                        .foregroundColor(.secondary)
-                        .textSelection(.enabled)
-                }
-                .accessibilityElement(children: .combine)
-                HStack {
-                    Text("Build")
-                    Spacer()
-                    Text("\(buildScheme) / \(currentBuild ?? "Unknown")")
+                    Text("\(currentVersion ?? "Unknown") (\(buildScheme) / \(currentBuild ?? "Unknown"))")
                         .foregroundColor(.secondary)
                         .textSelection(.enabled)
                 }
