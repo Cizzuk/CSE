@@ -357,7 +357,7 @@ class EditSE {
                                 if newValue.count > 25 {
                                     CSEData.keyword = String(newValue.prefix(25))
                                 }
-                                CSEData.keyword = CSEData.keyword.filter { $0 != " " && $0 != "　" }
+                                CSEData.keyword = CSEData.keyword.filter { !($0.isWhitespace || $0.isNewline) }
                             }
                     } header: {
                         Text("Keyword")
