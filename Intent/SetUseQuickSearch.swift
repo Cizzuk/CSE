@@ -7,7 +7,7 @@
 
 import Foundation
 import AppIntents
-#if iOS
+#if !visionOS
 import WidgetKit
 #endif
 
@@ -45,8 +45,8 @@ struct SetUseQuickSearch: AppIntent, CustomIntentMigratedAppIntent {
         
         userDefaults.set(useQuickCSE, forKey: "useQuickCSE")
         
-        #if iOS
-        if #available(iOS 18.0, *) {
+        #if !visionOS
+        if #available(iOS 18.0, macOS 26, *) {
             ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
         }
         #endif
