@@ -40,6 +40,7 @@ extension CCQuickSearch {
 
 struct CCQuickSearchIntent: SetValueIntent {
     static let title: LocalizedStringResource = "Quick Search"
+    static var isDiscoverable: Bool = false
 
     @Parameter(title: "Quick Search", default: false)
     var value: Bool

@@ -40,6 +40,7 @@ extension CCUseDefaultCSE {
 
 struct CCUseDefaultCSEIntent: SetValueIntent {
     static let title: LocalizedStringResource = "Default Search Engine"
+    static var isDiscoverable: Bool = false
 
     @Parameter(title: "Default Search Engine", default: false)
     var value: Bool

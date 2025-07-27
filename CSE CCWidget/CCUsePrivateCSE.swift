@@ -40,6 +40,7 @@ extension CCUsePrivateCSE {
 
 struct CCUsePrivateCSEIntent: SetValueIntent {
     static let title: LocalizedStringResource = "Private Search Engine"
+    static var isDiscoverable: Bool = false
 
     @Parameter(title: "Private Search Engine", default: false)
     var value: Bool

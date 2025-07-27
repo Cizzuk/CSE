@@ -40,6 +40,7 @@ extension CCEmojiSearch {
 
 struct CCEmojiSearchIntent: SetValueIntent {
     static let title: LocalizedStringResource = "Emoji Search"
+    static var isDiscoverable: Bool = false
 
     @Parameter(title: "Emoji Search", default: false)
     var value: Bool
