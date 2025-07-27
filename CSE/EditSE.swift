@@ -324,7 +324,7 @@ class EditSE {
         
         // Alerts
         @State private var showAlert: Bool = false
-        @State private var alertTitle: String = ""
+        @State private var alertTitle: String.LocalizationValue = ""
         
         // Sheets
         @State private var openRecommendView: Bool = false
@@ -387,7 +387,7 @@ class EditSE {
                 .scrollToDismissesKeyboard()
                 .alert(isPresented: $showAlert) {
                     Alert(
-                        title: Text(alertTitle),
+                        title: Text(String(localized: alertTitle)),
                         message: Text("Are you sure you want to discard changes?"),
                         primaryButton: .destructive(Text("Discard")) {
                             dismissView()
@@ -475,16 +475,16 @@ class EditSE {
                     dismissView()
                 }
             } catch CSEDataManager.saveCSEDataError.keyBlank {
-                alertTitle = NSLocalizedString("Keyword cannot be blank", comment: "")
+                alertTitle = "Keyword cannot be blank"
                 showAlert = true
             } catch CSEDataManager.saveCSEDataError.urlBlank {
-                alertTitle = NSLocalizedString("Search URL cannot be blank", comment: "")
+                alertTitle = "Search URL cannot be blank"
                 showAlert = true
             } catch CSEDataManager.saveCSEDataError.keyUsed {
-                alertTitle = NSLocalizedString("This keyword is already used in other", comment: "")
+                alertTitle = "This keyword is already used in other"
                 showAlert = true
             } catch {
-                alertTitle = NSLocalizedString("An error occurred while loading or updating data", comment: "")
+                alertTitle = "An error occurred while loading or updating data"
                 showAlert = true
             }
         }

@@ -39,7 +39,7 @@ struct QuickSEListView: View {
             if useQuickCSEToggle {
                 // Current Quick SEs List
                 Section {
-                    let keywordTranslation = NSLocalizedString("Keyword", comment: "")
+                    let keywordTranslation = String(localized: "Keyword")
                     ForEach(quickCSE.keys.sorted(), id: \.self) { cseID in
                         if let cseData: CSEDataManager.CSEData = quickCSE[cseID] {
                             let displayName: String = cseData.name != "" ? cseData.name : cseData.url

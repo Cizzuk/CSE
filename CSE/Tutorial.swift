@@ -75,7 +75,7 @@ class Tutorial {
                     }
                     .padding(.top, 10)
                     NavigationLink(destination: SafariSEView(isOpenSheet: $isOpenSheet, isFirstTutorial: true)) {
-                        UITemplates.tutorialButton(text: NSLocalizedString("Next", comment: ""))
+                        UITemplates.tutorialButton(text: "Next")
                     }
                     .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
                 }
@@ -99,7 +99,7 @@ class Tutorial {
         var body: some View {
             NavigationStack {
                 VStack() {
-                    HeaderText(text: NSLocalizedString("Safari Settings", comment: ""))
+                    HeaderText(text: "Safari Settings")
                     VStack() {
                         Text("Please make sure that the following items are the same as your Safari settings")
                     }
@@ -187,7 +187,7 @@ class Tutorial {
                     }
                     
                     NavigationLink(destination: SafariPermissionView(isOpenSheet: $isOpenSheet, isFirstTutorial: isFirstTutorial)) {
-                        UITemplates.tutorialButton(text: NSLocalizedString("Next", comment: ""))
+                        UITemplates.tutorialButton(text: "Next")
                     }
                     .padding([.horizontal, .bottom], 24)
                 }
@@ -209,7 +209,7 @@ class Tutorial {
         var body: some View {
             NavigationStack {
                 VStack() {
-                    HeaderText(text: NSLocalizedString("Safari Settings", comment: ""))
+                    HeaderText(text: "Safari Settings")
                     VStack() {
                         Text("Please allow CSE at the following webpage")
                     }
@@ -269,14 +269,14 @@ class Tutorial {
                     
                     if isFirstTutorial {
                         NavigationLink(destination: RecommendView(isOpenSheet: $isOpenSheet)) {
-                            UITemplates.tutorialButton(text: NSLocalizedString("Next", comment: ""))
+                            UITemplates.tutorialButton(text: "Next")
                         }
                         .padding([.horizontal, .bottom], 24)
                     } else {
                         Button(action: {
                             isOpenSheet = false
                         }) {
-                            UITemplates.tutorialButton(text: NSLocalizedString("Done", comment: ""))
+                            UITemplates.tutorialButton(text: "Done")
                         }
                         .padding([.horizontal, .bottom], 24)
                     }
@@ -298,7 +298,7 @@ class Tutorial {
         var body: some View {
             NavigationStack {
                 VStack() {
-                    HeaderText(text: NSLocalizedString("Setup Search Engine", comment: ""))
+                    HeaderText(text: "Setup Search Engine")
                     VStack() {
                         Text("Choose a search engine below or customize it later.")
                     }
@@ -358,7 +358,7 @@ class Tutorial {
                     Button(action: {
                         isOpenSheet = false
                     }) {
-                        UITemplates.tutorialButton(text: NSLocalizedString("Skip", comment: ""))
+                        UITemplates.tutorialButton(text: "Skip")
                     }
                     .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
                 }
@@ -423,9 +423,9 @@ class Tutorial {
                         isOpenSheet = false
                     }) {
                         if selected == nil {
-                            UITemplates.tutorialButton(text: NSLocalizedString("Skip", comment: ""))
+                            UITemplates.tutorialButton(text: "Skip")
                         } else {
-                            UITemplates.tutorialButton(text: NSLocalizedString("Done", comment: ""))
+                            UITemplates.tutorialButton(text: "Done")
                         }
                     }
                     .animation(.easeOut(duration: 0.15), value: selected)

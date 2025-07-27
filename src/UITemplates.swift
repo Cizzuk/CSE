@@ -31,10 +31,10 @@ class UITemplates {
     }
     
     struct tutorialButton: View {
-        let text: String
+        let text: String.LocalizationValue
         
         var body: some View {
-            Text(text)
+            Text(String(localized: text))
                 .font(.headline)
                 .padding()
                 #if !visionOS
