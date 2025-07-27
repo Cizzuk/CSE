@@ -19,10 +19,10 @@ struct AddQuickSE: AppIntent, CustomIntentMigratedAppIntent {
     @Parameter(title: "Name", default: "")
         var name: String
     
-    @Parameter(title: "Keyword", default: "")
+    @Parameter(title: "Keyword")
         var cseID: String
     
-    @Parameter(title: "URL", default: "")
+    @Parameter(title: "URL")
         var cseURL: String
     
     @Parameter(title: "Disable Percent-encoding", default: false)
