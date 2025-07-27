@@ -7,7 +7,6 @@
 
 import AppIntents
 
-@available(iOS 16.0, macOS 13.0, *)
 struct SetFocusSE : SetFocusFilterIntent {
     static var title: LocalizedStringResource = "Set Search Engine"
     static var description: LocalizedStringResource = "Sets a Custom Search Engine to be used during this Focus."

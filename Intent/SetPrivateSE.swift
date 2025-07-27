@@ -7,6 +7,9 @@
 
 import Foundation
 import AppIntents
+#if iOS
+import WidgetKit
+#endif
 
 struct SetPrivateSE: AppIntent, CustomIntentMigratedAppIntent {
     static let intentClassName = "SetPrivateSE"
@@ -29,6 +32,11 @@ struct SetPrivateSE: AppIntent, CustomIntentMigratedAppIntent {
         } else {
             userDefaults.set(true, forKey: "usePrivateCSE")
         }
+        #if iOS
+        if #available(iOS 18.0, *) {
+            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UsePrivateCSE")
+        }
+        #endif
         
         let cseData = CSEDataManager.CSEData(
             url: cseURL,

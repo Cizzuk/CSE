@@ -46,8 +46,7 @@ struct CCQuickSearchIntent: SetValueIntent {
     var value: Bool
 
     func perform() async throws -> some IntentResult {
-        let userDefaults = CSEDataManager.userDefaults
-        userDefaults.set(value, forKey: "useQuickCSE")
+        CSEDataManager.userDefaults.set(value, forKey: "useQuickCSE")
         return .result()
     }
 }

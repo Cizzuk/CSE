@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+#if iOS
+import WidgetKit
+#endif
 
 class EditSE {
     
@@ -148,6 +151,11 @@ class EditSE {
                             withAnimation {
                                 useDefaultCSEToggle = useDefaultCSE
                             }
+                            #if iOS
+                            if #available(iOS 18.0, *) {
+                                ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UseDefaultCSE")
+                            }
+                            #endif
                         }
                     }
                     
@@ -235,6 +243,11 @@ class EditSE {
                             withAnimation {
                                 usePrivateCSEToggle = usePrivateCSE
                             }
+                            #if iOS
+                            if #available(iOS 18.0, *) {
+                                ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UsePrivateCSE")
+                            }
+                            #endif
                         }
                     } footer: {
                         Text("Use different search engine in Private Browse")

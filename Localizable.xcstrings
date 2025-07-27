@@ -8565,6 +8565,9 @@
         }
       }
     },
+    "Turn Default Search Engine On or Off on CSE." : {
+
+    },
     "Turn Emoji Search On or Off on CSE." : {
       "localizations" : {
         "ar" : {
@@ -8634,6 +8637,9 @@
           }
         }
       }
+    },
+    "Turn Private Search Engine On or Off on CSE." : {
+
     },
     "Turn Quick Search On or Off on CSE." : {
       "localizations" : {

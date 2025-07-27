@@ -46,8 +46,7 @@ struct CCEmojiSearchIntent: SetValueIntent {
     var value: Bool
 
     func perform() async throws -> some IntentResult {
-        let userDefaults = CSEDataManager.userDefaults
-        userDefaults.set(value, forKey: "useEmojiSearch")
+        CSEDataManager.userDefaults.set(value, forKey: "useEmojiSearch")
         return .result()
     }
 }
