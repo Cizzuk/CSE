@@ -145,10 +145,21 @@ class CSEDataManager {
         return (defaultCSE, privateCSE, quickCSE)
     }
     
-    enum saveCSEDataError: Error {
+    enum saveCSEDataError: LocalizedError {
         case keyBlank
         case urlBlank
         case keyUsed
+        
+        var errorDescription: String? {
+            switch self {
+            case .keyBlank:
+                return String(localized: "Keyword cannot be blank")
+            case .urlBlank:
+                return String(localized: "Search URL cannot be blank")
+            case .keyUsed:
+                return String(localized: "This keyword is already used in other")
+            }
+        }
     }
     
     class func saveCSEDataCommon(_ data: CSEData) -> CSEData {

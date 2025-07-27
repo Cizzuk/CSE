@@ -324,7 +324,7 @@ class EditSE {
         
         // Alerts
         @State private var showAlert: Bool = false
-        @State private var alertTitle: String.LocalizationValue = ""
+        @State private var alertTitle: String = String(localized: "An error occurred while loading or updating data")
         
         // Sheets
         @State private var openRecommendView: Bool = false
@@ -387,7 +387,7 @@ class EditSE {
                 .scrollToDismissesKeyboard()
                 .alert(isPresented: $showAlert) {
                     Alert(
-                        title: Text(String(localized: alertTitle)),
+                        title: Text(alertTitle),
                         message: Text("Are you sure you want to discard changes?"),
                         primaryButton: .destructive(Text("Discard")) {
                             dismissView()
@@ -469,22 +469,17 @@ class EditSE {
         }
         
         private func saveCSEDataWithErrorHandling(_ data: CSEDataManager.CSEData, targetCSEID: String?, shouldDismiss: Bool) {
+            let unknownErrorMsg = String(localized: "An error occurred while loading or updating data")
             do {
                 try CSEDataManager.saveCSEData(data, targetCSEID)
                 if shouldDismiss {
                     dismissView()
                 }
-            } catch CSEDataManager.saveCSEDataError.keyBlank {
-                alertTitle = "Keyword cannot be blank"
-                showAlert = true
-            } catch CSEDataManager.saveCSEDataError.urlBlank {
-                alertTitle = "Search URL cannot be blank"
-                showAlert = true
-            } catch CSEDataManager.saveCSEDataError.keyUsed {
-                alertTitle = "This keyword is already used in other"
+            } catch let error as CSEDataManager.saveCSEDataError {
+                alertTitle = error.errorDescription ?? unknownErrorMsg
                 showAlert = true
             } catch {
-                alertTitle = "An error occurred while loading or updating data"
+                alertTitle = unknownErrorMsg
                 showAlert = true
             }
         }
