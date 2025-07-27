@@ -24,7 +24,6 @@ struct CCUseDefaultCSE: ControlWidget {
             }
         }
         .displayName("Default Search Engine")
-        .description("Turn Default Search Engine On or Off on CSE.")
     }
 }
 

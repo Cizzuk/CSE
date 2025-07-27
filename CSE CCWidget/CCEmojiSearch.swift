@@ -24,7 +24,6 @@ struct CCEmojiSearch: ControlWidget {
             }
         }
         .displayName("Emoji Search")
-        .description("Turn Emoji Search On or Off on CSE.")
     }
 }
 

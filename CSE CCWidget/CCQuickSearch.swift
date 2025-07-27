@@ -24,7 +24,6 @@ struct CCQuickSearch: ControlWidget {
             }
         }
         .displayName("Quick Search")
-        .description("Turn Quick Search On or Off on CSE.")
     }
 }
 

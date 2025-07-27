@@ -24,7 +24,6 @@ struct CCUsePrivateCSE: ControlWidget {
             }
         }
         .displayName("Private Search Engine")
-        .description("Turn Private Search Engine On or Off on CSE.")
     }
 }
 
