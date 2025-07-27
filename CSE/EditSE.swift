@@ -353,10 +353,7 @@ class EditSE {
                             .onSubmit {
                                 saveCSEData(.autosave)
                             }
-                            .onChange(of: CSEData.keyword) { newValue in
-                                if newValue.count > 25 {
-                                    CSEData.keyword = String(newValue.prefix(25))
-                                }
+                            .onChange(of: CSEData.keyword) { _ in
                                 CSEData.keyword = CSEData.keyword.filter { !($0.isWhitespace || $0.isNewline) }
                             }
                     } header: {
