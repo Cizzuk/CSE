@@ -191,31 +191,18 @@ class CSEDataManager {
     }
     
     class func saveCSEData(_ data: CSEData, _ type: CSEType = .defaultCSE, uploadCloud: Bool = true) {
+        // QuickCSE fallback
+        if type == .quickCSE {
+            try? saveCSEData(data, nil, uploadCloud: uploadCloud)
+            return
+        }
+        
         var cseData = saveCSEDataCommon(data)
         
-        // Normalize Safari search engine URLs
-        let replacements = [
-            "https://google.com": "https://www.google.com",
-            "https://bing.com": "https://www.bing.com",
-            "https://www.duckduckgo.com": "https://duckduckgo.com",
-            "https://ecosia.com": "https://www.ecosia.com",
-            "https://baidu.com": "https://www.baidu.com"
-        ]
-        for (original, replacement) in replacements {
-            if cseData.url.hasPrefix(original) {
-                cseData.url = cseData.url.replacingOccurrences(of: original, with: replacement)
-                break
-            }
-        }
-        
-        // Clean up post data
-        cseData.post = cleanPostData(cseData.post)
-        
-        if type == .defaultCSE || type == .privateCSE {
-            cseData.keyword = "" // Default and Private CSEs do not have keywords
-            cseData.name = "" // Default and Private CSEs do not have names
-            userDefaults.set(CSEDataToDictionary(cseData), forKey: type.rawValue)
-        }
+        // Default and Private CSEs do not have keywords and names
+        cseData.keyword = "" // Default and Private CSEs do not have keywords
+        cseData.name = "" // Default and Private CSEs do not have names
+        userDefaults.set(CSEDataToDictionary(cseData), forKey: type.rawValue)
         
         // Upload CSEData to iCloud
         if uploadCloud {
