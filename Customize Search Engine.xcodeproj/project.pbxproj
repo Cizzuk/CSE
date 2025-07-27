@@ -37,7 +37,7 @@
 		BE8F7FE12DE31A43003906F4 /* UITemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8F7FE02DE31A43003906F4 /* UITemplates.swift */; };
 		BE8F7FF02DE41F0E003906F4 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8F7FEF2DE41F0E003906F4 /* WidgetKit.framework */; };
 		BE8F7FF22DE41F0E003906F4 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8F7FF12DE41F0E003906F4 /* SwiftUI.framework */; };
-		BE8F7FFF2DE41F0F003906F4 /* CSE CCWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BE8F7FED2DE41F0E003906F4 /* CSE CCWidgetExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BE8F7FFF2DE41F0F003906F4 /* CSE CCWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BE8F7FED2DE41F0E003906F4 /* CSE CCWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BE8F80062DE4200A003906F4 /* CSEDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8F7FDA2DE2ABDA003906F4 /* CSEDataManager.swift */; };
 		BE8F80072DE42049003906F4 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCDAED2DB49844009F9C07 /* CloudKitManager.swift */; };
 		BE8F800D2DE4857C003906F4 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */; };
@@ -492,7 +492,6 @@
 		};
 		BE8F7FFE2DE41F0F003906F4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = ios;
 			target = BE8F7FEC2DE41F0E003906F4 /* CSE CCWidgetExtension */;
 			targetProxy = BE8F7FFD2DE41F0F003906F4 /* PBXContainerItemProxy */;
 		};
@@ -1111,7 +1110,7 @@
 				INFOPLIST_FILE = "CSE CCWidget/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "CSE CCWidget";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1124,7 +1123,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
@@ -1189,7 +1188,7 @@
 				INFOPLIST_FILE = "CSE CCWidget/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "CSE CCWidget";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1205,7 +1204,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1271,7 +1270,7 @@
 				INFOPLIST_FILE = "CSE CCWidget/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "CSE CCWidget";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1287,7 +1286,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1353,7 +1352,7 @@
 				INFOPLIST_FILE = "CSE CCWidget/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "CSE CCWidget";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1369,7 +1368,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
