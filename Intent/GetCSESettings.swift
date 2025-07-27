@@ -37,6 +37,11 @@ struct GetCSESettings: AppIntent, CustomIntentMigratedAppIntent {
             cseData = CSEDataManager.getCSEData(.quickCSE, id: cseID)
         } else {
             cseData = CSEDataManager.getCSEData(type)
+            if type == .privateCSE {
+                cseData.name = String(localized: "Private Search Engine")
+            } else {
+                cseData.name = String(localized: "Default Search Engine")
+            }
         }
         
         switch settings {
