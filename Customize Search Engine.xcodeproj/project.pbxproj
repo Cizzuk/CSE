@@ -140,6 +140,7 @@
 				DeleteQuickSE.swift,
 				Enums.swift,
 				GetCSESettings.swift,
+				GetQuickCSEList.swift,
 				SetDefaultSE.swift,
 				SetFocusSE.swift,
 				SetPrivateSE.swift,
