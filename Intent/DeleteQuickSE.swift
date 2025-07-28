@@ -13,18 +13,15 @@ struct DeleteQuickSE: AppIntent, CustomIntentMigratedAppIntent {
     static var title: LocalizedStringResource = "Delete Quick Search Engine"
     static var description: LocalizedStringResource = "Delete a Custom Quick Search Engine with Keyword."
     
-    @Parameter(title: "Keyword", default: "")
+    @Parameter(title: "Keyword")
         var cseID: String
     
     static var parameterSummary: some ParameterSummary {
         Summary("Delete Quick Search Engine for Keyword \(\.$cseID)")
     }
 
-    func perform() async throws -> some IntentResult & ReturnsValue<String?> {
-        if cseID.isEmpty {
-            return .result(value: "Keyword cannot be blank")
-        }
+    func perform() async throws -> some IntentResult {
         CSEDataManager.deleteQuickCSE(cseID)
-        return .result(value: nil)
+        return .result()
     }
 }
