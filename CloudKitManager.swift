@@ -47,9 +47,9 @@ final class CloudKitManager: ObservableObject {
         let quickCSEDict = CSEDataManager.CSEDataToDictionary(quickCSE)
         
         // Convert to JSON string
-        let defaultCSEJSON = cseDataToJSONString(dictionary: defaultCSEDict)
-        let privateCSEJSON = cseDataToJSONString(dictionary: privateCSEDict)
-        let quickCSEJSON = cseDataToJSONString(dictionary: quickCSEDict)
+        let defaultCSEJSON: String = CSEDataManager.jsonDictToString(defaultCSEDict) ?? ""
+        let privateCSEJSON: String = CSEDataManager.jsonDictToString(privateCSEDict) ?? ""
+        let quickCSEJSON: String = CSEDataManager.jsonDictToString(quickCSEDict) ?? ""
         
         let combinedString = "\(defaultCSEJSON)|\(privateCSEJSON)|\(quickCSEJSON)|\(useEmojiSearch)"
         let currentRecordHash = generateHash(from: combinedString)
@@ -107,15 +107,6 @@ final class CloudKitManager: ObservableObject {
         }
         
         database.add(operation)
-    }
-    
-    // Convert dictionary to JSON string (sorted for consistency)
-    private func cseDataToJSONString(dictionary: Any) -> String {
-        guard let jsonData = try? JSONSerialization.data(withJSONObject: dictionary, options: [.sortedKeys]),
-              let jsonString = String(data: jsonData, encoding: .utf8) else {
-            return ""
-        }
-        return jsonString
     }
     
     // Generate SHA256 hash from string

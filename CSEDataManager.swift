@@ -112,6 +112,16 @@ class CSEDataManager {
         return parsedData
     }
     
+    // for QuickCSEs
+    class func parseCSEData(_ data: [String: [String: Any]]) -> [String: CSEDataManager.CSEData] {
+        // Convert Dictionary to CSEData
+        var parsedCSEs: [String: CSEData] = [:]
+        for (key, value) in data {
+            parsedCSEs[key] = parseCSEData(value, id: key)
+        }
+        return parsedCSEs
+    }
+    
     class func CSEDataToDictionary(_ data: CSEData) -> [String: Any] {
         // Convert CSEData to Dictionary
         var cseDict: [String: Any] = [:]
@@ -345,6 +355,54 @@ class CSEDataManager {
         return postDataDict
     }
     
+    class func exportDeviceCSEsAsJSON() -> String? {
+        // Get device CSEs
+        let defaultCSE = getCSEData(.defaultCSE)
+        let privateCSE = getCSEData(.privateCSE)
+        let quickCSEs = getAllQuickCSEData()
+        let useEmojiSearch: Bool = userDefaults.bool(forKey: "useEmojiSearch")
+        // Convert to Dictionary
+        let defaultCSEJSON = jsonDictToString(defaultCSE)
+        let privateCSEJSON = jsonDictToString(privateCSE)
+        let quickCSEJSON = jsonDictToString(quickCSEs)
+        // Create JSON Dictionary
+        var jsonDict: [String: Any] = [:]
+        jsonDict["defaultCSE"] = defaultCSEJSON
+        jsonDict["privateCSE"] = privateCSEJSON
+        jsonDict["quickCSE"] = quickCSEJSON
+        jsonDict["useEmojiSearch"] = useEmojiSearch
+        
+        return jsonDictToString(jsonDict)
+    }
+    
+    class func importDeviceCSEsFromJSON(_ jsonString: String) {
+        // Convert JSON string to Dictionary
+        guard let jsonData = jsonString.data(using: .utf8),
+              let jsonDict = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] else {
+            return
+        }
+        // Extract and import CSEs
+        let defaultCSEJSON = jsonDict["defaultCSE"] as? [String: Any] ?? [:]
+        let privateCSEJSON = jsonDict["privateCSE"] as? [String: Any] ?? [:]
+        let quickCSEJSON = jsonDict["quickCSE"] as? [String: [String: Any]] ?? [:]
+        let useEmojiSearch = jsonDict["useEmojiSearch"] as? Bool ?? false
+        // Convert JSON strings to CSEData
+        let defaultCSE = parseCSEData(defaultCSEJSON)
+        let privateCSE = parseCSEData(privateCSEJSON)
+        let quickCSE = parseCSEData(quickCSEJSON)
+        
+        // Save CSEs
+        saveCSEData(defaultCSE, .defaultCSE, uploadCloud: false)
+        saveCSEData(privateCSE, .privateCSE, uploadCloud: false)
+        replaceQuickCSEData(quickCSE)
+        
+        // Update Toggles
+        userDefaults.set(!defaultCSE.url.isEmpty, forKey: "useDefaultCSE")
+        userDefaults.set(!privateCSE.url.isEmpty, forKey: "usePrivateCSE")
+        userDefaults.set(!quickCSE.isEmpty, forKey: "useQuickCSE")
+        userDefaults.set(useEmojiSearch, forKey: "useEmojiSearch")
+    }
+    
     class func importDeviceCSEs(from deviceCSE: DeviceCSEs) {
         // Parse device CSE data using existing function
         let (defaultCSE, privateCSE, quickCSE) = parseDeviceCSEs(deviceCSE)
@@ -359,5 +417,14 @@ class CSEDataManager {
         userDefaults.set(!privateCSE.url.isEmpty, forKey: "usePrivateCSE")
         userDefaults.set(!quickCSE.isEmpty, forKey: "useQuickCSE")
         userDefaults.set(deviceCSE.useEmojiSearch, forKey: "useEmojiSearch")
+    }
+    
+    class func jsonDictToString(_ cseData: Any) -> String? {
+        // Convert CSEData to Dictionary
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: cseData, options: [.sortedKeys]),
+              let jsonString = String(data: jsonData, encoding: .utf8) else {
+            return nil
+        }
+        return jsonString
     }
 }

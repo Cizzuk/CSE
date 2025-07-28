@@ -23,10 +23,10 @@ struct GetCSESettings: AppIntent, CustomIntentMigratedAppIntent {
         var settings: IntentCSESettingsEnum
     
     static var parameterSummary: some ParameterSummary {
-        When(\Self.$type, .equalTo, .quickCSE) {
-            Summary("Get \(\.$settings) for \(\.$type) with Keyword \(\.$cseID)")
-        } otherwise: {
+        When(\Self.$type, .notEqualTo, .quickCSE) {
             Summary("Get \(\.$settings) for \(\.$type)")
+        } otherwise: {
+            Summary("Get \(\.$settings) for \(\.$type) with Keyword \(\.$cseID)")
         }
     }
     

@@ -186,6 +186,10 @@ struct ContentView: View {
                 
                 // Advanced Settings
                 Section {
+                    NavigationLink(destination: BackupView()) {
+                        Text("Backup & Restore")
+                    }
+                    
                     // TODO: Remove this button if CTF issues are resolved. (issue#24)
                     #if iOS
                     // Go IconChange View for iOS/iPadOS
