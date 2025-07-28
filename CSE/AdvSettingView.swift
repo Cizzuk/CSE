@@ -72,9 +72,6 @@ struct AdvSettingView: View {
                 Toggle(isOn: $icloud_disableUploadCSE, label: {
                     Text("Disable Uploading CSE to iCloud")
                 })
-                Button("Force Upload CSE to iCloud") {
-                    CloudKitManager().saveAll(mustUpload: true)
-                }
             }
             
             Section {
