@@ -42,8 +42,8 @@ struct AddQuickSE: AppIntent, CustomIntentMigratedAppIntent {
         
         do {
             try CSEDataManager.saveCSEData(cseData, nil, replace: replace)
-        } catch {
-            return .result(value: error.localizedDescription)
+        } catch let error as CSEDataManager.saveCSEDataError {
+            throw error
         }
         
         return .result(value: nil)
