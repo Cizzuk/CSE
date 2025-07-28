@@ -310,10 +310,12 @@ class CSEDataManager {
         // key=value&key=value&...
         let postData = post.map { entry in
             if let key = entry["key"], let value = entry["value"] {
-                let encodedKey = key
-                    .addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._"))) ?? key
-                let encodedValue = value
-                    .addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._"))) ?? value
+                let encodedKey = (key
+                    .addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._"))) ?? key)
+                    .replacingOccurrences(of: "%25s", with: "%s")
+                let encodedValue = (value
+                    .addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._"))) ?? value)
+                    .replacingOccurrences(of: "%25s", with: "%s")
                 
                 return "\(encodedKey)\(join)\(encodedValue)"
             }
