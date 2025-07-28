@@ -385,7 +385,7 @@ class Tutorial {
             }
             .navigationBarBackButtonHidden(true)
             .sheet(isPresented: $showingCloudImport) {
-                CloudRestoreView(onRestore: {
+                BackupView.CloudRestoreView(onRestore: {
                     isOpenSheet = false // Close the main tutorial sheet
                 })
             }

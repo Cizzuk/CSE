@@ -186,7 +186,7 @@ struct ContentView: View {
                 
                 // Advanced Settings
                 Section {
-                    NavigationLink(destination: BackupView()) {
+                    NavigationLink(destination: BackupView.BackupView()) {
                         Text("Backup & Restore")
                     }
                     
