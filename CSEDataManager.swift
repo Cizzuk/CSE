@@ -79,6 +79,11 @@ class CSEDataManager {
         return allQuickCSEs
     }
     
+    class func checkQuickCSEExists(_ id: String) -> Bool {
+        let quickCSEData = userDefaults.dictionary(forKey: "quickCSE") ?? [:]
+        return quickCSEData.keys.contains(id)
+    }
+    
     class func parseCSEData(_ data: [String: Any], id: String? = nil) -> CSEData {
         var parsedData = CSEData()
         if let name = data["name"] as? String {
