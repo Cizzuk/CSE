@@ -367,16 +367,12 @@ class CSEDataManager {
         let defaultCSEDict = CSEDataToDictionary(defaultCSE)
         let privateCSEDict = CSEDataToDictionary(privateCSE)
         let quickCSEDict = CSEDataToDictionary(quickCSEs)
-        // Convert to JSON strings
-        let defaultCSEJSON = jsonDictToString(defaultCSEDict)
-        let privateCSEJSON = jsonDictToString(privateCSEDict)
-        let quickCSEJSON = jsonDictToString(quickCSEDict)
         // Create JSON Dictionary
         var jsonDict: [String: Any] = [:]
         jsonDict["version"] = currentVersion
-        jsonDict["defaultCSE"] = defaultCSEJSON
-        jsonDict["privateCSE"] = privateCSEJSON
-        jsonDict["quickCSE"] = quickCSEJSON
+        jsonDict["defaultCSE"] = defaultCSEDict
+        jsonDict["privateCSE"] = privateCSEDict
+        jsonDict["quickCSE"] = quickCSEDict
         jsonDict["useEmojiSearch"] = useEmojiSearch
         
         return jsonDictToString(jsonDict)

@@ -11,17 +11,15 @@ import UniformTypeIdentifiers
 struct BackupView: View {
     @StateObject private var ck = CloudKitManager()
     @State private var showingRestoreSheet = false
-    @State private var showingExportSheet = false
     @State private var showingImportPicker = false
-    @State private var exportedJSON: String?
+    @State private var showingShareSheet = false
+    @State private var tempFileURL: URL?
     
     var body: some View {
         List {
             Section {
                 Button(action: {
-                    let impactFeedbacker = UIImpactFeedbackGenerator(style: .light)
-                    impactFeedbacker.prepare()
-                    impactFeedbacker.impactOccurred()
+                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
                     ck.saveAll(mustUpload: true)
                 }) {
                     HStack {
@@ -37,8 +35,7 @@ struct BackupView: View {
                 .disabled(ck.uploadStatus == .uploading)
                 .onChange(of: ck.uploadStatus) { uploadStatus in
                     if uploadStatus == .success {
-                        let generator = UINotificationFeedbackGenerator()
-                        generator.notificationOccurred(.success)
+                        UINotificationFeedbackGenerator().notificationOccurred(.success)
                     }
                 }
                 
@@ -54,10 +51,7 @@ struct BackupView: View {
             }
             Section {
                 Button(action: {
-                    if let jsonString = CSEDataManager.exportDeviceCSEsAsJSON() {
-                        exportedJSON = jsonString
-                        showingExportSheet = true
-                    }
+                    exportToShareSheet()
                 }) {
                     HStack {
                         Image(systemName: "arrow.up.document")
@@ -80,6 +74,11 @@ struct BackupView: View {
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $showingRestoreSheet) {
             CloudRestoreView()
+        }
+        .sheet(isPresented: $showingShareSheet, onDismiss: cleanupTempFile) {
+            if let fileURL = tempFileURL {
+                ShareSheet(items: [fileURL])
+            }
         }
         .fileImporter(
             isPresented: $showingImportPicker,
@@ -104,14 +103,48 @@ struct BackupView: View {
         do {
             let jsonString = try String(contentsOf: url)
             CSEDataManager.importDeviceCSEsFromJSON(jsonString)
-            
-            // Provide haptic feedback
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.success)
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
         } catch {
             print("Failed to import JSON: \(error)")
         }
     }
+    
+    // Export JSON and show share sheet
+    private func exportToShareSheet() {
+        guard let jsonString = CSEDataManager.exportDeviceCSEsAsJSON() else { return }
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd-HH-mm-ss"
+        let fileName = "CSE-\(formatter.string(from: Date())).json"
+        let fileURL = FileManager.default.temporaryDirectory.appendingPathComponent(fileName)
+        
+        do {
+            try jsonString.write(to: fileURL, atomically: true, encoding: .utf8)
+            tempFileURL = fileURL
+            showingShareSheet = true
+        } catch {
+            print("Failed to create temporary file: \(error)")
+        }
+    }
+    
+    // Clean up temporary file
+    private func cleanupTempFile() {
+        guard let fileURL = tempFileURL else { return }
+        try? FileManager.default.removeItem(at: fileURL)
+        tempFileURL = nil
+    }
+}
+
+// Share sheet for exporting files
+struct ShareSheet: UIViewControllerRepresentable {
+    let items: [Any]
+    
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        return controller
+    }
+    
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
 
 // CloudKit restore view for both BackupView and Tutorial
@@ -173,10 +206,7 @@ struct CloudRestoreView: View {
                     if let selected = selected,
                        let selectedDevice = ck.allCSEs.first(where: { $0.id.recordName == selected }) {
                         CSEDataManager.importDeviceCSEs(from: selectedDevice)
-                        
-                        // Provide haptic feedback
-                        let generator = UINotificationFeedbackGenerator()
-                        generator.notificationOccurred(.success)
+                        UINotificationFeedbackGenerator().notificationOccurred(.success)
                     }
                     dismiss()
                     onRestore?() // Call additional action if provided
@@ -202,6 +232,4 @@ struct CloudRestoreView: View {
         }
         .interactiveDismissDisabled(ck.isLocked)
     }
-}
-
 }
