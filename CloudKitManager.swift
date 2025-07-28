@@ -14,10 +14,19 @@ final class CloudKitManager: ObservableObject {
     private let database: CKDatabase = CKContainer(identifier: "iCloud.net.cizzuk.cse").privateCloudDatabase
     private let userDefaults = CSEDataManager.userDefaults
     
+    enum uploadStatus: Equatable {
+        case idle
+        case skipped
+        case uploading
+        case success
+        case failure
+    }
+    
     @Published var allCSEs: [CSEDataManager.DeviceCSEs] = [] // All data from iCloud
     @Published var error: Error? // Error message
     @Published var isLoading: Bool = false // Indicates if the CloudKit is loading
     @Published var isLocked: Bool = false // If the current view is locked
+    @Published var uploadStatus: uploadStatus = .idle
     
     // Create device name
     func createDeviceName() -> String {
@@ -32,8 +41,10 @@ final class CloudKitManager: ObservableObject {
     func saveAll(mustUpload: Bool = false) {
         // Check if upload is disabled
         if !mustUpload && userDefaults.bool(forKey: "adv_icloud_disableUploadCSE") {
+            self.uploadStatus = .skipped
             return
         }
+        self.uploadStatus = .uploading
         
         // Get userDefaults
         let defaultCSE: CSEDataManager.CSEData = CSEDataManager.getCSEData(.defaultCSE)
@@ -61,6 +72,7 @@ final class CloudKitManager: ObservableObject {
             if currentRecordHash == lastUploadedRecordHash {
                 // Same record, skip upload
                 print("No changes detected, skipping CloudKit upload.")
+                self.uploadStatus = .skipped
                 return
             }
         }
@@ -101,8 +113,11 @@ final class CloudKitManager: ObservableObject {
                     // Save the current record hash to UserDefaults for future comparison
                     self.userDefaults.set(currentRecordHash, forKey: "lastUploadedCloudKitRecordHash")
                     print("CloudKit upload successful", currentRecordHash)
+                    self.uploadStatus = .success
                 case .failure(let error):
                     print("CloudKit upload failed: \(error)")
+                    self.uploadStatus = .failure
+                    
                 }
             }
         }
