@@ -6,9 +6,14 @@
 //
 
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct BackupView: View {
     @StateObject private var ck = CloudKitManager()
+    @State private var showingRestoreSheet = false
+    @State private var showingExportSheet = false
+    @State private var showingImportPicker = false
+    @State private var exportedJSON: String?
     
     var body: some View {
         List {
@@ -38,7 +43,7 @@ struct BackupView: View {
                 }
                 
                 Button(action: {
-                    // Show restore view sheet
+                    showingRestoreSheet = true
                 }) {
                     HStack {
                         Image(systemName: "icloud.and.arrow.down")
@@ -49,7 +54,10 @@ struct BackupView: View {
             }
             Section {
                 Button(action: {
-                    // CSEDataManager.exportDeviceCSEsAsJSON()
+                    if let jsonString = CSEDataManager.exportDeviceCSEsAsJSON() {
+                        exportedJSON = jsonString
+                        showingExportSheet = true
+                    }
                 }) {
                     HStack {
                         Image(systemName: "arrow.up.document")
@@ -58,7 +66,7 @@ struct BackupView: View {
                     }
                 }
                 Button(action: {
-                    // CSEDataManager.importDeviceCSEsFromJSON(jsonData)
+                    showingImportPicker = true
                 }) {
                     HStack {
                         Image(systemName: "square.and.arrow.down")
@@ -70,5 +78,130 @@ struct BackupView: View {
         }
         .navigationTitle("Backup & Restore")
         .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $showingRestoreSheet) {
+            CloudRestoreView()
+        }
+        .fileImporter(
+            isPresented: $showingImportPicker,
+            allowedContentTypes: [UTType.json],
+            allowsMultipleSelection: false
+        ) { result in
+            switch result {
+            case .success(let files):
+                guard let fileURL = files.first else { return }
+                importJSONFile(from: fileURL)
+            case .failure(let error):
+                print("File import failed: \(error)")
+            }
+        }
     }
+    
+    // Import JSON file
+    private func importJSONFile(from url: URL) {
+        guard url.startAccessingSecurityScopedResource() else { return }
+        defer { url.stopAccessingSecurityScopedResource() }
+        
+        do {
+            let jsonString = try String(contentsOf: url)
+            CSEDataManager.importDeviceCSEsFromJSON(jsonString)
+            
+            // Provide haptic feedback
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
+        } catch {
+            print("Failed to import JSON: \(error)")
+        }
+    }
+}
+
+// CloudKit restore view for both BackupView and Tutorial
+struct CloudRestoreView: View {
+    @StateObject private var ck = CloudKitManager()
+    @State private var selected: String? = nil
+    @Environment(\.dismiss) private var dismiss
+    
+    // Optional callback for additional actions after restore (used in Tutorial)
+    var onRestore: (() -> Void)? = nil
+    
+    var body: some View {
+        NavigationStack {
+            VStack {
+                List {
+                    if ck.isLoading {
+                        HStack {
+                            Spacer()
+                            ProgressView()
+                            Spacer()
+                        }
+                    } else if ck.error != nil {
+                        Text(ck.error!.localizedDescription)
+                            .foregroundColor(.red)
+                    } else if ck.allCSEs.isEmpty {
+                        Text("No devices found.")
+                            .foregroundColor(.secondary)
+                    } else {
+                        ForEach(ck.allCSEs) { ds in
+                            Button {
+                                if selected == ds.id.recordName {
+                                    selected = nil
+                                } else {
+                                    selected = ds.id.recordName
+                                }
+                            } label: {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text(ds.deviceName)
+                                            .foregroundColor(.primary)
+                                        // Modified Time
+                                        if let modificationDate: Date = ds.modificationDate {
+                                            Text("Last Updated: \(modificationDate.formatted(date: .abbreviated, time: .shortened))")
+                                                .foregroundColor(.secondary)
+                                                .font(.subheadline)
+                                        }
+                                    }
+                                    Spacer()
+                                    Image(systemName: selected == ds.id.recordName ? "checkmark.circle.fill" : "circle")
+                                        .foregroundColor(.blue)
+                                        .animation(.easeOut(duration: 0.15), value: selected)
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                Button(action: {
+                    if let selected = selected,
+                       let selectedDevice = ck.allCSEs.first(where: { $0.id.recordName == selected }) {
+                        CSEDataManager.importDeviceCSEs(from: selectedDevice)
+                        
+                        // Provide haptic feedback
+                        let generator = UINotificationFeedbackGenerator()
+                        generator.notificationOccurred(.success)
+                    }
+                    dismiss()
+                    onRestore?() // Call additional action if provided
+                }) {
+                    UITemplates.tutorialButton(text: "Done")
+                }
+                .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
+                .disabled(ck.isLocked || selected == nil)
+                .animation(.easeInOut(duration: 0.15), value: selected)
+            }
+            .navigationTitle("Choose Device")
+            .navigationBarTitleDisplayMode(.inline)
+            .task {
+                ck.fetchAll()
+            }
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel", systemImage: "xmark") {
+                        dismiss()
+                    }
+                }
+            }
+        }
+        .interactiveDismissDisabled(ck.isLocked)
+    }
+}
+
 }

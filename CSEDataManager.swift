@@ -364,9 +364,13 @@ class CSEDataManager {
         let quickCSEs = getAllQuickCSEData()
         let useEmojiSearch: Bool = userDefaults.bool(forKey: "useEmojiSearch")
         // Convert to Dictionary
-        let defaultCSEJSON = jsonDictToString(defaultCSE)
-        let privateCSEJSON = jsonDictToString(privateCSE)
-        let quickCSEJSON = jsonDictToString(quickCSEs)
+        let defaultCSEDict = CSEDataToDictionary(defaultCSE)
+        let privateCSEDict = CSEDataToDictionary(privateCSE)
+        let quickCSEDict = CSEDataToDictionary(quickCSEs)
+        // Convert to JSON strings
+        let defaultCSEJSON = jsonDictToString(defaultCSEDict)
+        let privateCSEJSON = jsonDictToString(privateCSEDict)
+        let quickCSEJSON = jsonDictToString(quickCSEDict)
         // Create JSON Dictionary
         var jsonDict: [String: Any] = [:]
         jsonDict["version"] = currentVersion

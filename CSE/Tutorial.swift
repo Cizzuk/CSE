@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UniformTypeIdentifiers
 
 fileprivate func HeaderText(text: String) -> some View {
     Text(text)
@@ -291,6 +292,8 @@ class Tutorial {
     
     private struct RecommendView: View {
         @Binding var isOpenSheet: Bool
+        @State private var showingCloudImport = false
+        @State private var showingFileImport = false
         private let recommendPopCSEList = RecommendSEs.recommendPopCSEList()
         private let recommendAICSEList = RecommendSEs.recommendAICSEList()
         private let recommendNormalCSEList = RecommendSEs.recommendNormalCSEList()
@@ -307,12 +310,26 @@ class Tutorial {
                     
                     List {
                         Section {
-                            NavigationLink(destination: CloudImportView(isOpenSheet: $isOpenSheet)) {
+                            Button(action: {
+                                showingCloudImport = true
+                            }) {
                                 HStack {
-                                    Image(systemName: "icloud")
+                                    Image(systemName: "icloud.and.arrow.down")
                                         .frame(width: 20.0)
                                         .accessibilityHidden(true)
-                                    Text("Import from Other Device")
+                                    Text("Restore from iCloud")
+                                }
+                                .foregroundColor(.accentColor)
+                            }
+                            
+                            Button(action: {
+                                showingFileImport = true
+                            }) {
+                                HStack {
+                                    Image(systemName: "square.and.arrow.down")
+                                        .frame(width: 20.0)
+                                        .accessibilityHidden(true)
+                                    Text("Import from JSON")
                                 }
                                 .foregroundColor(.accentColor)
                             }
@@ -367,80 +384,43 @@ class Tutorial {
                 #endif
             }
             .navigationBarBackButtonHidden(true)
-        }
-    }
-    
-    private struct CloudImportView: View {
-        @Binding var isOpenSheet: Bool
-        @StateObject private var ck = CloudKitManager()
-        @State private var selected: String? = nil
-        
-        var body: some View {
-            NavigationStack {
-                VStack() {
-                    List() {
-                        if ck.isLoading {
-                            ProgressView()
-                        } else if ck.error != nil {
-                            Text(ck.error!.localizedDescription)
-                        } else if ck.allCSEs.isEmpty {
-                            Text("No devices found.")
-                        } else {
-                            ForEach(ck.allCSEs) { ds in
-                                Button {
-                                    if selected == ds.id.recordName {
-                                        selected = nil
-                                    } else {
-                                        selected = ds.id.recordName
-                                    }
-                                } label: {
-                                    HStack {
-                                        VStack(alignment: .leading) {
-                                            Text(ds.deviceName)
-                                                .foregroundColor(.primary)
-                                            // Modified Time
-                                            if let modificationDate: Date = ds.modificationDate {
-                                                Text("Last Updated: \(modificationDate.formatted(date: .abbreviated, time: .shortened))")
-                                                    .foregroundColor(.secondary)
-                                                    .font(.subheadline)
-                                            }
-                                        }
-                                        Spacer()
-                                        Image(systemName: selected == ds.id.recordName ? "checkmark.circle.fill" : "circle")
-                                            .foregroundColor(.blue)
-                                            .animation(.easeOut(duration: 0.15), value: selected)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    Button(action: {
-                        if selected != nil {
-                            if let selectedDevice = ck.allCSEs.first(where: { $0.id.recordName == selected }) {
-                                CSEDataManager.importDeviceCSEs(from: selectedDevice)
-                            }
-                        }
-                        isOpenSheet = false
-                    }) {
-                        if selected == nil {
-                            UITemplates.tutorialButton(text: "Skip")
-                        } else {
-                            UITemplates.tutorialButton(text: "Done")
-                        }
-                    }
-                    .animation(.easeOut(duration: 0.15), value: selected)
-                    .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
-                }
-                #if !visionOS
-                .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
-                #endif
-                .task {
-                    ck.fetchAll()
+            .sheet(isPresented: $showingCloudImport) {
+                CloudRestoreView(onRestore: {
+                    isOpenSheet = false // Close the main tutorial sheet
+                })
+            }
+            .fileImporter(
+                isPresented: $showingFileImport,
+                allowedContentTypes: [UTType.json],
+                allowsMultipleSelection: false
+            ) { result in
+                switch result {
+                case .success(let files):
+                    guard let fileURL = files.first else { return }
+                    importJSONFile(from: fileURL)
+                case .failure(let error):
+                    print("File import failed: \(error)")
                 }
             }
-            .navigationTitle("Choose Device")
-            .interactiveDismissDisabled(ck.isLocked)
+        }
+        
+        // Import JSON file for Tutorial
+        private func importJSONFile(from url: URL) {
+            guard url.startAccessingSecurityScopedResource() else { return }
+            defer { url.stopAccessingSecurityScopedResource() }
+            
+            do {
+                let jsonString = try String(contentsOf: url)
+                CSEDataManager.importDeviceCSEsFromJSON(jsonString)
+                isOpenSheet = false
+                
+                // Provide haptic feedback
+                let generator = UINotificationFeedbackGenerator()
+                generator.notificationOccurred(.success)
+            } catch {
+                print("Failed to import JSON: \(error)")
+            }
         }
     }
-    
+
 }
