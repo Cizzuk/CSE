@@ -132,10 +132,9 @@ class EditSE {
         @Environment(\.dismiss) private var dismiss
         @Environment(\.scenePhase) private var scenePhase
         
-        @State private var CSEData = CSEDataManager.CSEData()
+        @State private var CSEData = CSEDataManager.getCSEData(.defaultCSE)
         @State private var openRecommendView: Bool = false
         @State private var openCloudImportView: Bool = false
-        @State private var isFirstLoad: Bool = true
         
         @AppStorage("useDefaultCSE", store: userDefaults) private var useDefaultCSE: Bool = true
         @State private var useDefaultCSEToggle: Bool = true
@@ -196,12 +195,7 @@ class EditSE {
                 saveCSEData(.dismiss)
             }
             .task {
-                if isFirstLoad {
-                    CSEData = CSEDataManager.getCSEData(.defaultCSE)
-                    isFirstLoad = false
-                } else {
-                    saveCSEData(.autosave)
-                }
+                saveCSEData(.autosave)
                 useDefaultCSEToggle = useDefaultCSE
             }
         }
@@ -224,10 +218,9 @@ class EditSE {
         @Environment(\.dismiss) private var dismiss
         @Environment(\.scenePhase) private var scenePhase
         
-        @State private var CSEData = CSEDataManager.CSEData()
+        @State private var CSEData = CSEDataManager.getCSEData(.privateCSE)
         @State private var openRecommendView: Bool = false
         @State private var openCloudImportView: Bool = false
-        @State private var isFirstLoad: Bool = true
         
         @AppStorage("usePrivateCSE", store: userDefaults) private var usePrivateCSE: Bool = false
         @State private var usePrivateCSEToggle: Bool = false
@@ -290,12 +283,7 @@ class EditSE {
                 saveCSEData(.dismiss)
             }
             .task {
-                if isFirstLoad {
-                    CSEData = CSEDataManager.getCSEData(.privateCSE)
-                    isFirstLoad = false
-                } else {
-                    saveCSEData(.autosave)
-                }
+                saveCSEData(.autosave)
                 usePrivateCSEToggle = usePrivateCSE
             }
         }
