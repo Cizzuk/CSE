@@ -12,7 +12,7 @@ class AppInitializer {
     
     class func initializeApp() {
         let lastVersion: String = userDefaults.string(forKey: "LastAppVer") ?? ""
-        let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        let currentVersion = CSEDataManager.currentVersion
         let currentRegion = Locale.current.region?.identifier
         
         let searchengine: String? = userDefaults.string(forKey: "searchengine") ?? nil

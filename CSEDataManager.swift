@@ -11,6 +11,7 @@ import AppIntents
 
 class CSEDataManager {
     static let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
+    static let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     
     enum CSEType: String, AppEnum {
         case defaultCSE
@@ -38,6 +39,7 @@ class CSEDataManager {
     // Structure of a single device's CSE data
     struct DeviceCSEs: Identifiable, Hashable {
         let id: CKRecord.ID
+        let version: String
         let modificationDate: Date?
         let deviceName: String
         let defaultCSE: String
@@ -367,6 +369,7 @@ class CSEDataManager {
         let quickCSEJSON = jsonDictToString(quickCSEs)
         // Create JSON Dictionary
         var jsonDict: [String: Any] = [:]
+        jsonDict["version"] = currentVersion
         jsonDict["defaultCSE"] = defaultCSEJSON
         jsonDict["privateCSE"] = privateCSEJSON
         jsonDict["quickCSE"] = quickCSEJSON

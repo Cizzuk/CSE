@@ -71,6 +71,7 @@ final class CloudKitManager: ObservableObject {
         
         // Set record values
         record["deviceName"] = createDeviceName()
+        record["version"] = CSEDataManager.currentVersion
         if userDefaults.bool(forKey: "useDefaultCSE") {
             record["defaultCSE"] = defaultCSEJSON
         } else {
@@ -135,6 +136,7 @@ final class CloudKitManager: ObservableObject {
             case .success(let record):
                 let fetchedRecord = CSEDataManager.DeviceCSEs(
                     id: record.recordID,
+                    version: record["version"] as? String ?? "",
                     modificationDate: record.modificationDate,
                     deviceName: record["deviceName"] as? String ?? "",
                     defaultCSE: record["defaultCSE"] as? String ?? "",
