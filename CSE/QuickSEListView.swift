@@ -11,6 +11,8 @@ import WidgetKit
 #endif
 
 struct QuickSEListView: View {
+    @Environment(\.scenePhase) private var scenePhase
+    
     @State private var quickCSE: [String: CSEDataManager.CSEData] = CSEDataManager.getAllQuickCSEData()
     @AppStorage("useQuickCSE", store: userDefaults) private var useQuickCSE: Bool = false
     @State private var useQuickCSEToggle: Bool = false
@@ -95,6 +97,11 @@ struct QuickSEListView: View {
             // Initialize
             quickCSE = CSEDataManager.getAllQuickCSEData()
             useQuickCSEToggle = useQuickCSE
+        }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
+                quickCSE = CSEDataManager.getAllQuickCSEData()
+            }
         }
     }
 }
