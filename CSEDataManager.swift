@@ -302,6 +302,47 @@ class CSEDataManager {
         }
     }
     
+    class func postDataToString(_ post: [[String: String]], join: String = "=", separator: String = "&") -> String {
+        if post.isEmpty {
+            return ""
+        }
+        
+        // key=value&key=value&...
+        let postData = post.map { entry in
+            if let key = entry["key"], let value = entry["value"] {
+                let encodedKey = key
+                    .addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._"))) ?? key
+                let encodedValue = value
+                    .addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._"))) ?? value
+                
+                return "\(encodedKey)\(join)\(encodedValue)"
+            }
+            return ""
+        }.filter { !$0.isEmpty }.joined(separator: separator)
+        
+        return postData
+    }
+    
+    class func postDataToDictionary(_ post: String, join: String = "=", separator: String = "&") -> [[String: String]] {
+        // Convert post data to Dictionary
+        var postDataDict: [[String: String]] = []
+        // [["key"="example", "value"="example"]] format
+        
+        // Split the post data by separator
+        let entries = post.split(separator: separator).map { String($0) }
+        for entry in entries {
+            // Split each entry by join
+            let components = entry.split(separator: join).map { String($0) }
+            if components.count == 2 {
+                let key = components[0].removingPercentEncoding ?? components[0]
+                let value = components[1].removingPercentEncoding ?? components[1]
+                postDataDict.append(["key": key, "value": value])
+            }
+        }
+        
+        return postDataDict
+    }
+    
     class func importDeviceCSEs(from deviceCSE: DeviceCSEs) {
         // Parse device CSE data using existing function
         let (defaultCSE, privateCSE, quickCSE) = parseDeviceCSEs(deviceCSE)
