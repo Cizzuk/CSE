@@ -29,11 +29,22 @@ struct GetCSESettings: AppIntent, CustomIntentMigratedAppIntent {
             Summary("Get \(\.$settings) for \(\.$type)")
         }
     }
+    
+    enum GetCSESettingsError: Error {
+        case quickCSENotFound
+        case keyBlank
+    }
 
     func perform() async throws -> some IntentResult & ReturnsValue<String> {
         var cseData: CSEDataManager.CSEData
         
         if type == .quickCSE {
+            guard !cseID.isEmpty else {
+                throw GetCSESettingsError.keyBlank
+            }
+            guard CSEDataManager.checkQuickCSEExists(cseID) else {
+                throw GetCSESettingsError.quickCSENotFound
+            }
             cseData = CSEDataManager.getCSEData(.quickCSE, id: cseID)
         } else {
             cseData = CSEDataManager.getCSEData(type)
@@ -49,6 +60,8 @@ struct GetCSESettings: AppIntent, CustomIntentMigratedAppIntent {
             return .result(value: cseData.url)
         case .name:
             return .result(value: cseData.name)
+        case .post:
+            return .result(value: CSEDataManager.postDataToString(cseData.post))
         case .disablePercentEncoding:
             return .result(value: cseData.disablePercentEncoding ? "Yes" : "No")
         case .maxQueryLength:
