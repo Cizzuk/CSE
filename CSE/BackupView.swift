@@ -13,7 +13,6 @@ class BackupView {
         @StateObject private var ck = CloudKitManager()
         @State private var showingRestoreSheet = false
         @State private var showingImportPicker = false
-        @State private var showingShareSheet = false
         @State private var tempFileURL: URL?
         
         var body: some View {
@@ -76,11 +75,6 @@ class BackupView {
             .sheet(isPresented: $showingRestoreSheet) {
                 CloudRestoreView()
             }
-            .sheet(isPresented: $showingShareSheet, onDismiss: cleanupTempFile) {
-                if let fileURL = tempFileURL {
-                    ShareSheet(items: [fileURL])
-                }
-            }
             .fileImporter(
                 isPresented: $showingImportPicker,
                 allowedContentTypes: [UTType.json],
@@ -122,10 +116,18 @@ class BackupView {
             do {
                 try jsonString.write(to: fileURL, atomically: true, encoding: .utf8)
                 tempFileURL = fileURL
-                showingShareSheet = true
+                showingShareSheet(items: [fileURL])
             } catch {
                 print("Failed to create temporary file: \(error)")
             }
+        }
+        
+        // Show share sheet
+        private func showingShareSheet(items: [Any]) {
+            let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+            let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+            let rootViewController = windowScene?.windows.first?.rootViewController
+            rootViewController?.present(activityViewController, animated: true,completion: {})
         }
         
         // Clean up temporary file
@@ -134,18 +136,6 @@ class BackupView {
             try? FileManager.default.removeItem(at: fileURL)
             tempFileURL = nil
         }
-    }
-    
-    // Share sheet for exporting files
-    struct ShareSheet: UIViewControllerRepresentable {
-        let items: [Any]
-        
-        func makeUIViewController(context: Context) -> UIActivityViewController {
-            let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
-            return controller
-        }
-        
-        func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
     }
     
     // CloudKit restore view for both BackupView and Tutorial
