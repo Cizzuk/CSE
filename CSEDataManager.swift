@@ -357,6 +357,23 @@ class CSEDataManager {
         return postDataDict
     }
     
+    enum jsonError: LocalizedError {
+        case parseError
+        case fileImportError
+        case validDataNotFound
+        
+        var errorDescription: String? {
+            switch self {
+            case .parseError:
+                return String(localized: "Failed to parse JSON data")
+            case .fileImportError:
+                return String(localized: "Failed to import JSON file")
+            case .validDataNotFound:
+                return String(localized: "Valid data not found in JSON")
+            }
+        }
+    }
+    
     class func exportDeviceCSEsAsJSON() -> String? {
         // Get device CSEs
         let defaultCSE = getCSEData(.defaultCSE)
@@ -369,6 +386,7 @@ class CSEDataManager {
         let quickCSEDict = CSEDataToDictionary(quickCSEs)
         // Create JSON Dictionary
         var jsonDict: [String: Any] = [:]
+        jsonDict["type"] = "net.cizzuk.cse.deviceCSEs"
         jsonDict["version"] = currentVersion
         jsonDict["defaultCSE"] = defaultCSEDict
         jsonDict["privateCSE"] = privateCSEDict
@@ -378,17 +396,25 @@ class CSEDataManager {
         return jsonDictToString(jsonDict)
     }
     
-    class func importDeviceCSEsFromJSON(_ jsonString: String) {
+    class func importDeviceCSEsFromJSON(_ jsonString: String) throws {
         // Convert JSON string to Dictionary
         guard let jsonData = jsonString.data(using: .utf8),
               let jsonDict = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] else {
-            return
+            throw jsonError.parseError
         }
+        
+        // Check JSON Data
+        guard let type = jsonDict["type"] as? String,
+              type == "net.cizzuk.cse.deviceCSEs" else {
+            throw jsonError.validDataNotFound
+        }
+        
         // Extract and import CSEs
         let defaultCSEJSON = jsonDict["defaultCSE"] as? [String: Any] ?? [:]
         let privateCSEJSON = jsonDict["privateCSE"] as? [String: Any] ?? [:]
         let quickCSEJSON = jsonDict["quickCSE"] as? [String: [String: Any]] ?? [:]
         let useEmojiSearch = jsonDict["useEmojiSearch"] as? Bool ?? false
+        
         // Convert JSON strings to CSEData
         let defaultCSE = parseCSEData(defaultCSEJSON)
         let privateCSE = parseCSEData(privateCSEJSON)
