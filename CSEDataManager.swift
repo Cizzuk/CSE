@@ -423,7 +423,6 @@ class CSEDataManager {
     }
     
     class func jsonDictToString(_ cseData: Any) -> String? {
-        // Convert CSEData to Dictionary
         guard let jsonData = try? JSONSerialization.data(withJSONObject: cseData, options: [.sortedKeys]),
               let jsonString = String(data: jsonData, encoding: .utf8) else {
             return nil
