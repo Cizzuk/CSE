@@ -359,15 +359,12 @@ class CSEDataManager {
     
     enum jsonError: LocalizedError {
         case parseError
-        case fileImportError
         case validDataNotFound
         
         var errorDescription: String? {
             switch self {
             case .parseError:
                 return String(localized: "Failed to parse JSON data")
-            case .fileImportError:
-                return String(localized: "Failed to import JSON file")
             case .validDataNotFound:
                 return String(localized: "Valid data not found in JSON")
             }

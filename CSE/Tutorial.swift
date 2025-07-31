@@ -294,6 +294,8 @@ class Tutorial {
         @Binding var isOpenSheet: Bool
         @State private var showingCloudImport = false
         @State private var showingFileImport = false
+        @State private var showingErrorAlert = false
+        @State private var errorMessage = ""
         private let recommendPopCSEList = RecommendSEs.recommendPopCSEList()
         private let recommendAICSEList = RecommendSEs.recommendAICSEList()
         private let recommendNormalCSEList = RecommendSEs.recommendNormalCSEList()
@@ -389,6 +391,12 @@ class Tutorial {
                     isOpenSheet = false // Close the main tutorial sheet
                 })
             }
+            .alert(isPresented: $showingErrorAlert) {
+                Alert(
+                    title: Text("Error"),
+                    message: Text(errorMessage)
+                )
+            }
             .fileImporter(
                 isPresented: $showingFileImport,
                 allowedContentTypes: [UTType.json],
@@ -397,28 +405,16 @@ class Tutorial {
                 switch result {
                 case .success(let files):
                     guard let fileURL = files.first else { return }
-                    importJSONFile(from: fileURL)
+                    BackupView.importJSONFile(from: fileURL, onSuccess: {
+                        isOpenSheet = false
+                    }, onError: { error in
+                        errorMessage = error
+                        showingErrorAlert = true
+                    })
                 case .failure(let error):
-                    print("File import failed: \(error)")
+                    errorMessage = error.localizedDescription
+                    showingErrorAlert = true
                 }
-            }
-        }
-        
-        // Import JSON file for Tutorial
-        private func importJSONFile(from url: URL) {
-            guard url.startAccessingSecurityScopedResource() else { return }
-            defer { url.stopAccessingSecurityScopedResource() }
-            
-            do {
-                let jsonString = try String(contentsOf: url)
-                CSEDataManager.importDeviceCSEsFromJSON(jsonString)
-                isOpenSheet = false
-                
-                // Provide haptic feedback
-                let generator = UINotificationFeedbackGenerator()
-                generator.notificationOccurred(.success)
-            } catch {
-                print("Failed to import JSON: \(error)")
             }
         }
     }

@@ -12,8 +12,10 @@ class BackupView {
     struct BackupView: View {
         @StateObject private var ck = CloudKitManager()
         @State private var showingRestoreSheet = false
-        @State private var showingImportPicker = false
+        @State private var showingFileImport = false
         @State private var tempFileURL: URL?
+        @State private var showingErrorAlert = false
+        @State private var errorMessage = ""
         
         var body: some View {
             List {
@@ -60,7 +62,7 @@ class BackupView {
                         }
                     }
                     Button(action: {
-                        showingImportPicker = true
+                        showingFileImport = true
                     }) {
                         HStack {
                             Image(systemName: "square.and.arrow.down")
@@ -75,32 +77,28 @@ class BackupView {
             .sheet(isPresented: $showingRestoreSheet) {
                 CloudRestoreView()
             }
+            .alert(isPresented: $showingErrorAlert) {
+                Alert(
+                    title: Text("Error"),
+                    message: Text(errorMessage)
+                )
+            }
             .fileImporter(
-                isPresented: $showingImportPicker,
+                isPresented: $showingFileImport,
                 allowedContentTypes: [UTType.json],
                 allowsMultipleSelection: false
             ) { result in
                 switch result {
                 case .success(let files):
                     guard let fileURL = files.first else { return }
-                    importJSONFile(from: fileURL)
+                    importJSONFile(from: fileURL, onError: { error in
+                        errorMessage = error
+                        showingErrorAlert = true
+                    })
                 case .failure(let error):
-                    print("File import failed: \(error)")
+                    errorMessage = error.localizedDescription
+                    showingErrorAlert = true
                 }
-            }
-        }
-        
-        // Import JSON file
-        private func importJSONFile(from url: URL) {
-            guard url.startAccessingSecurityScopedResource() else { return }
-            defer { url.stopAccessingSecurityScopedResource() }
-            
-            do {
-                let jsonString = try String(contentsOf: url)
-                CSEDataManager.importDeviceCSEsFromJSON(jsonString)
-                UINotificationFeedbackGenerator().notificationOccurred(.success)
-            } catch {
-                print("Failed to import JSON: \(error)")
             }
         }
         
@@ -118,7 +116,7 @@ class BackupView {
                 tempFileURL = fileURL
                 showingShareSheet(items: [fileURL])
             } catch {
-                print("Failed to create temporary file: \(error)")
+                UINotificationFeedbackGenerator().notificationOccurred(.error)
             }
         }
         
@@ -222,6 +220,26 @@ class BackupView {
                 }
             }
             .interactiveDismissDisabled(ck.isLocked)
+        }
+    }
+    
+    // Shared JSON import functionality for Tutorial and BackupView
+    static func importJSONFile(from url: URL,
+                               onSuccess: @escaping () -> Void = {},
+                               onError: @escaping (String) -> Void = { _ in })
+    {
+        guard url.startAccessingSecurityScopedResource() else { return }
+        defer { url.stopAccessingSecurityScopedResource() }
+        
+        do {
+            let jsonString = try String(contentsOf: url)
+            try CSEDataManager.importDeviceCSEsFromJSON(jsonString)
+            
+            onSuccess()
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
+        } catch {
+            onError(error.localizedDescription)
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
         }
     }
 }
