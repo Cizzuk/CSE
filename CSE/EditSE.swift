@@ -127,6 +127,7 @@ class EditSE {
         @State private var openCloudImportView: Bool = false
         
         @State private var isFirstLoad: Bool = true
+        @State private var lastScenePhase: ScenePhase = .active
         
         @AppStorage("useDefaultCSE", store: userDefaults) private var useDefaultCSE: Bool = true
         @State private var useDefaultCSEToggle: Bool = true
@@ -179,8 +180,11 @@ class EditSE {
                 }
             )
             .onChange(of: scenePhase) { newPhase in
-                if newPhase == .inactive {
+                lastScenePhase = newPhase
+                if newPhase == .inactive && lastScenePhase == .active {
                     saveCSEData(.autosave)
+                } else if newPhase == .active {
+                    CSEData = CSEDataManager.getCSEData(.defaultCSE)
                 }
             }
             .onDisappear {
@@ -221,6 +225,7 @@ class EditSE {
         @State private var openCloudImportView: Bool = false
         
         @State private var isFirstLoad: Bool = true
+        @State private var lastScenePhase: ScenePhase = .active
         
         @AppStorage("usePrivateCSE", store: userDefaults) private var usePrivateCSE: Bool = false
         @State private var usePrivateCSEToggle: Bool = false
@@ -275,8 +280,10 @@ class EditSE {
                 }
             )
             .onChange(of: scenePhase) { newPhase in
-                if newPhase == .inactive {
+                if newPhase == .inactive && lastScenePhase == .active {
                     saveCSEData(.autosave)
+                } else if newPhase == .active {
+                    CSEData = CSEDataManager.getCSEData(.privateCSE)
                 }
             }
             .onDisappear {
@@ -325,6 +332,7 @@ class EditSE {
         @State private var openCloudImportView: Bool = false
         
         @State private var isFirstLoad: Bool = true
+        @State private var lastScenePhase: ScenePhase = .active
         
         var body: some View {
             EditSE.commonSheets(
@@ -415,7 +423,7 @@ class EditSE {
                 }
             )
             .onChange(of: scenePhase) { newPhase in
-                if newPhase == .inactive {
+                if newPhase == .inactive && lastScenePhase == .active {
                     saveCSEData(.autosave)
                 }
             }
