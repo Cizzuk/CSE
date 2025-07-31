@@ -85,22 +85,12 @@ class EditSE {
             Button(action: {
                 openRecommendView.wrappedValue = true
             }) {
-                HStack {
-                    Image(systemName: "sparkle.magnifyingglass")
-                        .frame(width: 20.0)
-                        .accessibilityHidden(true)
-                    Text("Recommended Search Engines")
-                }
+                UITemplates.iconButton(icon: "sparkle.magnifyingglass", text: "Recommended Search Engines")
             }
             Button(action: {
                 openCloudImportView.wrappedValue = true
             }) {
-                HStack {
-                    Image(systemName: "icloud")
-                        .frame(width: 20.0)
-                        .accessibilityHidden(true)
-                    Text("Import from Other Device")
-                }
+                UITemplates.iconButton(icon: "icloud.and.arrow.down", text: "Import from iCloud")
             }
         }
     }

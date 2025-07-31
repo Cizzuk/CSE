@@ -315,24 +315,14 @@ class Tutorial {
                             Button(action: {
                                 showingCloudImport = true
                             }) {
-                                HStack {
-                                    Image(systemName: "icloud.and.arrow.down")
-                                        .frame(width: 20.0)
-                                        .accessibilityHidden(true)
-                                    Text("Restore from iCloud")
-                                }
+                                UITemplates.iconButton(icon: "icloud.and.arrow.down", text: "Restore from iCloud")
                                 .foregroundColor(.accentColor)
                             }
                             
                             Button(action: {
                                 showingFileImport = true
                             }) {
-                                HStack {
-                                    Image(systemName: "square.and.arrow.down")
-                                        .frame(width: 20.0)
-                                        .accessibilityHidden(true)
-                                    Text("Import from JSON")
-                                }
+                                UITemplates.iconButton(icon: "square.and.arrow.down", text: "Import from JSON")
                                 .foregroundColor(.accentColor)
                             }
                         }

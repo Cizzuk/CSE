@@ -44,31 +44,19 @@ class BackupView {
                     Button(action: {
                         showingRestoreSheet = true
                     }) {
-                        HStack {
-                            Image(systemName: "icloud.and.arrow.down")
-                                .frame(width: 20.0)
-                            Text("Restore from iCloud")
-                        }
+                        UITemplates.iconButton(icon: "icloud.and.arrow.down", text: "Restore from iCloud")
                     }
                 }
                 Section {
                     Button(action: {
                         exportToShareSheet()
                     }) {
-                        HStack {
-                            Image(systemName: "arrow.up.document")
-                                .frame(width: 20.0)
-                            Text("Export as JSON")
-                        }
+                        UITemplates.iconButton(icon: "arrow.up.document", text: "Export as JSON")
                     }
                     Button(action: {
                         showingFileImport = true
                     }) {
-                        HStack {
-                            Image(systemName: "square.and.arrow.down")
-                                .frame(width: 20.0)
-                            Text("Import from JSON")
-                        }
+                        UITemplates.iconButton(icon: "square.and.arrow.down", text: "Import from JSON")
                     }
                 }
             }

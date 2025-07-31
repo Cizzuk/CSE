@@ -145,36 +145,19 @@ struct ContentView: View {
                     Group {
                         // Contact Link
                         Link(destination:URL(string: "https://cizzuk.net/contact/")!, label: {
-                            HStack {
-                                Image(systemName: "message")
-                                    .frame(width: 20.0)
-                                Text("Contact")
-                            }
+                            UITemplates.iconButton(icon: "message", text: "Contact")
                         })
                         // GitHub Source Link
                         Link(destination:URL(string: "https://github.com/Cizzuk/CSE")!, label: {
-                            HStack {
-                                Image(systemName: "ladybug")
-                                    .frame(width: 20.0)
-                                Text("Source")
-                                Spacer()
-                            }
+                            UITemplates.iconButton(icon: "ladybug", text: "Source")
                         })
                         // Privacy Policy Link
                         Link(destination:URL(string: "https://i.cizzuk.net/privacy/")!, label: {
-                            HStack {
-                                Image(systemName: "hand.raised")
-                                    .frame(width: 20.0)
-                                Text("Privacy Policy")
-                            }
+                            UITemplates.iconButton(icon: "hand.raised", text: "Privacy Policy")
                         })
                         // About View
                         NavigationLink(destination: AboutView()) {
-                            HStack {
-                                Image(systemName: "info.circle")
-                                    .frame(width: 20.0)
-                                Text("About")
-                            }
+                            UITemplates.iconButton(icon: "info.circle", text: "About")
                         }
                     }
                     #if !visionOS

@@ -44,4 +44,17 @@ class UITemplates {
                 #endif
         }
     }
+    
+    struct iconButton: View {
+        let icon: String
+        let text: String.LocalizationValue
+        
+        var body: some View {
+            HStack {
+                Image(systemName: icon)
+                    .frame(width: 20.0)
+                Text(String(localized: text))
+            }
+        }
+    }
 }
