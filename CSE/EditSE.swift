@@ -630,7 +630,7 @@ class EditSE {
         
         var body: some View {
             NavigationStack {
-                List() {
+                List {
                     if ck.isLoading {
                         ProgressView()
                     } else if ck.error != nil {
