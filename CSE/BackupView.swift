@@ -18,6 +18,7 @@ class BackupView {
         
         var body: some View {
             List {
+                // CloudKit Section
                 Section {
                     Button(action: {
                         UIImpactFeedbackGenerator(style: .light).impactOccurred()
@@ -46,6 +47,9 @@ class BackupView {
                         UITemplates.iconButton(icon: "icloud.and.arrow.down", text: "Restore from iCloud")
                     }
                 }
+                .disabled(ck.cloudKitAvailability != .available)
+                
+                // JSON Export/Import Section
                 Section {
                     Button(action: {
                         exportToShareSheet()
@@ -131,10 +135,8 @@ class BackupView {
                             }
                         } else if ck.error != nil {
                             Text(ck.error!.localizedDescription)
-                                .foregroundColor(.red)
                         } else if ck.allCSEs.isEmpty {
                             Text("No devices found.")
-                                .foregroundColor(.secondary)
                         } else {
                             ForEach(ck.allCSEs) { ds in
                                 Button {
@@ -192,6 +194,9 @@ class BackupView {
                         }
                     }
                 }
+                #if !visionOS
+                .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
+                #endif
             }
             .interactiveDismissDisabled(ck.isLocked)
         }

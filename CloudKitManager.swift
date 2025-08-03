@@ -22,11 +22,29 @@ final class CloudKitManager: ObservableObject {
         case failure
     }
     
+    @Published var cloudKitAvailability: CKAccountStatus?
     @Published var allCSEs: [CSEDataManager.DeviceCSEs] = [] // All data from iCloud
     @Published var error: Error? // Error message
     @Published var isLoading: Bool = false // Indicates if the CloudKit is loading
     @Published var isLocked: Bool = false // If the current view is locked
     @Published var uploadStatus: uploadStatus = .idle
+    
+    init() {
+        checkCloudKitAvailability()
+    }
+    
+    // Check CloudKit availability
+    private func checkCloudKitAvailability() {
+        CKContainer(identifier: "iCloud.net.cizzuk.cse").accountStatus { status, error in
+            DispatchQueue.main.async {
+                self.cloudKitAvailability = status
+                if let error = error {
+                    self.error = error
+                    print("Error checking iCloud availability: \(error)")
+                }
+            }
+        }
+    }
     
     // Create device name
     func createDeviceName() -> String {
@@ -39,8 +57,15 @@ final class CloudKitManager: ObservableObject {
     
     // Upload CSEs
     func saveAll(mustUpload: Bool = false) {
+        // Check if iCloud is available
+        guard cloudKitAvailability == .available else {
+            print("CloudKit is not available, skipping upload")
+            self.uploadStatus = .skipped
+            return
+        }
+        
         // Check if upload is disabled
-        if !mustUpload && userDefaults.bool(forKey: "adv_icloud_disableUploadCSE") {
+        guard mustUpload || userDefaults.bool(forKey: "adv_icloud_disableUploadCSE") else {
             self.uploadStatus = .skipped
             return
         }
@@ -94,7 +119,7 @@ final class CloudKitManager: ObservableObject {
         // Check if the record is the same as the last uploaded
         if !mustUpload {
             let lastRecordHash = userDefaults.data(forKey: "cloudkit_lastRecordHash") ?? Data()
-            if currentRecordHash == lastRecordHash {
+            guard currentRecordHash != lastRecordHash else {
                 // Same record, skip upload
                 print("No changes detected, skipping CloudKit upload.")
                 self.uploadStatus = .skipped
