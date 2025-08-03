@@ -46,60 +46,61 @@ final class CloudKitManager: ObservableObject {
         }
         self.uploadStatus = .uploading
         
-        // Get userDefaults
-        let defaultCSE: CSEDataManager.CSEData = CSEDataManager.getCSEData(.defaultCSE)
-        let privateCSE: CSEDataManager.CSEData = CSEDataManager.getCSEData(.privateCSE)
-        let quickCSE: [String: CSEDataManager.CSEData] = CSEDataManager.getAllQuickCSEData()
-        let useEmojiSearch: Bool = userDefaults.bool(forKey: "useEmojiSearch")
+        let deviceID = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
+        let recordID = CKRecord.ID(recordName: deviceID)
+        let record = CKRecord(recordType: "DeviceCSEs", recordID: recordID)
+        var combinedDict: [String: Any] = [:]
         
-        // Convert CSE data to dictionary
-        let defaultCSEDict = CSEDataManager.CSEDataToDictionary(defaultCSE)
-        let privateCSEDict = CSEDataManager.CSEDataToDictionary(privateCSE)
-        let quickCSEDict = CSEDataManager.CSEDataToDictionary(quickCSE)
+        // Set record values
+        record["deviceName"] = createDeviceName()
+        record["version"] = CSEDataManager.currentVersion
         
-        // Convert to JSON string
-        let defaultCSEJSON: String = CSEDataManager.jsonDictToString(defaultCSEDict) ?? ""
-        let privateCSEJSON: String = CSEDataManager.jsonDictToString(privateCSEDict) ?? ""
-        let quickCSEJSON: String = CSEDataManager.jsonDictToString(quickCSEDict) ?? ""
+        // DefaultCSE
+        if userDefaults.bool(forKey: "useDefaultCSE") {
+            let defaultCSE = CSEDataManager.getCSEData(.defaultCSE)
+            let defaultCSEDict = CSEDataManager.CSEDataToDictionary(defaultCSE)
+            let defaultCSEJSON = CSEDataManager.jsonDictToString(defaultCSEDict) ?? ""
+            combinedDict["defaultCSE"] = defaultCSEDict
+            record["defaultCSE"] = defaultCSEJSON
+        }
         
-        let combinedString = "\(defaultCSEJSON)|\(privateCSEJSON)|\(quickCSEJSON)|\(useEmojiSearch)"
-        let currentRecordHash = generateHash(from: combinedString)
-        print("Current record hash: \(currentRecordHash)")
+        // PrivateCSE
+        if userDefaults.bool(forKey: "usePrivateCSE") {
+            let privateCSE = CSEDataManager.getCSEData(.privateCSE)
+            let privateCSEDict = CSEDataManager.CSEDataToDictionary(privateCSE)
+            let privateCSEJSON = CSEDataManager.jsonDictToString(privateCSEDict) ?? ""
+            combinedDict["privateCSE"] = privateCSEDict
+            record["privateCSE"] = privateCSEJSON
+        }
+        
+        // QuickCSE
+        if userDefaults.bool(forKey: "useQuickCSE") {
+            let quickCSEs = CSEDataManager.getAllQuickCSEData()
+            let quickCSEDict = CSEDataManager.CSEDataToDictionary(quickCSEs)
+            let quickCSEJSON = CSEDataManager.jsonDictToString(quickCSEDict) ?? ""
+            combinedDict["quickCSE"] = quickCSEDict
+            record["quickCSE"] = quickCSEJSON
+        }
+        
+        // Use Emoji Search
+        let useEmojiSearch = userDefaults.bool(forKey: "useEmojiSearch")
+        combinedDict["useEmojiSearch"] = useEmojiSearch
+        record["useEmojiSearch"] = useEmojiSearch
+        
+        // Gen hash
+        let currentRecordHash = generateHash(from: CSEDataManager.jsonDictToString(combinedDict) ?? "")
+        print("Current record hash: \(currentRecordHash.base64EncodedString())")
         
         // Check if the record is the same as the last uploaded
         if !mustUpload {
-            let lastUploadedRecordHash = userDefaults.string(forKey: "lastUploadedCloudKitRecordHash") ?? ""
-            if currentRecordHash == lastUploadedRecordHash {
+            let lastRecordHash = userDefaults.data(forKey: "cloudkit_lastRecordHash") ?? Data()
+            if currentRecordHash == lastRecordHash {
                 // Same record, skip upload
                 print("No changes detected, skipping CloudKit upload.")
                 self.uploadStatus = .skipped
                 return
             }
         }
-        
-        let deviceID = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
-        let recordID = CKRecord.ID(recordName: deviceID)
-        let record = CKRecord(recordType: "DeviceCSEs", recordID: recordID)
-        
-        // Set record values
-        record["deviceName"] = createDeviceName()
-        record["version"] = CSEDataManager.currentVersion
-        if userDefaults.bool(forKey: "useDefaultCSE") {
-            record["defaultCSE"] = defaultCSEJSON
-        } else {
-            record["defaultCSE"] = ""
-        }
-        if userDefaults.bool(forKey: "usePrivateCSE") {
-            record["privateCSE"] = privateCSEJSON
-        } else {
-            record["privateCSE"] = ""
-        }
-        if userDefaults.bool(forKey: "useQuickCSE") {
-            record["quickCSE"] = quickCSEJSON
-        } else {
-            record["quickCSE"] = ""
-        }
-        record["useEmojiSearch"] = useEmojiSearch
         
         // Save record
         let operation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
@@ -111,8 +112,8 @@ final class CloudKitManager: ObservableObject {
                 switch result {
                 case .success:
                     // Save the current record hash to UserDefaults for future comparison
-                    self.userDefaults.set(currentRecordHash, forKey: "lastUploadedCloudKitRecordHash")
-                    print("CloudKit upload successful", currentRecordHash)
+                    self.userDefaults.set(currentRecordHash, forKey: "cloudkit_lastRecordHash")
+                    print("CloudKit upload successful")
                     self.uploadStatus = .success
                 case .failure(let error):
                     print("CloudKit upload failed: \(error)")
@@ -126,10 +127,10 @@ final class CloudKitManager: ObservableObject {
     }
     
     // Generate SHA256 hash from string
-    private func generateHash(from string: String) -> String {
+    private func generateHash(from string: String) -> Data {
         let data = Data(string.utf8)
         let hash = SHA256.hash(data: data)
-        return hash.compactMap { String(format: "%02x", $0) }.joined()
+        return Data(hash)
     }
     
     // fetch CSEs from other devices
