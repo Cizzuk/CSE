@@ -372,24 +372,36 @@ class CSEDataManager {
     }
     
     class func exportDeviceCSEsAsJSON() -> String? {
-        // Get device CSEs
-        let defaultCSE = getCSEData(.defaultCSE)
-        let privateCSE = getCSEData(.privateCSE)
-        let quickCSEs = getAllQuickCSEData()
-        let useEmojiSearch: Bool = userDefaults.bool(forKey: "useEmojiSearch")
-        // Convert to Dictionary
-        let defaultCSEDict = CSEDataToDictionary(defaultCSE)
-        let privateCSEDict = CSEDataToDictionary(privateCSE)
-        let quickCSEDict = CSEDataToDictionary(quickCSEs)
         // Create JSON Dictionary
         var jsonDict: [String: Any] = [:]
         jsonDict["type"] = "net.cizzuk.cse.deviceCSEs"
         jsonDict["version"] = currentVersion
-        jsonDict["defaultCSE"] = defaultCSEDict
-        jsonDict["privateCSE"] = privateCSEDict
-        jsonDict["quickCSE"] = quickCSEDict
-        jsonDict["useEmojiSearch"] = useEmojiSearch
         
+        // DefaultCSE
+        if userDefaults.bool(forKey: "useDefaultCSE") {
+            let defaultCSE = getCSEData(.defaultCSE)
+            let defaultCSEDict = CSEDataToDictionary(defaultCSE)
+            jsonDict["defaultCSE"] = defaultCSEDict
+        }
+        
+        // PrivateCSE
+        if userDefaults.bool(forKey: "usePrivateCSE") {
+            let privateCSE = getCSEData(.privateCSE)
+            let privateCSEDict = CSEDataToDictionary(privateCSE)
+            jsonDict["privateCSE"] = privateCSEDict
+        }
+        
+        // QuickCSE
+        if userDefaults.bool(forKey: "useQuickCSE") {
+            let quickCSEs = getAllQuickCSEData()
+            let quickCSEDict = CSEDataToDictionary(quickCSEs)
+            jsonDict["quickCSE"] = quickCSEDict
+        }
+        
+        // Emoji Search
+        jsonDict["useEmojiSearch"] = userDefaults.bool(forKey: "useEmojiSearch")
+        
+        // Convert Dictionary to JSON String
         return jsonDictToString(jsonDict)
     }
     
