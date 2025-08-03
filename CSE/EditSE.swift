@@ -632,7 +632,11 @@ class EditSE {
             NavigationStack {
                 List {
                     if ck.isLoading {
-                        ProgressView()
+                        HStack {
+                            Spacer()
+                            ProgressView()
+                            Spacer()
+                        }
                     } else if ck.error != nil {
                         Text(ck.error!.localizedDescription)
                     } else if ck.allCSEs.isEmpty {
