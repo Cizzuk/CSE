@@ -13,7 +13,6 @@ class BackupView {
         @StateObject private var ck = CloudKitManager()
         @State private var showingRestoreSheet = false
         @State private var showingFileImport = false
-        @State private var tempFileURL: URL?
         @State private var showingErrorAlert = false
         @State private var errorMessage = ""
         
@@ -101,26 +100,13 @@ class BackupView {
             
             do {
                 try jsonString.write(to: fileURL, atomically: true, encoding: .utf8)
-                tempFileURL = fileURL
-                showingShareSheet(items: [fileURL])
+                let activityViewController = UIActivityViewController(activityItems: [fileURL], applicationActivities: nil)
+                let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+                let rootViewController = windowScene?.windows.first?.rootViewController
+                rootViewController?.present(activityViewController, animated: true,completion: {})
             } catch {
                 UINotificationFeedbackGenerator().notificationOccurred(.error)
             }
-        }
-        
-        // Show share sheet
-        private func showingShareSheet(items: [Any]) {
-            let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
-            let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-            let rootViewController = windowScene?.windows.first?.rootViewController
-            rootViewController?.present(activityViewController, animated: true,completion: {})
-        }
-        
-        // Clean up temporary file
-        private func cleanupTempFile() {
-            guard let fileURL = tempFileURL else { return }
-            try? FileManager.default.removeItem(at: fileURL)
-            tempFileURL = nil
         }
     }
     
