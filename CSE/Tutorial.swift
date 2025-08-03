@@ -21,12 +21,12 @@ class Tutorial {
         @Binding var isOpenSheet: Bool
         var body: some View {
             NavigationStack {
-                VStack() {
+                VStack {
                     Text("Welcome to CSE")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .padding(EdgeInsets(top: 36, leading: 32, bottom: 8, trailing: 32))
-                    VStack() {
+                    VStack {
                         Text("Before you can start using CSE, you need to do some setup.")
                     }
                     .padding(.horizontal, 32)
@@ -99,9 +99,9 @@ class Tutorial {
         
         var body: some View {
             NavigationStack {
-                VStack() {
+                VStack {
                     HeaderText(text: "Safari Settings")
-                    VStack() {
+                    VStack {
                         Text("Please make sure that the following items are the same as your Safari settings")
                     }
                     .padding(.horizontal, 32)
@@ -209,9 +209,9 @@ class Tutorial {
         
         var body: some View {
             NavigationStack {
-                VStack() {
+                VStack {
                     HeaderText(text: "Safari Settings")
-                    VStack() {
+                    VStack {
                         Text("Please allow CSE at the following webpage")
                     }
                     .padding(.horizontal, 32)
@@ -302,9 +302,9 @@ class Tutorial {
         
         var body: some View {
             NavigationStack {
-                VStack() {
+                VStack {
                     HeaderText(text: "Setup Search Engine")
-                    VStack() {
+                    VStack {
                         Text("Choose a search engine below or customize it later.")
                     }
                     .padding(.horizontal, 32)
