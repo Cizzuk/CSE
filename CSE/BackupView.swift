@@ -163,7 +163,20 @@ class BackupView {
                                             .animation(.easeOut(duration: 0.15), value: selected)
                                     }
                                 }
+                                .contextMenu {
+                                    Button(action: {
+                                        ck.delete(recordID: ds.id)
+                                    }) {
+                                        Label("Delete", systemImage: "trash")
+                                    }
+                                }
                             }
+                            .onDelete(perform: { indexSet in
+                                for index in indexSet {
+                                    let ds = ck.allCSEs[index]
+                                    ck.delete(recordID: ds.id)
+                                }
+                            })
                         }
                     }
                     
@@ -188,10 +201,15 @@ class BackupView {
                     ck.fetchAll()
                 }
                 .toolbar {
+                    ToolbarItem(placement: .automatic) {
+                        EditButton()
+                            .disabled(ck.isLoading || ck.error != nil || ck.allCSEs.isEmpty)
+                    }
                     ToolbarItem(placement: .cancellationAction) {
                         Button("Cancel", systemImage: "xmark") {
                             dismiss()
                         }
+                        .disabled(ck.isLocked)
                     }
                 }
                 #if !visionOS
