@@ -54,7 +54,7 @@ class BackupView {
                     Button(action: {
                         exportToShareSheet()
                     }) {
-                        UITemplates.iconButton(icon: "arrow.up.document", text: "Export as JSON")
+                        UITemplates.iconButton(icon: "square.and.arrow.up", text: "Export as JSON")
                     }
                     Button(action: {
                         showingFileImport = true
