@@ -8,6 +8,9 @@
 import Foundation
 import CloudKit
 import AppIntents
+#if !visionOS
+import WidgetKit
+#endif
 
 class CSEDataManager {
     static let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
@@ -439,6 +442,16 @@ class CSEDataManager {
         userDefaults.set(!privateCSE.url.isEmpty, forKey: "usePrivateCSE")
         userDefaults.set(!quickCSE.isEmpty, forKey: "useQuickCSE")
         userDefaults.set(useEmojiSearch, forKey: "useEmojiSearch")
+        
+        // Update CC
+        #if !visionOS
+        if #available(iOS 18.0, macOS 26, *) {
+            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UseDefaultCSE")
+            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UsePrivateCSE")
+            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
+            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.EmojiSearch")
+        }
+        #endif
     }
     
     class func importDeviceCSEs(from deviceCSE: DeviceCSEs) {
@@ -455,6 +468,16 @@ class CSEDataManager {
         userDefaults.set(!privateCSE.url.isEmpty, forKey: "usePrivateCSE")
         userDefaults.set(!quickCSE.isEmpty, forKey: "useQuickCSE")
         userDefaults.set(deviceCSE.useEmojiSearch, forKey: "useEmojiSearch")
+        
+        // Update CC
+        #if !visionOS
+        if #available(iOS 18.0, macOS 26, *) {
+            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UseDefaultCSE")
+            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UsePrivateCSE")
+            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
+            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.EmojiSearch")
+        }
+        #endif
     }
     
     class func jsonDictToString(_ cseData: Any) -> String? {
