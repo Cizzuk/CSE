@@ -204,10 +204,6 @@ class BackupView {
                     ck.fetchAll()
                 }
                 .toolbar {
-                    ToolbarItem(placement: .automatic) {
-                        EditButton()
-                            .disabled(ck.isLoading || ck.isLocked || ck.error != nil || ck.allCSEs.isEmpty)
-                    }
                     ToolbarItem(placement: .cancellationAction) {
                         Button("Cancel", systemImage: "xmark") {
                             dismiss()
