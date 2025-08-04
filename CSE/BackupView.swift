@@ -52,7 +52,7 @@ class BackupView {
                 // JSON Export/Import Section
                 Section {
                     Button(action: {
-                        exportToShareSheet()
+                        exportJSONFile()
                     }) {
                         UITemplates.iconButton(icon: "square.and.arrow.up", text: "Export as JSON")
                     }
@@ -95,25 +95,43 @@ class BackupView {
                 }
             }
         }
-        
-        // Export JSON and show share sheet
-        private func exportToShareSheet() {
-            guard let jsonString = CSEDataManager.exportDeviceCSEsAsJSON() else { return }
+
+        private func exportJSONFile() {
+            guard let jsonString = CSEDataManager.exportDeviceCSEsAsJSON() else {
+                UINotificationFeedbackGenerator().notificationOccurred(.error)
+                return
+            }
             
+            // Create tmp file
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd-HH-mm-ss"
             let fileName = "CSE-\(formatter.string(from: Date())).json"
             let fileURL = FileManager.default.temporaryDirectory.appendingPathComponent(fileName)
             
+            // Write JSON string to file
             do {
                 try jsonString.write(to: fileURL, atomically: true, encoding: .utf8)
-                let activityViewController = UIActivityViewController(activityItems: [fileURL], applicationActivities: nil)
-                let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-                let rootViewController = windowScene?.windows.first?.rootViewController
-                rootViewController?.present(activityViewController, animated: true,completion: {})
             } catch {
                 UINotificationFeedbackGenerator().notificationOccurred(.error)
+                return
             }
+            
+            #if macOS
+            // if macOS, use finder
+            let documentPicker = UIDocumentPickerViewController(forExporting: [fileURL], asCopy: true)
+            documentPicker.modalPresentationStyle = .formSheet
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let rootViewController = windowScene.windows.first?.rootViewController {
+                rootViewController.present(documentPicker, animated: true, completion: nil)
+            }
+            #else
+            // if not macOS, use share sheet
+            let activityViewController = UIActivityViewController(activityItems: [fileURL], applicationActivities: nil)
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let rootViewController = windowScene.windows.first?.rootViewController {
+                rootViewController.present(activityViewController, animated: true, completion: nil)
+            }
+            #endif
         }
     }
     
