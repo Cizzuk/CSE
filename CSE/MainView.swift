@@ -35,26 +35,12 @@ struct ContentView: View {
     @AppStorage("needSafariTutorial", store: userDefaults) private var needSafariTutorial: Bool = false
     @State private var openSafariTutorialView: Bool = false
     
-    #if iOS
+    #if !os(visionOS)
     // Get current icon
-    private var alternateIconName: String? {
-        UIApplication.shared.alternateIconName
-    }
-    // Purchased ChangeIcon?
-    @ObservedObject var storeManager = StoreManager()
-    private var linkDestination: some View {
-        if UserDefaults().bool(forKey: "haveIconChange") {
-            return AnyView(IconSettingView())
-        } else {
-            return AnyView(PurchaseView())
-        }
-    }
+    @State private var alternateIconName: String? = UIApplication.shared.alternateIconName
     #endif
     
     var body: some View {
-        #if IOS
-        @ObservedObject var storeManager = StoreManager()
-        #endif
         NavigationSplitView {
             List {
                 // Default SE Settings
@@ -111,7 +97,7 @@ struct ContentView: View {
                     }) {
                         VStack(alignment: .leading) {
                             Text("Safari Settings")
-                                #if !visionOS
+                                #if !os(visionOS)
                                 .foregroundColor(.accentColor)
                                 #endif
                             Text("If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial.")
@@ -121,22 +107,25 @@ struct ContentView: View {
                     }
                 }
                 
-//                IMPORTANT: This code is not currently used, but it is kept here for future reference.
-//                #if iOS
-//                // Go IconChange View for iOS/iPadOS
-//                Section {
-//                    NavigationLink(destination: linkDestination) {
-//                        Image((alternateIconName ?? "appicon") + "-pre")
-//                            .resizable()
-//                            .frame(width: 64, height: 64)
-//                            .accessibilityHidden(true)
-//                            .cornerRadius(14)
-//                            .padding(4)
-//                            .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
-//                        Text("Change App Icon")
-//                        Spacer()
+//                // IMPORTANT: This code is not currently used, but it is kept here for future reference.
+//                #if !os(visionOS)
+//                if !ProcessInfo.processInfo.isMacCatalystApp {
+//                    // Go IconChange View for iOS/iPadOS
+//                    Section {
+//                        NavigationLink(destination: IconChangeView()) {
+//                            Image((alternateIconName ?? "appicon") + "-pre")
+//                                .resizable()
+//                                .frame(width: 64, height: 64)
+//                                .accessibilityHidden(true)
+//                                .cornerRadius(14)
+//                                .padding(4)
+//                                .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
+//                            Text("Change App Icon")
+//                        }
 //                    }
-//                    .contentShape(Rectangle())
+//                    .task {
+//                        alternateIconName = UIApplication.shared.alternateIconName
+//                    }
 //                }
 //                #endif
                 
@@ -160,7 +149,7 @@ struct ContentView: View {
                             UITemplates.iconButton(icon: "info.circle", text: "About")
                         }
                     }
-                    #if !visionOS
+                    #if !os(visionOS)
                     .foregroundColor(.accentColor)
                     #endif
                 } header: {
@@ -174,10 +163,12 @@ struct ContentView: View {
                     }
                     
                     // TODO: Remove this button if CTF issues are resolved. (issue#24)
-                    #if iOS
-                    // Go IconChange View for iOS/iPadOS
-                    NavigationLink(destination: linkDestination) {
-                        Text("Change App Icon")
+                    #if !os(visionOS)
+                    if !ProcessInfo.processInfo.isMacCatalystApp {
+                        // Go IconChange View for iOS/iPadOS
+                        NavigationLink(destination: IconChangeView()) {
+                            Text("Change App Icon")
+                        }
                     }
                     #endif
                     

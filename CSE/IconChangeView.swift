@@ -5,25 +5,109 @@
 //  Created by Cizzuk on 2024/09/21.
 //
 
+#if !os(visionOS)
 import SwiftUI
 import StoreKit
 
-#if iOS
-struct IconSettingView: View {
+struct IconChangeView: View {
+    @ObservedObject var storeManager = StoreManager()
+    @AppStorage("haveIconChange", store: userDefaults) private var haveIconChange: Bool = false
+    @State private var showSucAlert = false
+    @State private var showFailAlert = false
+    @State private var showRestoreSucAlert = false
+    
     var body: some View {
         List {
-            Section {
-                iconItem(iconName: "CSE", iconID: "appicon")
-                iconItem(iconName: "Red", iconID: "red-white")
-                iconItem(iconName: "Green", iconID: "green-white")
-                iconItem(iconName: "Mono", iconID: "gray-white")
-                iconItem(iconName: "Pride", iconID: "pride")
-                iconItem(iconName: "General", iconID: "light")
-                iconItem(iconName: "Pixel", iconID: "pixel")
+            if haveIconChange {
+                Section {
+                    iconItem(iconName: "CSE", iconID: "appicon")
+                    iconItem(iconName: "Red", iconID: "red-white")
+                    iconItem(iconName: "Green", iconID: "green-white")
+                    iconItem(iconName: "Mono", iconID: "gray-white")
+                    iconItem(iconName: "Pride", iconID: "pride")
+                    iconItem(iconName: "Pixel", iconID: "pixel")
+                }
+                
+            } else {
+//                // IMPORTANT: This code is not currently used, but it is kept here for future reference.
+//                // Purchase Section
+//                Section {
+//                    HStack {
+//                        Image(systemName: "checkmark.circle")
+//                            .accessibilityHidden(true)
+//                        Text("You will be able to change the application icon")
+//                    }
+//                    HStack {
+//                        Image(systemName: "checkmark.circle")
+//                            .accessibilityHidden(true)
+//                        Text("Your purchase will support the development of CSE")
+//                    }
+//                    HStack {
+//                        Image(systemName: "checkmark.circle")
+//                            .accessibilityHidden(true)
+//                        Text("More people will be able to continue using CSE for free")
+//                    }
+//                    
+//                    // Purchase Button
+//                    Button(action: {
+//                        if let product = self.storeManager.products.first {
+//                            self.storeManager.purchase(product: product)
+//                        }
+//                    }) {
+//                        HStack {
+//                            if !storeManager.products.isEmpty {
+//                                Text("Purchase:")
+//                                    .fontWeight(.bold)
+//                                    .padding(10)
+//                                ForEach(storeManager.products, id: \.self) { product in
+//                                    Text(self.localizedPrice(for: product))
+//                                }
+//                            } else {
+//                                Text("Purchase is currently not available.")
+//                                    .padding(10)
+//                            }
+//                        }
+//                        .frame(maxWidth: .infinity)
+//                    }
+//                    .disabled(storeManager.products.isEmpty)
+//                }
+                
+                // Restore Button
+                Section {
+                    Button(action: {
+                        self.storeManager.restorePurchases()
+                    }) {
+                        Text("Restore Purchase")
+                            .frame(maxWidth: .infinity)
+                    }
+                } footer: {
+                    // TODO: Remove these texts if CTF issues are resolved. (issue#24)
+                    VStack (alignment: .leading) {
+                        Text("Purchase is currently not available.")
+                        Text("Only available if you have previously purchased this.")
+                    }
+                }
+                
+                // Icon Preview Section
+                Section {
+                    iconItem(iconName: "CSE", iconID: "appicon")
+                    iconItem(iconName: "Red", iconID: "red-white")
+                    iconItem(iconName: "Green", iconID: "green-white")
+                    iconItem(iconName: "Mono", iconID: "gray-white")
+                    iconItem(iconName: "Pride", iconID: "pride")
+                    iconItem(iconName: "Pixel", iconID: "pixel")
+                } header: {
+                    Text("Available Icons")
+                } footer: {
+                    Text("Available icons may change in the future.")
+                }
             }
         }
         .navigationTitle("Change App Icon")
         .navigationBarTitleDisplayMode(.inline)
+        .alert("Purchase Success!", isPresented: $storeManager.purchaseCompleted, actions: {})
+        .alert("Purchase Failed", isPresented: $storeManager.purchaseFailed, actions: {})
+        .alert("Restore Success!", isPresented: $storeManager.restoreCompleted, actions: {})
     }
     
     private func iconItem(iconName: String, iconID: String) -> some View {
@@ -41,129 +125,13 @@ struct IconSettingView: View {
         .contentShape(Rectangle())
         .onTapGesture {
             // Change App Icon
-            if iconID == "appicon" {
-                UIApplication.shared.setAlternateIconName(nil)
-            }else{
-                UIApplication.shared.setAlternateIconName(iconID)
-            }
-        }
-    }
-}
-
-struct PurchaseView: View {
-    @ObservedObject var storeManager = StoreManager()
-    @State private var showSucAlert = false
-    @State private var showFailAlert = false
-    @State private var showRestoreSucAlert = false
-    
-    var body: some View {
-        List {
-//            IMPORTANT: This code is not currently used, but it is kept here for future reference.
-//            // Purchase Section
-//            Section {
-//                HStack {
-//                    Image(systemName: "checkmark.circle")
-//                        .accessibilityHidden(true)
-//                    Text("You will be able to change the application icon")
-//                }
-//                HStack {
-//                    Image(systemName: "checkmark.circle")
-//                        .accessibilityHidden(true)
-//                    Text("Your purchase will support the development of CSE")
-//                }
-//                HStack {
-//                    Image(systemName: "checkmark.circle")
-//                        .accessibilityHidden(true)
-//                    Text("More people will be able to continue using CSE for free")
-//                }
-//                
-//                // Purchase Button
-//                Button(action: {
-//                    if let product = self.storeManager.products.first {
-//                        self.storeManager.purchase(product: product)
-//                    }
-//                }) {
-//                    HStack {
-//                        if !storeManager.products.isEmpty {
-//                            Text("Purchase:")
-//                                .fontWeight(.bold)
-//                                .padding(10)
-//                            ForEach(storeManager.products, id: \.self) { product in
-//                                Text(self.localizedPrice(for: product))
-//                            }
-//                        } else {
-//                            Text("Purchase is currently not available.")
-//                                .padding(10)
-//                        }
-//                    }
-//                    .frame(maxWidth: .infinity)
-//                }
-//                .alert("Purchase Success!", isPresented: $showSucAlert, actions: {})
-//                .onReceive(storeManager.$purchaseCompleted) { purchaseCompleted in
-//                    if purchaseCompleted {
-//                        showSucAlert = true
-//                    }
-//                }
-//                .alert("Purchase Failed", isPresented: $showFailAlert, actions: {})
-//                .onReceive(storeManager.$purchaseFailed) { purchaseFailed in
-//                    if purchaseFailed {
-//                        showFailAlert = true
-//                    }
-//                }
-//                .disabled(storeManager.products.isEmpty)
-//            }
-            
-            // Restore Button
-            Section {
-                Button(action: {
-                    self.storeManager.restorePurchases()
-                }) {
-                    Text("Restore Purchase")
-                        .frame(maxWidth: .infinity)
-                }
-                .alert("Restore Success!", isPresented: $showRestoreSucAlert, actions: {})
-                .onReceive(storeManager.$restoreCompleted) { restoreCompleted in
-                    if restoreCompleted {
-                        showRestoreSucAlert = true
-                    }
-                }
-            } footer: {
-                // TODO: Remove these texts if CTF issues are resolved. (issue#24)
-                VStack (alignment: .leading) {
-                    Text("Purchase is currently not available.")
-                    Text("Only available if you have previously purchased this.")
+            if haveIconChange {
+                if iconID == "appicon" {
+                    UIApplication.shared.setAlternateIconName(nil)
+                } else {
+                    UIApplication.shared.setAlternateIconName(iconID)
                 }
             }
-            
-            // Icon Preview Section
-            Section {
-                iconItem(iconName: "CSE", iconID: "appicon")
-                iconItem(iconName: "Red", iconID: "red-white")
-                iconItem(iconName: "Green", iconID: "green-white")
-                iconItem(iconName: "Mono", iconID: "gray-white")
-                iconItem(iconName: "Pride", iconID: "pride")
-                iconItem(iconName: "General", iconID: "light")
-                iconItem(iconName: "Pixel", iconID: "pixel")
-            } header: {
-                Text("Available Icons")
-            } footer: {
-                Text("Available icons may change in the future.")
-            }
-        }
-        .navigationTitle("Change App Icon")
-        .navigationBarTitleDisplayMode(.inline)
-    }
-    
-    private func iconItem(iconName: String, iconID: String) -> some View {
-        HStack {
-            Image(iconID + "-pre")
-                .resizable()
-                .frame(width: 64, height: 64)
-                .accessibilityHidden(true)
-                .cornerRadius(14)
-                .padding(8)
-                .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
-            Text(iconName)
         }
     }
     
@@ -216,33 +184,19 @@ final class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate,
             switch transaction.transactionState {
             case .purchased:
                 SKPaymentQueue.default().finishTransaction(transaction)
-                // Success!!!
-                handlePurchaseSuccess()
+                userDefaults.set(true, forKey: "haveIconChange")
+                purchaseCompleted = true
             case .failed:
                 SKPaymentQueue.default().finishTransaction(transaction)
-                // Failed...
-                handlePurchaseFailure()
+                purchaseFailed = true
             case .restored:
                 SKPaymentQueue.default().finishTransaction(transaction)
-                // Success!!!
-                handleRestoreSuccess()
+                userDefaults.set(true, forKey: "haveIconChange")
+                restoreCompleted = true
             default:
                 break
             }
         }
-    }
-    
-    // Handlers
-    func handlePurchaseSuccess() {
-        UserDefaults.standard.set(true, forKey: "haveIconChange")
-        purchaseCompleted = true
-    }
-    func handlePurchaseFailure() {
-        purchaseFailed = true
-    }
-    func handleRestoreSuccess() {
-        UserDefaults.standard.set(true, forKey: "haveIconChange")
-        restoreCompleted = true
     }
 }
 #endif
