@@ -200,7 +200,6 @@ final class CloudKitManager: ObservableObject {
     
     // Delete record
     func delete(recordID: CKRecord.ID) {
-        isLoading = true
         isLocked = true
         
         let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [recordID])
@@ -208,12 +207,10 @@ final class CloudKitManager: ObservableObject {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    self.isLoading = false
                     self.isLocked = false
                     self.allCSEs.removeAll { $0.id == recordID }
                 case .failure(let error):
                     self.error = error
-                    self.isLoading = false
                     self.isLocked = false
                 }
             }
