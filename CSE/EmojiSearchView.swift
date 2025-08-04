@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-#if !visionOS
+#if !os(visionOS)
 import WidgetKit
 #endif
 
@@ -20,7 +20,7 @@ struct EmojiSearchView: View {
                 Toggle(isOn: $useEmojiSearch) {
                     Text("Emoji Search")
                 }
-                #if !visionOS
+                #if !os(visionOS)
                 .onChange(of: useEmojiSearch) { _ in
                     if #available(iOS 18.0, macOS 26, *) {
                         ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.EmojiSearch")

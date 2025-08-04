@@ -7,7 +7,7 @@
 
 import Foundation
 import AppIntents
-#if !visionOS
+#if !os(visionOS)
 import WidgetKit
 #endif
 
@@ -32,7 +32,7 @@ struct SetPrivateSE: AppIntent, CustomIntentMigratedAppIntent {
         } else {
             userDefaults.set(true, forKey: "usePrivateCSE")
         }
-        #if !visionOS
+        #if !os(visionOS)
         if #available(iOS 18.0, macOS 26, *) {
             ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UsePrivateCSE")
         }

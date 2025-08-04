@@ -8,7 +8,7 @@
 import Foundation
 import CloudKit
 import AppIntents
-#if !visionOS
+#if !os(visionOS)
 import WidgetKit
 #endif
 
@@ -444,7 +444,7 @@ class CSEDataManager {
         userDefaults.set(useEmojiSearch, forKey: "useEmojiSearch")
         
         // Update CC
-        #if !visionOS
+        #if !os(visionOS)
         if #available(iOS 18.0, macOS 26, *) {
             ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UseDefaultCSE")
             ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UsePrivateCSE")
@@ -470,7 +470,7 @@ class CSEDataManager {
         userDefaults.set(deviceCSE.useEmojiSearch, forKey: "useEmojiSearch")
         
         // Update CC
-        #if !visionOS
+        #if !os(visionOS)
         if #available(iOS 18.0, macOS 26, *) {
             ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UseDefaultCSE")
             ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UsePrivateCSE")

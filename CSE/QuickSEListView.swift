@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-#if !visionOS
+#if !os(visionOS)
 import WidgetKit
 #endif
 
@@ -28,7 +28,7 @@ struct QuickSEListView: View {
                     withAnimation {
                         useQuickCSEToggle = useQuickCSE
                     }
-                    #if !visionOS
+                    #if !os(visionOS)
                     if #available(iOS 18.0, macOS 26, *) {
                         ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
                     }
@@ -81,7 +81,7 @@ struct QuickSEListView: View {
                                 .accessibilityHidden(true)
                             Text("Add New Search Engine")
                         }
-                        #if !visionOS
+                        #if !os(visionOS)
                         .foregroundColor(.accentColor)
                         #endif
                     }

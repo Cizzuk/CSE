@@ -37,7 +37,7 @@ class UITemplates {
             Text(String(localized: text))
                 .font(.headline)
                 .padding()
-                #if !visionOS
+                #if !os(visionOS)
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
                 .glassEffectTutorialButton()

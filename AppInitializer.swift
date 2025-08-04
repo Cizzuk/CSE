@@ -64,11 +64,12 @@ class AppInitializer {
     
     private class func performV3Updates() {
         // Change default settings for macOS or under iOS 17
-        #if macOS
-        userDefaults.set(true, forKey: "adv_ignorePOSTFallback")
-        #endif
-        if #unavailable(iOS 17.0) {
+        if ProcessInfo.processInfo.isMacCatalystApp {
             userDefaults.set(true, forKey: "adv_ignorePOSTFallback")
+        } else {
+            if #unavailable(iOS 17.0) {
+                userDefaults.set(true, forKey: "adv_ignorePOSTFallback")
+            }
         }
         
         // Initialize settings

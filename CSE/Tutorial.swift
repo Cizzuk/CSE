@@ -80,7 +80,7 @@ class Tutorial {
                     }
                     .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
                 }
-                #if !visionOS
+                #if !os(visionOS)
                 .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
                 #endif
             }
@@ -162,11 +162,11 @@ class Tutorial {
                             }
                         } footer: {
                             VStack (alignment : .leading) {
-                                #if macOS
-                                Text("Open Safari, go to Safari → Settings... and select 'Search' tab to find these settings.")
-                                #else
-                                Text("You can find these settings in Settings → Apps → Safari.")
-                                #endif
+                                if ProcessInfo.processInfo.isMacCatalystApp {
+                                    Text("Open Safari, go to Safari → Settings... and select 'Search' tab to find these settings.")
+                                } else {
+                                    Text("You can find these settings in Settings → Apps → Safari.")
+                                }
                                 Spacer()
                                 
                                 if #unavailable(iOS 17.0, macOS 14.0) {
@@ -192,7 +192,7 @@ class Tutorial {
                     }
                     .padding([.horizontal, .bottom], 24)
                 }
-                #if !visionOS
+                #if !os(visionOS)
                 .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
                 #endif
             }
@@ -219,11 +219,11 @@ class Tutorial {
                     
                     List {
                         Section {} footer: {
-                            #if macOS
-                            Text("Open Safari, go to Safari → Settings..., select 'Extensions' tab and enable CSE. Then 'Allow' the following webpage from 'Edit Websites...' button.")
-                            #else
-                            Text("Go to Settings → Apps → Safari → Extensions → Customize Search Engine and allow extension. Then 'Allow' the following webpage.")
-                            #endif
+                            if ProcessInfo.processInfo.isMacCatalystApp {
+                                Text("Open Safari, go to Safari → Settings..., select 'Extensions' tab and enable CSE. Then 'Allow' the following webpage from 'Edit Websites...' button.")
+                            } else {
+                                Text("Go to Settings → Apps → Safari → Extensions → Customize Search Engine and allow extension. Then 'Allow' the following webpage.")
+                            }
                         }
                         
                         // Show domains that need to allow
@@ -282,7 +282,7 @@ class Tutorial {
                         .padding([.horizontal, .bottom], 24)
                     }
                 }
-                #if !visionOS
+                #if !os(visionOS)
                 .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
                 #endif
             }
@@ -371,7 +371,7 @@ class Tutorial {
                     }
                     .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
                 }
-                #if !visionOS
+                #if !os(visionOS)
                 .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
                 #endif
             }
@@ -381,12 +381,7 @@ class Tutorial {
                     isOpenSheet = false // Close the main tutorial sheet
                 })
             }
-            .alert(isPresented: $showingErrorAlert) {
-                Alert(
-                    title: Text("Error"),
-                    message: Text(errorMessage)
-                )
-            }
+            .alert(errorMessage, isPresented: $showingErrorAlert, actions: {})
             .fileImporter(
                 isPresented: $showingFileImport,
                 allowedContentTypes: [UTType.json],

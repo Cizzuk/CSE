@@ -7,7 +7,7 @@
 
 import Foundation
 import AppIntents
-#if !visionOS
+#if !os(visionOS)
 import WidgetKit
 #endif
 
@@ -45,7 +45,7 @@ struct SetUseEmojiSearch: AppIntent, CustomIntentMigratedAppIntent {
         
         userDefaults.set(useEmojiSearch, forKey: "useEmojiSearch")
         
-        #if !visionOS
+        #if !os(visionOS)
         if #available(iOS 18.0, macOS 26, *) {
             ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.EmojiSearch")
         }

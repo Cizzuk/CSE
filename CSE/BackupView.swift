@@ -21,7 +21,9 @@ class BackupView {
                 // CloudKit Section
                 Section {
                     Button(action: {
+                        #if !os(visionOS)
                         UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        #endif
                         ck.saveAll(mustUpload: true)
                     }) {
                         HStack {
@@ -37,7 +39,9 @@ class BackupView {
                     .disabled(ck.uploadStatus == .uploading)
                     .onChange(of: ck.uploadStatus) { uploadStatus in
                         if uploadStatus == .success {
+                            #if !os(visionOS)
                             UINotificationFeedbackGenerator().notificationOccurred(.success)
+                            #endif
                         }
                     }
                     
@@ -68,12 +72,7 @@ class BackupView {
             .sheet(isPresented: $showingRestoreSheet) {
                 CloudRestoreView()
             }
-            .alert(isPresented: $showingErrorAlert) {
-                Alert(
-                    title: Text("Error"),
-                    message: Text(errorMessage)
-                )
-            }
+            .alert(errorMessage, isPresented: $showingErrorAlert, actions: {})
             .task {
                 ck.checkCloudKitAvailability()
             }
@@ -98,7 +97,9 @@ class BackupView {
 
         private func exportJSONFile() {
             guard let jsonString = CSEDataManager.exportDeviceCSEsAsJSON() else {
+                #if !os(visionOS)
                 UINotificationFeedbackGenerator().notificationOccurred(.error)
+                #endif
                 return
             }
             
@@ -112,12 +113,14 @@ class BackupView {
             do {
                 try jsonString.write(to: fileURL, atomically: true, encoding: .utf8)
             } catch {
+                #if !os(visionOS)
                 UINotificationFeedbackGenerator().notificationOccurred(.error)
+                #endif
                 return
             }
             
-            #if macOS
-            // if macOS, use finder
+            #if os(visionOS)
+            // if visionOS, use file
             let documentPicker = UIDocumentPickerViewController(forExporting: [fileURL], asCopy: true)
             documentPicker.modalPresentationStyle = .formSheet
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
@@ -125,11 +128,21 @@ class BackupView {
                 rootViewController.present(documentPicker, animated: true, completion: nil)
             }
             #else
-            // if not macOS, use share sheet
-            let activityViewController = UIActivityViewController(activityItems: [fileURL], applicationActivities: nil)
-            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-               let rootViewController = windowScene.windows.first?.rootViewController {
-                rootViewController.present(activityViewController, animated: true, completion: nil)
+            if ProcessInfo.processInfo.isMacCatalystApp {
+                // if macOS, use finder
+                let documentPicker = UIDocumentPickerViewController(forExporting: [fileURL], asCopy: true)
+                documentPicker.modalPresentationStyle = .formSheet
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                   let rootViewController = windowScene.windows.first?.rootViewController {
+                    rootViewController.present(documentPicker, animated: true, completion: nil)
+                }
+            } else {
+                // if not macOS, use share sheet
+                let activityViewController = UIActivityViewController(activityItems: [fileURL], applicationActivities: nil)
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                   let rootViewController = windowScene.windows.first?.rootViewController {
+                    rootViewController.present(activityViewController, animated: true, completion: nil)
+                }
             }
             #endif
         }
@@ -205,7 +218,9 @@ class BackupView {
                         if let selected = selected,
                            let selectedDevice = ck.allCSEs.first(where: { $0.id.recordName == selected }) {
                             CSEDataManager.importDeviceCSEs(from: selectedDevice)
+                            #if !os(visionOS)
                             UINotificationFeedbackGenerator().notificationOccurred(.success)
+                            #endif
                         }
                         dismiss()
                         onRestore?() // Call additional action if provided
@@ -229,7 +244,7 @@ class BackupView {
                         .disabled(ck.isLocked)
                     }
                 }
-                #if !visionOS
+                #if !os(visionOS)
                 .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
                 #endif
             }
@@ -250,10 +265,14 @@ class BackupView {
             try CSEDataManager.importDeviceCSEsFromJSON(jsonString)
             
             onSuccess()
+            #if !os(visionOS)
             UINotificationFeedbackGenerator().notificationOccurred(.success)
+            #endif
         } catch {
             onError(error.localizedDescription)
+            #if !os(visionOS)
             UINotificationFeedbackGenerator().notificationOccurred(.error)
+            #endif
         }
     }
 }

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-#if !visionOS
+#if !os(visionOS)
 import WidgetKit
 #endif
 
@@ -143,7 +143,7 @@ class EditSE {
                             withAnimation {
                                 useDefaultCSEToggle = useDefaultCSE
                             }
-                            #if !visionOS
+                            #if !os(visionOS)
                             if #available(iOS 18.0, macOS 26, *) {
                                 ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UseDefaultCSE")
                             }
@@ -241,7 +241,7 @@ class EditSE {
                             withAnimation {
                                 usePrivateCSEToggle = usePrivateCSE
                             }
-                            #if !visionOS
+                            #if !os(visionOS)
                             if #available(iOS 18.0, macOS 26, *) {
                                 ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UsePrivateCSE")
                             }

@@ -19,10 +19,10 @@ extension View {
     // Glass effect button for tutorial
     func glassEffectTutorialButton() -> some View {
         if #available(iOS 26, macOS 26, *) {
-            #if !os(visionOS)
-            return AnyView(self.glassEffect(.regular.tint(.accentColor).interactive()))
-            #else
+            #if os(visionOS)
             return AnyView(self)
+            #else
+            return AnyView(self.glassEffect(.regular.tint(.accentColor).interactive()))
             #endif
         } else {
             return AnyView(self)

@@ -8,16 +8,6 @@
 import SwiftUI
 
 struct AboutView: View {
-    #if iOS
-    let buildScheme = "iOS"
-    #elseif macOS
-    let buildScheme = "macOS"
-    #elseif visionOS
-    let buildScheme = "visionOS"
-    #else
-    let buildScheme = "Unknown"
-    #endif
-    
     var body: some View {
         List {
             Section {
@@ -26,7 +16,7 @@ struct AboutView: View {
                 HStack {
                     Text("Version")
                     Spacer()
-                    Text("\(currentVersion ?? "Unknown") (\(buildScheme) / \(currentBuild ?? "Unknown"))")
+                    Text("\(currentVersion ?? "Unknown") (\(currentBuild ?? "Unknown"))")
                         .foregroundColor(.secondary)
                         .textSelection(.enabled)
                 }
