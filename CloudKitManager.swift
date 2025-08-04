@@ -29,12 +29,8 @@ final class CloudKitManager: ObservableObject {
     @Published var isLocked: Bool = false // If the current view is locked
     @Published var uploadStatus: uploadStatus = .idle
     
-    init() {
-        checkCloudKitAvailability()
-    }
-    
     // Check CloudKit availability
-    private func checkCloudKitAvailability() {
+    func checkCloudKitAvailability() {
         CKContainer(identifier: "iCloud.net.cizzuk.cse").accountStatus { status, error in
             DispatchQueue.main.async {
                 self.cloudKitAvailability = status
@@ -57,16 +53,10 @@ final class CloudKitManager: ObservableObject {
     
     // Upload CSEs
     func saveAll(mustUpload: Bool = false) {
-        // Check if iCloud is available
-        guard cloudKitAvailability == .available else {
-            print("CloudKit is not available, skipping upload")
-            self.uploadStatus = .skipped
-            return
-        }
-        
         // Check if upload is disabled
-        guard mustUpload || userDefaults.bool(forKey: "adv_icloud_disableUploadCSE") else {
+        guard mustUpload || !userDefaults.bool(forKey: "adv_icloud_disableUploadCSE") else {
             self.uploadStatus = .skipped
+            print("CloudKit upload is disabled in settings.")
             return
         }
         self.uploadStatus = .uploading
@@ -210,6 +200,7 @@ final class CloudKitManager: ObservableObject {
     
     // Delete record
     func delete(recordID: CKRecord.ID) {
+        isLoading = true
         isLocked = true
         
         let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [recordID])
@@ -217,10 +208,12 @@ final class CloudKitManager: ObservableObject {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
+                    self.isLoading = false
                     self.isLocked = false
                     self.allCSEs.removeAll { $0.id == recordID }
                 case .failure(let error):
                     self.error = error
+                    self.isLoading = false
                     self.isLocked = false
                 }
             }
