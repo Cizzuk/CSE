@@ -70,7 +70,7 @@ struct AdvSettingView: View {
             
             Section {
                 Toggle(isOn: $icloud_disableUploadCSE, label: {
-                    Text("Disable Uploading CSE to iCloud")
+                    Text("Disable Auto Uploading to iCloud")
                 })
             }
             
