@@ -200,6 +200,9 @@ class BackupView {
                                 .contextMenu {
                                     Button(action: {
                                         ck.delete(recordID: ds.id)
+                                        if selected == ds.id.recordName {
+                                            selected = nil
+                                        }
                                     }) {
                                         Label("Delete", systemImage: "trash")
                                     }
@@ -209,6 +212,9 @@ class BackupView {
                                 for index in indexSet {
                                     let ds = ck.allCSEs[index]
                                     ck.delete(recordID: ds.id)
+                                    if selected == ds.id.recordName {
+                                        selected = nil
+                                    }
                                 }
                             })
                         }
