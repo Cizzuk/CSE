@@ -91,7 +91,9 @@ struct QuickSEListView: View {
         .navigationTitle("Quick Search")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            EditButton()
+            if useQuickCSEToggle {
+                EditButton()
+            }
         }
         .task {
             // Initialize
