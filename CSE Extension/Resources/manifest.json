@@ -2,7 +2,8 @@
     "manifest_version": 3,
     "default_locale": "en",
 
-    "name": "__MSG_extension_name__",
+    "name": "Customize Search Engine",
+    "short_name": "CSE",
     "description": "__MSG_extension_description__",
     "version": "4.0",
     
