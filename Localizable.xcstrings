@@ -422,6 +422,12 @@
             "value" : "О программе"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Про програму"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1110,6 +1116,12 @@
             "value" : "Вы уверены, что хотите отменить изменения?"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ви впевнені, що хочете відмовитися від змін?"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1308,6 +1320,12 @@
             "value" : "Назад"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Назад"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1368,6 +1386,12 @@
             "value" : "Резервное копирование и восстановление"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Резервне копіювання та відновлення"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1426,6 +1450,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Резервное копирование в iCloud"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Створити резервну копію в iCloud"
           }
         },
         "zh-Hans" : {
@@ -2440,6 +2470,12 @@
             "value" : "Удалить"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Видалити"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2708,6 +2744,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Разработчик"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Розробник"
           }
         },
         "zh-Hans" : {
@@ -2998,6 +3040,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отменить"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відхилити"
           }
         },
         "zh-Hans" : {
@@ -3346,6 +3394,12 @@
             "value" : "Политика конфиденциальности Emojipedia..."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Політика конфіденційності Emojipedia..."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3404,6 +3458,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Условия использования Emojipedia..."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Умови обслуговування Emojipedia..."
           }
         },
         "zh-Hans" : {
@@ -3836,6 +3896,12 @@
             "value" : "Экспорт в формате JSON"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Експортувати як JSON"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3894,6 +3960,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Не удалось разобрать данные JSON"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося розібрати дані JSON"
           }
         },
         "zh-Hans" : {
@@ -4096,6 +4168,12 @@
             "value" : "Получить список Быстрый поиск Поисковая машина"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отримати список Швидка пошукова система"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4224,6 +4302,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Получить все ключевые слова Быстрый поиск Поисковая машина"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отримує всі ключові слова Швидкої пошукової системи"
           }
         },
         "zh-Hans" : {
@@ -4852,6 +4936,12 @@
             "value" : "Если вы используете эту функцию, вы должны согласиться с условиями использования и политикой конфиденциальности Emojipedia."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Якщо ви використовуєте цю функцію, ви повинні погодитися з умовами обслуговування та політикою конфіденційності Emojipedia."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4932,6 +5022,12 @@
             "value" : "Импорт из iCloud"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Імпортувати з iCloud"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4990,6 +5086,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Импорт из JSON"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Імпортувати з JSON"
           }
         },
         "zh-Hans" : {
@@ -5481,6 +5583,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вы сможете изменить значок приложения"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Більше людей зможуть продовжувати користуватися CSE безкоштовно"
           }
         },
         "zh-Hans" : {
@@ -6597,6 +6705,12 @@
             "value" : "Покупка не состоялась"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося здійснити покупку"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6731,6 +6845,12 @@
             "value" : "Приобрести Успех!"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Покупка успішна!"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6794,6 +6914,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Приобрести:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Покупка:"
           }
         },
         "zh-Hans" : {
@@ -7394,6 +7520,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Восстановить из iCloud"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відновити з iCloud"
           }
         },
         "zh-Hans" : {
@@ -9849,6 +9981,12 @@
             "value" : "Допустимые данные не найдены в JSON"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "У JSON не знайдено дійсних даних"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9910,6 +10048,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Версия"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Версія"
           }
         },
         "zh-Hans" : {
@@ -10340,6 +10484,12 @@
             "value" : "Вы сможете изменить значок приложения"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ви зможете змінити значок застосунку"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10403,6 +10553,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ваша покупка будет способствовать развитию CSE"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваша покупка підтримає розробку CSE"
           }
         },
         "zh-Hans" : {
