@@ -410,6 +410,12 @@
             "value" : "Sobre"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "О программе"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1086,6 +1092,12 @@
             "value" : "Tem certeza de que deseja descartar as alterações?"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы уверены, что хотите отменить изменения?"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1272,6 +1284,12 @@
             "value" : "Voltar"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Назад"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1320,6 +1338,12 @@
             "value" : "Backup e Restauração"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Резервное копирование и восстановление"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1366,6 +1390,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fazer backup para o iCloud"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Резервное копирование в iCloud"
           }
         },
         "zh-Hans" : {
@@ -2368,6 +2398,12 @@
             "value" : "Excluir"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2624,6 +2660,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Desenvolvedor"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разработчик"
           }
         },
         "zh-Hans" : {
@@ -2902,6 +2944,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Descartar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить"
           }
         },
         "zh-Hans" : {
@@ -3238,6 +3286,12 @@
             "value" : "Política de Privacidade da Emojipedia..."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Политика конфиденциальности Emojipedia..."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3284,6 +3338,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Termos de Serviço da Emojipedia..."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Условия использования Emojipedia..."
           }
         },
         "zh-Hans" : {
@@ -3704,6 +3764,12 @@
             "value" : "Exportar como JSON"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Экспорт в формате JSON"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3750,6 +3816,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Falha ao analisar dados JSON"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось разобрать данные JSON"
           }
         },
         "zh-Hans" : {
@@ -3940,6 +4012,12 @@
             "value" : "Obter Lista do Buscador Rápido"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Получить список Быстрый поиск Поисковая машина"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4056,6 +4134,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Obter Todas as Palavras-chave do Buscador Rápido"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Получить все ключевые слова Быстрый поиск Поисковая машина"
           }
         },
         "zh-Hans" : {
@@ -4672,6 +4756,12 @@
             "value" : "Se você usar este recurso, precisa concordar com os termos de serviço e a política de privacidade da Emojipedia."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Если вы используете эту функцию, вы должны согласиться с условиями использования и политикой конфиденциальности Emojipedia."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4740,6 +4830,12 @@
             "value" : "Importar do iCloud"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Импорт из iCloud"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4786,6 +4882,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Importar de JSON"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Импорт из JSON"
           }
         },
         "zh-Hans" : {
@@ -7178,6 +7280,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Restaurar do iCloud"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Восстановить из iCloud"
           }
         },
         "zh-Hans" : {
@@ -9621,6 +9729,12 @@
             "value" : "Dados válidos não encontrados no JSON"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Допустимые данные не найдены в JSON"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9670,6 +9784,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Versão"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Версия"
           }
         },
         "zh-Hans" : {
