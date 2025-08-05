@@ -410,6 +410,12 @@
             "value" : "情報"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "정보"
+          }
+        },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1104,6 +1110,12 @@
             "value" : "変更を破棄しますか？"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "변경사항을 폐기하시겠습니까?"
+          }
+        },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1308,6 +1320,12 @@
             "value" : "戻る"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "뒤로"
+          }
+        },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1374,6 +1392,12 @@
             "value" : "バックアップと復元"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "백업 및 복원"
+          }
+        },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1438,6 +1462,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "iCloudにバックアップ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud에 백업"
           }
         },
         "pt" : {
@@ -2458,6 +2488,12 @@
             "value" : "削除"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "삭제"
+          }
+        },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2732,6 +2768,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "開発者"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개발자"
           }
         },
         "pt" : {
@@ -3028,6 +3070,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "破棄"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "폐기"
           }
         },
         "pt" : {
@@ -3382,6 +3430,12 @@
             "value" : "Emojipediaのプライバシーポリシー…"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emojipedia의 개인정보처리방침..."
+          }
+        },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3446,6 +3500,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Emojipediaの利用規約…"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emojipedia의 이용약관..."
           }
         },
         "pt" : {
@@ -3884,6 +3944,12 @@
             "value" : "JSONとして書き出す"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JSON으로 내보내기"
+          }
+        },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3948,6 +4014,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "JSONデータの読み取りに失敗しました"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JSON 데이터 읽기에 실패했습니다"
           }
         },
         "pt" : {
@@ -4156,6 +4228,12 @@
             "value" : "クイック検索エンジンのリストを取得"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "빠른 검색 엔진 목록 가져오기"
+          }
+        },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4290,6 +4368,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "全てのクイック検索エンジンのキーワードを取得します"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모든 빠른 검색 엔진의 키워드를 가져옵니다"
           }
         },
         "pt" : {
@@ -4924,6 +5008,12 @@
             "value" : "この機能を利用するには、Emojipediaの利用規約とプライバシーポリシーに同意している必要があります。"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 기능을 이용하려면 Emojipedia의 이용약관 및 개인정보처리방침에 동의해야 합니다."
+          }
+        },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5010,6 +5100,12 @@
             "value" : "iCloudから読み込む"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud에서 불러오기"
+          }
+        },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5074,6 +5170,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "JSONから読み込む"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JSON에서 불러오기"
           }
         },
         "pt" : {
@@ -7508,6 +7610,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "iCloudから復元"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud에서 복원"
           }
         },
         "pt" : {
@@ -9969,6 +10077,12 @@
             "value" : "有効なJSONデータが見つかりません"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "유효한 JSON 데이터를 찾을 수 없습니다"
+          }
+        },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10036,6 +10150,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "バージョン"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "버전"
           }
         },
         "pt" : {
