@@ -44,11 +44,11 @@ final class CloudKitManager: ObservableObject {
     
     // Create device name
     func createDeviceName() -> String {
-        if ProcessInfo.processInfo.isMacCatalystApp {
-            return "Mac Catalyst / " + UIDevice.current.systemName + " " + UIDevice.current.systemVersion
-        } else {
-            return UIDevice.current.name + " / " + UIDevice.current.systemName + " " + UIDevice.current.systemVersion
-        }
+        #if targetEnvironment(macCatalyst)
+        return "Mac Catalyst / " + UIDevice.current.systemName + " " + UIDevice.current.systemVersion
+        #else
+        return UIDevice.current.name + " / " + UIDevice.current.systemName + " " + UIDevice.current.systemVersion
+        #endif
     }
     
     // Upload CSEs

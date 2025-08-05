@@ -108,24 +108,22 @@ struct ContentView: View {
                 }
                 
 //                // IMPORTANT: This code is not currently used, but it is kept here for future reference.
-//                #if !os(visionOS)
-//                if !ProcessInfo.processInfo.isMacCatalystApp {
-//                    // Go IconChange View for iOS/iPadOS
-//                    Section {
-//                        NavigationLink(destination: IconChangeView()) {
-//                            Image((alternateIconName ?? "appicon") + "-pre")
-//                                .resizable()
-//                                .frame(width: 64, height: 64)
-//                                .accessibilityHidden(true)
-//                                .cornerRadius(14)
-//                                .padding(4)
-//                                .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
-//                            Text("Change App Icon")
-//                        }
+//                #if !os(visionOS) && !targetEnvironment(macCatalyst)
+//                // Go IconChange View for iOS/iPadOS
+//                Section {
+//                    NavigationLink(destination: IconChangeView()) {
+//                        Image((alternateIconName ?? "appicon") + "-pre")
+//                            .resizable()
+//                            .frame(width: 64, height: 64)
+//                            .accessibilityHidden(true)
+//                            .cornerRadius(14)
+//                            .padding(4)
+//                            .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
+//                        Text("Change App Icon")
 //                    }
-//                    .task {
-//                        alternateIconName = UIApplication.shared.alternateIconName
-//                    }
+//                }
+//                .task {
+//                    alternateIconName = UIApplication.shared.alternateIconName
 //                }
 //                #endif
                 
@@ -163,12 +161,10 @@ struct ContentView: View {
                     }
                     
                     // TODO: Remove this button if CTF issues are resolved. (issue#24)
-                    #if !os(visionOS)
-                    if !ProcessInfo.processInfo.isMacCatalystApp {
-                        // Go IconChange View for iOS/iPadOS
-                        NavigationLink(destination: IconChangeView()) {
-                            Text("Change App Icon")
-                        }
+                    #if !os(visionOS) && !targetEnvironment(macCatalyst)
+                    // Go IconChange View for iOS/iPadOS
+                    NavigationLink(destination: IconChangeView()) {
+                        Text("Change App Icon")
                     }
                     #endif
                     

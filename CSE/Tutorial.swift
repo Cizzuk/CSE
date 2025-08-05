@@ -162,11 +162,11 @@ class Tutorial {
                             }
                         } footer: {
                             VStack (alignment : .leading) {
-                                if ProcessInfo.processInfo.isMacCatalystApp {
-                                    Text("Open Safari, go to Safari → Settings... and select 'Search' tab to find these settings.")
-                                } else {
-                                    Text("You can find these settings in Settings → Apps → Safari.")
-                                }
+                                #if targetEnvironment(macCatalyst)
+                                Text("Open Safari, go to Safari → Settings... and select 'Search' tab to find these settings.")
+                                #else
+                                Text("You can find these settings in Settings → Apps → Safari.")
+                                #endif
                                 Spacer()
                                 
                                 if #unavailable(iOS 17.0, macOS 14.0) {
@@ -219,11 +219,11 @@ class Tutorial {
                     
                     List {
                         Section {} footer: {
-                            if ProcessInfo.processInfo.isMacCatalystApp {
-                                Text("Open Safari, go to Safari → Settings..., select 'Extensions' tab and enable CSE. Then 'Allow' the following webpage from 'Edit Websites...' button.")
-                            } else {
-                                Text("Go to Settings → Apps → Safari → Extensions → Customize Search Engine and allow extension. Then 'Allow' the following webpage.")
-                            }
+                            #if targetEnvironment(macCatalyst)
+                            Text("Open Safari, go to Safari → Settings..., select 'Extensions' tab and enable CSE. Then 'Allow' the following webpage from 'Edit Websites...' button.")
+                            #else
+                            Text("Go to Settings → Apps → Safari → Extensions → Customize Search Engine and allow extension. Then 'Allow' the following webpage.")
+                            #endif
                         }
                         
                         // Show domains that need to allow

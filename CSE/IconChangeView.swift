@@ -5,7 +5,7 @@
 //  Created by Cizzuk on 2024/09/21.
 //
 
-#if !os(visionOS)
+#if !os(visionOS) && !targetEnvironment(macCatalyst)
 import SwiftUI
 import StoreKit
 

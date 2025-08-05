@@ -23,15 +23,15 @@ struct AdvSettingView: View {
                 Button("Reset All Advanced Settings") {
                     disablechecker = false
                     ignoreFocusFilter = false
-                    if ProcessInfo.processInfo.isMacCatalystApp {
+                    #if targetEnvironment(macCatalyst)
+                    ignorePOSTFallback = true
+                    #else
+                    if #unavailable(iOS 17.0) {
                         ignorePOSTFallback = true
                     } else {
-                        if #unavailable(iOS 17.0) {
-                            ignorePOSTFallback = true
-                        } else {
-                            ignorePOSTFallback = false
-                        }
+                        ignorePOSTFallback = false
                     }
+                    #endif
                     icloud_disableUploadCSE = false
                     resetCSEs = ""
                     allowReset = false

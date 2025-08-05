@@ -127,22 +127,20 @@ class BackupView {
                let rootViewController = windowScene.windows.first?.rootViewController {
                 rootViewController.present(documentPicker, animated: true, completion: nil)
             }
+            #elseif targetEnvironment(macCatalyst)
+            // if macOS, use finder
+            let documentPicker = UIDocumentPickerViewController(forExporting: [fileURL], asCopy: true)
+            documentPicker.modalPresentationStyle = .formSheet
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                let rootViewController = windowScene.windows.first?.rootViewController {
+                rootViewController.present(documentPicker, animated: true, completion: nil)
+            }
             #else
-            if ProcessInfo.processInfo.isMacCatalystApp {
-                // if macOS, use finder
-                let documentPicker = UIDocumentPickerViewController(forExporting: [fileURL], asCopy: true)
-                documentPicker.modalPresentationStyle = .formSheet
-                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                   let rootViewController = windowScene.windows.first?.rootViewController {
-                    rootViewController.present(documentPicker, animated: true, completion: nil)
-                }
-            } else {
-                // if not macOS, use share sheet
-                let activityViewController = UIActivityViewController(activityItems: [fileURL], applicationActivities: nil)
-                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                   let rootViewController = windowScene.windows.first?.rootViewController {
-                    rootViewController.present(activityViewController, animated: true, completion: nil)
-                }
+            // if ios, use share sheet
+            let activityViewController = UIActivityViewController(activityItems: [fileURL], applicationActivities: nil)
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                let rootViewController = windowScene.windows.first?.rootViewController {
+                rootViewController.present(activityViewController, animated: true, completion: nil)
             }
             #endif
         }
