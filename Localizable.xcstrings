@@ -404,6 +404,12 @@
             "value" : "情報"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sobre"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1074,6 +1080,12 @@
             "value" : "変更を破棄しますか？"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tem certeza de que deseja descartar as alterações?"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1254,6 +1266,12 @@
             "value" : "戻る"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voltar"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1296,6 +1314,12 @@
             "value" : "バックアップと復元"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Backup e Restauração"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1336,6 +1360,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "iCloudにバックアップ"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fazer backup para o iCloud"
           }
         },
         "zh-Hans" : {
@@ -2332,6 +2362,12 @@
             "value" : "削除"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Excluir"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2582,6 +2618,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "開発者"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desenvolvedor"
           }
         },
         "zh-Hans" : {
@@ -2854,6 +2896,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "破棄"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descartar"
           }
         },
         "zh-Hans" : {
@@ -3184,6 +3232,12 @@
             "value" : "Emojipediaのプライバシーポリシー…"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Política de Privacidade da Emojipedia..."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3224,6 +3278,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Emojipediaの利用規約…"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termos de Serviço da Emojipedia..."
           }
         },
         "zh-Hans" : {
@@ -3638,6 +3698,12 @@
             "value" : "JSONとして書き出す"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportar como JSON"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3678,6 +3744,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "JSONデータの読み取りに失敗しました"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falha ao analisar dados JSON"
           }
         },
         "zh-Hans" : {
@@ -3862,6 +3934,12 @@
             "value" : "クイック検索エンジンのリストを取得"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obter Lista do Buscador Rápido"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3972,6 +4050,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "全てのクイック検索エンジンのキーワードを取得します"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obter Todas as Palavras-chave do Buscador Rápido"
           }
         },
         "zh-Hans" : {
@@ -4582,6 +4666,12 @@
             "value" : "この機能を利用するには、Emojipediaの利用規約とプライバシーポリシーに同意している必要があります。"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se você usar este recurso, precisa concordar com os termos de serviço e a política de privacidade da Emojipedia."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4644,6 +4734,12 @@
             "value" : "iCloudから読み込む"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importar do iCloud"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4684,6 +4780,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "JSONから読み込む"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importar de JSON"
           }
         },
         "zh-Hans" : {
@@ -7070,6 +7172,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "iCloudから復元"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurar do iCloud"
           }
         },
         "zh-Hans" : {
@@ -9507,6 +9615,12 @@
             "value" : "有効なJSONデータが見つかりません"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dados válidos não encontrados no JSON"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9550,6 +9664,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "バージョン"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versão"
           }
         },
         "zh-Hans" : {
