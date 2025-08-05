@@ -35,17 +35,24 @@ struct ContentView: View {
     @AppStorage("needSafariTutorial", store: userDefaults) private var needSafariTutorial: Bool = false
     @State private var openSafariTutorialView: Bool = false
     
+    // Navigation
+    @State private var selection: NavigationItem?
+    private enum NavigationItem: Hashable {
+        case defaultSE, privateSE, quickSE, emojiSearch
+        case about, backup, iconChange, advancedSettings
+    }
+    
     #if !os(visionOS)
     // Get current icon
     @State private var alternateIconName: String? = UIApplication.shared.alternateIconName
     #endif
     
     var body: some View {
-        NavigationSplitView {
-            List {
+        NavigationSplitView(columnVisibility: .constant(.doubleColumn)) {
+            List(selection: $selection) {
                 // Default SE Settings
                 Section {
-                    NavigationLink(destination: EditSE.EditDefaultCSEView()) {
+                    NavigationLink(value: NavigationItem.defaultSE) {
                         HStack {
                             Text("Default Search Engine")
                             Spacer()
@@ -56,7 +63,7 @@ struct ContentView: View {
                     }
                     
                     // Private SE Settings
-                    NavigationLink(destination: EditSE.EditPrivateCSEView()) {
+                    NavigationLink(value: NavigationItem.privateSE) {
                         HStack {
                             Text("Private Search Engine")
                             Spacer()
@@ -67,7 +74,7 @@ struct ContentView: View {
                     }
                     
                     // Quick SE Settings
-                    NavigationLink(destination: QuickSEListView()) {
+                    NavigationLink(value: NavigationItem.quickSE) {
                         HStack {
                             Text("Quick Search")
                             Spacer()
@@ -79,7 +86,7 @@ struct ContentView: View {
                     
                     
                     // Emoji Search Setting
-                    NavigationLink(destination: EmojiSearchView()) {
+                    NavigationLink(value: NavigationItem.emojiSearch) {
                         HStack {
                             Text("Emoji Search")
                             Spacer()
@@ -143,7 +150,7 @@ struct ContentView: View {
                             UITemplates.iconButton(icon: "hand.raised", text: "Privacy Policy")
                         })
                         // About View
-                        NavigationLink(destination: AboutView()) {
+                        NavigationLink(value: NavigationItem.about) {
                             UITemplates.iconButton(icon: "info.circle", text: "About")
                         }
                     }
@@ -156,19 +163,19 @@ struct ContentView: View {
                 
                 // Advanced Settings
                 Section {
-                    NavigationLink(destination: BackupView.BackupView()) {
+                    NavigationLink(value: NavigationItem.backup) {
                         Text("Backup & Restore")
                     }
                     
                     // TODO: Remove this button if CTF issues are resolved. (issue#24)
                     #if !os(visionOS) && !targetEnvironment(macCatalyst)
                     // Go IconChange View for iOS/iPadOS
-                    NavigationLink(destination: IconChangeView()) {
+                    NavigationLink(value: NavigationItem.iconChange) {
                         Text("Change App Icon")
                     }
                     #endif
                     
-                    NavigationLink(destination: AdvSettingView()) {
+                    NavigationLink(value: NavigationItem.advancedSettings) {
                         Text("Advanced Settings")
                     }
                 }
@@ -177,9 +184,33 @@ struct ContentView: View {
             .navigationTitle("CSE Settings")
         } detail: {
             NavigationStack {
-                Spacer()
+                switch selection {
+                case .defaultSE:
+                    EditSE.EditDefaultCSEView()
+                case .privateSE:
+                    EditSE.EditPrivateCSEView()
+                case .quickSE:
+                    QuickSEListView()
+                case .emojiSearch:
+                    EmojiSearchView()
+                case .about:
+                    AboutView()
+                case .backup:
+                    BackupView.BackupView()
+                case .iconChange:
+                    #if !os(visionOS) && !targetEnvironment(macCatalyst)
+                    IconChangeView()
+                    #else
+                    Spacer()
+                    #endif
+                case .advancedSettings:
+                    AdvSettingView()
+                case .none:
+                    Spacer()
+                }
             }
         }
+        .navigationSplitViewStyle(.balanced)
         .listStyleFallback()
         // Tutorial sheets
         .sheet(isPresented : $needFirstTutorial, content: {
