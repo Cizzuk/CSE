@@ -391,6 +391,18 @@
             "state" : "translated",
             "value" : "情報"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关于"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關於"
+          }
         }
       }
     },
@@ -1037,6 +1049,18 @@
             "state" : "translated",
             "value" : "変更を破棄しますか？"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "确定要放弃更改吗？"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您確定要放棄變更嗎？"
+          }
         }
       }
     },
@@ -1193,6 +1217,18 @@
             "state" : "translated",
             "value" : "戻る"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "返回"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "返回"
+          }
         }
       }
     },
@@ -1211,6 +1247,18 @@
             "state" : "translated",
             "value" : "バックアップと復元"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "备份与恢复"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "備份與還原"
+          }
         }
       }
     },
@@ -1228,6 +1276,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "iCloudにバックアップ"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "备份到 iCloud"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "備份至 iCloud"
           }
         }
       }
@@ -2199,6 +2259,18 @@
             "state" : "translated",
             "value" : "削除"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "刪除"
+          }
         }
       }
     },
@@ -2426,6 +2498,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "開発者"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开发者"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開發者"
           }
         }
       }
@@ -2674,6 +2758,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "破棄"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "放弃"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "放棄"
           }
         }
       }
@@ -2979,6 +3075,18 @@
             "state" : "translated",
             "value" : "Emojipediaのプライバシーポリシー…"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emojipedia 隐私政策…"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emojipedia 隱私權政策…"
+          }
         }
       }
     },
@@ -2996,6 +3104,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Emojipediaの利用規約…"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emojipedia 服务条款…"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emojipedia 服務條款…"
           }
         }
       }
@@ -3385,6 +3505,18 @@
             "state" : "translated",
             "value" : "JSONとして書き出す"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "导出为 JSON"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "匯出為 JSON"
+          }
         }
       }
     },
@@ -3402,6 +3534,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "JSONデータの読み取りに失敗しました"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "解析 JSON 数据失败"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無法解析 JSON 資料"
           }
         }
       }
@@ -3561,6 +3705,18 @@
             "state" : "translated",
             "value" : "クイック検索エンジンのリストを取得"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "获取快速搜索引擎列表"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取得快速搜尋引擎列表"
+          }
         }
       }
     },
@@ -3648,6 +3804,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "全てのクイック検索エンジンのキーワードを取得します"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "获取所有快速搜索引擎关键字"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取得所有快速搜尋引擎關鍵字"
           }
         }
       }
@@ -4233,6 +4401,18 @@
             "state" : "translated",
             "value" : "この機能を利用するには、Emojipediaの利用規約とプライバシーポリシーに同意している必要があります。"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果您使用此功能，需同意 Emojipedia 的服务条款和隐私政策。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用此功能前，您需同意 Emojipedia 的服務條款和隱私權政策。"
+          }
         }
       }
     },
@@ -4271,6 +4451,18 @@
             "state" : "translated",
             "value" : "iCloudから読み込む"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从 iCloud 导入"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "從 iCloud 匯入"
+          }
         }
       }
     },
@@ -4288,6 +4480,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "JSONから読み込む"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从 JSON 导入"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "從 JSON 匯入"
           }
         }
       }
@@ -6650,6 +6854,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "iCloudから復元"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从 iCloud 恢复"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "從 iCloud 還原"
           }
         }
       }
@@ -9062,6 +9278,18 @@
             "state" : "translated",
             "value" : "有効なJSONデータが見つかりません"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在 JSON 中未找到有效数据"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在 JSON 中未找到有效資料"
+          }
         }
       }
     },
@@ -9082,6 +9310,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "バージョン"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本"
           }
         }
       }
