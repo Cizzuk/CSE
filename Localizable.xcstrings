@@ -392,6 +392,12 @@
             "value" : "Über"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acerca de"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1074,6 +1080,12 @@
             "value" : "Sind Sie sicher, dass Sie die Änderungen verwerfen möchten?"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Está seguro de que desea descartar los cambios?"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1266,6 +1278,12 @@
             "value" : "Zurück"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atrás"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1320,6 +1338,12 @@
             "value" : "Sichern & Wiederherstellen"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copia de seguridad y restauración"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1372,6 +1396,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "In iCloud sichern"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copiar a iCloud"
           }
         },
         "fr" : {
@@ -2380,6 +2410,12 @@
             "value" : "Löschen"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2642,6 +2678,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Entwickler"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desarrollador"
           }
         },
         "fr" : {
@@ -2926,6 +2968,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Verwerfen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descartar"
           }
         },
         "fr" : {
@@ -3268,6 +3316,12 @@
             "value" : "Datenschutzerklärung von Emojipedia..."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Política de privacidad de Emojipedia..."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3320,6 +3374,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nutzungsbedingungen von Emojipedia..."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Términos de servicio de Emojipedia..."
           }
         },
         "fr" : {
@@ -3746,6 +3806,12 @@
             "value" : "Als JSON exportieren"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportar como JSON"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3798,6 +3864,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "JSON-Daten konnten nicht geparst werden"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error al analizar datos JSON"
           }
         },
         "fr" : {
@@ -3994,6 +4066,12 @@
             "value" : "Schnellsuchmaschine-Liste abrufen"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtener lista de Buscador rápido"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4116,6 +4194,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ruft alle Stichwörter der Schnellsuchmaschine ab"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtener todas las palabras clave de Buscador rápido"
           }
         },
         "fr" : {
@@ -4738,6 +4822,12 @@
             "value" : "Wenn Sie diese Funktion nutzen, müssen Sie den Nutzungsbedingungen und der Datenschutzerklärung von Emojipedia zustimmen."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si utiliza esta función, debe aceptar los términos de servicio y la política de privacidad de Emojipedia."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4812,6 +4902,12 @@
             "value" : "Aus iCloud importieren"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importar desde iCloud"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4864,6 +4960,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aus JSON importieren"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importar desde JSON"
           }
         },
         "fr" : {
@@ -7262,6 +7364,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aus iCloud wiederherstellen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurar desde iCloud"
           }
         },
         "fr" : {
@@ -9711,6 +9819,12 @@
             "value" : "Gültige Daten in der JSON-Datei nicht gefunden"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se encontraron datos válidos en JSON"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9766,6 +9880,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión"
           }
         },
         "fr" : {
