@@ -248,7 +248,7 @@ class EditSE {
                             #endif
                         }
                     } footer: {
-                        Text("Use different search engine in Private Browse")
+                        Text("Use different search engine in Private Browse.")
                     }
                     
                     if usePrivateCSEToggle {
