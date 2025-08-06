@@ -182,6 +182,9 @@ struct ContentView: View {
                 
             }
             .navigationTitle("CSE Settings")
+            #if os(visionOS)
+            .background(.thickMaterial)
+            #endif
         } detail: {
             NavigationStack {
                 switch selection {
@@ -209,6 +212,9 @@ struct ContentView: View {
                     Spacer()
                 }
             }
+            #if os(visionOS)
+            .background(.ultraThinMaterial)
+            #endif
         }
         .navigationSplitViewStyle(.balanced)
         .listStyleFallback()
