@@ -117,7 +117,7 @@
       }
     },
     {
-      "hidden" : false,
+      "hidden" : true,
       "layers" : [
         {
           "glass" : false,
