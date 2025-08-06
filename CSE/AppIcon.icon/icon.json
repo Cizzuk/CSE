@@ -40,7 +40,14 @@
             }
           ],
           "image-name" : "obj.png",
-          "name" : "obj"
+          "name" : "obj",
+          "position" : {
+            "scale" : 0.1,
+            "translation-in-points" : [
+              0,
+              0
+            ]
+          }
         }
       ],
       "lighting" : "individual",
@@ -88,7 +95,14 @@
             }
           ],
           "image-name" : "mgn.png",
-          "name" : "mgn"
+          "name" : "mgn",
+          "position" : {
+            "scale" : 0.1,
+            "translation-in-points" : [
+              0,
+              0
+            ]
+          }
         }
       ],
       "name" : "Magnifier",
@@ -97,6 +111,26 @@
         "opacity" : 0.5
       },
       "specular" : true,
+      "translucency" : {
+        "enabled" : false,
+        "value" : 0.5
+      }
+    },
+    {
+      "hidden" : false,
+      "layers" : [
+        {
+          "glass" : false,
+          "image-name" : "bg.png",
+          "name" : "bg"
+        }
+      ],
+      "name" : "Background",
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "specular" : false,
       "translucency" : {
         "enabled" : false,
         "value" : 0.5
