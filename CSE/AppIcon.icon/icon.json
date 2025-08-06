@@ -39,6 +39,7 @@
               }
             }
           ],
+          "glass" : true,
           "image-name" : "obj.png",
           "name" : "obj",
           "position" : {
@@ -94,6 +95,7 @@
               }
             }
           ],
+          "glass" : true,
           "image-name" : "mgn.png",
           "name" : "mgn",
           "position" : {
@@ -113,7 +115,7 @@
       "specular" : true,
       "translucency" : {
         "enabled" : false,
-        "value" : 0.5
+        "value" : 0.1
       }
     }
   ],
