@@ -43,7 +43,7 @@
           "image-name" : "obj.png",
           "name" : "obj",
           "position" : {
-            "scale" : 0.1,
+            "scale" : 1,
             "translation-in-points" : [
               0,
               0
@@ -99,7 +99,7 @@
           "image-name" : "mgn.png",
           "name" : "mgn",
           "position" : {
-            "scale" : 0.1,
+            "scale" : 1,
             "translation-in-points" : [
               0,
               0
