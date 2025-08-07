@@ -31,8 +31,6 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         let useDefaultCSE: Bool = userDefaults.bool(forKey: "useDefaultCSE")
         let usePrivateCSE: Bool = userDefaults.bool(forKey: "usePrivateCSE")
         
-        var redirectData: (type: String, url: String, post: [[String: String]]) = ("error", "", [])
-        
         // CSE data set
         struct dataSet: Encodable {
             let type: String
@@ -45,13 +43,14 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             // Check current focus filter
             try await getFocusFilter()
             
-            var searchQuery: String? = nil
-            
+            let searchQuery: String?
             // Get Redirect URL
             if checkEngineURL(engineName: searchengine, url: searchURL) {
                 searchQuery = getQueryValue(engineName: searchengine, url: searchURL)
             } else if checkEngineURL(engineName: privsearchengine, url: searchURL) && !alsousepriv {
                 searchQuery = getQueryValue(engineName: privsearchengine, url: searchURL)
+            } else {
+                searchQuery = nil
             }
             
             // Check if searchQuery is available
@@ -60,6 +59,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
                 return
             }
             
+            let redirectData: (type: String, url: String, post: [[String: String]])
             if isIncognito && usePrivateCSE {
                 redirectData = makeSearchURL(baseCSE: CSEDataManager.getCSEData(.privateCSE), query: query)
             } else if useDefaultCSE {
@@ -69,7 +69,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             }
             
             // Check Redirect URL exists
-            if redirectData.url == "" {
+            if redirectData.url.isEmpty {
                 sendData(context: context, data: ["type" : "cancel"])
                 return
             }
@@ -288,13 +288,12 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         let decodedQuery: String = query.removingPercentEncoding ?? ""
         
         // Is useEmojiSearch Enabled?
-        var useEmojiSearch: Bool = userDefaults.bool(forKey: "useEmojiSearch")
-        if focusSettings != nil {
-            if focusSettings?.useEmojiSearch == true {
-                useEmojiSearch = true
-            } else {
-                useEmojiSearch = false
-            }
+        let useEmojiSearch: Bool
+        if let focusUseEmojiSearch = focusSettings?.useEmojiSearch {
+            // Set focus filter setting
+            useEmojiSearch = focusUseEmojiSearch
+        } else {
+            useEmojiSearch = userDefaults.bool(forKey: "useEmojiSearch")
         }
         
         // Check Emoji Search
@@ -326,29 +325,29 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         var fixedQuery: String = query
         
         // Load Settings
-        var CSEData: CSEDataManager.CSEData = baseCSE
-        
-        // Set focus filter setting
-        if focusSettings != nil {
-            CSEData = focusSettings!.cseData
+        var CSEData: CSEDataManager.CSEData
+        if let focusCSE = focusSettings?.cseData {
+            // Set focus filter setting
+            CSEData = focusCSE
+        } else {
+            CSEData = baseCSE
         }
         
         // Is useQuickCSE Enabled?
-        var useQuickCSE: Bool = userDefaults.bool(forKey: "useQuickCSE")
-        if focusSettings != nil {
-            if focusSettings?.useQuickCSE == true {
-                useQuickCSE = true
-            } else {
-                useQuickCSE = false
-            }
-        }
+        let useQuickCSE: Bool
         if !(decodedQuery.count > 1 && query.contains("+")) {
             useQuickCSE = false
+        } else {
+            if let focusUseQuickCSE = focusSettings?.useQuickCSE {
+                // Set focus filter setting
+                useQuickCSE = focusUseQuickCSE
+            } else {
+                useQuickCSE = userDefaults.bool(forKey: "useQuickCSE")
+            }
         }
         
         // Check quick search
         if useQuickCSE {
-            var cseID: String
             let quickCSEData = CSEDataManager.getAllQuickCSEData()
             for key in quickCSEData.keys {
                 // percent encoded key (all characters including + or &)
@@ -359,9 +358,8 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
                     let queryNoKey = String(query.dropFirst(encodedKey.count))
                     // If query has space
                     if queryNoKey.hasPrefix("+") {
-                        cseID = key
                         fixedQuery = String(queryNoKey.dropFirst(1))
-                        CSEData = quickCSEData[cseID] ?? CSEData
+                        CSEData = quickCSEData[key] ?? CSEData
                         break
                     }
                 }
@@ -384,14 +382,14 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         
         // POST
         var postData: [[String: String]] = CSEData.post
-        if postData.count > 0 {
+        if !postData.isEmpty {
             let decodedFixedQueryForPOST: String = fixedQuery.replacingOccurrences(of: "+", with: " ").removingPercentEncoding ?? ""
             for i in 0..<postData.count {
                 postData[i]["key"] = postData[i]["key"]?.replacingOccurrences(of: "%s", with: decodedFixedQueryForPOST)
                 postData[i]["value"] = postData[i]["value"]?.replacingOccurrences(of: "%s", with: decodedFixedQueryForPOST)
             }
         }
-        let redirectType: String = postData.count > 0 ? "haspost" : "redirect"
+        let redirectType: String = postData.isEmpty ? "redirect" : "haspost"
         
         return (redirectType, redirectURL, postData)
     }
