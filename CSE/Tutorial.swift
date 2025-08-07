@@ -111,21 +111,9 @@ class Tutorial {
                         Section {
                             // Default SE
                             Picker("Search Engine", selection: $searchengine) {
-                                if currentRegion == "CN" {
-                                    Text("Baidu").tag("baidu")
-                                    Text("Sogou").tag("sogou")
-                                    Text("360 Search").tag("360search")
+                                ForEach(SafariSEs.availableEngines(forRegion: currentRegion), id: \.self.rawValue) { engine in
+                                    Text(engine.displayName).tag(engine.rawValue)
                                 }
-                                if #available(iOS 17.0, macOS 14.0, *) {
-                                    Text("Google").tag("google")
-                                }
-                                Text("Yahoo").tag("yahoo")
-                                Text("Bing").tag("bing")
-                                if currentRegion == "RU" {
-                                    Text("Yandex").tag("yandex")
-                                }
-                                Text("DuckDuckGo").tag("duckduckgo")
-                                Text("Ecosia").tag("ecosia")
                             }
                             
                             if #available(iOS 17.0, macOS 14.0, *) {
@@ -144,19 +132,9 @@ class Tutorial {
                                 // Private SE
                                 if !alsouseprivToggle {
                                     Picker("Private Search Engine", selection: $privsearchengine) {
-                                        if currentRegion == "CN" {
-                                            Text("Baidu").tag("baidu")
-                                            Text("Sogou").tag("sogou")
-                                            Text("360 Search").tag("360search")
+                                        ForEach(SafariSEs.availableEngines(forRegion: currentRegion), id: \.self.rawValue) { engine in
+                                            Text(engine.displayName).tag(engine.rawValue)
                                         }
-                                        Text("Google").tag("google")
-                                        Text("Yahoo").tag("yahoo")
-                                        Text("Bing").tag("bing")
-                                        if currentRegion == "RU" {
-                                            Text("Yandex").tag("yandex")
-                                        }
-                                        Text("DuckDuckGo").tag("duckduckgo")
-                                        Text("Ecosia").tag("ecosia")
                                     }
                                 }
                             }
@@ -228,40 +206,14 @@ class Tutorial {
                         
                         // Show domains that need to allow
                         Section {
-                            if searchengine == "baidu" || (!alsousepriv && privsearchengine == "baidu") {
-                                Text("baidu.com")
+                            let selectedSE = SafariSEs(rawValue: searchengine)
+                            let selectedPrivateSE = SafariSEs(rawValue: privsearchengine)
+                            
+                            if let se = selectedSE {
+                                Text(se.domain(forRegion: currentRegion))
                             }
-                            if searchengine == "bing" || (!alsousepriv && privsearchengine == "bing") {
-                                Text("bing.com")
-                            }
-                            if searchengine == "duckduckgo" || (!alsousepriv && privsearchengine == "duckduckgo") {
-                                Text("duckduckgo.com")
-                            }
-                            if searchengine == "ecosia" || (!alsousepriv && privsearchengine == "ecosia") {
-                                Text("ecosia.org")
-                            }
-                            if searchengine == "google" || (!alsousepriv && privsearchengine == "google") {
-                                if currentRegion == "CN" {
-                                    Text("google.cn")
-                                } else {
-                                    Text("google.com")
-                                }
-                            }
-                            if searchengine == "yahoo" || (!alsousepriv && privsearchengine == "yahoo") {
-                                if currentRegion == "JP" {
-                                    Text("search.yahoo.co.jp")
-                                } else {
-                                    Text("search.yahoo.com")
-                                }
-                            }
-                            if searchengine == "360search" || (!alsousepriv && privsearchengine == "360search") {
-                                Text("so.com")
-                            }
-                            if searchengine == "sogou" || (!alsousepriv && privsearchengine == "sogou") {
-                                Text("sogou.com")
-                            }
-                            if searchengine == "yandex" || (!alsousepriv && privsearchengine == "yandex") {
-                                Text("yandex.ru")
+                            if !alsousepriv, let se = selectedPrivateSE, se != selectedSE {
+                                Text(se.domain(forRegion: currentRegion))
                             }
                         } footer: {
                             Text("And recommended to Deny for Other Websites.")

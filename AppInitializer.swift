@@ -9,11 +9,11 @@ import Foundation
 
 class AppInitializer {
     private static let userDefaults = CSEDataManager.userDefaults
+    private static let currentRegion = Locale.current.region?.identifier
     
     class func initializeApp() {
         let lastVersion: String = userDefaults.string(forKey: "LastAppVer") ?? ""
         let currentVersion = CSEDataManager.currentVersion
-        let currentRegion = Locale.current.region?.identifier
         
         let searchengine: String? = userDefaults.string(forKey: "searchengine") ?? nil
         let privsearchengine: String? = userDefaults.string(forKey: "privsearchengine") ?? nil
@@ -29,14 +29,25 @@ class AppInitializer {
         
         // Initialize default settings
         if lastVersion == "" {
-            userDefaults.set("google", forKey: "searchengine")
-            userDefaults.set("duckduckgo", forKey: "privsearchengine")
+            userDefaults.set(SafariSEs.defaultForRegion(region: currentRegion).rawValue, forKey: "searchengine")
+            userDefaults.set(SafariSEs.privateForRegion(region: currentRegion).rawValue, forKey: "privsearchengine")
             userDefaults.set(true, forKey: "alsousepriv")
+            
+            // Change default settings for macOS or under iOS 17
+            #if targetEnvironment(macCatalyst)
+            userDefaults.set(true, forKey: "adv_ignorePOSTFallback")
+            #elseif os(iOS)
+            if #unavailable(iOS 17.0) {
+                userDefaults.set(true, forKey: "adv_ignorePOSTFallback")
+            }
+            #endif
+            
+            // Initialize CSEs
+            resetCSE(target: "all")
         }
         
         // Update/Create database for v3.0 or later
         if lastVersion == "" || isUpdated(updateVer: "3.0", lastVer: lastVersion) {
-            performV3Updates()
             migrateOldCSESettings()
         }
         
@@ -47,11 +58,8 @@ class AppInitializer {
             }
         }
         
-        // Automatically corrects settings to match OS version
-        performOSVersionCorrections(lastVersion: lastVersion, searchengine: searchengine, currentRegion: currentRegion)
-        
-        // Fix search engines by region
-        fixSearchEnginesByRegion(searchengine: searchengine, privsearchengine: privsearchengine, currentRegion: currentRegion)
+        // Automatically corrects settings to match OS version and region
+        correctSafariSE(searchengine: searchengine, privsearchengine: privsearchengine)
         
         if needFirstTutorial && needSafariTutorial {
             userDefaults.set(true, forKey: "needFirstTutorial")
@@ -60,20 +68,6 @@ class AppInitializer {
         
         // Save last opened version
         userDefaults.set(currentVersion, forKey: "LastAppVer")
-    }
-    
-    private class func performV3Updates() {
-        // Change default settings for macOS or under iOS 17
-        #if targetEnvironment(macCatalyst)
-        userDefaults.set(true, forKey: "adv_ignorePOSTFallback")
-        #elseif os(iOS)
-        if #unavailable(iOS 17.0) {
-            userDefaults.set(true, forKey: "adv_ignorePOSTFallback")
-        }
-        #endif
-        
-        // Initialize settings
-        resetCSE(target: "all")
     }
     
     private class func migrateOldCSESettings() {
@@ -88,40 +82,23 @@ class AppInitializer {
         }
     }
     
-    private class func performOSVersionCorrections(lastVersion: String, searchengine: String?, currentRegion: String?) {
-        // Cannot use Google under iOS 17
-        if #unavailable(iOS 17.0, macOS 14.0) {
-            if searchengine == "google" || searchengine == nil {
-                if currentRegion == "CN" {
-                    userDefaults.set("baidu", forKey: "searchengine")
-                } else {
-                    userDefaults.set("bing", forKey: "searchengine")
-                }
-                if isUpdated(updateVer: "3.3", lastVer: lastVersion) {
-                    userDefaults.set(true, forKey: "needSafariTutorial")
-                }
+    private class func correctSafariSE(searchengine: String?, privsearchengine: String?) {
+        let currentSE = SafariSEs(rawValue: searchengine ?? "")
+        let currentPrivateSE = SafariSEs(rawValue: privsearchengine ?? "")
+
+        // Correct Default SE
+        if let se = currentSE, !se.isAvailable(forRegion: currentRegion) {
+            userDefaults.set(SafariSEs.defaultForRegion(region: currentRegion).rawValue, forKey: "searchengine")
+            userDefaults.set(true, forKey: "needSafariTutorial")
+        }
+        if #available(iOS 17.0, macOS 14.0, *) {
+            // Correct Private SE
+            if let se = currentPrivateSE, !se.isAvailable(forRegion: currentRegion) {
+                userDefaults.set(SafariSEs.privateForRegion(region: currentRegion).rawValue, forKey: "privsearchengine")
+                userDefaults.set(true, forKey: "needSafariTutorial")
             }
+        } else {
             userDefaults.set(true, forKey: "alsousepriv")
-        }
-    }
-    
-    private class func fixSearchEnginesByRegion(searchengine: String?, privsearchengine: String?, currentRegion: String?) {
-        // Fix Default SE by region
-        if (currentRegion != "CN" && ["baidu", "sogou", "360search"].contains(searchengine))
-            || (currentRegion != "RU" && ["yandex"].contains(searchengine)) {
-            if currentRegion == "CN" {
-                userDefaults.set("baidu", forKey: "searchengine")
-            } else {
-                userDefaults.set("google", forKey: "searchengine")
-            }
-            userDefaults.set(true, forKey: "needSafariTutorial")
-        }
-        
-        // Fix Private SE by region
-        if (currentRegion != "CN" && ["baidu", "sogou", "360search"].contains(privsearchengine))
-            || (currentRegion != "RU" && ["yandex"].contains(privsearchengine)) {
-            userDefaults.set("duckduckgo", forKey: "privsearchengine")
-            userDefaults.set(true, forKey: "needSafariTutorial")
         }
     }
     

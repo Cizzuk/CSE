@@ -25,6 +25,8 @@
 		BE1642DF2D23D69E008A42F8 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1642DE2D23D696008A42F8 /* Tutorial.swift */; };
 		BE5342E32C9E338F00AE1DB3 /* IconChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5342E22C9E338F00AE1DB3 /* IconChangeView.swift */; };
 		BE5342E52C9E36FA00AE1DB3 /* AdvSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */; };
+		BE5B593A2E4456C700D63E34 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B59392E4456C700D63E34 /* Enums.swift */; };
+		BE5B593B2E445AC400D63E34 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B59392E4456C700D63E34 /* Enums.swift */; };
 		BE5CEB622DAE8DC6003A2F3E /* RecommendSEs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5CEB612DAE8DC6003A2F3E /* RecommendSEs.swift */; };
 		BE7374D52D86DDF300976342 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7374D42D86DDF300976342 /* AboutView.swift */; };
 		BE866B682D3F688900C506E5 /* EditSE.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE866B672D3F688900C506E5 /* EditSE.swift */; };
@@ -108,6 +110,7 @@
 		BE1642DE2D23D696008A42F8 /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 		BE5342E22C9E338F00AE1DB3 /* IconChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconChangeView.swift; sourceTree = "<group>"; };
 		BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvSettingView.swift; sourceTree = "<group>"; };
+		BE5B59392E4456C700D63E34 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		BE5CEB612DAE8DC6003A2F3E /* RecommendSEs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendSEs.swift; sourceTree = "<group>"; };
 		BE7374D42D86DDF300976342 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		BE866B672D3F688900C506E5 /* EditSE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSE.swift; sourceTree = "<group>"; };
@@ -140,9 +143,9 @@
 			membershipExceptions = (
 				AddQuickSE.swift,
 				DeleteQuickSE.swift,
-				Enums.swift,
 				GetCSESettings.swift,
 				GetQuickCSEList.swift,
+				IntentEnums.swift,
 				SetDefaultSE.swift,
 				SetFocusSE.swift,
 				SetPrivateSE.swift,
@@ -272,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				BED82F132E31EF8F00820213 /* Extensions.swift */,
+				BE5B59392E4456C700D63E34 /* Enums.swift */,
 				BE5CEB612DAE8DC6003A2F3E /* RecommendSEs.swift */,
 				BE8F7FE02DE31A43003906F4 /* UITemplates.swift */,
 			);
@@ -463,6 +467,7 @@
 				BE5342E32C9E338F00AE1DB3 /* IconChangeView.swift in Sources */,
 				BE866B6A2D3F9A1F00C506E5 /* QuickSEListView.swift in Sources */,
 				BE8F7FE12DE31A43003906F4 /* UITemplates.swift in Sources */,
+				BE5B593A2E4456C700D63E34 /* Enums.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +478,7 @@
 				BEAE0F432E226B6D007704AE /* RecommendSEs.swift in Sources */,
 				90C9BE35288BE17300E22FB8 /* SafariWebExtensionHandler.swift in Sources */,
 				BE8F7FDD2DE2D81F003906F4 /* CloudKitManager.swift in Sources */,
+				BE5B593B2E445AC400D63E34 /* Enums.swift in Sources */,
 				BEAE0F412E2268F2007704AE /* AppInitializer.swift in Sources */,
 				BE8F7FDC2DE2ABDA003906F4 /* CSEDataManager.swift in Sources */,
 			);
