@@ -19,6 +19,9 @@ struct SetPrivateSE: AppIntent, CustomIntentMigratedAppIntent {
     @Parameter(title: "URL", description: "Blank to disable", default: "")
         var cseURL: String
     
+    @Parameter(title: "POST Data", description: "Blank to disable", default: "")
+        var post: String
+    
     @Parameter(title: "Disable Percent-encoding", default: false)
         var disablePercentEncoding: Bool
     
@@ -38,8 +41,11 @@ struct SetPrivateSE: AppIntent, CustomIntentMigratedAppIntent {
         }
         #endif
         
+        let parsedPost = CSEDataManager.postDataToDictionary(post)
+        
         let cseData = CSEDataManager.CSEData(
             url: cseURL,
+            post: parsedPost,
             disablePercentEncoding: disablePercentEncoding,
             maxQueryLength: maxQueryLength
         )

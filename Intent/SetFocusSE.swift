@@ -14,6 +14,9 @@ struct SetFocusSE : SetFocusFilterIntent {
     @Parameter(title: "URL", description: "Blank to disable CSE", default: "")
         var cseURL: String
     
+    @Parameter(title: "POST Data", description: "Blank to disable", default: "")
+        var post: String
+    
     @Parameter(title: "Disable Percent-encoding", default: false)
         var disablePercentEncoding: Bool
     

@@ -403,8 +403,10 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         do {
             let filter: SetFocusSE = try await SetFocusSE.current
             if filter.useQuickCSE != nil && filter.useEmojiSearch != nil {
+                let parsedPost = CSEDataManager.postDataToDictionary(filter.post)
                 let focusCSE = CSEDataManager.CSEData(
                     url: filter.cseURL,
+                    post: parsedPost,
                     disablePercentEncoding: filter.disablePercentEncoding,
                     maxQueryLength: filter.maxQueryLength
                 )
