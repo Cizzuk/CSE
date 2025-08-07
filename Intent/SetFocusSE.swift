@@ -32,14 +32,23 @@ struct SetFocusSE : SetFocusFilterIntent {
     var displayRepresentation: DisplayRepresentation {
         var subtitle = LocalizedStringResource("")
         
-        if self.cseURL == "" {
+        if self.cseURL.isEmpty {
             if useQuickCSE ?? false || useEmojiSearch ?? false {
                 subtitle = LocalizedStringResource("Disable Default Search Engine")
             } else {
                 subtitle = LocalizedStringResource("Disable CSE")
             }
         } else {
-            subtitle = LocalizedStringResource("\(self.cseURL)")
+            // cut prefix http:// or https:// from URL for display
+            let displayURL: String
+            if cseURL.hasPrefix("http://") {
+                displayURL = String(cseURL.dropFirst(7))
+            } else if cseURL.hasPrefix("https://") {
+                displayURL = String(cseURL.dropFirst(8))
+            } else {
+                displayURL = cseURL
+            }
+            subtitle = LocalizedStringResource("\(displayURL)")
         }
         
         return DisplayRepresentation(title: SetFocusSE.title, subtitle: subtitle)
