@@ -30,7 +30,7 @@ struct SetFocusSE : SetFocusFilterIntent {
         var useEmojiSearch: Bool?
     
     var displayRepresentation: DisplayRepresentation {
-        var subtitle = LocalizedStringResource("")
+        let subtitle: LocalizedStringResource
         
         if self.cseURL.isEmpty {
             if useQuickCSE ?? false || useEmojiSearch ?? false {
