@@ -123,6 +123,7 @@ class EditSE {
         @Environment(\.scenePhase) private var scenePhase
         
         @State private var CSEData = CSEDataManager.getCSEData(.defaultCSE)
+        @State private var tmpCSEData = CSEDataManager.getCSEData(.defaultCSE) // for old OS
         @State private var openRecommendView: Bool = false
         @State private var openCloudImportView: Bool = false
         
@@ -185,6 +186,7 @@ class EditSE {
                     saveCSEData(.autosave)
                 } else if newPhase == .active {
                     CSEData = CSEDataManager.getCSEData(.defaultCSE)
+                    tmpCSEData = CSEData
                 }
             }
             .onDisappear {
@@ -194,6 +196,7 @@ class EditSE {
             .task {
                 if isFirstLoad {
                     CSEData = CSEDataManager.getCSEData(.defaultCSE)
+                    tmpCSEData = CSEData
                     isFirstLoad = false
                 } else {
                     saveCSEData(.autosave)
@@ -203,14 +206,18 @@ class EditSE {
         }
         
         private func saveCSEData(_ mode: SaveMode) {
-            switch mode {
-            case .autosave:
-                CSEDataManager.saveCSEData(CSEData, .defaultCSE, uploadCloud: false)
-            case .dismiss:
-                CSEDataManager.saveCSEData(CSEData, .defaultCSE, uploadCloud: true)
-            case .discard:
-                // No discard action needed for default CSE
-                break
+            if CSEData != tmpCSEData {
+                switch mode {
+                case .autosave:
+                    CSEDataManager.saveCSEData(CSEData, .defaultCSE, uploadCloud: false)
+                    tmpCSEData = CSEData
+                case .dismiss:
+                    CSEDataManager.saveCSEData(CSEData, .defaultCSE, uploadCloud: true)
+                    tmpCSEData = CSEData
+                case .discard:
+                    // No discard action needed for default CSE
+                    break
+                }
             }
         }
     }
@@ -221,6 +228,7 @@ class EditSE {
         @Environment(\.scenePhase) private var scenePhase
         
         @State private var CSEData = CSEDataManager.getCSEData(.privateCSE)
+        @State private var tmpCSEData = CSEDataManager.getCSEData(.privateCSE) // for old OS
         @State private var openRecommendView: Bool = false
         @State private var openCloudImportView: Bool = false
         
@@ -284,6 +292,7 @@ class EditSE {
                     saveCSEData(.autosave)
                 } else if newPhase == .active {
                     CSEData = CSEDataManager.getCSEData(.privateCSE)
+                    tmpCSEData = CSEData
                 }
             }
             .onDisappear {
@@ -293,6 +302,7 @@ class EditSE {
             .task {
                 if isFirstLoad {
                     CSEData = CSEDataManager.getCSEData(.privateCSE)
+                    tmpCSEData = CSEData
                     isFirstLoad = false
                 } else {
                     saveCSEData(.autosave)
@@ -302,14 +312,16 @@ class EditSE {
         }
         
         private func saveCSEData(_ mode: SaveMode) {
-            switch mode {
-            case .autosave:
-                CSEDataManager.saveCSEData(CSEData, .privateCSE, uploadCloud: false)
-            case .dismiss:
-                CSEDataManager.saveCSEData(CSEData, .privateCSE, uploadCloud: true)
-            case .discard:
-                // No discard action needed for private CSE
-                break
+            if CSEData != tmpCSEData {
+                switch mode {
+                case .autosave:
+                    CSEDataManager.saveCSEData(CSEData, .privateCSE, uploadCloud: false)
+                case .dismiss:
+                    CSEDataManager.saveCSEData(CSEData, .privateCSE, uploadCloud: true)
+                case .discard:
+                    // No discard action needed for private CSE
+                    break
+                }
             }
         }
     }
