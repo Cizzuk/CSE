@@ -17,7 +17,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         // Initialize app data and perform necessary updates
         AppInitializer.initializeApp()
         
-        // Get Search URL from content.js
+        // Get Search URL from background.js
         let item = context.inputItems.first as! NSExtensionItem
         guard let message = item.userInfo?[SFExtensionMessageKey] as? [String: Any],
               let searchURL: String = message["url"] as? String,
