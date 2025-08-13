@@ -39,7 +39,7 @@ class CSEDataManager {
         var maxQueryLength: Int? = nil
     }
     
-    // Structure of a single device's CSE data
+    // Structure of a single device's CSE data for iCloud
     struct DeviceCSEs: Identifiable, Hashable {
         let id: CKRecord.ID
         let version: String
