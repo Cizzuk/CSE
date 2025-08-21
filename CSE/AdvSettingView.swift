@@ -11,6 +11,7 @@ struct AdvSettingView: View {
     //Load advanced settings
     @AppStorage("needFirstTutorial", store: userDefaults) private var needFirstTutorial: Bool = true
     @AppStorage("adv_disablechecker", store: userDefaults) private var disablechecker: Bool = false
+    @AppStorage("adv_disableKeywordOnlyQuickSearch", store: userDefaults) private var disableKeywordOnlyQuickSearch: Bool = false
     @AppStorage("adv_ignoreFocusFilter", store: userDefaults) private var ignoreFocusFilter: Bool = false
     @AppStorage("adv_ignorePOSTFallback", store: userDefaults) private var ignorePOSTFallback: Bool = false
     @AppStorage("adv_icloud_disableUploadCSE", store: userDefaults) private var icloud_disableUploadCSE: Bool = false
@@ -22,6 +23,7 @@ struct AdvSettingView: View {
             Section {
                 Button("Reset All Advanced Settings") {
                     disablechecker = false
+                    disableKeywordOnlyQuickSearch = false
                     ignoreFocusFilter = false
                     #if targetEnvironment(macCatalyst)
                     ignorePOSTFallback = true
@@ -50,6 +52,14 @@ struct AdvSettingView: View {
                 })
             } footer: {
                 Text("CSE will not check that you have searched from the search bar.")
+            }
+            
+            Section {
+                Toggle(isOn: $disableKeywordOnlyQuickSearch, label: {
+                    Text("Disable Keyword Only Quick Search")
+                })
+            } footer: {
+                Text("CSE will not use Quick Search when only a keyword is entered for search.")
             }
             
             Section {

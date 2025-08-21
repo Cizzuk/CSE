@@ -335,30 +335,35 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         
         // Is useQuickCSE Enabled?
         let useQuickCSE: Bool
-        if !(decodedQuery.count > 1 && query.contains("+")) {
-            useQuickCSE = false
+        if let focusUseQuickCSE = focusSettings?.useQuickCSE {
+            // Set focus filter setting
+            useQuickCSE = focusUseQuickCSE
         } else {
-            if let focusUseQuickCSE = focusSettings?.useQuickCSE {
-                // Set focus filter setting
-                useQuickCSE = focusUseQuickCSE
-            } else {
-                useQuickCSE = userDefaults.bool(forKey: "useQuickCSE")
-            }
+            useQuickCSE = userDefaults.bool(forKey: "useQuickCSE")
         }
         
         // Check quick search
         if useQuickCSE {
             let quickCSEData = CSEDataManager.getAllQuickCSEData()
+            let disableKeywordOnlyQuickSearch: Bool = userDefaults.bool(forKey: "adv_disableKeywordOnlyQuickSearch")
+
             for key in quickCSEData.keys {
                 // percent encoded key (all characters including + or &)
                 guard let encodedKey = key.addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._")))
                 else { continue }
+                
                 // If query has maybe quick search keyword
-                if query.hasPrefix(encodedKey) && (encodedKey.count + 1 < query.count) {
-                    let queryNoKey = String(query.dropFirst(encodedKey.count))
-                    // If query has space
-                    if queryNoKey.hasPrefix("+") {
-                        fixedQuery = String(queryNoKey.dropFirst(1))
+                if query.hasPrefix(encodedKey) {
+                    let suffix = String(query.dropFirst(encodedKey.count))
+                    if suffix.hasPrefix("+") {
+                        let afterPlus = String(suffix.dropFirst(1))
+                        // keyword + query (suffix will not be empty per invariant)
+                        fixedQuery = afterPlus
+                        CSEData = quickCSEData[key] ?? CSEData
+                        break
+                    } else if suffix.isEmpty && !disableKeywordOnlyQuickSearch {
+                        // keyword only and keyword-only is allowed
+                        fixedQuery = ""
                         CSEData = quickCSEData[key] ?? CSEData
                         break
                     }
