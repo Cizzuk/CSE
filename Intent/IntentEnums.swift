@@ -22,6 +22,7 @@ enum IntentTurnEnum: String, AppEnum {
 enum IntentCSESettingsEnum: String, AppEnum {
     case url
     case name
+    case post
     case disablePercentEncoding
     case maxQueryLength
     
@@ -29,6 +30,7 @@ enum IntentCSESettingsEnum: String, AppEnum {
     static var caseDisplayRepresentations: [Self: DisplayRepresentation] = [
         .url: "URL",
         .name: "Name",
+        .post: "POST Data",
         .disablePercentEncoding: "Disable Percent-encoding",
         .maxQueryLength: "Max Query Length"
     ]

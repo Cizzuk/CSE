@@ -24,7 +24,6 @@ struct CCQuickSearch: ControlWidget {
             }
         }
         .displayName("Quick Search")
-        .description("Turn Quick Search On or Off on CSE.")
     }
 }
 
@@ -41,13 +40,13 @@ extension CCQuickSearch {
 
 struct CCQuickSearchIntent: SetValueIntent {
     static let title: LocalizedStringResource = "Quick Search"
+    static var isDiscoverable: Bool = false
 
     @Parameter(title: "Quick Search", default: false)
     var value: Bool
 
     func perform() async throws -> some IntentResult {
-        let userDefaults = CSEDataManager.userDefaults
-        userDefaults.set(value, forKey: "useQuickCSE")
+        CSEDataManager.userDefaults.set(value, forKey: "useQuickCSE")
         return .result()
     }
 }

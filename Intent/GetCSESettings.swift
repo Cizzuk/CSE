@@ -23,20 +23,36 @@ struct GetCSESettings: AppIntent, CustomIntentMigratedAppIntent {
         var settings: IntentCSESettingsEnum
     
     static var parameterSummary: some ParameterSummary {
-        When(\Self.$type, .equalTo, .quickCSE) {
-            Summary("Get \(\.$settings) for \(\.$type) with Keyword \(\.$cseID)")
-        } otherwise: {
+        When(\Self.$type, .notEqualTo, .quickCSE) {
             Summary("Get \(\.$settings) for \(\.$type)")
+        } otherwise: {
+            Summary("Get \(\.$settings) for \(\.$type) with Keyword \(\.$cseID)")
         }
+    }
+    
+    enum GetCSESettingsError: Error {
+        case quickCSENotFound
+        case keyBlank
     }
 
     func perform() async throws -> some IntentResult & ReturnsValue<String> {
         var cseData: CSEDataManager.CSEData
         
         if type == .quickCSE {
+            guard !cseID.isEmpty else {
+                throw GetCSESettingsError.keyBlank
+            }
+            guard CSEDataManager.checkQuickCSEExists(cseID) else {
+                throw GetCSESettingsError.quickCSENotFound
+            }
             cseData = CSEDataManager.getCSEData(.quickCSE, id: cseID)
         } else {
             cseData = CSEDataManager.getCSEData(type)
+            if type == .privateCSE {
+                cseData.name = String(localized: "Private Search Engine")
+            } else {
+                cseData.name = String(localized: "Default Search Engine")
+            }
         }
         
         switch settings {
@@ -44,6 +60,8 @@ struct GetCSESettings: AppIntent, CustomIntentMigratedAppIntent {
             return .result(value: cseData.url)
         case .name:
             return .result(value: cseData.name)
+        case .post:
+            return .result(value: CSEDataManager.postDataToString(cseData.post))
         case .disablePercentEncoding:
             return .result(value: cseData.disablePercentEncoding ? "Yes" : "No")
         case .maxQueryLength:

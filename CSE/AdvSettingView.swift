@@ -9,18 +9,13 @@ import SwiftUI
 
 struct AdvSettingView: View {
     //Load advanced settings
-    @AppStorage("needFirstTutorial", store: userDefaults)
-      private var needFirstTutorial: Bool = userDefaults.bool(forKey: "needFirstTutorial")
-    @AppStorage("adv_disablechecker", store: userDefaults)
-      private var disablechecker: Bool = userDefaults.bool(forKey: "adv_disablechecker")
-    @AppStorage("adv_ignoreFocusFilter", store: userDefaults)
-      private var ignoreFocusFilter: Bool = userDefaults.bool(forKey: "adv_ignoreFocusFilter")
-    @AppStorage("adv_ignorePOSTFallback", store: userDefaults)
-      private var ignorePOSTFallback: Bool = userDefaults.bool(forKey: "adv_ignorePOSTFallback")
-    @AppStorage("adv_icloud_disableUploadCSE", store: userDefaults)
-      private var icloud_disableUploadCSE: Bool = userDefaults.bool(forKey: "adv_icloud_disableUploadCSE")
-    @AppStorage("adv_resetCSEs", store: userDefaults)
-      private var resetCSEs: String = userDefaults.string(forKey: "adv_resetCSEs") ?? ""
+    @AppStorage("needFirstTutorial", store: userDefaults) private var needFirstTutorial: Bool = true
+    @AppStorage("adv_disablechecker", store: userDefaults) private var disablechecker: Bool = false
+    @AppStorage("adv_disableKeywordOnlyQuickSearch", store: userDefaults) private var disableKeywordOnlyQuickSearch: Bool = false
+    @AppStorage("adv_ignoreFocusFilter", store: userDefaults) private var ignoreFocusFilter: Bool = false
+    @AppStorage("adv_ignorePOSTFallback", store: userDefaults) private var ignorePOSTFallback: Bool = false
+    @AppStorage("adv_icloud_disableUploadCSE", store: userDefaults) private var icloud_disableUploadCSE: Bool = false
+    @AppStorage("adv_resetCSEs", store: userDefaults) private var resetCSEs: String = ""
     @State private var allowReset: Bool = false
     
     var body: some View {
@@ -28,17 +23,18 @@ struct AdvSettingView: View {
             Section {
                 Button("Reset All Advanced Settings") {
                     disablechecker = false
+                    disableKeywordOnlyQuickSearch = false
                     ignoreFocusFilter = false
-                    #if macOS
+                    #if targetEnvironment(macCatalyst)
                     ignorePOSTFallback = true
                     #else
-                     icloud_disableUploadCSE = false
                     if #unavailable(iOS 17.0) {
                         ignorePOSTFallback = true
                     } else {
                         ignorePOSTFallback = false
                     }
                     #endif
+                    icloud_disableUploadCSE = false
                     resetCSEs = ""
                     allowReset = false
                 }
@@ -59,6 +55,14 @@ struct AdvSettingView: View {
             }
             
             Section {
+                Toggle(isOn: $disableKeywordOnlyQuickSearch, label: {
+                    Text("Disable Keyword Only Quick Search")
+                })
+            } footer: {
+                Text("CSE will not use Quick Search when only a keyword is entered for search.")
+            }
+            
+            Section {
                 Toggle(isOn: $ignoreFocusFilter, label: {
                     Text("Ignore Focus Filter")
                 })
@@ -76,11 +80,8 @@ struct AdvSettingView: View {
             
             Section {
                 Toggle(isOn: $icloud_disableUploadCSE, label: {
-                    Text("Disable Uploading CSE to iCloud")
+                    Text("Disable Auto Uploading to iCloud")
                 })
-                Button("Force Upload CSE to iCloud") {
-                    CloudKitManager().saveAll(mustUpload: true)
-                }
             }
             
             Section {
@@ -121,6 +122,6 @@ struct AdvSettingView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
-        .navigationViewStyle(.stack)
+        .navigationTitle("Advanced Settings")
     }
 }

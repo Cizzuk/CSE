@@ -19,11 +19,14 @@ struct AddQuickSE: AppIntent, CustomIntentMigratedAppIntent {
     @Parameter(title: "Name", default: "")
         var name: String
     
-    @Parameter(title: "Keyword", default: "")
+    @Parameter(title: "Keyword")
         var cseID: String
     
-    @Parameter(title: "URL", default: "")
+    @Parameter(title: "URL")
         var cseURL: String
+    
+    @Parameter(title: "POST Data", description: "Blank to disable", default: "")
+        var post: String
     
     @Parameter(title: "Disable Percent-encoding", default: false)
         var disablePercentEncoding: Bool
@@ -32,18 +35,21 @@ struct AddQuickSE: AppIntent, CustomIntentMigratedAppIntent {
         var maxQueryLength: Int?
 
     func perform() async throws -> some IntentResult & ReturnsValue<String?> {
+        let parsedPost = CSEDataManager.postDataToDictionary(post)
+        
         let cseData = CSEDataManager.CSEData(
             name: name,
             keyword: cseID,
             url: cseURL,
+            post: parsedPost,
             disablePercentEncoding: disablePercentEncoding,
             maxQueryLength: maxQueryLength
         )
         
         do {
             try CSEDataManager.saveCSEData(cseData, nil, replace: replace)
-        } catch {
-            return .result(value: error.localizedDescription)
+        } catch let error as CSEDataManager.saveCSEDataError {
+            throw error
         }
         
         return .result(value: nil)

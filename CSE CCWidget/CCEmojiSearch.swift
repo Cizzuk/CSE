@@ -24,7 +24,6 @@ struct CCEmojiSearch: ControlWidget {
             }
         }
         .displayName("Emoji Search")
-        .description("Turn Emoji Search On or Off on CSE.")
     }
 }
 
@@ -41,13 +40,13 @@ extension CCEmojiSearch {
 
 struct CCEmojiSearchIntent: SetValueIntent {
     static let title: LocalizedStringResource = "Emoji Search"
+    static var isDiscoverable: Bool = false
 
     @Parameter(title: "Emoji Search", default: false)
     var value: Bool
 
     func perform() async throws -> some IntentResult {
-        let userDefaults = CSEDataManager.userDefaults
-        userDefaults.set(value, forKey: "useEmojiSearch")
+        CSEDataManager.userDefaults.set(value, forKey: "useEmojiSearch")
         return .result()
     }
 }

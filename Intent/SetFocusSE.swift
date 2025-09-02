@@ -7,13 +7,15 @@
 
 import AppIntents
 
-@available(iOS 16.0, macOS 13.0, *)
 struct SetFocusSE : SetFocusFilterIntent {
     static var title: LocalizedStringResource = "Set Search Engine"
     static var description: LocalizedStringResource = "Sets a Custom Search Engine to be used during this Focus."
     
     @Parameter(title: "URL", description: "Blank to disable CSE", default: "")
         var cseURL: String
+    
+    @Parameter(title: "POST Data", description: "Blank to disable", default: "")
+        var post: String
     
     @Parameter(title: "Disable Percent-encoding", default: false)
         var disablePercentEncoding: Bool
@@ -28,16 +30,25 @@ struct SetFocusSE : SetFocusFilterIntent {
         var useEmojiSearch: Bool?
     
     var displayRepresentation: DisplayRepresentation {
-        var subtitle = LocalizedStringResource("")
+        let subtitle: LocalizedStringResource
         
-        if self.cseURL == "" {
+        if self.cseURL.isEmpty {
             if useQuickCSE ?? false || useEmojiSearch ?? false {
                 subtitle = LocalizedStringResource("Disable Default Search Engine")
             } else {
                 subtitle = LocalizedStringResource("Disable CSE")
             }
         } else {
-            subtitle = LocalizedStringResource("\(self.cseURL)")
+            // cut prefix http:// or https:// from URL for display
+            let displayURL: String
+            if cseURL.hasPrefix("http://") {
+                displayURL = String(cseURL.dropFirst(7))
+            } else if cseURL.hasPrefix("https://") {
+                displayURL = String(cseURL.dropFirst(8))
+            } else {
+                displayURL = cseURL
+            }
+            subtitle = LocalizedStringResource("\(displayURL)")
         }
         
         return DisplayRepresentation(title: SetFocusSE.title, subtitle: subtitle)

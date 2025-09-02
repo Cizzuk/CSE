@@ -8,6 +8,8 @@
 import Foundation
 
 class RecommendSEs {
+    static let currentRegion = Locale.current.region?.identifier
+    
     class func quickCSEs() -> [String: CSEDataManager.CSEData] {
         let preferredLanguages = Locale.preferredLanguages
         let wikiLangsList: [String] = ["ar", "de", "en", "es", "fa", "fr", "it", "arz", "nl", "ja", "pl", "pt", "ceb", "sv", "uk", "vi", "war", "zh", "ru"]
@@ -121,14 +123,17 @@ class RecommendSEs {
         var popCSEs: [CSEDataManager.CSEData] = [
             CSEDataManager.CSEData(
                 name: "Startpage",
+                keyword: "sp",
                 url: "https://www.startpage.com/sp/search?query=%s",
             ),
             CSEDataManager.CSEData(
                 name: "Brave Search",
+                keyword: "br",
                 url: "https://search.brave.com/search?q=%s",
             ),
             CSEDataManager.CSEData(
                 name: "Google &udm=14",
+                keyword: "g",
                 url: "https://www.google.com/search?q=%s&udm=14",
             ),
         ]
@@ -137,16 +142,19 @@ class RecommendSEs {
         if currentRegion == "FR" {
             popCSEs.append(CSEDataManager.CSEData(
                 name: "Qwant",
+                keyword: "qwant",
                 url: "https://www.qwant.com/?q=%s"
             ))
         } else if currentRegion == "KR" {
             popCSEs.append(CSEDataManager.CSEData(
                 name: "NAVER",
+                keyword: "naver",
                 url: "https://search.naver.com/search.naver?query=%s"
             ))
         } else if currentRegion == "VN" {
             popCSEs.append(CSEDataManager.CSEData(
                 name: "Cốc Cốc",
+                keyword: "coc",
                 url: "https://coccoc.com/search#query=%s"
             ))
         }
@@ -159,19 +167,23 @@ class RecommendSEs {
         if currentRegion != "CN" && currentRegion != "RU" {
             aiCSEs.append(CSEDataManager.CSEData(
                 name: "Perplexity",
+                keyword: "pplx",
                 url: "https://www.perplexity.ai/?q=%s"
             ))
             aiCSEs.append(CSEDataManager.CSEData(
                 name: "Microsoft Copilot",
+                keyword: "copilot",
                 url: "https://www.bing.com/copilotsearch?q=%s"
             ))
             aiCSEs.append(CSEDataManager.CSEData(
                 name: "ChatGPT",
+                keyword: "gpt",
                 url: "https://chatgpt.com/?q=%s&hints=search",
             ))
         } else if currentRegion == "CN" {
             aiCSEs.append(CSEDataManager.CSEData(
                 name: "百度AI搜索",
+                keyword: "baiduai",
                 url: "https://chat.baidu.com/search?query=%s"
             ))
         }
@@ -179,46 +191,57 @@ class RecommendSEs {
     }
     
     class func recommendNormalCSEList() -> [CSEDataManager.CSEData] {
-        var normalCSEs: [CSEDataManager.CSEData] = [
-            CSEDataManager.CSEData(
-                name: "Google",
-                url: "https://www.google.com/search?q=%s",
-            ),
-            CSEDataManager.CSEData(
-                name: "Bing",
-                url: "https://www.bing.com/search?q=%s",
-            ),
-            CSEDataManager.CSEData(
-                name: "Yahoo",
-                url: "https://search.yahoo.com/search?p=%s",
-            ),
-            CSEDataManager.CSEData(
-                name: "DuckDuckGo",
-                url: "https://duckduckgo.com/?q=%s",
-                maxQueryLength: 500
-            ),
-            CSEDataManager.CSEData(
-                name: "Ecosia",
-                url: "https://www.ecosia.org/search?q=%s",
-            )
-        ]
+        var normalCSEs: [CSEDataManager.CSEData] = []
+        var localizedYahoo = CSEDataManager.CSEData(
+            name: "Yahoo",
+            keyword: "y",
+            url: "https://search.yahoo.com/search?p=%s",
+        )
         
         if currentRegion == "JP" {
-            normalCSEs.append(CSEDataManager.CSEData(
+            localizedYahoo = CSEDataManager.CSEData(
                 name: "Yahoo! Japan",
+                keyword: "y",
                 url: "https://search.yahoo.co.jp/search?p=%s"
-            ))
+            )
         } else if currentRegion == "CN" {
             normalCSEs.append(CSEDataManager.CSEData(
                 name: "百度",
+                keyword: "baidu",
                 url: "https://www.baidu.com/s?wd=%s"
             ))
         } else if currentRegion == "RU" {
             normalCSEs.append(CSEDataManager.CSEData(
                 name: "Яндекс",
+                keyword: "yandex",
                 url: "https://yandex.ru/search/?text=%s"
             ))
         }
+        
+        normalCSEs.append(contentsOf:[
+            CSEDataManager.CSEData(
+                name: "Google",
+                keyword: "g",
+                url: "https://www.google.com/search?q=%s",
+            ),
+            CSEDataManager.CSEData(
+                name: "Bing",
+                keyword: "b",
+                url: "https://www.bing.com/search?q=%s",
+            ),
+            localizedYahoo,
+            CSEDataManager.CSEData(
+                name: "DuckDuckGo",
+                keyword: "ddg",
+                url: "https://duckduckgo.com/?q=%s",
+                maxQueryLength: 500
+            ),
+            CSEDataManager.CSEData(
+                name: "Ecosia",
+                keyword: "eco",
+                url: "https://www.ecosia.org/search?q=%s",
+            )
+        ])
         
         return normalCSEs
     }
