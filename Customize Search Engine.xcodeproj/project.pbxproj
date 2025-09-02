@@ -21,6 +21,7 @@
 		90C9BE40288BE17300E22FB8 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE3F288BE17300E22FB8 /* content.js */; };
 		90C9BE42288BE17300E22FB8 /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE41288BE17300E22FB8 /* popup.html */; };
 		90C9BE48288BE17300E22FB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE29288BE17200E22FB8 /* Assets.xcassets */; };
+		BE11982D2DF8073100B5FDF8 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = BE11982C2DF8073100B5FDF8 /* AppIcon.icon */; };
 		BE1642DF2D23D69E008A42F8 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1642DE2D23D696008A42F8 /* Tutorial.swift */; };
 		BE5342E32C9E338F00AE1DB3 /* IconChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5342E22C9E338F00AE1DB3 /* IconChangeView.swift */; };
 		BE5342E52C9E36FA00AE1DB3 /* AdvSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */; };
@@ -105,6 +106,7 @@
 		90C9BE41288BE17300E22FB8 /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = popup.html; sourceTree = "<group>"; };
 		90C9BE47288BE17300E22FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90C9BE52288D09DB00E22FB8 /* CSE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CSE.entitlements; sourceTree = "<group>"; };
+		BE11982C2DF8073100B5FDF8 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		BE1642DE2D23D696008A42F8 /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 		BE5342E22C9E338F00AE1DB3 /* IconChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconChangeView.swift; sourceTree = "<group>"; };
 		BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvSettingView.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */,
 				90240FAE2BA54E68003C264A /* CSE.storekit */,
 				90C9BE29288BE17200E22FB8 /* Assets.xcassets */,
+				BE11982C2DF8073100B5FDF8 /* AppIcon.icon */,
 				90C9BE2A288BE17200E22FB8 /* Info.plist */,
 			);
 			path = CSE;
@@ -358,7 +361,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1630;
-				LastUpgradeCheck = 1630;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					90C9BE11288BE17000E22FB8 = {
 						CreatedOnToolsVersion = 14.0;
@@ -411,6 +414,7 @@
 				90C9BE48288BE17300E22FB8 /* Assets.xcassets in Resources */,
 				BEE22EE62D44E93000EDA51A /* Localizable.xcstrings in Resources */,
 				908FBC952BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */,
+				BE11982D2DF8073100B5FDF8 /* AppIcon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,6 +517,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -679,6 +684,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -734,6 +740,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
