@@ -181,13 +181,13 @@ class EditSE {
                 }
             )
             .onChange(of: scenePhase) { newPhase in
-                lastScenePhase = newPhase
-                if newPhase == .inactive && lastScenePhase == .active {
+                if newPhase != .active && lastScenePhase == .active {
                     saveCSEData(.autosave)
                 } else if newPhase == .active {
                     CSEData = CSEDataManager.getCSEData(.defaultCSE)
                     tmpCSEData = CSEData
                 }
+                lastScenePhase = newPhase
             }
             .onDisappear {
                 saveCSEData(.dismiss)
@@ -288,12 +288,13 @@ class EditSE {
                 }
             )
             .onChange(of: scenePhase) { newPhase in
-                if newPhase == .inactive && lastScenePhase == .active {
+                if newPhase != .active && lastScenePhase == .active {
                     saveCSEData(.autosave)
                 } else if newPhase == .active {
                     CSEData = CSEDataManager.getCSEData(.privateCSE)
                     tmpCSEData = CSEData
                 }
+                lastScenePhase = newPhase
             }
             .onDisappear {
                 saveCSEData(.dismiss)
@@ -435,9 +436,10 @@ class EditSE {
                 }
             )
             .onChange(of: scenePhase) { newPhase in
-                if newPhase == .inactive && lastScenePhase == .active {
+                if newPhase != .active && lastScenePhase == .active {
                     saveCSEData(.autosave)
                 }
+                lastScenePhase = newPhase
             }
             .accessibilityAction(.escape) {
                 saveCSEData(.dismiss)
