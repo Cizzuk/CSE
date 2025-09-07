@@ -8,8 +8,8 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-fileprivate func HeaderText(text: String) -> some View {
-    Text(text)
+fileprivate func HeaderText(text: String.LocalizationValue) -> some View {
+    Text(String(localized: text))
         .font(.title)
         .fontWeight(.bold)
         .padding(EdgeInsets(top: 32, leading: 32, bottom: 4, trailing: 32))
