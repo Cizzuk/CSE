@@ -344,29 +344,26 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         
         // Check quick search
         if useQuickCSE {
-            let quickCSEData = CSEDataManager.getAllQuickCSEData()
-            let disableKeywordOnlyQuickSearch: Bool = userDefaults.bool(forKey: "adv_disableKeywordOnlyQuickSearch")
+            // Extract candidate keyword and query
+            let beforePlus: String // maybe keyword
+            let afterPlus: String? // maybe query
+            if let plusRange = query.range(of: "+") {
+                beforePlus = String(query[..<plusRange.lowerBound])
+                afterPlus = String(query[query.index(after: plusRange.lowerBound)...])
+            } else {
+                // Maybe keyword only
+                beforePlus = query
+                afterPlus = nil
+            }
 
-            for key in quickCSEData.keys {
-                // percent encoded key (all characters including + or &)
-                guard let encodedKey = key.addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._")))
-                else { continue }
-                
-                // If query has maybe quick search keyword
-                if query.hasPrefix(encodedKey) {
-                    let suffix = String(query.dropFirst(encodedKey.count))
-                    if suffix.hasPrefix("+") {
-                        let afterPlus = String(suffix.dropFirst(1))
-                        // keyword + query (suffix will not be empty per invariant)
-                        fixedQuery = afterPlus
-                        CSEData = quickCSEData[key] ?? CSEData
-                        break
-                    } else if suffix.isEmpty && !disableKeywordOnlyQuickSearch {
-                        // keyword only and keyword-only is allowed
-                        fixedQuery = ""
-                        CSEData = quickCSEData[key] ?? CSEData
-                        break
-                    }
+            // If keyword only is disabled and there's no '+', skip
+            let disableKeywordOnly: Bool = userDefaults.bool(forKey: "adv_disableKeywordOnlyQuickSearch")
+            if !disableKeywordOnly || afterPlus != nil {
+                let quickCSEData = CSEDataManager.getAllQuickCSEData()
+                let candidateKeyword = beforePlus.removingPercentEncoding ?? beforePlus
+                if let matched = quickCSEData[candidateKeyword] {
+                    fixedQuery = afterPlus ?? ""
+                    CSEData = matched
                 }
             }
         }
