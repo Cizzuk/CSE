@@ -134,4 +134,25 @@ Quick Search Engine
 Replace
 Safari Search Engines
 Search Engine Type
+
+About
+Are you sure you want to discard changes?
+Back
+Backup & Restore
+Backup to iCloud
+Delete
+Developer
+Discard
+Emojipedia Privacy Policy...
+Emojipedia Terms of Service...
+Export as JSON
+Failed to parse JSON data
+Get Quick Search Engine List
+Gets All Quick Search Engine Keywords
+If you use this feature, you need to agree to the terms of service and privacy policy of Emojipedia.
+Import from iCloud
+Import from JSON
+Restore from iCloud
+Valid data not found in JSON
+Version
 ```

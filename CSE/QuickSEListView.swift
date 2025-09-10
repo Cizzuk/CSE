@@ -6,56 +6,104 @@
 //
 
 import SwiftUI
+#if !os(visionOS)
+import WidgetKit
+#endif
 
 struct QuickSEListView: View {
+    @Environment(\.scenePhase) private var scenePhase
+    
     @State private var quickCSE: [String: CSEDataManager.CSEData] = CSEDataManager.getAllQuickCSEData()
+    @AppStorage("useQuickCSE", store: userDefaults) private var useQuickCSE: Bool = false
+    @State private var useQuickCSEToggle: Bool = false
     
     var body: some View {
         List {
-            // Add new SE Button
+            // Toggle QuickSE
             Section {
-                NavigationLink(destination: EditSEView(cseType: .quickCSE)) {
-                    HStack {
-                        Image(systemName: "plus.circle")
-                            .accessibilityHidden(true)
-                        Text("Add New Search Engine")
+                Toggle(isOn: $useQuickCSE) {
+                    Text("Quick Search")
+                }
+                .onChange(of: useQuickCSE) { _ in
+                    withAnimation {
+                        useQuickCSEToggle = useQuickCSE
                     }
-                    #if !visionOS
-                    .foregroundColor(.accentColor)
+                    #if !os(visionOS)
+                    if #available(iOS 18.0, macOS 26, *) {
+                        ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
+                    }
                     #endif
                 }
+            } footer: {
+                Text("Enter the keyword at the top to switch search engines.")
             }
             
-            // Current Quick SEs ListdisplayName
-            Section {
-                ForEach(quickCSE.keys.sorted(), id: \.self) { cseID in
-                    if let cseData: CSEDataManager.CSEData = quickCSE[cseID] {
-                        let displayName: String = cseData.name != "" ? cseData.name : cseData.url
-                        let keywordTranslation = NSLocalizedString("Keyword", comment: "")
-                        NavigationLink(destination: EditSEView(cseType: .quickCSE, cseID: cseID)) {
-                            VStack(alignment : .leading) {
-                                Text(cseID)
-                                    .bold()
-                                Text(displayName)
-                                    .lineLimit(1)
-                                    .foregroundColor(.secondary)
+            if useQuickCSEToggle {
+                // Current Quick SEs List
+                Section {
+                    let keywordTranslation = String(localized: "Keyword")
+                    ForEach(quickCSE.keys.sorted(), id: \.self) { cseID in
+                        if let cseData: CSEDataManager.CSEData = quickCSE[cseID] {
+                            let displayName: String = cseData.name != "" ? cseData.name : cseData.url
+                            NavigationLink(destination: EditSE.EditQuickCSEView(cseID: cseID)) {
+                                VStack(alignment : .leading) {
+                                    Text(cseID)
+                                        .bold()
+                                    Text(displayName)
+                                        .lineLimit(1)
+                                        .foregroundColor(.secondary)
+                                }
+                            }
+                            .accessibilityLabel("\(displayName), " + keywordTranslation + ", \(cseID)")
+                            .contextMenu {
+                                Button() {
+                                    CSEDataManager.deleteQuickCSE(cseID)
+                                    quickCSE.removeValue(forKey: cseID)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
+                                NavigationLink(destination: EditSE.EditQuickCSEView()) {
+                                    Label("Add New Search Engine", systemImage: "plus.circle")
+                                }
                             }
                         }
-                        .accessibilityLabel("\(displayName). " + keywordTranslation + ". \(cseID)")
+                    }
+                    .onDelete(perform: CSEDataManager.deleteQuickCSE)
+                } header: {
+                    Text("Quick Search Engines")
+                }
+                
+                // Add new SE Button
+                Section {
+                    NavigationLink(destination: EditSE.EditQuickCSEView()) {
+                        HStack {
+                            Image(systemName: "plus.circle")
+                                .accessibilityHidden(true)
+                            Text("Add New Search Engine")
+                        }
+                        #if !os(visionOS)
+                        .foregroundColor(.accentColor)
+                        #endif
                     }
                 }
-                .onDelete(perform: CSEDataManager.deleteQuickCSE)
             }
         }
-        .navigationTitle("Quick Search Engines")
+        .navigationTitle("Quick Search")
         .navigationBarTitleDisplayMode(.inline)
-        .navigationViewStyle(.stack)
         .toolbar {
-            EditButton()
+            if useQuickCSEToggle {
+                EditButton()
+            }
         }
         .task {
             // Initialize
             quickCSE = CSEDataManager.getAllQuickCSEData()
+            useQuickCSEToggle = useQuickCSE
+        }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
+                quickCSE = CSEDataManager.getAllQuickCSEData()
+            }
         }
     }
 }

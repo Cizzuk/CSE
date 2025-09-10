@@ -11,6 +11,8 @@ import SwiftUI
 @main
 struct CCWidgetBundle: WidgetBundle {
     var body: some Widget {
+        CCUseDefaultCSE()
+        CCUsePrivateCSE()
         CCQuickSearch()
         CCEmojiSearch()
     }

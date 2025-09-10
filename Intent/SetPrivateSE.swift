@@ -7,6 +7,9 @@
 
 import Foundation
 import AppIntents
+#if !os(visionOS)
+import WidgetKit
+#endif
 
 struct SetPrivateSE: AppIntent, CustomIntentMigratedAppIntent {
     static let intentClassName = "SetPrivateSE"
@@ -15,6 +18,9 @@ struct SetPrivateSE: AppIntent, CustomIntentMigratedAppIntent {
     
     @Parameter(title: "URL", description: "Blank to disable", default: "")
         var cseURL: String
+    
+    @Parameter(title: "POST Data", description: "Blank to disable", default: "")
+        var post: String
     
     @Parameter(title: "Disable Percent-encoding", default: false)
         var disablePercentEncoding: Bool
@@ -29,9 +35,17 @@ struct SetPrivateSE: AppIntent, CustomIntentMigratedAppIntent {
         } else {
             userDefaults.set(true, forKey: "usePrivateCSE")
         }
+        #if !os(visionOS)
+        if #available(iOS 18.0, macOS 26, *) {
+            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UsePrivateCSE")
+        }
+        #endif
+        
+        let parsedPost = CSEDataManager.postDataToDictionary(post)
         
         let cseData = CSEDataManager.CSEData(
             url: cseURL,
+            post: parsedPost,
             disablePercentEncoding: disablePercentEncoding,
             maxQueryLength: maxQueryLength
         )
