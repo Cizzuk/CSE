@@ -10,7 +10,9 @@ DEFINE SCHEMA
         defaultCSE      STRING,
         deviceName      STRING,
         privateCSE      STRING,
-        quickCSE        STRING
+        quickCSE        STRING,
+        useEmojiSearch  INT64,
+        version         STRING
     );
 
     RECORD TYPE Users (
