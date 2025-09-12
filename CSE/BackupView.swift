@@ -42,6 +42,10 @@ class BackupView {
                             #if !os(visionOS)
                             UINotificationFeedbackGenerator().notificationOccurred(.success)
                             #endif
+                        } else if uploadStatus == .failure {
+                            #if !os(visionOS)
+                            UINotificationFeedbackGenerator().notificationOccurred(.error)
+                            #endif
                         }
                     }
                     
