@@ -26,6 +26,8 @@ class AppInitializer {
             userDefaults.set(SafariSEs.privateForRegion(region: currentRegion).rawValue, forKey: "privsearchengine")
             userDefaults.set(true, forKey: "alsousepriv")
             
+            userDefaults.set(true, forKey: "iCloudAutoBackup")
+            
             // Change default settings for macOS or under iOS 17
             #if targetEnvironment(macCatalyst)
             userDefaults.set(true, forKey: "adv_ignorePOSTFallback")

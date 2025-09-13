@@ -10,6 +10,7 @@ import UniformTypeIdentifiers
 
 class BackupView {
     struct BackupView: View {
+        @AppStorage("iCloudAutoBackup", store: userDefaults) private var iCloudAutoBackup: Bool = true
         @StateObject private var ck = CloudKitManager()
         @State private var showingRestoreSheet = false
         @State private var showingFileImport = false
@@ -83,13 +84,16 @@ class BackupView {
                     }
                     
                     Section {
+                        Toggle(isOn: $iCloudAutoBackup, label: {
+                            Text("Auto Backup to iCloud")
+                        })
                         Button(action: {
                             #if !os(visionOS)
                             UIImpactFeedbackGenerator(style: .light).impactOccurred()
                             #endif
                             ck.exportAllData()
                         }) {
-                            UITemplates.iconButton(icon: "icloud", text: "Export All data from iCloud")
+                            Text("Export All data from iCloud")
                         }
                     } footer: {
                         Text("You can delete all data stored in iCloud from the iCloud settings.")

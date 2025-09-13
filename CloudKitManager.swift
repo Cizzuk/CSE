@@ -54,7 +54,7 @@ final class CloudKitManager: ObservableObject {
     // Upload CSEs
     func saveAll(mustUpload: Bool = false) {
         // Check if upload is disabled
-        guard mustUpload || !userDefaults.bool(forKey: "adv_icloud_disableUploadCSE") else {
+        guard mustUpload || userDefaults.bool(forKey: "iCloudAutoBackup") else {
             self.uploadStatus = .skipped
             print("CloudKit upload is disabled in settings.")
             return
