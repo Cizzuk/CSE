@@ -138,7 +138,7 @@ class EditSE {
                 List {
                     Section {
                         Toggle(isOn: $useDefaultCSE) {
-                            Text("Default Search Engine")
+                            UITemplates.iconButton(icon: "magnifyingglass", text: "Default Search Engine")
                         }
                         .onChange(of: useDefaultCSE) { _ in
                             withAnimation {
@@ -243,7 +243,7 @@ class EditSE {
                 List {
                     Section {
                         Toggle(isOn: $usePrivateCSE) {
-                            Text("Private Search Engine")
+                            UITemplates.iconButton(icon: "hand.raised", text: "Private Search Engine")
                         }
                         .onChange(of: usePrivateCSE) { _ in
                             withAnimation {

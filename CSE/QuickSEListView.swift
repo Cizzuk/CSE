@@ -22,7 +22,7 @@ struct QuickSEListView: View {
             // Toggle QuickSE
             Section {
                 Toggle(isOn: $useQuickCSE) {
-                    Text("Quick Search")
+                    UITemplates.iconButton(icon: "hare", text: "Quick Search")
                 }
                 .onChange(of: useQuickCSE) { _ in
                     withAnimation {

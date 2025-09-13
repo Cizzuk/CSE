@@ -49,7 +49,7 @@ struct ContentView: View {
                 Section {
                     NavigationLink(value: NavigationItem.defaultSE) {
                         HStack {
-                            Text("Default Search Engine")
+                            UITemplates.iconButton(icon: "magnifyingglass", text: "Default Search Engine")
                             Spacer()
                             Text(useDefaultCSE ? "On" : "Off")
                                 .foregroundColor(.secondary)
@@ -60,7 +60,7 @@ struct ContentView: View {
                     // Private SE Settings
                     NavigationLink(value: NavigationItem.privateSE) {
                         HStack {
-                            Text("Private Search Engine")
+                            UITemplates.iconButton(icon: "hand.raised", text: "Private Search Engine")
                             Spacer()
                             Text(usePrivateCSE ? "On" : "Off")
                                 .foregroundColor(.secondary)
@@ -71,7 +71,7 @@ struct ContentView: View {
                     // Quick SE Settings
                     NavigationLink(value: NavigationItem.quickSE) {
                         HStack {
-                            Text("Quick Search")
+                            UITemplates.iconButton(icon: "hare", text: "Quick Search")
                             Spacer()
                             Text(useQuickCSE ? "On" : "Off")
                                 .foregroundColor(.secondary)
@@ -83,7 +83,7 @@ struct ContentView: View {
                     // Emoji Search Setting
                     NavigationLink(value: NavigationItem.emojiSearch) {
                         HStack {
-                            Text("Emoji Search")
+                            UITemplates.iconButton(icon: "face.smiling", text: "Emoji Search")
                             Spacer()
                             Text(useEmojiSearch ? "On" : "Off")
                                 .foregroundColor(.secondary)

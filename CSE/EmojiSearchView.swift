@@ -18,7 +18,7 @@ struct EmojiSearchView: View {
             Section {
                 // Emoji Search Setting
                 Toggle(isOn: $useEmojiSearch) {
-                    Text("Emoji Search")
+                    UITemplates.iconButton(icon: "face.smiling", text: "Emoji Search")
                 }
                 #if !os(visionOS)
                 .onChange(of: useEmojiSearch) { _ in
