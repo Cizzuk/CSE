@@ -17,15 +17,8 @@ class AppInitializer {
         
         let searchengine: String? = userDefaults.string(forKey: "searchengine") ?? nil
         let privsearchengine: String? = userDefaults.string(forKey: "privsearchengine") ?? nil
-        let adv_resetCSEs: String = userDefaults.string(forKey: "adv_resetCSEs") ?? ""
         let needSafariTutorial: Bool = userDefaults.bool(forKey: "needSafariTutorial")
         let needFirstTutorial: Bool = userDefaults.bool(forKey: "needFirstTutorial")
-        
-        // adv_resetCSEs
-        if adv_resetCSEs != "" {
-            resetCSE(target: adv_resetCSEs)
-            userDefaults.set("", forKey: "adv_resetCSEs")
-        }
         
         // Initialize default settings
         if lastVersion == "" {
