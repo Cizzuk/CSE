@@ -53,6 +53,7 @@ class UITemplates {
             HStack {
                 Image(systemName: icon)
                     .frame(width: 20.0)
+                Spacer().frame(width: 10.0)
                 Text(String(localized: text))
             }
         }
