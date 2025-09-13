@@ -418,7 +418,7 @@ class EditSE {
                             }) {
                                 Label("Save", systemImage: "checkmark")
                             }
-                            Button(action: {
+                            Button(role: .destructive, action: {
                                 saveCSEData(.discard)
                             }) {
                                 Label("Discard", systemImage: "xmark")

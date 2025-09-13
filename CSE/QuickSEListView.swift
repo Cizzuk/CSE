@@ -56,7 +56,7 @@ struct QuickSEListView: View {
                             }
                             .accessibilityLabel("\(displayName), " + keywordTranslation + ", \(cseID)")
                             .contextMenu {
-                                Button() {
+                                Button(role: .destructive) {
                                     CSEDataManager.deleteQuickCSE(cseID)
                                     quickCSE.removeValue(forKey: cseID)
                                 } label: {
