@@ -91,24 +91,14 @@ class CSEDataManager {
     
     class func parseCSEData(_ data: [String: Any], id: String? = nil) -> CSEData {
         var parsedData = CSEData()
-        if let name = data["name"] as? String {
-            parsedData.name = name
-        }
-        if let keyword = id {
-            parsedData.keyword = keyword
-        }
-        if let url = data["url"] as? String {
-            parsedData.url = url
-        }
-        if let disablePercentEncoding = data["disablePercentEncoding"] as? Bool {
-            parsedData.disablePercentEncoding = disablePercentEncoding
-        }
-        if let maxQueryLength = data["maxQueryLength"] as? Int? {
-            if maxQueryLength == nil || maxQueryLength ?? -1 < 0 {
-                parsedData.maxQueryLength = nil
-            } else {
-                parsedData.maxQueryLength = maxQueryLength
-            }
+        parsedData.name = data["name"] as? String ?? ""
+        if let id { parsedData.keyword = id }
+        parsedData.url = data["url"] as? String ?? ""
+        parsedData.disablePercentEncoding = data["disablePercentEncoding"] as? Bool ?? false
+        if let len = data["maxQueryLength"] as? Int, len >= 0 {
+            parsedData.maxQueryLength = len
+        } else {
+            parsedData.maxQueryLength = nil
         }
         if let postEntries = data["post"] as? [[String: String]] {
             parsedData.post = cleanPostData(postEntries)
@@ -128,15 +118,14 @@ class CSEDataManager {
     }
     
     class func CSEDataToDictionary(_ data: CSEData) -> [String: Any] {
-        // Convert CSEData to Dictionary
-        var cseDict: [String: Any] = [:]
-        cseDict["name"] = data.name
-        cseDict["keyword"] = data.keyword
-        cseDict["url"] = data.url
-        cseDict["disablePercentEncoding"] = data.disablePercentEncoding
-        cseDict["maxQueryLength"] = data.maxQueryLength
-        cseDict["post"] = data.post
-        return cseDict
+        [
+            "name": data.name,
+            "keyword": data.keyword,
+            "url": data.url,
+            "disablePercentEncoding": data.disablePercentEncoding,
+            "maxQueryLength": data.maxQueryLength as Any,
+            "post": data.post
+        ]
     }
     
     class func CSEDataToDictionary(_ data: [String: CSEData]) -> [String: [String: Any]] {
