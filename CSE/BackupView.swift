@@ -72,21 +72,6 @@ class BackupView {
                     }
                 }
                 .disabled(ck.cloudKitAvailability != .available || ck.isLocked)
-                
-                Section {
-                    Button(action: {
-                        #if !os(visionOS)
-                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                        #endif
-                        ck.deleteAll()
-                    }) {
-                        HStack {
-                            UITemplates.iconButton(icon: "trash", text: "Delete All Backups from iCloud")
-                                .foregroundColor(.red)
-                        }
-                    }
-                }
-                .disabled(ck.cloudKitAvailability != .available || ck.isLocked)
             }
             .navigationTitle("Backup & Restore")
             .navigationBarTitleDisplayMode(.inline)

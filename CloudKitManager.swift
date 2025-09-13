@@ -218,54 +218,7 @@ final class CloudKitManager: ObservableObject {
         database.add(operation)
     }
     
-    // Delete all records
-    func deleteAll() {
-        isLocked = true
+    func exportAllData() {
         
-        // First fetch all record IDs
-        let query = CKQuery(recordType: "DeviceCSEs", predicate: NSPredicate(value: true))
-        let operation = CKQueryOperation(query: query)
-        var recordIDsToDelete: [CKRecord.ID] = []
-        
-        operation.recordMatchedBlock = { (recordID: CKRecord.ID, result: Result<CKRecord, Error>) in
-            switch result {
-            case .success(_):
-                recordIDsToDelete.append(recordID)
-            case .failure(let error):
-                print("Error fetching record for deletion: \(error)")
-            }
-        }
-        
-        operation.queryResultBlock = { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success:
-                    // Delete all found records
-                    if !recordIDsToDelete.isEmpty {
-                        let deleteOperation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: recordIDsToDelete)
-                        deleteOperation.modifyRecordsResultBlock = { deleteResult in
-                            DispatchQueue.main.async {
-                                switch deleteResult {
-                                case .success:
-                                    self.isLocked = false
-                                    self.allCSEs.removeAll()
-                                case .failure(let error):
-                                    self.error = error
-                                    self.isLocked = false
-                                }
-                            }
-                        }
-                        self.database.add(deleteOperation)
-                    } else {
-                        self.isLocked = false
-                    }
-                case .failure(let error):
-                    self.error = error
-                    self.isLocked = false
-                }
-            }
-        }
-        
-        database.add(operation)
     }
 }
