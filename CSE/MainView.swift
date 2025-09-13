@@ -102,7 +102,9 @@ struct ContentView: View {
                                 #if !os(visionOS)
                                 .foregroundColor(.accentColor)
                                 #endif
-                            Spacer()
+                            if #available(iOS 26, macOS 26, *) {
+                                Spacer()
+                            }
                             Text("If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial.")
                                 .foregroundColor(.secondary)
                                 .font(.caption)
