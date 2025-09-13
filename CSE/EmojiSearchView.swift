@@ -18,7 +18,7 @@ struct EmojiSearchView: View {
             Section {
                 // Emoji Search Setting
                 Toggle(isOn: $useEmojiSearch) {
-                    UITemplates.iconButton(icon: "face.smiling", text: "Emoji Search")
+                    UITemplates.IconLabel(icon: "face.smiling", text: "Emoji Search")
                 }
                 #if !os(visionOS)
                 .onChange(of: useEmojiSearch) { _ in
@@ -27,9 +27,7 @@ struct EmojiSearchView: View {
                     }
                 }
                 #endif
-            } footer: {
-                Text("If you enter only one emoji, you can search on Emojipedia.org.")
-            }
+            } footer: { Text("If you enter only one emoji, you can search on Emojipedia.org.") }
             
             Section {} footer: {
                 VStack(alignment: .leading) {

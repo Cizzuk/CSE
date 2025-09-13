@@ -36,9 +36,7 @@ class CloudPicker {
                 listContent
                     .navigationTitle("Choose Device")
                     .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        toolbarItems
-                    }
+                    .toolbar { toolbarItems }
                 // Attach destination at stack level (value-based navigation)
                     .navigationDestination(for: CSEDataManager.DeviceCSEs.self) { ds in
                         if case let .pickSingleCSE(cseData, isOpenSheet) = mode {
@@ -67,21 +65,15 @@ class CloudPicker {
         private var listContent: some View {
             List {
                 if ck.isLoading {
-                    HStack {
-                        Spacer()
-                        ProgressView()
-                        Spacer()
-                    }
+                    HStack { Spacer(); ProgressView(); Spacer() }
                 } else if let error = ck.error {
-                    UITemplates.iconButton(icon: "exclamationmark.icloud", text: String.LocalizationValue(error.localizedDescription))
+                    UITemplates.IconLabel(icon: "exclamationmark.icloud", text: String.LocalizationValue(error.localizedDescription))
                 } else if ck.allCSEs.isEmpty {
                     Text("No devices found.")
                 } else {
                     switch mode {
-                    case .restoreAll:
-                        restoreAllList
-                    case .pickSingleCSE:
-                        pickSingleCSEList
+                    case .restoreAll: restoreAllList
+                    case .pickSingleCSE: pickSingleCSEList
                     }
                 }
             }
@@ -95,9 +87,7 @@ class CloudPicker {
                     #if !os(visionOS)
                     UINotificationFeedbackGenerator().notificationOccurred(.success)
                     #endif
-                    if case let .restoreAll(onRestore) = mode {
-                        onRestore?()
-                    }
+                    if case let .restoreAll(onRestore) = mode { onRestore?() }
                     dismiss()
                 } label: {
                     deviceRow(ds)
@@ -111,7 +101,10 @@ class CloudPicker {
                 }
                 .disabled(ck.isLocked)
                 .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                    Button(role: .destructive) { ck.delete(recordID: ds.id) } label: { Label("Delete", systemImage: "trash")
+                    Button(role: .destructive) {
+                        ck.delete(recordID: ds.id)
+                    } label: {
+                        Label("Delete", systemImage: "trash")
                     }
                 }
             }
@@ -208,23 +201,17 @@ class CloudPicker {
                                 }
                             }
                         }
-                    } header: {
-                        Text("Quick Search Engines")
-                    }
+                    } header: { Text("Quick Search Engines") }
                 }
             }
             .navigationTitle(deviceName)
             .navigationBarTitleDisplayMode(.inline)
-            .task {
-                originalID = cseData.keyword
-            }
+            .task { originalID = cseData.keyword }
         }
         
         private func select(_ selected: CSEDataManager.CSEData, keepKeyword: Bool) {
             var newData = selected
-            if keepKeyword {
-                newData.keyword = originalID ?? selected.keyword
-            }
+            if keepKeyword { newData.keyword = originalID ?? selected.keyword }
             cseData = newData
             isOpenSheet = false
             dismiss()

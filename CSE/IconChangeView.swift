@@ -96,11 +96,8 @@ struct IconChangeView: View {
                     iconItem(iconName: "Mono", iconID: "gray-white")
                     iconItem(iconName: "Pride", iconID: "pride")
                     iconItem(iconName: "Pixel", iconID: "pixel")
-                } header: {
-                    Text("Available Icons")
-                } footer: {
-                    Text("Available icons may change in the future.")
-                }
+                } header: { Text("Available Icons")
+                } footer: { Text("Available icons may change in the future.") }
             }
         }
         .navigationTitle("Change App Icon")

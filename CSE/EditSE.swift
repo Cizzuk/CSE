@@ -29,14 +29,9 @@ class EditSE {
                 .textInputAutocapitalization(.never)
                 .environment(\.layoutDirection, .leftToRight)
                 .submitLabel(.done)
-                .onSubmit {
-                    onSubmit?()
-                }
-        } header: {
-            Text("Search URL")
-        } footer: {
-            Text("Replace query with %s")
-        }
+                .onSubmit { onSubmit?() }
+        } header: { Text("Search URL")
+        } footer: { Text("Replace query with %s") }
     }
     
     // Common Advanced Settings section
@@ -52,9 +47,7 @@ class EditSE {
                 }
             }
             Toggle("Disable Percent-encoding", isOn: cseData.disablePercentEncoding)
-                .onChange(of: cseData.wrappedValue.disablePercentEncoding) { _ in
-                    onSubmit?()
-                }
+                .onChange(of: cseData.wrappedValue.disablePercentEncoding) { _ in onSubmit?() }
             HStack {
                 Text("Max Query Length")
                 Spacer()
@@ -64,15 +57,10 @@ class EditSE {
                     .frame(width: 100)
                     .multilineTextAlignment(.trailing)
                     .submitLabel(.done)
-                    .onSubmit {
-                        onSubmit?()
-                    }
+                    .onSubmit { onSubmit?() }
             }
-        } header: {
-            Text("Advanced Settings")
-        } footer: {
-            Text("Blank to disable")
-        }
+        } header: { Text("Advanced Settings")
+        } footer: { Text("Blank to disable") }
     }
     
     // Common Import Search Engine section
@@ -85,12 +73,12 @@ class EditSE {
             Button(action: {
                 openRecommendView.wrappedValue = true
             }) {
-                UITemplates.iconButton(icon: "sparkle.magnifyingglass", text: "Recommended Search Engines")
+                UITemplates.IconLabel(icon: "sparkle.magnifyingglass", text: "Recommended Search Engines")
             }
             Button(action: {
                 openCloudImportView.wrappedValue = true
             }) {
-                UITemplates.iconButton(icon: "icloud.and.arrow.down", text: "Import from iCloud")
+                UITemplates.IconLabel(icon: "icloud.and.arrow.down", text: "Import from iCloud")
             }
         }
     }
@@ -138,12 +126,10 @@ class EditSE {
                 List {
                     Section {
                         Toggle(isOn: $useDefaultCSE) {
-                            UITemplates.iconButton(icon: "magnifyingglass", text: "Default Search Engine")
+                            UITemplates.IconLabel(icon: "magnifyingglass", text: "Default Search Engine")
                         }
                         .onChange(of: useDefaultCSE) { _ in
-                            withAnimation {
-                                useDefaultCSEToggle = useDefaultCSE
-                            }
+                            withAnimation { useDefaultCSEToggle = useDefaultCSE }
                             #if !os(visionOS)
                             if #available(iOS 18.0, macOS 26, *) {
                                 ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UseDefaultCSE")
@@ -154,14 +140,10 @@ class EditSE {
                     
                     if useDefaultCSEToggle {
                         // Search URL
-                        EditSE.searchURLSection(cseData: $CSEData) {
-                            saveCSEData(.autosave)
-                        }
+                        EditSE.searchURLSection(cseData: $CSEData) { saveCSEData(.autosave) }
                         
                         // Advanced Settings
-                        EditSE.advancedSettingsSection(cseData: $CSEData) {
-                            saveCSEData(.autosave)
-                        }
+                        EditSE.advancedSettingsSection(cseData: $CSEData) { saveCSEData(.autosave) }
                         
                         // Import Search Engine
                         EditSE.importSearchEngineSection(
@@ -176,9 +158,7 @@ class EditSE {
                 openRecommendView: $openRecommendView,
                 openCloudImportView: $openCloudImportView,
                 cseData: $CSEData,
-                onDismiss: {
-                    saveCSEData(.autosave)
-                }
+                onDismiss: { saveCSEData(.autosave) }
             )
             .onChange(of: scenePhase) { newPhase in
                 if newPhase != .active && lastScenePhase == .active {
@@ -214,9 +194,7 @@ class EditSE {
                 case .dismiss:
                     CSEDataManager.saveCSEData(CSEData, .defaultCSE, uploadCloud: true)
                     tmpCSEData = CSEData
-                case .discard:
-                    // No discard action needed for default CSE
-                    break
+                case .discard: break
                 }
             }
         }
@@ -243,12 +221,10 @@ class EditSE {
                 List {
                     Section {
                         Toggle(isOn: $usePrivateCSE) {
-                            UITemplates.iconButton(icon: "hand.raised", text: "Private Search Engine")
+                            UITemplates.IconLabel(icon: "hand.raised", text: "Private Search Engine")
                         }
                         .onChange(of: usePrivateCSE) { _ in
-                            withAnimation {
-                                usePrivateCSEToggle = usePrivateCSE
-                            }
+                            withAnimation { usePrivateCSEToggle = usePrivateCSE }
                             #if !os(visionOS)
                             if #available(iOS 18.0, macOS 26, *) {
                                 ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UsePrivateCSE")
@@ -261,14 +237,10 @@ class EditSE {
                     
                     if usePrivateCSEToggle {
                         // Search URL
-                        EditSE.searchURLSection(cseData: $CSEData) {
-                            saveCSEData(.autosave)
-                        }
+                        EditSE.searchURLSection(cseData: $CSEData) { saveCSEData(.autosave) }
                         
                         // Advanced Settings
-                        EditSE.advancedSettingsSection(cseData: $CSEData) {
-                            saveCSEData(.autosave)
-                        }
+                        EditSE.advancedSettingsSection(cseData: $CSEData) { saveCSEData(.autosave) }
                         
                         // Import Search Engine
                         EditSE.importSearchEngineSection(
@@ -283,9 +255,7 @@ class EditSE {
                 openRecommendView: $openRecommendView,
                 openCloudImportView: $openCloudImportView,
                 cseData: $CSEData,
-                onDismiss: {
-                    saveCSEData(.autosave)
-                }
+                onDismiss: { saveCSEData(.autosave) }
             )
             .onChange(of: scenePhase) { newPhase in
                 if newPhase != .active && lastScenePhase == .active {
@@ -319,9 +289,7 @@ class EditSE {
                     CSEDataManager.saveCSEData(CSEData, .privateCSE, uploadCloud: false)
                 case .dismiss:
                     CSEDataManager.saveCSEData(CSEData, .privateCSE, uploadCloud: true)
-                case .discard:
-                    // No discard action needed for private CSE
-                    break
+                case .discard: break
                 }
             }
         }
@@ -354,25 +322,18 @@ class EditSE {
                     Section {
                         TextField("Name", text: $CSEData.name)
                             .submitLabel(.done)
-                            .onSubmit {
-                                saveCSEData(.autosave)
-                            }
-                    } header: {
-                        Text("Name")
-                    }
+                            .onSubmit { saveCSEData(.autosave) }
+                    } header: { Text("Name") }
                     
                     // Quick Search Key
                     Section {
                         TextField("cse", text: $CSEData.keyword)
                             .submitLabel(.done)
-                            .onSubmit {
-                                saveCSEData(.autosave)
-                            }
+                            .onSubmit { saveCSEData(.autosave) }
                             .onChange(of: CSEData.keyword) { _ in
                                 CSEData.keyword = CSEData.keyword.filter { !($0.isWhitespace || $0.isNewline) }
                             }
-                    } header: {
-                        Text("Keyword")
+                    } header: { Text("Keyword")
                     } footer: {
                         VStack(alignment : .leading) {
                             Text("Enter this keyword at the top to search with this search engine.")
@@ -381,14 +342,10 @@ class EditSE {
                     }
                     
                     // Search URL
-                    EditSE.searchURLSection(cseData: $CSEData) {
-                        saveCSEData(.autosave)
-                    }
+                    EditSE.searchURLSection(cseData: $CSEData) { saveCSEData(.autosave) }
                     
                     // Advanced Settings
-                    EditSE.advancedSettingsSection(cseData: $CSEData) {
-                        saveCSEData(.autosave)
-                    }
+                    EditSE.advancedSettingsSection(cseData: $CSEData) { saveCSEData(.autosave) }
                     
                     // Import Search Engine
                     EditSE.importSearchEngineSection(
@@ -401,9 +358,7 @@ class EditSE {
                     Alert(
                         title: Text(alertTitle),
                         message: Text("Are you sure you want to discard changes?"),
-                        primaryButton: .destructive(Text("Discard")) {
-                            dismissView()
-                        },
+                        primaryButton: .destructive(Text("Discard")) { dismissView() },
                         secondaryButton: .cancel()
                     )
                 }
@@ -423,17 +378,13 @@ class EditSE {
                             }) {
                                 Label("Discard", systemImage: "xmark")
                             }
-                        } primaryAction: {
-                            saveCSEData(.dismiss)
-                        }
+                        } primaryAction: { saveCSEData(.dismiss) }
                     }
                 },
                 openRecommendView: $openRecommendView,
                 openCloudImportView: $openCloudImportView,
                 cseData: $CSEData,
-                onDismiss: {
-                    saveCSEData(.autosave)
-                }
+                onDismiss: { saveCSEData(.autosave) }
             )
             .onChange(of: scenePhase) { newPhase in
                 if newPhase != .active && lastScenePhase == .active {
@@ -441,9 +392,7 @@ class EditSE {
                 }
                 lastScenePhase = newPhase
             }
-            .accessibilityAction(.escape) {
-                saveCSEData(.dismiss)
-            }
+            .accessibilityAction(.escape) { saveCSEData(.dismiss) }
             .task {
                 if isFirstLoad {
                     if let cseID = cseID {
@@ -530,15 +479,11 @@ class EditSE {
                         .textInputAutocapitalization(.never)
                     }
                     .onDelete(perform: { index in
-                        withAnimation() {
-                            post.remove(atOffsets: index)
-                        }
+                        withAnimation() { post.remove(atOffsets: index) }
                     })
                     
                     Button(action: {
-                        withAnimation {
-                            post.append(["key": "", "value": ""])
-                        }
+                        withAnimation { post.append(["key": "", "value": ""]) }
                     })  {
                         HStack {
                             Image(systemName: "plus.circle")
@@ -546,26 +491,18 @@ class EditSE {
                             Text("Add POST Data")
                         }
                     }
-                } footer: {
-                    Text("Replace query with %s")
-                }
+                } footer: { Text("Replace query with %s") }
             }
             .scrollToDismissesKeyboard()
             .navigationTitle("POST Data")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                EditButton()
-            }
+            .toolbar { EditButton() }
         }
         
         private func binding(for index: Int, key: String) -> Binding<String> {
             Binding<String>(
-                get: {
-                    return post[index][key] ?? ""
-                },
-                set: { newValue in
-                    post[index][key] = newValue
-                }
+                get: { return post[index][key] ?? "" },
+                set: { newValue in post[index][key] = newValue }
             )
         }
     }
@@ -586,40 +523,36 @@ class EditSE {
                     Section {
                         ForEach(recommendPopCSEList.indices, id: \.self, content: { index in
                             let cse = recommendPopCSEList[index]
-                            UITemplates.recommendSEButton(action: {
+                            UITemplates.RecommendedSEButton(action: {
                                 CSEData = cse
                                 isOpenSheet = false
                             }, cse: cse)
                         })
-                    } header: {
-                        Text("Popular Search Engines")
-                    }
+                    } header: { Text("Popular Search Engines") }
+                    
                     // AI Search Engine List
                     if !recommendAICSEList.isEmpty {
                         Section {
                             ForEach(recommendAICSEList.indices, id: \.self, content: { index in
                                 let cse = recommendAICSEList[index]
-                                UITemplates.recommendSEButton(action: {
+                                UITemplates.RecommendedSEButton(action: {
                                     CSEData = cse
                                     isOpenSheet = false
                                 }, cse: cse)
                             })
-                        } header: {
-                            Text("AI Search Engines")
-                        }
+                        } header: { Text("AI Search Engines") }
                     }
+                    
                     // Normal Search Engine List
                     Section {
                         ForEach(recommendNormalCSEList.indices, id: \.self, content: { index in
                             let cse = recommendNormalCSEList[index]
-                            UITemplates.recommendSEButton(action: {
+                            UITemplates.RecommendedSEButton(action: {
                                 CSEData = cse
                                 isOpenSheet = false
                             }, cse: cse)
                         })
-                    } header: {
-                        Text("Safari Search Engines")
-                    }
+                    } header: { Text("Safari Search Engines") }
                 }
                 .navigationTitle("Recommended Search Engines")
                 .navigationBarTitleDisplayMode(.inline)

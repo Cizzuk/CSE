@@ -33,12 +33,12 @@ class BackupView {
                         }
                         exportJSONFile(jsonString: jsonString, filePrefix: "CSE")
                     }) {
-                        UITemplates.iconButton(icon: "square.and.arrow.up", text: "Export as JSON")
+                        UITemplates.IconLabel(icon: "square.and.arrow.up", text: "Export as JSON")
                     }
                     Button(action: {
                         showingFileImport = true
                     }) {
-                        UITemplates.iconButton(icon: "square.and.arrow.down", text: "Import from JSON")
+                        UITemplates.IconLabel(icon: "square.and.arrow.down", text: "Import from JSON")
                     }
                 }
                 
@@ -52,7 +52,7 @@ class BackupView {
                             ck.saveAll(mustUpload: true)
                         }) {
                             HStack {
-                                UITemplates.iconButton(icon: "icloud.and.arrow.up", text: "Backup to iCloud")
+                                UITemplates.IconLabel(icon: "icloud.and.arrow.up", text: "Backup to iCloud")
                                 Spacer()
                                 if ck.uploadStatus == .uploading {
                                     ProgressView()
@@ -79,7 +79,7 @@ class BackupView {
                         Button(action: {
                             showingRestoreSheet = true
                         }) {
-                            UITemplates.iconButton(icon: "icloud.and.arrow.down", text: "Restore from iCloud")
+                            UITemplates.IconLabel(icon: "icloud.and.arrow.down", text: "Restore from iCloud")
                         }
                     }
                     
@@ -95,9 +95,7 @@ class BackupView {
                         }) {
                             Text("Export All data from iCloud")
                         }
-                    } footer: {
-                        Text("You can delete all data stored in iCloud from the iCloud settings.")
-                    }
+                    } footer: { Text("You can delete all data stored in iCloud from the iCloud settings.") }
                 }
                 .disabled(ck.cloudKitAvailability != .available || ck.isLocked)
             }
@@ -107,9 +105,7 @@ class BackupView {
                 CloudPicker.CloudPickerView(onRestore: nil)
             }
             .alert(errorMessage, isPresented: $showingErrorAlert, actions: {})
-            .task {
-                ck.checkCloudKitAvailability()
-            }
+            .task { ck.checkCloudKitAvailability() }
             .onReceive(NotificationCenter.default.publisher(for: Notification.Name("CloudKitAllDataExported"))) { note in
                 if let jsonString = note.object as? String {
                     exportJSONFile(jsonString: jsonString, filePrefix: "CSE-RequestData")
@@ -178,10 +174,7 @@ class BackupView {
     }
     
     // Shared JSON import functionality for Tutorial and BackupView
-    static func importJSONFile(from url: URL,
-                               onSuccess: @escaping () -> Void = {},
-                               onError: @escaping (String) -> Void = { _ in })
-    {
+    static func importJSONFile(from url: URL, onSuccess: @escaping () -> Void = {}, onError: @escaping (String) -> Void = { _ in }) {
         guard url.startAccessingSecurityScopedResource() else { return }
         defer { url.stopAccessingSecurityScopedResource() }
         

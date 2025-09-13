@@ -22,21 +22,17 @@ struct QuickSEListView: View {
             // Toggle QuickSE
             Section {
                 Toggle(isOn: $useQuickCSE) {
-                    UITemplates.iconButton(icon: "hare", text: "Quick Search")
+                    UITemplates.IconLabel(icon: "hare", text: "Quick Search")
                 }
                 .onChange(of: useQuickCSE) { _ in
-                    withAnimation {
-                        useQuickCSEToggle = useQuickCSE
-                    }
+                    withAnimation { useQuickCSEToggle = useQuickCSE }
                     #if !os(visionOS)
                     if #available(iOS 18.0, macOS 26, *) {
                         ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
                     }
                     #endif
                 }
-            } footer: {
-                Text("Enter the keyword at the top to switch search engines.")
-            }
+            } footer: { Text("Enter the keyword at the top to switch search engines.") }
             
             if useQuickCSEToggle {
                 // Current Quick SEs List
@@ -69,9 +65,7 @@ struct QuickSEListView: View {
                         }
                     }
                     .onDelete(perform: CSEDataManager.deleteQuickCSE)
-                } header: {
-                    Text("Quick Search Engines")
-                }
+                } header: { Text("Quick Search Engines") }
                 
                 // Add new SE Button
                 Section {
@@ -91,9 +85,7 @@ struct QuickSEListView: View {
         .navigationTitle("Quick Search")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if useQuickCSEToggle {
-                EditButton()
-            }
+            if useQuickCSEToggle { EditButton() }
         }
         .task {
             // Initialize

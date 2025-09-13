@@ -102,9 +102,7 @@ struct AdvSettingView: View {
                     Text("Reset All Custom Search Engines")
                 }
                 .disabled(!allowReset)
-            } footer: {
-                Text("Existing data will be deleted")
-            }
+            } footer: { Text("Existing data will be deleted") }
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Advanced Settings")

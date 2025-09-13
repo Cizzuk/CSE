@@ -8,7 +8,7 @@
 import SwiftUI
 
 class UITemplates {
-    struct recommendSEButton: View {
+    struct RecommendedSEButton: View {
         let action: () -> Void
         let cse: CSEDataManager.CSEData
         
@@ -30,7 +30,7 @@ class UITemplates {
         }
     }
     
-    struct tutorialButton: View {
+    struct TutorialButton: View {
         let text: String.LocalizationValue
         
         var body: some View {
@@ -45,7 +45,7 @@ class UITemplates {
         }
     }
     
-    struct iconButton: View {
+    struct IconLabel: View {
         let icon: String
         let text: String.LocalizationValue
         

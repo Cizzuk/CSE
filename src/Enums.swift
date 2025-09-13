@@ -26,24 +26,15 @@ enum SafariSEs: String, CaseIterable {
     
     func domain(forRegion region: String?) -> String {
         switch self {
-        case .google:
-            return region == "CN" ? "google.cn" : "google.com"
-        case .bing:
-            return "bing.com"
-        case .yahoo:
-            return region == "JP" ? "search.yahoo.co.jp" : "search.yahoo.com"
-        case .duckduckgo:
-            return "duckduckgo.com"
-        case .ecosia:
-            return "ecosia.org"
-        case .baidu:
-            return "baidu.com"
-        case .sogou:
-            return "sogou.com"
-        case .yandex:
-            return "yandex.ru"
-        case .so360search:
-            return "so.com"
+        case .google: return region == "CN" ? "google.cn" : "google.com"
+        case .bing: return "bing.com"
+        case .yahoo: return region == "JP" ? "search.yahoo.co.jp" : "search.yahoo.com"
+        case .duckduckgo: return "duckduckgo.com"
+        case .ecosia: return "ecosia.org"
+        case .baidu: return "baidu.com"
+        case .sogou: return "sogou.com"
+        case .yandex: return "yandex.ru"
+        case .so360search: return "so.com"
         }
     }
     
@@ -68,12 +59,8 @@ enum SafariSEs: String, CaseIterable {
     }
     
     static func defaultForRegion(region: String?) -> SafariSEs {
-        if region == "CN" {
-            return .baidu
-        }
-        if #unavailable(iOS 17.0, macOS 14.0) {
-            return .bing
-        }
+        if region == "CN" { return .baidu }
+        if #unavailable(iOS 17.0, macOS 14.0) { return .bing }
         return .google
     }
 

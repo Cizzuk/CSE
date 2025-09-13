@@ -49,7 +49,7 @@ struct ContentView: View {
                 Section {
                     NavigationLink(value: NavigationItem.defaultSE) {
                         HStack {
-                            UITemplates.iconButton(icon: "magnifyingglass", text: "Default Search Engine")
+                            UITemplates.IconLabel(icon: "magnifyingglass", text: "Default Search Engine")
                             Spacer()
                             Text(useDefaultCSE ? "On" : "Off")
                                 .foregroundColor(.secondary)
@@ -60,7 +60,7 @@ struct ContentView: View {
                     // Private SE Settings
                     NavigationLink(value: NavigationItem.privateSE) {
                         HStack {
-                            UITemplates.iconButton(icon: "hand.raised", text: "Private Search Engine")
+                            UITemplates.IconLabel(icon: "hand.raised", text: "Private Search Engine")
                             Spacer()
                             Text(usePrivateCSE ? "On" : "Off")
                                 .foregroundColor(.secondary)
@@ -71,7 +71,7 @@ struct ContentView: View {
                     // Quick SE Settings
                     NavigationLink(value: NavigationItem.quickSE) {
                         HStack {
-                            UITemplates.iconButton(icon: "hare", text: "Quick Search")
+                            UITemplates.IconLabel(icon: "hare", text: "Quick Search")
                             Spacer()
                             Text(useQuickCSE ? "On" : "Off")
                                 .foregroundColor(.secondary)
@@ -83,7 +83,7 @@ struct ContentView: View {
                     // Emoji Search Setting
                     NavigationLink(value: NavigationItem.emojiSearch) {
                         HStack {
-                            UITemplates.iconButton(icon: "face.smiling", text: "Emoji Search")
+                            UITemplates.IconLabel(icon: "face.smiling", text: "Emoji Search")
                             Spacer()
                             Text(useEmojiSearch ? "On" : "Off")
                                 .foregroundColor(.secondary)
@@ -98,13 +98,11 @@ struct ContentView: View {
                         openSafariTutorialView = true
                     }) {
                         VStack(alignment: .leading) {
-                            UITemplates.iconButton(icon: "safari", text: "Safari Settings")
+                            UITemplates.IconLabel(icon: "safari", text: "Safari Settings")
                                 #if !os(visionOS)
                                 .foregroundColor(.accentColor)
                                 #endif
-                            if #available(iOS 26, macOS 26, *) {
-                                Spacer()
-                            }
+                            if #available(iOS 26, macOS 26, *) { Spacer() }
                             Text("If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial.")
                                 .foregroundColor(.secondary)
                                 .font(.caption)
@@ -115,23 +113,23 @@ struct ContentView: View {
                 Section {
                     // About View
                     NavigationLink(value: NavigationItem.about) {
-                        UITemplates.iconButton(icon: "info.circle", text: "About")
+                        UITemplates.IconLabel(icon: "info.circle", text: "About")
                     }
                     
                     NavigationLink(value: NavigationItem.backup) {
-                        UITemplates.iconButton(icon: "arrow.counterclockwise", text: "Backup & Restore")
+                        UITemplates.IconLabel(icon: "arrow.counterclockwise", text: "Backup & Restore")
                     }
                     
                     // TODO: Remove this button if CTF issues are resolved. (issue#24)
                     #if !os(visionOS) && !targetEnvironment(macCatalyst)
                     // Go IconChange View for iOS/iPadOS
                     NavigationLink(value: NavigationItem.iconChange) {
-                        UITemplates.iconButton(icon: "app.dashed", text: "Change App Icon")
+                        UITemplates.IconLabel(icon: "app.dashed", text: "Change App Icon")
                     }
                     #endif
                     
                     NavigationLink(value: NavigationItem.advancedSettings) {
-                        UITemplates.iconButton(icon: "gearshape", text: "Advanced Settings")
+                        UITemplates.IconLabel(icon: "gearshape", text: "Advanced Settings")
                     }
                 }
                 
@@ -140,15 +138,15 @@ struct ContentView: View {
                     Group {
                         // Contact Link
                         Link(destination:URL(string: "https://cizzuk.net/contact/")!, label: {
-                            UITemplates.iconButton(icon: "message", text: "Contact")
+                            UITemplates.IconLabel(icon: "message", text: "Contact")
                         })
                         // GitHub Source Link
                         Link(destination:URL(string: "https://github.com/Cizzuk/CSE")!, label: {
-                            UITemplates.iconButton(icon: "ladybug", text: "Source")
+                            UITemplates.IconLabel(icon: "ladybug", text: "Source")
                         })
                         // App review Link
                         Link(destination:URL(string: "https://apps.apple.com/app/cse/id6445840140")!, label: {
-                            UITemplates.iconButton(icon: "star", text: "Rate & Review")
+                            UITemplates.IconLabel(icon: "star", text: "Rate & Review")
                         })
                     }
                     #if !os(visionOS)
@@ -163,28 +161,20 @@ struct ContentView: View {
         } detail: {
             NavigationStack {
                 switch selection {
-                case .defaultSE:
-                    EditSE.EditDefaultCSEView()
-                case .privateSE:
-                    EditSE.EditPrivateCSEView()
-                case .quickSE:
-                    QuickSEListView()
-                case .emojiSearch:
-                    EmojiSearchView()
-                case .about:
-                    AboutView()
-                case .backup:
-                    BackupView.BackupView()
+                case .defaultSE: EditSE.EditDefaultCSEView()
+                case .privateSE: EditSE.EditPrivateCSEView()
+                case .quickSE: QuickSEListView()
+                case .emojiSearch: EmojiSearchView()
+                case .about: AboutView()
+                case .backup: BackupView.BackupView()
                 case .iconChange:
                     #if !os(visionOS) && !targetEnvironment(macCatalyst)
                     IconChangeView()
                     #else
                     Spacer()
                     #endif
-                case .advancedSettings:
-                    AdvSettingView()
-                case .none:
-                    Spacer()
+                case .advancedSettings: AdvSettingView()
+                case .none: Spacer()
                 }
             }
             #if os(visionOS)

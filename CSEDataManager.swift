@@ -288,7 +288,7 @@ class CSEDataManager {
     
     class func deleteQuickCSE(_ id: String) {
         // Get current QuickSEs Data
-        var quickCSEData: [String: CSEData] = getAllQuickCSEData()
+        var quickCSEData = getAllQuickCSEData()
         // Remove this QuickSE
         quickCSEData.removeValue(forKey: id)
         // Convert to Dictionary
@@ -297,7 +297,7 @@ class CSEDataManager {
     }
     
     class func deleteQuickCSE(at offsets: IndexSet) {
-        var quickCSEData: [String: CSEData] = getAllQuickCSEData()
+        var quickCSEData = getAllQuickCSEData()
         let keys = quickCSEData.keys.sorted()
         for offset in offsets {
             let keyToRemove = keys[offset]

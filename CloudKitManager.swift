@@ -14,7 +14,7 @@ final class CloudKitManager: ObservableObject {
     private let database: CKDatabase = CKContainer(identifier: "iCloud.net.cizzuk.cse").privateCloudDatabase
     private let userDefaults = CSEDataManager.userDefaults
     
-    enum uploadStatus: Equatable {
+    enum UploadStatus: Equatable {
         case idle
         case skipped
         case uploading
@@ -27,7 +27,7 @@ final class CloudKitManager: ObservableObject {
     @Published var error: Error? // Error message
     @Published var isLoading: Bool = false // Indicates if the CloudKit is loading
     @Published var isLocked: Bool = false // If the current view is locked
-    @Published var uploadStatus: uploadStatus = .idle
+    @Published var uploadStatus: UploadStatus = .idle
     
     // Check CloudKit availability
     func checkCloudKitAvailability() {
@@ -45,15 +45,15 @@ final class CloudKitManager: ObservableObject {
     // Create device name
     func createDeviceName() -> String {
         #if targetEnvironment(macCatalyst)
-        return "Mac Catalyst / " + UIDevice.current.systemName + " " + UIDevice.current.systemVersion
+        return "Mac Catalyst / \(UIDevice.current.systemName) \(UIDevice.current.systemVersion)"
         #else
-        return UIDevice.current.name + " / " + UIDevice.current.systemName + " " + UIDevice.current.systemVersion
+        return "\(UIDevice.current.name) / \(UIDevice.current.systemName) \(UIDevice.current.systemVersion)"
         #endif
     }
     
     // Upload CSEs
     func saveAll(mustUpload: Bool = false) {
-        // Check if upload is disabled
+        // Skip when auto-backup off and not forced
         guard mustUpload || userDefaults.bool(forKey: "iCloudAutoBackup") else {
             self.uploadStatus = .skipped
             print("CloudKit upload is disabled in settings.")
@@ -106,11 +106,10 @@ final class CloudKitManager: ObservableObject {
         let currentRecordHash = generateHash(from: CSEDataManager.jsonDictToString(combinedDict) ?? "")
         print("Current record hash: \(currentRecordHash.base64EncodedString())")
         
-        // Check if the record is the same as the last uploaded
+        // Compare with last uploaded hash (unless forced)
         if !mustUpload {
             let lastRecordHash = userDefaults.data(forKey: "cloudkit_lastRecordHash") ?? Data()
             guard currentRecordHash != lastRecordHash else {
-                // Same record, skip upload
                 print("No changes detected, skipping CloudKit upload.")
                 self.uploadStatus = .skipped
                 return
@@ -144,11 +143,10 @@ final class CloudKitManager: ObservableObject {
     // Generate SHA256 hash from string
     private func generateHash(from string: String) -> Data {
         let data = Data(string.utf8)
-        let hash = SHA256.hash(data: data)
-        return Data(hash)
+        return Data(SHA256.hash(data: data))
     }
     
-    // fetch CSEs from other devices
+    // Fetch CSEs from all devices
     func fetchAll() {
         // Reset
         isLoading = true
@@ -161,7 +159,7 @@ final class CloudKitManager: ObservableObject {
         
         let operation = CKQueryOperation(query: query)
         
-        // Save record or get error
+        // Collect records
         operation.recordMatchedBlock = { (recordID: CKRecord.ID, result: Result<CKRecord, Error>) in
             switch result {
             case .success(let record):
@@ -182,7 +180,7 @@ final class CloudKitManager: ObservableObject {
             }
         }
         
-        // Loading handler
+        // Completion
         operation.queryResultBlock = { result in
             DispatchQueue.main.async {
                 switch result {
