@@ -15,7 +15,6 @@ struct AdvSettingView: View {
     @AppStorage("adv_ignoreFocusFilter", store: userDefaults) private var ignoreFocusFilter: Bool = false
     @AppStorage("adv_ignorePOSTFallback", store: userDefaults) private var ignorePOSTFallback: Bool = false
     @AppStorage("adv_icloud_disableUploadCSE", store: userDefaults) private var icloud_disableUploadCSE: Bool = false
-    @AppStorage("adv_resetCSEs", store: userDefaults) private var resetCSEs: String = ""
     @State private var allowReset: Bool = false
     
     var body: some View {
@@ -35,7 +34,6 @@ struct AdvSettingView: View {
                     }
                     #endif
                     icloud_disableUploadCSE = false
-                    resetCSEs = ""
                     allowReset = false
                 }
             }
@@ -88,37 +86,32 @@ struct AdvSettingView: View {
                 Toggle(isOn: $allowReset, label: {
                     Text("Enable Reset Buttons")
                 })
-                .onChange(of: allowReset) { _ in
-                    if !allowReset {
-                        resetCSEs = ""
-                    }
-                }
                 Button(action: {
-                    resetCSEs = "default"
+                    AppInitializer.resetCSE(target: "default")
                 }) {
                     Text("Reset Default Search Engine")
                 }
                 .disabled(!allowReset)
                 Button(action: {
-                    resetCSEs = "private"
+                    AppInitializer.resetCSE(target: "private")
                 }) {
                     Text("Reset Private Search Engine")
                 }
                 .disabled(!allowReset)
                 Button(action: {
-                    resetCSEs = "quick"
+                    AppInitializer.resetCSE(target: "quick")
                 }) {
                     Text("Reset Quick Search Engines")
                 }
                 .disabled(!allowReset)
                 Button(action: {
-                    resetCSEs = "all"
+                    AppInitializer.resetCSE(target: "all")
                 }) {
                     Text("Reset All Custom Search Engines")
                 }
                 .disabled(!allowReset)
             } footer: {
-                Text("Existing data will be deleted at next startup: \(resetCSEs)")
+                Text("Existing data will be deleted")
             }
         }
         .navigationBarTitleDisplayMode(.inline)
