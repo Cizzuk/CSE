@@ -652,7 +652,7 @@ class EditSE {
                             Spacer()
                         }
                     } else if ck.error != nil {
-                        Text(ck.error!.localizedDescription)
+                        UITemplates.iconButton(icon: "exclamationmark.icloud", text: String.LocalizationValue(ck.error!.localizedDescription))
                     } else if ck.allCSEs.isEmpty {
                         Text("No devices found.")
                     } else {
