@@ -265,16 +265,16 @@ class Tutorial {
                     List {
                         Section {
                             Button(action: {
-                                showingCloudImport = true
+                                showingFileImport = true
                             }) {
-                                UITemplates.iconButton(icon: "icloud.and.arrow.down", text: "Restore from iCloud")
+                                UITemplates.iconButton(icon: "square.and.arrow.down", text: "Import from JSON")
                                 .foregroundColor(.accentColor)
                             }
                             
                             Button(action: {
-                                showingFileImport = true
+                                showingCloudImport = true
                             }) {
-                                UITemplates.iconButton(icon: "square.and.arrow.down", text: "Import from JSON")
+                                UITemplates.iconButton(icon: "icloud.and.arrow.down", text: "Restore from iCloud")
                                 .foregroundColor(.accentColor)
                             }
                         }
