@@ -205,13 +205,12 @@ final class CloudKitManager: ObservableObject {
         let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [recordID])
         operation.modifyRecordsResultBlock = { result in
             DispatchQueue.main.async {
+                self.isLocked = false
                 switch result {
                 case .success:
-                    self.isLocked = false
                     self.allCSEs.removeAll { $0.id == recordID }
                 case .failure(let error):
                     self.error = error
-                    self.isLocked = false
                 }
             }
         }
@@ -219,6 +218,48 @@ final class CloudKitManager: ObservableObject {
     }
     
     func exportAllData() {
+        isLocked = true
         
+        let query = CKQuery(recordType: "DeviceCSEs", predicate: NSPredicate(value: true))
+        query.sortDescriptors = [NSSortDescriptor(key: "modificationDate", ascending: false)]
+        
+        let operation = CKQueryOperation(query: query)
+        var recordsArray: [[String: Any]] = []
+        
+        operation.recordMatchedBlock = { _, result in
+            guard case .success(let record) = result else { return }
+            var dict: [String: Any] = [:]
+            // Metadata
+            dict["recordName"] = record.recordID.recordName
+            dict["recordType"] = record.recordType
+            dict["modificationDate"] = ISO8601DateFormatter().string(from: record.modificationDate ?? Date())
+            // All custom fields -> String(describing: value) for raw dump
+            for key in record.allKeys() {
+                if let value = record[key] { // CKRecordValue
+                    dict[key] = String(describing: value)
+                }
+            }
+            recordsArray.append(dict)
+        }
+
+        operation.queryResultBlock = { result in
+            DispatchQueue.main.async {
+                self.isLocked = false
+                switch result {
+                case .success:
+                    let root: [String: Any] = [
+                        "exportDate": ISO8601DateFormatter().string(from: Date()),
+                        "records": recordsArray
+                    ]
+                    if let data = try? JSONSerialization.data(withJSONObject: root, options: [.sortedKeys]),
+                       let json = String(data: data, encoding: .utf8) {
+                        NotificationCenter.default.post(name: NSNotification.Name("CloudKitAllDataExported"), object: json)
+                    }
+                case .failure(let error):
+                    self.error = error
+                }
+            }
+        }
+        database.add(operation)
     }
 }

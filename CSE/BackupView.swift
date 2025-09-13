@@ -21,7 +21,16 @@ class BackupView {
                 // JSON Export/Import Section
                 Section {
                     Button(action: {
-                        exportJSONFile()
+                        #if !os(visionOS)
+                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        #endif
+                        guard let jsonString = CSEDataManager.exportDeviceCSEsAsJSON() else {
+                            #if !os(visionOS)
+                            UINotificationFeedbackGenerator().notificationOccurred(.error)
+                            #endif
+                            return
+                        }
+                        exportJSONFile(jsonString: jsonString, filePrefix: "CSE")
                     }) {
                         UITemplates.iconButton(icon: "square.and.arrow.up", text: "Export as JSON")
                     }
@@ -33,45 +42,58 @@ class BackupView {
                 }
                 
                 // CloudKit Section
-                Section {
-                    Button(action: {
-                        #if !os(visionOS)
-                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                        #endif
-                        ck.saveAll(mustUpload: true)
-                    }) {
-                        HStack {
-                            UITemplates.iconButton(icon: "icloud.and.arrow.up", text: "Backup to iCloud")
-                            Spacer()
-                            if ck.uploadStatus == .uploading {
-                                ProgressView()
-                            } else if ck.uploadStatus == .failure {
-                                Image(systemName: "xmark")
-                            } else if ck.uploadStatus == .success {
-                                Image(systemName: "checkmark")
+                Group {
+                    Section {
+                        Button(action: {
+                            #if !os(visionOS)
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                            #endif
+                            ck.saveAll(mustUpload: true)
+                        }) {
+                            HStack {
+                                UITemplates.iconButton(icon: "icloud.and.arrow.up", text: "Backup to iCloud")
+                                Spacer()
+                                if ck.uploadStatus == .uploading {
+                                    ProgressView()
+                                } else if ck.uploadStatus == .failure {
+                                    Image(systemName: "xmark")
+                                } else if ck.uploadStatus == .success {
+                                    Image(systemName: "checkmark")
+                                }
                             }
                         }
-                    }
-                    .disabled(ck.uploadStatus == .uploading)
-                    .onChange(of: ck.uploadStatus) { uploadStatus in
-                        if uploadStatus == .success {
-                            #if !os(visionOS)
-                            UINotificationFeedbackGenerator().notificationOccurred(.success)
-                            #endif
-                        } else if uploadStatus == .failure {
-                            #if !os(visionOS)
-                            UINotificationFeedbackGenerator().notificationOccurred(.error)
-                            #endif
+                        .disabled(ck.uploadStatus == .uploading)
+                        .onChange(of: ck.uploadStatus) { uploadStatus in
+                            if uploadStatus == .success {
+                                #if !os(visionOS)
+                                UINotificationFeedbackGenerator().notificationOccurred(.success)
+                                #endif
+                            } else if uploadStatus == .failure {
+                                #if !os(visionOS)
+                                UINotificationFeedbackGenerator().notificationOccurred(.error)
+                                #endif
+                            }
+                        }
+                        
+                        Button(action: {
+                            showingRestoreSheet = true
+                        }) {
+                            UITemplates.iconButton(icon: "icloud.and.arrow.down", text: "Restore from iCloud")
                         }
                     }
                     
-                    Button(action: {
-                        showingRestoreSheet = true
-                    }) {
-                        UITemplates.iconButton(icon: "icloud.and.arrow.down", text: "Restore from iCloud")
+                    Section {
+                        Button(action: {
+                            #if !os(visionOS)
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                            #endif
+                            ck.exportAllData()
+                        }) {
+                            UITemplates.iconButton(icon: "icloud", text: "Export All data from iCloud")
+                        }
+                    } footer: {
+                        Text("You can delete all data stored in iCloud from the iCloud settings.")
                     }
-                } footer: {
-                    Text("You can delete all data stored in iCloud from the iCloud settings.")
                 }
                 .disabled(ck.cloudKitAvailability != .available || ck.isLocked)
             }
@@ -83,6 +105,11 @@ class BackupView {
             .alert(errorMessage, isPresented: $showingErrorAlert, actions: {})
             .task {
                 ck.checkCloudKitAvailability()
+            }
+            .onReceive(NotificationCenter.default.publisher(for: Notification.Name("CloudKitAllDataExported"))) { note in
+                if let jsonString = note.object as? String {
+                    exportJSONFile(jsonString: jsonString, filePrefix: "CSE-RequestData")
+                }
             }
             .fileImporter(
                 isPresented: $showingFileImport,
@@ -103,18 +130,10 @@ class BackupView {
             }
         }
 
-        private func exportJSONFile() {
-            guard let jsonString = CSEDataManager.exportDeviceCSEsAsJSON() else {
-                #if !os(visionOS)
-                UINotificationFeedbackGenerator().notificationOccurred(.error)
-                #endif
-                return
-            }
-            
-            // Create tmp file
+        private func exportJSONFile(jsonString: String, filePrefix: String) {
             let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd-HH-mm-ss"
-            let fileName = "CSE-\(formatter.string(from: Date())).json"
+            formatter.dateFormat = "yyyyMMddHHmmss"
+            let fileName = "\(filePrefix)-\(formatter.string(from: Date())).json"
             let fileURL = FileManager.default.temporaryDirectory.appendingPathComponent(fileName)
             
             // Write JSON string to file
