@@ -18,6 +18,20 @@ class BackupView {
         
         var body: some View {
             List {
+                // JSON Export/Import Section
+                Section {
+                    Button(action: {
+                        exportJSONFile()
+                    }) {
+                        UITemplates.iconButton(icon: "square.and.arrow.up", text: "Export as JSON")
+                    }
+                    Button(action: {
+                        showingFileImport = true
+                    }) {
+                        UITemplates.iconButton(icon: "square.and.arrow.down", text: "Import from JSON")
+                    }
+                }
+                
                 // CloudKit Section
                 Section {
                     Button(action: {
@@ -27,12 +41,14 @@ class BackupView {
                         ck.saveAll(mustUpload: true)
                     }) {
                         HStack {
-                            Image(systemName: "icloud.and.arrow.up")
-                                .frame(width: 20.0)
-                            Text("Backup to iCloud")
+                            UITemplates.iconButton(icon: "icloud.and.arrow.up", text: "Backup to iCloud")
+                            Spacer()
                             if ck.uploadStatus == .uploading {
-                                Spacer()
                                 ProgressView()
+                            } else if ck.uploadStatus == .failure {
+                                Image(systemName: "xmark")
+                            } else if ck.uploadStatus == .success {
+                                Image(systemName: "checkmark")
                             }
                         }
                     }
@@ -55,21 +71,22 @@ class BackupView {
                         UITemplates.iconButton(icon: "icloud.and.arrow.down", text: "Restore from iCloud")
                     }
                 }
-                .disabled(ck.cloudKitAvailability != .available)
+                .disabled(ck.cloudKitAvailability != .available || ck.isLocked)
                 
-                // JSON Export/Import Section
                 Section {
                     Button(action: {
-                        exportJSONFile()
+                        #if !os(visionOS)
+                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        #endif
+                        ck.deleteAll()
                     }) {
-                        UITemplates.iconButton(icon: "square.and.arrow.up", text: "Export as JSON")
-                    }
-                    Button(action: {
-                        showingFileImport = true
-                    }) {
-                        UITemplates.iconButton(icon: "square.and.arrow.down", text: "Import from JSON")
+                        HStack {
+                            UITemplates.iconButton(icon: "trash", text: "Delete All Backups from iCloud")
+                                .foregroundColor(.red)
+                        }
                     }
                 }
+                .disabled(ck.cloudKitAvailability != .available || ck.isLocked)
             }
             .navigationTitle("Backup & Restore")
             .navigationBarTitleDisplayMode(.inline)
@@ -170,7 +187,7 @@ class BackupView {
                                 Spacer()
                             }
                         } else if ck.error != nil {
-                            Text(ck.error!.localizedDescription)
+                            UITemplates.iconButton(icon: "exclamationmark.icloud", text: String.LocalizationValue(ck.error!.localizedDescription))
                         } else if ck.allCSEs.isEmpty {
                             Text("No devices found.")
                         } else {
