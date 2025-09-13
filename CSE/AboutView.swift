@@ -28,6 +28,10 @@ struct AboutView: View {
                         Text("Cizzuk")
                     })
                 }
+                // Privacy Policy Link
+                Link(destination:URL(string: "https://i.cizzuk.net/privacy/")!, label: {
+                    Text("Privacy Policy")
+                })
             }
             
             Section {} header: {

@@ -7268,6 +7268,9 @@
         }
       }
     },
+    "Rate & Review" : {
+
+    },
     "Recommended Search Engines" : {
       "localizations" : {
         "ar" : {
@@ -9364,6 +9367,7 @@
       }
     },
     "Support" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {

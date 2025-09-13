@@ -42,11 +42,6 @@ struct ContentView: View {
         case about, backup, iconChange, advancedSettings
     }
     
-    #if !os(visionOS)
-    // Get current icon
-    @State private var alternateIconName: String? = UIApplication.shared.alternateIconName
-    #endif
-    
     var body: some View {
         NavigationSplitView(columnVisibility: .constant(.doubleColumn)) {
             List(selection: $selection) {
@@ -103,10 +98,11 @@ struct ContentView: View {
                         openSafariTutorialView = true
                     }) {
                         VStack(alignment: .leading) {
-                            Text("Safari Settings")
+                            UITemplates.iconButton(icon: "safari", text: "Safari Settings")
                                 #if !os(visionOS)
                                 .foregroundColor(.accentColor)
                                 #endif
+                            Spacer()
                             Text("If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial.")
                                 .foregroundColor(.secondary)
                                 .font(.caption)
@@ -114,25 +110,28 @@ struct ContentView: View {
                     }
                 }
                 
-//                // IMPORTANT: This code is not currently used, but it is kept here for future reference.
-//                #if !os(visionOS) && !targetEnvironment(macCatalyst)
-//                // Go IconChange View for iOS/iPadOS
-//                Section {
-//                    NavigationLink(destination: IconChangeView()) {
-//                        Image((alternateIconName ?? "appicon") + "-pre")
-//                            .resizable()
-//                            .frame(width: 64, height: 64)
-//                            .accessibilityHidden(true)
-//                            .cornerRadius(14)
-//                            .padding(4)
-//                            .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
-//                        Text("Change App Icon")
-//                    }
-//                }
-//                .task {
-//                    alternateIconName = UIApplication.shared.alternateIconName
-//                }
-//                #endif
+                Section {
+                    // About View
+                    NavigationLink(value: NavigationItem.about) {
+                        UITemplates.iconButton(icon: "info.circle", text: "About")
+                    }
+                    
+                    NavigationLink(value: NavigationItem.backup) {
+                        UITemplates.iconButton(icon: "arrow.counterclockwise", text: "Backup & Restore")
+                    }
+                    
+                    // TODO: Remove this button if CTF issues are resolved. (issue#24)
+                    #if !os(visionOS) && !targetEnvironment(macCatalyst)
+                    // Go IconChange View for iOS/iPadOS
+                    NavigationLink(value: NavigationItem.iconChange) {
+                        UITemplates.iconButton(icon: "app.dashed", text: "Change App Icon")
+                    }
+                    #endif
+                    
+                    NavigationLink(value: NavigationItem.advancedSettings) {
+                        UITemplates.iconButton(icon: "gearshape", text: "Advanced Settings")
+                    }
+                }
                 
                 // Support Section
                 Section {
@@ -145,41 +144,15 @@ struct ContentView: View {
                         Link(destination:URL(string: "https://github.com/Cizzuk/CSE")!, label: {
                             UITemplates.iconButton(icon: "ladybug", text: "Source")
                         })
-                        // Privacy Policy Link
-                        Link(destination:URL(string: "https://i.cizzuk.net/privacy/")!, label: {
-                            UITemplates.iconButton(icon: "hand.raised", text: "Privacy Policy")
+                        // App review Link
+                        Link(destination:URL(string: "https://apps.apple.com/app/cse/id6445840140")!, label: {
+                            UITemplates.iconButton(icon: "star", text: "Rate & Review")
                         })
-                        // About View
-                        NavigationLink(value: NavigationItem.about) {
-                            UITemplates.iconButton(icon: "info.circle", text: "About")
-                        }
                     }
                     #if !os(visionOS)
                     .foregroundColor(.accentColor)
                     #endif
-                } header: {
-                    Text("Support")
                 }
-                
-                // Advanced Settings
-                Section {
-                    NavigationLink(value: NavigationItem.backup) {
-                        Text("Backup & Restore")
-                    }
-                    
-                    // TODO: Remove this button if CTF issues are resolved. (issue#24)
-                    #if !os(visionOS) && !targetEnvironment(macCatalyst)
-                    // Go IconChange View for iOS/iPadOS
-                    NavigationLink(value: NavigationItem.iconChange) {
-                        Text("Change App Icon")
-                    }
-                    #endif
-                    
-                    NavigationLink(value: NavigationItem.advancedSettings) {
-                        Text("Advanced Settings")
-                    }
-                }
-                
             }
             .navigationTitle("CSE Settings")
             #if os(visionOS)
