@@ -61,7 +61,7 @@
         "kind" : "layer-color",
         "opacity" : 0.5
       },
-      "specular" : false,
+      "specular" : true,
       "translucency" : {
         "enabled" : true,
         "value" : 0.25
@@ -75,8 +75,8 @@
             {
               "value" : {
                 "linear-gradient" : [
-                  "srgb:0.00000,0.00000,0.00000,1.00000",
-                  "srgb:0.00000,0.00000,0.00000,0.80000"
+                  "display-p3:0.00000,0.80000,0.20000,1.00000",
+                  "srgb:0.00000,0.80000,0.20000,0.80000"
                 ]
               }
             },
@@ -84,8 +84,8 @@
               "appearance" : "dark",
               "value" : {
                 "linear-gradient" : [
-                  "srgb:1.00000,1.00000,1.00000,1.00000",
-                  "srgb:1.00000,1.00000,1.00000,0.80000"
+                  "srgb:0.00000,0.80000,0.20000,1.00000",
+                  "srgb:0.00000,0.80000,0.20000,0.80000"
                 ]
               }
             },
@@ -116,9 +116,9 @@
         "kind" : "layer-color",
         "opacity" : 0.5
       },
-      "specular" : false,
+      "specular" : true,
       "translucency" : {
-        "enabled" : true,
+        "enabled" : false,
         "value" : 0.1
       }
     }

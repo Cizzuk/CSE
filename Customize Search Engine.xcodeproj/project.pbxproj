@@ -21,7 +21,6 @@
 		90C9BE40288BE17300E22FB8 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE3F288BE17300E22FB8 /* content.js */; };
 		90C9BE42288BE17300E22FB8 /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE41288BE17300E22FB8 /* popup.html */; };
 		90C9BE48288BE17300E22FB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE29288BE17200E22FB8 /* Assets.xcassets */; };
-		BE11982D2DF8073100B5FDF8 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = BE11982C2DF8073100B5FDF8 /* AppIcon.icon */; };
 		BE1642DF2D23D69E008A42F8 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1642DE2D23D696008A42F8 /* Tutorial.swift */; };
 		BE5342E32C9E338F00AE1DB3 /* IconChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5342E22C9E338F00AE1DB3 /* IconChangeView.swift */; };
 		BE5342E52C9E36FA00AE1DB3 /* AdvSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */; };
@@ -106,7 +105,6 @@
 		90C9BE41288BE17300E22FB8 /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = popup.html; sourceTree = "<group>"; };
 		90C9BE47288BE17300E22FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90C9BE52288D09DB00E22FB8 /* CSE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CSE.entitlements; sourceTree = "<group>"; };
-		BE11982C2DF8073100B5FDF8 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		BE1642DE2D23D696008A42F8 /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 		BE5342E22C9E338F00AE1DB3 /* IconChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconChangeView.swift; sourceTree = "<group>"; };
 		BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvSettingView.swift; sourceTree = "<group>"; };
@@ -165,6 +163,7 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BE289FCD2C8DA7C8005BBDC6 /* Intent */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (BE289FE22C8DAE07005BBDC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, BE07A84E2D4405AB00469317 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Intent; sourceTree = "<group>"; };
+		BE622E422E7517FF007BF838 /* AppIcons */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = AppIcons; sourceTree = "<group>"; };
 		BE8F7FF32DE41F0E003906F4 /* CSE CCWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (BE8F80052DE41F0F003906F4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "CSE CCWidget"; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -239,7 +238,7 @@
 				BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */,
 				90240FAE2BA54E68003C264A /* CSE.storekit */,
 				90C9BE29288BE17200E22FB8 /* Assets.xcassets */,
-				BE11982C2DF8073100B5FDF8 /* AppIcon.icon */,
+				BE622E422E7517FF007BF838 /* AppIcons */,
 				90C9BE2A288BE17200E22FB8 /* Info.plist */,
 			);
 			path = CSE;
@@ -308,6 +307,9 @@
 			dependencies = (
 				90C9BE32288BE17300E22FB8 /* PBXTargetDependency */,
 				BE8F7FFE2DE41F0F003906F4 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				BE622E422E7517FF007BF838 /* AppIcons */,
 			);
 			name = CSE;
 			productName = "Custom Search Engine";
@@ -414,7 +416,6 @@
 				90C9BE48288BE17300E22FB8 /* Assets.xcassets in Resources */,
 				BEE22EE62D44E93000EDA51A /* Localizable.xcstrings in Resources */,
 				908FBC952BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */,
-				BE11982D2DF8073100B5FDF8 /* AppIcon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
