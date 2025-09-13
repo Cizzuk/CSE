@@ -70,6 +70,8 @@ class BackupView {
                     }) {
                         UITemplates.iconButton(icon: "icloud.and.arrow.down", text: "Restore from iCloud")
                     }
+                } footer: {
+                    Text("You can delete all data stored in iCloud from the iCloud settings.")
                 }
                 .disabled(ck.cloudKitAvailability != .available || ck.isLocked)
             }
