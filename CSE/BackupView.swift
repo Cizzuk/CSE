@@ -104,7 +104,7 @@ class BackupView {
             .navigationTitle("Backup & Restore")
             .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: $showingRestoreSheet) {
-                CloudRestoreView()
+                CloudPicker.CloudPickerView(onRestore: nil)
             }
             .alert(errorMessage, isPresented: $showingErrorAlert, actions: {})
             .task {
@@ -174,116 +174,6 @@ class BackupView {
                 rootViewController.present(activityViewController, animated: true, completion: nil)
             }
             #endif
-        }
-    }
-    
-    // CloudKit restore view for both BackupView and Tutorial
-    struct CloudRestoreView: View {
-        @StateObject private var ck = CloudKitManager()
-        @State private var selected: String? = nil
-        @Environment(\.dismiss) private var dismiss
-        
-        // Optional callback for additional actions after restore (used in Tutorial)
-        var onRestore: (() -> Void)? = nil
-        
-        var body: some View {
-            NavigationStack {
-                VStack {
-                    List {
-                        if ck.isLoading {
-                            HStack {
-                                Spacer()
-                                ProgressView()
-                                Spacer()
-                            }
-                        } else if ck.error != nil {
-                            UITemplates.iconButton(icon: "exclamationmark.icloud", text: String.LocalizationValue(ck.error!.localizedDescription))
-                        } else if ck.allCSEs.isEmpty {
-                            Text("No devices found.")
-                        } else {
-                            ForEach(ck.allCSEs) { ds in
-                                Button {
-                                    if selected == ds.id.recordName {
-                                        selected = nil
-                                    } else {
-                                        selected = ds.id.recordName
-                                    }
-                                } label: {
-                                    HStack {
-                                        VStack(alignment: .leading) {
-                                            Text(ds.deviceName)
-                                                .foregroundColor(.primary)
-                                            // Modified Time
-                                            if let modificationDate: Date = ds.modificationDate {
-                                                Text("Last Updated: \(modificationDate.formatted(date: .abbreviated, time: .shortened))")
-                                                    .foregroundColor(.secondary)
-                                                    .font(.subheadline)
-                                            }
-                                        }
-                                        Spacer()
-                                        Image(systemName: selected == ds.id.recordName ? "checkmark.circle.fill" : "circle")
-                                            .foregroundColor(.blue)
-                                            .animation(.easeOut(duration: 0.15), value: selected)
-                                    }
-                                }
-                                .contextMenu {
-                                    Button(action: {
-                                        ck.delete(recordID: ds.id)
-                                        if selected == ds.id.recordName {
-                                            selected = nil
-                                        }
-                                    }) {
-                                        Label("Delete", systemImage: "trash")
-                                    }
-                                }
-                            }
-                            .onDelete(perform: { indexSet in
-                                for index in indexSet {
-                                    let ds = ck.allCSEs[index]
-                                    ck.delete(recordID: ds.id)
-                                    if selected == ds.id.recordName {
-                                        selected = nil
-                                    }
-                                }
-                            })
-                        }
-                    }
-                    
-                    Button(action: {
-                        if let selected = selected,
-                           let selectedDevice = ck.allCSEs.first(where: { $0.id.recordName == selected }) {
-                            CSEDataManager.importDeviceCSEs(from: selectedDevice)
-                            #if !os(visionOS)
-                            UINotificationFeedbackGenerator().notificationOccurred(.success)
-                            #endif
-                        }
-                        dismiss()
-                        onRestore?() // Call additional action if provided
-                    }) {
-                        UITemplates.tutorialButton(text: "Done")
-                    }
-                    .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
-                    .disabled(ck.isLocked || selected == nil)
-                    .animation(.easeInOut(duration: 0.15), value: selected)
-                }
-                .navigationTitle("Choose Device")
-                .navigationBarTitleDisplayMode(.inline)
-                .task {
-                    ck.fetchAll()
-                }
-                .toolbar {
-                    ToolbarItem(placement: .cancellationAction) {
-                        Button("Cancel", systemImage: "xmark") {
-                            dismiss()
-                        }
-                        .disabled(ck.isLocked)
-                    }
-                }
-                #if !os(visionOS)
-                .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
-                #endif
-            }
-            .interactiveDismissDisabled(ck.isLocked)
         }
     }
     
