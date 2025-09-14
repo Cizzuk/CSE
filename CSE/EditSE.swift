@@ -70,14 +70,10 @@ class EditSE {
         openCloudImportView: Binding<Bool>
     ) -> some View {
         Section {
-            Button(action: {
-                openRecommendView.wrappedValue = true
-            }) {
+            Button(action: { openRecommendView.wrappedValue = true }) {
                 UITemplates.IconLabel(icon: "sparkle.magnifyingglass", text: "Recommended Search Engines")
             }
-            Button(action: {
-                openCloudImportView.wrappedValue = true
-            }) {
+            Button(action: { openCloudImportView.wrappedValue = true }) {
                 UITemplates.IconLabel(icon: "icloud.and.arrow.down", text: "Import from iCloud")
             }
         }
@@ -368,14 +364,10 @@ class EditSE {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Menu("Back", systemImage: "chevron.backward") {
-                            Button(action: {
-                                saveCSEData(.dismiss)
-                            }) {
+                            Button(action: { saveCSEData(.dismiss) }) {
                                 Label("Save", systemImage: "checkmark")
                             }
-                            Button(role: .destructive, action: {
-                                saveCSEData(.discard)
-                            }) {
+                            Button(role: .destructive, action: { saveCSEData(.discard) }) {
                                 Label("Discard", systemImage: "xmark")
                             }
                         } primaryAction: { saveCSEData(.dismiss) }

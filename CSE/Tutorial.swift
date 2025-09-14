@@ -66,9 +66,7 @@ class Tutorial {
                     }
                     
                     Spacer()
-                    Button(action: {
-                        isOpenSheet = false
-                    }) {
+                    Button(action: { isOpenSheet = false }) {
                         Text("Skip").bold()
                     }
                     .padding(.top, 10)
@@ -213,9 +211,7 @@ class Tutorial {
                         }
                         .padding([.horizontal, .bottom], 24)
                     } else {
-                        Button(action: {
-                            isOpenSheet = false
-                        }) {
+                        Button(action: { isOpenSheet = false }) {
                             UITemplates.TutorialButton(text: "Done")
                         }
                         .padding([.horizontal, .bottom], 24)
@@ -249,16 +245,12 @@ class Tutorial {
                     
                     List {
                         Section {
-                            Button(action: {
-                                showingFileImport = true
-                            }) {
+                            Button(action: { showingFileImport = true }) {
                                 UITemplates.IconLabel(icon: "square.and.arrow.down", text: "Import from JSON")
                                 .foregroundColor(.accentColor)
                             }
                             
-                            Button(action: {
-                                showingCloudImport = true
-                            }) {
+                            Button(action: { showingCloudImport = true }) {
                                 UITemplates.IconLabel(icon: "icloud.and.arrow.down", text: "Restore from iCloud")
                                 .foregroundColor(.accentColor)
                             }
@@ -295,9 +287,7 @@ class Tutorial {
                         
                     }
                     
-                    Button(action: {
-                        isOpenSheet = false
-                    }) {
+                    Button(action: { isOpenSheet = false }) {
                         UITemplates.TutorialButton(text: "Skip")
                     }
                     .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))

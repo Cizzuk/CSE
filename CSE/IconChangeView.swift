@@ -74,9 +74,7 @@ struct IconChangeView: View {
                 
                 // Restore Button
                 Section {
-                    Button(action: {
-                        self.storeManager.restorePurchases()
-                    }) {
+                    Button(action: { self.storeManager.restorePurchases() }) {
                         Text("Restore Purchase")
                             .frame(maxWidth: .infinity)
                     }
@@ -190,8 +188,7 @@ final class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate,
                 SKPaymentQueue.default().finishTransaction(transaction)
                 userDefaults.set(true, forKey: "haveIconChange")
                 restoreCompleted = true
-            default:
-                break
+            default: break
             }
         }
     }

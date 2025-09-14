@@ -78,27 +78,19 @@ struct AdvSettingView: View {
                 Toggle(isOn: $allowReset, label: {
                     Text("Enable Reset Buttons")
                 })
-                Button(action: {
-                    AppInitializer.resetCSE(target: "default")
-                }) {
+                Button(action: { AppInitializer.resetCSE(target: "default") }) {
                     Text("Reset Default Search Engine")
                 }
                 .disabled(!allowReset)
-                Button(action: {
-                    AppInitializer.resetCSE(target: "private")
-                }) {
+                Button(action: { AppInitializer.resetCSE(target: "private") }) {
                     Text("Reset Private Search Engine")
                 }
                 .disabled(!allowReset)
-                Button(action: {
-                    AppInitializer.resetCSE(target: "quick")
-                }) {
+                Button(action: { AppInitializer.resetCSE(target: "quick") }) {
                     Text("Reset Quick Search Engines")
                 }
                 .disabled(!allowReset)
-                Button(action: {
-                    AppInitializer.resetCSE(target: "all")
-                }) {
+                Button(action: { AppInitializer.resetCSE(target: "all") }) {
                     Text("Reset All Custom Search Engines")
                 }
                 .disabled(!allowReset)

@@ -35,9 +35,7 @@ class BackupView {
                     }) {
                         UITemplates.IconLabel(icon: "square.and.arrow.up", text: "Export as JSON")
                     }
-                    Button(action: {
-                        showingFileImport = true
-                    }) {
+                    Button(action: { showingFileImport = true }) {
                         UITemplates.IconLabel(icon: "square.and.arrow.down", text: "Import from JSON")
                     }
                 }
@@ -76,9 +74,7 @@ class BackupView {
                             }
                         }
                         
-                        Button(action: {
-                            showingRestoreSheet = true
-                        }) {
+                        Button(action: { showingRestoreSheet = true }) {
                             UITemplates.IconLabel(icon: "icloud.and.arrow.down", text: "Restore from iCloud")
                         }
                     }
