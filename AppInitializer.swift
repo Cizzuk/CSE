@@ -113,9 +113,7 @@ class AppInitializer {
     
     // Version high and low
     private class func isUpdated(updateVer: String, lastVer: String) -> Bool {
-        guard lastVer != "" else {
-            return false
-        }
+        guard !lastVer.isEmpty else { return false }
         
         let updateComponents = updateVer.split(separator: ".").compactMap { Int($0) }
         let lastComponents = lastVer.split(separator: ".").compactMap { Int($0) }
