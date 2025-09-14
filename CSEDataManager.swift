@@ -91,20 +91,21 @@ class CSEDataManager {
     
     class func parseCSEData(_ data: [String: Any], id: String? = nil) -> CSEData {
         var parsedData = CSEData()
-        parsedData.name = data["name"] as? String ?? ""
-        if let id { parsedData.keyword = id }
-        parsedData.url = data["url"] as? String ?? ""
-        parsedData.disablePercentEncoding = data["disablePercentEncoding"] as? Bool ?? false
-        if let len = data["maxQueryLength"] as? Int, len >= 0 {
-            parsedData.maxQueryLength = len
+    class func parseCSEData(_ dict: [String: Any], id: String? = nil) -> CSEData {
+        if let v = dict["name"] as? String { data.name = v }
+        if let v = id { data.keyword = v }
+        if let v = dict["url"] as? String { data.url = v }
+        if let v = dict["disablePercentEncoding"] as? Bool { data.disablePercentEncoding = v }
+        if let v = dict["maxQueryLength"] as? Int, v >= 0 {
+            data.maxQueryLength = v
         } else {
             parsedData.maxQueryLength = nil
         }
-        if let postEntries = data["post"] as? [[String: String]] {
-            parsedData.post = cleanPostData(postEntries)
+            data.maxQueryLength = nil
         }
+        if let v = dict["post"] as? [[String: String]] { data.post = cleanPostData(v) }
             
-        return parsedData
+        return data
     }
     
     // for QuickCSEs
@@ -118,14 +119,14 @@ class CSEDataManager {
     }
     
     class func CSEDataToDictionary(_ data: CSEData) -> [String: Any] {
-        [
-            "name": data.name,
-            "keyword": data.keyword,
-            "url": data.url,
-            "disablePercentEncoding": data.disablePercentEncoding,
-            "maxQueryLength": data.maxQueryLength as Any,
-            "post": data.post
-        ]
+        var dict: [String: Any] = [:]
+        dict["name"] = data.name
+        dict["keyword"] = data.keyword
+        dict["url"] = data.url
+        dict["disablePercentEncoding"] = data.disablePercentEncoding
+        dict["maxQueryLength"] = data.maxQueryLength
+        dict["post"] = data.post
+        return dict
     }
     
     class func CSEDataToDictionary(_ data: [String: CSEData]) -> [String: [String: Any]] {
