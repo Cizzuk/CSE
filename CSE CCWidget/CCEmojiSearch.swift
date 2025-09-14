@@ -29,9 +29,7 @@ struct CCEmojiSearch: ControlWidget {
 
 extension CCEmojiSearch {
     struct Provider: ControlValueProvider {
-        var previewValue: Bool {
-            false
-        }
+        var previewValue: Bool { false }
         func currentValue() async throws -> Bool {
             return CSEDataManager.userDefaults.bool(forKey: "useEmojiSearch")
         }
