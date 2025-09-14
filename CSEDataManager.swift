@@ -159,12 +159,9 @@ class CSEDataManager {
         
         var errorDescription: String? {
             switch self {
-            case .keyBlank:
-                return String(localized: "Keyword cannot be blank")
-            case .urlBlank:
-                return String(localized: "Search URL cannot be blank")
-            case .keyUsed:
-                return String(localized: "This keyword is already used in other")
+            case .keyBlank: return String(localized: "Keyword cannot be blank")
+            case .urlBlank: return String(localized: "Search URL cannot be blank")
+            case .keyUsed: return String(localized: "This keyword is already used in other")
             }
         }
     }
@@ -221,11 +218,11 @@ class CSEDataManager {
         var cseData = saveCSEDataCommon(data)
         
         // If Keyword is blank
-        if cseData.keyword == "" {
+        if cseData.keyword.isEmpty {
             throw saveCSEDataError.keyBlank
         }
         // If URL is blank
-        if cseData.url == "" {
+        if cseData.url.isEmpty {
             throw saveCSEDataError.urlBlank
         }
         
@@ -258,9 +255,7 @@ class CSEDataManager {
         userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
         
         // Upload CSEData to iCloud
-        if uploadCloud {
-            CloudKitManager().saveAll()
-        }
+        if uploadCloud { CloudKitManager().saveAll() }
     }
     
     class func replaceQuickCSEData(_ data: [String: CSEData]) {
@@ -305,18 +300,16 @@ class CSEDataManager {
     }
     
     class func postDataToString(_ post: [[String: String]], join: String = "=", separator: String = "&") -> String {
-        if post.isEmpty {
-            return ""
-        }
+        if post.isEmpty { return "" }
         
         // key=value&key=value&...
         let postData = post.map { entry in
             if let key = entry["key"], let value = entry["value"] {
-                let encodedKey = (key
-                    .addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._"))) ?? key)
+                let encodedKey =
+                (key.addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._"))) ?? key)
                     .replacingOccurrences(of: "%25s", with: "%s")
-                let encodedValue = (value
-                    .addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._"))) ?? value)
+                let encodedValue =
+                (value.addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._"))) ?? value)
                     .replacingOccurrences(of: "%25s", with: "%s")
                 
                 return "\(encodedKey)\(join)\(encodedValue)"
@@ -353,10 +346,8 @@ class CSEDataManager {
         
         var errorDescription: String? {
             switch self {
-            case .parseError:
-                return String(localized: "Failed to parse JSON data")
-            case .validDataNotFound:
-                return String(localized: "Valid data not found in JSON")
+            case .parseError: return String(localized: "Failed to parse JSON data")
+            case .validDataNotFound: return String(localized: "Valid data not found in JSON")
             }
         }
     }
@@ -403,8 +394,7 @@ class CSEDataManager {
         }
         
         // Check JSON Data
-        guard let type = jsonDict["type"] as? String,
-              type == "net.cizzuk.cse.deviceCSEs" else {
+        guard let type = jsonDict["type"] as? String, type == "net.cizzuk.cse.deviceCSEs" else {
             throw jsonError.validDataNotFound
         }
         
