@@ -89,9 +89,8 @@ class CSEDataManager {
         return quickCSEData.keys.contains(id)
     }
     
-    class func parseCSEData(_ data: [String: Any], id: String? = nil) -> CSEData {
-        var parsedData = CSEData()
     class func parseCSEData(_ dict: [String: Any], id: String? = nil) -> CSEData {
+        var data = CSEData()
         if let v = dict["name"] as? String { data.name = v }
         if let v = id { data.keyword = v }
         if let v = dict["url"] as? String { data.url = v }
@@ -99,8 +98,6 @@ class CSEDataManager {
         if let v = dict["maxQueryLength"] as? Int, v >= 0 {
             data.maxQueryLength = v
         } else {
-            parsedData.maxQueryLength = nil
-        }
             data.maxQueryLength = nil
         }
         if let v = dict["post"] as? [[String: String]] { data.post = cleanPostData(v) }
