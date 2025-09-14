@@ -396,7 +396,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
                     .replacingOccurrences(of: "%s", with: decodedFixedQueryForPOST)
             }
         }
-        let redirectType: String = postData.isEmpty ? "redirect" : "haspost"
+        let redirectType: String = postData.isEmpty ? "redirect" : "postRedirect"
         
         return (redirectType, redirectURL, postData)
     }

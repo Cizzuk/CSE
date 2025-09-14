@@ -17,7 +17,7 @@
     },
 
     "content_scripts": [{
-        "js": [ "content.js" ],
+        "js": [ "post_redirector.js" ],
         "run_at": "document_start",
         "matches": [
             "https://www.google.com/search",
