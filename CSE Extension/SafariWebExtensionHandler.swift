@@ -236,9 +236,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             let checkItemExists = queryItems.contains {
                 $0.name == checkParamKey && ( $0.value.map(possibleIds.contains) ?? false )
             }
-            guard checkItemExists else {
-                return false
-            }
+            guard checkItemExists else { return false }
         }
 
         // OK
@@ -369,7 +367,8 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         }
         
         // Get decoded fixedQuery
-        var decodedFixedQuery: String = fixedQuery.removingPercentEncoding ?? ""
+        var decodedFixedQuery: String = fixedQuery
+            .removingPercentEncoding ?? ""
         
         // Get maxQueryLength
         if let maxQueryLength: Int = CSEData.maxQueryLength,
@@ -380,15 +379,21 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         
         // Replace %s with query
         let redirectQuery: String = CSEData.disablePercentEncoding ? decodedFixedQuery : fixedQuery
-        let redirectURL: String = CSEData.url.replacingOccurrences(of: "%s", with: redirectQuery)
+        let redirectURL: String = CSEData.url
+            .replacingOccurrences(of: "%s", with: redirectQuery)
         
         // POST
         var postData: [[String: String]] = CSEData.post
         if !postData.isEmpty {
-            let decodedFixedQueryForPOST: String = fixedQuery.replacingOccurrences(of: "+", with: " ").removingPercentEncoding ?? ""
+            let decodedFixedQueryForPOST: String = fixedQuery
+                .replacingOccurrences(of: "+", with: " ")
+                .removingPercentEncoding ?? ""
+            
             for i in 0..<postData.count {
-                postData[i]["key"] = postData[i]["key"]?.replacingOccurrences(of: "%s", with: decodedFixedQueryForPOST)
-                postData[i]["value"] = postData[i]["value"]?.replacingOccurrences(of: "%s", with: decodedFixedQueryForPOST)
+                postData[i]["key"] = postData[i]["key"]?
+                    .replacingOccurrences(of: "%s", with: decodedFixedQueryForPOST)
+                postData[i]["value"] = postData[i]["value"]?
+                    .replacingOccurrences(of: "%s", with: decodedFixedQueryForPOST)
             }
         }
         let redirectType: String = postData.isEmpty ? "redirect" : "haspost"
