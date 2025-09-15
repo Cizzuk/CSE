@@ -10,6 +10,15 @@
             const urlNoQuery = window.location.origin + window.location.pathname;
             window.history.replaceState({}, '', urlNoQuery);
             
+            // Screen curtain
+            const darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            const textColor = darkMode ? "#fff" : "#000"
+            const bgColor = darkMode ? "#1c1c1e" : "#f2f2f7"
+            document.getElementsByTagName("html")[0].innerHTML = `
+                <meta name="theme-color" content="`+bgColor+`">
+                <body style="background:`+bgColor+`;color:`+textColor+`">
+            `;
+            
             // CSP restriction alert
             setTimeout(function() {
                 alert("CSE: Redirect may have failed. Please try changing Safari search engine.");
