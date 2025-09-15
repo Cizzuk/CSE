@@ -299,6 +299,7 @@ class EditSE {
         @State var cseID: String? = nil
         @State private var CSEData = CSEDataManager.CSEData()
         @State private var originalCSEData = CSEDataManager.CSEData()
+        @State private var isNewCSE: Bool = false
         
         // Alerts
         @State private var showAlert: Bool = false
@@ -389,8 +390,10 @@ class EditSE {
                 if isFirstLoad {
                     if let cseID = cseID {
                         CSEData = CSEDataManager.getCSEData(.quickCSE, id: cseID)
+                        isNewCSE = false
                     } else {
                         CSEData = CSEDataManager.CSEData()
+                        isNewCSE = true
                     }
                     originalCSEData = CSEData
                     isFirstLoad = false
@@ -409,18 +412,23 @@ class EditSE {
                 } catch {}
                 
             case .dismiss:
-                if cseID == nil && CSEData == CSEDataManager.CSEData() {
+                // If it is from "Add New..." and no changes made, just dismiss without alert
+                if isNewCSE && CSEData == originalCSEData {
                     dismissView()
                     return
                 }
                 saveCSEDataWithErrorHandling(CSEData, targetCSEID: cseID, shouldDismiss: true)
                 
             case .discard:
-                if cseID == nil && CSEData == CSEDataManager.CSEData() {
+                // If it is from "Add New...", delete and dismiss without alert
+                if isNewCSE {
+                    if let deleteCSEID: String = cseID {
+                        CSEDataManager.deleteQuickCSE(deleteCSEID)
+                    }
                     dismissView()
                     return
                 }
-                CSEData = originalCSEData
+                // Otherwise, show alert
                 saveCSEDataWithErrorHandling(originalCSEData, targetCSEID: cseID, shouldDismiss: true)
             }
         }
@@ -429,9 +437,7 @@ class EditSE {
             let unknownErrorMsg = String(localized: "An error occurred while loading or updating data")
             do {
                 try CSEDataManager.saveCSEData(data, targetCSEID)
-                if shouldDismiss {
-                    dismissView()
-                }
+                if shouldDismiss { dismissView() }
             } catch let error as CSEDataManager.saveCSEDataError {
                 alertTitle = error.errorDescription ?? unknownErrorMsg
                 showAlert = true
