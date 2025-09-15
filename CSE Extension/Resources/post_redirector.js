@@ -1,25 +1,33 @@
 (function() {
     'use strict';
-    // Send request to background.js
-    browser.runtime.sendMessage({ type: "post_redirector" }, function(response) {
-        // if no need to postRedirect
-        if (response.type != "postRedirect") { return; }
-        
+    
+    // Send message to background.js
+    document.addEventListener("readystatechange", (event) => {
+        if (event.target.readyState === "interactive") {
+            browser.runtime.sendMessage({ type: "post_redirector" }, function(response) {
+                // if no need to postRedirect
+                if (response.type !== "postRedirect") { return; }
+                runPostRedirect(response);
+            });
+        }
+    });
+    
+    // Recieve message from background.js
+    browser.runtime.onMessage.addListener((message) => {
+        if (message.type === "showCurtain") { showCurtain(); }
+    });
+    
+    // POST Redirector
+    const runPostRedirect = (response) => {
         // Remove query
         const urlNoQuery = window.location.origin + window.location.pathname;
         window.history.replaceState({}, '', urlNoQuery);
         
+        // Show screen curtain
+        showCurtain();
+        
         // if ignorePostFallback
         if (response.adv_ignorePOSTFallback) {
-            // Screen curtain
-            const darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-            const textColor = darkMode ? "#fff" : "#000"
-            const bgColor = darkMode ? "#1c1c1e" : "#f2f2f7"
-            document.getElementsByTagName("html")[0].innerHTML = `
-                <meta name="theme-color" content="`+bgColor+`">
-                <body style="background:`+bgColor+`;color:`+textColor+`">
-            `;
-            
             // CSP restriction alert
             setTimeout(function() {
                 alert("CSE: Redirect may have failed. Please try changing Safari search engine.");
@@ -43,5 +51,17 @@
         
         // Submit form
         cseForm.submit();
-    });
+    }
+    
+    // Screen curtain
+    const showCurtain = () => {
+        const htmlDOM = document.getElementsByTagName("html")[0];
+        const darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const bgColor = darkMode ? "#1c1c1e" : "#f2f2f7"
+        htmlDOM.style.background = bgColor;
+        htmlDOM.innerHTML = `
+            <meta name="theme-color" content="`+bgColor+`">
+            <body style="display:none">
+        `;
+    }
 })();
