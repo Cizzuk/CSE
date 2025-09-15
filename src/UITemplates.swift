@@ -64,8 +64,9 @@ class UITemplates {
             #if !targetEnvironment(macCatalyst)
             // Open Safari Settings Button
             Button(action: {
-                UIApplication.shared.open(URL(string: "App-Prefs:com.apple.mobilesafari")!)
-            }) {
+                if let url = URL(string: "App-Prefs:com.apple.mobilesafari") {
+                    UIApplication.shared.open(url)
+                }
                 UITemplates.IconLabel(icon: "gear", text: "Open Settings")
                     #if !os(visionOS)
                     .foregroundColor(.accentColor)
