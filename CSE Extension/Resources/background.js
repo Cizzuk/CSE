@@ -1,10 +1,17 @@
 'use strict';
 const postRedirectorURL = location.protocol + "//" + location.host + "/post_redirector.html";
-let holdData = {};
+let savedData = {};
+let savedTabURL = {};
 
 // Detect tab updates
 browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
-    
+    // URL change check
+    // updatedData is not available in old Safari
+    if (savedTabURL[tabId] && savedTabURL[tabId] == tabData.url) {
+        return;
+    }
+    savedTabURL[tabId] = tabData.url;
+
     // Ignore if not a valid URL
     if (tabData.url && tabData.status == "loading" && tabData.protocol != "safari-web-extension:") {
         
@@ -20,7 +27,7 @@ browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
                     break;
                     
                 case "postRedirect":
-                    holdData[tabId] = cseData;
+                    savedData[tabId] = cseData;
                     if (cseData.adv_ignorePOSTFallback) {
                         console.log("Waiting post_redirector... (ignore POST Fallback)");
                     } else {
@@ -49,10 +56,10 @@ browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
 browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
     const tabId = sender.tab.id;
     if (request.type = "post_redirector") {
-        if (holdData[tabId]) {
+        if (savedData[tabId]) {
             console.log("[post_redirector] Redirecting... (with POST).");
-            sendResponse(holdData[sender.tab.id]);
-            delete holdData[tabId];
+            sendResponse(savedData[tabId]);
+            delete savedData[tabId];
         } else if (sender.url == postRedirectorURL) {
             console.log("[post_redirector] No POST data. Going back...");
             sendResponse({type: "cancel"});
@@ -62,4 +69,10 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
             sendResponse({type: "cancel"});
         }
     }
+});
+
+// Handle tab removal
+browser.tabs.onRemoved.addListener((tabId, removeInfo) => {
+    if (savedData[tabId]) { delete savedData[tabId] }
+    if (savedTabHash[tabId]) { delete savedTabHash[tabId] }
 });
