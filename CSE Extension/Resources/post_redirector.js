@@ -1,15 +1,16 @@
 (function() {
     'use strict';
+    // Send request to background.js
     browser.runtime.sendMessage({ type: "post_redirector" }, function(response) {
         // if no need to postRedirect
         if (response.type != "postRedirect") { return; }
         
+        // Remove query
+        const urlNoQuery = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, '', urlNoQuery);
+        
         // if ignorePostFallback
         if (response.adv_ignorePOSTFallback) {
-            // Remove query
-            const urlNoQuery = window.location.origin + window.location.pathname;
-            window.history.replaceState({}, '', urlNoQuery);
-            
             // Screen curtain
             const darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
             const textColor = darkMode ? "#fff" : "#000"
