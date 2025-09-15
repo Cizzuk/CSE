@@ -278,16 +278,6 @@ class CSEDataManager {
         userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
     }
     
-    class func deleteQuickCSE(at offsets: IndexSet) {
-        // get ID from offsets and call deleteQuickCSE
-        let quickCSEData = getAllQuickCSEData()
-        let keys = quickCSEData.keys.sorted()
-        for offset in offsets {
-            let keyToRemove = keys[offset]
-            deleteQuickCSE(keyToRemove)
-        }
-    }
-    
     class func cleanPostData(_ post: [[String: String]]) -> [[String: String]] {
         return post.filter { entry in
             if let key = entry["key"], let value = entry["value"] {
