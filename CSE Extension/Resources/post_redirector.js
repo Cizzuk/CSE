@@ -23,6 +23,9 @@
         const urlNoQuery = window.location.origin + window.location.pathname;
         window.history.replaceState({}, '', urlNoQuery);
         
+        // Show screen curtain
+        showCurtain();
+        
         // if ignorePostFallback
         if (response.adv_ignorePOSTFallback) {
             // CSP restriction alert
