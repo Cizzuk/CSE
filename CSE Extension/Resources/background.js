@@ -55,7 +55,7 @@ browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
 // Handle post_redirector
 browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
     const tabId = sender.tab.id;
-    if (request.type = "post_redirector") {
+    if (request.type == "post_redirector") {
         if (savedData[tabId]) {
             console.log("[post_redirector] Redirecting... (with POST).");
             sendResponse(savedData[tabId]);
@@ -74,5 +74,5 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
 // Handle tab removal
 browser.tabs.onRemoved.addListener((tabId, removeInfo) => {
     if (savedData[tabId]) { delete savedData[tabId] }
-    if (savedTabHash[tabId]) { delete savedTabHash[tabId] }
+    if (savedTabURL[tabId]) { delete savedTabURL[tabId] }
 });
