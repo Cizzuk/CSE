@@ -5,15 +5,13 @@ let savedTabURL = {};
 
 // Detect tab updates
 browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
-    // URL change check
-    // updatedData is not available in old Safari
-    if (savedTabURL[tabId] && savedTabURL[tabId] == tabData.url) {
-        return;
-    }
-    savedTabURL[tabId] = tabData.url;
-
     // Ignore if not a valid URL
-    if (tabData.url && tabData.status == "loading" && tabData.protocol != "safari-web-extension:") {
+    if (tabData.url && updatedData.status == "loading" && tabData.protocol != "safari-web-extension:") {
+        
+        // URL change check
+        // updatedData.url is not available in old Safari
+        if (savedTabURL[tabId] == tabData.url) { return; }
+        savedTabURL[tabId] = tabData.url;
         
         // Send tab data to native app
         browser.runtime.sendNativeMessage("com.tsg0o0.cse.Extension", tabData, function(response) {
@@ -73,6 +71,6 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 // Handle tab removal
 browser.tabs.onRemoved.addListener((tabId, removeInfo) => {
-    if (savedData[tabId]) { delete savedData[tabId] }
-    if (savedTabURL[tabId]) { delete savedTabURL[tabId] }
+    delete savedData[tabId];
+    delete savedTabURL[tabId];
 });
