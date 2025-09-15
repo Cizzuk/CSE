@@ -94,9 +94,7 @@ struct ContentView: View {
                 
                 // Show Safari Settings Tutorial Button
                 Section {
-                    Button(action: {
-                        openSafariTutorialView = true
-                    }) {
+                    Button(action: { openSafariTutorialView = true }) {
                         VStack(alignment: .leading) {
                             UITemplates.IconLabel(icon: "safari", text: "Safari Settings")
                                 #if !os(visionOS)
