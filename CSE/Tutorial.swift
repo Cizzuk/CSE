@@ -101,6 +101,9 @@ class Tutorial {
                         .frame(maxWidth: .infinity)
                     
                     List {
+                        // Open Settings Button
+                        UITemplates.OpenSettingsButton()
+                        
                         Section {
                             // Default SE
                             Picker("Search Engine", selection: $searchengine) {
@@ -183,7 +186,10 @@ class Tutorial {
                         .frame(maxWidth: .infinity)
                     
                     List {
-                        Section {} footer: {
+                        Section {
+                            // Open Settings Button
+                            UITemplates.OpenSettingsButton()
+                        } footer: {
                             #if targetEnvironment(macCatalyst)
                             Text("Open Safari, go to Safari → Settings..., select 'Extensions' tab and enable CSE. Then 'Allow' the following webpage from 'Edit Websites...' button.")
                             #else
@@ -324,5 +330,4 @@ class Tutorial {
             }
         }
     }
-
 }
