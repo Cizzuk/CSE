@@ -406,8 +406,7 @@ class EditSE {
                 do {
                     try CSEDataManager.saveCSEData(CSEData, cseID, uploadCloud: false)
                     cseID = CSEData.keyword
-                } catch {
-                }
+                } catch {}
                 
             case .dismiss:
                 if cseID == nil && CSEData == CSEDataManager.CSEData() {
@@ -417,6 +416,10 @@ class EditSE {
                 saveCSEDataWithErrorHandling(CSEData, targetCSEID: cseID, shouldDismiss: true)
                 
             case .discard:
+                if cseID == nil && CSEData == CSEDataManager.CSEData() {
+                    dismissView()
+                    return
+                }
                 CSEData = originalCSEData
                 saveCSEDataWithErrorHandling(originalCSEData, targetCSEID: cseID, shouldDismiss: true)
             }
