@@ -67,6 +67,7 @@ class UITemplates {
                 if let url = URL(string: "App-Prefs:com.apple.mobilesafari") {
                     UIApplication.shared.open(url)
                 }
+            }) {
                 UITemplates.IconLabel(icon: "gear", text: "Open Settings")
                     #if !os(visionOS)
                     .foregroundColor(.accentColor)
