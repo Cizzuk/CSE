@@ -296,7 +296,7 @@ class EditSE {
         @Environment(\.dismiss) private var dismiss
         @Environment(\.scenePhase) private var scenePhase
         
-        @State var cseID: String? = nil
+        @State var cseID: String? = nil // Original or last saved keyword
         @State private var CSEData = CSEDataManager.CSEData()
         @State private var originalCSEData = CSEDataManager.CSEData()
         @State private var isNewCSE: Bool = false
@@ -417,6 +417,7 @@ class EditSE {
                     dismissView()
                     return
                 }
+                // Otherwise, show alert
                 saveCSEDataWithErrorHandling(CSEData, targetCSEID: cseID, shouldDismiss: true)
                 
             case .discard:
