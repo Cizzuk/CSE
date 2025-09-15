@@ -16,7 +16,6 @@ class EditSE {
     enum SaveMode {
         case autosave   // Auto save (not upload to iCloud)
         case dismiss    // Save and exit
-        case discard    // Discard and save original data
     }
     
     // Common search URL section
@@ -190,7 +189,6 @@ class EditSE {
                 case .dismiss:
                     CSEDataManager.saveCSEData(CSEData, .defaultCSE, uploadCloud: true)
                     tmpCSEData = CSEData
-                case .discard: break
                 }
             }
         }
@@ -285,7 +283,6 @@ class EditSE {
                     CSEDataManager.saveCSEData(CSEData, .privateCSE, uploadCloud: false)
                 case .dismiss:
                     CSEDataManager.saveCSEData(CSEData, .privateCSE, uploadCloud: true)
-                case .discard: break
                 }
             }
         }
@@ -298,8 +295,6 @@ class EditSE {
         
         @State var cseID: String? = nil // Original or last saved keyword
         @State private var CSEData = CSEDataManager.CSEData()
-        @State private var originalCSEData = CSEDataManager.CSEData()
-        @State private var isNewCSE: Bool = false
         
         // Alerts
         @State private var showAlert: Bool = false
@@ -368,9 +363,6 @@ class EditSE {
                             Button(action: { saveCSEData(.dismiss) }) {
                                 Label("Save", systemImage: "checkmark")
                             }
-                            Button(role: .destructive, action: { saveCSEData(.discard) }) {
-                                Label("Discard", systemImage: "xmark")
-                            }
                         } primaryAction: { saveCSEData(.dismiss) }
                     }
                 },
@@ -390,12 +382,9 @@ class EditSE {
                 if isFirstLoad {
                     if let cseID = cseID {
                         CSEData = CSEDataManager.getCSEData(.quickCSE, id: cseID)
-                        isNewCSE = false
                     } else {
                         CSEData = CSEDataManager.CSEData()
-                        isNewCSE = true
                     }
-                    originalCSEData = CSEData
                     isFirstLoad = false
                 } else {
                     saveCSEData(.autosave)
@@ -413,24 +402,12 @@ class EditSE {
                 
             case .dismiss:
                 // If it is from "Add New..." and no changes made, just dismiss without alert
-                if isNewCSE && CSEData == originalCSEData {
+                if cseID == nil && CSEData == CSEDataManager.CSEData() {
                     dismissView()
                     return
                 }
                 // Otherwise, show alert
                 saveCSEDataWithErrorHandling(CSEData, targetCSEID: cseID, shouldDismiss: true)
-                
-            case .discard:
-                // If it is from "Add New...", delete and dismiss without alert
-                if isNewCSE {
-                    if let deleteCSEID: String = cseID {
-                        CSEDataManager.deleteQuickCSE(deleteCSEID)
-                    }
-                    dismissView()
-                    return
-                }
-                // Otherwise, show alert
-                saveCSEDataWithErrorHandling(originalCSEData, targetCSEID: cseID, shouldDismiss: true)
             }
         }
         
