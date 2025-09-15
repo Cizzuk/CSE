@@ -35,36 +35,47 @@ struct QuickSEListView: View {
             } footer: { Text("Enter the keyword at the top to switch search engines.") }
             
             if useQuickCSEToggle {
-                // Current Quick SEs List
                 Section {
+                    // List of Quick SEs
                     let keywordTranslation = String(localized: "Keyword")
-                    ForEach(quickCSE.keys.sorted(), id: \.self) { cseID in
-                        if let cseData: CSEDataManager.CSEData = quickCSE[cseID] {
-                            let displayName: String = cseData.name != "" ? cseData.name : cseData.url
-                            NavigationLink(destination: EditSE.EditQuickCSEView(cseID: cseID)) {
-                                VStack(alignment : .leading) {
-                                    Text(cseID)
-                                        .bold()
-                                    Text(displayName)
-                                        .lineLimit(1)
-                                        .foregroundColor(.secondary)
-                                }
+                    let sortedQuick: [(key: String, value: CSEDataManager.CSEData)] = quickCSE
+                        .map { ($0.key, $0.value) }
+                        .sorted { $0.key < $1.key }
+                    
+                    ForEach(sortedQuick, id: \.key) { item in
+                        let cseID = item.key
+                        let cseData = item.value
+                        let displayName: String = cseData.name.isEmpty ? cseData.url : cseData.name
+                        NavigationLink(destination: EditSE.EditQuickCSEView(cseID: cseID)) {
+                            VStack(alignment: .leading) {
+                                Text(cseID)
+                                    .bold()
+                                Text(displayName)
+                                    .lineLimit(1)
+                                    .foregroundColor(.secondary)
                             }
-                            .accessibilityLabel("\(displayName), " + keywordTranslation + ", \(cseID)")
-                            .contextMenu {
-                                Button(role: .destructive) {
-                                    CSEDataManager.deleteQuickCSE(cseID)
-                                    quickCSE.removeValue(forKey: cseID)
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                }
-                                NavigationLink(destination: EditSE.EditQuickCSEView()) {
-                                    Label("Add New Search Engine", systemImage: "plus.circle")
-                                }
+                        }
+                        .accessibilityLabel("\(displayName), " + keywordTranslation + ", \(cseID)")
+                        .contextMenu {
+                            Button(role: .destructive) {
+                                CSEDataManager.deleteQuickCSE(cseID)
+                                quickCSE.removeValue(forKey: cseID)
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                            NavigationLink(destination: EditSE.EditQuickCSEView()) {
+                                Label("Add New Search Engine", systemImage: "plus.circle")
                             }
                         }
                     }
-                    .onDelete(perform: CSEDataManager.deleteQuickCSE)
+                    .onDelete { offsets in
+                        let keys = sortedQuick.map { $0.key }
+                        for index in offsets {
+                            let key = keys[index]
+                            CSEDataManager.deleteQuickCSE(key)
+                            quickCSE.removeValue(forKey: key)
+                        }
+                    }
                 } header: { Text("Quick Search Engines") }
                 
                 // Add new SE Button
@@ -87,7 +98,7 @@ struct QuickSEListView: View {
         .toolbar {
             if useQuickCSEToggle { EditButton() }
         }
-        .onAppear {
+        .task {
             // Initialize
             quickCSE = CSEDataManager.getAllQuickCSEData()
             useQuickCSEToggle = useQuickCSE
