@@ -87,7 +87,7 @@ struct QuickSEListView: View {
         .toolbar {
             if useQuickCSEToggle { EditButton() }
         }
-        .task {
+        .onAppear {
             // Initialize
             quickCSE = CSEDataManager.getAllQuickCSEData()
             useQuickCSEToggle = useQuickCSE
