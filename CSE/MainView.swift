@@ -42,11 +42,6 @@ struct ContentView: View {
         case about, backup, iconChange, advancedSettings
     }
     
-    #if !os(visionOS)
-    // Get current icon
-    @State private var alternateIconName: String? = UIApplication.shared.alternateIconName
-    #endif
-    
     var body: some View {
         NavigationSplitView(columnVisibility: .constant(.doubleColumn)) {
             List(selection: $selection) {
@@ -54,7 +49,7 @@ struct ContentView: View {
                 Section {
                     NavigationLink(value: NavigationItem.defaultSE) {
                         HStack {
-                            Text("Default Search Engine")
+                            UITemplates.IconLabel(icon: "magnifyingglass", text: "Default Search Engine")
                             Spacer()
                             Text(useDefaultCSE ? "On" : "Off")
                                 .foregroundColor(.secondary)
@@ -65,7 +60,7 @@ struct ContentView: View {
                     // Private SE Settings
                     NavigationLink(value: NavigationItem.privateSE) {
                         HStack {
-                            Text("Private Search Engine")
+                            UITemplates.IconLabel(icon: "hand.raised", text: "Private Search Engine")
                             Spacer()
                             Text(usePrivateCSE ? "On" : "Off")
                                 .foregroundColor(.secondary)
@@ -76,7 +71,7 @@ struct ContentView: View {
                     // Quick SE Settings
                     NavigationLink(value: NavigationItem.quickSE) {
                         HStack {
-                            Text("Quick Search")
+                            UITemplates.IconLabel(icon: "hare", text: "Quick Search")
                             Spacer()
                             Text(useQuickCSE ? "On" : "Off")
                                 .foregroundColor(.secondary)
@@ -88,7 +83,7 @@ struct ContentView: View {
                     // Emoji Search Setting
                     NavigationLink(value: NavigationItem.emojiSearch) {
                         HStack {
-                            Text("Emoji Search")
+                            UITemplates.IconLabel(icon: "face.smiling", text: "Emoji Search")
                             Spacer()
                             Text(useEmojiSearch ? "On" : "Off")
                                 .foregroundColor(.secondary)
@@ -99,14 +94,13 @@ struct ContentView: View {
                 
                 // Show Safari Settings Tutorial Button
                 Section {
-                    Button(action: {
-                        openSafariTutorialView = true
-                    }) {
+                    Button(action: { openSafariTutorialView = true }) {
                         VStack(alignment: .leading) {
-                            Text("Safari Settings")
+                            UITemplates.IconLabel(icon: "safari", text: "Safari Settings")
                                 #if !os(visionOS)
                                 .foregroundColor(.accentColor)
                                 #endif
+                            Spacer().frame(height: 4)
                             Text("If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial.")
                                 .foregroundColor(.secondary)
                                 .font(.caption)
@@ -114,72 +108,49 @@ struct ContentView: View {
                     }
                 }
                 
-//                // IMPORTANT: This code is not currently used, but it is kept here for future reference.
-//                #if !os(visionOS) && !targetEnvironment(macCatalyst)
-//                // Go IconChange View for iOS/iPadOS
-//                Section {
-//                    NavigationLink(destination: IconChangeView()) {
-//                        Image((alternateIconName ?? "appicon") + "-pre")
-//                            .resizable()
-//                            .frame(width: 64, height: 64)
-//                            .accessibilityHidden(true)
-//                            .cornerRadius(14)
-//                            .padding(4)
-//                            .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
-//                        Text("Change App Icon")
-//                    }
-//                }
-//                .task {
-//                    alternateIconName = UIApplication.shared.alternateIconName
-//                }
-//                #endif
-                
-                // Support Section
                 Section {
-                    Group {
-                        // Contact Link
-                        Link(destination:URL(string: "https://cizzuk.net/contact/")!, label: {
-                            UITemplates.iconButton(icon: "message", text: "Contact")
-                        })
-                        // GitHub Source Link
-                        Link(destination:URL(string: "https://github.com/Cizzuk/CSE")!, label: {
-                            UITemplates.iconButton(icon: "ladybug", text: "Source")
-                        })
-                        // Privacy Policy Link
-                        Link(destination:URL(string: "https://i.cizzuk.net/privacy/")!, label: {
-                            UITemplates.iconButton(icon: "hand.raised", text: "Privacy Policy")
-                        })
-                        // About View
-                        NavigationLink(value: NavigationItem.about) {
-                            UITemplates.iconButton(icon: "info.circle", text: "About")
-                        }
+                    // About View
+                    NavigationLink(value: NavigationItem.about) {
+                        UITemplates.IconLabel(icon: "info.circle", text: "About")
                     }
-                    #if !os(visionOS)
-                    .foregroundColor(.accentColor)
-                    #endif
-                } header: {
-                    Text("Support")
-                }
-                
-                // Advanced Settings
-                Section {
+                    
                     NavigationLink(value: NavigationItem.backup) {
-                        Text("Backup & Restore")
+                        UITemplates.IconLabel(icon: "arrow.counterclockwise", text: "Backup & Restore")
                     }
                     
                     // TODO: Remove this button if CTF issues are resolved. (issue#24)
                     #if !os(visionOS) && !targetEnvironment(macCatalyst)
                     // Go IconChange View for iOS/iPadOS
                     NavigationLink(value: NavigationItem.iconChange) {
-                        Text("Change App Icon")
+                        UITemplates.IconLabel(icon: "app.dashed", text: "Change App Icon")
                     }
                     #endif
                     
                     NavigationLink(value: NavigationItem.advancedSettings) {
-                        Text("Advanced Settings")
+                        UITemplates.IconLabel(icon: "gearshape", text: "Advanced Settings")
                     }
                 }
                 
+                // Support Section
+                Section {
+                    Group {
+                        // Contact Link
+                        Link(destination:URL(string: "https://cizzuk.net/contact/")!, label: {
+                            UITemplates.IconLabel(icon: "message", text: "Contact")
+                        })
+                        // GitHub Source Link
+                        Link(destination:URL(string: "https://github.com/Cizzuk/CSE")!, label: {
+                            UITemplates.IconLabel(icon: "ladybug", text: "Source")
+                        })
+                        // App review Link
+                        Link(destination:URL(string: "https://apps.apple.com/app/cse/id6445840140")!, label: {
+                            UITemplates.IconLabel(icon: "star", text: "Rate & Review")
+                        })
+                    }
+                    #if !os(visionOS)
+                    .foregroundColor(.accentColor)
+                    #endif
+                }
             }
             .navigationTitle("CSE Settings")
             #if os(visionOS)
@@ -188,28 +159,20 @@ struct ContentView: View {
         } detail: {
             NavigationStack {
                 switch selection {
-                case .defaultSE:
-                    EditSE.EditDefaultCSEView()
-                case .privateSE:
-                    EditSE.EditPrivateCSEView()
-                case .quickSE:
-                    QuickSEListView()
-                case .emojiSearch:
-                    EmojiSearchView()
-                case .about:
-                    AboutView()
-                case .backup:
-                    BackupView.BackupView()
+                case .defaultSE: EditSE.EditDefaultCSEView()
+                case .privateSE: EditSE.EditPrivateCSEView()
+                case .quickSE: QuickSEListView()
+                case .emojiSearch: EmojiSearchView()
+                case .about: AboutView()
+                case .backup: BackupView.BackupView()
                 case .iconChange:
                     #if !os(visionOS) && !targetEnvironment(macCatalyst)
                     IconChangeView()
                     #else
                     Spacer()
                     #endif
-                case .advancedSettings:
-                    AdvSettingView()
-                case .none:
-                    Spacer()
+                case .advancedSettings: AdvSettingView()
+                case .none: Spacer()
                 }
             }
             #if os(visionOS)

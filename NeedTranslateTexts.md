@@ -77,7 +77,6 @@ Restore Success!
 Safari Settings
 Save
 Search Engine
-Search Engine URL
 Search URL
 Search URL cannot be blank
 Set Default Search Engine
@@ -96,7 +95,6 @@ Skip
 Sogou
 Source
 State
-Support
 The search engine you select here can know your search queries. If you have concerns about privacy, I recommend choosing DuckDuckGo.
 This is typically used when a search engine requires an authentication token or special parameters. If not configured correctly, CSE may not work properly.
 This keyword is already used in other
@@ -155,4 +153,7 @@ Import from JSON
 Restore from iCloud
 Valid data not found in JSON
 Version
+
+Rate & Review
+You can delete all data stored in iCloud from the iCloud settings.
 ```

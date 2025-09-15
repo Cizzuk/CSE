@@ -17,21 +17,16 @@ class AppInitializer {
         
         let searchengine: String? = userDefaults.string(forKey: "searchengine") ?? nil
         let privsearchengine: String? = userDefaults.string(forKey: "privsearchengine") ?? nil
-        let adv_resetCSEs: String = userDefaults.string(forKey: "adv_resetCSEs") ?? ""
         let needSafariTutorial: Bool = userDefaults.bool(forKey: "needSafariTutorial")
         let needFirstTutorial: Bool = userDefaults.bool(forKey: "needFirstTutorial")
-        
-        // adv_resetCSEs
-        if adv_resetCSEs != "" {
-            resetCSE(target: adv_resetCSEs)
-            userDefaults.set("", forKey: "adv_resetCSEs")
-        }
         
         // Initialize default settings
         if lastVersion == "" {
             userDefaults.set(SafariSEs.defaultForRegion(region: currentRegion).rawValue, forKey: "searchengine")
             userDefaults.set(SafariSEs.privateForRegion(region: currentRegion).rawValue, forKey: "privsearchengine")
             userDefaults.set(true, forKey: "alsousepriv")
+            
+            userDefaults.set(true, forKey: "iCloudAutoBackup")
             
             // Change default settings for macOS or under iOS 17
             #if targetEnvironment(macCatalyst)
@@ -118,9 +113,7 @@ class AppInitializer {
     
     // Version high and low
     private class func isUpdated(updateVer: String, lastVer: String) -> Bool {
-        guard lastVer != "" else {
-            return false
-        }
+        guard !lastVer.isEmpty else { return false }
         
         let updateComponents = updateVer.split(separator: ".").compactMap { Int($0) }
         let lastComponents = lastVer.split(separator: ".").compactMap { Int($0) }

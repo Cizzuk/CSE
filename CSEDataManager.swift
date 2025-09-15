@@ -89,32 +89,20 @@ class CSEDataManager {
         return quickCSEData.keys.contains(id)
     }
     
-    class func parseCSEData(_ data: [String: Any], id: String? = nil) -> CSEData {
-        var parsedData = CSEData()
-        if let name = data["name"] as? String {
-            parsedData.name = name
+    class func parseCSEData(_ dict: [String: Any], id: String? = nil) -> CSEData {
+        var data = CSEData()
+        if let v = dict["name"] as? String { data.name = v }
+        if let v = id { data.keyword = v }
+        if let v = dict["url"] as? String { data.url = v }
+        if let v = dict["disablePercentEncoding"] as? Bool { data.disablePercentEncoding = v }
+        if let v = dict["maxQueryLength"] as? Int, v >= 0 {
+            data.maxQueryLength = v
+        } else {
+            data.maxQueryLength = nil
         }
-        if let keyword = id {
-            parsedData.keyword = keyword
-        }
-        if let url = data["url"] as? String {
-            parsedData.url = url
-        }
-        if let disablePercentEncoding = data["disablePercentEncoding"] as? Bool {
-            parsedData.disablePercentEncoding = disablePercentEncoding
-        }
-        if let maxQueryLength = data["maxQueryLength"] as? Int? {
-            if maxQueryLength == nil || maxQueryLength ?? -1 < 0 {
-                parsedData.maxQueryLength = nil
-            } else {
-                parsedData.maxQueryLength = maxQueryLength
-            }
-        }
-        if let postEntries = data["post"] as? [[String: String]] {
-            parsedData.post = cleanPostData(postEntries)
-        }
+        if let v = dict["post"] as? [[String: String]] { data.post = cleanPostData(v) }
             
-        return parsedData
+        return data
     }
     
     // for QuickCSEs
@@ -128,15 +116,14 @@ class CSEDataManager {
     }
     
     class func CSEDataToDictionary(_ data: CSEData) -> [String: Any] {
-        // Convert CSEData to Dictionary
-        var cseDict: [String: Any] = [:]
-        cseDict["name"] = data.name
-        cseDict["keyword"] = data.keyword
-        cseDict["url"] = data.url
-        cseDict["disablePercentEncoding"] = data.disablePercentEncoding
-        cseDict["maxQueryLength"] = data.maxQueryLength
-        cseDict["post"] = data.post
-        return cseDict
+        var dict: [String: Any] = [:]
+        dict["name"] = data.name
+        dict["keyword"] = data.keyword
+        dict["url"] = data.url
+        dict["disablePercentEncoding"] = data.disablePercentEncoding
+        dict["maxQueryLength"] = data.maxQueryLength
+        dict["post"] = data.post
+        return dict
     }
     
     class func CSEDataToDictionary(_ data: [String: CSEData]) -> [String: [String: Any]] {
@@ -172,12 +159,9 @@ class CSEDataManager {
         
         var errorDescription: String? {
             switch self {
-            case .keyBlank:
-                return String(localized: "Keyword cannot be blank")
-            case .urlBlank:
-                return String(localized: "Search URL cannot be blank")
-            case .keyUsed:
-                return String(localized: "This keyword is already used in other")
+            case .keyBlank: return String(localized: "Keyword cannot be blank")
+            case .urlBlank: return String(localized: "Search URL cannot be blank")
+            case .keyUsed: return String(localized: "This keyword is already used in other")
             }
         }
     }
@@ -234,11 +218,11 @@ class CSEDataManager {
         var cseData = saveCSEDataCommon(data)
         
         // If Keyword is blank
-        if cseData.keyword == "" {
+        if cseData.keyword.isEmpty {
             throw saveCSEDataError.keyBlank
         }
         // If URL is blank
-        if cseData.url == "" {
+        if cseData.url.isEmpty {
             throw saveCSEDataError.urlBlank
         }
         
@@ -271,9 +255,7 @@ class CSEDataManager {
         userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
         
         // Upload CSEData to iCloud
-        if uploadCloud {
-            CloudKitManager().saveAll()
-        }
+        if uploadCloud { CloudKitManager().saveAll() }
     }
     
     class func replaceQuickCSEData(_ data: [String: CSEData]) {
@@ -288,24 +270,12 @@ class CSEDataManager {
     
     class func deleteQuickCSE(_ id: String) {
         // Get current QuickSEs Data
-        var quickCSEData: [String: CSEData] = getAllQuickCSEData()
+        var quickCSEData = getAllQuickCSEData()
         // Remove this QuickSE
         quickCSEData.removeValue(forKey: id)
         // Convert to Dictionary
         let quickCSEDataDict = CSEDataToDictionary(quickCSEData)
         userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
-    }
-    
-    class func deleteQuickCSE(at offsets: IndexSet) {
-        var quickCSEData: [String: CSEData] = getAllQuickCSEData()
-        let keys = quickCSEData.keys.sorted()
-        for offset in offsets {
-            let keyToRemove = keys[offset]
-            quickCSEData.removeValue(forKey: keyToRemove)
-            // Convert to Dictionary
-            let quickCSEDataDict = CSEDataToDictionary(quickCSEData)
-            userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
-        }
     }
     
     class func cleanPostData(_ post: [[String: String]]) -> [[String: String]] {
@@ -318,18 +288,16 @@ class CSEDataManager {
     }
     
     class func postDataToString(_ post: [[String: String]], join: String = "=", separator: String = "&") -> String {
-        if post.isEmpty {
-            return ""
-        }
+        if post.isEmpty { return "" }
         
         // key=value&key=value&...
         let postData = post.map { entry in
             if let key = entry["key"], let value = entry["value"] {
-                let encodedKey = (key
-                    .addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._"))) ?? key)
+                let encodedKey =
+                (key.addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._"))) ?? key)
                     .replacingOccurrences(of: "%25s", with: "%s")
-                let encodedValue = (value
-                    .addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._"))) ?? value)
+                let encodedValue =
+                (value.addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._"))) ?? value)
                     .replacingOccurrences(of: "%25s", with: "%s")
                 
                 return "\(encodedKey)\(join)\(encodedValue)"
@@ -366,10 +334,8 @@ class CSEDataManager {
         
         var errorDescription: String? {
             switch self {
-            case .parseError:
-                return String(localized: "Failed to parse JSON data")
-            case .validDataNotFound:
-                return String(localized: "Valid data not found in JSON")
+            case .parseError: return String(localized: "Failed to parse JSON data")
+            case .validDataNotFound: return String(localized: "Valid data not found in JSON")
             }
         }
     }
@@ -416,8 +382,7 @@ class CSEDataManager {
         }
         
         // Check JSON Data
-        guard let type = jsonDict["type"] as? String,
-              type == "net.cizzuk.cse.deviceCSEs" else {
+        guard let type = jsonDict["type"] as? String, type == "net.cizzuk.cse.deviceCSEs" else {
             throw jsonError.validDataNotFound
         }
         

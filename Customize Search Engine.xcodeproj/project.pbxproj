@@ -18,10 +18,8 @@
 		90C9BE3A288BE17300E22FB8 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE39288BE17300E22FB8 /* images */; };
 		90C9BE3C288BE17300E22FB8 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE3B288BE17300E22FB8 /* manifest.json */; };
 		90C9BE3E288BE17300E22FB8 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE3D288BE17300E22FB8 /* background.js */; };
-		90C9BE40288BE17300E22FB8 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE3F288BE17300E22FB8 /* content.js */; };
 		90C9BE42288BE17300E22FB8 /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE41288BE17300E22FB8 /* popup.html */; };
 		90C9BE48288BE17300E22FB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE29288BE17200E22FB8 /* Assets.xcassets */; };
-		BE11982D2DF8073100B5FDF8 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = BE11982C2DF8073100B5FDF8 /* AppIcon.icon */; };
 		BE1642DF2D23D69E008A42F8 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1642DE2D23D696008A42F8 /* Tutorial.swift */; };
 		BE5342E32C9E338F00AE1DB3 /* IconChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5342E22C9E338F00AE1DB3 /* IconChangeView.swift */; };
 		BE5342E52C9E36FA00AE1DB3 /* AdvSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */; };
@@ -47,6 +45,7 @@
 		BEAE0F412E2268F2007704AE /* AppInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAE0F3F2E2268F2007704AE /* AppInitializer.swift */; };
 		BEAE0F422E2268F2007704AE /* AppInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAE0F3F2E2268F2007704AE /* AppInitializer.swift */; };
 		BEAE0F432E226B6D007704AE /* RecommendSEs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5CEB612DAE8DC6003A2F3E /* RecommendSEs.swift */; };
+		BEB57B092E75C9D200FEA794 /* CloudPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB57B082E75C9D200FEA794 /* CloudPicker.swift */; };
 		BED82F142E31EF9200820213 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED82F132E31EF8F00820213 /* Extensions.swift */; };
 		BED82F3F2E3237DD00820213 /* EmojiSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED82F3E2E3237D300820213 /* EmojiSearchView.swift */; };
 		BED97F4D2E37E14F00EB9ABC /* BackupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED97F4C2E37E14F00EB9ABC /* BackupView.swift */; };
@@ -102,11 +101,9 @@
 		90C9BE39288BE17300E22FB8 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		90C9BE3B288BE17300E22FB8 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
 		90C9BE3D288BE17300E22FB8 /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = background.js; sourceTree = "<group>"; };
-		90C9BE3F288BE17300E22FB8 /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = content.js; sourceTree = "<group>"; };
 		90C9BE41288BE17300E22FB8 /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = popup.html; sourceTree = "<group>"; };
 		90C9BE47288BE17300E22FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90C9BE52288D09DB00E22FB8 /* CSE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CSE.entitlements; sourceTree = "<group>"; };
-		BE11982C2DF8073100B5FDF8 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		BE1642DE2D23D696008A42F8 /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 		BE5342E22C9E338F00AE1DB3 /* IconChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconChangeView.swift; sourceTree = "<group>"; };
 		BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvSettingView.swift; sourceTree = "<group>"; };
@@ -123,6 +120,7 @@
 		BE8F7FEF2DE41F0E003906F4 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		BE8F7FF12DE41F0E003906F4 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		BEAE0F3F2E2268F2007704AE /* AppInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInitializer.swift; sourceTree = "<group>"; };
+		BEB57B082E75C9D200FEA794 /* CloudPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudPicker.swift; sourceTree = "<group>"; };
 		BED82F132E31EF8F00820213 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BED82F3E2E3237D300820213 /* EmojiSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiSearchView.swift; sourceTree = "<group>"; };
 		BED97F4C2E37E14F00EB9ABC /* BackupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupView.swift; sourceTree = "<group>"; };
@@ -165,6 +163,7 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BE289FCD2C8DA7C8005BBDC6 /* Intent */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (BE289FE22C8DAE07005BBDC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, BE07A84E2D4405AB00469317 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Intent; sourceTree = "<group>"; };
+		BE622E422E7517FF007BF838 /* AppIcons */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = AppIcons; sourceTree = "<group>"; };
 		BE8F7FF32DE41F0E003906F4 /* CSE CCWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (BE8F80052DE41F0F003906F4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "CSE CCWidget"; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -237,9 +236,10 @@
 				BED97F4C2E37E14F00EB9ABC /* BackupView.swift */,
 				BE5342E22C9E338F00AE1DB3 /* IconChangeView.swift */,
 				BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */,
+				BEB57B082E75C9D200FEA794 /* CloudPicker.swift */,
 				90240FAE2BA54E68003C264A /* CSE.storekit */,
 				90C9BE29288BE17200E22FB8 /* Assets.xcassets */,
-				BE11982C2DF8073100B5FDF8 /* AppIcon.icon */,
+				BE622E422E7517FF007BF838 /* AppIcons */,
 				90C9BE2A288BE17200E22FB8 /* Info.plist */,
 			);
 			path = CSE;
@@ -263,7 +263,6 @@
 				90C9BE39288BE17300E22FB8 /* images */,
 				90C9BE3B288BE17300E22FB8 /* manifest.json */,
 				90C9BE3D288BE17300E22FB8 /* background.js */,
-				90C9BE3F288BE17300E22FB8 /* content.js */,
 				BE866B712D431FA400C506E5 /* post_redirector.js */,
 				BE866B6F2D431C5800C506E5 /* post_redirector.html */,
 				90C9BE41288BE17300E22FB8 /* popup.html */,
@@ -308,6 +307,9 @@
 			dependencies = (
 				90C9BE32288BE17300E22FB8 /* PBXTargetDependency */,
 				BE8F7FFE2DE41F0F003906F4 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				BE622E422E7517FF007BF838 /* AppIcons */,
 			);
 			name = CSE;
 			productName = "Custom Search Engine";
@@ -414,7 +416,6 @@
 				90C9BE48288BE17300E22FB8 /* Assets.xcassets in Resources */,
 				BEE22EE62D44E93000EDA51A /* Localizable.xcstrings in Resources */,
 				908FBC952BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */,
-				BE11982D2DF8073100B5FDF8 /* AppIcon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,7 +431,6 @@
 				90C9BE38288BE17300E22FB8 /* _locales in Resources */,
 				908FBC962BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */,
 				BE866B702D431C5800C506E5 /* post_redirector.html in Resources */,
-				90C9BE40288BE17300E22FB8 /* content.js in Resources */,
 				BE866B722D431FA400C506E5 /* post_redirector.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,6 +461,7 @@
 				BEFCDAEE2DB49844009F9C07 /* CloudKitManager.swift in Sources */,
 				BE866B682D3F688900C506E5 /* EditSE.swift in Sources */,
 				BE8F7FDB2DE2ABDA003906F4 /* CSEDataManager.swift in Sources */,
+				BEB57B092E75C9D200FEA794 /* CloudPicker.swift in Sources */,
 				BE5342E52C9E36FA00AE1DB3 /* AdvSettingView.swift in Sources */,
 				90C9BE16288BE17000E22FB8 /* AppDelegate.swift in Sources */,
 				BED97F4D2E37E14F00EB9ABC /* BackupView.swift in Sources */,
@@ -584,7 +585,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = CSE/CSE.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 41;
+				CURRENT_PROJECT_VERSION = 42;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -611,7 +612,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.0;
+				MARKETING_VERSION = 4.1;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -638,7 +639,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "CSE Extension/CSE Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 41;
+				CURRENT_PROJECT_VERSION = 42;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
@@ -661,7 +662,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.0;
+				MARKETING_VERSION = 4.1;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -754,7 +755,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "CSE Extension/CSE Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 41;
+				CURRENT_PROJECT_VERSION = 42;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
@@ -777,7 +778,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.0;
+				MARKETING_VERSION = 4.1;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -804,7 +805,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = CSE/CSE.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 41;
+				CURRENT_PROJECT_VERSION = 42;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -831,7 +832,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.0;
+				MARKETING_VERSION = 4.1;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -860,7 +861,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = "CSE CCWidget/CSE CCWidgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 41;
+				CURRENT_PROJECT_VERSION = 42;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
@@ -885,7 +886,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 4.0;
+				MARKETING_VERSION = 4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsg0o0.cse.CCWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -938,7 +939,7 @@
 				CODE_SIGN_ENTITLEMENTS = "CSE CCWidget/CSE CCWidgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 41;
+				CURRENT_PROJECT_VERSION = 42;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
@@ -974,7 +975,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 4.0;
+				MARKETING_VERSION = 4.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsg0o0.cse.CCWidget;

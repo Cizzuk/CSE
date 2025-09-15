@@ -26,11 +26,9 @@ class Tutorial {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .padding(EdgeInsets(top: 36, leading: 32, bottom: 8, trailing: 32))
-                    VStack {
-                        Text("Before you can start using CSE, you need to do some setup.")
-                    }
-                    .padding(.horizontal, 32)
-                    .frame(maxWidth: .infinity)
+                    Text("Before you can start using CSE, you need to do some setup.")
+                        .padding(.horizontal, 32)
+                        .frame(maxWidth: .infinity)
                     
                     List {
                         Section {
@@ -68,15 +66,12 @@ class Tutorial {
                     }
                     
                     Spacer()
-                    Button(action: {
-                        isOpenSheet = false
-                    }) {
-                        Text("Skip")
-                            .bold()
+                    Button(action: { isOpenSheet = false }) {
+                        Text("Skip").bold()
                     }
                     .padding(.top, 10)
                     NavigationLink(destination: SafariSEView(isOpenSheet: $isOpenSheet, isFirstTutorial: true)) {
-                        UITemplates.tutorialButton(text: "Next")
+                        UITemplates.TutorialButton(text: "Next")
                     }
                     .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
                 }
@@ -101,13 +96,14 @@ class Tutorial {
             NavigationStack {
                 VStack {
                     HeaderText(text: "Safari Settings")
-                    VStack {
-                        Text("Please make sure that the following items are the same as your Safari settings")
-                    }
-                    .padding(.horizontal, 32)
-                    .frame(maxWidth: .infinity)
+                    Text("Please make sure that the following items are the same as your Safari settings")
+                        .padding(.horizontal, 32)
+                        .frame(maxWidth: .infinity)
                     
                     List {
+                        // Open Settings Button
+                        UITemplates.OpenSettingsButton()
+                        
                         Section {
                             // Default SE
                             Picker("Search Engine", selection: $searchengine) {
@@ -121,13 +117,9 @@ class Tutorial {
                                     Text("Also Use in Private Browsing")
                                 }
                                 .onChange(of: alsousepriv) { _ in
-                                    withAnimation {
-                                        alsouseprivToggle = alsousepriv
-                                    }
+                                    withAnimation { alsouseprivToggle = alsousepriv }
                                 }
-                                .onAppear {
-                                    alsouseprivToggle = alsousepriv
-                                }
+                                .onAppear { alsouseprivToggle = alsousepriv }
                                 
                                 // Private SE
                                 if !alsouseprivToggle {
@@ -166,7 +158,7 @@ class Tutorial {
                     }
                     
                     NavigationLink(destination: SafariPermissionView(isOpenSheet: $isOpenSheet, isFirstTutorial: isFirstTutorial)) {
-                        UITemplates.tutorialButton(text: "Next")
+                        UITemplates.TutorialButton(text: "Next")
                     }
                     .padding([.horizontal, .bottom], 24)
                 }
@@ -189,14 +181,15 @@ class Tutorial {
             NavigationStack {
                 VStack {
                     HeaderText(text: "Safari Settings")
-                    VStack {
-                        Text("Please allow CSE at the following webpage")
-                    }
-                    .padding(.horizontal, 32)
-                    .frame(maxWidth: .infinity)
+                    Text("Please allow CSE at the following webpage")
+                        .padding(.horizontal, 32)
+                        .frame(maxWidth: .infinity)
                     
                     List {
-                        Section {} footer: {
+                        Section {
+                            // Open Settings Button
+                            UITemplates.OpenSettingsButton()
+                        } footer: {
                             #if targetEnvironment(macCatalyst)
                             Text("Open Safari, go to Safari → Settings..., select 'Extensions' tab and enable CSE. Then 'Allow' the following webpage from 'Edit Websites...' button.")
                             #else
@@ -215,21 +208,17 @@ class Tutorial {
                             if !alsousepriv, let se = selectedPrivateSE, se != selectedSE {
                                 Text(se.domain(forRegion: currentRegion))
                             }
-                        } footer: {
-                            Text("And recommended to Deny for Other Websites.")
-                        }
+                        } footer: { Text("And recommended to Deny for Other Websites.") }
                     }
                     
                     if isFirstTutorial {
                         NavigationLink(destination: RecommendView(isOpenSheet: $isOpenSheet)) {
-                            UITemplates.tutorialButton(text: "Next")
+                            UITemplates.TutorialButton(text: "Next")
                         }
                         .padding([.horizontal, .bottom], 24)
                     } else {
-                        Button(action: {
-                            isOpenSheet = false
-                        }) {
-                            UITemplates.tutorialButton(text: "Done")
+                        Button(action: { isOpenSheet = false }) {
+                            UITemplates.TutorialButton(text: "Done")
                         }
                         .padding([.horizontal, .bottom], 24)
                     }
@@ -256,70 +245,56 @@ class Tutorial {
             NavigationStack {
                 VStack {
                     HeaderText(text: "Setup Search Engine")
-                    VStack {
-                        Text("Choose a search engine below or customize it later.")
-                    }
-                    .padding(.horizontal, 32)
-                    .frame(maxWidth: .infinity)
+                    Text("Choose a search engine below or customize it later.")
+                        .padding(.horizontal, 32)
+                        .frame(maxWidth: .infinity)
                     
                     List {
                         Section {
-                            Button(action: {
-                                showingCloudImport = true
-                            }) {
-                                UITemplates.iconButton(icon: "icloud.and.arrow.down", text: "Restore from iCloud")
+                            Button(action: { showingFileImport = true }) {
+                                UITemplates.IconLabel(icon: "square.and.arrow.down", text: "Import from JSON")
                                 .foregroundColor(.accentColor)
                             }
                             
-                            Button(action: {
-                                showingFileImport = true
-                            }) {
-                                UITemplates.iconButton(icon: "square.and.arrow.down", text: "Import from JSON")
+                            Button(action: { showingCloudImport = true }) {
+                                UITemplates.IconLabel(icon: "icloud.and.arrow.down", text: "Restore from iCloud")
                                 .foregroundColor(.accentColor)
                             }
                         }
                         
                         Section {
                             ForEach(recommendPopCSEList.indices, id: \.self, content: { index in
-                                UITemplates.recommendSEButton(action: {
+                                UITemplates.RecommendedSEButton(action: {
                                     CSEDataManager.saveCSEData(recommendPopCSEList[index], .defaultCSE)
                                     isOpenSheet = false
                                 }, cse: recommendPopCSEList[index])
                             })
-                        } header: {
-                            Text("Popular Search Engines")
-                        }
+                        } header: { Text("Popular Search Engines") }
                         
                         if !recommendAICSEList.isEmpty {
                             Section {
                                 ForEach(recommendAICSEList.indices, id: \.self, content: { index in
-                                    UITemplates.recommendSEButton(action: {
+                                    UITemplates.RecommendedSEButton(action: {
                                         CSEDataManager.saveCSEData(recommendAICSEList[index], .defaultCSE)
                                         isOpenSheet = false
                                     }, cse: recommendAICSEList[index])
                                 })
-                            } header: {
-                                Text("AI Search Engines")
-                            }
+                            } header: { Text("AI Search Engines") }
                         }
                         
                         Section {
                             ForEach(recommendNormalCSEList.indices, id: \.self, content: { index in
-                                UITemplates.recommendSEButton(action: {
+                                UITemplates.RecommendedSEButton(action: {
                                     CSEDataManager.saveCSEData(recommendNormalCSEList[index], .defaultCSE)
                                     isOpenSheet = false
                                 }, cse: recommendNormalCSEList[index])
                             })
-                        } header: {
-                            Text("Safari Search Engines")
-                        }
+                        } header: { Text("Safari Search Engines") }
                         
                     }
                     
-                    Button(action: {
-                        isOpenSheet = false
-                    }) {
-                        UITemplates.tutorialButton(text: "Skip")
+                    Button(action: { isOpenSheet = false }) {
+                        UITemplates.TutorialButton(text: "Skip")
                     }
                     .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
                 }
@@ -329,8 +304,8 @@ class Tutorial {
             }
             .navigationBarBackButtonHidden(true)
             .sheet(isPresented: $showingCloudImport) {
-                BackupView.CloudRestoreView(onRestore: {
-                    isOpenSheet = false // Close the main tutorial sheet
+                CloudPicker.CloudPickerView(onRestore: {
+                    isOpenSheet = false
                 })
             }
             .alert(errorMessage, isPresented: $showingErrorAlert, actions: {})
@@ -355,5 +330,4 @@ class Tutorial {
             }
         }
     }
-
 }

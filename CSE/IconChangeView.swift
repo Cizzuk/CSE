@@ -74,9 +74,7 @@ struct IconChangeView: View {
                 
                 // Restore Button
                 Section {
-                    Button(action: {
-                        self.storeManager.restorePurchases()
-                    }) {
+                    Button(action: { self.storeManager.restorePurchases() }) {
                         Text("Restore Purchase")
                             .frame(maxWidth: .infinity)
                     }
@@ -96,11 +94,8 @@ struct IconChangeView: View {
                     iconItem(iconName: "Mono", iconID: "gray-white")
                     iconItem(iconName: "Pride", iconID: "pride")
                     iconItem(iconName: "Pixel", iconID: "pixel")
-                } header: {
-                    Text("Available Icons")
-                } footer: {
-                    Text("Available icons may change in the future.")
-                }
+                } header: { Text("Available Icons")
+                } footer: { Text("Available icons may change in the future.") }
             }
         }
         .navigationTitle("Change App Icon")
@@ -193,8 +188,7 @@ final class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate,
                 SKPaymentQueue.default().finishTransaction(transaction)
                 userDefaults.set(true, forKey: "haveIconChange")
                 restoreCompleted = true
-            default:
-                break
+            default: break
             }
         }
     }

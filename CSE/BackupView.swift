@@ -10,6 +10,7 @@ import UniformTypeIdentifiers
 
 class BackupView {
     struct BackupView: View {
+        @AppStorage("iCloudAutoBackup", store: userDefaults) private var iCloudAutoBackup: Bool = true
         @StateObject private var ck = CloudKitManager()
         @State private var showingRestoreSheet = false
         @State private var showingFileImport = false
@@ -18,63 +19,93 @@ class BackupView {
         
         var body: some View {
             List {
-                // CloudKit Section
+                // JSON Export/Import Section
                 Section {
                     Button(action: {
                         #if !os(visionOS)
                         UIImpactFeedbackGenerator(style: .light).impactOccurred()
                         #endif
-                        ck.saveAll(mustUpload: true)
+                        guard let jsonString = CSEDataManager.exportDeviceCSEsAsJSON() else {
+                            #if !os(visionOS)
+                            UINotificationFeedbackGenerator().notificationOccurred(.error)
+                            #endif
+                            return
+                        }
+                        exportJSONFile(jsonString: jsonString, filePrefix: "CSE")
                     }) {
-                        HStack {
-                            Image(systemName: "icloud.and.arrow.up")
-                                .frame(width: 20.0)
-                            Text("Backup to iCloud")
-                            if ck.uploadStatus == .uploading {
+                        UITemplates.IconLabel(icon: "square.and.arrow.up", text: "Export as JSON")
+                    }
+                    Button(action: { showingFileImport = true }) {
+                        UITemplates.IconLabel(icon: "square.and.arrow.down", text: "Import from JSON")
+                    }
+                }
+                
+                // CloudKit Section
+                Group {
+                    Section {
+                        Button(action: {
+                            #if !os(visionOS)
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                            #endif
+                            ck.saveAll(mustUpload: true)
+                        }) {
+                            HStack {
+                                UITemplates.IconLabel(icon: "icloud.and.arrow.up", text: "Backup to iCloud")
                                 Spacer()
-                                ProgressView()
+                                if ck.uploadStatus == .uploading {
+                                    ProgressView()
+                                } else if ck.uploadStatus == .failure {
+                                    Image(systemName: "xmark")
+                                } else if ck.uploadStatus == .success {
+                                    Image(systemName: "checkmark")
+                                }
                             }
                         }
-                    }
-                    .disabled(ck.uploadStatus == .uploading)
-                    .onChange(of: ck.uploadStatus) { uploadStatus in
-                        if uploadStatus == .success {
-                            #if !os(visionOS)
-                            UINotificationFeedbackGenerator().notificationOccurred(.success)
-                            #endif
+                        .disabled(ck.uploadStatus == .uploading)
+                        .onChange(of: ck.uploadStatus) { uploadStatus in
+                            if uploadStatus == .success {
+                                #if !os(visionOS)
+                                UINotificationFeedbackGenerator().notificationOccurred(.success)
+                                #endif
+                            } else if uploadStatus == .failure {
+                                #if !os(visionOS)
+                                UINotificationFeedbackGenerator().notificationOccurred(.error)
+                                #endif
+                            }
+                        }
+                        
+                        Button(action: { showingRestoreSheet = true }) {
+                            UITemplates.IconLabel(icon: "icloud.and.arrow.down", text: "Restore from iCloud")
                         }
                     }
                     
-                    Button(action: {
-                        showingRestoreSheet = true
-                    }) {
-                        UITemplates.iconButton(icon: "icloud.and.arrow.down", text: "Restore from iCloud")
-                    }
+                    Section {
+                        Toggle(isOn: $iCloudAutoBackup, label: {
+                            Text("Auto Backup to iCloud")
+                        })
+                        Button(action: {
+                            #if !os(visionOS)
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                            #endif
+                            ck.exportAllData()
+                        }) {
+                            Text("Export All data from iCloud")
+                        }
+                    } footer: { Text("You can delete all data stored in iCloud from the iCloud settings.") }
                 }
-                .disabled(ck.cloudKitAvailability != .available)
-                
-                // JSON Export/Import Section
-                Section {
-                    Button(action: {
-                        exportJSONFile()
-                    }) {
-                        UITemplates.iconButton(icon: "square.and.arrow.up", text: "Export as JSON")
-                    }
-                    Button(action: {
-                        showingFileImport = true
-                    }) {
-                        UITemplates.iconButton(icon: "square.and.arrow.down", text: "Import from JSON")
-                    }
-                }
+                .disabled(ck.cloudKitAvailability != .available || ck.isLocked)
             }
             .navigationTitle("Backup & Restore")
             .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: $showingRestoreSheet) {
-                CloudRestoreView()
+                CloudPicker.CloudPickerView(onRestore: nil)
             }
             .alert(errorMessage, isPresented: $showingErrorAlert, actions: {})
-            .task {
-                ck.checkCloudKitAvailability()
+            .task { ck.checkCloudKitAvailability() }
+            .onReceive(NotificationCenter.default.publisher(for: Notification.Name("CloudKitAllDataExported"))) { note in
+                if let jsonString = note.object as? String {
+                    exportJSONFile(jsonString: jsonString, filePrefix: "CSE-RequestData")
+                }
             }
             .fileImporter(
                 isPresented: $showingFileImport,
@@ -95,18 +126,10 @@ class BackupView {
             }
         }
 
-        private func exportJSONFile() {
-            guard let jsonString = CSEDataManager.exportDeviceCSEsAsJSON() else {
-                #if !os(visionOS)
-                UINotificationFeedbackGenerator().notificationOccurred(.error)
-                #endif
-                return
-            }
-            
-            // Create tmp file
+        private func exportJSONFile(jsonString: String, filePrefix: String) {
             let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd-HH-mm-ss"
-            let fileName = "CSE-\(formatter.string(from: Date())).json"
+            formatter.dateFormat = "yyyyMMddHHmmss"
+            let fileName = "\(filePrefix)-\(formatter.string(from: Date())).json"
             let fileURL = FileManager.default.temporaryDirectory.appendingPathComponent(fileName)
             
             // Write JSON string to file
@@ -146,121 +169,8 @@ class BackupView {
         }
     }
     
-    // CloudKit restore view for both BackupView and Tutorial
-    struct CloudRestoreView: View {
-        @StateObject private var ck = CloudKitManager()
-        @State private var selected: String? = nil
-        @Environment(\.dismiss) private var dismiss
-        
-        // Optional callback for additional actions after restore (used in Tutorial)
-        var onRestore: (() -> Void)? = nil
-        
-        var body: some View {
-            NavigationStack {
-                VStack {
-                    List {
-                        if ck.isLoading {
-                            HStack {
-                                Spacer()
-                                ProgressView()
-                                Spacer()
-                            }
-                        } else if ck.error != nil {
-                            Text(ck.error!.localizedDescription)
-                        } else if ck.allCSEs.isEmpty {
-                            Text("No devices found.")
-                        } else {
-                            ForEach(ck.allCSEs) { ds in
-                                Button {
-                                    if selected == ds.id.recordName {
-                                        selected = nil
-                                    } else {
-                                        selected = ds.id.recordName
-                                    }
-                                } label: {
-                                    HStack {
-                                        VStack(alignment: .leading) {
-                                            Text(ds.deviceName)
-                                                .foregroundColor(.primary)
-                                            // Modified Time
-                                            if let modificationDate: Date = ds.modificationDate {
-                                                Text("Last Updated: \(modificationDate.formatted(date: .abbreviated, time: .shortened))")
-                                                    .foregroundColor(.secondary)
-                                                    .font(.subheadline)
-                                            }
-                                        }
-                                        Spacer()
-                                        Image(systemName: selected == ds.id.recordName ? "checkmark.circle.fill" : "circle")
-                                            .foregroundColor(.blue)
-                                            .animation(.easeOut(duration: 0.15), value: selected)
-                                    }
-                                }
-                                .contextMenu {
-                                    Button(action: {
-                                        ck.delete(recordID: ds.id)
-                                        if selected == ds.id.recordName {
-                                            selected = nil
-                                        }
-                                    }) {
-                                        Label("Delete", systemImage: "trash")
-                                    }
-                                }
-                            }
-                            .onDelete(perform: { indexSet in
-                                for index in indexSet {
-                                    let ds = ck.allCSEs[index]
-                                    ck.delete(recordID: ds.id)
-                                    if selected == ds.id.recordName {
-                                        selected = nil
-                                    }
-                                }
-                            })
-                        }
-                    }
-                    
-                    Button(action: {
-                        if let selected = selected,
-                           let selectedDevice = ck.allCSEs.first(where: { $0.id.recordName == selected }) {
-                            CSEDataManager.importDeviceCSEs(from: selectedDevice)
-                            #if !os(visionOS)
-                            UINotificationFeedbackGenerator().notificationOccurred(.success)
-                            #endif
-                        }
-                        dismiss()
-                        onRestore?() // Call additional action if provided
-                    }) {
-                        UITemplates.tutorialButton(text: "Done")
-                    }
-                    .padding(EdgeInsets(top: 10, leading: 24, bottom: 24, trailing: 24))
-                    .disabled(ck.isLocked || selected == nil)
-                    .animation(.easeInOut(duration: 0.15), value: selected)
-                }
-                .navigationTitle("Choose Device")
-                .navigationBarTitleDisplayMode(.inline)
-                .task {
-                    ck.fetchAll()
-                }
-                .toolbar {
-                    ToolbarItem(placement: .cancellationAction) {
-                        Button("Cancel", systemImage: "xmark") {
-                            dismiss()
-                        }
-                        .disabled(ck.isLocked)
-                    }
-                }
-                #if !os(visionOS)
-                .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
-                #endif
-            }
-            .interactiveDismissDisabled(ck.isLocked)
-        }
-    }
-    
     // Shared JSON import functionality for Tutorial and BackupView
-    static func importJSONFile(from url: URL,
-                               onSuccess: @escaping () -> Void = {},
-                               onError: @escaping (String) -> Void = { _ in })
-    {
+    static func importJSONFile(from url: URL, onSuccess: @escaping () -> Void = {}, onError: @escaping (String) -> Void = { _ in }) {
         guard url.startAccessingSecurityScopedResource() else { return }
         defer { url.stopAccessingSecurityScopedResource() }
         
