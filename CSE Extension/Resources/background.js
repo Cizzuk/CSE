@@ -29,10 +29,14 @@ browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
                     savedData[tabId] = cseData;
                     if (cseData.adv_ignorePOSTFallback) {
                         console.log(tabId, "Waiting post_redirector... (ignorePOSTFallback)");
+                        browser.tabs.sendMessage(tabId, {type: "showCurtain"});
                     } else {
                         console.log(tabId, "Redirecting to post_redirector.html...");
                         browser.tabs.update(tabId, {url: postRedirectorURL})
-                        .then(() => { console.log(tabId, "Waiting post_redirector..."); })
+                        .then(() => {
+                            console.log(tabId, "Waiting post_redirector...");
+                            browser.tabs.sendMessage(tabId, {type: "showCurtain"});
+                        })
                         .catch((error) => { console.error(tabId, "Redirect failed:", error); });
                     }
                     break;
