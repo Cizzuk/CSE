@@ -1,5 +1,6 @@
 (function() {
     'use strict';
+    let isAlreadyRun = false;
     
     // Send message to background.js
     document.addEventListener("readystatechange", (event) => {
@@ -14,11 +15,18 @@
     
     // Recieve message from background.js
     browser.runtime.onMessage.addListener((message) => {
+        if (message.type === "postRedirect") {
+            runPostRedirect(message);
+            return Promise.resolve("done");
+        }
         if (message.type === "showCurtain") { showCurtain(); }
     });
     
     // POST Redirector
     const runPostRedirect = (response) => {
+        if (isAlreadyRun) { return; } // Prevent multiple runs
+        isAlreadyRun = true;
+        
         // Remove query
         const urlNoQuery = window.location.origin + window.location.pathname;
         window.history.replaceState({}, '', urlNoQuery);

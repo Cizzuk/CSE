@@ -35,9 +35,9 @@ class EditSE {
     
     // Common Advanced Settings section
     @ViewBuilder
-    static func advancedSettingsSection(cseData: Binding<CSEDataManager.CSEData>, onSubmit: (() -> Void)? = nil) -> some View {
+    static func advancedSettingsSection(cseData: Binding<CSEDataManager.CSEData>, openPostDataView: Binding<Bool>, onSubmit: (() -> Void)? = nil) -> some View {
         Section {
-            NavigationLink(destination: PostDataView(post: cseData.post)) {
+            Button(action: { openPostDataView.wrappedValue = true }) {
                 HStack {
                     Text("POST Data")
                     Spacer()
@@ -45,6 +45,8 @@ class EditSE {
                         .foregroundColor(.secondary)
                 }
             }
+            .foregroundColor(.primary)
+            
             Toggle("Disable Percent-encoding", isOn: cseData.disablePercentEncoding)
                 .onChange(of: cseData.wrappedValue.disablePercentEncoding) { _ in onSubmit?() }
             HStack {
@@ -109,6 +111,7 @@ class EditSE {
         @State private var tmpCSEData = CSEDataManager.getCSEData(.defaultCSE) // for old OS
         @State private var openRecommendView: Bool = false
         @State private var openCloudImportView: Bool = false
+        @State private var openPostDataView: Bool = false
         
         @State private var isFirstLoad: Bool = true
         @State private var lastScenePhase: ScenePhase = .active
@@ -138,7 +141,7 @@ class EditSE {
                         EditSE.searchURLSection(cseData: $CSEData) { saveCSEData(.autosave) }
                         
                         // Advanced Settings
-                        EditSE.advancedSettingsSection(cseData: $CSEData) { saveCSEData(.autosave) }
+                        EditSE.advancedSettingsSection(cseData: $CSEData, openPostDataView: $openPostDataView) { saveCSEData(.autosave) }
                         
                         // Import Search Engine
                         EditSE.importSearchEngineSection(
@@ -149,7 +152,12 @@ class EditSE {
                 }
                 .scrollToDismissesKeyboard()
                 .navigationTitle("Default Search Engine")
-                .navigationBarTitleDisplayMode(.inline),
+                .navigationBarTitleDisplayMode(.inline)
+                .sheet(isPresented: $openPostDataView, onDismiss: {
+                    saveCSEData(.autosave)
+                }) {
+                    PostDataView(post: $CSEData.post, isOpenSheet: $openPostDataView)
+                },
                 openRecommendView: $openRecommendView,
                 openCloudImportView: $openCloudImportView,
                 cseData: $CSEData,
@@ -203,6 +211,7 @@ class EditSE {
         @State private var tmpCSEData = CSEDataManager.getCSEData(.privateCSE) // for old OS
         @State private var openRecommendView: Bool = false
         @State private var openCloudImportView: Bool = false
+        @State private var openPostDataView: Bool = false
         
         @State private var isFirstLoad: Bool = true
         @State private var lastScenePhase: ScenePhase = .active
@@ -234,7 +243,7 @@ class EditSE {
                         EditSE.searchURLSection(cseData: $CSEData) { saveCSEData(.autosave) }
                         
                         // Advanced Settings
-                        EditSE.advancedSettingsSection(cseData: $CSEData) { saveCSEData(.autosave) }
+                        EditSE.advancedSettingsSection(cseData: $CSEData, openPostDataView: $openPostDataView) { saveCSEData(.autosave) }
                         
                         // Import Search Engine
                         EditSE.importSearchEngineSection(
@@ -245,7 +254,12 @@ class EditSE {
                 }
                 .scrollToDismissesKeyboard()
                 .navigationTitle("Private Search Engine")
-                .navigationBarTitleDisplayMode(.inline),
+                .navigationBarTitleDisplayMode(.inline)
+                .sheet(isPresented: $openPostDataView, onDismiss: {
+                    saveCSEData(.autosave)
+                }) {
+                    PostDataView(post: $CSEData.post, isOpenSheet: $openPostDataView)
+                },
                 openRecommendView: $openRecommendView,
                 openCloudImportView: $openCloudImportView,
                 cseData: $CSEData,
@@ -303,6 +317,7 @@ class EditSE {
         // Sheets
         @State private var openRecommendView: Bool = false
         @State private var openCloudImportView: Bool = false
+        @State private var openPostDataView: Bool = false
         
         @State private var isFirstLoad: Bool = true
         @State private var lastScenePhase: ScenePhase = .active
@@ -337,7 +352,7 @@ class EditSE {
                     EditSE.searchURLSection(cseData: $CSEData) { saveCSEData(.autosave) }
                     
                     // Advanced Settings
-                    EditSE.advancedSettingsSection(cseData: $CSEData) { saveCSEData(.autosave) }
+                    EditSE.advancedSettingsSection(cseData: $CSEData, openPostDataView: $openPostDataView) { saveCSEData(.autosave) }
                     
                     // Import Search Engine
                     EditSE.importSearchEngineSection(
@@ -365,6 +380,11 @@ class EditSE {
                             }
                         } primaryAction: { saveCSEData(.dismiss) }
                     }
+                }
+                .sheet(isPresented: $openPostDataView, onDismiss: {
+                    saveCSEData(.autosave)
+                }) {
+                    PostDataView(post: $CSEData.post, isOpenSheet: $openPostDataView)
                 },
                 openRecommendView: $openRecommendView,
                 openCloudImportView: $openCloudImportView,
@@ -434,48 +454,60 @@ class EditSE {
     // POST Data Editor
     private struct PostDataView: View {
         @Binding var post: [[String: String]]
+        @Binding var isOpenSheet: Bool
         
         var body: some View {
-            List {
-                Section {} footer: {
-                    VStack(alignment: .leading) {
-                        Text("This is typically used when a search engine requires an authentication token or special parameters. If not configured correctly, CSE may not work properly.")
-                        if userDefaults.bool(forKey: "adv_ignorePOSTFallback") {
-                            Text("May not work with some Safari search engines.")
+            NavigationStack {
+                List {
+                    Section {} footer: {
+                        VStack(alignment: .leading) {
+                            Text("This is typically used when a search engine requires an authentication token or special parameters. If not configured correctly, CSE may not work properly.")
+                            if userDefaults.bool(forKey: "adv_ignorePOSTFallback") {
+                                Text("May not work with some Safari search engines.")
+                            }
+                        }
+                    }
+                    // POST Data
+                    Section {
+                        ForEach(post.indices, id: \.self) { index in
+                            HStack {
+                                TextField("Key", text: binding(for: index, key: "key"))
+                                    .environment(\.layoutDirection, .leftToRight)
+                                TextField("Value", text: binding(for: index, key: "value"))
+                                    .environment(\.layoutDirection, .leftToRight)
+                            }
+                            .disableAutocorrection(true)
+                            .textInputAutocapitalization(.never)
+                        }
+                        .onDelete(perform: { index in
+                            withAnimation() { post.remove(atOffsets: index) }
+                        })
+                        
+                        Button(action: {
+                            withAnimation { post.append(["key": "", "value": ""]) }
+                        })  {
+                            HStack {
+                                Image(systemName: "plus.circle")
+                                    .accessibilityHidden(true)
+                                Text("Add POST Data")
+                            }
+                        }
+                    } footer: { Text("Replace query with %s") }
+                }
+                .scrollToDismissesKeyboard()
+                .navigationTitle("POST Data")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .primaryAction) {
+                        EditButton()
+                    }
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Done") {
+                            isOpenSheet = false
                         }
                     }
                 }
-                // POST Data
-                Section {
-                    ForEach(post.indices, id: \.self) { index in
-                        HStack {
-                            TextField("Key", text: binding(for: index, key: "key"))
-                                .environment(\.layoutDirection, .leftToRight)
-                            TextField("Value", text: binding(for: index, key: "value"))
-                                .environment(\.layoutDirection, .leftToRight)
-                        }
-                        .disableAutocorrection(true)
-                        .textInputAutocapitalization(.never)
-                    }
-                    .onDelete(perform: { index in
-                        withAnimation() { post.remove(atOffsets: index) }
-                    })
-                    
-                    Button(action: {
-                        withAnimation { post.append(["key": "", "value": ""]) }
-                    })  {
-                        HStack {
-                            Image(systemName: "plus.circle")
-                                .accessibilityHidden(true)
-                            Text("Add POST Data")
-                        }
-                    }
-                } footer: { Text("Replace query with %s") }
             }
-            .scrollToDismissesKeyboard()
-            .navigationTitle("POST Data")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar { EditButton() }
         }
         
         private func binding(for index: Int, key: String) -> Binding<String> {
@@ -545,5 +577,4 @@ class EditSE {
             }
         }
     }
-    
 }

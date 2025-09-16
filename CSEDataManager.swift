@@ -209,22 +209,16 @@ class CSEDataManager {
         userDefaults.set(CSEDataToDictionary(cseData), forKey: type.rawValue)
         
         // Upload CSEData to iCloud
-        if uploadCloud {
-            CloudKitManager().saveAll()
-        }
+        if uploadCloud { CloudKitManager().saveAll() }
     }
     
     class func saveCSEData(_ data: CSEData, _ originalID: String?, replace: Bool = false, uploadCloud: Bool = true) throws {
         var cseData = saveCSEDataCommon(data)
         
         // If Keyword is blank
-        if cseData.keyword.isEmpty {
-            throw saveCSEDataError.keyBlank
-        }
+        if cseData.keyword.isEmpty { throw saveCSEDataError.keyBlank }
         // If URL is blank
-        if cseData.url.isEmpty {
-            throw saveCSEDataError.urlBlank
-        }
+        if cseData.url.isEmpty { throw saveCSEDataError.urlBlank }
         
         // Remove whitespace from keyword
         cseData.keyword = cseData.keyword.filter { !($0.isWhitespace || $0.isNewline) }
@@ -241,9 +235,7 @@ class CSEDataManager {
             } else {
                 if replace {
                     quickCSEData.removeValue(forKey: cseData.keyword)
-                } else {
-                    throw saveCSEDataError.keyUsed
-                }
+                } else { throw saveCSEDataError.keyUsed }
             }
         }
         // Replace this QuickSE

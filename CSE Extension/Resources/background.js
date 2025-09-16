@@ -27,18 +27,22 @@ browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
                     
                 case "postRedirect":
                     savedData[tabId] = cseData;
+                    
                     if (cseData.adv_ignorePOSTFallback) {
                         console.log(tabId, "Waiting post_redirector... (ignorePOSTFallback)");
-                        browser.tabs.sendMessage(tabId, {type: "showCurtain"});
+                        // Try to just send cseData
+                        browser.tabs.sendMessage(tabId, cseData)
+                        .then((response) => {
+                            if (response === "done") { delete savedData[tabId]; }
+                        });
                     } else {
                         console.log(tabId, "Redirecting to post_redirector.html...");
                         browser.tabs.update(tabId, {url: postRedirectorURL})
-                        .then(() => {
-                            console.log(tabId, "Waiting post_redirector...");
-                            browser.tabs.sendMessage(tabId, {type: "showCurtain"});
-                        })
+                        .then(() => { console.log(tabId, "Waiting post_redirector..."); })
                         .catch((error) => { console.error(tabId, "Redirect failed:", error); });
                     }
+                    
+                    browser.tabs.sendMessage(tabId, {type: "showCurtain"});
                     break;
                     
                 case "error":
@@ -65,13 +69,8 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
             console.log(tabId, "[post_redirector]", "Redirecting... (with POST).");
             sendResponse(savedData[tabId]);
             delete savedData[tabId];
-        } else if (sender.url === postRedirectorURL) {
-            console.log(tabId, "[post_redirector]", " No POST data. Going back...");
-            sendResponse({type: "cancel"});
-            browser.tabs.goBack(tabId);
         } else {
-            console.log(tabId, "[post_redirector]", " No POST data. Abort.");
-            sendResponse({type: "cancel"});
+            console.log(tabId, "[post_redirector]", "No POST data. Cancel.");
         }
     }
 });
