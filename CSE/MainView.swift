@@ -182,14 +182,14 @@ struct ContentView: View {
         .navigationSplitViewStyle(.balanced)
         .listStyleFallback()
         // Tutorial sheets
-        .sheet(isPresented : $needFirstTutorial, content: {
+        .sheet(isPresented : $needFirstTutorial) {
             Tutorial.FirstView(isOpenSheet: $needFirstTutorial)
-        })
-        .sheet(isPresented: $needSafariTutorial, content: {
+        }
+        .sheet(isPresented: $needSafariTutorial) {
             Tutorial.SafariSEView(isOpenSheet: $needSafariTutorial)
-        })
-        .sheet(isPresented: $openSafariTutorialView, content: {
+        }
+        .sheet(isPresented: $openSafariTutorialView) {
             Tutorial.SafariSEView(isOpenSheet: $openSafariTutorialView)
-        })
+        }
     }
 }
