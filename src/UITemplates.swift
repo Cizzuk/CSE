@@ -9,14 +9,18 @@ import SwiftUI
 
 class UITemplates {
     struct IconLabel: View {
+        @Environment(\.dynamicTypeSize) var dynamicTypeSize
+        
         let icon: String
         let text: String.LocalizationValue
         
         var body: some View {
             HStack {
-                Image(systemName: icon)
-                    .frame(width: 20.0)
-                Spacer().frame(width: 10.0)
+                if dynamicTypeSize <= .xxxLarge {
+                    Image(systemName: icon)
+                        .frame(width: 20.0, alignment: .center)
+                    Spacer().frame(width: 10.0)
+                }
                 Text(String(localized: text))
             }
         }
