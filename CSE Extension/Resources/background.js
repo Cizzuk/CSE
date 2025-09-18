@@ -9,9 +9,9 @@ const isWebRequestAvailable = browser.webRequest && browser.webRequest.onBeforeR
 // Request handler (send tab data to native and handle response)
 const requestHandler = (tabId, url, incognito) => {
     // Easy URL checks
+    if (url === "") { return; }
     if (url.startsWith("safari-web-extension:")) { return; }
     if (!url.startsWith("https://")) { return; }
-    if (url === "") { return; }
     
     // Prepare tab data
     const tabData = {
