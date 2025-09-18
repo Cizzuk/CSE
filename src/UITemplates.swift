@@ -60,7 +60,7 @@ class UITemplates {
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.primary)
-                    .padding(.top, 40)
+                    .padding(.top, 35)
             }
             footer: {
                 Text(String(localized: description))
