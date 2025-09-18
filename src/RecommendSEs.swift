@@ -68,6 +68,10 @@ class RecommendSEs {
                 name: "Wayback Machine",
                 url: "https://web.archive.org/web/*/%s",
                 disablePercentEncoding: true
+            ),
+            "k": CSEDataManager.CSEData(
+                name: "Kagi",
+                url: "https://kagi.com/search?q=%s"
             )
         ]
         
