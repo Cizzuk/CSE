@@ -15,10 +15,6 @@
     
     // Recieve message from background.js
     browser.runtime.onMessage.addListener((message) => {
-        if (message.type === "postRedirect") {
-            runPostRedirect(message);
-            return Promise.resolve("done");
-        }
         if (message.type === "showCurtain") { showCurtain(); }
     });
     

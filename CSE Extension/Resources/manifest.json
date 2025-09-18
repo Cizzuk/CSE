@@ -46,7 +46,7 @@
         }
     },
 
-    "permissions": [ "nativeMessaging" ],
+    "permissions": [ "nativeMessaging", "webRequest" ],
     
     "host_permissions": [
         "https://www.google.com/search",
