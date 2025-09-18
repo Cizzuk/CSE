@@ -498,10 +498,10 @@ class EditSE {
                 .navigationTitle("POST Data")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    ToolbarItem(placement: .primaryAction) {
+                    ToolbarItem(placement: .topBarTrailing) {
                         EditButton()
                     }
-                    ToolbarItem(placement: .cancellationAction) {
+                    ToolbarItem(placement: .topBarLeading) {
                         Button("Done") {
                             isOpenSheet = false
                         }
