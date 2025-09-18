@@ -48,18 +48,48 @@ class UITemplates {
         }
     }
     
+    struct HeaderSection: View {
+        let title: String.LocalizationValue
+        let description: String.LocalizationValue
+        
+        var body: some View {
+            Section {}
+            header: {
+                Text(String(localized: title))
+                    .textCase(.none)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(.primary)
+                    .padding(.top, 40)
+            }
+            footer: {
+                Text(String(localized: description))
+                    .font(.body)
+                    .foregroundColor(.primary)
+                    .padding(.bottom, 20)
+            }
+        }
+    }
+    
     struct TutorialButton: View {
+        let action: () -> Void
         let text: String.LocalizationValue
         
         var body: some View {
-            Text(String(localized: text))
-                .font(.headline)
-                .padding()
-                #if !os(visionOS)
-                .foregroundColor(.white)
-                .frame(maxWidth: .infinity)
+            GeometryReader { geo in
+                Button(action: action) {
+                    Text(String(localized: text))
+                        .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
+                        .bold()
+                        .padding()
+                        #if !os(visionOS)
+                        .foregroundColor(.white)
+                        #endif
+                }
+                .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
                 .glassEffectTutorialButton()
-                #endif
+            }
+            .frame(maxWidth: .infinity, minHeight: 40)
         }
     }
     

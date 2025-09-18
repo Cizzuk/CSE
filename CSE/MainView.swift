@@ -183,13 +183,19 @@ struct ContentView: View {
         .listStyleFallback()
         // Tutorial sheets
         .sheet(isPresented : $needFirstTutorial) {
-            Tutorial.FirstView(isOpenSheet: $needFirstTutorial)
+            NavigationStack {
+                Tutorial.FirstView(isOpenSheet: $needFirstTutorial)
+            }
         }
         .sheet(isPresented: $needSafariTutorial) {
-            Tutorial.SafariSEView(isOpenSheet: $needSafariTutorial)
+            NavigationStack {
+                Tutorial.SafariSEView(isOpenSheet: $needSafariTutorial)
+            }
         }
         .sheet(isPresented: $openSafariTutorialView) {
-            Tutorial.SafariSEView(isOpenSheet: $openSafariTutorialView)
+            NavigationStack {
+                Tutorial.SafariSEView(isOpenSheet: $openSafariTutorialView)
+            }
         }
     }
 }
