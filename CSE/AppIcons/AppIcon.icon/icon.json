@@ -1,13 +1,5 @@
 {
-  "fill-specializations" : [
-    {
-      "value" : "automatic"
-    },
-    {
-      "appearance" : "dark",
-      "value" : "automatic"
-    }
-  ],
+  "fill" : "automatic",
   "groups" : [
     {
       "blend-mode-specializations" : [
