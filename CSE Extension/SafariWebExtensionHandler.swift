@@ -22,7 +22,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         guard let message = item.userInfo?[SFExtensionMessageKey] as? [String: Any],
               let searchURL: String = message["url"] as? String,
               let isIncognito: Bool = message["incognito"] as? Bool else {
-            return
+            return sendData(context: context, data: ["type" : "error"])
         }
         
         let searchengine: String = userDefaults.string(forKey: "searchengine") ?? "google"

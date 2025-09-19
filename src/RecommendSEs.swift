@@ -136,6 +136,11 @@ class RecommendSEs {
                 keyword: "g",
                 url: "https://www.google.com/search?q=%s&udm=14",
             ),
+            CSEDataManager.CSEData(
+                name: "Kagi",
+                keyword: "kagi",
+                url: "https://kagi.com/search?q=%s"
+            )
         ]
         
         // Add region-specific search engines

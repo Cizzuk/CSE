@@ -19,16 +19,17 @@ extension View {
     // Glass effect button for tutorial
     func glassEffectTutorialButton() -> some View {
         if #available(iOS 26, macOS 26, *) {
-            #if os(visionOS)
+            #if !os(visionOS)
             return AnyView(self)
+                .buttonStyle(.borderedProminent)
+                .tint(.accentColor)
             #else
-            return AnyView(self.glassEffect(.regular.tint(.accentColor).interactive()))
+            return AnyView(self)
             #endif
         } else {
             return AnyView(self)
-                .frame(maxWidth: .infinity)
                 .background(Color.accentColor)
-                .cornerRadius(16)
+                .cornerRadius(20)
         }
     }
     

@@ -1,17 +1,5 @@
 {
-  "fill-specializations" : [
-    {
-      "value" : {
-        "solid" : "extended-gray:1.00000,1.00000"
-      }
-    },
-    {
-      "appearance" : "dark",
-      "value" : {
-        "solid" : "extended-gray:0.00000,1.00000"
-      }
-    }
-  ],
+  "fill" : "automatic",
   "groups" : [
     {
       "blend-mode-specializations" : [
