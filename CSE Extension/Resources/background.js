@@ -7,7 +7,7 @@ let savedTabIncognito = {};
 const isWebRequestAvailable = browser.webRequest && browser.webRequest.onBeforeRequest;
 
 // Request handler (send tab data to native and handle response)
-const requestHandler = (tabId, url, incognito) => {
+const requestHandler = (tabId, url, incognito, curtain = false) => {
     // Easy URL checks
     if (url === "") { return; }
     if (url.startsWith("safari-web-extension:")) { return; }
@@ -28,7 +28,10 @@ const requestHandler = (tabId, url, incognito) => {
             case "redirect":
                 console.log(tabId, "Redirecting...");
                 browser.tabs.update(tabId, {url: cseData.redirectTo})
-                .then(() => { browser.tabs.sendMessage(tabId, {type: "showCurtain"}); })
+                .then(() => {
+                    // Show curtain if needed
+                    if (curtain) { browser.tabs.sendMessage(tabId, {type: "showCurtain"}); }
+                })
                 .catch((error) => { console.error(tabId, "Redirect failed:", error); });
                 break;
                 
@@ -44,7 +47,8 @@ const requestHandler = (tabId, url, incognito) => {
                     .catch((error) => { console.error(tabId, "Redirect failed:", error); });
                 }
                 
-                browser.tabs.sendMessage(tabId, {type: "showCurtain"});
+                // Show curtain if needed
+                if (curtain) { browser.tabs.sendMessage(tabId, {type: "showCurtain"}); }
                 break;
                 
             case "error":
@@ -69,14 +73,14 @@ browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
     // If webRequest is not available, handle all via tabs.onUpdated
     if (!isWebRequestAvailable) {
         if (tabData.url && tabData.status === "loading") {
-            requestHandler(tabId, tabData.url, tabData.incognito);
+            requestHandler(tabId, tabData.url, tabData.incognito, true);
         }
     } else {
         const wasTabDataSaved = savedTabIncognito[tabId] !== undefined;
         
         // Only send request if tab data was not previously saved
         if (!wasTabDataSaved && tabData.url && tabData.status === "loading") {
-            requestHandler(tabId, tabData.url, tabData.incognito);
+            requestHandler(tabId, tabData.url, tabData.incognito, true);
         }
         
         // Save incognito status if not already saved
@@ -101,7 +105,7 @@ if (isWebRequestAvailable) {
         if (savedTabIncognito[tabId] === undefined) { return; }
         
         // Send request
-        requestHandler(tabId, url, savedTabIncognito[tabId]);
+        requestHandler(tabId, url, savedTabIncognito[tabId], false);
     });
 } else {
     console.log("webRequest API is not available, using tabs.onUpdated for all navigation detection");
