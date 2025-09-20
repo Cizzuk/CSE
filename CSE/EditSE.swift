@@ -466,7 +466,7 @@ class EditSE {
                     }
                     footer: {
                         VStack(alignment: .leading) {
-                            Text("Using this feature is not recommended unless the search engine you want to use absolutely requires POST data. It does not improve your privacy and may cause unstable behavior.")
+                            Text("This feature is not recommended unless the search engine you want to use absolutely requires POST data. It does not improve privacy and may cause unstable behavior")
                             if userDefaults.bool(forKey: "adv_ignorePOSTFallback") {
                                 Text("May not work with some Safari search engines.")
                             }
