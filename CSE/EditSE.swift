@@ -459,9 +459,14 @@ class EditSE {
         var body: some View {
             NavigationStack {
                 List {
-                    Section {} footer: {
+                    Section {}
+                    header: {
+                        Text("Not Recommended")
+                            .textCase(.none)
+                    }
+                    footer: {
                         VStack(alignment: .leading) {
-                            Text("This is typically used when a search engine requires an authentication token or special parameters. If not configured correctly, CSE may not work properly.")
+                            Text("This feature is not recommended unless the search engine you want to use absolutely requires POST data. It does not improve privacy and may cause unstable behavior")
                             if userDefaults.bool(forKey: "adv_ignorePOSTFallback") {
                                 Text("May not work with some Safari search engines.")
                             }

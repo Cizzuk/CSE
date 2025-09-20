@@ -6065,6 +6065,76 @@
         }
       }
     },
+    "Not Recommended" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "غير مُوصى به"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht empfohlen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No recomendado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non recommandé"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "非推奨"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "권장하지 않음"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não recomendado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не рекомендуется"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не рекомендується"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不推荐"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不建議"
+          }
+        }
+      }
+    },
     "Off" : {
       "localizations" : {
         "ar" : {
@@ -9630,72 +9700,72 @@
         }
       }
     },
-    "This is typically used when a search engine requires an authentication token or special parameters. If not configured correctly, CSE may not work properly." : {
+    "This feature is not recommended unless the search engine you want to use absolutely requires POST data. It does not improve privacy and may cause unstable behavior" : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "يُستخدم هذا عادةً عندما يتطلب محرك البحث رمز توثيق أو معلمات خاصة. إذا لم يتم تكوينه بشكل صحيح، قد لا يعمل CSE بشكل صحيح."
+            "value" : "لا يُنصح بهذه الميزة إلا إذا كان محرك البحث الذي تريد استخدامه يتطلب بيانات POST بشكل مطلق. إنها لا تحسن الخصوصية وقد تسبب سلوكاً غير مستقر"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dies wird in der Regel verwendet, wenn eine Suchmaschine ein Authentifizierungs-Token oder spezielle Parameter benötigt. Wenn sie nicht korrekt konfiguriert ist, funktioniert CSE möglicherweise nicht richtig."
+            "value" : "Diese Funktion wird nicht empfohlen, es sei denn, die Suchmaschine, die Sie verwenden möchten, benötigt unbedingt POST-Daten. Sie verbessert nicht die Privatsphäre und kann zu instabilem Verhalten führen"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Esto se utiliza normalmente cuando un buscador requiere un token de autenticación o parámetros especiales. Si no se configura correctamente, es posible que CSE no funcione correctamente."
+            "value" : "Esta función no se recomienda a menos que el buscador que desees usar requiera absolutamente datos POST. No mejora la privacidad y puede causar comportamiento inestable"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Il est généralement utilisé lorsqu'un moteur de recherche exige un jeton d'authentification ou des paramètres spéciaux. S'il n'est pas configuré correctement, le CSE peut ne pas fonctionner correctement."
+            "value" : "Cette fonctionnalité n'est pas recommandée à moins que le moteur de recherche que vous souhaitez utiliser ne nécessite absolument des données POST. Elle n'améliore pas la confidentialité et peut causer un comportement instable"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "この機能は通常、検索エンジンに認証トークンが必要な場合や特別なパラメータが必要な場合に使用されます。正しく設定しないと、CSEが正しく動作しなくなる可能性があります。"
+            "value" : "この機能は、利用したい検索エンジンがどうしてもPOSTデータを必要とする場合を除き、使用しないことをおすすめします。プライバシーが向上するわけではなく、動作が不安定になる可能性があります。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이 기능은 일반적으로 검색 엔진에 인증 토큰이 필요하거나 특별한 매개 변수가 필요한 경우에 사용됩니다. 올바르게 설정하지 않으면 CSE가 제대로 작동하지 않을 수 있습니다."
+            "value" : "이 기능은 사용하려는 검색 엔진이 POST 데이터를 반드시 필요로 하지 않는 한 권장되지 않습니다. 개인정보 보호를 향상시키지 않으며 불안정한 동작을 유발할 수 있습니다"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Isso é tipicamente usado quando um buscador requer um token de autenticação ou parâmetros especiais. Se não for configurado corretamente, o CSE pode não funcionar corretamente."
+            "value" : "Esta funcionalidade não é recomendada a menos que o buscador que deseja usar exija absolutamente dados POST. Não melhora a privacidade e pode causar comportamento instável"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Обычно это используется, когда поисковая система требует токен аутентификации или специальные параметры. При неправильной настройке CSE может работать некорректно."
+            "value" : "Эта функция не рекомендуется, если только поисковая машина, которую вы хотите использовать, не требует данные POST. Она не улучшает конфиденциальность и может вызвать нестабильное поведение"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Зазвичай це використовується, коли пошукова система вимагає маркер автентифікації або спеціальні параметри. Якщо CSE налаштовано неправильно, він може не працювати належним чином."
+            "value" : "Ця функція не рекомендується, якщо тільки пошукова система, яку ви хочете використовувати, не вимагає POST-дані. Вона не покращує конфіденційність і може спричинити нестабільну поведінку"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "这通常在搜索引擎需要验证令牌或特殊参数时使用。如果配置不当，CSE 可能无法正常工作。"
+            "value" : "除非您要使用的搜索引擎绝对需要 POST 数据，否则不建议使用此功能。它不会改善隐私保护，可能会导致不稳定的行为"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "這通常用於搜尋引擎需要認證標記或特殊參數時。如果配置不正確，CSE 可能無法正常運作。"
+            "value" : "除非您要使用的搜尋引擎絕對需要 POST 資料，否則不建議使用此功能。它不會改善隱私保護，可能會導致不穩定的行為"
           }
         }
       }
