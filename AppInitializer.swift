@@ -41,7 +41,7 @@ class AppInitializer {
             }
             #endif
             
-            resetCSE(target: "all")
+            resetCSE(target: .all)
         }
         
         // Version Update Tasks
@@ -129,14 +129,21 @@ class AppInitializer {
     }
     
     // Reset CSEs | target == 'all' or 'default' or 'private' or 'quick'
-    class func resetCSE(target: String) {
-        if target == "default" || target == "all" {
+    enum resetCSETarget {
+        case all, defaultCSE, privateCSE, quickCSE
+    }
+    
+    class func resetCSE(target: resetCSETarget) {
+        switch target {
+        case .all:
             CSEDataManager.saveCSEData(CSEDataManager.CSEData(), .defaultCSE, uploadCloud: false)
-        }
-        if target == "private" || target == "all" {
             CSEDataManager.saveCSEData(CSEDataManager.CSEData(), .privateCSE, uploadCloud: false)
-        }
-        if target == "quick" || target == "all" {
+            CSEDataManager.replaceQuickCSEData(RecommendSEs.quickCSEs())
+        case .defaultCSE:
+            CSEDataManager.saveCSEData(CSEDataManager.CSEData(), .defaultCSE, uploadCloud: false)
+        case .privateCSE:
+            CSEDataManager.saveCSEData(CSEDataManager.CSEData(), .privateCSE, uploadCloud: false)
+        case .quickCSE:
             CSEDataManager.replaceQuickCSEData(RecommendSEs.quickCSEs())
         }
     }
