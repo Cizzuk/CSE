@@ -12,7 +12,13 @@ class RecommendSEs {
     
     class func quickCSEs() -> [String: CSEDataManager.CSEData] {
         let preferredLanguages = Locale.preferredLanguages
-        let wikiLangsList: [String] = ["ar", "de", "en", "es", "fa", "fr", "it", "arz", "nl", "ja", "pl", "pt", "ceb", "sv", "uk", "vi", "war", "zh", "ru"]
+        let wikiLangsList: [String] = [
+            // https://ja.wikipedia.org/wiki/Wikipedia:全言語版の統計#各言語版ウィキペディア
+            // Over 1M articles
+            "ar", "de", "en", "es", "fa", "fr", "it", "arz", "nl", "ja", "pl", "pt", "ceb", "sv", "uk", "vi", "war", "zh", "ru",
+            // Over 500K articles
+            "ca", "id", "ko", "sr", "no", "tr", "fi", "ce", "cs", "hu", "ro", "tt"
+        ]
         var wikiLang: String = "en"
         for language in preferredLanguages {
             let languageCode = language.components(separatedBy: "-").first ?? language
