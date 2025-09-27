@@ -1,11 +1,11 @@
 'use strict';
+
+// Check if webRequest API is available
+const isWebRequestAvailable = browser.webRequest && browser.webRequest.onBeforeRequest;
 const postRedirectorURL = location.protocol + "//" + location.host + "/post_redirector.html";
 let savedData = {};
 let incognitoStatus = {};
 let processedUrls = {};
-
-// Check if webRequest API is available
-const isWebRequestAvailable = browser.webRequest && browser.webRequest.onBeforeRequest;
 
 // Request handler (send tab data to native and handle response)
 const requestHandler = (tabId, url, incognito, curtain = false) => {
@@ -17,7 +17,7 @@ const requestHandler = (tabId, url, incognito, curtain = false) => {
     if (url.startsWith("safari-web-extension:")) { return; }
     if (!url.startsWith("https://")) { return; }
     
-    // Prepare tab data
+    // Prepare tab data to send
     const tabData = {
         url: url,
         incognito: incognito
@@ -27,13 +27,11 @@ const requestHandler = (tabId, url, incognito, curtain = false) => {
     browser.runtime.sendNativeMessage("com.tsg0o0.cse.Extension", tabData, function(response) {
         const cseData = JSON.parse(response);
         
-        // type handler
         switch (cseData.type) {
             case "redirect":
                 console.log(tabId, "Redirecting...");
                 browser.tabs.update(tabId, {url: cseData.redirectTo})
                 .then(() => {
-                    // Show curtain if needed
                     if (curtain) { browser.tabs.sendMessage(tabId, {type: "showCurtain"}); }
                 })
                 .catch((error) => { console.error(tabId, "Redirect failed:", error); });
@@ -51,7 +49,6 @@ const requestHandler = (tabId, url, incognito, curtain = false) => {
                     .catch((error) => { console.error(tabId, "Redirect failed:", error); });
                 }
                 
-                // Show curtain if needed
                 if (curtain) { browser.tabs.sendMessage(tabId, {type: "showCurtain"}); }
                 break;
                 
