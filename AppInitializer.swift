@@ -9,26 +9,30 @@ import Foundation
 
 class AppInitializer {
     private static let userDefaults = CSEDataManager.userDefaults
+    private static let currentVersion = CSEDataManager.currentVersion
     private static let currentRegion = Locale.current.region?.identifier
     
     class func initializeApp() {
-        let lastVersion: String = userDefaults.string(forKey: "LastAppVer") ?? ""
-        let currentVersion = CSEDataManager.currentVersion
+        let lastVersion = userDefaults.string(forKey: "LastAppVer") ?? ""
+        let lastRegion = userDefaults.string(forKey: "LastRegion") ?? ""
         
-        let searchengine: String? = userDefaults.string(forKey: "searchengine") ?? nil
-        let privsearchengine: String? = userDefaults.string(forKey: "privsearchengine") ?? nil
-        let needSafariTutorial: Bool = userDefaults.bool(forKey: "needSafariTutorial")
-        let needFirstTutorial: Bool = userDefaults.bool(forKey: "needFirstTutorial")
+        let isFirstLaunch = lastVersion.isEmpty
+        let isVersionChanged = lastVersion != currentVersion
+        let isRegionChanged = lastRegion != currentRegion
         
-        // Initialize default settings
-        if lastVersion == "" {
+        // Early exit if no changes detected
+        if !isFirstLaunch && !isVersionChanged && !isRegionChanged {
+            return
+        }
+        
+        // First Launch Setup
+        if isFirstLaunch {
             userDefaults.set(SafariSEs.defaultForRegion(region: currentRegion).rawValue, forKey: "searchengine")
             userDefaults.set(SafariSEs.privateForRegion(region: currentRegion).rawValue, forKey: "privsearchengine")
             userDefaults.set(true, forKey: "alsousepriv")
-            
             userDefaults.set(true, forKey: "iCloudAutoBackup")
             
-            // Change default settings for macOS or under iOS 17
+            // Platform-specific settings
             #if targetEnvironment(macCatalyst)
             userDefaults.set(true, forKey: "adv_ignorePOSTFallback")
             #elseif os(iOS)
@@ -37,39 +41,48 @@ class AppInitializer {
             }
             #endif
             
-            // Initialize CSEs
-            resetCSE(target: "all")
+            resetCSE(target: .all)
         }
         
-        // Update/Create database for v3.0 or later
-        if lastVersion == "" || isUpdated(updateVer: "3.0", lastVer: lastVersion) {
-            migrateOldCSESettings()
-        }
-        
-        // Create useDefaultCSE for v4.0 or later
-        if lastVersion == "" || isUpdated(updateVer: "4.0", lastVer: lastVersion) {
-            if userDefaults.string(forKey: "useDefaultCSE") == nil {
-                userDefaults.set(true, forKey: "useDefaultCSE")
+        // Version Update Tasks
+        if isVersionChanged {
+            // Database migration for v3.0+
+            if isFirstLaunch || isUpdated(updateVer: "3.0", lastVer: lastVersion) {
+                migrateOldCSESettings()
+            }
+            
+            // useDefaultCSE setting for v4.0+
+            if isFirstLaunch || isUpdated(updateVer: "4.0", lastVer: lastVersion) {
+                if userDefaults.string(forKey: "useDefaultCSE") == nil {
+                    userDefaults.set(true, forKey: "useDefaultCSE")
+                }
             }
         }
         
-        // Automatically corrects settings to match OS version and region
-        correctSafariSE(searchengine: searchengine, privsearchengine: privsearchengine)
+        // Region Update Tasks
+        if isFirstLaunch || isRegionChanged {
+            let searchengine = userDefaults.string(forKey: "searchengine")
+            let privsearchengine = userDefaults.string(forKey: "privsearchengine")
+            correctSafariSE(searchengine: searchengine, privsearchengine: privsearchengine)
+        }
         
+        // If both tutorials are needed, only keep needFirstTutorial
+        let needFirstTutorial = userDefaults.bool(forKey: "needFirstTutorial")
+        let needSafariTutorial = userDefaults.bool(forKey: "needSafariTutorial")
         if needFirstTutorial && needSafariTutorial {
             userDefaults.set(true, forKey: "needFirstTutorial")
             userDefaults.set(false, forKey: "needSafariTutorial")
         }
         
-        // Save last opened version
+        // Save Current State
         userDefaults.set(currentVersion, forKey: "LastAppVer")
+        userDefaults.set(currentRegion, forKey: "LastRegion")
     }
     
     private class func migrateOldCSESettings() {
-        // Update old CSE settings
-        let urltop: String = userDefaults.string(forKey: "urltop") ?? ""
-        let urlsuffix: String = userDefaults.string(forKey: "urlsuffix") ?? ""
-        if (urltop != "" || urlsuffix != "") {
+        let urltop = userDefaults.string(forKey: "urltop") ?? ""
+        let urlsuffix = userDefaults.string(forKey: "urlsuffix") ?? ""
+        if !urltop.isEmpty || !urlsuffix.isEmpty {
             let defaultCSE = CSEDataManager.CSEData(url: urltop + "%s" + urlsuffix)
             CSEDataManager.saveCSEData(defaultCSE, .defaultCSE)
             userDefaults.removeObject(forKey: "urltop")
@@ -86,6 +99,7 @@ class AppInitializer {
             userDefaults.set(SafariSEs.defaultForRegion(region: currentRegion).rawValue, forKey: "searchengine")
             userDefaults.set(true, forKey: "needSafariTutorial")
         }
+        
         if #available(iOS 17.0, macOS 14.0, *) {
             // Correct Private SE
             if let se = currentPrivateSE, !se.isAvailable(forRegion: currentRegion) {
@@ -97,21 +111,6 @@ class AppInitializer {
         }
     }
     
-    // Reset CSEs | target == 'all' or 'default' or 'private' or 'quick'
-    class func resetCSE(target: String) {
-        // Save Data
-        if target == "default" || target == "all" {
-            CSEDataManager.saveCSEData(CSEDataManager.CSEData(), .defaultCSE, uploadCloud: false)
-        }
-        if target == "private" || target == "all" {
-            CSEDataManager.saveCSEData(CSEDataManager.CSEData(), .privateCSE, uploadCloud: false)
-        }
-        if target == "quick" || target == "all" {
-            CSEDataManager.replaceQuickCSEData(RecommendSEs.quickCSEs())
-        }
-    }
-    
-    // Version high and low
     private class func isUpdated(updateVer: String, lastVer: String) -> Bool {
         guard !lastVer.isEmpty else { return false }
         
@@ -129,4 +128,23 @@ class AppInitializer {
         return updateComponents.count > lastComponents.count
     }
     
+    // Reset CSEs | target == 'all' or 'default' or 'private' or 'quick'
+    enum resetCSETarget {
+        case all, defaultCSE, privateCSE, quickCSE
+    }
+    
+    class func resetCSE(target: resetCSETarget) {
+        switch target {
+        case .all:
+            CSEDataManager.saveCSEData(CSEDataManager.CSEData(), .defaultCSE, uploadCloud: false)
+            CSEDataManager.saveCSEData(CSEDataManager.CSEData(), .privateCSE, uploadCloud: false)
+            CSEDataManager.replaceQuickCSEData(RecommendSEs.quickCSEs())
+        case .defaultCSE:
+            CSEDataManager.saveCSEData(CSEDataManager.CSEData(), .defaultCSE, uploadCloud: false)
+        case .privateCSE:
+            CSEDataManager.saveCSEData(CSEDataManager.CSEData(), .privateCSE, uploadCloud: false)
+        case .quickCSE:
+            CSEDataManager.replaceQuickCSEData(RecommendSEs.quickCSEs())
+        }
+    }
 }
