@@ -13,7 +13,7 @@ const requestHandler = (tabId, url, incognito, curtain = false) => {
     processedUrls[tabId] = url;
     
     // Easy URL checks
-    if (url === "") { return; }
+    if (!url) { return; }
     if (url.startsWith("safari-web-extension:")) { return; }
     if (!url.startsWith("https://")) { return; }
     
