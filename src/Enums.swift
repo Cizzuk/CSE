@@ -24,6 +24,66 @@ enum SafariSEs: String, CaseIterable {
         }
     }
     
+    var domains: [String] {
+        switch self {
+        case .google: return ["www.google.com", "www.google.cn"]
+        case .bing: return ["www.bing.com"]
+        case .yahoo: return ["search.yahoo.com", "search.yahoo.co.jp"]
+        case .duckduckgo: return ["duckduckgo.com"]
+        case .ecosia: return ["www.ecosia.org"]
+        case .baidu: return ["m.baidu.com", "www.baidu.com"]
+        case .sogou: return ["m.sogou.com", "www.sogou.com"]
+        case .yandex: return ["yandex.ru"]
+        case .so360search: return ["m.so.com", "www.so.com"]
+        }
+    }
+    
+    func path(for domain: String) -> String {
+        switch self {
+        case .google, .bing, .yahoo, .ecosia, .yandex: return "/search"
+        case .duckduckgo: return "/"
+        case .baidu, .so360search: return "/s"
+        case .sogou: return domain == "m.sogou.com" ? "/web/sl" : "/web"
+        }
+    }
+    
+    func queryParam(for domain: String) -> String {
+        switch self {
+        case .google, .bing, .duckduckgo, .ecosia, .so360search: return "q"
+        case .yahoo: return "p"
+        case .baidu: return domain == "m.baidu.com" ? "word" : "wd"
+        case .sogou: return domain == "m.sogou.com" ? "keyword" : "query"
+        case .yandex: return "text"
+        }
+    }
+    
+    struct CheckItem {
+        let param: String
+        let values: [String]
+    }
+    
+    func checkParameter(for domain: String) -> CheckItem? {
+        switch self {
+        case .google:
+            return CheckItem(param: "client", values: ["safari"])
+        case .yahoo:
+            return CheckItem(param: "fr", values: ["iphone", "appsfch2", "osx"])
+        case .bing:
+            return CheckItem(param: "form", values: ["APIPH1", "APMCS1", "APIPA1"])
+        case .duckduckgo:
+            return CheckItem(param: "t", values: ["iphone", "osx", "ipad"])
+        case .ecosia:
+            return CheckItem(param: "tts", values: ["st_asaf_iphone", "st_asaf_macos", "st_asaf_ipad"])
+        case .baidu:
+            if domain == "m.baidu.com" {
+                return CheckItem(param: "from", values: ["1000539d"])
+            } else {
+                return CheckItem(param: "tn", values: ["84053098_dg", "84053098_4_dg"])
+            }
+        case .sogou, .yandex, .so360search: return nil
+        }
+    }
+    
     func domain(forRegion region: String?) -> String {
         switch self {
         case .google: return region == "CN" ? "google.cn" : "google.com"
@@ -36,6 +96,20 @@ enum SafariSEs: String, CaseIterable {
         case .yandex: return "yandex.ru"
         case .so360search: return "so.com"
         }
+    }
+    
+    static func engineForURL(_ urlString: String) -> SafariSEs? {
+        guard let urlComponents = URLComponents(string: urlString),
+              let host = urlComponents.host else {
+            return nil
+        }
+        
+        for engine in SafariSEs.allCases {
+            if engine.domains.contains(host) {
+                return engine
+            }
+        }
+        return nil
     }
     
     func isAvailable(forRegion region: String?) -> Bool {

@@ -175,7 +175,10 @@ class CSEDataManager {
             "https://bing.com": "https://www.bing.com",
             "https://www.duckduckgo.com": "https://duckduckgo.com",
             "https://ecosia.com": "https://www.ecosia.com",
-            "https://baidu.com": "https://www.baidu.com"
+            "https://baidu.com": "https://www.baidu.com",
+            "https://sogou.com": "https://www.sogou.com",
+            "https://www.yandex.ru": "https://yandex.ru",
+            "https://so.com": "https://www.so.com",
         ]
         for (original, replacement) in replacements {
             if cseData.url.hasPrefix(original) {
@@ -324,44 +327,26 @@ class CSEDataManager {
     }
     
     class func removeSafariCheckParameters(from urlString: String) -> String {
-        // Parse URL
-        guard let urlComponents = URLComponents(string: urlString),
+        // Find matching engine from URL
+        guard let engine = SafariSEs.engineForURL(urlString),
+              let urlComponents = URLComponents(string: urlString),
               let host = urlComponents.host,
-              var queryItems = urlComponents.queryItems else {
+              let checkParam = engine.checkParameter(for: host) else {
             return urlString
         }
         
-        // Define check parameters to remove based on domain
-        let parametersToRemove: [String]
-        switch host {
-        case "www.google.com", "www.google.cn":
-            parametersToRemove = ["client"]
-        case "search.yahoo.com", "search.yahoo.co.jp":
-            parametersToRemove = ["fr"]
-        case "www.bing.com":
-            parametersToRemove = ["form"]
-        case "duckduckgo.com":
-            parametersToRemove = ["t"]
-        case "www.ecosia.org":
-            parametersToRemove = ["tts"]
-        case "m.baidu.com":
-            parametersToRemove = ["from"]
-        case "www.baidu.com":
-            parametersToRemove = ["tn"]
-        default:
-            return urlString
+        var result = urlString
+        
+        // Remove parameters with matching values
+        for value in checkParam.values {
+            let paramPattern = "\(checkParam.param)=\(value)"
+            // Remove parameter with preceding & or ?
+            result = result.replacingOccurrences(of: "&\(paramPattern)", with: "")
+            result = result.replacingOccurrences(of: "?\(paramPattern)&", with: "?")
+            result = result.replacingOccurrences(of: "?\(paramPattern)", with: "")
         }
         
-        // Remove check parameters
-        queryItems.removeAll { queryItem in
-            parametersToRemove.contains(queryItem.name)
-        }
-        
-        // Reconstruct URL
-        var modifiedComponents = urlComponents
-        modifiedComponents.queryItems = queryItems.isEmpty ? nil : queryItems
-        
-        return modifiedComponents.url?.absoluteString ?? urlString
+        return result
     }
     
     enum jsonError: LocalizedError {
