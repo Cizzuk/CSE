@@ -32,15 +32,6 @@ class AppInitializer {
             userDefaults.set(true, forKey: "alsousepriv")
             userDefaults.set(true, forKey: "iCloudAutoBackup")
             
-            // Platform-specific settings
-            #if targetEnvironment(macCatalyst)
-            userDefaults.set(true, forKey: "adv_ignorePOSTFallback")
-            #elseif os(iOS)
-            if #unavailable(iOS 17.0) {
-                userDefaults.set(true, forKey: "adv_ignorePOSTFallback")
-            }
-            #endif
-            
             resetCSE(target: .all)
         }
         

@@ -466,10 +466,9 @@ class EditSE {
                     }
                     footer: {
                         VStack(alignment: .leading) {
-                            Text("This feature is not recommended unless the search engine you want to use absolutely requires POST data. It does not improve privacy and may cause unstable behavior")
-                            if userDefaults.bool(forKey: "adv_ignorePOSTFallback") {
-                                Text("May not work with some Safari search engines.")
-                            }
+                            Text("This feature is not recommended unless the search engine you want to use absolutely requires POST data. It does not improve privacy and may cause unstable behavior.")
+                            Spacer()
+                            Text("May not work on some operating systems or versions of Safari.")
                         }
                     }
                     // POST Data

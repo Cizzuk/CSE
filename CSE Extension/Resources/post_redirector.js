@@ -13,11 +13,6 @@
         }
     });
     
-    // Recieve message from background.js
-    browser.runtime.onMessage.addListener((message) => {
-        if (message.type === "showCurtain") { showCurtain(); }
-    });
-    
     // POST Redirector
     const runPostRedirect = (response) => {
         if (isAlreadyRun) { return; } // Prevent multiple runs
@@ -27,22 +22,9 @@
         const urlNoQuery = window.location.origin + window.location.pathname;
         window.history.replaceState({}, '', urlNoQuery);
         
-        // Show screen curtain
-        showCurtain();
-        
-        // if ignorePostFallback
-        if (response.adv_ignorePOSTFallback) {
-            // CSP restriction alert
-            setTimeout(function() {
-                alert("CSE: Redirect may have failed. Please try changing Safari search engine.");
-            }, 5000);
-        }
-        
-        // Create <form>
-        const cseForm = document.createElement("form");
-        cseForm.method = "post";
+        // Read <form>
+        const cseForm = document.getElementById("cseForm");
         cseForm.action = response.redirectTo;
-        document.body.appendChild(cseForm);
         
         // Add POST Data
         response.postData.forEach(item => {
@@ -55,17 +37,5 @@
         
         // Submit form
         cseForm.submit();
-    }
-    
-    // Screen curtain
-    const showCurtain = () => {
-        const htmlDOM = document.getElementsByTagName("html")[0];
-        const darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        const bgColor = darkMode ? "#1c1c1e" : "#f2f2f7"
-        htmlDOM.style.background = bgColor;
-        htmlDOM.innerHTML = `
-            <meta name="theme-color" content="`+bgColor+`">
-            <body style="display:none">
-        `;
     }
 })();

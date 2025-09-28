@@ -36,7 +36,6 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             let type: String
             let redirectTo: String
             let postData: [[String: String]]
-            let adv_ignorePOSTFallback: Bool
         }
         
         Task {
@@ -78,8 +77,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             let Data = dataSet(
                 type: redirectData.type,
                 redirectTo: redirectData.url,
-                postData: redirectData.post,
-                adv_ignorePOSTFallback: userDefaults.bool(forKey: "adv_ignorePOSTFallback")
+                postData: redirectData.post
             )
             
             // Send to background.js!
