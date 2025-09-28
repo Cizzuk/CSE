@@ -112,84 +112,25 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     }
 
     // Safari Default SEs
-    let engines: [String: Engine] = [
-        "google": Engine(
-            domains: ["www.google.com", "www.google.cn"],
-            path: { _ in "/search" },
-            param: { _ in "q" },
-            check: { _ in
-                CheckItem(param: "client", ids: ["safari"])
-            }
-        ),
-        "yahoo": Engine(
-            domains: ["search.yahoo.com", "search.yahoo.co.jp"],
-            path: { _ in "/search" },
-            param: { _ in "p" },
-            check: { _ in
-                CheckItem(param: "fr", ids: ["iphone", "appsfch2", "osx"])
-            }
-        ),
-        "bing": Engine(
-            domains: ["www.bing.com"],
-            path: { _ in "/search" },
-            param: { _ in "q" },
-            check: { _ in
-                CheckItem(param: "form", ids: ["APIPH1", "APMCS1", "APIPA1"])
-            }
-        ),
-        "duckduckgo": Engine(
-            domains: ["duckduckgo.com"],
-            path: { _ in "/" },
-            param: { _ in "q" },
-            check: { _ in
-                CheckItem(param: "t", ids: ["iphone", "osx", "ipad"])
-            }
-        ),
-        "ecosia": Engine(
-            domains: ["www.ecosia.org"],
-            path: { _ in "/search" },
-            param: { _ in "q" },
-            check: { _ in
-                CheckItem(param: "tts", ids: ["st_asaf_iphone", "st_asaf_macos", "st_asaf_ipad"])
-            }
-        ),
-        "baidu": Engine(
-            domains: ["m.baidu.com", "www.baidu.com"],
-            path: { _ in "/s" },
-            param: { domain in
-                domain == "m.baidu.com" ? "word" : "wd"
-            },
-            check: { domain in
-                if domain == "m.baidu.com" {
-                    return CheckItem(param: "from", ids: ["1000539d"])
-                } else {
-                    return CheckItem(param: "tn", ids: ["84053098_dg", "84053098_4_dg"])
+    let engines: [String: Engine] = {
+        var engineDict: [String: Engine] = [:]
+        
+        for safariEngine in SafariSEs.allCases {
+            engineDict[safariEngine.rawValue] = Engine(
+                domains: safariEngine.domains,
+                path: { domain in safariEngine.path(for: domain) },
+                param: { domain in safariEngine.queryParam(for: domain) },
+                check: { domain in
+                    if let checkParam = safariEngine.checkParameter(for: domain) {
+                        return CheckItem(param: checkParam.param, ids: checkParam.values)
+                    }
+                    return nil
                 }
-            }
-        ),
-        "sogou": Engine(
-            domains: ["m.sogou.com", "www.sogou.com"],
-            path: { domain in
-                domain == "m.sogou.com" ? "/web/sl" : "/web"
-            },
-            param: { domain in
-                domain == "m.sogou.com" ? "keyword" : "query"
-            },
-            check: nil
-        ),
-        "360search": Engine(
-            domains: ["m.so.com", "www.so.com"],
-            path: { _ in "/s" },
-            param: { _ in "q" },
-            check: nil
-        ),
-        "yandex": Engine(
-            domains: ["yandex.ru"],
-            path: { _ in "/search" },
-            param: { _ in "text" },
-            check: nil
-        )
-    ]
+            )
+        }
+        
+        return engineDict
+    }()
 
     // Engine Checker
     func checkEngineURL(engineName: String, url: String) -> Bool {

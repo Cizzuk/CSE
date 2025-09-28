@@ -175,7 +175,10 @@ class CSEDataManager {
             "https://bing.com": "https://www.bing.com",
             "https://www.duckduckgo.com": "https://duckduckgo.com",
             "https://ecosia.com": "https://www.ecosia.com",
-            "https://baidu.com": "https://www.baidu.com"
+            "https://baidu.com": "https://www.baidu.com",
+            "https://sogou.com": "https://www.sogou.com",
+            "https://www.yandex.ru": "https://yandex.ru",
+            "https://so.com": "https://www.so.com",
         ]
         for (original, replacement) in replacements {
             if cseData.url.hasPrefix(original) {
@@ -185,7 +188,28 @@ class CSEDataManager {
         }
         
         // Remove check parameters
-        cseData.url = removeSafariCheckParameters(from: cseData.url)
+        if let engine = SafariSEs.engineForURL(cseData.url),
+           var urlComponents = URLComponents(string: cseData.url),
+           let host = urlComponents.host,
+           let checkParam = engine.checkParameter(for: host) {
+            
+            // Remove check parameters from URL query items
+            if var queryItems = urlComponents.queryItems {
+                queryItems = queryItems.filter { queryItem in
+                    guard queryItem.name == checkParam.param else { return true }
+                    return !checkParam.values.contains(queryItem.value ?? "")
+                }
+                urlComponents.queryItems = queryItems.isEmpty ? nil : queryItems
+            }
+            
+            // Rebuild URL
+            if let rebuiltURL = urlComponents.url?.absoluteString {
+                cseData.url = rebuiltURL
+            }
+        }
+        
+        // Remove percent encoding
+        cseData.url = cseData.url.removingPercentEncoding ?? cseData.url
         
         // Clean up post data
         cseData.post = cleanPostData(cseData.post)
@@ -321,47 +345,6 @@ class CSEDataManager {
         }
         
         return postDataDict
-    }
-    
-    class func removeSafariCheckParameters(from urlString: String) -> String {
-        // Parse URL
-        guard let urlComponents = URLComponents(string: urlString),
-              let host = urlComponents.host,
-              var queryItems = urlComponents.queryItems else {
-            return urlString
-        }
-        
-        // Define check parameters to remove based on domain
-        let parametersToRemove: [String]
-        switch host {
-        case "www.google.com", "www.google.cn":
-            parametersToRemove = ["client"]
-        case "search.yahoo.com", "search.yahoo.co.jp":
-            parametersToRemove = ["fr"]
-        case "www.bing.com":
-            parametersToRemove = ["form"]
-        case "duckduckgo.com":
-            parametersToRemove = ["t"]
-        case "www.ecosia.org":
-            parametersToRemove = ["tts"]
-        case "m.baidu.com":
-            parametersToRemove = ["from"]
-        case "www.baidu.com":
-            parametersToRemove = ["tn"]
-        default:
-            return urlString
-        }
-        
-        // Remove check parameters
-        queryItems.removeAll { queryItem in
-            parametersToRemove.contains(queryItem.name)
-        }
-        
-        // Reconstruct URL
-        var modifiedComponents = urlComponents
-        modifiedComponents.queryItems = queryItems.isEmpty ? nil : queryItems
-        
-        return modifiedComponents.url?.absoluteString ?? urlString
     }
     
     enum jsonError: LocalizedError {
