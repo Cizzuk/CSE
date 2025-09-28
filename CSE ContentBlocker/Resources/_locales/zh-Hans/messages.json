@@ -1,0 +1,6 @@
+{
+    "extension_description": {
+        "message": "阻止 Safari 的搜索引擎以防止搜索查询泄露。某些功能可能无法使用，并且在某些 Safari 版本中可能无法正常运行。",
+        "description": "Description of what the extension does."
+    }
+}
