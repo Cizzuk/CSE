@@ -134,12 +134,18 @@ class Tutorial {
                         // Show warning if Yandex is selected in Ukraine
                         if currentRegion == "UA" {
                             Text("Yandex is currently unavailable.")
-                            Spacer()
                         }
-                        
-                        // Queries leak warning
-                        Text("The search engine you select here can know your search queries. If you have concerns about privacy, I recommend choosing DuckDuckGo.")
                     }
+                }
+                
+                // Queries leak warning
+                Section {}
+                header: {
+                    Text("Privacy Tips")
+                        .textCase(.none)
+                }
+                footer: {
+                    Text("The search engine you select here can see your search queries. If you have privacy concerns, enable \"CSE Content Blocker\" in Safari settings to prevent query leaks. Note that the Content Blocker may disable some features and might not work properly on certain Safari versions.")
                 }
             }
             .navigationBarBackButtonHidden(true)
@@ -178,9 +184,9 @@ class Tutorial {
                     UITemplates.OpenSettingsButton()
                 } footer: {
                     #if targetEnvironment(macCatalyst)
-                    Text("Open Safari, go to Safari → Settings..., select 'Extensions' tab and enable CSE. Then 'Allow' the following webpage from 'Edit Websites...' button.")
+                    Text("Open Safari, go to Safari → Settings..., select 'Extensions' tab and enable CSE Extension. Then 'Allow' the following webpage from 'Edit Websites...' button.")
                     #else
-                    Text("Go to Settings → Apps → Safari → Extensions → Customize Search Engine and allow extension. Then 'Allow' the following webpage.")
+                    Text("Go to Settings → Apps → Safari → Extensions → CSE Extension and allow extension. Then 'Allow' the following webpage.")
                     #endif
                 }
                 

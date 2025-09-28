@@ -2,10 +2,9 @@
     "manifest_version": 3,
     "default_locale": "en",
 
-    "name": "Customize Search Engine",
-    "short_name": "CSE",
+    "name": "CSE Extension",
     "description": "__MSG_extension_description__",
-    "version": "4.4",
+    "version": "4.5",
     
     "icons": {
         "512": "images/icon-512.png"
@@ -15,24 +14,6 @@
         "scripts": ["background.js"],
         "persistent": false
     },
-
-    "content_scripts": [{
-        "js": [ "post_redirector.js" ],
-        "run_at": "document_start",
-        "matches": [
-            "https://www.google.com/search",
-            "https://www.google.cn/search",
-            "https://*.search.yahoo.com/search",
-            "https://search.yahoo.co.jp/search",
-            "https://www.bing.com/search",
-            "https://duckduckgo.com/",
-            "https://www.ecosia.org/search",
-            "https://*.baidu.com/s",
-            "https://*.sogou.com/web/*",
-            "https://*.so.com/s",
-            "https://yandex.ru/search"
-        ]
-    }],
 
     "action": {
         "default_popup": "popup.html",

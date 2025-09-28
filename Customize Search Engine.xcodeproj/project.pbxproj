@@ -20,6 +20,7 @@
 		90C9BE3E288BE17300E22FB8 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE3D288BE17300E22FB8 /* background.js */; };
 		90C9BE42288BE17300E22FB8 /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE41288BE17300E22FB8 /* popup.html */; };
 		90C9BE48288BE17300E22FB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90C9BE29288BE17200E22FB8 /* Assets.xcassets */; };
+		BE0194272E88EAB6006CFB7E /* CSE ContentBlocker.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BE01940F2E88EAB6006CFB7E /* CSE ContentBlocker.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BE1642DF2D23D69E008A42F8 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1642DE2D23D696008A42F8 /* Tutorial.swift */; };
 		BE5342E32C9E338F00AE1DB3 /* IconChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5342E22C9E338F00AE1DB3 /* IconChangeView.swift */; };
 		BE5342E52C9E36FA00AE1DB3 /* AdvSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */; };
@@ -62,6 +63,13 @@
 			remoteGlobalIDString = 90C9BE2E288BE17300E22FB8;
 			remoteInfo = "Custom Search Engine Extension";
 		};
+		BE0194252E88EAB6006CFB7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90C9BE0A288BE17000E22FB8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE01940E2E88EAB6006CFB7E;
+			remoteInfo = "CSE ContentBlocker";
+		};
 		BE8F7FFD2DE41F0F003906F4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 90C9BE0A288BE17000E22FB8 /* Project object */;
@@ -79,6 +87,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				90C9BE30288BE17300E22FB8 /* CSE Extension.appex in Embed Foundation Extensions */,
+				BE0194272E88EAB6006CFB7E /* CSE ContentBlocker.appex in Embed Foundation Extensions */,
 				BE8F7FFF2DE41F0F003906F4 /* CSE CCWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
@@ -104,6 +113,7 @@
 		90C9BE41288BE17300E22FB8 /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = popup.html; sourceTree = "<group>"; };
 		90C9BE47288BE17300E22FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90C9BE52288D09DB00E22FB8 /* CSE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CSE.entitlements; sourceTree = "<group>"; };
+		BE01940F2E88EAB6006CFB7E /* CSE ContentBlocker.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "CSE ContentBlocker.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE1642DE2D23D696008A42F8 /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 		BE5342E22C9E338F00AE1DB3 /* IconChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconChangeView.swift; sourceTree = "<group>"; };
 		BE5342E42C9E36FA00AE1DB3 /* AdvSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvSettingView.swift; sourceTree = "<group>"; };
@@ -129,6 +139,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		BE01942B2E88EAB6006CFB7E /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = BE01940E2E88EAB6006CFB7E /* CSE ContentBlocker */;
+		};
 		BE07A84E2D4405AB00469317 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -162,6 +179,7 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		BE0194102E88EAB6006CFB7E /* CSE ContentBlocker */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (BE01942B2E88EAB6006CFB7E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (Resources/_locales, Resources/images, Resources/rulesets, ); path = "CSE ContentBlocker"; sourceTree = "<group>"; };
 		BE289FCD2C8DA7C8005BBDC6 /* Intent */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (BE289FE22C8DAE07005BBDC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, BE07A84E2D4405AB00469317 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Intent; sourceTree = "<group>"; };
 		BE622E422E7517FF007BF838 /* AppIcons */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = AppIcons; sourceTree = "<group>"; };
 		BE8F7FF32DE41F0E003906F4 /* CSE CCWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (BE8F80052DE41F0F003906F4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "CSE CCWidget"; sourceTree = "<group>"; };
@@ -176,6 +194,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		90C9BE2C288BE17300E22FB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE01940C2E88EAB6006CFB7E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -206,6 +231,7 @@
 				BE289FCD2C8DA7C8005BBDC6 /* Intent */,
 				90C9BE14288BE17000E22FB8 /* CSE */,
 				90C9BE33288BE17300E22FB8 /* CSE Extension */,
+				BE0194102E88EAB6006CFB7E /* CSE ContentBlocker */,
 				BE8F7FF32DE41F0E003906F4 /* CSE CCWidget */,
 				BE8F7FEE2DE41F0E003906F4 /* Frameworks */,
 				90C9BE13288BE17000E22FB8 /* Products */,
@@ -218,6 +244,7 @@
 				90C9BE12288BE17000E22FB8 /* CSE.app */,
 				90C9BE2F288BE17300E22FB8 /* CSE Extension.appex */,
 				BE8F7FED2DE41F0E003906F4 /* CSE CCWidgetExtension.appex */,
+				BE01940F2E88EAB6006CFB7E /* CSE ContentBlocker.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -307,6 +334,7 @@
 			dependencies = (
 				90C9BE32288BE17300E22FB8 /* PBXTargetDependency */,
 				BE8F7FFE2DE41F0F003906F4 /* PBXTargetDependency */,
+				BE0194262E88EAB6006CFB7E /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				BE622E422E7517FF007BF838 /* AppIcons */,
@@ -331,6 +359,28 @@
 			name = "CSE Extension";
 			productName = "Custom Search Engine Extension";
 			productReference = 90C9BE2F288BE17300E22FB8 /* CSE Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		BE01940E2E88EAB6006CFB7E /* CSE ContentBlocker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE01942A2E88EAB6006CFB7E /* Build configuration list for PBXNativeTarget "CSE ContentBlocker" */;
+			buildPhases = (
+				BE01940B2E88EAB6006CFB7E /* Sources */,
+				BE01940C2E88EAB6006CFB7E /* Frameworks */,
+				BE01940D2E88EAB6006CFB7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				BE0194102E88EAB6006CFB7E /* CSE ContentBlocker */,
+			);
+			name = "CSE ContentBlocker";
+			packageProductDependencies = (
+			);
+			productName = "CSE ContentBlocker";
+			productReference = BE01940F2E88EAB6006CFB7E /* CSE ContentBlocker.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		BE8F7FEC2DE41F0E003906F4 /* CSE CCWidgetExtension */ = {
@@ -362,7 +412,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1630;
+				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					90C9BE11288BE17000E22FB8 = {
@@ -370,6 +420,9 @@
 					};
 					90C9BE2E288BE17300E22FB8 = {
 						CreatedOnToolsVersion = 14.0;
+					};
+					BE01940E2E88EAB6006CFB7E = {
+						CreatedOnToolsVersion = 26.0.1;
 					};
 					BE8F7FEC2DE41F0E003906F4 = {
 						CreatedOnToolsVersion = 16.3;
@@ -402,6 +455,7 @@
 			targets = (
 				90C9BE11288BE17000E22FB8 /* CSE */,
 				90C9BE2E288BE17300E22FB8 /* CSE Extension */,
+				BE01940E2E88EAB6006CFB7E /* CSE ContentBlocker */,
 				BE8F7FEC2DE41F0E003906F4 /* CSE CCWidgetExtension */,
 			);
 		};
@@ -432,6 +486,13 @@
 				908FBC962BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */,
 				BE866B702D431C5800C506E5 /* post_redirector.html in Resources */,
 				BE866B722D431FA400C506E5 /* post_redirector.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE01940D2E88EAB6006CFB7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +546,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BE01940B2E88EAB6006CFB7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BE8F7FE92DE41F0E003906F4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -501,6 +569,11 @@
 			isa = PBXTargetDependency;
 			target = 90C9BE2E288BE17300E22FB8 /* CSE Extension */;
 			targetProxy = 90C9BE31288BE17300E22FB8 /* PBXContainerItemProxy */;
+		};
+		BE0194262E88EAB6006CFB7E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE01940E2E88EAB6006CFB7E /* CSE ContentBlocker */;
+			targetProxy = BE0194252E88EAB6006CFB7E /* PBXContainerItemProxy */;
 		};
 		BE8F7FFE2DE41F0F003906F4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -585,7 +658,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = CSE/CSE.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 48;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -612,7 +685,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.4;
+				MARKETING_VERSION = 4.5;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -639,7 +712,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "CSE Extension/CSE Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 48;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
@@ -662,7 +735,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.4;
+				MARKETING_VERSION = 4.5;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -755,7 +828,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "CSE Extension/CSE Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 48;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
@@ -778,7 +851,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.4;
+				MARKETING_VERSION = 4.5;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -805,7 +878,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = CSE/CSE.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 48;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -832,7 +905,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.4;
+				MARKETING_VERSION = 4.5;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -853,6 +926,105 @@
 			};
 			name = Debug;
 		};
+		BE0194282E88EAB6006CFB7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 48;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CSE ContentBlocker/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "CSE ContentBlocker";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 4.5;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tsg0o0.cse.ContentBlocker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+			};
+			name = Debug;
+		};
+		BE0194292E88EAB6006CFB7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 48;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CSE ContentBlocker/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "CSE ContentBlocker";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 4.5;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tsg0o0.cse.ContentBlocker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+			};
+			name = Release;
+		};
 		BE8F80012DE41F0F003906F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -861,7 +1033,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = "CSE CCWidget/CSE CCWidgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 48;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
@@ -886,7 +1058,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 4.4;
+				MARKETING_VERSION = 4.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsg0o0.cse.CCWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -939,7 +1111,7 @@
 				CODE_SIGN_ENTITLEMENTS = "CSE CCWidget/CSE CCWidgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 48;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
@@ -975,7 +1147,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 4.4;
+				MARKETING_VERSION = 4.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsg0o0.cse.CCWidget;
@@ -1020,6 +1192,15 @@
 			buildConfigurations = (
 				90C9BE50288BE17300E22FB8 /* Debug */,
 				90BC1A372BAD2CC700961F3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		BE01942A2E88EAB6006CFB7E /* Build configuration list for PBXNativeTarget "CSE ContentBlocker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE0194282E88EAB6006CFB7E /* Debug */,
+				BE0194292E88EAB6006CFB7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

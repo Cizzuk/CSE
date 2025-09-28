@@ -1,6 +1,6 @@
 {
     "extension_description": {
-        "message": "Safari Extension to customize your search engine.",
+        "message": "Safari Extension to customize your search engine. Please refer to \"Safari Settings\" in CSE App for configuring the permissions.",
         "description": "Description of what the extension does."
     }
 }

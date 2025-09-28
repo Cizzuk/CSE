@@ -1,0 +1,6 @@
+{
+    "extension_description": {
+        "message": "Bloque le moteur de recherche de Safari pour éviter les fuites de vos requêtes. Certaines fonctionnalités peuvent devenir indisponibles et cela peut ne pas fonctionner correctement sur certaines versions de Safari.",
+        "description": "Description of what the extension does."
+    }
+}

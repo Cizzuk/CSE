@@ -1,0 +1,6 @@
+{
+    "extension_description": {
+        "message": "Bloqueia o mecanismo de busca do Safari para prevenir vazamentos de suas consultas. Alguns recursos podem ficar indisponíveis e pode não funcionar corretamente em algumas versões do Safari.",
+        "description": "Description of what the extension does."
+    }
+}

@@ -39,15 +39,11 @@ const requestHandler = (tabId, url, incognito, curtain = false) => {
                 
             case "postRedirect":
                 savedData[tabId] = cseData;
-                
-                if (cseData.adv_ignorePOSTFallback) {
-                    console.log(tabId, "Waiting post_redirector... (ignorePOSTFallback)");
-                } else {
-                    console.log(tabId, "Redirecting to post_redirector.html...");
-                    browser.tabs.update(tabId, {url: postRedirectorURL})
-                    .then(() => { console.log(tabId, "Waiting post_redirector..."); })
-                    .catch((error) => { console.error(tabId, "Redirect failed:", error); });
-                }
+
+                console.log(tabId, "Redirecting to post_redirector.html...");
+                browser.tabs.update(tabId, {url: postRedirectorURL})
+                .then(() => { console.log(tabId, "Waiting post_redirector..."); })
+                .catch((error) => { console.error(tabId, "Redirect failed:", error); });
                 
                 if (curtain) { browser.tabs.sendMessage(tabId, {type: "showCurtain"}); }
                 break;
@@ -84,8 +80,9 @@ if (isWebRequestAvailable) {
 } else {
     // If webRequest is not available, handle all via tabs.onUpdated
     browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
+        if (processedUrls[tabId] === tabData.url) { return; }
         if (!tabData.url) { return; }
-        if (updatedData.status !== "loading" && updatedData.url === undefined) { return; }
+        if (tabData.status !== "loading") { return; }
         
         requestHandler(tabId, tabData.url, tabData.incognito, true);
     });

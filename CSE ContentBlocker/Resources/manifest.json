@@ -1,0 +1,67 @@
+{
+    "manifest_version": 3,
+    "default_locale": "en",
+
+    "name": "CSE Content Blocker",
+    "description": "__MSG_extension_description__",
+    "version": "4.5",
+    
+    "icons": {
+        "512": "images/icon-512.png"
+    },
+
+    "permissions": [
+        "declarativeNetRequest"
+    ],
+    
+    "declarative_net_request": {
+        "rule_resources": [
+            {
+                "id": "google",
+                "enabled": true,
+                "path": "rulesets/google.json"
+            },
+            {
+                "id": "yahoo",
+                "enabled": true,
+                "path": "rulesets/yahoo.json"
+            },
+            {
+                "id": "bing",
+                "enabled": true,
+                "path": "rulesets/bing.json"
+            },
+            {
+                "id": "duckduckgo",
+                "enabled": true,
+                "path": "rulesets/duckduckgo.json"
+            },
+            {
+                "id": "ecosia",
+                "enabled": true,
+                "path": "rulesets/ecosia.json"
+            },
+            {
+                "id": "baidu",
+                "enabled": true,
+                "path": "rulesets/baidu.json"
+            },
+            {
+                "id": "sogou",
+                "enabled": true,
+                "path": "rulesets/sogou.json"
+            },
+            {
+                "id": "360search",
+                "enabled": true,
+                "path": "rulesets/360search.json"
+            },
+            {
+                "id": "yandex",
+                "enabled": true,
+                "path": "rulesets/yandex.json"
+            }
+        ]
+    }
+    
+}

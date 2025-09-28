@@ -13,7 +13,6 @@ struct AdvSettingView: View {
     @AppStorage("adv_disablechecker", store: userDefaults) private var disablechecker: Bool = false
     @AppStorage("adv_disableKeywordOnlyQuickSearch", store: userDefaults) private var disableKeywordOnlyQuickSearch: Bool = false
     @AppStorage("adv_ignoreFocusFilter", store: userDefaults) private var ignoreFocusFilter: Bool = false
-    @AppStorage("adv_ignorePOSTFallback", store: userDefaults) private var ignorePOSTFallback: Bool = false
     @State private var allowReset: Bool = false
     
     var body: some View {
@@ -23,15 +22,6 @@ struct AdvSettingView: View {
                     disablechecker = false
                     disableKeywordOnlyQuickSearch = false
                     ignoreFocusFilter = false
-                    #if targetEnvironment(macCatalyst)
-                    ignorePOSTFallback = true
-                    #else
-                    if #unavailable(iOS 17.0) {
-                        ignorePOSTFallback = true
-                    } else {
-                        ignorePOSTFallback = false
-                    }
-                    #endif
                     allowReset = false
                 }
             }
@@ -64,14 +54,6 @@ struct AdvSettingView: View {
                 })
             } footer: {
                 Text("CSE will ignore all Focus Filters.")
-            }
-            
-            Section {
-                Toggle(isOn: $ignorePOSTFallback, label: {
-                    Text("Ignore POST Fallback")
-                })
-            } footer: {
-                Text("When using custom search engines with POST, to bypass CSP restrictions, the process redirects to a page created by CSE and then redirects again to your custom search engine. However, this mechanism does not work correctly in some environments (as far as I have researched, macOS). Enabling this setting will redirect directly to your custom search engine without bypassing CSP restrictions. However, for some Safari search engines with strict CSP settings (as far as I have researched, DuckDuckGo), it will not be possible to use a search engine with POST.")
             }
             
             Section {
