@@ -134,12 +134,18 @@ class Tutorial {
                         // Show warning if Yandex is selected in Ukraine
                         if currentRegion == "UA" {
                             Text("Yandex is currently unavailable.")
-                            Spacer()
                         }
-                        
-                        // Queries leak warning
-                        Text("The search engine you select here can know your search queries. If you have concerns about privacy, you can prevent search query leaks by turning on \"CSE Content Blocker\" in Safari Settings.")
                     }
+                }
+                
+                // Queries leak warning
+                Section {}
+                header: {
+                    Text("Privacy Tips")
+                        .textCase(.none)
+                }
+                footer: {
+                    Text("The search engine you select here can see your search queries. If you have privacy concerns, enable \"CSE Content Blocker\" in Safari settings to prevent query leaks. Note that the Content Blocker may disable some features and might not work properly on certain Safari versions.")
                 }
             }
             .navigationBarBackButtonHidden(true)

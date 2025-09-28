@@ -6895,6 +6895,76 @@
         }
       }
     },
+    "Privacy Tips" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نصائح للخصوصية"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datenschutz-Tipps"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consejos de privacidad"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conseils de confidentialité"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プライバシーに関するヒント"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프라이버시 팁"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dicas de Privacidade"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Советы по конфиденциальности"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поради щодо конфіденційності"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "隐私小贴士"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "隱私小資訊"
+          }
+        }
+      }
+    },
     "Privacy Policy" : {
       "localizations" : {
         "ar" : {
@@ -9620,72 +9690,72 @@
         }
       }
     },
-    "The search engine you select here can know your search queries. If you have concerns about privacy, you can prevent search query leaks by turning on \"CSE Content Blocker\" in Safari Settings." : {
+    "The search engine you select here can see your search queries. If you have privacy concerns, enable \"CSE Content Blocker\" in Safari settings to prevent query leaks. Note that the Content Blocker may disable some features and might not work properly on certain Safari versions." : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "محرك البحث الذي تحدده هنا يمكنه معرفة استفسارات البحث الخاصة بك. إذا كنت قلقًا بشأن الخصوصية، يمكنك منع تسريب استفسارات البحث عن طريق تشغيل \"CSE Content Blocker\" في إعدادات سفاري."
+            "value" : "يمكن لمحرك البحث الذي تختاره هنا مشاهدة استفسارات البحث الخاصة بك. إذا كانت لديك مخاوف بشأن الخصوصية، فعّل \"CSE Content Blocker\" في إعدادات سفاري لمنع تسرب الاستفسارات. لاحظ أن حاجب المحتوى قد يعطل بعض الوظائف وقد لا يعمل بشكل صحيح في إصدارات معينة من سفاري."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die Suchmaschine, die Sie hier auswählen, kann Ihre Suchanfragen kennen. Wenn Sie Bedenken bezüglich des Datenschutzes haben, können Sie das Durchsickern von Suchanfragen verhindern, indem Sie \"CSE Content Blocker\" in den Safari-Einstellungen aktivieren."
+            "value" : "Die Suchmaschine, die Sie hier auswählen, kann Ihre Suchanfragen einsehen. Falls Sie Datenschutzbedenken haben, aktivieren Sie \"CSE Content Blocker\" in den Safari-Einstellungen, um Datenabfluss zu verhindern. Beachten Sie, dass der Content Blocker einige Funktionen deaktivieren kann und möglicherweise nicht korrekt in bestimmten Safari-Versionen funktioniert."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "El buscador que selecciones aquí puede conocer tus consultas de búsqueda. Si te preocupa la privacidad, puedes prevenir la fuga de consultas de búsqueda activando \"CSE Content Blocker\" en la configuración de Safari."
+            "value" : "El motor de búsqueda que selecciones aquí puede ver tus consultas. Si tienes preocupaciones sobre la privacidad, activa \"CSE Content Blocker\" en la configuración de Safari para evitar filtraciones. Ten en cuenta que el bloqueador de contenido puede desactivar algunas funciones y podría no funcionar correctamente en ciertas versiones de Safari."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le moteur de recherche que vous sélectionnez ici peut connaître vos requêtes de recherche. Si vous avez des inquiétudes concernant la confidentialité, vous pouvez empêcher la fuite de requêtes de recherche en activant \"CSE Content Blocker\" dans les paramètres Safari."
+            "value" : "Le moteur de recherche que vous choisissez ici peut voir vos requêtes de recherche. Si vous avez des préoccupations concernant la confidentialité, activez \"CSE Content Blocker\" dans les paramètres Safari pour éviter les fuites de données. Notez que le bloqueur de contenu peut désactiver certaines fonctionnalités et pourrait ne pas fonctionner correctement sur certaines versions de Safari."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ここで選択した検索エンジンはあなたの検索内容を知ることができます。プライバシーに対する懸念がある場合は、Safariの設定で「CSE Content Blocker」をオンにすることで検索クエリの漏洩を防ぐことができます。"
+            "value" : "ここで選択した検索エンジンはあなたの検索内容を知ることができます。プライバシーに対する懸念がある場合は、Safariの設定で「CSE Content Blocker」をオンにすることで検索クエリの漏洩を防ぐことができます。ただし、これを利用すると一部の機能が利用できなくなる可能性があり、Safariのバージョンによっては正しく動作しない可能性があります。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "여기서 선택한 검색 엔진은 당신의 검색 내용을 알 수 있습니다. 프라이버시가 걱정된다면 Safari 설정에서 \"CSE Content Blocker\"를 활성화하여 검색 쿼리 유출을 방지할 수 있습니다."
+            "value" : "여기서 선택한 검색 엔진이 당신의 검색어를 볼 수 있습니다. 개인정보 보호에 대한 우려가 있으시다면 Safari 설정에서 \"CSE Content Blocker\"를 활성화하여 검색어 유출을 방지하세요. 콘텐츠 차단기는 일부 기능을 비활성화할 수 있으며 특정 Safari 버전에서 제대로 작동하지 않을 수 있습니다."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O buscador que você selecionar aqui pode saber suas consultas de busca. Se você tiver preocupações sobre privacidade, pode prevenir o vazamento de consultas de busca ativando \"CSE Content Blocker\" nas configurações do Safari."
+            "value" : "O mecanismo de busca que você seleciona aqui pode ver suas consultas. Se você tem preocupações sobre privacidade, ative \"CSE Content Blocker\" nas configurações do Safari para evitar vazamentos. Note que o bloqueador de conteúdo pode desativar alguns recursos e pode não funcionar corretamente em certas versões do Safari."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Выбранная вами поисковая система может знать ваши поисковые запросы. Если вы беспокоитесь о конфиденциальности, вы можете предотвратить утечку поисковых запросов, включив \"CSE Content Blocker\" в настройках Safari."
+            "value" : "Поисковая система, которую вы выбираете здесь, может видеть ваши поисковые запросы. Если у вас есть опасения по поводу конфиденциальности, включите \"CSE Content Blocker\" в настройках Safari, чтобы предотвратить утечки. Обратите внимание, что блокировщик контента может отключить некоторые функции и может не работать корректно в определенных версиях Safari."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Пошукова система, яку ви обираєте тут, може знати ваші пошукові запити. Якщо ви турбуєтеся про конфіденційність, ви можете запобігти витоку пошукових запитів, увімкнувши \"CSE Content Blocker\" в налаштуваннях Safari."
+            "value" : "Пошукова система, яку ви обираєте тут, може бачити ваші пошукові запити. Якщо у вас є занепокоєння щодо конфіденційності, увімкніть \"CSE Content Blocker\" в налаштуваннях Safari для запобігання витокам. Зверніть увагу, що блокувальник контенту може вимкнути деякі функції і може не працювати коректно в певних версіях Safari."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "您在此选择的搜索引擎可以知道您的搜索查询。如果您担心隐私问题，可以在 Safari 浏览器设置中开启 \"CSE Content Blocker\" 来防止搜索查询泄露。"
+            "value" : "您在这里选择的搜索引擎可以查看您的搜索查询。如果您对隐私有所担忧，请在 Safari 浏览器设置中启用 \"CSE Content Blocker\" 来防止查询泄露。请注意，内容阻挡器可能会禁用某些功能，并且在某些 Safari 版本中可能无法正常工作。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "您在此選擇的搜尋引擎可以知道您的搜尋查詢。如果您對隱私有所顧慮，可以在 Safari 設定中開啟 \"CSE Content Blocker\" 來防止搜尋查詢外洩。"
+            "value" : "您在這裡選擇的搜尋引擎可以查看您的搜尋查詢。如果您對隱私有所擔憂，請在 Safari 設定中啟用 \"CSE Content Blocker\" 來防止查詢外洩。請注意，內容阻擋器可能會停用某些功能，並且在某些 Safari 版本中可能無法正常運作。"
           }
         }
       }
