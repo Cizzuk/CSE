@@ -188,7 +188,24 @@ class CSEDataManager {
         }
         
         // Remove check parameters
-        cseData.url = removeSafariCheckParameters(from: cseData.url)
+        if let engine = SafariSEs.engineForURL(cseData.url),
+           let urlComponents = URLComponents(string: cseData.url),
+           let host = urlComponents.host,
+           let checkParam = engine.checkParameter(for: host) {
+            
+            var result = cseData.url
+            
+            // Remove parameters with matching values
+            for value in checkParam.values {
+                let paramPattern = "\(checkParam.param)=\(value)"
+                // Remove parameter with preceding & or ?
+                result = result.replacingOccurrences(of: "&\(paramPattern)", with: "")
+                result = result.replacingOccurrences(of: "?\(paramPattern)&", with: "?")
+                result = result.replacingOccurrences(of: "?\(paramPattern)", with: "")
+            }
+            
+            cseData.url = result
+        }
         
         // Clean up post data
         cseData.post = cleanPostData(cseData.post)
@@ -324,29 +341,6 @@ class CSEDataManager {
         }
         
         return postDataDict
-    }
-    
-    class func removeSafariCheckParameters(from urlString: String) -> String {
-        // Find matching engine from URL
-        guard let engine = SafariSEs.engineForURL(urlString),
-              let urlComponents = URLComponents(string: urlString),
-              let host = urlComponents.host,
-              let checkParam = engine.checkParameter(for: host) else {
-            return urlString
-        }
-        
-        var result = urlString
-        
-        // Remove parameters with matching values
-        for value in checkParam.values {
-            let paramPattern = "\(checkParam.param)=\(value)"
-            // Remove parameter with preceding & or ?
-            result = result.replacingOccurrences(of: "&\(paramPattern)", with: "")
-            result = result.replacingOccurrences(of: "?\(paramPattern)&", with: "?")
-            result = result.replacingOccurrences(of: "?\(paramPattern)", with: "")
-        }
-        
-        return result
     }
     
     enum jsonError: LocalizedError {
