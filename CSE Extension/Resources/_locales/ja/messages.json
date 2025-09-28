@@ -1,6 +1,6 @@
 {
     "extension_description": {
-        "message": "Safariの検索エンジンをカスタマイズするための拡張機能です。",
+        "message": "Safariの検索エンジンをカスタマイズするための拡張機能です。権限の設定はCSEアプリの「Safariの設定」を参考に行なってください。",
         "description": "Description of what the extension does."
     }
 }
