@@ -1,6 +1,6 @@
 {
     "extension_description": {
-        "message": "Safari 延伸功能，用於自訂搜尋引擎。請參考 CSE 應用程式中的「Safari 設定」來設定權限。",
+        "message": "Safari 延伸功能，用於自訂搜尋引擎。",
         "description": "Description of what the extension does."
     }
 }

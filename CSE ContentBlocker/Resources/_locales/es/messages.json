@@ -1,6 +1,6 @@
 {
     "extension_description": {
-        "message": "Bloquea el motor de búsqueda de Safari para prevenir fugas de tus consultas. Algunas funciones pueden no estar disponibles y puede no funcionar correctamente en algunas versiones de Safari.",
+        "message": "Bloquea el motor de búsqueda de Safari para prevenir fugas de tus consultas.",
         "description": "Description of what the extension does."
     }
 }
