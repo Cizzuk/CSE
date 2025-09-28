@@ -184,6 +184,9 @@ class CSEDataManager {
             }
         }
         
+        // Remove check parameters
+        cseData.url = removeSafariCheckParameters(from: cseData.url)
+        
         // Clean up post data
         cseData.post = cleanPostData(cseData.post)
         
@@ -318,6 +321,47 @@ class CSEDataManager {
         }
         
         return postDataDict
+    }
+    
+    class func removeSafariCheckParameters(from urlString: String) -> String {
+        // Parse URL
+        guard let urlComponents = URLComponents(string: urlString),
+              let host = urlComponents.host,
+              var queryItems = urlComponents.queryItems else {
+            return urlString
+        }
+        
+        // Define check parameters to remove based on domain
+        let parametersToRemove: [String]
+        switch host {
+        case "www.google.com", "www.google.cn":
+            parametersToRemove = ["client"]
+        case "search.yahoo.com", "search.yahoo.co.jp":
+            parametersToRemove = ["fr"]
+        case "www.bing.com":
+            parametersToRemove = ["form"]
+        case "duckduckgo.com":
+            parametersToRemove = ["t"]
+        case "www.ecosia.org":
+            parametersToRemove = ["tts"]
+        case "m.baidu.com":
+            parametersToRemove = ["from"]
+        case "www.baidu.com":
+            parametersToRemove = ["tn"]
+        default:
+            return urlString
+        }
+        
+        // Remove check parameters
+        queryItems.removeAll { queryItem in
+            parametersToRemove.contains(queryItem.name)
+        }
+        
+        // Reconstruct URL
+        var modifiedComponents = urlComponents
+        modifiedComponents.queryItems = queryItems.isEmpty ? nil : queryItems
+        
+        return modifiedComponents.url?.absoluteString ?? urlString
     }
     
     enum jsonError: LocalizedError {
