@@ -189,23 +189,27 @@ class CSEDataManager {
         
         // Remove check parameters
         if let engine = SafariSEs.engineForURL(cseData.url),
-           let urlComponents = URLComponents(string: cseData.url),
+           var urlComponents = URLComponents(string: cseData.url),
            let host = urlComponents.host,
            let checkParam = engine.checkParameter(for: host) {
             
-            var result = cseData.url
-            
-            // Remove parameters with matching values
-            for value in checkParam.values {
-                let paramPattern = "\(checkParam.param)=\(value)"
-                // Remove parameter with preceding & or ?
-                result = result.replacingOccurrences(of: "&\(paramPattern)", with: "")
-                result = result.replacingOccurrences(of: "?\(paramPattern)&", with: "?")
-                result = result.replacingOccurrences(of: "?\(paramPattern)", with: "")
+            // Remove check parameters from URL query items
+            if var queryItems = urlComponents.queryItems {
+                queryItems = queryItems.filter { queryItem in
+                    guard queryItem.name == checkParam.param else { return true }
+                    return !checkParam.values.contains(queryItem.value ?? "")
+                }
+                urlComponents.queryItems = queryItems.isEmpty ? nil : queryItems
             }
             
-            cseData.url = result
+            // Rebuild URL
+            if let rebuiltURL = urlComponents.url?.absoluteString {
+                cseData.url = rebuiltURL
+            }
         }
+        
+        // Remove percent encoding
+        cseData.url = cseData.url.removingPercentEncoding ?? cseData.url
         
         // Clean up post data
         cseData.post = cleanPostData(cseData.post)
