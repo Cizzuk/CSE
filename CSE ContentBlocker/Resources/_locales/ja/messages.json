@@ -1,6 +1,6 @@
 {
     "extension_description": {
-        "message": "Safariのデフォルトの検索エンジンをブロックして、検索クエリが漏洩することを防ぎます。一部の機能が利用できなくなる可能性があり、Safariのバージョンによっては正しく動作しない可能性があります。",
+        "message": "Safariのデフォルトの検索エンジンをブロックして、検索クエリが漏洩することを防ぎます。",
         "description": "Description of what the extension does."
     }
 }

@@ -1,6 +1,6 @@
 {
     "extension_description": {
-        "message": "Розширення Safari для налаштування пошукової системи. Дивіться \"Параметри Safari\" в додатку CSE для налаштування дозволів.",
+        "message": "Розширення Safari для налаштування пошукової системи.",
         "description": "Description of what the extension does."
     }
 }

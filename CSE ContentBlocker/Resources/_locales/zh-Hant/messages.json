@@ -1,6 +1,6 @@
 {
     "extension_description": {
-        "message": "阻止 Safari 的搜尋引擎以防止搜尋查詢外洩。某些功能可能無法使用，並且在某些 Safari 版本中可能無法正常運作。",
+        "message": "阻止 Safari 的搜尋引擎以防止搜尋查詢外洩。",
         "description": "Description of what the extension does."
     }
 }
