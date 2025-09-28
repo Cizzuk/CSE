@@ -1,0 +1,13 @@
+[
+    {
+        "id": 1,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://yandex.ru/search*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    }
+]

@@ -1,0 +1,68 @@
+[
+    {
+        "id": 1,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://*.search.yahoo.com/search*fr=iphone*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    },
+    {
+        "id": 2,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://*.search.yahoo.com/search*fr=appsfch2*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    },
+    {
+        "id": 3,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://*.search.yahoo.com/search*fr=osx*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    },
+    {
+        "id": 4,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://search.yahoo.co.jp/search*fr=iphone*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    },
+    {
+        "id": 5,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://search.yahoo.co.jp/search*fr=appsfch2*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    },
+    {
+        "id": 6,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://search.yahoo.co.jp/search*fr=osx*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    }
+]

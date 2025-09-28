@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://www.google.com/search*client=safari*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    },
+    {
+        "id": 2,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://www.google.cn/search*client=safari*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    }
+]

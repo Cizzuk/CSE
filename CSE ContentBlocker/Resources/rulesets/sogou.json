@@ -1,0 +1,13 @@
+[
+    {
+        "id": 1,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://*.sogou.com/web*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    }
+]
