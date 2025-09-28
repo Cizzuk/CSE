@@ -138,7 +138,7 @@ class Tutorial {
                         }
                         
                         // Queries leak warning
-                        Text("The search engine you select here can know your search queries. If you have concerns about privacy, I recommend choosing DuckDuckGo.")
+                        Text("The search engine you select here can know your search queries. If you have concerns about privacy, you can prevent search query leaks by turning on \"CSE Content Blocker\" in Safari Settings.")
                     }
                 }
             }
@@ -178,9 +178,9 @@ class Tutorial {
                     UITemplates.OpenSettingsButton()
                 } footer: {
                     #if targetEnvironment(macCatalyst)
-                    Text("Open Safari, go to Safari → Settings..., select 'Extensions' tab and enable CSE. Then 'Allow' the following webpage from 'Edit Websites...' button.")
+                    Text("Open Safari, go to Safari → Settings..., select 'Extensions' tab and enable CSE Extension. Then 'Allow' the following webpage from 'Edit Websites...' button.")
                     #else
-                    Text("Go to Settings → Apps → Safari → Extensions → Customize Search Engine and allow extension. Then 'Allow' the following webpage.")
+                    Text("Go to Settings → Apps → Safari → Extensions → CSE Extension and allow extension. Then 'Allow' the following webpage.")
                     #endif
                 }
                 

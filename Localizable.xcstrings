@@ -4696,72 +4696,72 @@
         }
       }
     },
-    "Go to Settings → Apps → Safari → Extensions → Customize Search Engine and allow extension. Then 'Allow' the following webpage." : {
+    "Go to Settings → Apps → Safari → Extensions → CSE Extension and allow extension. Then 'Allow' the following webpage." : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "انتقل إلى الإعدادات ← التطبيقات ← سفاري ← الملحقات ← Customize Search Engine واسمح بالإضافة. ثم 'السماح' لصفحة الويب التالية."
+            "value" : "انتقل إلى الإعدادات ← التطبيقات ← سفاري ← الملحقات ← CSE Extension واسمح بالإضافة. ثم 'السماح' لصفحة الويب التالية."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gehen Sie zu Einstellungen → Apps → Safari → Erweiterungen → Customize Search Engine und erlauben Sie die Erweiterung. Dann „Zulassen“ der folgenden Webseite."
+            "value" : "Gehen Sie zu Einstellungen → Apps → Safari → Erweiterungen → CSE Extension und erlauben Sie die Erweiterung. Dann „Zulassen“ der folgenden Webseite."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vaya a Configuración → Apps → Safari → Extensiones → Customize Search Engine y permita la extensión. A continuación, 'Permitir' la siguiente página web."
+            "value" : "Vaya a Configuración → Apps → Safari → Extensiones → CSE Extension y permita la extensión. A continuación, 'Permitir' la siguiente página web."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Allez dans Réglages → Apps → Safari → Extensions → Customize Search Engine et autorisez l'extension. Autorisez ensuite la page web suivante."
+            "value" : "Allez dans Réglages → Apps → Safari → Extensions → CSE Extension et autorisez l'extension. Autorisez ensuite la page web suivante."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "設定 → アプリ → Safari → 拡張機能 → Customize Search Engine から拡張機能を許可してください。それから以下のWebページへのアクセスを「許可」してください。"
+            "value" : "設定 → アプリ → Safari → 拡張機能 → CSE Extension から拡張機能を許可してください。それから以下のWebページへのアクセスを「許可」してください。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "설정 → 앱 → Safari → 확장 프로그램 → Customize Search Engine 에서 확장 프로그램을 허용해 주세요. 그리고 다음 웹페이지에 대한 접근을 '허용'하십시오."
+            "value" : "설정 → 앱 → Safari → 확장 프로그램 → CSE Extension 에서 확장 프로그램을 허용해 주세요. 그리고 다음 웹페이지에 대한 접근을 '허용'하십시오."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vá para Ajustes → Apps → Safari → Extensões → Customize Search Engine e permita a extensão. Depois, 'Permitir' a seguinte página da web."
+            "value" : "Vá para Ajustes → Apps → Safari → Extensões → CSE Extension e permita a extensão. Depois, 'Permitir' a seguinte página da web."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Перейдите в Настройки → Приложения → Safari → Расширения → Customize Search Engine и разрешите расширение. Затем «Разрешить» следующую веб-страницу."
+            "value" : "Перейдите в Настройки → Приложения → Safari → Расширения → CSE Extension и разрешите расширение. Затем «Разрешить» следующую веб-страницу."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Перейдіть до Параметри → Програми → Safari → Розширення → Customize Search Engine і дозвольте розширення. Потім «Дозволити» наступну веб-сторінку."
+            "value" : "Перейдіть до Параметри → Програми → Safari → Розширення → CSE Extension і дозвольте розширення. Потім «Дозволити» наступну веб-сторінку."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "进入设置 → App → Safari 浏览器 → 扩展 → Customize Search Engine 并允许扩展。然后 “允许 ”以下网页。"
+            "value" : "进入设置 → App → Safari 浏览器 → 扩展 → CSE Extension 并允许扩展。然后 “允许 ”以下网页。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "前往「設定」→「App」→「Safari」→「延伸功能」→「Customize Search Engine」並允許擴充套件。然後「允許」以下網頁。"
+            "value" : "前往「設定」→「App」→「Safari」→「延伸功能」→「CSE Extension」並允許擴充套件。然後「允許」以下網頁。"
           }
         }
       }
@@ -6415,72 +6415,72 @@
         }
       }
     },
-    "Open Safari, go to Safari → Settings..., select 'Extensions' tab and enable CSE. Then 'Allow' the following webpage from 'Edit Websites...' button." : {
+    "Open Safari, go to Safari → Settings..., select 'Extensions' tab and enable CSE Extension. Then 'Allow' the following webpage from 'Edit Websites...' button." : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "افتح سفاري، انتقل إلى سفاري ← الإعدادات...، وحدد علامة تبويب 'الملحقات' وقم بتمكين CSE. ثم 'السماح' لصفحة الويب التالية من زر 'تحرير المواقع...'."
+            "value" : "افتح سفاري، انتقل إلى سفاري ← الإعدادات...، وحدد علامة تبويب 'الملحقات' وقم بتمكين CSE Extension. ثم 'السماح' لصفحة الويب التالية من زر 'تحرير المواقع...'."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öffnen Sie Safari, gehen Sie zu Safari → Einstellungen..., wählen Sie den Reiter „Erweiterungen“ und erlauben Sie CSE. Dann lassen Sie die folgende Webseite über die Schaltfläche „Websites bearbeiten...“ zu."
+            "value" : "Öffnen Sie Safari, gehen Sie zu Safari → Einstellungen..., wählen Sie den Reiter „Erweiterungen“ und erlauben Sie CSE Extension. Dann lassen Sie die folgende Webseite über die Schaltfläche „Websites bearbeiten...“ zu."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abra Safari, vaya a Safari → Ajustes..., seleccione la pestaña «Extensiones» y active CSE. A continuación, «Permitir» la siguiente página web desde el botón «Editar sitios web...»."
+            "value" : "Abra Safari, vaya a Safari → Ajustes..., seleccione la pestaña «Extensiones» y active CSE Extension. A continuación, «Permitir» la siguiente página web desde el botón «Editar sitios web...»."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ouvrez Safari, allez dans Safari → Réglages..., sélectionnez l'onglet « Extensions » et activez le CSE. Autorisez ensuite la page web suivante à partir du bouton « Modifier les sites web pour afficher... »."
+            "value" : "Ouvrez Safari, allez dans Safari → Réglages..., sélectionnez l'onglet « Extensions » et activez le CSE Extension. Autorisez ensuite la page web suivante à partir du bouton « Modifier les sites web pour afficher... »."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Safariを開いて、Safari → 設定… と選択して「拡張機能」タブからCSEを有効にします。それから以下のWebページを「Webサイトを編集」ボタンから「許可」してください。"
+            "value" : "Safariを開いて、Safari → 設定… と選択して「拡張機能」タブからCSE Extensionを有効にします。それから以下のWebページを「Webサイトを編集」ボタンから「許可」してください。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Safari를 열고 Safari → 설정...을 선택한 후 '확장 프로그램' 탭에서 CSE를 활성화합니다. 그리고 아래 웹페이지를 '웹 사이트 편집…' 버튼에서 '허용'하십시오."
+            "value" : "Safari를 열고 Safari → 설정...을 선택한 후 '확장 프로그램' 탭에서 CSE Extension을 활성화합니다. 그리고 아래 웹페이지를 '웹 사이트 편집…' 버튼에서 '허용'하십시오."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abra o Safari, vá para Safari → Definições..., selecione a aba 'Extensões' e ative o CSE. Depois, 'Permitir' a seguinte página da web no botão 'Editar Sites...'."
+            "value" : "Abra o Safari, vá para Safari → Definições..., selecione a aba 'Extensões' e ative o CSE Extension. Depois, 'Permitir' a seguinte página da web no botão 'Editar Sites...'."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Откройте Safari, перейдите в меню Safari → Настройки..., выберите вкладку «Расширения» и включите CSE. Затем «Разрешить» следующую веб-страницу с помощью кнопки «Изменить веб-сайты...»."
+            "value" : "Откройте Safari, перейдите в меню Safari → Настройки..., выберите вкладку «Расширения» и включите CSE Extension. Затем «Разрешить» следующую веб-страницу с помощью кнопки «Изменить веб-сайты...»."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Відкрийте Safari, перейдіть до Safari → Параметри..., виберіть вкладку «Розширення» та увімкніть CSE. Потім «Дозволити» наступну веб-сторінку за допомогою кнопки «Редагувати вебсайти...»."
+            "value" : "Відкрийте Safari, перейдіть до Safari → Параметри..., виберіть вкладку «Розширення» та увімкніть CSE Extension. Потім «Дозволити» наступну веб-сторінку за допомогою кнопки «Редагувати вебсайти...»."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "打开 Safari 浏览器，进入 Safari 浏览器 → 设置...，选择 “扩展 ”选项卡并启用 CSE。然后从 “编辑网站... ”按钮中 “允许 ”以下网页。"
+            "value" : "打开 Safari 浏览器，进入 Safari 浏览器 → 设置...，选择 “扩展 ”选项卡并启用 CSE Extension。然后从 “编辑网站... ”按钮中 “允许 ”以下网页。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "開啟 Safari，前往「Safari」→「設定...」，選擇「延伸功能」標籤並啟用 CSE。然後從「編輯網站...」按鈕中「允許」以下網頁。"
+            "value" : "開啟 Safari，前往「Safari」→「設定...」，選擇「延伸功能」標籤並啟用 CSE Extension。然後從「編輯網站...」按鈕中「允許」以下網頁。"
           }
         }
       }
@@ -9630,72 +9630,72 @@
         }
       }
     },
-    "The search engine you select here can know your search queries. If you have concerns about privacy, I recommend choosing DuckDuckGo." : {
+    "The search engine you select here can know your search queries. If you have concerns about privacy, you can prevent search query leaks by turning on \"CSE Content Blocker\" in Safari Settings." : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "محرك البحث الذي تحدده هنا يمكنه معرفة استفسارات البحث الخاصة بك. إذا كنت قلقًا بشأن الخصوصية، أوصي باختيار DuckDuckGo."
+            "value" : "محرك البحث الذي تحدده هنا يمكنه معرفة استفسارات البحث الخاصة بك. إذا كنت قلقًا بشأن الخصوصية، يمكنك منع تسريب استفسارات البحث عن طريق تشغيل \"CSE Content Blocker\" في إعدادات سفاري."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die Suchmaschine, die Sie hier auswählen, kann Ihre Suchanfragen kennen. Wenn Sie Bedenken bezüglich des Datenschutzes haben, empfehle ich Ihnen DuckDuckGo."
+            "value" : "Die Suchmaschine, die Sie hier auswählen, kann Ihre Suchanfragen kennen. Wenn Sie Bedenken bezüglich des Datenschutzes haben, können Sie das Durchsickern von Suchanfragen verhindern, indem Sie \"CSE Content Blocker\" in den Safari-Einstellungen aktivieren."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "El buscador que selecciones aquí puede conocer tus consultas de búsqueda. Si te preocupa la privacidad, te recomiendo que elijas DuckDuckGo."
+            "value" : "El buscador que selecciones aquí puede conocer tus consultas de búsqueda. Si te preocupa la privacidad, puedes prevenir la fuga de consultas de búsqueda activando \"CSE Content Blocker\" en la configuración de Safari."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le moteur de recherche que vous sélectionnez ici peut connaître vos requêtes de recherche. Si vous avez des inquiétudes concernant la confidentialité, je vous recommande de choisir DuckDuckGo."
+            "value" : "Le moteur de recherche que vous sélectionnez ici peut connaître vos requêtes de recherche. Si vous avez des inquiétudes concernant la confidentialité, vous pouvez empêcher la fuite de requêtes de recherche en activant \"CSE Content Blocker\" dans les paramètres Safari."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ここで選択した検索エンジンはあなたの検索内容を知ることができます。プライバシーについて懸念がある場合はDuckDuckGoを選択することを推奨します。"
+            "value" : "ここで選択した検索エンジンはあなたの検索内容を知ることができます。プライバシーに対する懸念がある場合は、Safariの設定で「CSE Content Blocker」をオンにすることで検索クエリの漏洩を防ぐことができます。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "여기서 선택한 검색 엔진은 당신의 검색 내용을 알 수 있습니다. 프라이버시가 걱정된다면 DuckDuckGo를 선택하는 것이 좋다."
+            "value" : "여기서 선택한 검색 엔진은 당신의 검색 내용을 알 수 있습니다. 프라이버시가 걱정된다면 Safari 설정에서 \"CSE Content Blocker\"를 활성화하여 검색 쿼리 유출을 방지할 수 있습니다."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O buscador que você selecionar aqui pode saber suas consultas de busca. Se você tiver preocupações sobre privacidade, recomendo escolher o DuckDuckGo."
+            "value" : "O buscador que você selecionar aqui pode saber suas consultas de busca. Se você tiver preocupações sobre privacidade, pode prevenir o vazamento de consultas de busca ativando \"CSE Content Blocker\" nas configurações do Safari."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Выбранная вами поисковая система может знать ваши поисковые запросы. Если вы беспокоитесь о конфиденциальности, я рекомендую выбрать DuckDuckGo."
+            "value" : "Выбранная вами поисковая система может знать ваши поисковые запросы. Если вы беспокоитесь о конфиденциальности, вы можете предотвратить утечку поисковых запросов, включив \"CSE Content Blocker\" в настройках Safari."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Пошукова система, яку ви обираєте тут, може знати ваші пошукові запити. Якщо ви турбуєтеся про конфіденційність, я рекомендую вибрати DuckDuckGo."
+            "value" : "Пошукова система, яку ви обираєте тут, може знати ваші пошукові запити. Якщо ви турбуєтеся про конфіденційність, ви можете запобігти витоку пошукових запитів, увімкнувши \"CSE Content Blocker\" в налаштуваннях Safari."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "您在此选择的搜索引擎可以知道您的搜索查询。如果你担心隐私问题，我建议你选择 DuckDuckGo。"
+            "value" : "您在此选择的搜索引擎可以知道您的搜索查询。如果您担心隐私问题，可以在 Safari 浏览器设置中开启 \"CSE Content Blocker\" 来防止搜索查询泄露。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "您在此選擇的搜尋引擎可以知道您的搜尋查詢。如果您對隱私有所顧慮，我建議您選擇 DuckDuckGo。"
+            "value" : "您在此選擇的搜尋引擎可以知道您的搜尋查詢。如果您對隱私有所顧慮，可以在 Safari 設定中開啟 \"CSE Content Blocker\" 來防止搜尋查詢外洩。"
           }
         }
       }
