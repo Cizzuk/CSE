@@ -84,8 +84,9 @@ if (isWebRequestAvailable) {
 } else {
     // If webRequest is not available, handle all via tabs.onUpdated
     browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
+        if (processedUrls[tabId] === tabData.url) { return; }
         if (!tabData.url) { return; }
-        if (updatedData.status !== "loading" && updatedData.url === undefined) { return; }
+        if (tabData.status !== "loading") { return; }
         
         requestHandler(tabId, tabData.url, tabData.incognito, true);
     });
