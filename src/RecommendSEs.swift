@@ -8,7 +8,17 @@
 import Foundation
 
 class RecommendSEs {
+    
+    // Helpers
     private static let currentRegion = Locale.current.region?.identifier
+    
+    private static func containsLanguage(_ languageCode: String) -> Bool {
+        let preferredLanguages = Locale.preferredLanguages
+        return preferredLanguages.contains { language in
+            let locale = Locale(identifier: language)
+            return locale.language.languageCode?.identifier == languageCode
+        }
+    }
     
     class func quickCSEs() -> [String: CSEDataManager.CSEData] {
         let preferredLanguages = Locale.preferredLanguages
@@ -156,13 +166,13 @@ class RecommendSEs {
                 keyword: "qwant",
                 url: "https://www.qwant.com/?q=%s"
             ))
-        } else if currentRegion == "KR" {
+        } else if currentRegion == "KR" || containsLanguage("ko") {
             popCSEs.append(CSEDataManager.CSEData(
                 name: "NAVER",
                 keyword: "naver",
                 url: "https://search.naver.com/search.naver?query=%s"
             ))
-        } else if currentRegion == "VN" {
+        } else if currentRegion == "VN" || containsLanguage("vi") {
             popCSEs.append(CSEDataManager.CSEData(
                 name: "Cốc Cốc",
                 keyword: "coc",
@@ -191,7 +201,9 @@ class RecommendSEs {
                 keyword: "gpt",
                 url: "https://chatgpt.com/?q=%s&hints=search",
             ))
-        } else if currentRegion == "CN" {
+        }
+        
+        if currentRegion == "CN" || containsLanguage("zh") {
             aiCSEs.append(CSEDataManager.CSEData(
                 name: "百度AI搜索",
                 keyword: "baiduai",
@@ -203,30 +215,18 @@ class RecommendSEs {
     
     class func recommendNormalCSEList() -> [CSEDataManager.CSEData] {
         var normalCSEs: [CSEDataManager.CSEData] = []
+        
         var localizedYahoo = CSEDataManager.CSEData(
             name: "Yahoo",
             keyword: "y",
             url: "https://search.yahoo.com/search?p=%s",
         )
-        
         if currentRegion == "JP" {
             localizedYahoo = CSEDataManager.CSEData(
                 name: "Yahoo! Japan",
                 keyword: "y",
                 url: "https://search.yahoo.co.jp/search?p=%s"
             )
-        } else if currentRegion == "CN" {
-            normalCSEs.append(CSEDataManager.CSEData(
-                name: "百度",
-                keyword: "baidu",
-                url: "https://www.baidu.com/s?wd=%s"
-            ))
-        } else if currentRegion == "RU" {
-            normalCSEs.append(CSEDataManager.CSEData(
-                name: "Яндекс",
-                keyword: "yandex",
-                url: "https://yandex.ru/search/?text=%s"
-            ))
         }
         
         normalCSEs.append(contentsOf:[
@@ -253,6 +253,22 @@ class RecommendSEs {
                 url: "https://www.ecosia.org/search?q=%s",
             )
         ])
+        
+        if currentRegion == "CN" || containsLanguage("zh") {
+            normalCSEs.append(CSEDataManager.CSEData(
+                name: "百度",
+                keyword: "baidu",
+                url: "https://www.baidu.com/s?wd=%s"
+            ))
+        }
+        
+        if currentRegion == "RU" || containsLanguage("ru") {
+            normalCSEs.append(CSEDataManager.CSEData(
+                name: "Яндекс",
+                keyword: "yandex",
+                url: "https://yandex.ru/search/?text=%s"
+            ))
+        }
         
         return normalCSEs
     }
