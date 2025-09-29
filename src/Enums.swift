@@ -36,26 +36,22 @@ enum SafariSEs: String, CaseIterable {
         }
     }
     
-    var domains: [String] {
-        switch self {
-        case .google: return ["www.google.com", "www.google.cn"]
-        case .bing: return ["www.bing.com"]
-        case .yahoo: return ["search.yahoo.com", "search.yahoo.co.jp"]
-        case .duckduckgo: return ["duckduckgo.com"]
-        case .ecosia: return ["www.ecosia.org"]
-        case .baidu: return ["m.baidu.com", "www.baidu.com"]
-        case .sogou: return ["m.sogou.com", "www.sogou.com"]
-        case .yandex: return ["yandex.ru"]
-        case .so360search: return ["m.so.com", "www.so.com"]
-        }
-    }
-
-    var domain: String {
+    var domains: String {
         let region = Self.currentRegion
         switch self {
-        case .google: return region == "CN" ? "google.cn" : "google.com"
+        case .google: 
+            if region == "CN" {
+                return "google.cn"
+            } else {
+                return "google.com"
+            }
         case .bing: return "bing.com"
-        case .yahoo: return region == "JP" ? "search.yahoo.co.jp" : "search.yahoo.com"
+        case .yahoo:
+            if region == "JP" {
+                return "search.yahoo.co.jp"
+            } else {
+                return "search.yahoo.com"
+            }
         case .duckduckgo: return "duckduckgo.com"
         case .ecosia: return "ecosia.org"
         case .baidu: return "baidu.com"
@@ -63,6 +59,12 @@ enum SafariSEs: String, CaseIterable {
         case .yandex: return "yandex.ru"
         case .so360search: return "so.com"
         }
+    }
+    
+    func matchesHost(_ host: String) -> Bool {
+        let targetDomain = self.domains
+        // Ignore subdomains
+        return host == targetDomain || host.hasSuffix("." + targetDomain)
     }
     
     func path(for domain: String) -> String {
@@ -103,7 +105,6 @@ enum SafariSEs: String, CaseIterable {
             return CheckItem(param: "tts", values: ["st_asaf_iphone", "st_asaf_macos", "st_asaf_ipad"])
         case .baidu:
             if domain == "m.baidu.com" {
-                return CheckItem(param: "from", values: ["1000539d"])
             } else {
                 return CheckItem(param: "tn", values: ["84053098_dg", "84053098_4_dg"])
             }
