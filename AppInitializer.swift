@@ -15,13 +15,16 @@ class AppInitializer {
     class func initializeApp() {
         let lastVersion = userDefaults.string(forKey: "LastAppVer") ?? ""
         let lastRegion = userDefaults.string(forKey: "LastRegion") ?? ""
+        let lastLanguages = userDefaults.array(forKey: "LastLanguages") as? [String] ?? []
+        let currentLanguages = Locale.preferredLanguages
         
         let isFirstLaunch = lastVersion.isEmpty
         let isVersionChanged = lastVersion != currentVersion
         let isRegionChanged = lastRegion != currentRegion
+        let isLanguageChanged = Set(lastLanguages) != Set(currentLanguages)
         
         // Early exit if no changes detected
-        if !isFirstLaunch && !isVersionChanged && !isRegionChanged {
+        if !isFirstLaunch && !isVersionChanged && !isRegionChanged && !isLanguageChanged {
             return
         }
         
@@ -50,8 +53,8 @@ class AppInitializer {
             }
         }
         
-        // Region Update Tasks
-        if isFirstLaunch || isRegionChanged {
+        // Langs & Region Update Tasks
+        if isFirstLaunch || isRegionChanged || isLanguageChanged {
             let searchengine = userDefaults.string(forKey: "searchengine")
             let privsearchengine = userDefaults.string(forKey: "privsearchengine")
             correctSafariSE(searchengine: searchengine, privsearchengine: privsearchengine)
@@ -69,6 +72,7 @@ class AppInitializer {
         // Save Current State
         userDefaults.set(currentVersion, forKey: "LastAppVer")
         userDefaults.set(currentRegion, forKey: "LastRegion")
+        userDefaults.set(currentLanguages, forKey: "LastLanguages")
     }
     
     private class func migrateOldCSESettings() {
