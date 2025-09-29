@@ -301,9 +301,9 @@
 		BE5CEB632DAE8DCE003A2F3E /* src */ = {
 			isa = PBXGroup;
 			children = (
-				BED82F132E31EF8F00820213 /* Extensions.swift */,
 				BE5B59392E4456C700D63E34 /* SafariSEs.swift */,
 				BE5CEB612DAE8DC6003A2F3E /* RecommendSEs.swift */,
+				BED82F132E31EF8F00820213 /* Extensions.swift */,
 				BE8F7FE02DE31A43003906F4 /* UITemplates.swift */,
 			);
 			path = src;
