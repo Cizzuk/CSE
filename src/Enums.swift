@@ -96,7 +96,7 @@ enum SafariSEs: String, CaseIterable {
         case .google:
             return CheckItem(param: "client", values: ["safari"])
         case .yahoo:
-            return CheckItem(param: "fr", values: ["iphone", "appsfch2", "osx"])
+            return CheckItem(param: "fr", values: ["iphone", "osx", "aaplw", "appsfch2"])
         case .bing:
             return CheckItem(param: "form", values: ["APIPH1", "APMCS1", "APIPA1"])
         case .duckduckgo:
@@ -107,12 +107,12 @@ enum SafariSEs: String, CaseIterable {
             if domain == "m.baidu.com" {
                 return CheckItem(param: "from", values: ["1099b", "1000539d"])
             } else {
-                return CheckItem(param: "tn", values: ["84053098_dg", "84053098_4_dg"])
+                return CheckItem(param: "tn", values: ["84053098_dg", "84053098_4_dg", "84053098_1_dg"])
             }
         case .so360search:
-            return CheckItem(param: "src", values: ["src", "home"])
+            return CheckItem(param: "src", values: ["home", "pclm"])
         case .yandex:
-            return CheckItem(param: "clid", values: ["1906591", "1906725"])
+            return CheckItem(param: "clid", values: ["1906591", "1906725", "1906723"])
         case .sogou: return nil
         }
     }
