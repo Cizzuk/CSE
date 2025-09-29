@@ -25,14 +25,14 @@ enum SafariSEs: String, CaseIterable {
     var displayName: String {
         switch self {
         case .google: return "Google"
-        case .bing: return "Bing"
         case .yahoo: return "Yahoo"
+        case .bing: return "Bing"
         case .duckduckgo: return "DuckDuckGo"
         case .ecosia: return "Ecosia"
         case .baidu: return "Baidu"
         case .sogou: return "Sogou"
-        case .yandex: return "Yandex"
         case .so360search: return "360 Search"
+        case .yandex: return "Yandex"
         }
     }
     
@@ -45,19 +45,19 @@ enum SafariSEs: String, CaseIterable {
             } else {
                 return "google.com"
             }
-        case .bing: return "bing.com"
         case .yahoo:
             if region == "JP" {
                 return "search.yahoo.co.jp"
             } else {
                 return "search.yahoo.com"
             }
+        case .bing: return "bing.com"
         case .duckduckgo: return "duckduckgo.com"
         case .ecosia: return "ecosia.org"
         case .baidu: return "baidu.com"
         case .sogou: return "sogou.com"
-        case .yandex: return "yandex.ru"
         case .so360search: return "so.com"
+        case .yandex: return "yandex.ru"
         }
     }
     
@@ -69,7 +69,7 @@ enum SafariSEs: String, CaseIterable {
     
     func path(for domain: String) -> String {
         switch self {
-        case .google, .bing, .yahoo, .ecosia, .yandex: return "/search"
+        case .google, .yahoo, .bing, .ecosia, .yandex: return "/search"
         case .duckduckgo: return "/"
         case .baidu, .so360search: return "/s"
         case .sogou: return domain == "m.sogou.com" ? "/web/sl" : "/web"
@@ -105,29 +105,31 @@ enum SafariSEs: String, CaseIterable {
             return CheckItem(param: "tts", values: ["st_asaf_iphone", "st_asaf_macos", "st_asaf_ipad"])
         case .baidu:
             if domain == "m.baidu.com" {
+                return CheckItem(param: "from", values: ["1099b", "1000539d"])
             } else {
                 return CheckItem(param: "tn", values: ["84053098_dg", "84053098_4_dg"])
             }
+        case .so360search:
+            return CheckItem(param: "src", values: ["src", "home"])
         case .yandex:
             return CheckItem(param: "clid", values: ["1906591", "1906725"])
-        case .sogou, .so360search: return nil
+        case .sogou: return nil
         }
     }
     
     var isAvailable: Bool {
-        let region = Self.currentRegion
         switch self {
-        case .baidu, .sogou, .so360search:
-            return region == "CN" || Self.containsLanguage("zh")
-        case .yandex:
-            return region == "RU" || Self.containsLanguage("ru")
         case .google:
             if #unavailable(iOS 17.0, macOS 14.0) {
-                return false
+                return Self.currentRegion == "US"
             }
             return true
-        case .bing, .yahoo, .duckduckgo, .ecosia:
+        case .yahoo, .bing, .duckduckgo, .ecosia:
             return true
+        case .baidu, .sogou, .so360search:
+            return Self.currentRegion == "CN" || Self.containsLanguage("zh")
+        case .yandex:
+            return Self.currentRegion == "RU" || Self.containsLanguage("ru")
         }
     }
     
@@ -137,7 +139,9 @@ enum SafariSEs: String, CaseIterable {
     
     static var `default`: SafariSEs {
         if currentRegion == "CN" { return .baidu }
-        if #unavailable(iOS 17.0, macOS 14.0) { return .bing }
+        if #unavailable(iOS 17.0, macOS 14.0) {
+            if currentRegion != "US" { return .bing }
+        }
         return .google
     }
 
