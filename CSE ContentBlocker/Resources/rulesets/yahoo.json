@@ -39,7 +39,7 @@
             "type": "block"
         },
         "condition": {
-            "urlFilter": "*://search.yahoo.co.jp/search*fr=iphone*",
+            "urlFilter": "*://*.search.yahoo.com/search*fr=aaplw*",
             "resourceTypes": ["main_frame", "sub_frame"]
         }
     },
@@ -50,7 +50,7 @@
             "type": "block"
         },
         "condition": {
-            "urlFilter": "*://search.yahoo.co.jp/search*fr=appsfch2*",
+            "urlFilter": "*://search.yahoo.co.jp/search*fr=iphone*",
             "resourceTypes": ["main_frame", "sub_frame"]
         }
     },
@@ -61,7 +61,73 @@
             "type": "block"
         },
         "condition": {
+            "urlFilter": "*://search.yahoo.co.jp/search*fr=appsfch2*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    },
+    {
+        "id": 7,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
             "urlFilter": "*://search.yahoo.co.jp/search*fr=osx*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    },
+    {
+        "id": 8,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://search.yahoo.co.jp/search*fr=aaplw*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    },
+    {
+        "id": 9,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://search.yahoo.com/search*fr=iphone*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    },
+    {
+        "id": 10,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://search.yahoo.com/search*fr=appsfch2*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    },
+    {
+        "id": 11,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://search.yahoo.com/search*fr=osx*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    },
+    {
+        "id": 12,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://search.yahoo.com/search*fr=aaplw*",
             "resourceTypes": ["main_frame", "sub_frame"]
         }
     }

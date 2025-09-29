@@ -6,7 +6,40 @@
             "type": "block"
         },
         "condition": {
-            "urlFilter": "*://*.so.com/s*",
+            "urlFilter": "*://www.so.com/s*src=home*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    },
+    {
+        "id": 2,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://www.so.com/s*src=pclm*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    },
+    {
+        "id": 3,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://m.so.com/s*src=home*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    },
+    {
+        "id": 4,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://m.so.com/s*src=pclm*",
             "resourceTypes": ["main_frame", "sub_frame"]
         }
     }

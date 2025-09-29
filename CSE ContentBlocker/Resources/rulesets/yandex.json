@@ -6,7 +6,29 @@
             "type": "block"
         },
         "condition": {
-            "urlFilter": "*://yandex.ru/search*",
+            "urlFilter": "*://yandex.ru/search*clid=1906591*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    },
+    {
+        "id": 2,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://yandex.ru/search*clid=1906725*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    },
+    {
+        "id": 3,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://yandex.ru/search*clid=1906723*",
             "resourceTypes": ["main_frame", "sub_frame"]
         }
     }
