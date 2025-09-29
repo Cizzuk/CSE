@@ -49,6 +49,21 @@ enum SafariSEs: String, CaseIterable {
         case .so360search: return ["m.so.com", "www.so.com"]
         }
     }
+
+    var domain: String {
+        let region = Self.currentRegion
+        switch self {
+        case .google: return region == "CN" ? "google.cn" : "google.com"
+        case .bing: return "bing.com"
+        case .yahoo: return region == "JP" ? "search.yahoo.co.jp" : "search.yahoo.com"
+        case .duckduckgo: return "duckduckgo.com"
+        case .ecosia: return "ecosia.org"
+        case .baidu: return "baidu.com"
+        case .sogou: return "sogou.com"
+        case .yandex: return "yandex.ru"
+        case .so360search: return "so.com"
+        }
+    }
     
     func path(for domain: String) -> String {
         switch self {
@@ -95,21 +110,6 @@ enum SafariSEs: String, CaseIterable {
         case .yandex:
             return CheckItem(param: "clid", values: ["1906591", "1906725"])
         case .sogou, .so360search: return nil
-        }
-    }
-    
-    var domain: String {
-        let region = Self.currentRegion
-        switch self {
-        case .google: return region == "CN" ? "google.cn" : "google.com"
-        case .bing: return "bing.com"
-        case .yahoo: return region == "JP" ? "search.yahoo.co.jp" : "search.yahoo.com"
-        case .duckduckgo: return "duckduckgo.com"
-        case .ecosia: return "ecosia.org"
-        case .baidu: return "baidu.com"
-        case .sogou: return "sogou.com"
-        case .yandex: return "yandex.ru"
-        case .so360search: return "so.com"
         }
     }
     
