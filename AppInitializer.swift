@@ -30,6 +30,7 @@ class AppInitializer {
         
         // First Launch Setup
         if isFirstLaunch {
+            userDefaults.set(true, forKey: "needFirstTutorial")
             userDefaults.set(SafariSEs.default.rawValue, forKey: "searchengine")
             userDefaults.set(SafariSEs.private.rawValue, forKey: "privsearchengine")
             userDefaults.set(true, forKey: "alsousepriv")
