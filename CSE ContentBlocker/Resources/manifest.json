@@ -52,9 +52,9 @@
                 "path": "rulesets/sogou.json"
             },
             {
-                "id": "360search",
+                "id": "so360search",
                 "enabled": true,
-                "path": "rulesets/360search.json"
+                "path": "rulesets/so360search.json"
             },
             {
                 "id": "yandex",
