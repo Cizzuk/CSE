@@ -193,7 +193,7 @@ class CSEDataManager {
             
             // Find matching search engine and get check parameters to remove
             for engine in SafariSEs.allCases {
-                if engine.domains.contains(host),
+                if engine.matchesHost(host),
                    let checkParam = engine.checkParameter(for: host) {
                     
                     // Remove check parameters from URL query items
