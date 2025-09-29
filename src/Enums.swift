@@ -113,20 +113,6 @@ enum SafariSEs: String, CaseIterable {
         }
     }
     
-    static func engineForURL(_ urlString: String) -> SafariSEs? {
-        guard let urlComponents = URLComponents(string: urlString),
-              let host = urlComponents.host else {
-            return nil
-        }
-        
-        for engine in SafariSEs.allCases {
-            if engine.domains.contains(host) {
-                return engine
-            }
-        }
-        return nil
-    }
-    
     var isAvailable: Bool {
         let region = Self.currentRegion
         switch self {

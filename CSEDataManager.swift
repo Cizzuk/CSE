@@ -187,24 +187,30 @@ class CSEDataManager {
             }
         }
         
-        // Remove check parameters
-        if let engine = SafariSEs.engineForURL(cseData.url),
-           var urlComponents = URLComponents(string: cseData.url),
-           let host = urlComponents.host,
-           let checkParam = engine.checkParameter(for: host) {
+        // Remove check parameters from Safari search engine URLs
+        if var urlComponents = URLComponents(string: cseData.url),
+           let host = urlComponents.host {
             
-            // Remove check parameters from URL query items
-            if var queryItems = urlComponents.queryItems {
-                queryItems = queryItems.filter { queryItem in
-                    guard queryItem.name == checkParam.param else { return true }
-                    return !checkParam.values.contains(queryItem.value ?? "")
+            // Find matching search engine and get check parameters to remove
+            for engine in SafariSEs.allCases {
+                if engine.domains.contains(host),
+                   let checkParam = engine.checkParameter(for: host) {
+                    
+                    // Remove check parameters from URL query items
+                    if var queryItems = urlComponents.queryItems {
+                        queryItems = queryItems.filter { queryItem in
+                            guard queryItem.name == checkParam.param else { return true }
+                            return !checkParam.values.contains(queryItem.value ?? "")
+                        }
+                        urlComponents.queryItems = queryItems.isEmpty ? nil : queryItems
+                    }
+                    
+                    // Rebuild URL
+                    if let rebuiltURL = urlComponents.url?.absoluteString {
+                        cseData.url = rebuiltURL
+                    }
+                    break
                 }
-                urlComponents.queryItems = queryItems.isEmpty ? nil : queryItems
-            }
-            
-            // Rebuild URL
-            if let rebuiltURL = urlComponents.url?.absoluteString {
-                cseData.url = rebuiltURL
             }
         }
         
