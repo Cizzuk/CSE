@@ -55,6 +55,7 @@ class AppInitializer {
             let searchengine = userDefaults.string(forKey: "searchengine")
             let privsearchengine = userDefaults.string(forKey: "privsearchengine")
             correctSafariSE(searchengine: searchengine, privsearchengine: privsearchengine)
+            userDefaults.set(true, forKey: "needSafariTutorial")
         }
         
         // If both tutorials are needed, only keep needFirstTutorial
@@ -88,14 +89,12 @@ class AppInitializer {
         // Correct Default SE
         if let se = currentSE, !se.isAvailable {
             userDefaults.set(SafariSEs.default.rawValue, forKey: "searchengine")
-            userDefaults.set(true, forKey: "needSafariTutorial")
         }
         
         if #available(iOS 17.0, macOS 14.0, *) {
             // Correct Private SE
             if let se = currentPrivateSE, !se.isAvailable {
                 userDefaults.set(SafariSEs.private.rawValue, forKey: "privsearchengine")
-                userDefaults.set(true, forKey: "needSafariTutorial")
             }
         } else {
             userDefaults.set(true, forKey: "alsousepriv")
