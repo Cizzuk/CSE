@@ -123,16 +123,15 @@ class Tutorial {
                         #else
                         Text("You can find these settings in Settings → Apps → Safari.")
                         #endif
-                        Spacer()
                         
-                        if #unavailable(iOS 17.0, macOS 14.0) {
-                            // Show warning if Google is selected in iOS 16 or earlier.
+                        if !SafariSEs.availableEngines.contains(.google) {
+                            Spacer()
                             Text("If you set Google as your search engine, please set another search engine.")
                         }
-                        Spacer()
                         
-                        // Show warning if Yandex is selected in Ukraine
+                        // Yandex warning for Ukraine
                         if currentRegion == "UA" {
+                            Spacer()
                             Text("Yandex is currently unavailable.")
                         }
                     }
