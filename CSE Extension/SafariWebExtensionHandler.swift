@@ -98,45 +98,12 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     }
     
     // ↓ --- Search Engine Checker --- ↓
-    
-    struct CheckItem {
-        let param: String
-        let ids: [String]
-    }
-
-    struct Engine {
-        let domains: [String]
-        let path: (String) -> String
-        let param: (String) -> String
-        let check: ((String) -> CheckItem?)?
-    }
-
-    // Safari Default SEs
-    let engines: [String: Engine] = {
-        var engineDict: [String: Engine] = [:]
-        
-        for safariEngine in SafariSEs.allCases {
-            engineDict[safariEngine.rawValue] = Engine(
-                domains: safariEngine.domains,
-                path: { domain in safariEngine.path(for: domain) },
-                param: { domain in safariEngine.queryParam(for: domain) },
-                check: { domain in
-                    if let checkParam = safariEngine.checkParameter(for: domain) {
-                        return CheckItem(param: checkParam.param, ids: checkParam.values)
-                    }
-                    return nil
-                }
-            )
-        }
-        
-        return engineDict
-    }()
 
     // Engine Checker
     func checkEngineURL(engineName: String, url: String) -> Bool {
         
         // Is engine available?
-        guard let engine = engines[engineName] else {
+        guard let engine = SafariSEs(rawValue: engineName) else {
             return false
         }
         
@@ -147,12 +114,12 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         }
 
         // Domain Check
-        guard engine.domains.contains(host) else {
+        guard engine.matchesHost(host) else {
             return false
         }
 
         // Path Check
-        let expectedPath = engine.path(host)
+        let expectedPath = engine.path(for: host)
         guard urlComponents.path.hasPrefix(expectedPath) else {
             return false
         }
@@ -161,17 +128,16 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         let queryItems = urlComponents.queryItems ?? []
         
         // Get Param
-        let mainParamKey = engine.param(host)
+        let mainParamKey = engine.queryParam(for: host)
         guard queryItems.contains(where: { $0.name == mainParamKey }) else {
             return false
         }
         
         // Param Check
         if !userDefaults.bool(forKey: "adv_disablechecker"),
-           let checkFn = engine.check,
-           let checkInfo = checkFn(host) {
-            let checkParamKey = checkInfo.param
-            let possibleIds = checkInfo.ids
+           let checkParam = engine.checkParameter(for: host) {
+            let checkParamKey = checkParam.param
+            let possibleIds = checkParam.values
             let checkItemExists = queryItems.contains {
                 $0.name == checkParamKey && ( $0.value.map(possibleIds.contains) ?? false )
             }
@@ -184,18 +150,18 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     
     func getQueryValue(engineName: String, url: String) -> String? {
         // Is engine available?
-        guard let engine = engines[engineName] else {
+        guard let engine = SafariSEs(rawValue: engineName) else {
             return nil
         }
         
         guard let urlComponents = URLComponents(string: url),
               let host = urlComponents.host,
-              engine.domains.contains(host) else {
+              engine.matchesHost(host) else {
             return nil
         }
         
         // Get param name
-        let mainParam = engine.param(host)
+        let mainParam = engine.queryParam(for: host)
         
         // Get %encoded query
         guard let encodedQuery = urlComponents.percentEncodedQuery else { return nil }
