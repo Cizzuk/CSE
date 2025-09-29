@@ -27,8 +27,8 @@ class AppInitializer {
         
         // First Launch Setup
         if isFirstLaunch {
-            userDefaults.set(SafariSEs.defaultForRegion(region: currentRegion).rawValue, forKey: "searchengine")
-            userDefaults.set(SafariSEs.privateForRegion(region: currentRegion).rawValue, forKey: "privsearchengine")
+            userDefaults.set(SafariSEs.default.rawValue, forKey: "searchengine")
+            userDefaults.set(SafariSEs.private.rawValue, forKey: "privsearchengine")
             userDefaults.set(true, forKey: "alsousepriv")
             userDefaults.set(true, forKey: "iCloudAutoBackup")
             
@@ -86,15 +86,15 @@ class AppInitializer {
         let currentPrivateSE = SafariSEs(rawValue: privsearchengine ?? "")
 
         // Correct Default SE
-        if let se = currentSE, !se.isAvailable(forRegion: currentRegion) {
-            userDefaults.set(SafariSEs.defaultForRegion(region: currentRegion).rawValue, forKey: "searchengine")
+        if let se = currentSE, !se.isAvailable {
+            userDefaults.set(SafariSEs.default.rawValue, forKey: "searchengine")
             userDefaults.set(true, forKey: "needSafariTutorial")
         }
         
         if #available(iOS 17.0, macOS 14.0, *) {
             // Correct Private SE
-            if let se = currentPrivateSE, !se.isAvailable(forRegion: currentRegion) {
-                userDefaults.set(SafariSEs.privateForRegion(region: currentRegion).rawValue, forKey: "privsearchengine")
+            if let se = currentPrivateSE, !se.isAvailable {
+                userDefaults.set(SafariSEs.private.rawValue, forKey: "privsearchengine")
                 userDefaults.set(true, forKey: "needSafariTutorial")
             }
         } else {

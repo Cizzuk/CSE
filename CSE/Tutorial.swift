@@ -93,7 +93,7 @@ class Tutorial {
                 Section {
                     // Default SE
                     Picker("Search Engine", selection: $searchengine) {
-                        ForEach(SafariSEs.availableEngines(forRegion: currentRegion), id: \.self.rawValue) { engine in
+                        ForEach(SafariSEs.availableEngines, id: \.self.rawValue) { engine in
                             Text(engine.displayName).tag(engine.rawValue)
                         }
                     }
@@ -110,7 +110,7 @@ class Tutorial {
                         // Private SE
                         if !alsouseprivToggle {
                             Picker("Private Search Engine", selection: $privsearchengine) {
-                                ForEach(SafariSEs.availableEngines(forRegion: currentRegion), id: \.self.rawValue) { engine in
+                                ForEach(SafariSEs.availableEngines, id: \.self.rawValue) { engine in
                                     Text(engine.displayName).tag(engine.rawValue)
                                 }
                             }
@@ -196,10 +196,10 @@ class Tutorial {
                     let selectedPrivateSE = SafariSEs(rawValue: privsearchengine)
                     
                     if let se = selectedSE {
-                        Text(se.domain(forRegion: currentRegion))
+                        Text(se.domain)
                     }
                     if !alsousepriv, let se = selectedPrivateSE, se != selectedSE {
-                        Text(se.domain(forRegion: currentRegion))
+                        Text(se.domain)
                     }
                 } footer: { Text("And recommended to Deny for Other Websites.") }
             }

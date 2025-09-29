@@ -8,6 +8,18 @@
 import Foundation
 
 enum SafariSEs: String, CaseIterable {
+    
+    // Helpers
+    private static let currentRegion = Locale.current.region?.identifier
+    
+    private static func containsLanguage(_ languageCode: String) -> Bool {
+        let preferredLanguages = Locale.preferredLanguages
+        return preferredLanguages.contains { language in
+            let locale = Locale(identifier: language)
+            return locale.language.languageCode?.identifier == languageCode
+        }
+    }
+    
     case google, bing, yahoo, duckduckgo, ecosia, baidu, sogou, yandex, so360search = "360search"
     
     var displayName: String {
@@ -80,11 +92,14 @@ enum SafariSEs: String, CaseIterable {
             } else {
                 return CheckItem(param: "tn", values: ["84053098_dg", "84053098_4_dg"])
             }
-        case .sogou, .yandex, .so360search: return nil
+        case .yandex:
+            return CheckItem(param: "clid", values: ["1906591", "1906725"])
+        case .sogou, .so360search: return nil
         }
     }
     
-    func domain(forRegion region: String?) -> String {
+    var domain: String {
+        let region = Self.currentRegion
         switch self {
         case .google: return region == "CN" ? "google.cn" : "google.com"
         case .bing: return "bing.com"
@@ -112,12 +127,13 @@ enum SafariSEs: String, CaseIterable {
         return nil
     }
     
-    func isAvailable(forRegion region: String?) -> Bool {
+    var isAvailable: Bool {
+        let region = Self.currentRegion
         switch self {
         case .baidu, .sogou, .so360search:
-            return region == "CN"
+            return region == "CN" || Self.containsLanguage("zh")
         case .yandex:
-            return region == "RU"
+            return region == "RU" || Self.containsLanguage("ru")
         case .google:
             if #unavailable(iOS 17.0, macOS 14.0) {
                 return false
@@ -128,17 +144,17 @@ enum SafariSEs: String, CaseIterable {
         }
     }
     
-    static func availableEngines(forRegion region: String?) -> [SafariSEs] {
-        return SafariSEs.allCases.filter { $0.isAvailable(forRegion: region) }
+    static var availableEngines: [SafariSEs] {
+        return SafariSEs.allCases.filter { $0.isAvailable }
     }
     
-    static func defaultForRegion(region: String?) -> SafariSEs {
-        if region == "CN" { return .baidu }
+    static var `default`: SafariSEs {
+        if currentRegion == "CN" { return .baidu }
         if #unavailable(iOS 17.0, macOS 14.0) { return .bing }
         return .google
     }
 
-    static func privateForRegion(region: String?) -> SafariSEs {
+    static var `private`: SafariSEs {
         return .duckduckgo
     }
 }

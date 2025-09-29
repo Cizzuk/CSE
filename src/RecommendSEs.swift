@@ -8,7 +8,7 @@
 import Foundation
 
 class RecommendSEs {
-    static let currentRegion = Locale.current.region?.identifier
+    private static let currentRegion = Locale.current.region?.identifier
     
     class func quickCSEs() -> [String: CSEDataManager.CSEData] {
         let preferredLanguages = Locale.preferredLanguages
