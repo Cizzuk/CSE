@@ -41,23 +41,23 @@ enum SafariSEs: String, CaseIterable {
         switch self {
         case .google: 
             if region == "CN" {
-                return "google.cn"
+                return "google.cn" // www.google.cn
             } else {
-                return "google.com"
+                return "google.com" // www.google.com
             }
         case .yahoo:
             if region == "JP" {
-                return "search.yahoo.co.jp"
+                return "search.yahoo.co.jp" // search.yahoo.co.jp
             } else {
-                return "search.yahoo.com"
+                return "search.yahoo.com" // search.yahoo.com, *.search.yahoo.com
             }
-        case .bing: return "bing.com"
-        case .duckduckgo: return "duckduckgo.com"
-        case .ecosia: return "ecosia.org"
-        case .baidu: return "baidu.com"
-        case .sogou: return "sogou.com"
-        case .so360search: return "so.com"
-        case .yandex: return "yandex.ru"
+        case .bing: return "bing.com" // www.bing.com
+        case .duckduckgo: return "duckduckgo.com" // duckduckgo.com
+        case .ecosia: return "ecosia.org" // www.ecosia.org
+        case .baidu: return "baidu.com" // m.baidu.com, www.baidu.com
+        case .sogou: return "sogou.com" // m.sogou.com, www.sogou.com
+        case .so360search: return "so.com" // m.so.com, www.so.com
+        case .yandex: return "yandex.ru" // yandex.ru
         }
     }
     
