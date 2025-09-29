@@ -22,7 +22,7 @@ enum SafariSEs: String, CaseIterable {
     
     case google, yahoo, bing, baidu, yandex, duckduckgo, sogou, so360search = "360search", ecosia
     
-    var displayName: String {
+    var displayName: String.LocalizationValue {
         switch self {
         case .google: return "Google"
         case .yahoo: return "Yahoo"

@@ -94,7 +94,7 @@ class Tutorial {
                     // Default SE
                     Picker("Search Engine", selection: $searchengine) {
                         ForEach(SafariSEs.availableEngines, id: \.self.rawValue) { engine in
-                            Text(engine.displayName).tag(engine.rawValue)
+                            Text(String(localized: engine.displayName)).tag(engine.rawValue)
                         }
                     }
                     
@@ -111,7 +111,7 @@ class Tutorial {
                         if !alsouseprivToggle {
                             Picker("Private Search Engine", selection: $privsearchengine) {
                                 ForEach(SafariSEs.availableEngines, id: \.self.rawValue) { engine in
-                                    Text(engine.displayName).tag(engine.rawValue)
+                                    Text(String(localized: engine.displayName)).tag(engine.rawValue)
                                 }
                             }
                         }
