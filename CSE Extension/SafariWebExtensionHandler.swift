@@ -25,9 +25,9 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             return sendData(context: context, data: ["type" : "error"])
         }
         
-        let searchengine: String = userDefaults.string(forKey: "searchengine") ?? "google"
+        let searchengine: String = userDefaults.string(forKey: "searchengine") ?? SafariSEs.default.rawValue
         let alsousepriv: Bool = userDefaults.bool(forKey: "alsousepriv")
-        let privsearchengine: String = userDefaults.string(forKey: "privsearchengine") ?? "duckduckgo"
+        let privsearchengine: String = userDefaults.string(forKey: "privsearchengine") ?? SafariSEs.private.rawValue
         let useDefaultCSE: Bool = userDefaults.bool(forKey: "useDefaultCSE")
         let usePrivateCSE: Bool = userDefaults.bool(forKey: "usePrivateCSE")
         
