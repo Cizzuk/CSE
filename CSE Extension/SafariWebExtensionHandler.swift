@@ -153,7 +153,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
 
         // Path Check
         let expectedPath = engine.path(host)
-        guard urlComponents.path == expectedPath else {
+        guard urlComponents.path.hasPrefix(expectedPath) else {
             return false
         }
 
