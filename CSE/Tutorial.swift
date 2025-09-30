@@ -195,10 +195,14 @@ class Tutorial {
                     let selectedPrivateSE = SafariSEs(rawValue: privsearchengine)
                     
                     if let se = selectedSE {
-                        Text(se.domains)
+                        ForEach(se.domains, id: \.self) { domain in
+                            Text(domain)
+                        }
                     }
                     if !alsousepriv, let se = selectedPrivateSE, se != selectedSE {
-                        Text(se.domains)
+                        ForEach(se.domains, id: \.self) { domain in
+                            Text(domain)
+                        }
                     }
                 } footer: { Text("And recommended to Deny for Other Websites.") }
             }
