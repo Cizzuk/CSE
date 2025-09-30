@@ -36,35 +36,36 @@ enum SafariSEs: String, CaseIterable {
         }
     }
     
-    var domains: String {
+    var domains: [String] {
         let region = Self.currentRegion
         switch self {
         case .google: 
             if region == "CN" {
-                return "google.cn" // www.google.cn
+                return ["google.cn"] // www.google.cn
             } else {
-                return "google.com" // www.google.com
+                return ["google.com"] // www.google.com
             }
         case .yahoo:
             if region == "JP" {
-                return "search.yahoo.co.jp" // search.yahoo.co.jp
+                return ["search.yahoo.co.jp", "search.yahoo.com"] // search.yahoo.co.jp, jp.search.yahoo.com
             } else {
-                return "search.yahoo.com" // search.yahoo.com, *.search.yahoo.com
+                return ["search.yahoo.com"] // search.yahoo.com, *.search.yahoo.com
             }
-        case .bing: return "bing.com" // www.bing.com
-        case .duckduckgo: return "duckduckgo.com" // duckduckgo.com
-        case .ecosia: return "ecosia.org" // www.ecosia.org
-        case .baidu: return "baidu.com" // m.baidu.com, www.baidu.com
-        case .sogou: return "sogou.com" // m.sogou.com, www.sogou.com
-        case .so360search: return "so.com" // m.so.com, www.so.com
-        case .yandex: return "yandex.ru" // yandex.ru
+        case .bing: return ["bing.com"] // www.bing.com
+        case .duckduckgo: return ["duckduckgo.com"] // duckduckgo.com
+        case .ecosia: return ["ecosia.org"] // www.ecosia.org
+        case .baidu: return ["baidu.com"] // m.baidu.com, www.baidu.com
+        case .sogou: return ["sogou.com"] // m.sogou.com, www.sogou.com
+        case .so360search: return ["so.com"] // m.so.com, www.so.com
+        case .yandex: return ["yandex.ru"] // yandex.ru
         }
     }
     
     func matchesHost(_ host: String) -> Bool {
-        let targetDomain = self.domains
         // Ignore subdomains
-        return host == targetDomain || host.hasSuffix("." + targetDomain)
+        return domains.contains { domain in
+            host == domain || host.hasSuffix("." + domain)
+        }
     }
     
     func path(for domain: String) -> String {
