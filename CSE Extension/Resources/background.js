@@ -76,21 +76,8 @@ if (isWebRequestAvailable) {
 
         requestHandler(tabId, tabData.url, tabData.incognito, true);
     });
-
-} else {
-    // If webRequest is not available, handle all via tabs.onUpdated
-    browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
-        if (processedUrls[tabId] === tabData.url) { return; }
-        if (!tabData.url) { return; }
-        if (tabData.status !== "loading") { return; }
-        
-        requestHandler(tabId, tabData.url, tabData.incognito, true);
-    });
-    console.log("webRequest API is not available, using tabs.onUpdated for all navigation detection");
-}
-
-// Detect web requests (only if webRequest API is available)
-if (isWebRequestAvailable) {
+    
+    // Detect web requests
     browser.webRequest.onBeforeRequest.addListener((details) => {
         const tabId = details.tabId;
         const url = details.url;
@@ -102,6 +89,17 @@ if (isWebRequestAvailable) {
         
         requestHandler(tabId, url, incognitoStatus[tabId], false);
     });
+
+} else {
+    // If webRequest is not available, handle all via tabs.onUpdated
+    browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
+        if (processedUrls[tabId] === tabData.url) { return; }
+        if (!tabData.url) { return; }
+        if (tabData.status !== "loading") { return; }
+        
+        requestHandler(tabId, tabData.url, tabData.incognito, true);
+    });
+    console.log("webRequest API is not available, using tabs.onUpdated for all navigation detection");
 }
 
 // Handle post_redirector
