@@ -129,8 +129,8 @@ class Tutorial {
                             Text("If you set Google as your search engine, please set another search engine.")
                         }
                         
-                        // Yandex warning for Ukraine
-                        if currentRegion == "UA" {
+                        // Yandex warning
+                        if currentRegion == "UA" || currentRegion == "TR" {
                             Spacer()
                             Text("Yandex is currently unavailable.")
                         }

@@ -130,7 +130,7 @@ enum SafariSEs: String, CaseIterable {
         case .baidu, .sogou, .so360search:
             return Self.currentRegion == "CN" || Self.containsLanguage("zh")
         case .yandex:
-            return Self.currentRegion == "RU" || Self.containsLanguage("ru")
+            return Self.currentRegion == "RU" || Self.currentRegion == "KZ" || Self.currentRegion == "BY" || Self.containsLanguage("ru")
         }
     }
     
