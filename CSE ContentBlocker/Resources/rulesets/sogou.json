@@ -6,7 +6,18 @@
             "type": "block"
         },
         "condition": {
-            "urlFilter": "*://*.sogou.com/web*",
+            "urlFilter": "*://www.sogou.com/web*query=*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    },
+    {
+        "id": 2,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://m.sogou.com/web/sl*keyword=*",
             "resourceTypes": ["main_frame", "sub_frame"]
         }
     }

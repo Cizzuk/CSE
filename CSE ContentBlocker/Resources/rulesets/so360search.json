@@ -6,7 +6,7 @@
             "type": "block"
         },
         "condition": {
-            "urlFilter": "*://yandex.ru/search*clid=1906591*",
+            "urlFilter": "*://www.so.com/s*src=home*",
             "resourceTypes": ["main_frame", "sub_frame"]
         }
     },
@@ -17,7 +17,7 @@
             "type": "block"
         },
         "condition": {
-            "urlFilter": "*://yandex.ru/search*clid=1906725*",
+            "urlFilter": "*://www.so.com/s*src=pclm*",
             "resourceTypes": ["main_frame", "sub_frame"]
         }
     },
@@ -28,7 +28,18 @@
             "type": "block"
         },
         "condition": {
-            "urlFilter": "*://yandex.ru/search*clid=1906723*",
+            "urlFilter": "*://m.so.com/s*src=home*",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    },
+    {
+        "id": 4,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://m.so.com/s*src=pclm*",
             "resourceTypes": ["main_frame", "sub_frame"]
         }
     }

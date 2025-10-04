@@ -117,12 +117,22 @@ class CSEDataManager {
     
     class func CSEDataToDictionary(_ data: CSEData) -> [String: Any] {
         var dict: [String: Any] = [:]
-        dict["name"] = data.name
-        dict["keyword"] = data.keyword
-        dict["url"] = data.url
+        if !data.name.isEmpty {
+            dict["name"] = data.name
+        }
+        if !data.keyword.isEmpty {
+            dict["keyword"] = data.keyword
+        }
+        if !data.url.isEmpty {
+            dict["url"] = data.url
+        }
+        if !data.post.isEmpty {
+            dict["post"] = data.post
+        }
         dict["disablePercentEncoding"] = data.disablePercentEncoding
-        dict["maxQueryLength"] = data.maxQueryLength
-        dict["post"] = data.post
+        if let maxQueryLength = data.maxQueryLength, maxQueryLength >= 0 {
+            dict["maxQueryLength"] = maxQueryLength
+        }
         return dict
     }
     
@@ -187,24 +197,30 @@ class CSEDataManager {
             }
         }
         
-        // Remove check parameters
-        if let engine = SafariSEs.engineForURL(cseData.url),
-           var urlComponents = URLComponents(string: cseData.url),
-           let host = urlComponents.host,
-           let checkParam = engine.checkParameter(for: host) {
+        // Remove check parameters from Safari search engine URLs
+        if var urlComponents = URLComponents(string: cseData.url),
+           let host = urlComponents.host {
             
-            // Remove check parameters from URL query items
-            if var queryItems = urlComponents.queryItems {
-                queryItems = queryItems.filter { queryItem in
-                    guard queryItem.name == checkParam.param else { return true }
-                    return !checkParam.values.contains(queryItem.value ?? "")
+            // Find matching search engine and get check parameters to remove
+            for engine in SafariSEs.allCases {
+                if engine.matchesHost(host),
+                   let checkParam = engine.checkParameter(for: host) {
+                    
+                    // Remove check parameters from URL query items
+                    if var queryItems = urlComponents.queryItems {
+                        queryItems = queryItems.filter { queryItem in
+                            guard queryItem.name == checkParam.param else { return true }
+                            return !checkParam.values.contains(queryItem.value ?? "")
+                        }
+                        urlComponents.queryItems = queryItems.isEmpty ? nil : queryItems
+                    }
+                    
+                    // Rebuild URL
+                    if let rebuiltURL = urlComponents.url?.absoluteString {
+                        cseData.url = rebuiltURL
+                    }
+                    break
                 }
-                urlComponents.queryItems = queryItems.isEmpty ? nil : queryItems
-            }
-            
-            // Rebuild URL
-            if let rebuiltURL = urlComponents.url?.absoluteString {
-                cseData.url = rebuiltURL
             }
         }
         

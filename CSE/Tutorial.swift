@@ -75,10 +75,10 @@ class Tutorial {
         var isFirstTutorial: Bool = false
         @State private var isNavigation: Bool = false
         
-        @AppStorage("searchengine", store: userDefaults) private var searchengine: String = "google"
+        @AppStorage("searchengine", store: userDefaults) private var searchengine: String = SafariSEs.default.rawValue
         @AppStorage("alsousepriv", store: userDefaults) private var alsousepriv: Bool = true
         @State private var alsouseprivToggle: Bool = true
-        @AppStorage("privsearchengine", store: userDefaults) private var privsearchengine: String = "duckduckgo"
+        @AppStorage("privsearchengine", store: userDefaults) private var privsearchengine: String = SafariSEs.private.rawValue
         
         var body: some View {
             List {
@@ -93,8 +93,8 @@ class Tutorial {
                 Section {
                     // Default SE
                     Picker("Search Engine", selection: $searchengine) {
-                        ForEach(SafariSEs.availableEngines(forRegion: currentRegion), id: \.self.rawValue) { engine in
-                            Text(engine.displayName).tag(engine.rawValue)
+                        ForEach(SafariSEs.availableEngines, id: \.self.rawValue) { engine in
+                            Text(String(localized: engine.displayName)).tag(engine.rawValue)
                         }
                     }
                     
@@ -110,8 +110,8 @@ class Tutorial {
                         // Private SE
                         if !alsouseprivToggle {
                             Picker("Private Search Engine", selection: $privsearchengine) {
-                                ForEach(SafariSEs.availableEngines(forRegion: currentRegion), id: \.self.rawValue) { engine in
-                                    Text(engine.displayName).tag(engine.rawValue)
+                                ForEach(SafariSEs.availableEngines, id: \.self.rawValue) { engine in
+                                    Text(String(localized: engine.displayName)).tag(engine.rawValue)
                                 }
                             }
                         }
@@ -123,16 +123,15 @@ class Tutorial {
                         #else
                         Text("You can find these settings in Settings → Apps → Safari.")
                         #endif
-                        Spacer()
                         
-                        if #unavailable(iOS 17.0, macOS 14.0) {
-                            // Show warning if Google is selected in iOS 16 or earlier.
+                        if !SafariSEs.availableEngines.contains(.google) {
+                            Spacer()
                             Text("If you set Google as your search engine, please set another search engine.")
                         }
-                        Spacer()
                         
-                        // Show warning if Yandex is selected in Ukraine
-                        if currentRegion == "UA" {
+                        // Yandex warning
+                        if currentRegion == "UA" || currentRegion == "TR" {
+                            Spacer()
                             Text("Yandex is currently unavailable.")
                         }
                     }
@@ -196,10 +195,14 @@ class Tutorial {
                     let selectedPrivateSE = SafariSEs(rawValue: privsearchengine)
                     
                     if let se = selectedSE {
-                        Text(se.domain(forRegion: currentRegion))
+                        ForEach(se.domains, id: \.self) { domain in
+                            Text(domain)
+                        }
                     }
                     if !alsousepriv, let se = selectedPrivateSE, se != selectedSE {
-                        Text(se.domain(forRegion: currentRegion))
+                        ForEach(se.domains, id: \.self) { domain in
+                            Text(domain)
+                        }
                     }
                 } footer: { Text("And recommended to Deny for Other Websites.") }
             }
