@@ -117,12 +117,22 @@ class CSEDataManager {
     
     class func CSEDataToDictionary(_ data: CSEData) -> [String: Any] {
         var dict: [String: Any] = [:]
-        dict["name"] = data.name
-        dict["keyword"] = data.keyword
-        dict["url"] = data.url
+        if !data.name.isEmpty {
+            dict["name"] = data.name
+        }
+        if !data.keyword.isEmpty {
+            dict["keyword"] = data.keyword
+        }
+        if !data.url.isEmpty {
+            dict["url"] = data.url
+        }
+        if !data.post.isEmpty {
+            dict["post"] = data.post
+        }
         dict["disablePercentEncoding"] = data.disablePercentEncoding
-        dict["maxQueryLength"] = data.maxQueryLength
-        dict["post"] = data.post
+        if let maxQueryLength = data.maxQueryLength, maxQueryLength >= 0 {
+            dict["maxQueryLength"] = maxQueryLength
+        }
         return dict
     }
     
