@@ -95,25 +95,51 @@ enum SafariSEs: String, CaseIterable {
     func checkParameter(for domain: String) -> CheckItem? {
         switch self {
         case .google:
+            // All: safari
             return CheckItem(param: "client", values: ["safari"])
         case .yahoo:
-            return CheckItem(param: "fr", values: ["iphone", "osx", "aaplw", "appsfch2"])
+            // iPhone: iphone, applep1(jp)
+            // iPad: ipad, applpd(jp)
+            // Mac: aaplw, appsfch2(jp)
+            if domain == "search.yahoo.co.jp" {
+                return CheckItem(param: "fr", values: ["iphone", "applep1", "ipad", "applpd", "aaplw", "appsfch2"])
+            } else {
+                return CheckItem(param: "fr", values: ["iphone", "ipad", "aaplw"])
+            }
         case .bing:
-            return CheckItem(param: "form", values: ["APIPH1", "APMCS1", "APIPA1"])
+            // iPhone: APIPH1
+            // iPad: APIPA1
+            // Mac: APMCS1
+            return CheckItem(param: "form", values: ["APIPH1", "APIPA1", "APMCS1"])
         case .duckduckgo:
-            return CheckItem(param: "t", values: ["iphone", "osx", "ipad"])
+            // iPhone: iphone
+            // iPad: ipad
+            // Mac: osx
+            return CheckItem(param: "t", values: ["iphone", "ipad", "osx"])
         case .ecosia:
-            return CheckItem(param: "tts", values: ["st_asaf_iphone", "st_asaf_macos", "st_asaf_ipad"])
+            // iPhone: st_asaf_iphone
+            // iPad: st_asaf_ipad
+            // Mac: st_asaf_macos
+            return CheckItem(param: "tts", values: ["st_asaf_iphone", "st_asaf_ipad", "st_asaf_macos"])
         case .baidu:
+            // iPhone: 1099b, 1000539d(cn)
+            // iPad: 84053098_1_dg, 84053098_4_dg(cn)
+            // Mac: 84053098_dg(cn)
             if domain == "m.baidu.com" {
                 return CheckItem(param: "from", values: ["1099b", "1000539d"])
             } else {
-                return CheckItem(param: "tn", values: ["84053098_dg", "84053098_4_dg", "84053098_1_dg"])
+                return CheckItem(param: "tn", values: ["84053098_1_dg", "84053098_4_dg", "84053098_dg"])
             }
         case .so360search:
+            // iPhone: home
+            // iPad: home
+            // Mac: pclm
             return CheckItem(param: "src", values: ["home", "pclm"])
         case .yandex:
-            return CheckItem(param: "clid", values: ["1906591", "1906725", "1906723"])
+            // iPhone: 1906591
+            // iPad: 1906723
+            // Mac: 1906725
+            return CheckItem(param: "clid", values: ["1906591", "1906723", "1906725"])
         case .sogou: return nil
         }
     }
