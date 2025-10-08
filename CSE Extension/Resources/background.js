@@ -47,6 +47,15 @@ const requestHandler = (tabId, url, incognito, curtain = false) => {
                 
                 if (curtain) { browser.tabs.sendMessage(tabId, {type: "showCurtain"}); }
                 break;
+            case "needIncognitoStatus":
+                console.log(tabId, "Need incognito status, but not available yet.");
+                if (incognitoStatus[tabId] === undefined) {
+                    delete processedUrls[tabId]; // Allow re-processing
+                } else if (processedUrls[tabId] !== url) {
+                    console.log(tabId, "Resending request to native");
+                    requestHandler(tabId, url, incognitoStatus[tabId], curtain);
+                }
+                break;
                 
             case "error":
                 console.log(tabId, "Aborted due to an error.");
@@ -83,9 +92,6 @@ if (isWebRequestAvailable) {
         const url = details.url;
         
         if (details.type !== "main_frame") { return; }
-        
-        // Skip if tab incognito status is not available yet
-        if (incognitoStatus[tabId] === undefined) { return; }
         
         requestHandler(tabId, url, incognitoStatus[tabId], false);
     });

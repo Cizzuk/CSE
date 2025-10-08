@@ -20,10 +20,19 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         // Get Search URL from background.js
         let item = context.inputItems.first as! NSExtensionItem
         guard let message = item.userInfo?[SFExtensionMessageKey] as? [String: Any],
-              let searchURL: String = message["url"] as? String,
-              let isIncognito: Bool = message["incognito"] as? Bool else {
+              let searchURL: String = message["url"] as? String else {
             return sendData(context: context, data: ["type" : "error"])
         }
+        
+        let useDefaultCSE: Bool = userDefaults.bool(forKey: "useDefaultCSE")
+        let usePrivateCSE: Bool = userDefaults.bool(forKey: "usePrivateCSE")
+        
+        // Check Incognito Status
+        let incognitoFlag = message["incognito"] as? Bool
+        if usePrivateCSE && incognitoFlag == nil {
+            return sendData(context: context, data: ["type" : "needIncognitoStatus"])
+        }
+        let isIncognito = usePrivateCSE && (incognitoFlag ?? false)
         
         // Safari Search Engine
         let searchengine: SafariSEs
@@ -45,9 +54,6 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         } else {
             privsearchengine = .private
         }
-        
-        let useDefaultCSE: Bool = userDefaults.bool(forKey: "useDefaultCSE")
-        let usePrivateCSE: Bool = userDefaults.bool(forKey: "usePrivateCSE")
         
         // CSE data set
         struct dataSet: Encodable {
