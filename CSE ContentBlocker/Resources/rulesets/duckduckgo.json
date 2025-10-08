@@ -7,7 +7,7 @@
         },
         "condition": {
             "urlFilter": "*://duckduckgo.com/*t=iphone*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     },
     {
@@ -18,7 +18,7 @@
         },
         "condition": {
             "urlFilter": "*://duckduckgo.com/*t=osx*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     },
     {
@@ -29,7 +29,7 @@
         },
         "condition": {
             "urlFilter": "*://duckduckgo.com/*t=ipad*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     }
 ]

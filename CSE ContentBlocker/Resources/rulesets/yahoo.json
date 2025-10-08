@@ -7,7 +7,7 @@
         },
         "condition": {
             "urlFilter": "*://search.yahoo.com/search*fr=iphone*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     },
     {
@@ -18,7 +18,7 @@
         },
         "condition": {
             "urlFilter": "*://*.search.yahoo.com/search*fr=iphone*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     },
     {
@@ -29,7 +29,7 @@
         },
         "condition": {
             "urlFilter": "*://search.yahoo.com/search*fr=ipad*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     },
     {
@@ -40,7 +40,7 @@
         },
         "condition": {
             "urlFilter": "*://*.search.yahoo.com/search*fr=ipad*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     },
     {
@@ -51,7 +51,7 @@
         },
         "condition": {
             "urlFilter": "*://search.yahoo.com/search*fr=aaplw*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     },
     {
@@ -62,7 +62,7 @@
         },
         "condition": {
             "urlFilter": "*://*.search.yahoo.com/search*fr=aaplw*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     },
     {
@@ -73,7 +73,7 @@
         },
         "condition": {
             "urlFilter": "*://search.yahoo.co.jp/search*fr=iphone*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     },
     {
@@ -84,7 +84,7 @@
         },
         "condition": {
             "urlFilter": "*://search.yahoo.co.jp/search*fr=applep1*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     },
     {
@@ -95,7 +95,7 @@
         },
         "condition": {
             "urlFilter": "*://search.yahoo.co.jp/search*fr=ipad*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     },
     {
@@ -106,7 +106,7 @@
         },
         "condition": {
             "urlFilter": "*://search.yahoo.co.jp/search*fr=applpd*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     },
     {
@@ -117,7 +117,7 @@
         },
         "condition": {
             "urlFilter": "*://search.yahoo.co.jp/search*fr=aaplw*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     },
     {
@@ -128,7 +128,7 @@
         },
         "condition": {
             "urlFilter": "*://search.yahoo.co.jp/search*fr=appsfch2*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     }
 ]

@@ -7,7 +7,7 @@
         },
         "condition": {
             "urlFilter": "*://www.google.com/search*client=safari*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     },
     {
@@ -18,7 +18,7 @@
         },
         "condition": {
             "urlFilter": "*://www.google.cn/search*client=safari*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     }
 ]

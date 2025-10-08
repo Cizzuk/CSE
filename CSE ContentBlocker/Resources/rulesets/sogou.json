@@ -7,7 +7,7 @@
         },
         "condition": {
             "urlFilter": "*://www.sogou.com/web*query=*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     },
     {
@@ -18,7 +18,7 @@
         },
         "condition": {
             "urlFilter": "*://m.sogou.com/web/sl*keyword=*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     }
 ]
