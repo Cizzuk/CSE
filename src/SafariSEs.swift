@@ -8,13 +8,14 @@
 import Foundation
 
 enum SafariSEs: String, CaseIterable {
-    
     // Helpers
     private static let currentRegion = Locale.current.region?.identifier
     
     private static func containsLanguage(_ languageCode: String) -> Bool {
-        let preferredLanguages = Locale.preferredLanguages
-        return preferredLanguages.contains { language in
+        return Locale.preferredLanguages.contains { language in
+            if language.hasPrefix(languageCode + "-") {
+                return true
+            }
             let locale = Locale(identifier: language)
             return locale.language.languageCode?.identifier == languageCode
         }
@@ -39,7 +40,7 @@ enum SafariSEs: String, CaseIterable {
     var domains: [String] {
         let region = Self.currentRegion
         switch self {
-        case .google: 
+        case .google:
             if region == "CN" {
                 return ["google.cn"] // www.google.cn
             } else {
@@ -154,7 +155,7 @@ enum SafariSEs: String, CaseIterable {
         case .yahoo, .bing, .duckduckgo, .ecosia:
             return true
         case .baidu, .sogou, .so360search:
-            return Self.currentRegion == "CN" || Self.containsLanguage("zh")
+            return Self.currentRegion == "CN" || Self.containsLanguage("zh-Hans")
         case .yandex:
             return Self.currentRegion == "RU" || Self.currentRegion == "KZ" || Self.currentRegion == "BY" || Self.containsLanguage("ru")
         }
