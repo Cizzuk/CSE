@@ -28,7 +28,7 @@ class RecommendSEs {
             // Over 1M articles
             "ar", "de", "en", "es", "fa", "fr", "it", "arz", "nl", "ja", "pl", "pt", "ceb", "sv", "uk", "vi", "war", "zh", "ru",
             // Over 500K articles
-            "ca", "id", "ko", "sr", "no", "tr", "fi", "ce", "cs", "hu", "ro", "tt"
+            "ca", "id", "ko", "sr", "no", "tr", "fi", "ce", "cs", "hu", "ro", "tt",
         ]
         var wikiLang: String = "en"
         for language in preferredLanguages {
@@ -42,56 +42,56 @@ class RecommendSEs {
         var baseCSEs = [
             "g": CSEDataManager.CSEData(
                 name: "Google",
-                url: "https://www.google.com/search?q=%s"
+                url: "https://www.google.com/search?q=%s",
             ),
             "b": CSEDataManager.CSEData(
                 name: "Bing",
-                url: "https://www.bing.com/search?q=%s"
+                url: "https://www.bing.com/search?q=%s",
             ),
             "y": CSEDataManager.CSEData(
                 name: "Yahoo",
-                url: "https://search.yahoo.com/search?p=%s"
+                url: "https://search.yahoo.com/search?p=%s",
             ),
             "ddg": CSEDataManager.CSEData(
                 name: "DuckDuckGo",
                 url: "https://duckduckgo.com/?q=%s",
-                maxQueryLength: 500
+                maxQueryLength: 500,
             ),
             "eco": CSEDataManager.CSEData(
                 name: "Ecosia",
-                url: "https://www.ecosia.org/search?q=%s"
+                url: "https://www.ecosia.org/search?q=%s",
             ),
             "sp": CSEDataManager.CSEData(
                 name: "Startpage",
-                url: "https://www.startpage.com/sp/search?query=%s"
+                url: "https://www.startpage.com/sp/search?query=%s",
             ),
             "br": CSEDataManager.CSEData(
                 name: "Brave Search",
-                url: "https://search.brave.com/search?q=%s"
+                url: "https://search.brave.com/search?q=%s",
             ),
             "yt": CSEDataManager.CSEData(
                 name: "YouTube",
-                url: "https://www.youtube.com/results?search_query=%s"
+                url: "https://www.youtube.com/results?search_query=%s",
             ),
             "gh": CSEDataManager.CSEData(
                 name: "GitHub",
-                url: "https://github.com/search?q=%s"
+                url: "https://github.com/search?q=%s",
             ),
             "wiki": CSEDataManager.CSEData(
                 name: "Wikipedia (" + wikiLang + ")",
-                url: "https://" + wikiLang + ".wikipedia.org/w/index.php?title=Special:Search&search=%s"
+                url: "https://" + wikiLang + ".wikipedia.org/w/index.php?title=Special:Search&search=%s",
             ),
             "wbm": CSEDataManager.CSEData(
                 name: "Wayback Machine",
                 url: "https://web.archive.org/web/*/%s",
-                disablePercentEncoding: true
-            )
+                disablePercentEncoding: true,
+            ),
         ]
         
         if preferredLanguages.first == "ja-JP" {
             baseCSEs["y"] = CSEDataManager.CSEData(
                 name: "Yahoo! JAPAN",
-                url: "https://search.yahoo.co.jp/search?p=%s"
+                url: "https://search.yahoo.co.jp/search?p=%s",
             )
         }
         
@@ -99,50 +99,50 @@ class RecommendSEs {
             baseCSEs["nico"] = CSEDataManager.CSEData(
                 name: "ニコニコ動画",
                 url: "https://www.nicovideo.jp/search/%s",
-                maxQueryLength: 256
+                maxQueryLength: 256,
             )
         }
         
         if currentRegion == "CN" || containsLanguage("zh-Hans") {
             baseCSEs["baidu"] = CSEDataManager.CSEData(
                 name: "百度",
-                url: "https://www.baidu.com/s?wd=%s"
+                url: "https://www.baidu.com/s?wd=%s",
             )
             baseCSEs["weibo"] = CSEDataManager.CSEData(
                 name: "微博",
-                url: "https://s.weibo.com/weibo?q=%s"
+                url: "https://s.weibo.com/weibo?q=%s",
             )
             baseCSEs["bili"] = CSEDataManager.CSEData(
                 name: "哔哩哔哩",
-                url: "https://search.bilibili.com/all?keyword=%s"
+                url: "https://search.bilibili.com/all?keyword=%s",
             )
         }
         
         if currentRegion == "FR" {
             baseCSEs["qwant"] = CSEDataManager.CSEData(
                 name: "Qwant",
-                url: "https://www.qwant.com/?q=%s"
+                url: "https://www.qwant.com/?q=%s",
             )
         }
         
         if currentRegion == "KR" || containsLanguage("ko") {
             baseCSEs["naver"] = CSEDataManager.CSEData(
                 name: "NAVER",
-                url: "https://search.naver.com/search.naver?query=%s"
+                url: "https://search.naver.com/search.naver?query=%s",
             )
         }
         
         if currentRegion == "VN" || containsLanguage("vi") {
             baseCSEs["coc"] = CSEDataManager.CSEData(
                 name: "Cốc Cốc",
-                url: "https://coccoc.com/search#query=%s"
+                url: "https://coccoc.com/search#query=%s",
             )
         }
         
         if currentRegion == "RU" || containsLanguage("ru") {
             baseCSEs["yandex"] = CSEDataManager.CSEData(
                 name: "Яндекс",
-                url: "https://yandex.ru/search/?text=%s"
+                url: "https://yandex.ru/search/?text=%s",
             )
         }
         
@@ -169,8 +169,8 @@ class RecommendSEs {
             CSEDataManager.CSEData(
                 name: "Kagi",
                 keyword: "kagi",
-                url: "https://kagi.com/search?q=%s"
-            )
+                url: "https://kagi.com/search?q=%s",
+            ),
         ]
         
         // Add region-specific search engines
@@ -178,19 +178,19 @@ class RecommendSEs {
             popCSEs.append(CSEDataManager.CSEData(
                 name: "Qwant",
                 keyword: "qwant",
-                url: "https://www.qwant.com/?q=%s"
+                url: "https://www.qwant.com/?q=%s",
             ))
         } else if currentRegion == "KR" || containsLanguage("ko") {
             popCSEs.append(CSEDataManager.CSEData(
                 name: "NAVER",
                 keyword: "naver",
-                url: "https://search.naver.com/search.naver?query=%s"
+                url: "https://search.naver.com/search.naver?query=%s",
             ))
         } else if currentRegion == "VN" || containsLanguage("vi") {
             popCSEs.append(CSEDataManager.CSEData(
                 name: "Cốc Cốc",
                 keyword: "coc",
-                url: "https://coccoc.com/search#query=%s"
+                url: "https://coccoc.com/search#query=%s",
             ))
         }
         
@@ -203,12 +203,12 @@ class RecommendSEs {
             aiCSEs.append(CSEDataManager.CSEData(
                 name: "Perplexity",
                 keyword: "pplx",
-                url: "https://www.perplexity.ai/?q=%s"
+                url: "https://www.perplexity.ai/?q=%s",
             ))
             aiCSEs.append(CSEDataManager.CSEData(
                 name: "Microsoft Copilot",
                 keyword: "copilot",
-                url: "https://www.bing.com/copilotsearch?q=%s"
+                url: "https://www.bing.com/copilotsearch?q=%s",
             ))
             aiCSEs.append(CSEDataManager.CSEData(
                 name: "ChatGPT",
@@ -221,7 +221,7 @@ class RecommendSEs {
             aiCSEs.append(CSEDataManager.CSEData(
                 name: "百度AI搜索",
                 keyword: "baiduai",
-                url: "https://chat.baidu.com/search?query=%s"
+                url: "https://chat.baidu.com/search?query=%s",
             ))
         }
         return aiCSEs
@@ -235,7 +235,7 @@ class RecommendSEs {
             localizedYahoo = CSEDataManager.CSEData(
                 name: "Yahoo! JAPAN",
                 keyword: "y",
-                url: "https://search.yahoo.co.jp/search?p=%s"
+                url: "https://search.yahoo.co.jp/search?p=%s",
             )
         } else {
             localizedYahoo = CSEDataManager.CSEData(
@@ -261,20 +261,20 @@ class RecommendSEs {
                 name: "DuckDuckGo",
                 keyword: "ddg",
                 url: "https://duckduckgo.com/?q=%s",
-                maxQueryLength: 500
+                maxQueryLength: 500,
             ),
             CSEDataManager.CSEData(
                 name: "Ecosia",
                 keyword: "eco",
                 url: "https://www.ecosia.org/search?q=%s",
-            )
+            ),
         ])
         
         if currentRegion == "CN" || containsLanguage("zh-Hans") {
             normalCSEs.append(CSEDataManager.CSEData(
                 name: "百度",
                 keyword: "baidu",
-                url: "https://www.baidu.com/s?wd=%s"
+                url: "https://www.baidu.com/s?wd=%s",
             ))
         }
         
@@ -282,7 +282,7 @@ class RecommendSEs {
             normalCSEs.append(CSEDataManager.CSEData(
                 name: "Яндекс",
                 keyword: "yandex",
-                url: "https://yandex.ru/search/?text=%s"
+                url: "https://yandex.ru/search/?text=%s",
             ))
         }
         
