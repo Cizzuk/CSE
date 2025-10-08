@@ -7,7 +7,7 @@
         },
         "condition": {
             "urlFilter": "*://www.ecosia.org/search*tts=st_asaf_iphone*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     },
     {
@@ -18,7 +18,7 @@
         },
         "condition": {
             "urlFilter": "*://www.ecosia.org/search*tts=st_asaf_macos*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     },
     {
@@ -29,7 +29,7 @@
         },
         "condition": {
             "urlFilter": "*://www.ecosia.org/search*tts=st_asaf_ipad*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     }
 ]

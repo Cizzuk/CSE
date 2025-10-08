@@ -7,7 +7,7 @@
         },
         "condition": {
             "urlFilter": "*://www.bing.com/search*form=APIPH1*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     },
     {
@@ -18,7 +18,7 @@
         },
         "condition": {
             "urlFilter": "*://www.bing.com/search*form=APMCS1*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     },
     {
@@ -29,7 +29,7 @@
         },
         "condition": {
             "urlFilter": "*://www.bing.com/search*form=APIPA1*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     }
 ]

@@ -6,7 +6,7 @@
             "type": "block"
         },
         "condition": {
-            "urlFilter": "*://duckduckgo.com/*t=iphone*",
+            "urlFilter": "*://www.so.com/s*src=home*",
             "resourceTypes": ["main_frame"]
         }
     },
@@ -17,7 +17,7 @@
             "type": "block"
         },
         "condition": {
-            "urlFilter": "*://duckduckgo.com/*t=osx*",
+            "urlFilter": "*://www.so.com/s*src=pclm*",
             "resourceTypes": ["main_frame"]
         }
     },
@@ -28,7 +28,18 @@
             "type": "block"
         },
         "condition": {
-            "urlFilter": "*://duckduckgo.com/*t=ipad*",
+            "urlFilter": "*://m.so.com/s*src=home*",
+            "resourceTypes": ["main_frame"]
+        }
+    },
+    {
+        "id": 4,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://m.so.com/s*src=pclm*",
             "resourceTypes": ["main_frame"]
         }
     }

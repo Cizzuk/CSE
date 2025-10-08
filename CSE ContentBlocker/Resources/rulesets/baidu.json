@@ -7,7 +7,7 @@
         },
         "condition": {
             "urlFilter": "*://m.baidu.com/s*from=1000539d*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
         }
     },
     {
@@ -17,8 +17,8 @@
             "type": "block"
         },
         "condition": {
-            "urlFilter": "*://www.baidu.com/s*tn=84053098_dg*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "urlFilter": "*://m.baidu.com/s*from=1099b*",
+            "resourceTypes": ["main_frame"]
         }
     },
     {
@@ -28,8 +28,30 @@
             "type": "block"
         },
         "condition": {
+            "urlFilter": "*://www.baidu.com/s*tn=84053098_dg*",
+            "resourceTypes": ["main_frame"]
+        }
+    },
+    {
+        "id": 4,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
             "urlFilter": "*://www.baidu.com/s*tn=84053098_4_dg*",
-            "resourceTypes": ["main_frame", "sub_frame"]
+            "resourceTypes": ["main_frame"]
+        }
+    },
+    {
+        "id": 5,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://www.baidu.com/s*tn=84053098_1_dg*",
+            "resourceTypes": ["main_frame"]
         }
     }
 ]

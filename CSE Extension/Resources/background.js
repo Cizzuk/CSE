@@ -47,6 +47,15 @@ const requestHandler = (tabId, url, incognito, curtain = false) => {
                 
                 if (curtain) { browser.tabs.sendMessage(tabId, {type: "showCurtain"}); }
                 break;
+            case "needIncognitoStatus":
+                console.log(tabId, "Need incognito status, but not available yet.");
+                if (incognitoStatus[tabId] === undefined) {
+                    delete processedUrls[tabId]; // Allow re-processing
+                } else if (processedUrls[tabId] !== url) {
+                    console.log(tabId, "Resending request to native");
+                    requestHandler(tabId, url, incognitoStatus[tabId], curtain);
+                }
+                break;
                 
             case "error":
                 console.log(tabId, "Aborted due to an error.");
@@ -76,6 +85,16 @@ if (isWebRequestAvailable) {
 
         requestHandler(tabId, tabData.url, tabData.incognito, true);
     });
+    
+    // Detect web requests
+    browser.webRequest.onBeforeRequest.addListener((details) => {
+        const tabId = details.tabId;
+        const url = details.url;
+        
+        if (details.type !== "main_frame") { return; }
+        
+        requestHandler(tabId, url, incognitoStatus[tabId], false);
+    });
 
 } else {
     // If webRequest is not available, handle all via tabs.onUpdated
@@ -87,21 +106,6 @@ if (isWebRequestAvailable) {
         requestHandler(tabId, tabData.url, tabData.incognito, true);
     });
     console.log("webRequest API is not available, using tabs.onUpdated for all navigation detection");
-}
-
-// Detect web requests (only if webRequest API is available)
-if (isWebRequestAvailable) {
-    browser.webRequest.onBeforeRequest.addListener((details) => {
-        const tabId = details.tabId;
-        const url = details.url;
-        
-        if (details.type !== "main_frame") { return; }
-        
-        // Skip if tab incognito status is not available yet
-        if (incognitoStatus[tabId] === undefined) { return; }
-        
-        requestHandler(tabId, url, incognitoStatus[tabId], false);
-    });
 }
 
 // Handle post_redirector

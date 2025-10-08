@@ -20,16 +20,40 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         // Get Search URL from background.js
         let item = context.inputItems.first as! NSExtensionItem
         guard let message = item.userInfo?[SFExtensionMessageKey] as? [String: Any],
-              let searchURL: String = message["url"] as? String,
-              let isIncognito: Bool = message["incognito"] as? Bool else {
+              let searchURL: String = message["url"] as? String else {
             return sendData(context: context, data: ["type" : "error"])
         }
         
-        let searchengine: String = userDefaults.string(forKey: "searchengine") ?? "google"
-        let alsousepriv: Bool = userDefaults.bool(forKey: "alsousepriv")
-        let privsearchengine: String = userDefaults.string(forKey: "privsearchengine") ?? "duckduckgo"
         let useDefaultCSE: Bool = userDefaults.bool(forKey: "useDefaultCSE")
         let usePrivateCSE: Bool = userDefaults.bool(forKey: "usePrivateCSE")
+        
+        // Check Incognito Status
+        let incognitoFlag = message["incognito"] as? Bool
+        if usePrivateCSE && incognitoFlag == nil {
+            return sendData(context: context, data: ["type" : "needIncognitoStatus"])
+        }
+        let isIncognito = usePrivateCSE && (incognitoFlag ?? false)
+        
+        // Safari Search Engine
+        let searchengine: SafariSEs
+        if let rawValue = userDefaults.string(forKey: "searchengine"),
+           let candidate = SafariSEs(rawValue: rawValue),
+           candidate.isAvailable {
+            searchengine = candidate
+        } else {
+            searchengine = .default
+        }
+        
+        // Safari Private Search Engine
+        let alsousepriv: Bool = userDefaults.bool(forKey: "alsousepriv")
+        let privsearchengine: SafariSEs
+        if let rawValue = userDefaults.string(forKey: "privsearchengine"),
+           let candidate = SafariSEs(rawValue: rawValue),
+           candidate.isAvailable {
+            privsearchengine = candidate
+        } else {
+            privsearchengine = .private
+        }
         
         // CSE data set
         struct dataSet: Encodable {
@@ -44,10 +68,10 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             
             let searchQuery: String?
             // Get Redirect URL
-            if checkEngineURL(engineName: searchengine, url: searchURL) {
-                searchQuery = getQueryValue(engineName: searchengine, url: searchURL)
-            } else if checkEngineURL(engineName: privsearchengine, url: searchURL) && !alsousepriv {
-                searchQuery = getQueryValue(engineName: privsearchengine, url: searchURL)
+            if checkEngineURL(engine: searchengine, url: searchURL) {
+                searchQuery = getQueryValue(engine: searchengine, url: searchURL)
+            } else if !alsousepriv && checkEngineURL(engine: privsearchengine, url: searchURL) {
+                searchQuery = getQueryValue(engine: privsearchengine, url: searchURL)
             } else {
                 searchQuery = nil
             }
@@ -92,54 +116,13 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             let extensionItem = NSExtensionItem()
             extensionItem.userInfo = [ SFExtensionMessageKey: json ]
             context.completeRequest(returningItems: [extensionItem], completionHandler: nil)
-        } catch {
-            print("error")
-        }
+        } catch {}
     }
     
     // ↓ --- Search Engine Checker --- ↓
-    
-    struct CheckItem {
-        let param: String
-        let ids: [String]
-    }
-
-    struct Engine {
-        let domains: [String]
-        let path: (String) -> String
-        let param: (String) -> String
-        let check: ((String) -> CheckItem?)?
-    }
-
-    // Safari Default SEs
-    let engines: [String: Engine] = {
-        var engineDict: [String: Engine] = [:]
-        
-        for safariEngine in SafariSEs.allCases {
-            engineDict[safariEngine.rawValue] = Engine(
-                domains: safariEngine.domains,
-                path: { domain in safariEngine.path(for: domain) },
-                param: { domain in safariEngine.queryParam(for: domain) },
-                check: { domain in
-                    if let checkParam = safariEngine.checkParameter(for: domain) {
-                        return CheckItem(param: checkParam.param, ids: checkParam.values)
-                    }
-                    return nil
-                }
-            )
-        }
-        
-        return engineDict
-    }()
 
     // Engine Checker
-    func checkEngineURL(engineName: String, url: String) -> Bool {
-        
-        // Is engine available?
-        guard let engine = engines[engineName] else {
-            return false
-        }
-        
+    func checkEngineURL(engine: SafariSEs, url: String) -> Bool {
         // Get engine url
         guard let urlComponents = URLComponents(string: url),
               let host = urlComponents.host else {
@@ -147,13 +130,13 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         }
 
         // Domain Check
-        guard engine.domains.contains(host) else {
+        guard engine.matchesHost(host) else {
             return false
         }
 
         // Path Check
-        let expectedPath = engine.path(host)
-        guard urlComponents.path == expectedPath else {
+        let expectedPath = engine.path(for: host)
+        guard urlComponents.path.hasPrefix(expectedPath) else {
             return false
         }
 
@@ -161,17 +144,16 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         let queryItems = urlComponents.queryItems ?? []
         
         // Get Param
-        let mainParamKey = engine.param(host)
+        let mainParamKey = engine.queryParam(for: host)
         guard queryItems.contains(where: { $0.name == mainParamKey }) else {
             return false
         }
         
         // Param Check
         if !userDefaults.bool(forKey: "adv_disablechecker"),
-           let checkFn = engine.check,
-           let checkInfo = checkFn(host) {
-            let checkParamKey = checkInfo.param
-            let possibleIds = checkInfo.ids
+           let checkParam = engine.checkParameter(for: host) {
+            let checkParamKey = checkParam.param
+            let possibleIds = checkParam.values
             let checkItemExists = queryItems.contains {
                 $0.name == checkParamKey && ( $0.value.map(possibleIds.contains) ?? false )
             }
@@ -182,20 +164,15 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         return true
     }
     
-    func getQueryValue(engineName: String, url: String) -> String? {
-        // Is engine available?
-        guard let engine = engines[engineName] else {
-            return nil
-        }
-        
+    func getQueryValue(engine: SafariSEs, url: String) -> String? {
         guard let urlComponents = URLComponents(string: url),
               let host = urlComponents.host,
-              engine.domains.contains(host) else {
+              engine.matchesHost(host) else {
             return nil
         }
         
         // Get param name
-        let mainParam = engine.param(host)
+        let mainParam = engine.queryParam(for: host)
         
         // Get %encoded query
         guard let encodedQuery = urlComponents.percentEncodedQuery else { return nil }
