@@ -180,13 +180,17 @@ class RecommendSEs {
                 keyword: "qwant",
                 url: "https://www.qwant.com/?q=%s",
             ))
-        } else if currentRegion == "KR" || containsLanguage("ko") {
+        }
+        
+        if currentRegion == "KR" || containsLanguage("ko") {
             popCSEs.append(CSEDataManager.CSEData(
                 name: "NAVER",
                 keyword: "naver",
                 url: "https://search.naver.com/search.naver?query=%s",
             ))
-        } else if currentRegion == "VN" || containsLanguage("vi") {
+        }
+        
+        if currentRegion == "VN" || containsLanguage("vi") {
             popCSEs.append(CSEDataManager.CSEData(
                 name: "Cốc Cốc",
                 keyword: "coc",
