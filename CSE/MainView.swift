@@ -32,7 +32,6 @@ struct ContentView: View {
     
     // Sheets
     @AppStorage("needFirstTutorial", store: userDefaults) private var needFirstTutorial: Bool = true
-    @AppStorage("needSafariTutorial", store: userDefaults) private var needSafariTutorial: Bool = false
     @State private var openSafariTutorialView: Bool = false
     
     // Navigation
@@ -185,11 +184,6 @@ struct ContentView: View {
         .sheet(isPresented : $needFirstTutorial) {
             NavigationStack {
                 Tutorial.FirstView(isOpenSheet: $needFirstTutorial)
-            }
-        }
-        .sheet(isPresented: $needSafariTutorial) {
-            NavigationStack {
-                Tutorial.SafariSEView(isOpenSheet: $needSafariTutorial)
             }
         }
         .sheet(isPresented: $openSafariTutorialView) {

@@ -10,21 +10,15 @@ import Foundation
 class AppInitializer {
     private static let userDefaults = CSEDataManager.userDefaults
     private static let currentVersion = CSEDataManager.currentVersion
-    private static let currentRegion = Locale.current.region?.identifier
     
     class func initializeApp() {
         let lastVersion = userDefaults.string(forKey: "LastAppVer") ?? ""
-        let lastRegion = userDefaults.string(forKey: "LastRegion") ?? ""
-        let lastLanguages = userDefaults.array(forKey: "LastLanguages") as? [String] ?? []
-        let currentLanguages = Locale.preferredLanguages
         
         let isFirstLaunch = lastVersion.isEmpty
         let isVersionChanged = lastVersion != currentVersion
-        let isRegionChanged = lastRegion != currentRegion
-        let isLanguageChanged = Set(lastLanguages) != Set(currentLanguages)
         
         // Early exit if no changes detected
-        if !isFirstLaunch && !isVersionChanged && !isRegionChanged && !isLanguageChanged {
+        if !isFirstLaunch && !isVersionChanged {
             return
         }
         
@@ -54,25 +48,8 @@ class AppInitializer {
             }
         }
         
-        // Langs & Region Update Tasks
-        if isFirstLaunch || isRegionChanged || isLanguageChanged {
-            let searchengine = userDefaults.string(forKey: "searchengine")
-            let privsearchengine = userDefaults.string(forKey: "privsearchengine")
-            correctSafariSE(searchengine: searchengine, privsearchengine: privsearchengine)
-        }
-        
-        // If both tutorials are needed, only keep needFirstTutorial
-        let needFirstTutorial = userDefaults.bool(forKey: "needFirstTutorial")
-        let needSafariTutorial = userDefaults.bool(forKey: "needSafariTutorial")
-        if needFirstTutorial && needSafariTutorial {
-            userDefaults.set(true, forKey: "needFirstTutorial")
-            userDefaults.set(false, forKey: "needSafariTutorial")
-        }
-        
         // Save Current State
         userDefaults.set(currentVersion, forKey: "LastAppVer")
-        userDefaults.set(currentRegion, forKey: "LastRegion")
-        userDefaults.set(currentLanguages, forKey: "LastLanguages")
     }
     
     private class func migrateOldCSESettings() {
@@ -83,27 +60,6 @@ class AppInitializer {
             CSEDataManager.saveCSEData(defaultCSE, .defaultCSE)
             userDefaults.removeObject(forKey: "urltop")
             userDefaults.removeObject(forKey: "urlsuffix")
-        }
-    }
-    
-    private class func correctSafariSE(searchengine: String?, privsearchengine: String?) {
-        let currentSE = SafariSEs(rawValue: searchengine ?? "")
-        let currentPrivateSE = SafariSEs(rawValue: privsearchengine ?? "")
-
-        // Correct Default SE
-        if let se = currentSE, !se.isAvailable {
-            userDefaults.set(SafariSEs.default.rawValue, forKey: "searchengine")
-            userDefaults.set(true, forKey: "needSafariTutorial")
-        }
-        
-        if #available(iOS 17.0, macOS 14.0, *) {
-            // Correct Private SE
-            if let se = currentPrivateSE, !se.isAvailable {
-                userDefaults.set(SafariSEs.private.rawValue, forKey: "privsearchengine")
-                userDefaults.set(true, forKey: "needSafariTutorial")
-            }
-        } else {
-            userDefaults.set(true, forKey: "alsousepriv")
         }
     }
     
