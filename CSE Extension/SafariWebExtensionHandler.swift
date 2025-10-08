@@ -110,9 +110,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             let extensionItem = NSExtensionItem()
             extensionItem.userInfo = [ SFExtensionMessageKey: json ]
             context.completeRequest(returningItems: [extensionItem], completionHandler: nil)
-        } catch {
-            print("error")
-        }
+        } catch {}
     }
     
     // ↓ --- Search Engine Checker --- ↓
