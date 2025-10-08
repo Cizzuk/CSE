@@ -25,9 +25,27 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             return sendData(context: context, data: ["type" : "error"])
         }
         
-        let searchengine: String = userDefaults.string(forKey: "searchengine") ?? SafariSEs.default.rawValue
+        // Safari Search Engine
+        let searchengine: SafariSEs
+        if let rawValue = userDefaults.string(forKey: "searchengine"),
+           let candidate = SafariSEs(rawValue: rawValue),
+           candidate.isAvailable {
+            searchengine = candidate
+        } else {
+            searchengine = .default
+        }
+        
+        // Safari Private Search Engine
         let alsousepriv: Bool = userDefaults.bool(forKey: "alsousepriv")
-        let privsearchengine: String = userDefaults.string(forKey: "privsearchengine") ?? SafariSEs.private.rawValue
+        let privsearchengine: SafariSEs
+        if let rawValue = userDefaults.string(forKey: "privsearchengine"),
+           let candidate = SafariSEs(rawValue: rawValue),
+           candidate.isAvailable {
+            privsearchengine = candidate
+        } else {
+            privsearchengine = .private
+        }
+        
         let useDefaultCSE: Bool = userDefaults.bool(forKey: "useDefaultCSE")
         let usePrivateCSE: Bool = userDefaults.bool(forKey: "usePrivateCSE")
         
@@ -44,10 +62,10 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             
             let searchQuery: String?
             // Get Redirect URL
-            if checkEngineURL(engineName: searchengine, url: searchURL) {
-                searchQuery = getQueryValue(engineName: searchengine, url: searchURL)
-            } else if checkEngineURL(engineName: privsearchengine, url: searchURL) && !alsousepriv {
-                searchQuery = getQueryValue(engineName: privsearchengine, url: searchURL)
+            if checkEngineURL(engine: searchengine, url: searchURL) {
+                searchQuery = getQueryValue(engine: searchengine, url: searchURL)
+            } else if checkEngineURL(engine: privsearchengine, url: searchURL) && !alsousepriv {
+                searchQuery = getQueryValue(engine: privsearchengine, url: searchURL)
             } else {
                 searchQuery = nil
             }
@@ -100,13 +118,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     // ↓ --- Search Engine Checker --- ↓
 
     // Engine Checker
-    func checkEngineURL(engineName: String, url: String) -> Bool {
-        
-        // Is engine available?
-        guard let engine = SafariSEs(rawValue: engineName) else {
-            return false
-        }
-        
+    func checkEngineURL(engine: SafariSEs, url: String) -> Bool {
         // Get engine url
         guard let urlComponents = URLComponents(string: url),
               let host = urlComponents.host else {
@@ -148,12 +160,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         return true
     }
     
-    func getQueryValue(engineName: String, url: String) -> String? {
-        // Is engine available?
-        guard let engine = SafariSEs(rawValue: engineName) else {
-            return nil
-        }
-        
+    func getQueryValue(engine: SafariSEs, url: String) -> String? {
         guard let urlComponents = URLComponents(string: url),
               let host = urlComponents.host,
               engine.matchesHost(host) else {
