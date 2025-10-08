@@ -64,7 +64,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             // Get Redirect URL
             if checkEngineURL(engine: searchengine, url: searchURL) {
                 searchQuery = getQueryValue(engine: searchengine, url: searchURL)
-            } else if checkEngineURL(engine: privsearchengine, url: searchURL) && !alsousepriv {
+            } else if !alsousepriv && checkEngineURL(engine: privsearchengine, url: searchURL) {
                 searchQuery = getQueryValue(engine: privsearchengine, url: searchURL)
             } else {
                 searchQuery = nil
