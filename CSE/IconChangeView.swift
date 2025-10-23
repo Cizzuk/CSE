@@ -79,7 +79,6 @@ struct IconChangeView: View {
                             .frame(maxWidth: .infinity)
                     }
                 } footer: {
-                    // TODO: Remove these texts if CTF issues are resolved. (issue#24)
                     VStack (alignment: .leading) {
                         Text("Purchase is currently not available.")
                         Text("Only available if you have previously purchased this.")

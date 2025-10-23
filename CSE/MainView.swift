@@ -117,9 +117,7 @@ struct ContentView: View {
                         UITemplates.IconLabel(icon: "arrow.counterclockwise", text: "Backup & Restore")
                     }
                     
-                    // TODO: Remove this button if CTF issues are resolved. (issue#24)
                     #if !os(visionOS) && !targetEnvironment(macCatalyst)
-                    // Go IconChange View for iOS/iPadOS
                     NavigationLink(value: NavigationItem.iconChange) {
                         UITemplates.IconLabel(icon: "app.dashed", text: "Change App Icon")
                     }
