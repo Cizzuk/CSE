@@ -12,6 +12,7 @@ import WidgetKit
 
 struct QuickSEListView: View {
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.editMode) private var editMode
     
     @State private var quickCSE: [String: CSEDataManager.CSEData] = CSEDataManager.getAllQuickCSEData()
     @AppStorage("useQuickCSE", store: userDefaults) private var useQuickCSE: Bool = false
@@ -19,20 +20,22 @@ struct QuickSEListView: View {
     
     var body: some View {
         List {
-            // Toggle QuickSE
-            Section {
-                Toggle(isOn: $useQuickCSE) {
-                    UITemplates.IconLabel(icon: "hare", text: "Quick Search")
-                }
-                .onChange(of: useQuickCSE) { _ in
-                    withAnimation { useQuickCSEToggle = useQuickCSE }
-                    #if !os(visionOS)
-                    if #available(iOS 18.0, macOS 26, *) {
-                        ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
+            if editMode?.wrappedValue.isEditing != true {
+                // Toggle QuickSE
+                Section {
+                    Toggle(isOn: $useQuickCSE) {
+                        UITemplates.IconLabel(icon: "hare", text: "Quick Search")
                     }
-                    #endif
-                }
-            } footer: { Text("Enter the keyword at the top to switch search engines.") }
+                    .onChange(of: useQuickCSE) { _ in
+                        withAnimation { useQuickCSEToggle = useQuickCSE }
+                        #if !os(visionOS)
+                        if #available(iOS 18.0, macOS 26, *) {
+                            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
+                        }
+                        #endif
+                    }
+                } footer: { Text("Enter the keyword at the top to switch search engines.") }
+            }
             
             if useQuickCSEToggle {
                 Section {
@@ -79,22 +82,25 @@ struct QuickSEListView: View {
                 } header: { Text("Quick Search Engines") }
                 
                 // Add new SE Button
-                Section {
-                    NavigationLink(destination: EditSE.EditQuickCSEView()) {
-                        HStack {
-                            Image(systemName: "plus.circle")
-                                .accessibilityHidden(true)
-                            Text("Add New Search Engine")
+                if editMode?.wrappedValue.isEditing != true {
+                    Section {
+                        NavigationLink(destination: EditSE.EditQuickCSEView()) {
+                            HStack {
+                                Image(systemName: "plus.circle")
+                                    .accessibilityHidden(true)
+                                Text("Add New Search Engine")
+                            }
+                            #if !os(visionOS)
+                            .foregroundColor(.accentColor)
+                            #endif
                         }
-                        #if !os(visionOS)
-                        .foregroundColor(.accentColor)
-                        #endif
                     }
                 }
             }
         }
         .navigationTitle("Quick Search")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(editMode?.wrappedValue.isEditing == true)
         .toolbar {
             if useQuickCSEToggle { EditButton() }
         }
