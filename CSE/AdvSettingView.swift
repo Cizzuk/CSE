@@ -11,6 +11,7 @@ struct AdvSettingView: View {
     //Load advanced settings
     @AppStorage("needFirstTutorial", store: userDefaults) private var needFirstTutorial: Bool = true
     @AppStorage("adv_disablechecker", store: userDefaults) private var disablechecker: Bool = false
+    @AppStorage("adv_ignoreSafariSettings", store: userDefaults) private var ignoreSafariSettings: Bool = false
     @AppStorage("adv_disableKeywordOnlyQuickSearch", store: userDefaults) private var disableKeywordOnlyQuickSearch: Bool = false
     @AppStorage("adv_ignoreFocusFilter", store: userDefaults) private var ignoreFocusFilter: Bool = false
     @AppStorage("adv_overrideRegion", store: userDefaults) private var overrideRegion: String = ""
@@ -21,6 +22,7 @@ struct AdvSettingView: View {
             Section {
                 Button("Reset All Advanced Settings") {
                     disablechecker = false
+                    ignoreSafariSettings = false
                     disableKeywordOnlyQuickSearch = false
                     ignoreFocusFilter = false
                     overrideRegion = ""
@@ -40,6 +42,14 @@ struct AdvSettingView: View {
                 })
             } footer: {
                 Text("CSE will not check that you have searched from the search bar.")
+            }
+            
+            Section {
+                Toggle(isOn: $ignoreSafariSettings, label: {
+                    Text("Ignore Safari Settings")
+                })
+            } footer: {
+                Text("CSE will ignore Safari Settings and detect the URLs of all Safari search engines.")
             }
             
             Section {
