@@ -9,7 +9,15 @@ import Foundation
 
 enum SafariSEs: String, CaseIterable {
     // Helpers
-    private static let currentRegion = Locale.current.region?.identifier
+    private static var currentRegion: String? {
+        // Check for override
+        let overrideRegion_code = CSEDataManager.userDefaults.string(forKey: "adv_overrideRegion") ?? ""
+        if !overrideRegion_code.isEmpty {
+            return overrideRegion_code
+        }
+        
+        return Locale.current.region?.identifier
+    }
     
     private static func containsLanguage(_ languageCode: String) -> Bool {
         return Locale.preferredLanguages.contains { language in
