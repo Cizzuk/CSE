@@ -43,6 +43,8 @@ class EditSE {
                     Spacer()
                     Text("\(cseData.wrappedValue.post.count)")
                         .foregroundColor(.secondary)
+                    Image(systemName: "chevron.forward")
+                        .foregroundColor(.secondary)
                 }
             }
             .foregroundColor(.primary)
