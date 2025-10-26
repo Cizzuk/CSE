@@ -53,9 +53,8 @@ class EditSE {
                 Text("Max Query Length")
                 Spacer()
                 TextField("32", value: cseData.maxQueryLength, format: .number)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
                     .keyboardType(.numberPad)
-                    .frame(width: 100)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
                     .multilineTextAlignment(.trailing)
                     .submitLabel(.done)
                     .onSubmit { onSubmit?() }
