@@ -90,7 +90,6 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
                 }
             }
             
-            
             // Check if searchQuery is available
             guard let query = searchQuery else {
                 sendData(context: context, data: ["type" : "cancel"])
