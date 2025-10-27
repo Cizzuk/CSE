@@ -80,7 +80,7 @@ class AppInitializer {
         return updateComponents.count > lastComponents.count
     }
     
-    // Reset CSEs | target == 'all' or 'default' or 'private' or 'quick'
+    // Reset CSEs
     enum resetCSETarget {
         case all, defaultCSE, privateCSE, quickCSE
     }

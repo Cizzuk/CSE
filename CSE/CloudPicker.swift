@@ -52,7 +52,7 @@ class CloudPicker {
                         }
                     }
             }
-            .interactiveDismissDisabled(ck.isLocked)
+            .interactiveDismissDisabled(isLocked)
             .task {
                 if isFirstLoad {
                     ck.fetchAll()
@@ -64,7 +64,7 @@ class CloudPicker {
         @ViewBuilder
         private var listContent: some View {
             List {
-                if ck.isLoading {
+                if isFetching {
                     HStack { Spacer(); ProgressView(); Spacer() }
                 } else if let error = ck.error {
                     UITemplates.IconLabel(icon: "exclamationmark.icloud", text: String.LocalizationValue(error.localizedDescription))
@@ -99,7 +99,7 @@ class CloudPicker {
                         Label("Delete", systemImage: "trash")
                     }
                 }
-                .disabled(ck.isLocked)
+                .disabled(isLocked)
                 .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                     Button(role: .destructive) {
                         ck.delete(recordID: ds.id)
@@ -121,7 +121,7 @@ class CloudPicker {
                             Label("Delete", systemImage: "trash")
                         }
                     }
-                    .disabled(ck.isLocked)
+                    .disabled(isLocked)
                     .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                         Button(role: .destructive) {
                             ck.delete(recordID: ds.id)
@@ -141,7 +141,7 @@ class CloudPicker {
                         isOpenSheet.wrappedValue = false
                     }
                 }
-                .disabled(ck.isLocked)
+                .disabled(isLocked)
             }
         }
         
@@ -155,6 +155,14 @@ class CloudPicker {
                         .font(.subheadline)
                 }
             }
+        }
+
+        private var isFetching: Bool {
+            ck.currentOperation == .fetchAll && ck.currentStatus == .inProgress
+        }
+
+        private var isLocked: Bool {
+            ck.currentStatus == .inProgress && (ck.currentOperation == .delete || ck.currentOperation == .export)
         }
     }
     

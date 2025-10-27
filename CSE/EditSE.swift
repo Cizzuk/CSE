@@ -43,9 +43,19 @@ class EditSE {
                     Spacer()
                     Text("\(cseData.wrappedValue.post.count)")
                         .foregroundColor(.secondary)
+                    Image(systemName: "chevron.forward")
+                        .foregroundColor(.secondary)
                 }
             }
             .foregroundColor(.primary)
+            .contextMenu {
+                Button(role: .destructive) {
+                    cseData.wrappedValue.post = []
+                    onSubmit?()
+                } label: {
+                    Label("Clear All POST Data", systemImage: "trash")
+                }
+            }
             
             Toggle("Disable Percent-encoding", isOn: cseData.disablePercentEncoding)
                 .onChange(of: cseData.wrappedValue.disablePercentEncoding) { _ in onSubmit?() }
@@ -53,9 +63,8 @@ class EditSE {
                 Text("Max Query Length")
                 Spacer()
                 TextField("32", value: cseData.maxQueryLength, format: .number)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
                     .keyboardType(.numberPad)
-                    .frame(width: 100)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
                     .multilineTextAlignment(.trailing)
                     .submitLabel(.done)
                     .onSubmit { onSubmit?() }
@@ -502,11 +511,8 @@ class EditSE {
                 .navigationTitle("POST Data")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        EditButton()
-                    }
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button("Done") {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button("Done", systemImage: "checkmark") {
                             isOpenSheet = false
                         }
                     }

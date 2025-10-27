@@ -55,7 +55,3 @@ To avoid [CSP restrictions](https://developer.mozilla.org/en-US/docs/Web/HTTP/CS
 ## License
 
 This application is licensed under the [MIT License](https://github.com/Cizzuk/CSE/blob/main/LICENSE).
-
-## Tip
-
-Do you like it? please [send me a tip](https://cizzuk.net/tip/)!

@@ -52,22 +52,23 @@ class BackupView {
                             HStack {
                                 UITemplates.IconLabel(icon: "icloud.and.arrow.up", text: "Backup to iCloud")
                                 Spacer()
-                                if ck.uploadStatus == .uploading {
+                                if isUploading {
                                     ProgressView()
-                                } else if ck.uploadStatus == .failure {
+                                } else if uploadFailed {
                                     Image(systemName: "xmark")
-                                } else if ck.uploadStatus == .success {
+                                } else if uploadSucceeded {
                                     Image(systemName: "checkmark")
                                 }
                             }
                         }
-                        .disabled(ck.uploadStatus == .uploading)
-                        .onChange(of: ck.uploadStatus) { uploadStatus in
-                            if uploadStatus == .success {
+                        .disabled(isUploading)
+                        .onChange(of: ck.currentStatus) { status in
+                            guard ck.currentOperation == .upload else { return }
+                            if status == .success {
                                 #if !os(visionOS)
                                 UINotificationFeedbackGenerator().notificationOccurred(.success)
                                 #endif
-                            } else if uploadStatus == .failure {
+                            } else if status == .failure {
                                 #if !os(visionOS)
                                 UINotificationFeedbackGenerator().notificationOccurred(.error)
                                 #endif
@@ -93,7 +94,7 @@ class BackupView {
                         }
                     } footer: { Text("You can delete all data stored in iCloud from the iCloud settings.") }
                 }
-                .disabled(ck.cloudKitAvailability != .available || ck.isLocked)
+                .disabled(ck.cloudKitAvailability != .available || isLocked)
             }
             .navigationTitle("Backup & Restore")
             .navigationBarTitleDisplayMode(.inline)
@@ -102,6 +103,11 @@ class BackupView {
             }
             .alert(errorMessage, isPresented: $showingErrorAlert, actions: {})
             .task { ck.checkCloudKitAvailability() }
+            .onReceive(ck.$error) { error in
+                guard let error else { return }
+                errorMessage = error.localizedDescription
+                showingErrorAlert = true
+            }
             .onReceive(NotificationCenter.default.publisher(for: Notification.Name("CloudKitAllDataExported"))) { note in
                 if let jsonString = note.object as? String {
                     exportJSONFile(jsonString: jsonString, filePrefix: "CSE-RequestData")
@@ -166,6 +172,22 @@ class BackupView {
                 rootViewController.present(activityViewController, animated: true, completion: nil)
             }
             #endif
+        }
+
+        private var isUploading: Bool {
+            ck.currentOperation == .upload && ck.currentStatus == .inProgress
+        }
+
+        private var uploadFailed: Bool {
+            ck.currentOperation == .upload && ck.currentStatus == .failure
+        }
+
+        private var uploadSucceeded: Bool {
+            ck.currentOperation == .upload && ck.currentStatus == .success
+        }
+
+        private var isLocked: Bool {
+            ck.currentStatus == .inProgress && (ck.currentOperation == .export || ck.currentOperation == .delete)
         }
     }
     

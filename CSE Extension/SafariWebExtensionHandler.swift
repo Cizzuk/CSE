@@ -66,14 +66,28 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             // Check current focus filter
             try await getFocusFilter()
             
-            let searchQuery: String?
-            // Get Redirect URL
+            var searchQuery: String? = nil
+            
+            // Get search query from user selected engines
             if checkEngineURL(engine: searchengine, url: searchURL) {
                 searchQuery = getQueryValue(engine: searchengine, url: searchURL)
             } else if !alsousepriv && checkEngineURL(engine: privsearchengine, url: searchURL) {
                 searchQuery = getQueryValue(engine: privsearchengine, url: searchURL)
-            } else {
-                searchQuery = nil
+            }
+            
+            // If adv_ignoreSafariSettings and not matched, try all other available engines
+            let adv_ignoreSafariSettings = userDefaults.bool(forKey: "adv_ignoreSafariSettings")
+            if adv_ignoreSafariSettings && searchQuery == nil {
+                for engine in SafariSEs.availableEngines {
+                    // Skip already checked engines
+                    if engine == searchengine || (!alsousepriv && engine == privsearchengine) {
+                        continue
+                    }
+                    if checkEngineURL(engine: engine, url: searchURL) {
+                        searchQuery = getQueryValue(engine: engine, url: searchURL)
+                        break
+                    }
+                }
             }
             
             // Check if searchQuery is available

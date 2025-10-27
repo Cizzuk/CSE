@@ -14,29 +14,42 @@ final class CloudKitManager: ObservableObject {
     private let database: CKDatabase = CKContainer(identifier: "iCloud.net.cizzuk.cse").privateCloudDatabase
     private let userDefaults = CSEDataManager.userDefaults
     
-    enum UploadStatus: Equatable {
+    enum CKMStatus: Equatable {
         case idle
         case skipped
-        case uploading
+        case inProgress
         case success
         case failure
+    }
+
+    enum CKMOperation: Equatable {
+        case none
+        case availability
+        case upload
+        case fetchAll
+        case delete
+        case export
     }
     
     @Published var cloudKitAvailability: CKAccountStatus?
     @Published var allCSEs: [CSEDataManager.DeviceCSEs] = [] // All data from iCloud
     @Published var error: Error? // Error message
-    @Published var isLoading: Bool = false // Indicates if the CloudKit is loading
-    @Published var isLocked: Bool = false // If the current view is locked
-    @Published var uploadStatus: UploadStatus = .idle
+    @Published var currentStatus: CKMStatus = .idle
+    @Published var currentOperation: CKMOperation = .none
     
     // Check CloudKit availability
     func checkCloudKitAvailability() {
+        currentOperation = .availability
+        currentStatus = .inProgress
         CKContainer(identifier: "iCloud.net.cizzuk.cse").accountStatus { status, error in
             DispatchQueue.main.async {
                 self.cloudKitAvailability = status
                 if let error = error {
                     self.error = error
-                    print("Error checking iCloud availability: \(error)")
+                    self.currentStatus = .failure
+                } else {
+                    self.error = nil
+                    self.currentStatus = .success
                 }
             }
         }
@@ -53,13 +66,16 @@ final class CloudKitManager: ObservableObject {
     
     // Upload CSEs
     func saveAll(mustUpload: Bool = false) {
+        currentOperation = .upload
         // Skip when auto-backup off and not forced
         guard mustUpload || userDefaults.bool(forKey: "iCloudAutoBackup") else {
-            self.uploadStatus = .skipped
+            self.currentStatus = .skipped
+            self.error = nil
             print("CloudKit upload is disabled in settings.")
             return
         }
-        self.uploadStatus = .uploading
+        self.currentStatus = .inProgress
+        self.error = nil
         
         let deviceID = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
         let recordID = CKRecord.ID(recordName: deviceID)
@@ -111,7 +127,8 @@ final class CloudKitManager: ObservableObject {
             let lastRecordHash = userDefaults.data(forKey: "cloudkit_lastRecordHash") ?? Data()
             guard currentRecordHash != lastRecordHash else {
                 print("No changes detected, skipping CloudKit upload.")
-                self.uploadStatus = .skipped
+                self.currentStatus = .skipped
+                self.error = nil
                 return
             }
         }
@@ -127,12 +144,11 @@ final class CloudKitManager: ObservableObject {
                 case .success:
                     // Save the current record hash to UserDefaults for future comparison
                     self.userDefaults.set(currentRecordHash, forKey: "cloudkit_lastRecordHash")
-                    print("CloudKit upload successful")
-                    self.uploadStatus = .success
+                    self.error = nil
+                    self.currentStatus = .success
                 case .failure(let error):
-                    print("CloudKit upload failed: \(error)")
-                    self.uploadStatus = .failure
-                    
+                    self.error = error
+                    self.currentStatus = .failure
                 }
             }
         }
@@ -149,7 +165,9 @@ final class CloudKitManager: ObservableObject {
     // Fetch CSEs from all devices
     func fetchAll() {
         // Reset
-        isLoading = true
+        currentOperation = .fetchAll
+        currentStatus = .inProgress
+        error = nil
         self.allCSEs.removeAll()
         
         // Fetch records
@@ -176,7 +194,10 @@ final class CloudKitManager: ObservableObject {
                 self.error = nil
                 self.allCSEs.append(fetchedRecord)
             case .failure(let error):
-                self.error = error
+                DispatchQueue.main.async {
+                    self.error = error
+                    self.currentStatus = .failure
+                }
             }
         }
         
@@ -185,10 +206,12 @@ final class CloudKitManager: ObservableObject {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    self.isLoading = false
+                    if self.currentStatus != .failure {
+                        self.currentStatus = .success
+                    }
                 case .failure(let error):
                     self.error = error
-                    self.isLoading = false
+                    self.currentStatus = .failure
                 }
             }
         }
@@ -198,17 +221,21 @@ final class CloudKitManager: ObservableObject {
     
     // Delete record
     func delete(recordID: CKRecord.ID) {
-        isLocked = true
+        currentOperation = .delete
+        currentStatus = .inProgress
+        error = nil
         
         let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [recordID])
         operation.modifyRecordsResultBlock = { result in
             DispatchQueue.main.async {
-                self.isLocked = false
                 switch result {
                 case .success:
                     self.allCSEs.removeAll { $0.id == recordID }
+                    self.error = nil
+                    self.currentStatus = .success
                 case .failure(let error):
                     self.error = error
+                    self.currentStatus = .failure
                 }
             }
         }
@@ -216,7 +243,9 @@ final class CloudKitManager: ObservableObject {
     }
     
     func exportAllData() {
-        isLocked = true
+        currentOperation = .export
+        currentStatus = .inProgress
+        error = nil
         
         let query = CKQuery(recordType: "DeviceCSEs", predicate: NSPredicate(value: true))
         query.sortDescriptors = [NSSortDescriptor(key: "modificationDate", ascending: false)]
@@ -242,7 +271,6 @@ final class CloudKitManager: ObservableObject {
 
         operation.queryResultBlock = { result in
             DispatchQueue.main.async {
-                self.isLocked = false
                 switch result {
                 case .success:
                     let root: [String: Any] = [
@@ -253,8 +281,11 @@ final class CloudKitManager: ObservableObject {
                        let json = String(data: data, encoding: .utf8) {
                         NotificationCenter.default.post(name: NSNotification.Name("CloudKitAllDataExported"), object: json)
                     }
+                    self.error = nil
+                    self.currentStatus = .success
                 case .failure(let error):
                     self.error = error
+                    self.currentStatus = .failure
                 }
             }
         }

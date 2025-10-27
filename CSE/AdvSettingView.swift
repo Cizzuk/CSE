@@ -11,8 +11,10 @@ struct AdvSettingView: View {
     //Load advanced settings
     @AppStorage("needFirstTutorial", store: userDefaults) private var needFirstTutorial: Bool = true
     @AppStorage("adv_disablechecker", store: userDefaults) private var disablechecker: Bool = false
+    @AppStorage("adv_ignoreSafariSettings", store: userDefaults) private var ignoreSafariSettings: Bool = false
     @AppStorage("adv_disableKeywordOnlyQuickSearch", store: userDefaults) private var disableKeywordOnlyQuickSearch: Bool = false
     @AppStorage("adv_ignoreFocusFilter", store: userDefaults) private var ignoreFocusFilter: Bool = false
+    @AppStorage("adv_overrideRegion", store: userDefaults) private var overrideRegion: String = ""
     @State private var allowReset: Bool = false
     
     var body: some View {
@@ -20,8 +22,10 @@ struct AdvSettingView: View {
             Section {
                 Button("Reset All Advanced Settings") {
                     disablechecker = false
+                    ignoreSafariSettings = false
                     disableKeywordOnlyQuickSearch = false
                     ignoreFocusFilter = false
+                    overrideRegion = ""
                     allowReset = false
                 }
             }
@@ -41,6 +45,14 @@ struct AdvSettingView: View {
             }
             
             Section {
+                Toggle(isOn: $ignoreSafariSettings, label: {
+                    Text("Ignore Safari Settings")
+                })
+            } footer: {
+                Text("CSE will ignore Safari Settings and detect the URLs of all Safari search engines.")
+            }
+            
+            Section {
                 Toggle(isOn: $disableKeywordOnlyQuickSearch, label: {
                     Text("Disable Keyword Only Quick Search")
                 })
@@ -54,6 +66,23 @@ struct AdvSettingView: View {
                 })
             } footer: {
                 Text("CSE will ignore all Focus Filters.")
+            }
+            
+            Section {
+                HStack {
+                    Text("Override Region")
+                    Spacer()
+                    TextField(currentRegion ?? "US", text: $overrideRegion)
+                        .textInputAutocapitalization(.characters)
+                        .disableAutocorrection(true)
+                        .keyboardType(.asciiCapable)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .multilineTextAlignment(.trailing)
+                        .submitLabel(.done)
+                        .scrollToDismissesKeyboard()
+                }
+            } footer: {
+                Text("Overrides the device's region settings when detecting Safari search engines. Blank to disable.")
             }
             
             Section {
