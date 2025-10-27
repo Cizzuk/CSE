@@ -48,6 +48,14 @@ class EditSE {
                 }
             }
             .foregroundColor(.primary)
+            .contextMenu {
+                Button(role: .destructive) {
+                    cseData.wrappedValue.post = []
+                    onSubmit?()
+                } label: {
+                    Label("Clear All POST Data", systemImage: "trash")
+                }
+            }
             
             Toggle("Disable Percent-encoding", isOn: cseData.disablePercentEncoding)
                 .onChange(of: cseData.wrappedValue.disablePercentEncoding) { _ in onSubmit?() }
