@@ -167,9 +167,9 @@ class Tutorial {
         var isFirstTutorial: Bool = false
         @State private var isNavigation: Bool = false
         
-        @AppStorage("searchengine", store: userDefaults) private var searchengine: String = "google"
+        @AppStorage("searchengine", store: userDefaults) private var searchengine: String = SafariSEs.default.rawValue
         @AppStorage("alsousepriv", store: userDefaults) private var alsousepriv: Bool = true
-        @AppStorage("privsearchengine", store: userDefaults) private var privsearchengine: String = "duckduckgo"
+        @AppStorage("privsearchengine", store: userDefaults) private var privsearchengine: String = SafariSEs.private.rawValue
         
         var body: some View {
             List {
