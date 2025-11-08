@@ -38,9 +38,11 @@ struct QuickSEListView: View {
             }
             
             if useQuickCSEToggle {
-                Section {
-                    NavigationLink(destination: QuickSearchSettingsView()) {
-                        UITemplates.IconLabel(icon: "gearshape", text: "Quick Search Settings")
+                if editMode?.wrappedValue.isEditing != true {
+                    Section {
+                        NavigationLink(destination: QuickSearchSettingsView()) {
+                            UITemplates.IconLabel(icon: "gearshape", text: "Quick Search Settings")
+                        }
                     }
                 }
                 
