@@ -285,8 +285,8 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             }
 
             // If keyword only is disabled and there's no '+', skip
-            let disableKeywordOnly: Bool = userDefaults.bool(forKey: "adv_disableKeywordOnlyQuickSearch")
-            if !disableKeywordOnly || afterPlus != nil {
+            let keywordOnly: Bool = userDefaults.bool(forKey: "QuickSearchSettings_keywordOnly")
+            if !keywordOnly || afterPlus != nil {
                 let quickCSEData = CSEDataManager.getAllQuickCSEData()
                 let candidateKeyword = beforePlus.removingPercentEncoding ?? beforePlus
                 if let matched = quickCSEData[candidateKeyword] {
