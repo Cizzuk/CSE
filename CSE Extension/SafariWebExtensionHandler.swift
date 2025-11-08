@@ -272,26 +272,72 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         
         // Check quick search
         if useQuickCSE {
-            // Extract candidate keyword and query
-            let beforePlus: String // maybe keyword
-            let afterPlus: String? // maybe query
-            if let plusRange = query.range(of: "+") {
-                beforePlus = String(query[..<plusRange.lowerBound])
-                afterPlus = String(query[query.index(after: plusRange.lowerBound)...])
-            } else {
-                // Maybe keyword only
-                beforePlus = query
-                afterPlus = nil
+            // Get Quick Search Settings
+            let keywordOnly: Bool = userDefaults.bool(forKey: "QuickSearchSettings_keywordOnly")
+            let keywordPosRaw = userDefaults.string(forKey: "QuickSearchSettings_keywordPos")
+            let keywordPos = QuickSearchKeywordPos(rawValue: keywordPosRaw ?? QuickSearchKeywordPos.default.rawValue) ?? .default
+            let quickCSEData = CSEDataManager.getAllQuickCSEData()
+
+            // Split query into components with '+'
+            var components = query
+                .split(separator: "+", omittingEmptySubsequences: false)
+                .map(String.init)
+            if components.isEmpty {
+                components = [query]
+            }
+            let decodedComponents = components.map { $0.removingPercentEncoding ?? $0 }
+
+            // Apply Matched Quick Search
+            func applyMatch(_ matchedData: CSEDataManager.CSEData, removing indices: Set<Int>) {
+                // Remove keyword from query
+                let remaining = components.enumerated()
+                    .filter { !indices.contains($0.offset) }
+                    .map { $0.element }
+                fixedQuery = remaining.joined(separator: "+")
+                // Set CSEData
+                CSEData = matchedData
             }
 
-            // If keyword only is disabled and there's no '+', skip
-            let keywordOnly: Bool = userDefaults.bool(forKey: "QuickSearchSettings_keywordOnly")
-            if keywordOnly || afterPlus != nil {
-                let quickCSEData = CSEDataManager.getAllQuickCSEData()
-                let candidateKeyword = beforePlus.removingPercentEncoding ?? beforePlus
-                if let matched = quickCSEData[candidateKeyword] {
-                    fixedQuery = afterPlus ?? ""
-                    CSEData = matched
+            // Match Checking
+            // Check keyword only quick search
+            if keywordOnly && components.count == 1 {
+                let candidate = decodedComponents[0]
+                if let matched = quickCSEData[candidate] {
+                    applyMatch(matched, removing: Set([0]))
+                }
+            } else if components.count > 1 {
+                switch keywordPos {
+                case .prefix:
+                    if let first = decodedComponents.first,
+                       let matched = quickCSEData[first] {
+                        applyMatch(matched, removing: Set([0]))
+                    }
+                case .suffix:
+                    if let lastIndex = decodedComponents.indices.last {
+                        let keyword = decodedComponents[lastIndex]
+                        if let matched = quickCSEData[keyword] {
+                            applyMatch(matched, removing: Set([lastIndex]))
+                        }
+                    }
+                case .prefORsuf:
+                    if let first = decodedComponents.first,
+                       let matched = quickCSEData[first] {
+                        applyMatch(matched, removing: Set([0]))
+                    } else if let lastIndex = decodedComponents.indices.last {
+                        let keyword = decodedComponents[lastIndex]
+                        if let matched = quickCSEData[keyword] {
+                            applyMatch(matched, removing: Set([lastIndex]))
+                        }
+                    }
+                case .prefANDsuf:
+                    if decodedComponents.count >= 2 {
+                        let first = decodedComponents.first!
+                        let lastIndex = decodedComponents.count - 1
+                        if first == decodedComponents[lastIndex],
+                           let matched = quickCSEData[first] {
+                            applyMatch(matched, removing: Set([0, lastIndex]))
+                        }
+                    }
                 }
             }
         }
