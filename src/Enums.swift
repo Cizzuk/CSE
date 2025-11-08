@@ -8,7 +8,7 @@
 import Foundation
 
 enum QuickSearchKeywordPos: String, CaseIterable {
-    case prefix, suffix, prefORsuf, prefANDsuf, anywhere
+    case prefix, suffix, prefORsuf, prefANDsuf
     
     var displayName: String.LocalizationValue {
         switch self {
@@ -20,8 +20,6 @@ enum QuickSearchKeywordPos: String, CaseIterable {
             return "Prefix or Suffix"
         case .prefANDsuf:
             return "Prefix and Suffix"
-        case .anywhere:
-            return "Anywhere"
         }
     }
     

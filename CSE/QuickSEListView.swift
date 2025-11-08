@@ -155,8 +155,6 @@ struct QuickSearchSettingsView: View {
                         Text("Example: 'cse your search' or 'your search cse'")
                     case .prefANDsuf:
                         Text("Example: 'cse your search cse'")
-                    case .anywhere:
-                        Text("Example: 'your cse search'")
                     }
                 }
             }

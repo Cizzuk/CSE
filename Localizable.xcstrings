@@ -1081,9 +1081,6 @@
         }
       }
     },
-    "Anywhere" : {
-
-    },
     "Are you sure you want to discard changes?" : {
       "localizations" : {
         "ar" : {
@@ -4077,9 +4074,6 @@
 
     },
     "Example: 'cse your search' or 'your search cse'" : {
-
-    },
-    "Example: 'your cse search'" : {
 
     },
     "Example: 'your search cse'" : {
