@@ -868,6 +868,9 @@
         }
       }
     },
+    "Allow Keyword Only Search" : {
+
+    },
     "Also Use in Private Browsing" : {
       "localizations" : {
         "ar" : {
@@ -1077,6 +1080,9 @@
           }
         }
       }
+    },
+    "Anywhere" : {
+
     },
     "Are you sure you want to discard changes?" : {
       "localizations" : {
@@ -2530,6 +2536,7 @@
       }
     },
     "CSE will not use Quick Search when only a keyword is entered for search." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -2538,6 +2545,9 @@
           }
         }
       }
+    },
+    "CSE will use Quick Search Engines even if you only enter the keyword in the search query." : {
+
     },
     "Customize Search Engine" : {
       "comment" : "The title of the app.",
@@ -3119,6 +3129,7 @@
       }
     },
     "Disable Keyword Only Quick Search" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -3989,6 +4000,7 @@
       }
     },
     "Example: '%@ your search'" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -4057,6 +4069,21 @@
           }
         }
       }
+    },
+    "Example: 'cse your search cse'" : {
+
+    },
+    "Example: 'cse your search'" : {
+
+    },
+    "Example: 'cse your search' or 'your search cse'" : {
+
+    },
+    "Example: 'your cse search'" : {
+
+    },
+    "Example: 'your search cse'" : {
+
     },
     "Existing data will be deleted" : {
       "localizations" : {
@@ -5581,6 +5608,9 @@
         }
       }
     },
+    "Keyword Position" : {
+
+    },
     "Last Updated: %@" : {
       "localizations" : {
         "ar" : {
@@ -7005,6 +7035,15 @@
         }
       }
     },
+    "Prefix" : {
+
+    },
+    "Prefix and Suffix" : {
+
+    },
+    "Prefix or Suffix" : {
+
+    },
     "Privacy Policy" : {
       "localizations" : {
         "ar" : {
@@ -7705,6 +7744,9 @@
           }
         }
       }
+    },
+    "Quick Search Settings" : {
+
     },
     "Rate & Review" : {
       "localizations" : {
@@ -9164,6 +9206,9 @@
         }
       }
     },
+    "Set the position of the keyword in the search query." : {
+
+    },
     "Sets a Custom Default Search Engine on CSE." : {
       "localizations" : {
         "ar" : {
@@ -9799,6 +9844,9 @@
           }
         }
       }
+    },
+    "Suffix" : {
+
     },
     "The search engine you select here can see your search queries. If you have privacy concerns, enable \"CSE Content Blocker\" in Safari settings to prevent query leaks. Note that the Content Blocker may disable some features and might not work properly on certain Safari versions." : {
       "localizations" : {

@@ -12,7 +12,6 @@ struct AdvSettingView: View {
     @AppStorage("needFirstTutorial", store: userDefaults) private var needFirstTutorial: Bool = true
     @AppStorage("adv_disablechecker", store: userDefaults) private var disablechecker: Bool = false
     @AppStorage("adv_ignoreSafariSettings", store: userDefaults) private var ignoreSafariSettings: Bool = false
-    @AppStorage("adv_disableKeywordOnlyQuickSearch", store: userDefaults) private var disableKeywordOnlyQuickSearch: Bool = false
     @AppStorage("adv_ignoreFocusFilter", store: userDefaults) private var ignoreFocusFilter: Bool = false
     @AppStorage("adv_overrideRegion", store: userDefaults) private var overrideRegion: String = ""
     @State private var allowReset: Bool = false
@@ -23,7 +22,6 @@ struct AdvSettingView: View {
                 Button("Reset All Advanced Settings") {
                     disablechecker = false
                     ignoreSafariSettings = false
-                    disableKeywordOnlyQuickSearch = false
                     ignoreFocusFilter = false
                     overrideRegion = ""
                     allowReset = false
@@ -50,14 +48,6 @@ struct AdvSettingView: View {
                 })
             } footer: {
                 Text("CSE will ignore Safari Settings and detect the URLs of all Safari search engines.")
-            }
-            
-            Section {
-                Toggle(isOn: $disableKeywordOnlyQuickSearch, label: {
-                    Text("Disable Keyword Only Quick Search")
-                })
-            } footer: {
-                Text("CSE will not use Quick Search when only a keyword is entered for search.")
             }
             
             Section {
