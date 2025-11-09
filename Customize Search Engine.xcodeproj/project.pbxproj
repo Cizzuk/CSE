@@ -27,6 +27,7 @@
 		BE5B593A2E4456C700D63E34 /* SafariSEs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B59392E4456C700D63E34 /* SafariSEs.swift */; };
 		BE5B593B2E445AC400D63E34 /* SafariSEs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B59392E4456C700D63E34 /* SafariSEs.swift */; };
 		BE5CEB622DAE8DC6003A2F3E /* RecommendSEs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5CEB612DAE8DC6003A2F3E /* RecommendSEs.swift */; };
+		BE689E852EC0744000E3EF8E /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC1AE9B2EBEF25E0054516C /* Enums.swift */; };
 		BE6A48362E89661500D82054 /* SafariSEs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B59392E4456C700D63E34 /* SafariSEs.swift */; };
 		BE7374D52D86DDF300976342 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7374D42D86DDF300976342 /* AboutView.swift */; };
 		BE866B682D3F688900C506E5 /* EditSE.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE866B672D3F688900C506E5 /* EditSE.swift */; };
@@ -566,6 +567,7 @@
 			files = (
 				BE8F80062DE4200A003906F4 /* CSEDataManager.swift in Sources */,
 				BE8F80072DE42049003906F4 /* CloudKitManager.swift in Sources */,
+				BE689E852EC0744000E3EF8E /* Enums.swift in Sources */,
 				BE6A48362E89661500D82054 /* SafariSEs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

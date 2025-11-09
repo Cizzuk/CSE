@@ -118,6 +118,15 @@ final class CloudKitManager: ObservableObject {
         combinedDict["useEmojiSearch"] = useEmojiSearch
         record["useEmojiSearch"] = useEmojiSearch
         
+        // Quick Search Settings
+        let QuickSearchSettings_keywordOnly = userDefaults.bool(forKey: "QuickSearchSettings_keywordOnly")
+        combinedDict["QuickSearchSettings_keywordOnly"] = QuickSearchSettings_keywordOnly
+        record["QuickSearchSettings_keywordOnly"] = QuickSearchSettings_keywordOnly
+        
+        let QuickSearchSettings_keywordPos = userDefaults.string(forKey: "QuickSearchSettings_keywordPos") ?? QuickSearchKeywordPos.default.rawValue
+        combinedDict["QuickSearchSettings_keywordPos"] = QuickSearchSettings_keywordPos
+        record["QuickSearchSettings_keywordPos"] = QuickSearchSettings_keywordPos
+        
         // Gen hash
         let currentRecordHash = generateHash(from: CSEDataManager.jsonDictToString(combinedDict) ?? "")
         print("Current record hash: \(currentRecordHash.base64EncodedString())")
@@ -189,7 +198,9 @@ final class CloudKitManager: ObservableObject {
                     defaultCSE: record["defaultCSE"] as? String ?? "",
                     privateCSE: record["privateCSE"] as? String ?? "",
                     quickCSE: record["quickCSE"] as? String ?? "",
-                    useEmojiSearch: record["useEmojiSearch"] as? Bool ?? false
+                    useEmojiSearch: record["useEmojiSearch"] as? Bool ?? false,
+                    QuickSearchSettings_keywordOnly: record["QuickSearchSettings_keywordOnly"] as? Bool ?? true,
+                    QuickSearchSettings_keywordPos: record["QuickSearchSettings_keywordPos"] as? String ?? QuickSearchKeywordPos.default.rawValue
                 )
                 self.error = nil
                 self.allCSEs.append(fetchedRecord)
