@@ -49,6 +49,8 @@ class CSEDataManager {
         let privateCSE: String
         let quickCSE: String
         let useEmojiSearch: Bool
+        let QuickSearchSettings_keywordOnly: Bool
+        let QuickSearchSettings_keywordPos: String
         
         static func == (lhs: DeviceCSEs, rhs: DeviceCSEs) -> Bool {
                 return lhs.id.recordName == rhs.id.recordName
@@ -405,6 +407,10 @@ class CSEDataManager {
         // Emoji Search
         jsonDict["useEmojiSearch"] = userDefaults.bool(forKey: "useEmojiSearch")
         
+        // Quick Search Settings
+        jsonDict["QuickSearchSettings_keywordOnly"] = userDefaults.bool(forKey: "QuickSearchSettings_keywordOnly")
+        jsonDict["QuickSearchSettings_keywordPos"] = userDefaults.string(forKey: "QuickSearchSettings_keywordPos") ?? QuickSearchKeywordPos.default.rawValue
+        
         // Convert Dictionary to JSON String
         return jsonDictToString(jsonDict)
     }
@@ -426,6 +432,8 @@ class CSEDataManager {
         let privateCSEJSON = jsonDict["privateCSE"] as? [String: Any] ?? [:]
         let quickCSEJSON = jsonDict["quickCSE"] as? [String: [String: Any]] ?? [:]
         let useEmojiSearch = jsonDict["useEmojiSearch"] as? Bool ?? false
+        let QuickSearchSettings_keywordOnly = jsonDict["QuickSearchSettings_keywordOnly"] as? Bool ?? true
+        let QuickSearchSettings_keywordPos = jsonDict["QuickSearchSettings_keywordPos"] as? String ?? QuickSearchKeywordPos.default.rawValue
         
         // Convert JSON strings to CSEData
         let defaultCSE = parseCSEData(defaultCSEJSON)
@@ -442,6 +450,8 @@ class CSEDataManager {
         userDefaults.set(!privateCSE.url.isEmpty, forKey: "usePrivateCSE")
         userDefaults.set(!quickCSE.isEmpty, forKey: "useQuickCSE")
         userDefaults.set(useEmojiSearch, forKey: "useEmojiSearch")
+        userDefaults.set(QuickSearchSettings_keywordOnly, forKey: "QuickSearchSettings_keywordOnly")
+        userDefaults.set(QuickSearchSettings_keywordPos, forKey: "QuickSearchSettings_keywordPos")
         
         // Update CC
         #if !os(visionOS)
@@ -468,6 +478,8 @@ class CSEDataManager {
         userDefaults.set(!privateCSE.url.isEmpty, forKey: "usePrivateCSE")
         userDefaults.set(!quickCSE.isEmpty, forKey: "useQuickCSE")
         userDefaults.set(deviceCSE.useEmojiSearch, forKey: "useEmojiSearch")
+        userDefaults.set(deviceCSE.QuickSearchSettings_keywordOnly, forKey: "QuickSearchSettings_keywordOnly")
+        userDefaults.set(deviceCSE.QuickSearchSettings_keywordPos, forKey: "QuickSearchSettings_keywordPos")
         
         // Update CC
         #if !os(visionOS)

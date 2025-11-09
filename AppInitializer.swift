@@ -46,6 +46,19 @@ class AppInitializer {
                     userDefaults.set(true, forKey: "useDefaultCSE")
                 }
             }
+            
+            // Quick Search Settings for v4.8+
+            if isFirstLaunch || isUpdated(updateVer: "4.8", lastVer: lastVersion) {
+                if userDefaults.string(forKey: "QuickSearchSettings_keywordOnly") == nil {
+                    // Migrate from adv_disableKeywordOnlyQuickSearch
+                    let advSetting = userDefaults.bool(forKey: "adv_disableKeywordOnlyQuickSearch")
+                    userDefaults.set(!advSetting, forKey: "QuickSearchSettings_keywordOnly")
+                    userDefaults.removeObject(forKey: "adv_disableKeywordOnlyQuickSearch")
+                }
+                if userDefaults.string(forKey: "QuickSearchSettings_keywordPos") == nil {
+                    userDefaults.set(QuickSearchKeywordPos.default.rawValue, forKey: "QuickSearchSettings_keywordPos")
+                }
+            }
         }
         
         // Save Current State

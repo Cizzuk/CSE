@@ -351,10 +351,7 @@ class EditSE {
                             }
                     } header: { Text("Keyword")
                     } footer: {
-                        VStack(alignment : .leading) {
-                            Text("Enter this keyword at the top to search with this search engine.")
-                            Text("Example: '\(CSEData.keyword == "" ? "cse" : CSEData.keyword) your search'")
-                        }
+                        Text("Enter this keyword at the top to search with this search engine.")
                     }
                     
                     // Search URL

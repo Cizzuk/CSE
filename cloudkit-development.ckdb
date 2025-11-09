@@ -1,18 +1,20 @@
 DEFINE SCHEMA
 
     RECORD TYPE DeviceCSEs (
-        "___createTime" TIMESTAMP,
-        "___createdBy"  REFERENCE,
-        "___etag"       STRING,
-        "___modTime"    TIMESTAMP SORTABLE,
-        "___modifiedBy" REFERENCE,
-        "___recordID"   REFERENCE QUERYABLE,
-        defaultCSE      STRING,
-        deviceName      STRING,
-        privateCSE      STRING,
-        quickCSE        STRING,
-        useEmojiSearch  INT64,
-        version         STRING
+        QuickSearchSettings_keywordOnly INT64,
+        QuickSearchSettings_keywordPos  STRING,
+        "___createTime"                 TIMESTAMP,
+        "___createdBy"                  REFERENCE,
+        "___etag"                       STRING,
+        "___modTime"                    TIMESTAMP SORTABLE,
+        "___modifiedBy"                 REFERENCE,
+        "___recordID"                   REFERENCE QUERYABLE,
+        defaultCSE                      STRING,
+        deviceName                      STRING,
+        privateCSE                      STRING,
+        quickCSE                        STRING,
+        useEmojiSearch                  INT64,
+        version                         STRING
     );
 
     RECORD TYPE Users (

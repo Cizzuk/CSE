@@ -27,6 +27,7 @@
 		BE5B593A2E4456C700D63E34 /* SafariSEs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B59392E4456C700D63E34 /* SafariSEs.swift */; };
 		BE5B593B2E445AC400D63E34 /* SafariSEs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B59392E4456C700D63E34 /* SafariSEs.swift */; };
 		BE5CEB622DAE8DC6003A2F3E /* RecommendSEs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5CEB612DAE8DC6003A2F3E /* RecommendSEs.swift */; };
+		BE689E852EC0744000E3EF8E /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC1AE9B2EBEF25E0054516C /* Enums.swift */; };
 		BE6A48362E89661500D82054 /* SafariSEs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B59392E4456C700D63E34 /* SafariSEs.swift */; };
 		BE7374D52D86DDF300976342 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7374D42D86DDF300976342 /* AboutView.swift */; };
 		BE866B682D3F688900C506E5 /* EditSE.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE866B672D3F688900C506E5 /* EditSE.swift */; };
@@ -48,6 +49,8 @@
 		BEAE0F422E2268F2007704AE /* AppInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAE0F3F2E2268F2007704AE /* AppInitializer.swift */; };
 		BEAE0F432E226B6D007704AE /* RecommendSEs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5CEB612DAE8DC6003A2F3E /* RecommendSEs.swift */; };
 		BEB57B092E75C9D200FEA794 /* CloudPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB57B082E75C9D200FEA794 /* CloudPicker.swift */; };
+		BEC1AE9C2EBEF25E0054516C /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC1AE9B2EBEF25E0054516C /* Enums.swift */; };
+		BEC1AE9D2EBF1D300054516C /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC1AE9B2EBEF25E0054516C /* Enums.swift */; };
 		BED82F142E31EF9200820213 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED82F132E31EF8F00820213 /* Extensions.swift */; };
 		BED82F3F2E3237DD00820213 /* EmojiSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED82F3E2E3237D300820213 /* EmojiSearchView.swift */; };
 		BED97F4D2E37E14F00EB9ABC /* BackupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED97F4C2E37E14F00EB9ABC /* BackupView.swift */; };
@@ -132,6 +135,7 @@
 		BE8F7FF12DE41F0E003906F4 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		BEAE0F3F2E2268F2007704AE /* AppInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInitializer.swift; sourceTree = "<group>"; };
 		BEB57B082E75C9D200FEA794 /* CloudPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudPicker.swift; sourceTree = "<group>"; };
+		BEC1AE9B2EBEF25E0054516C /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		BED82F132E31EF8F00820213 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BED82F3E2E3237D300820213 /* EmojiSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiSearchView.swift; sourceTree = "<group>"; };
 		BED97F4C2E37E14F00EB9ABC /* BackupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupView.swift; sourceTree = "<group>"; };
@@ -305,6 +309,7 @@
 				BE5CEB612DAE8DC6003A2F3E /* RecommendSEs.swift */,
 				BED82F132E31EF8F00820213 /* Extensions.swift */,
 				BE8F7FE02DE31A43003906F4 /* UITemplates.swift */,
+				BEC1AE9B2EBEF25E0054516C /* Enums.swift */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -520,6 +525,7 @@
 				BEAE0F422E2268F2007704AE /* AppInitializer.swift in Sources */,
 				BE1642DF2D23D69E008A42F8 /* Tutorial.swift in Sources */,
 				BE7374D52D86DDF300976342 /* AboutView.swift in Sources */,
+				BEC1AE9C2EBEF25E0054516C /* Enums.swift in Sources */,
 				BEFCDAEE2DB49844009F9C07 /* CloudKitManager.swift in Sources */,
 				BE866B682D3F688900C506E5 /* EditSE.swift in Sources */,
 				BE8F7FDB2DE2ABDA003906F4 /* CSEDataManager.swift in Sources */,
@@ -543,6 +549,7 @@
 				BE8F7FDD2DE2D81F003906F4 /* CloudKitManager.swift in Sources */,
 				BE5B593B2E445AC400D63E34 /* SafariSEs.swift in Sources */,
 				BEAE0F412E2268F2007704AE /* AppInitializer.swift in Sources */,
+				BEC1AE9D2EBF1D300054516C /* Enums.swift in Sources */,
 				BE8F7FDC2DE2ABDA003906F4 /* CSEDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -560,6 +567,7 @@
 			files = (
 				BE8F80062DE4200A003906F4 /* CSEDataManager.swift in Sources */,
 				BE8F80072DE42049003906F4 /* CloudKitManager.swift in Sources */,
+				BE689E852EC0744000E3EF8E /* Enums.swift in Sources */,
 				BE6A48362E89661500D82054 /* SafariSEs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -660,7 +668,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = CSE/CSE.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 53;
+				CURRENT_PROJECT_VERSION = 54;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -687,7 +695,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.7;
+				MARKETING_VERSION = 4.8;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -714,7 +722,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "CSE Extension/CSE Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 53;
+				CURRENT_PROJECT_VERSION = 54;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
@@ -737,7 +745,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.7;
+				MARKETING_VERSION = 4.8;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -830,7 +838,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "CSE Extension/CSE Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 53;
+				CURRENT_PROJECT_VERSION = 54;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
@@ -853,7 +861,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.7;
+				MARKETING_VERSION = 4.8;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -880,7 +888,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = CSE/CSE.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 53;
+				CURRENT_PROJECT_VERSION = 54;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -907,7 +915,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.7;
+				MARKETING_VERSION = 4.8;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -932,7 +940,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 53;
+				CURRENT_PROJECT_VERSION = 54;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
@@ -956,7 +964,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 4.7;
+				MARKETING_VERSION = 4.8;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -982,7 +990,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 53;
+				CURRENT_PROJECT_VERSION = 54;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
@@ -1006,7 +1014,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 4.7;
+				MARKETING_VERSION = 4.8;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -1035,7 +1043,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = "CSE CCWidget/CSE CCWidgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 53;
+				CURRENT_PROJECT_VERSION = 54;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
@@ -1060,7 +1068,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 4.7;
+				MARKETING_VERSION = 4.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsg0o0.cse.CCWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1113,7 +1121,7 @@
 				CODE_SIGN_ENTITLEMENTS = "CSE CCWidget/CSE CCWidgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 53;
+				CURRENT_PROJECT_VERSION = 54;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
@@ -1149,7 +1157,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 4.7;
+				MARKETING_VERSION = 4.8;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsg0o0.cse.CCWidget;
