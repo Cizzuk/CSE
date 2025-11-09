@@ -17,6 +17,7 @@ struct IconChangeView: View {
                 iconItem(iconName: "Green", iconID: "green-white")
                 iconItem(iconName: "Mono", iconID: "gray-white")
                 iconItem(iconName: "Pride", iconID: "pride")
+                iconItem(iconName: "Unity", iconID: "unity")
                 iconItem(iconName: "Pixel", iconID: "pixel")
             }
         }
