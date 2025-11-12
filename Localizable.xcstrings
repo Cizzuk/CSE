@@ -3838,72 +3838,72 @@
         }
       }
     },
-    "Enter this keyword at the top to search with this search engine." : {
+    "Enter this keyword at %@ to search with this search engine." : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "أدخل هذه الكلمة المفتاحية في الأعلى للبحث باستخدام هذا المحرك."
+            "value" : "أدخل هذه الكلمة المفتاحية في %@ للبحث باستخدام هذا المحرك."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Geben Sie dieses Schlüsselwort oben ein, um mit dieser Suchmaschine zu suchen."
+            "value" : "Geben Sie dieses Schlüsselwort bei %@ ein, um mit dieser Suchmaschine zu suchen."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Introduzca esta palabra clave en la parte superior para buscar con este buscador."
+            "value" : "Introduzca esta palabra clave en %@ para buscar con este buscador."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Saisissez ce mot-clé en haut de la page pour effectuer une recherche avec ce moteur de recherche."
+            "value" : "Saisissez ce mot-clé à %@ pour effectuer une recherche avec ce moteur de recherche."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "このキーワードを先頭に入力すると、この検索エンジンで検索します。"
+            "value" : "このキーワードを%@に入力すると、この検索エンジンで検索します。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이 키워드를 맨 앞에 입력하면 이 검색엔진에서 검색됩니다."
+            "value" : "이 키워드를 %@에 입력하면 이 검색엔진에서 검색됩니다."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Digite esta palavra-chave no topo para buscar com este buscador."
+            "value" : "Digite esta palavra-chave em %@ para buscar com este buscador."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Введите это ключевое слово в верхней части страницы для поиска с помощью этой поисковой системы."
+            "value" : "Введите это ключевое слово в %@ для поиска с помощью этой поисковой системы."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Введіть це ключове слово вгорі, щоб шукати в цій пошуковій системі."
+            "value" : "Введіть це ключове слово в %@, щоб шукати в цій пошуковій системі."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "在顶部输入该关键词，即可使用该搜索引擎进行搜索。"
+            "value" : "在%@输入该关键词，即可使用该搜索引擎进行搜索。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "在上方輸入此關鍵字，即可使用此搜尋引擎進行搜尋。"
+            "value" : "在%@輸入此關鍵字，即可使用此搜尋引擎進行搜尋。"
           }
         }
       }

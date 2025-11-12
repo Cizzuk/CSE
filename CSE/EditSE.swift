@@ -319,6 +319,8 @@ class EditSE {
         @State var cseID: String? = nil // Original or last saved keyword
         @State private var CSEData = CSEDataManager.CSEData()
         
+        @AppStorage("QuickSearchSettings_keywordPos", store: userDefaults) private var keywordPos: String = QuickSearchKeywordPos.default.rawValue
+        
         // Alerts
         @State private var showAlert: Bool = false
         @State private var alertTitle: String = String(localized: "An error occurred while loading or updating data")
@@ -351,7 +353,9 @@ class EditSE {
                             }
                     } header: { Text("Keyword")
                     } footer: {
-                        Text("Enter this keyword at the top to search with this search engine.")
+                        let enumratedKeywordPos = QuickSearchKeywordPos(rawValue: keywordPos) ?? QuickSearchKeywordPos.default
+                        let localizedKeywordPos = String(localized: enumratedKeywordPos.displayName)
+                        Text("Enter this keyword at \(localizedKeywordPos) to search with this search engine.")
                     }
                     
                     // Search URL
