@@ -68,6 +68,16 @@ class EditSE {
                     .multilineTextAlignment(.trailing)
                     .submitLabel(.done)
                     .onSubmit { onSubmit?() }
+                    .toolbar {
+                        ToolbarItemGroup(placement: .keyboard) {
+                            Spacer()
+                            Button {
+                                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                            } label: {
+                                Label("Done", systemImage: "checkmark")
+                            }
+                        }
+                    }
             }
         } header: { Text("Advanced Settings")
         } footer: { Text("Blank to disable") }
