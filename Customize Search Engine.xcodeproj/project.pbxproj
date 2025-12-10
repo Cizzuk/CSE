@@ -11,21 +11,13 @@
 		908FBC962BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */; };
 		90C9BE30288BE17300E22FB8 /* CSE Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 90C9BE2F288BE17300E22FB8 /* CSE Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BE0194272E88EAB6006CFB7E /* CSE ContentBlocker.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BE01940F2E88EAB6006CFB7E /* CSE ContentBlocker.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		BE8F7FDB2DE2ABDA003906F4 /* CSEDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8F7FDA2DE2ABDA003906F4 /* CSEDataManager.swift */; };
-		BE8F7FDC2DE2ABDA003906F4 /* CSEDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8F7FDA2DE2ABDA003906F4 /* CSEDataManager.swift */; };
-		BE8F7FDD2DE2D81F003906F4 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCDAED2DB49844009F9C07 /* CloudKitManager.swift */; };
 		BE8F7FF02DE41F0E003906F4 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8F7FEF2DE41F0E003906F4 /* WidgetKit.framework */; };
 		BE8F7FF22DE41F0E003906F4 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8F7FF12DE41F0E003906F4 /* SwiftUI.framework */; };
 		BE8F7FFF2DE41F0F003906F4 /* CSE CCWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BE8F7FED2DE41F0E003906F4 /* CSE CCWidgetExtension.appex */; platformFilters = (ios, maccatalyst, ); settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		BE8F80062DE4200A003906F4 /* CSEDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8F7FDA2DE2ABDA003906F4 /* CSEDataManager.swift */; };
-		BE8F80072DE42049003906F4 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCDAED2DB49844009F9C07 /* CloudKitManager.swift */; };
 		BE8F800D2DE4857C003906F4 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */; };
 		BE8F800E2DE4A29D003906F4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */; };
-		BEAE0F412E2268F2007704AE /* AppInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAE0F3F2E2268F2007704AE /* AppInitializer.swift */; };
-		BEAE0F422E2268F2007704AE /* AppInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAE0F3F2E2268F2007704AE /* AppInitializer.swift */; };
 		BEE22EE52D44E93000EDA51A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */; };
 		BEE22EE62D44E93000EDA51A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */; };
-		BEFCDAEE2DB49844009F9C07 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCDAED2DB49844009F9C07 /* CloudKitManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,13 +65,10 @@
 		90C9BE12288BE17000E22FB8 /* CSE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90C9BE2F288BE17300E22FB8 /* CSE Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "CSE Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE01940F2E88EAB6006CFB7E /* CSE ContentBlocker.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "CSE ContentBlocker.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE8F7FDA2DE2ABDA003906F4 /* CSEDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSEDataManager.swift; sourceTree = "<group>"; };
 		BE8F7FED2DE41F0E003906F4 /* CSE CCWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "CSE CCWidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8F7FEF2DE41F0E003906F4 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		BE8F7FF12DE41F0E003906F4 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		BEAE0F3F2E2268F2007704AE /* AppInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInitializer.swift; sourceTree = "<group>"; };
 		BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
-		BEFCDAED2DB49844009F9C07 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -113,22 +102,6 @@
 			);
 			target = 90C9BE11288BE17000E22FB8 /* CSE */;
 		};
-		BE315CEB2EE9B54A00A1F79A /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Extensions.swift,
-				UITemplates.swift,
-			);
-			target = 90C9BE2E288BE17300E22FB8 /* CSE Extension */;
-		};
-		BE315CEC2EE9B54A00A1F79A /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Enums.swift,
-				SafariSEs.swift,
-			);
-			target = BE8F7FEC2DE41F0E003906F4 /* CSE CCWidgetExtension */;
-		};
 		BE315D022EE9B55200A1F79A /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -143,6 +116,24 @@
 			);
 			target = 90C9BE11288BE17000E22FB8 /* CSE */;
 		};
+		BE315D2F2EE9B5D200A1F79A /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AppInitializer.swift,
+				Extensions.swift,
+				RecommendSEs.swift,
+				UITemplates.swift,
+			);
+			target = BE8F7FEC2DE41F0E003906F4 /* CSE CCWidgetExtension */;
+		};
+		BE315D302EE9B5E000A1F79A /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Extensions.swift,
+				UITemplates.swift,
+			);
+			target = 90C9BE2E288BE17300E22FB8 /* CSE Extension */;
+		};
 		BE8F80052DE41F0F003906F4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -154,10 +145,10 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BE0194102E88EAB6006CFB7E /* CSE ContentBlocker */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (BE01942B2E88EAB6006CFB7E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (Resources/_locales, Resources/images, Resources/rulesets, ); path = "CSE ContentBlocker"; sourceTree = "<group>"; };
-		BE289FCD2C8DA7C8005BBDC6 /* Intent */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (BE289FE22C8DAE07005BBDC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, BE07A84E2D4405AB00469317 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Intent; sourceTree = "<group>"; };
-		BE315CDE2EE9B54A00A1F79A /* src */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (BE315CEB2EE9B54A00A1F79A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, BE315CEC2EE9B54A00A1F79A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = src; sourceTree = "<group>"; };
+		BE289FCD2C8DA7C8005BBDC6 /* AppIntents */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (BE289FE22C8DAE07005BBDC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, BE07A84E2D4405AB00469317 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = AppIntents; sourceTree = "<group>"; };
 		BE315CF82EE9B55200A1F79A /* CSE Extension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (BE315D022EE9B55200A1F79A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (Resources/_locales, Resources/images, ); path = "CSE Extension"; sourceTree = "<group>"; };
 		BE315D182EE9B56100A1F79A /* CSE */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (BE315D2C2EE9B56100A1F79A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = CSE; sourceTree = "<group>"; };
+		BE315D2E2EE9B5CA00A1F79A /* Supports */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (BE315D302EE9B5E000A1F79A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, BE315D2F2EE9B5D200A1F79A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Supports; sourceTree = "<group>"; };
 		BE8F7FF32DE41F0E003906F4 /* CSE CCWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (BE8F80052DE41F0F003906F4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "CSE CCWidget"; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -198,13 +189,10 @@
 		90C9BE09288BE17000E22FB8 = {
 			isa = PBXGroup;
 			children = (
-				BEAE0F3F2E2268F2007704AE /* AppInitializer.swift */,
-				BE8F7FDA2DE2ABDA003906F4 /* CSEDataManager.swift */,
-				BEFCDAED2DB49844009F9C07 /* CloudKitManager.swift */,
-				BE315CDE2EE9B54A00A1F79A /* src */,
-				908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */,
+				BE315D2E2EE9B5CA00A1F79A /* Supports */,
+				BE289FCD2C8DA7C8005BBDC6 /* AppIntents */,
 				BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */,
-				BE289FCD2C8DA7C8005BBDC6 /* Intent */,
+				908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */,
 				BE315D182EE9B56100A1F79A /* CSE */,
 				BE315CF82EE9B55200A1F79A /* CSE Extension */,
 				BE0194102E88EAB6006CFB7E /* CSE ContentBlocker */,
@@ -254,8 +242,8 @@
 				BE0194262E88EAB6006CFB7E /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				BE315CDE2EE9B54A00A1F79A /* src */,
 				BE315D182EE9B56100A1F79A /* CSE */,
+				BE315D2E2EE9B5CA00A1F79A /* Supports */,
 			);
 			name = CSE;
 			productName = "Custom Search Engine";
@@ -275,8 +263,8 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				BE315CDE2EE9B54A00A1F79A /* src */,
 				BE315CF82EE9B55200A1F79A /* CSE Extension */,
+				BE315D2E2EE9B5CA00A1F79A /* Supports */,
 			);
 			name = "CSE Extension";
 			productName = "Custom Search Engine Extension";
@@ -318,6 +306,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				BE315D2E2EE9B5CA00A1F79A /* Supports */,
 				BE8F7FF32DE41F0E003906F4 /* CSE CCWidget */,
 			);
 			name = "CSE CCWidgetExtension";
@@ -425,9 +414,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEAE0F422E2268F2007704AE /* AppInitializer.swift in Sources */,
-				BEFCDAEE2DB49844009F9C07 /* CloudKitManager.swift in Sources */,
-				BE8F7FDB2DE2ABDA003906F4 /* CSEDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,9 +421,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE8F7FDD2DE2D81F003906F4 /* CloudKitManager.swift in Sources */,
-				BEAE0F412E2268F2007704AE /* AppInitializer.swift in Sources */,
-				BE8F7FDC2DE2ABDA003906F4 /* CSEDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,8 +435,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE8F80062DE4200A003906F4 /* CSEDataManager.swift in Sources */,
-				BE8F80072DE42049003906F4 /* CloudKitManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
