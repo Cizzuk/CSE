@@ -502,6 +502,7 @@ class EditSE {
                             }
                             .disableAutocorrection(true)
                             .textInputAutocapitalization(.never)
+                            .submitLabel(.done)
                         }
                         .onDelete(perform: { index in
                             withAnimation() { post.remove(atOffsets: index) }
