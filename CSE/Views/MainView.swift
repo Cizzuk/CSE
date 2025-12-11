@@ -154,27 +154,22 @@ struct ContentView: View {
             .background(.thickMaterial)
             #endif
         } detail: {
-            NavigationStack {
-                switch selection {
-                case .defaultSE: EditSE.EditDefaultCSEView()
-                case .privateSE: EditSE.EditPrivateCSEView()
-                case .quickSE: QuickSEListView()
-                case .emojiSearch: EmojiSearchView()
-                case .about: AboutView()
-                case .backup: BackupView.BackupView()
-                case .iconChange:
-                    #if !os(visionOS) && !targetEnvironment(macCatalyst)
-                    IconChangeView()
-                    #else
-                    Spacer()
-                    #endif
-                case .advancedSettings: AdvSettingView()
-                case .none: Spacer()
-                }
+            switch selection {
+            case .defaultSE: EditSEView(type: .defaultCSE)
+            case .privateSE: EditSEView(type: .privateCSE)
+            case .quickSE: QuickSEListView()
+            case .emojiSearch: EmojiSearchView()
+            case .about: AboutView()
+            case .backup: BackupView.BackupView()
+            case .iconChange:
+                #if !os(visionOS) && !targetEnvironment(macCatalyst)
+                IconChangeView()
+                #else
+                EmptyView()
+                #endif
+            case .advancedSettings: AdvSettingView()
+            case .none: EmptyView()
             }
-            #if os(visionOS)
-            .background(.ultraThinMaterial)
-            #endif
         }
         .navigationSplitViewStyle(.balanced)
         .listStyleFallback()

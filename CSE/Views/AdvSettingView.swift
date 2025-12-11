@@ -62,7 +62,7 @@ struct AdvSettingView: View {
                 HStack {
                     Text("Override Region")
                     Spacer()
-                    TextField(currentRegion ?? "US", text: $overrideRegion)
+                    TextField("Region Code", text: $overrideRegion, prompt: Text(currentRegion ?? "US"))
                         .textInputAutocapitalization(.characters)
                         .disableAutocorrection(true)
                         .keyboardType(.asciiCapable)
