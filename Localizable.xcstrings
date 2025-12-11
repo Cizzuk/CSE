@@ -2356,9 +2356,6 @@
         }
       }
     },
-    "cse" : {
-      "shouldTranslate" : false
-    },
     "CSE Settings" : {
       "localizations" : {
         "ar" : {
@@ -7910,6 +7907,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "最初のチュートリアルをやり直す"
+          }
+        }
+      }
+    },
+    "Region Code" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "地域コード"
           }
         }
       }
