@@ -68,13 +68,7 @@ struct EditSEView: View {
                 viewModel.saveData(.autosave)
             }
         }
-        .onAppear {
-            print("EditSEView appeared")
-            print(viewModel.cseData.url)
-        }
         .onDisappear {
-            print("EditSEView disappeared")
-            print(viewModel.cseData.url)
             if viewModel.cseType != .quickCSE {
                  viewModel.saveData(.dismiss)
             }
