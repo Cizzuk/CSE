@@ -166,10 +166,10 @@ struct ContentView: View {
                     #if !os(visionOS) && !targetEnvironment(macCatalyst)
                     IconChangeView()
                     #else
-                    Spacer()
+                    EmptyView()
                     #endif
                 case .advancedSettings: AdvSettingView()
-                case .none: Spacer()
+                case .none: EmptyView()
                 }
             }
             #if os(visionOS)
