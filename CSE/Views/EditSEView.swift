@@ -209,6 +209,7 @@ struct EditSEView: View {
                     .multilineTextAlignment(.trailing)
                     .submitLabel(.done)
                     .onSubmit { viewModel.saveData(.autosave) }
+                    #if !os(visionOS)
                     .toolbar {
                         ToolbarItemGroup(placement: .keyboard) {
                             Spacer()
@@ -219,6 +220,7 @@ struct EditSEView: View {
                             }
                         }
                     }
+                    #endif
             }
         } header: { Text("Advanced Settings")
         } footer: { Text("Blank to disable") }
