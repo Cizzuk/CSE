@@ -170,9 +170,6 @@ struct ContentView: View {
             case .advancedSettings: AdvSettingView()
             case .none: EmptyView()
             }
-            #if os(visionOS)
-            .background(.ultraThinMaterial)
-            #endif
         }
         .navigationSplitViewStyle(.balanced)
         .listStyleFallback()
