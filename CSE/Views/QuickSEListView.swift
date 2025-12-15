@@ -120,6 +120,7 @@ struct QuickSEListView: View {
             }
             .onChange(of: scenePhase) { newPhase in
                 if newPhase == .active {
+                    searchQuery = ""
                     quickCSE = CSEDataManager.getAllQuickCSEData()
                 }
             }
