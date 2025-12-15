@@ -12,17 +12,17 @@ import WidgetKit
 
 struct QuickSEListView: View {
     @Environment(\.scenePhase) private var scenePhase
-    @Environment(\.editMode) private var editMode
     
     @State private var quickCSE: [String: CSEDataManager.CSEData] = CSEDataManager.getAllQuickCSEData()
     @AppStorage("useQuickCSE", store: userDefaults) private var useQuickCSE: Bool = false
     @State private var useQuickCSEToggle: Bool = false
+    @State private var searchQuery: String = ""
     
     var body: some View {
         NavigationStack {
             List {
-                if editMode?.wrappedValue.isEditing != true {
-                    // Toggle QuickSE
+                // Toggle QuickSE
+                if searchQuery.isEmpty {
                     Section {
                         Toggle(isOn: $useQuickCSE) {
                             UITemplates.IconLabel(icon: "hare", text: "Quick Search")
@@ -39,7 +39,7 @@ struct QuickSEListView: View {
                 }
                 
                 if useQuickCSEToggle {
-                    if editMode?.wrappedValue.isEditing != true {
+                    if searchQuery.isEmpty {
                         Section {
                             NavigationLink(destination: QuickSearchSettingsView()) {
                                 UITemplates.IconLabel(icon: "gearshape", text: "Quick Search Settings")
@@ -91,7 +91,7 @@ struct QuickSEListView: View {
                     } header: { Text("Quick Search Engines") }
                     
                     // Add new SE Button
-                    if editMode?.wrappedValue.isEditing != true {
+                    if searchQuery.isEmpty {
                         Section {
                             NavigationLink(destination: EditSEView(type: .quickCSE)) {
                                 HStack {
@@ -109,7 +109,7 @@ struct QuickSEListView: View {
             }
             .navigationTitle("Quick Search")
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden(editMode?.wrappedValue.isEditing == true)
+            .searchable(text: $searchQuery)
             .toolbar {
                 if useQuickCSEToggle { EditButton() }
             }
@@ -120,7 +120,22 @@ struct QuickSEListView: View {
             }
             .onChange(of: scenePhase) { newPhase in
                 if newPhase == .active {
+                    searchQuery = ""
                     quickCSE = CSEDataManager.getAllQuickCSEData()
+                }
+            }
+            .onChange(of: searchQuery) { newQuery in
+                if newQuery.isEmpty {
+                    // Recover Full List
+                    quickCSE = CSEDataManager.getAllQuickCSEData()
+                } else {
+                    // Search QuickCSEs
+                    let query = newQuery.lowercased()
+                    quickCSE = CSEDataManager.getAllQuickCSEData().filter { key, data in
+                        key.lowercased().contains(query) ||
+                        data.name.lowercased().contains(query) ||
+                        data.url.lowercased().contains(query)
+                    }
                 }
             }
         }
