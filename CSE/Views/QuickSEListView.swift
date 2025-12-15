@@ -103,6 +103,7 @@ struct QuickSEListView: View {
                                 .foregroundColor(.accentColor)
                                 #endif
                             }
+                            .keyboardShortcut("N", modifiers: [.command])
                         }
                     }
                 }
