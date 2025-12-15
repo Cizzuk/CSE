@@ -127,27 +127,6 @@ struct ContentView: View {
                         UITemplates.IconLabel(icon: "gearshape", text: "Advanced Settings")
                     }
                 }
-                
-                // Support Section
-                Section {
-                    Group {
-                        // Contact Link
-                        Link(destination:URL(string: "https://cizzuk.net/contact/")!, label: {
-                            UITemplates.IconLabel(icon: "message", text: "Contact")
-                        })
-                        // GitHub Source Link
-                        Link(destination:URL(string: "https://github.com/Cizzuk/CSE")!, label: {
-                            UITemplates.IconLabel(icon: "ladybug", text: "Source")
-                        })
-                        // App review Link
-                        Link(destination:URL(string: "https://apps.apple.com/app/cse/id6445840140")!, label: {
-                            UITemplates.IconLabel(icon: "star", text: "Rate & Review")
-                        })
-                    }
-                    #if !os(visionOS)
-                    .foregroundColor(.accentColor)
-                    #endif
-                }
             }
             .navigationTitle("CSE Settings")
             #if os(visionOS)
