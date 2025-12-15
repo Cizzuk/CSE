@@ -14,6 +14,13 @@ struct MainView: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onAppear {
+                    #if targetEnvironment(macCatalyst)
+                    (UIApplication.shared.connectedScenes.first as? UIWindowScene)?
+                        .titlebar?
+                        .titleVisibility = .hidden
+                    #endif
+                }
         }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .background {
