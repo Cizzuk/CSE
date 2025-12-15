@@ -90,6 +90,9 @@ struct EditSEView: View {
             }
         }
         .navigationBarBackButtonHidden(viewModel.cseType == .quickCSE)
+        .accessibilityAction(.escape) {
+            if viewModel.saveData(.dismiss) { dismiss() }
+        }
     }
     
     private var isFeatureEnabled: Bool {
