@@ -69,7 +69,8 @@ class Tutorial {
         }
     }
     
-    // Set Safari settings
+    // MARK: - Safari SE View 1 Set Safari Settings
+    
     struct SafariSEView: View {
         @Binding var isOpenSheet: Bool
         var isFirstTutorial: Bool = false
@@ -162,6 +163,8 @@ class Tutorial {
         }
     }
     
+    // MARK: - Safari SE View 2 Show Domains
+    
     private struct SafariPermissionView: View {
         @Binding var isOpenSheet: Bool
         var isFirstTutorial: Bool = false
@@ -224,6 +227,8 @@ class Tutorial {
             #endif
         }
     }
+    
+    // MARK: - Recommend View
     
     private struct RecommendView: View {
         @Binding var isOpenSheet: Bool

@@ -132,6 +132,24 @@ class BackupView {
             }
         }
 
+        private var isUploading: Bool {
+            ck.currentOperation == .upload && ck.currentStatus == .inProgress
+        }
+
+        private var uploadFailed: Bool {
+            ck.currentOperation == .upload && ck.currentStatus == .failure
+        }
+
+        private var uploadSucceeded: Bool {
+            ck.currentOperation == .upload && ck.currentStatus == .success
+        }
+
+        private var isLocked: Bool {
+            ck.currentStatus == .inProgress && (ck.currentOperation == .export || ck.currentOperation == .delete)
+        }
+        
+        // MARK: - Export JSON File
+
         private func exportJSONFile(jsonString: String, filePrefix: String) {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyyMMddHHmmss"
@@ -173,23 +191,9 @@ class BackupView {
             }
             #endif
         }
-
-        private var isUploading: Bool {
-            ck.currentOperation == .upload && ck.currentStatus == .inProgress
-        }
-
-        private var uploadFailed: Bool {
-            ck.currentOperation == .upload && ck.currentStatus == .failure
-        }
-
-        private var uploadSucceeded: Bool {
-            ck.currentOperation == .upload && ck.currentStatus == .success
-        }
-
-        private var isLocked: Bool {
-            ck.currentStatus == .inProgress && (ck.currentOperation == .export || ck.currentOperation == .delete)
-        }
     }
+    
+    // MARK: - Import JSON File
     
     // Shared JSON import functionality for Tutorial and BackupView
     static func importJSONFile(from url: URL, onSuccess: @escaping () -> Void = {}, onError: @escaping (String) -> Void = { _ in }) {
