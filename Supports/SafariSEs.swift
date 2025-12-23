@@ -140,13 +140,15 @@ enum SafariSEs: String, CaseIterable {
     }
     
     func checkParameter(for domain: String) -> [CheckItem]? {
+        // The first item is prioritized for deletion when automatic deletion is performed.
+        
         switch self {
         case .google:
             // All: safari
             return [
-                CheckItem(param: "client", values: ["safari"]),
                 CheckItem(param: "ie", values: ["UTF-8"]),
                 CheckItem(param: "oe", values: ["UTF-8"]),
+                CheckItem(param: "client", values: ["safari"]),
             ]
         case .yahoo:
             // iPhone: iphone, applep1(jp)

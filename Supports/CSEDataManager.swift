@@ -204,6 +204,38 @@ class CSEDataManager {
             }
         }
         
+        // Remove check parameters from Safari search engine URLs
+        for safariSE in SafariSEs.allCases {
+            if safariSE.isMatchedURL(cseData.url) {
+                // This CSE could cause a redirect loop
+                // Remove check parameter used by safariSE
+                
+                // Get host
+                guard let urlComponents = URLComponents(string: cseData.url),
+                      let host = urlComponents.host else {
+                    break
+                }
+                
+                // Get first CheckItem
+                let checkItem = safariSE.checkParameter(for: host)
+                guard let firstItem = checkItem?.first else {
+                    break
+                }
+                
+                // Remove first check parameter
+                let newParams = urlComponents.queryItems?.filter { $0.name != firstItem.param }
+                var newURLComponents = urlComponents
+                newURLComponents.queryItems = newParams
+                
+                // Set new URL
+                if let newURL = newURLComponents.url {
+                    cseData.url = newURL.absoluteString
+                }
+                
+                break
+            }
+        }
+        
         // Remove percent encoding
         cseData.url = cseData.url.removingPercentEncoding ?? cseData.url
         
