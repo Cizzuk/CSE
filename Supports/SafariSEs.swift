@@ -159,6 +159,89 @@ enum SafariSEs: String, CaseIterable {
         }
     }
     
+    func isMatchedURL(_ url: URL) -> Bool {
+        return isMatchedURL(url.absoluteString)
+    }
+    
+    func isMatchedURL(_ url: String) -> Bool {
+        let engine = self
+        
+        // Make URLComponents and get host
+        guard let urlComponents = URLComponents(string: url),
+              let host = urlComponents.host else {
+            return false
+        }
+
+        // Domain Check
+        guard engine.matchesHost(host) else {
+            return false
+        }
+
+        // Path Check
+        let expectedPath = engine.path(for: host)
+        guard urlComponents.path.hasPrefix(expectedPath) else {
+            return false
+        }
+
+        // Get Query Items
+        guard let queryItems = urlComponents.queryItems else {
+            return false
+        }
+        
+        // Check if search query param exists
+        let queryParam = engine.queryParam(for: host)
+        guard queryItems.contains(where: { $0.name == queryParam }) else {
+            return false
+        }
+        
+        // Param Check
+        if let checkParam = engine.checkParameter(for: host) {
+            // Check each param
+            for item in checkParam {
+                let param = item.param
+                let values = item.values
+                if !queryItems.contains(where: {
+                    $0.name == param && ( $0.value == values.first )
+                }) {
+                    // All items must match
+                    return false
+                }
+                        
+            }
+        }
+
+        // All items matched (or no checks)
+        return true
+    }
+    
+    func getQuery(from url: URL) -> String? {
+        return getQuery(from: url.absoluteString)
+    }
+    
+    func getQuery(from url: String) -> String? {
+        let engine = self
+        
+        // Make URLComponents and get host
+        guard let urlComponents = URLComponents(string: url),
+              let host = urlComponents.host else {
+            return nil
+        }
+        
+        // Get search query param
+        let queryParam = engine.queryParam(for: host)
+        
+        // Get %encoded Query Items
+        guard let queryItems = urlComponents.percentEncodedQueryItems else { return nil }
+        
+        // Find search query
+        if let item = queryItems.first(where: { $0.name == queryParam }) {
+            return item.value
+        }
+        
+        // Not found
+        return nil
+    }
+    
     var isAvailable: Bool {
         switch self {
         case .google:

@@ -137,77 +137,15 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
 
     // Engine Checker
     func checkEngineURL(engine: SafariSEs, url: String) -> Bool {
-        // Get engine url
-        guard let urlComponents = URLComponents(string: url),
-              let host = urlComponents.host else {
-            return false
-        }
-
-        // Domain Check
-        guard engine.matchesHost(host) else {
-            return false
-        }
-
-        // Path Check
-        let expectedPath = engine.path(for: host)
-        guard urlComponents.path.hasPrefix(expectedPath) else {
-            return false
-        }
-
-        // Get Query
-        let queryItems = urlComponents.queryItems ?? []
-        
-        // Get Param
-        let mainParamKey = engine.queryParam(for: host)
-        guard queryItems.contains(where: { $0.name == mainParamKey }) else {
-            return false
+        guard !userDefaults.bool(forKey: "adv_disablechecker") else {
+            return true
         }
         
-        // Param Check
-        if !userDefaults.bool(forKey: "adv_disablechecker"),
-           let checkParam = engine.checkParameter(for: host) {
-            // Check each param
-            for item in checkParam {
-                let param = item.param
-                let values = item.values
-                if !queryItems.contains(where: {
-                    $0.name == param && ( $0.value == values.first )
-                }) {
-                    // All items must match
-                    return false
-                }
-                        
-            }
-        }
-
-        // OK
-        return true
+        return engine.isMatchedURL(url)
     }
     
     func getQueryValue(engine: SafariSEs, url: String) -> String? {
-        guard let urlComponents = URLComponents(string: url),
-              let host = urlComponents.host,
-              engine.matchesHost(host) else {
-            return nil
-        }
-        
-        // Get param name
-        let mainParam = engine.queryParam(for: host)
-        
-        // Get %encoded query
-        guard let encodedQuery = urlComponents.percentEncodedQuery else { return nil }
-        
-        // Split with '&'
-        let queryPairs = encodedQuery.components(separatedBy: "&")
-        for pair in queryPairs {
-            // Split into key and value with '='
-            let parts = pair.components(separatedBy: "=")
-            if parts.count == 2, parts[0] == mainParam {
-                return parts[1]
-            }
-        }
-        
-        return nil
+        return engine.getQuery(from: url)
     }
     
     func makeSearchURL(baseCSE: CSEDataManager.CSEData, query: String) -> (type: String, url: String, post: [[String: String]]) {
