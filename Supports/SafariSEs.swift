@@ -242,7 +242,7 @@ enum SafariSEs: String, CaseIterable {
                 let param = item.param
                 let values = item.values
                 if !queryItems.contains(where: {
-                    $0.name == param && ( $0.value == values.first )
+                    $0.name == param && values.contains($0.value ?? "")
                 }) {
                     // All items must match
                     return false
