@@ -29,6 +29,8 @@ enum SafariSEs: String, CaseIterable {
         }
     }
     
+    // MARK: - Standard
+    
     case google, yahoo, bing, baidu, yandex, duckduckgo, sogou, so360search = "360search", ecosia
     
     var displayName: String.LocalizationValue {
@@ -44,6 +46,40 @@ enum SafariSEs: String, CaseIterable {
         case .yandex: return "Yandex"
         }
     }
+    
+    static var availableEngines: [SafariSEs] {
+        return SafariSEs.allCases.filter { $0.isAvailable }
+    }
+    
+    static var `default`: SafariSEs {
+        if currentRegion == "CN" { return .baidu }
+        if #unavailable(iOS 17.0, macOS 14.0) {
+            if currentRegion != "US" { return .bing }
+        }
+        return .google
+    }
+
+    static var `private`: SafariSEs {
+        return .duckduckgo
+    }
+    
+    var isAvailable: Bool {
+        switch self {
+        case .google:
+            if #unavailable(iOS 17.0, macOS 14.0) {
+                return Self.currentRegion == "US"
+            }
+            return true
+        case .yahoo, .bing, .duckduckgo, .ecosia:
+            return true
+        case .baidu, .sogou, .so360search:
+            return Self.currentRegion == "CN" || Self.containsLanguage("zh-Hans")
+        case .yandex:
+            return Self.currentRegion == "RU" || Self.currentRegion == "KZ" || Self.currentRegion == "BY" || Self.containsLanguage("ru")
+        }
+    }
+    
+    // MARK: - URL Matching
     
     var domains: [String] {
         let region = Self.currentRegion
@@ -159,6 +195,8 @@ enum SafariSEs: String, CaseIterable {
         }
     }
     
+    // MARK: - Support Functions
+    
     func isMatchedURL(_ url: URL) -> Bool {
         return isMatchedURL(url.absoluteString)
     }
@@ -240,37 +278,5 @@ enum SafariSEs: String, CaseIterable {
         
         // Not found
         return nil
-    }
-    
-    var isAvailable: Bool {
-        switch self {
-        case .google:
-            if #unavailable(iOS 17.0, macOS 14.0) {
-                return Self.currentRegion == "US"
-            }
-            return true
-        case .yahoo, .bing, .duckduckgo, .ecosia:
-            return true
-        case .baidu, .sogou, .so360search:
-            return Self.currentRegion == "CN" || Self.containsLanguage("zh-Hans")
-        case .yandex:
-            return Self.currentRegion == "RU" || Self.currentRegion == "KZ" || Self.currentRegion == "BY" || Self.containsLanguage("ru")
-        }
-    }
-    
-    static var availableEngines: [SafariSEs] {
-        return SafariSEs.allCases.filter { $0.isAvailable }
-    }
-    
-    static var `default`: SafariSEs {
-        if currentRegion == "CN" { return .baidu }
-        if #unavailable(iOS 17.0, macOS 14.0) {
-            if currentRegion != "US" { return .bing }
-        }
-        return .google
-    }
-
-    static var `private`: SafariSEs {
-        return .duckduckgo
     }
 }
