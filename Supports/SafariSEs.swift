@@ -51,6 +51,8 @@ enum SafariSEs: String, CaseIterable {
         case .google:
             if region == "CN" {
                 return ["google.cn"] // www.google.cn
+            } else if region == "HK" {
+                return ["google.com", "google.com.hk"] // www.google.com, www.google.com.hk
             } else {
                 return ["google.com"] // www.google.com
             }

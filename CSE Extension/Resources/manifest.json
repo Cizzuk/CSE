@@ -32,6 +32,7 @@
     "host_permissions": [
         "https://www.google.com/search",
         "https://www.google.cn/search",
+        "https://www.google.com.hk/search",
         "https://*.search.yahoo.com/search",
         "https://search.yahoo.co.jp/search",
         "https://www.bing.com/search",
