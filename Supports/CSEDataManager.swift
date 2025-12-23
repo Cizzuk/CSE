@@ -61,6 +61,8 @@ class CSEDataManager {
         }
     }
     
+    // MARK: - Load CSE Data
+    
     class func getCSEData(_ type: CSEType = .defaultCSE, id: String? = nil) -> CSEData {
         let cseData = userDefaults.dictionary(forKey: type.rawValue) ?? [:]
         switch type {
@@ -164,6 +166,8 @@ class CSEDataManager {
         return (defaultCSE, privateCSE, quickCSE)
     }
     
+    // MARK: - Save CSE Data
+    
     enum saveCSEDataError: LocalizedError {
         case keyBlank
         case urlBlank
@@ -184,6 +188,7 @@ class CSEDataManager {
         // Normalize Safari search engine URLs
         let replacements = [
             "https://google.com": "https://www.google.com",
+            "https://google.com.hk": "https://www.google.com.hk",
             "https://bing.com": "https://www.bing.com",
             "https://www.duckduckgo.com": "https://duckduckgo.com",
             "https://ecosia.com": "https://www.ecosia.com",
@@ -200,29 +205,34 @@ class CSEDataManager {
         }
         
         // Remove check parameters from Safari search engine URLs
-        if var urlComponents = URLComponents(string: cseData.url),
-           let host = urlComponents.host {
-            
-            // Find matching search engine and get check parameters to remove
-            for engine in SafariSEs.allCases {
-                if engine.matchesHost(host),
-                   let checkParam = engine.checkParameter(for: host) {
-                    
-                    // Remove check parameters from URL query items
-                    if var queryItems = urlComponents.queryItems {
-                        queryItems = queryItems.filter { queryItem in
-                            guard queryItem.name == checkParam.param else { return true }
-                            return !checkParam.values.contains(queryItem.value ?? "")
-                        }
-                        urlComponents.queryItems = queryItems.isEmpty ? nil : queryItems
-                    }
-                    
-                    // Rebuild URL
-                    if let rebuiltURL = urlComponents.url?.absoluteString {
-                        cseData.url = rebuiltURL
-                    }
+        for safariSE in SafariSEs.allCases {
+            if safariSE.isMatchedURL(cseData.url) {
+                // This CSE could cause a redirect loop
+                // Remove check parameter used by safariSE
+                
+                // Get host
+                guard let urlComponents = URLComponents(string: cseData.url),
+                      let host = urlComponents.host else {
                     break
                 }
+                
+                // Get first CheckItem
+                let checkItem = safariSE.checkParameter(for: host)
+                guard let firstItem = checkItem?.first else {
+                    break
+                }
+                
+                // Remove first check parameter
+                let newParams = urlComponents.queryItems?.filter { $0.name != firstItem.param }
+                var newURLComponents = urlComponents
+                newURLComponents.queryItems = newParams
+                
+                // Set new URL
+                if let newURL = newURLComponents.url {
+                    cseData.url = newURL.absoluteString
+                }
+                
+                break
             }
         }
         
@@ -295,6 +305,8 @@ class CSEDataManager {
         if uploadCloud { CloudKitManager().saveAll() }
     }
     
+    // MARK: - QuickCSE Data Management
+    
     class func replaceQuickCSEData(_ data: [String: CSEData]) {
         // Convert to Dictionary
         let quickCSEDataDict = CSEDataToDictionary(data)
@@ -314,6 +326,8 @@ class CSEDataManager {
         let quickCSEDataDict = CSEDataToDictionary(quickCSEData)
         userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
     }
+    
+    // MARK: - POST Data Handling
     
     class func cleanPostData(_ post: [[String: String]]) -> [[String: String]] {
         return post.filter { entry in
@@ -364,6 +378,8 @@ class CSEDataManager {
         
         return postDataDict
     }
+    
+    // MARK: - Import/Export Support
     
     enum jsonError: LocalizedError {
         case parseError

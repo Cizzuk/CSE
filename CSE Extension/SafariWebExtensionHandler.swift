@@ -133,76 +133,22 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         } catch {}
     }
     
-    // ↓ --- Search Engine Checker --- ↓
+    // MARK: - SafariSEs Support
 
     // Engine Checker
     func checkEngineURL(engine: SafariSEs, url: String) -> Bool {
-        // Get engine url
-        guard let urlComponents = URLComponents(string: url),
-              let host = urlComponents.host else {
-            return false
-        }
-
-        // Domain Check
-        guard engine.matchesHost(host) else {
-            return false
-        }
-
-        // Path Check
-        let expectedPath = engine.path(for: host)
-        guard urlComponents.path.hasPrefix(expectedPath) else {
-            return false
-        }
-
-        // Get Query
-        let queryItems = urlComponents.queryItems ?? []
-        
-        // Get Param
-        let mainParamKey = engine.queryParam(for: host)
-        guard queryItems.contains(where: { $0.name == mainParamKey }) else {
-            return false
+        guard !userDefaults.bool(forKey: "adv_disablechecker") else {
+            return true
         }
         
-        // Param Check
-        if !userDefaults.bool(forKey: "adv_disablechecker"),
-           let checkParam = engine.checkParameter(for: host) {
-            let checkParamKey = checkParam.param
-            let possibleIds = checkParam.values
-            let checkItemExists = queryItems.contains {
-                $0.name == checkParamKey && ( $0.value.map(possibleIds.contains) ?? false )
-            }
-            guard checkItemExists else { return false }
-        }
-
-        // OK
-        return true
+        return engine.isMatchedURL(url)
     }
     
     func getQueryValue(engine: SafariSEs, url: String) -> String? {
-        guard let urlComponents = URLComponents(string: url),
-              let host = urlComponents.host,
-              engine.matchesHost(host) else {
-            return nil
-        }
-        
-        // Get param name
-        let mainParam = engine.queryParam(for: host)
-        
-        // Get %encoded query
-        guard let encodedQuery = urlComponents.percentEncodedQuery else { return nil }
-        
-        // Split with '&'
-        let queryPairs = encodedQuery.components(separatedBy: "&")
-        for pair in queryPairs {
-            // Split into key and value with '='
-            let parts = pair.components(separatedBy: "=")
-            if parts.count == 2, parts[0] == mainParam {
-                return parts[1]
-            }
-        }
-        
-        return nil
+        return engine.getQuery(from: url)
     }
+    
+    // MARK: - Make Search URL
     
     func makeSearchURL(baseCSE: CSEDataManager.CSEData, query: String) -> (type: String, url: String, post: [[String: String]]) {
         // --- Description of some Query variables ---
@@ -377,7 +323,8 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         return (redirectType, redirectURL, postData)
     }
     
-    // Check current focus filter
+    // MARK: - Focus Filter Support
+    
     func getFocusFilter() async throws {
         focusSettings = nil
         if userDefaults.bool(forKey: "adv_ignoreFocusFilter") { return }

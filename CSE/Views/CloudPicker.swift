@@ -166,6 +166,8 @@ class CloudPicker {
         }
     }
     
+    // MARK: - Device CSE Selection View
+    
     // Detail picker for selecting a single CSE from a device (used in pickSingleCSE mode)
     private struct DeviceCSESelectionView: View {
         @Environment(\.dismiss) private var dismiss

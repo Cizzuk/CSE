@@ -65,6 +65,8 @@ class AppInitializer {
         userDefaults.set(currentVersion, forKey: "LastAppVer")
     }
     
+    // MARK: - Migration Helpers
+    
     private class func migrateOldCSESettings() {
         let urltop = userDefaults.string(forKey: "urltop") ?? ""
         let urlsuffix = userDefaults.string(forKey: "urlsuffix") ?? ""
@@ -93,7 +95,8 @@ class AppInitializer {
         return updateComponents.count > lastComponents.count
     }
     
-    // Reset CSEs
+    // MARK: - Reset CSE Data
+    
     enum resetCSETarget {
         case all, defaultCSE, privateCSE, quickCSE
     }
