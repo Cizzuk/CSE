@@ -166,12 +166,18 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         // Param Check
         if !userDefaults.bool(forKey: "adv_disablechecker"),
            let checkParam = engine.checkParameter(for: host) {
-            let checkParamKey = checkParam.param
-            let possibleIds = checkParam.values
-            let checkItemExists = queryItems.contains {
-                $0.name == checkParamKey && ( $0.value.map(possibleIds.contains) ?? false )
+            // Check each param
+            for item in checkParam {
+                let param = item.param
+                let values = item.values
+                if !queryItems.contains(where: {
+                    $0.name == param && ( $0.value == values.first )
+                }) {
+                    // All items must match
+                    return false
+                }
+                        
             }
-            guard checkItemExists else { return false }
         }
 
         // OK

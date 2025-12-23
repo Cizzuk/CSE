@@ -200,33 +200,6 @@ class CSEDataManager {
             }
         }
         
-        // Remove check parameters from Safari search engine URLs
-        if var urlComponents = URLComponents(string: cseData.url),
-           let host = urlComponents.host {
-            
-            // Find matching search engine and get check parameters to remove
-            for engine in SafariSEs.allCases {
-                if engine.matchesHost(host),
-                   let checkParam = engine.checkParameter(for: host) {
-                    
-                    // Remove check parameters from URL query items
-                    if var queryItems = urlComponents.queryItems {
-                        queryItems = queryItems.filter { queryItem in
-                            guard queryItem.name == checkParam.param else { return true }
-                            return !checkParam.values.contains(queryItem.value ?? "")
-                        }
-                        urlComponents.queryItems = queryItems.isEmpty ? nil : queryItems
-                    }
-                    
-                    // Rebuild URL
-                    if let rebuiltURL = urlComponents.url?.absoluteString {
-                        cseData.url = rebuiltURL
-                    }
-                    break
-                }
-            }
-        }
-        
         // Remove percent encoding
         cseData.url = cseData.url.removingPercentEncoding ?? cseData.url
         
