@@ -144,7 +144,8 @@ enum SafariSEs: String, CaseIterable {
         
         switch self {
         case .google:
-            // All: safari
+            // All: ie=UTF-8, oe=UTF-8, client=safari
+            // Note: "client=safari" will hide "Open in the Google app" banner
             return [
                 CheckItem(param: "ie", values: ["UTF-8"]),
                 CheckItem(param: "oe", values: ["UTF-8"]),
