@@ -61,6 +61,8 @@ class CSEDataManager {
         }
     }
     
+    // MARK: - Load CSE Data
+    
     class func getCSEData(_ type: CSEType = .defaultCSE, id: String? = nil) -> CSEData {
         let cseData = userDefaults.dictionary(forKey: type.rawValue) ?? [:]
         switch type {
@@ -163,6 +165,8 @@ class CSEDataManager {
         
         return (defaultCSE, privateCSE, quickCSE)
     }
+    
+    // MARK: - Save CSE Data
     
     enum saveCSEDataError: LocalizedError {
         case keyBlank
@@ -269,6 +273,8 @@ class CSEDataManager {
         if uploadCloud { CloudKitManager().saveAll() }
     }
     
+    // MARK: - QuickCSE Data Management
+    
     class func replaceQuickCSEData(_ data: [String: CSEData]) {
         // Convert to Dictionary
         let quickCSEDataDict = CSEDataToDictionary(data)
@@ -288,6 +294,8 @@ class CSEDataManager {
         let quickCSEDataDict = CSEDataToDictionary(quickCSEData)
         userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
     }
+    
+    // MARK: - POST Data Handling
     
     class func cleanPostData(_ post: [[String: String]]) -> [[String: String]] {
         return post.filter { entry in
@@ -338,6 +346,8 @@ class CSEDataManager {
         
         return postDataDict
     }
+    
+    // MARK: - Import/Export Support
     
     enum jsonError: LocalizedError {
         case parseError
