@@ -42,7 +42,7 @@ class RecommendSEs {
         var baseCSEs = [
             "g": CSEDataManager.CSEData(
                 name: "Google",
-                url: "https://www.google.com/search?q=%s",
+                url: "https://www.google.com/search?q=%s&client=safari",
             ),
             "b": CSEDataManager.CSEData(
                 name: "Bing",
@@ -164,7 +164,7 @@ class RecommendSEs {
             CSEDataManager.CSEData(
                 name: "Google &udm=14",
                 keyword: "g",
-                url: "https://www.google.com/search?q=%s&udm=14",
+                url: "https://www.google.com/search?q=%s&udm=14&client=safari",
             ),
             CSEDataManager.CSEData(
                 name: "Kagi",
@@ -253,7 +253,7 @@ class RecommendSEs {
             CSEDataManager.CSEData(
                 name: "Google",
                 keyword: "g",
-                url: "https://www.google.com/search?q=%s",
+                url: "https://www.google.com/search?q=%s&client=safari",
             ),
             CSEDataManager.CSEData(
                 name: "Bing",
