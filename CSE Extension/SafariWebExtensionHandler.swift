@@ -133,7 +133,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         } catch {}
     }
     
-    // ↓ --- Search Engine Checker --- ↓
+    // MARK: - SafariSEs Support
 
     // Engine Checker
     func checkEngineURL(engine: SafariSEs, url: String) -> Bool {
@@ -147,6 +147,8 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     func getQueryValue(engine: SafariSEs, url: String) -> String? {
         return engine.getQuery(from: url)
     }
+    
+    // MARK: - Make Search URL
     
     func makeSearchURL(baseCSE: CSEDataManager.CSEData, query: String) -> (type: String, url: String, post: [[String: String]]) {
         // --- Description of some Query variables ---
@@ -321,7 +323,8 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         return (redirectType, redirectURL, postData)
     }
     
-    // Check current focus filter
+    // MARK: - Focus Filter Support
+    
     func getFocusFilter() async throws {
         focusSettings = nil
         if userDefaults.bool(forKey: "adv_ignoreFocusFilter") { return }
