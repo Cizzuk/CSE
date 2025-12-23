@@ -184,6 +184,7 @@ class CSEDataManager {
         // Normalize Safari search engine URLs
         let replacements = [
             "https://google.com": "https://www.google.com",
+            "https://google.com.hk": "https://www.google.com.hk",
             "https://bing.com": "https://www.bing.com",
             "https://www.duckduckgo.com": "https://duckduckgo.com",
             "https://ecosia.com": "https://www.ecosia.com",
