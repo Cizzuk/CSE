@@ -203,22 +203,39 @@ class RecommendSEs {
         
     class func recommendAICSEList() -> [CSEDataManager.CSEData] {
         var aiCSEs: [CSEDataManager.CSEData] = []
-        if currentRegion != "CN" && currentRegion != "RU" {
-            aiCSEs.append(CSEDataManager.CSEData(
-                name: "Perplexity",
-                keyword: "pplx",
-                url: "https://www.perplexity.ai/?q=%s",
-            ))
-            aiCSEs.append(CSEDataManager.CSEData(
-                name: "Microsoft Copilot",
-                keyword: "copilot",
-                url: "https://www.bing.com/copilotsearch?q=%s",
-            ))
-            aiCSEs.append(CSEDataManager.CSEData(
-                name: "ChatGPT",
-                keyword: "gpt",
-                url: "https://chatgpt.com/?q=%s&hints=search",
-            ))
+        if currentRegion != "CN" {
+            aiCSEs.append(contentsOf: [
+                CSEDataManager.CSEData(
+                    name: "ChatGPT",
+                    keyword: "gpt",
+                    url: "https://chatgpt.com/?q=%s&hints=search",
+                ),
+                CSEDataManager.CSEData(
+                    name: "Claude",
+                    keyword: "claude",
+                    url: "https://claude.ai/new?q=%s",
+                ),
+                CSEDataManager.CSEData(
+                    name: "Perplexity",
+                    keyword: "pplx",
+                    url: "https://www.perplexity.ai/?q=%s",
+                ),
+                CSEDataManager.CSEData(
+                    name: "Google AI Mode",
+                    keyword: "gai",
+                    url: "https://google.com/?q=%s&udm=50",
+                ),
+                CSEDataManager.CSEData(
+                    name: "Microsoft Copilot",
+                    keyword: "copilot",
+                    url: "https://www.bing.com/copilotsearch?q=%s",
+                ),
+                CSEDataManager.CSEData(
+                    name: "Grok",
+                    keyword: "grok",
+                    url: "https://grok.com/?q=%s",
+                ),
+            ])
         }
         
         if currentRegion == "CN" || containsLanguage("zh-Hans") {
