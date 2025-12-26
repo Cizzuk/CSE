@@ -88,6 +88,17 @@ class RecommendSEs {
             ),
         ]
         
+        if currentRegion != "CN" {
+            baseCSEs["gpt"] = CSEDataManager.CSEData(
+                name: "ChatGPT",
+                url: "https://chatgpt.com/?q=%s&hints=search",
+            )
+            baseCSEs["pplx"] = CSEDataManager.CSEData(
+                name: "Perplexity",
+                url: "https://www.perplexity.ai/?q=%s",
+            )
+        }
+        
         if preferredLanguages.first == "ja-JP" {
             baseCSEs["y"] = CSEDataManager.CSEData(
                 name: "Yahoo! JAPAN",
@@ -205,6 +216,7 @@ class RecommendSEs {
         var aiCSEs: [CSEDataManager.CSEData] = []
         if currentRegion != "CN" {
             aiCSEs.append(contentsOf: [
+                // Search Engine (Mode)
                 CSEDataManager.CSEData(
                     name: "ChatGPT",
                     keyword: "gpt",
@@ -225,6 +237,18 @@ class RecommendSEs {
                     keyword: "copilot",
                     url: "https://www.bing.com/copilotsearch?q=%s",
                 ),
+            ])
+            
+            if currentRegion == "JP" || containsLanguage("ja") {
+                aiCSEs.append(CSEDataManager.CSEData(
+                    name: "Yahoo!検索 AIアシスタント",
+                    keyword: "yai",
+                    url: "https://search.yahoo.co.jp/chat?q=%s",
+                ))
+            }
+            
+            // Normal AI Chat
+            aiCSEs.append(contentsOf: [
                 CSEDataManager.CSEData(
                     name: "Claude",
                     keyword: "claude",
