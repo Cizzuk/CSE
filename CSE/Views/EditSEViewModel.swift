@@ -104,8 +104,10 @@ class EditSEViewModel: ObservableObject {
     // Control Center Reload
     func handleToggleChange(isOn: Bool, key: String) {
         #if !os(visionOS)
-        if #available(iOS 18.0, macOS 26, *) {
-            ControlCenter.shared.reloadControls(ofKind: key)
+        DispatchQueue.global(qos: .background).async {
+            if #available(iOS 18.0, macOS 26, *) {
+                ControlCenter.shared.reloadControls(ofKind: key)
+            }
         }
         #endif
     }

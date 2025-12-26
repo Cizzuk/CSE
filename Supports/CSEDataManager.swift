@@ -318,13 +318,15 @@ class CSEDataManager {
     }
     
     class func deleteQuickCSE(_ id: String) {
-        // Get current QuickSEs Data
-        var quickCSEData = getAllQuickCSEData()
-        // Remove this QuickSE
-        quickCSEData.removeValue(forKey: id)
-        // Convert to Dictionary
-        let quickCSEDataDict = CSEDataToDictionary(quickCSEData)
-        userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
+        DispatchQueue.global(qos: .userInteractive).async {
+            // Get current QuickSEs Data
+            var quickCSEData = getAllQuickCSEData()
+            // Remove this QuickSE
+            quickCSEData.removeValue(forKey: id)
+            // Convert to Dictionary
+            let quickCSEDataDict = CSEDataToDictionary(quickCSEData)
+            userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
+        }
     }
     
     // MARK: - POST Data Handling
@@ -462,20 +464,24 @@ class CSEDataManager {
         replaceQuickCSEData(quickCSE)
         
         // Update Toggles
-        userDefaults.set(!defaultCSE.url.isEmpty, forKey: "useDefaultCSE")
-        userDefaults.set(!privateCSE.url.isEmpty, forKey: "usePrivateCSE")
-        userDefaults.set(!quickCSE.isEmpty, forKey: "useQuickCSE")
-        userDefaults.set(useEmojiSearch, forKey: "useEmojiSearch")
-        userDefaults.set(QuickSearchSettings_keywordOnly, forKey: "QuickSearchSettings_keywordOnly")
-        userDefaults.set(QuickSearchSettings_keywordPos, forKey: "QuickSearchSettings_keywordPos")
+        DispatchQueue.global(qos: .userInteractive).async {
+            userDefaults.set(!defaultCSE.url.isEmpty, forKey: "useDefaultCSE")
+            userDefaults.set(!privateCSE.url.isEmpty, forKey: "usePrivateCSE")
+            userDefaults.set(!quickCSE.isEmpty, forKey: "useQuickCSE")
+            userDefaults.set(useEmojiSearch, forKey: "useEmojiSearch")
+            userDefaults.set(QuickSearchSettings_keywordOnly, forKey: "QuickSearchSettings_keywordOnly")
+            userDefaults.set(QuickSearchSettings_keywordPos, forKey: "QuickSearchSettings_keywordPos")
+        }
         
         // Update CC
         #if !os(visionOS)
-        if #available(iOS 18.0, macOS 26, *) {
-            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UseDefaultCSE")
-            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UsePrivateCSE")
-            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
-            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.EmojiSearch")
+        DispatchQueue.global(qos: .background).async {
+            if #available(iOS 18.0, macOS 26, *) {
+                ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UseDefaultCSE")
+                ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UsePrivateCSE")
+                ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
+                ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.EmojiSearch")
+            }
         }
         #endif
     }
@@ -490,20 +496,24 @@ class CSEDataManager {
         replaceQuickCSEData(quickCSE)
         
         // Update Toggles
-        userDefaults.set(!defaultCSE.url.isEmpty, forKey: "useDefaultCSE")
-        userDefaults.set(!privateCSE.url.isEmpty, forKey: "usePrivateCSE")
-        userDefaults.set(!quickCSE.isEmpty, forKey: "useQuickCSE")
-        userDefaults.set(deviceCSE.useEmojiSearch, forKey: "useEmojiSearch")
-        userDefaults.set(deviceCSE.QuickSearchSettings_keywordOnly, forKey: "QuickSearchSettings_keywordOnly")
-        userDefaults.set(deviceCSE.QuickSearchSettings_keywordPos, forKey: "QuickSearchSettings_keywordPos")
+        DispatchQueue.global(qos: .userInteractive).async {
+            userDefaults.set(!defaultCSE.url.isEmpty, forKey: "useDefaultCSE")
+            userDefaults.set(!privateCSE.url.isEmpty, forKey: "usePrivateCSE")
+            userDefaults.set(!quickCSE.isEmpty, forKey: "useQuickCSE")
+            userDefaults.set(deviceCSE.useEmojiSearch, forKey: "useEmojiSearch")
+            userDefaults.set(deviceCSE.QuickSearchSettings_keywordOnly, forKey: "QuickSearchSettings_keywordOnly")
+            userDefaults.set(deviceCSE.QuickSearchSettings_keywordPos, forKey: "QuickSearchSettings_keywordPos")
+        }
         
         // Update CC
         #if !os(visionOS)
-        if #available(iOS 18.0, macOS 26, *) {
-            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UseDefaultCSE")
-            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UsePrivateCSE")
-            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
-            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.EmojiSearch")
+        DispatchQueue.global(qos: .background).async {
+            if #available(iOS 18.0, macOS 26, *) {
+                ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UseDefaultCSE")
+                ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UsePrivateCSE")
+                ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
+                ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.EmojiSearch")
+            }
         }
         #endif
     }

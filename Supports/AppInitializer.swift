@@ -62,7 +62,9 @@ class AppInitializer {
         }
         
         // Save Current State
-        userDefaults.set(currentVersion, forKey: "LastAppVer")
+        DispatchQueue.global(qos: .background).async {
+            userDefaults.set(currentVersion, forKey: "LastAppVer")
+        }
     }
     
     // MARK: - Migration Helpers
