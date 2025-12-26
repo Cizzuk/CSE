@@ -338,7 +338,7 @@ private struct RecommendView: View {
                                 isOpenSheet = false
                             }, cse: cse)
                         })
-                    } header: { Text("AI Search Engines") }
+                    } header: { Text("AI Assistants") }
                 }
                 
                 // Normal Search Engine List

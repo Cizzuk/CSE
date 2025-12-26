@@ -798,72 +798,72 @@
         }
       }
     },
-    "AI Search Engines" : {
+    "AI Assistants" : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "محركات بحث الذكاء الاصطناعي"
+            "value" : "مساعدو الذكاء الاصطناعي"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "KI-Suchmaschinen"
+            "value" : "KI-Assistenten"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Buscadores de IA"
+            "value" : "Asistentes de IA"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Moteurs de recherche IA"
+            "value" : "Assistants IA"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "AI検索エンジン"
+            "value" : "AIアシスタント"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "AI 검색 엔진"
+            "value" : "AI 어시스턴트"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Buscadores de IA"
+            "value" : "Assistentes de IA"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "AI Поисковые машины"
+            "value" : "ИИ-ассистенты"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "AI-пошукові системи"
+            "value" : "ШІ-асистенти"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "AI 搜索引擎"
+            "value" : "AI 助手"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "AI 搜尋引擎"
+            "value" : "AI 助理"
           }
         }
       }
