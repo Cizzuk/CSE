@@ -211,11 +211,6 @@ class RecommendSEs {
                     url: "https://chatgpt.com/?q=%s&hints=search",
                 ),
                 CSEDataManager.CSEData(
-                    name: "Claude",
-                    keyword: "claude",
-                    url: "https://claude.ai/new?q=%s",
-                ),
-                CSEDataManager.CSEData(
                     name: "Perplexity",
                     keyword: "pplx",
                     url: "https://www.perplexity.ai/?q=%s",
@@ -229,6 +224,11 @@ class RecommendSEs {
                     name: "Microsoft Copilot",
                     keyword: "copilot",
                     url: "https://www.bing.com/copilotsearch?q=%s",
+                ),
+                CSEDataManager.CSEData(
+                    name: "Claude",
+                    keyword: "claude",
+                    url: "https://claude.ai/new?q=%s",
                 ),
                 CSEDataManager.CSEData(
                     name: "Grok",
