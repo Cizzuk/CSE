@@ -41,6 +41,7 @@ struct EditSEView: View {
             }
         }
         .scrollToDismissesKeyboard()
+        .animation(.default, value: isFeatureEnabled)
         .navigationTitle(viewModel.cseType.localizedStringResource)
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $viewModel.isShowingPostData) {
