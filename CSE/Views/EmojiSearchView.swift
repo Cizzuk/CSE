@@ -22,8 +22,10 @@ struct EmojiSearchView: View {
                 }
                 #if !os(visionOS)
                 .onChange(of: useEmojiSearch) { _ in
-                    if #available(iOS 18.0, macOS 26, *) {
-                        ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.EmojiSearch")
+                    DispatchQueue.global(qos: .background).async {
+                        if #available(iOS 18.0, macOS 26, *) {
+                            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.EmojiSearch")
+                        }
                     }
                 }
                 #endif

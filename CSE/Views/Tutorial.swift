@@ -278,7 +278,7 @@ class Tutorial {
                                 isOpenSheet = false
                             }, cse: recommendAICSEList[index])
                         })
-                    } header: { Text("AI Search Engines") }
+                    } header: { Text("AI Assistants") }
                 }
                 
                 Section {

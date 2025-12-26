@@ -30,8 +30,10 @@ struct QuickSEListView: View {
                         .onChange(of: useQuickCSE) { _ in
                             withAnimation { useQuickCSEToggle = useQuickCSE }
                             #if !os(visionOS)
-                            if #available(iOS 18.0, macOS 26, *) {
-                                ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
+                            DispatchQueue.global(qos: .background).async {
+                                if #available(iOS 18.0, macOS 26, *) {
+                                    ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
+                                }
                             }
                             #endif
                         }

@@ -41,6 +41,7 @@ struct EditSEView: View {
             }
         }
         .scrollToDismissesKeyboard()
+        .animation(.default, value: isFeatureEnabled)
         .navigationTitle(viewModel.cseType.localizedStringResource)
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $viewModel.isShowingPostData) {
@@ -338,7 +339,7 @@ private struct RecommendView: View {
                                 isOpenSheet = false
                             }, cse: cse)
                         })
-                    } header: { Text("AI Search Engines") }
+                    } header: { Text("AI Assistants") }
                 }
                 
                 // Normal Search Engine List

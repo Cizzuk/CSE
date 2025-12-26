@@ -88,6 +88,17 @@ class RecommendSEs {
             ),
         ]
         
+        if currentRegion != "CN" {
+            baseCSEs["gpt"] = CSEDataManager.CSEData(
+                name: "ChatGPT",
+                url: "https://chatgpt.com/?q=%s&hints=search",
+            )
+            baseCSEs["pplx"] = CSEDataManager.CSEData(
+                name: "Perplexity",
+                url: "https://www.perplexity.ai/?q=%s",
+            )
+        }
+        
         if preferredLanguages.first == "ja-JP" {
             baseCSEs["y"] = CSEDataManager.CSEData(
                 name: "Yahoo! JAPAN",
@@ -203,22 +214,52 @@ class RecommendSEs {
         
     class func recommendAICSEList() -> [CSEDataManager.CSEData] {
         var aiCSEs: [CSEDataManager.CSEData] = []
-        if currentRegion != "CN" && currentRegion != "RU" {
-            aiCSEs.append(CSEDataManager.CSEData(
-                name: "Perplexity",
-                keyword: "pplx",
-                url: "https://www.perplexity.ai/?q=%s",
-            ))
-            aiCSEs.append(CSEDataManager.CSEData(
-                name: "Microsoft Copilot",
-                keyword: "copilot",
-                url: "https://www.bing.com/copilotsearch?q=%s",
-            ))
-            aiCSEs.append(CSEDataManager.CSEData(
-                name: "ChatGPT",
-                keyword: "gpt",
-                url: "https://chatgpt.com/?q=%s&hints=search",
-            ))
+        if currentRegion != "CN" {
+            aiCSEs.append(contentsOf: [
+                // Search Engine (Mode)
+                CSEDataManager.CSEData(
+                    name: "ChatGPT",
+                    keyword: "gpt",
+                    url: "https://chatgpt.com/?q=%s&hints=search",
+                ),
+                CSEDataManager.CSEData(
+                    name: "Perplexity",
+                    keyword: "pplx",
+                    url: "https://www.perplexity.ai/?q=%s",
+                ),
+                CSEDataManager.CSEData(
+                    name: "Google AI Mode",
+                    keyword: "gai",
+                    url: "https://google.com/?q=%s&udm=50",
+                ),
+                CSEDataManager.CSEData(
+                    name: "Microsoft Copilot",
+                    keyword: "copilot",
+                    url: "https://www.bing.com/copilotsearch?q=%s",
+                ),
+            ])
+            
+            if currentRegion == "JP" || containsLanguage("ja") {
+                aiCSEs.append(CSEDataManager.CSEData(
+                    name: "Yahoo!検索 AIアシスタント",
+                    keyword: "yai",
+                    url: "https://search.yahoo.co.jp/chat?q=%s",
+                ))
+            }
+            
+            // Normal AI Chat
+            aiCSEs.append(contentsOf: [
+                CSEDataManager.CSEData(
+                    name: "Claude",
+                    keyword: "claude",
+                    url: "https://claude.ai/new?q=%s",
+                ),
+                CSEDataManager.CSEData(
+                    name: "Grok",
+                    keyword: "grok",
+                    url: "https://grok.com/?q=%s",
+                ),
+            ])
         }
         
         if currentRegion == "CN" || containsLanguage("zh-Hans") {
