@@ -17,7 +17,7 @@
             "type": "block"
         },
         "condition": {
-            "urlFilter": "*://www.google.cn/search*ie=UTF-8&oe=UTF-8*client=safari*",
+            "urlFilter": "*://www.google.com/search*client=safari*ie=UTF-8&oe=UTF-8*",
             "resourceTypes": ["main_frame"]
         }
     },
@@ -28,7 +28,40 @@
             "type": "block"
         },
         "condition": {
+            "urlFilter": "*://www.google.cn/search*ie=UTF-8&oe=UTF-8*client=safari*",
+            "resourceTypes": ["main_frame"]
+        }
+    },
+    {
+        "id": 4,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://www.google.cn/search*client=safari*ie=UTF-8&oe=UTF-8*",
+            "resourceTypes": ["main_frame"]
+        }
+    },
+    {
+        "id": 5,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
             "urlFilter": "*://www.google.com.hk/search*ie=UTF-8&oe=UTF-8*client=safari*",
+            "resourceTypes": ["main_frame"]
+        }
+    },
+    {
+        "id": 6,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://www.google.com.hk/search*client=safari*ie=UTF-8&oe=UTF-8*",
             "resourceTypes": ["main_frame"]
         }
     }
