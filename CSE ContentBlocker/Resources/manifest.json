@@ -9,6 +9,11 @@
     "icons": {
         "512": "images/icon-512.png"
     },
+    
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "images/toolbar-icon-128.png"
+    },
 
     "permissions": [
         "declarativeNetRequest"
