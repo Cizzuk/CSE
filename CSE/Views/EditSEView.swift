@@ -192,7 +192,7 @@ struct EditSEView: View {
                     viewModel.cseData.post = []
                     viewModel.saveData(.autosave)
                 } label: {
-                    Label("Clear All POST Data", systemImage: "trash")
+                    Label("Delete All POST Data", systemImage: "trash")
                 }
             }
             
