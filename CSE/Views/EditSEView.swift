@@ -48,8 +48,8 @@ struct EditSEView: View {
             PostDataView(post: $viewModel.cseData.post, isOpenSheet: $viewModel.isShowingPostData)
                 .onDisappear { viewModel.saveData(.autosave) }
         }
-        .sheet(isPresented: $viewModel.isShowingRecommend) {
-            RecommendView(isOpenSheet: $viewModel.isShowingRecommend, CSEData: $viewModel.cseData)
+        .sheet(isPresented: $viewModel.isShowingPresets) {
+            PresetsView(isOpenSheet: $viewModel.isShowingPresets, CSEData: $viewModel.cseData)
                 .onDisappear { viewModel.saveData(.autosave) }
         }
         .sheet(isPresented: $viewModel.isShowingCloudImport) {
@@ -227,8 +227,8 @@ struct EditSEView: View {
     @ViewBuilder
     private var importSection: some View {
         Section {
-            Button(action: { viewModel.isShowingRecommend = true }) {
-                UITemplates.IconLabel(icon: "sparkle.magnifyingglass", text: "Recommended Search Engines")
+            Button(action: { viewModel.isShowingPresets = true }) {
+                UITemplates.IconLabel(icon: "sparkle.magnifyingglass", text: "Search Engine Presets")
             }
             Button(action: { viewModel.isShowingCloudImport = true }) {
                 UITemplates.IconLabel(icon: "icloud.and.arrow.down", text: "Import from iCloud")
@@ -307,22 +307,22 @@ private struct PostDataView: View {
     }
 }
 
-private struct RecommendView: View {
+private struct PresetsView: View {
     @Binding var isOpenSheet: Bool
     @Binding var CSEData: CSEDataManager.CSEData
     
-    private let recommendPopCSEList = SearchEnginePresets.recommendPopCSEList()
-    private let recommendAICSEList = SearchEnginePresets.recommendAICSEList()
-    private let recommendNormalCSEList = SearchEnginePresets.recommendNormalCSEList()
+    private let popCSEList = SearchEnginePresets.popCSEList()
+    private let aiCSEList = SearchEnginePresets.aiCSEList()
+    private let safariCSEList = SearchEnginePresets.safariCSEList()
     
     var body: some View {
         NavigationStack {
             List {
                 // Search Engine List
                 Section {
-                    ForEach(recommendPopCSEList.indices, id: \.self, content: { index in
-                        let cse = recommendPopCSEList[index]
-                        UITemplates.RecommendedSEButton(action: {
+                    ForEach(popCSEList.indices, id: \.self, content: { index in
+                        let cse = popCSEList[index]
+                        UITemplates.PresetSEButton(action: {
                             CSEData = cse
                             isOpenSheet = false
                         }, cse: cse)
@@ -330,11 +330,11 @@ private struct RecommendView: View {
                 } header: { Text("Popular Search Engines") }
                 
                 // AI Search Engine List
-                if !recommendAICSEList.isEmpty {
+                if !aiCSEList.isEmpty {
                     Section {
-                        ForEach(recommendAICSEList.indices, id: \.self, content: { index in
-                            let cse = recommendAICSEList[index]
-                            UITemplates.RecommendedSEButton(action: {
+                        ForEach(aiCSEList.indices, id: \.self, content: { index in
+                            let cse = aiCSEList[index]
+                            UITemplates.PresetSEButton(action: {
                                 CSEData = cse
                                 isOpenSheet = false
                             }, cse: cse)
@@ -344,16 +344,16 @@ private struct RecommendView: View {
                 
                 // Normal Search Engine List
                 Section {
-                    ForEach(recommendNormalCSEList.indices, id: \.self, content: { index in
-                        let cse = recommendNormalCSEList[index]
-                        UITemplates.RecommendedSEButton(action: {
+                    ForEach(safariCSEList.indices, id: \.self, content: { index in
+                        let cse = safariCSEList[index]
+                        UITemplates.PresetSEButton(action: {
                             CSEData = cse
                             isOpenSheet = false
                         }, cse: cse)
                     })
                 } header: { Text("Safari Search Engines") }
             }
-            .navigationTitle("Recommended Search Engines")
+            .navigationTitle("Search Engine Presets")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

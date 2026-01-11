@@ -160,7 +160,7 @@ class SearchEnginePresets {
         return baseCSEs
     }
     
-    class func recommendPopCSEList() -> [CSEDataManager.CSEData] {
+    class func popCSEList() -> [CSEDataManager.CSEData] {
         var popCSEs: [CSEDataManager.CSEData] = [
             CSEDataManager.CSEData(
                 name: "Startpage",
@@ -212,7 +212,7 @@ class SearchEnginePresets {
         return popCSEs
     }
         
-    class func recommendAICSEList() -> [CSEDataManager.CSEData] {
+    class func aiCSEList() -> [CSEDataManager.CSEData] {
         var aiCSEs: [CSEDataManager.CSEData] = []
         if currentRegion != "CN" {
             aiCSEs.append(contentsOf: [
@@ -272,7 +272,7 @@ class SearchEnginePresets {
         return aiCSEs
     }
     
-    class func recommendNormalCSEList() -> [CSEDataManager.CSEData] {
+    class func safariCSEList() -> [CSEDataManager.CSEData] {
         var normalCSEs: [CSEDataManager.CSEData] = []
         
         let localizedYahoo: CSEDataManager.CSEData

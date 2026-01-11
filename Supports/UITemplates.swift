@@ -27,7 +27,7 @@ class UITemplates {
         }
     }
     
-    struct RecommendedSEButton: View {
+    struct PresetSEButton: View {
         let action: () -> Void
         let cse: CSEDataManager.CSEData
         

@@ -211,7 +211,7 @@ class Tutorial {
             }
             .navigationBarBackButtonHidden(true)
             .navigationDestination(isPresented: $isNavigation) {
-                RecommendView(isOpenSheet: $isOpenSheet)
+                PresetsView(isOpenSheet: $isOpenSheet)
             }
             .toolbar {
                 ToolbarItem(placement: .bottomBar) {
@@ -228,9 +228,9 @@ class Tutorial {
         }
     }
     
-    // MARK: - Recommend View
+    // MARK: - Presets View
     
-    private struct RecommendView: View {
+    private struct PresetsView: View {
         @Binding var isOpenSheet: Bool
         @State private var isNavigation: Bool = false
         
@@ -238,9 +238,9 @@ class Tutorial {
         @State private var showingFileImport = false
         @State private var showingErrorAlert = false
         @State private var errorMessage = ""
-        private let recommendPopCSEList = SearchEnginePresets.recommendPopCSEList()
-        private let recommendAICSEList = SearchEnginePresets.recommendAICSEList()
-        private let recommendNormalCSEList = SearchEnginePresets.recommendNormalCSEList()
+        private let popCSEList = SearchEnginePresets.popCSEList()
+        private let aiCSEList = SearchEnginePresets.aiCSEList()
+        private let safariCSEList = SearchEnginePresets.safariCSEList()
         
         var body: some View {
             List {
@@ -262,31 +262,31 @@ class Tutorial {
                 }
                 
                 Section {
-                    ForEach(recommendPopCSEList.indices, id: \.self, content: { index in
-                        UITemplates.RecommendedSEButton(action: {
-                            CSEDataManager.saveCSEData(recommendPopCSEList[index], .defaultCSE)
+                    ForEach(popCSEList.indices, id: \.self, content: { index in
+                        UITemplates.PresetSEButton(action: {
+                            CSEDataManager.saveCSEData(popCSEList[index], .defaultCSE)
                             isOpenSheet = false
-                        }, cse: recommendPopCSEList[index])
+                        }, cse: popCSEList[index])
                     })
                 } header: { Text("Popular Search Engines") }
                 
-                if !recommendAICSEList.isEmpty {
+                if !aiCSEList.isEmpty {
                     Section {
-                        ForEach(recommendAICSEList.indices, id: \.self, content: { index in
-                            UITemplates.RecommendedSEButton(action: {
-                                CSEDataManager.saveCSEData(recommendAICSEList[index], .defaultCSE)
+                        ForEach(aiCSEList.indices, id: \.self, content: { index in
+                            UITemplates.PresetSEButton(action: {
+                                CSEDataManager.saveCSEData(aiCSEList[index], .defaultCSE)
                                 isOpenSheet = false
-                            }, cse: recommendAICSEList[index])
+                            }, cse: aiCSEList[index])
                         })
                     } header: { Text("AI Assistants") }
                 }
                 
                 Section {
-                    ForEach(recommendNormalCSEList.indices, id: \.self, content: { index in
-                        UITemplates.RecommendedSEButton(action: {
-                            CSEDataManager.saveCSEData(recommendNormalCSEList[index], .defaultCSE)
+                    ForEach(safariCSEList.indices, id: \.self, content: { index in
+                        UITemplates.PresetSEButton(action: {
+                            CSEDataManager.saveCSEData(safariCSEList[index], .defaultCSE)
                             isOpenSheet = false
-                        }, cse: recommendNormalCSEList[index])
+                        }, cse: safariCSEList[index])
                     })
                 } header: { Text("Safari Search Engines") }
             }
