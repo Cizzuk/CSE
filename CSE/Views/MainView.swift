@@ -43,7 +43,7 @@ struct ContentView: View {
     
     // Navigation
     @State private var selection: NavigationItem?
-    private enum NavigationItem: Hashable {
+    private enum NavigationItem: String, Hashable {
         case defaultSE, privateSE, quickSE, emojiSearch
         case about, backup, iconChange, advancedSettings
     }
@@ -168,6 +168,21 @@ struct ContentView: View {
         .sheet(isPresented: $openSafariTutorialView) {
             NavigationStack {
                 Tutorial.SafariSEView(isOpenSheet: $openSafariTutorialView)
+            }
+        }
+        .onOpenURL { url in
+            // Handle URL Scheme
+            if let host = url.host {
+                switch host {
+                case "firstTutorial":
+                    needFirstTutorial = true
+                case "safariSettings":
+                    openSafariTutorialView = true
+                case "home":
+                    selection = nil
+                default:
+                    selection = NavigationItem(rawValue: host)
+                }
             }
         }
     }
