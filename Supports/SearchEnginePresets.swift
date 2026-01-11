@@ -1,5 +1,5 @@
 //
-//  RecommendSEs.swift
+//  SearchEnginePresets.swift
 //  Customize Search Engine
 //
 //  Created by Cizzuk on 2025/04/15.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RecommendSEs {
+class SearchEnginePresets {
     // Helpers
     private static let currentRegion = Locale.current.region?.identifier
     private static let preferredLanguages = Locale.preferredLanguages

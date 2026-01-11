@@ -311,9 +311,9 @@ private struct RecommendView: View {
     @Binding var isOpenSheet: Bool
     @Binding var CSEData: CSEDataManager.CSEData
     
-    private let recommendPopCSEList = RecommendSEs.recommendPopCSEList()
-    private let recommendAICSEList = RecommendSEs.recommendAICSEList()
-    private let recommendNormalCSEList = RecommendSEs.recommendNormalCSEList()
+    private let recommendPopCSEList = SearchEnginePresets.recommendPopCSEList()
+    private let recommendAICSEList = SearchEnginePresets.recommendAICSEList()
+    private let recommendNormalCSEList = SearchEnginePresets.recommendNormalCSEList()
     
     var body: some View {
         NavigationStack {

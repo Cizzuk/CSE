@@ -121,7 +121,7 @@
 			membershipExceptions = (
 				AppInitializer.swift,
 				Extensions.swift,
-				RecommendSEs.swift,
+				SearchEnginePresets.swift,
 				UITemplates.swift,
 			);
 			target = BE8F7FEC2DE41F0E003906F4 /* CSE CCWidgetExtension */;

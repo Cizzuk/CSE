@@ -238,9 +238,9 @@ class Tutorial {
         @State private var showingFileImport = false
         @State private var showingErrorAlert = false
         @State private var errorMessage = ""
-        private let recommendPopCSEList = RecommendSEs.recommendPopCSEList()
-        private let recommendAICSEList = RecommendSEs.recommendAICSEList()
-        private let recommendNormalCSEList = RecommendSEs.recommendNormalCSEList()
+        private let recommendPopCSEList = SearchEnginePresets.recommendPopCSEList()
+        private let recommendAICSEList = SearchEnginePresets.recommendAICSEList()
+        private let recommendNormalCSEList = SearchEnginePresets.recommendNormalCSEList()
         
         var body: some View {
             List {
