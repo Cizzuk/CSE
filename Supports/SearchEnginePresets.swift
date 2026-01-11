@@ -233,7 +233,7 @@ class SearchEnginePresets {
                     url: "https://google.com/?q=%s&udm=50",
                 ),
                 CSEDataManager.CSEData(
-                    name: "Microsoft Copilot",
+                    name: "Copilot Search",
                     keyword: "copilot",
                     url: "https://www.bing.com/copilotsearch?q=%s",
                 ),
