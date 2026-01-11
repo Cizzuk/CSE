@@ -4,10 +4,15 @@
 
     "name": "CSE Content Blocker",
     "description": "__MSG_extension_description__",
-    "version": "4.12",
+    "version": "4.13",
     
     "icons": {
         "512": "images/icon-512.png"
+    },
+    
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "images/toolbar-icon.svg"
     },
 
     "permissions": [

@@ -4,7 +4,7 @@
 
     "name": "CSE Extension",
     "description": "__MSG_extension_description__",
-    "version": "4.12",
+    "version": "4.13",
     
     "icons": {
         "512": "images/icon-512.png"
@@ -17,14 +17,7 @@
 
     "action": {
         "default_popup": "popup.html",
-        "default_icon": {
-            "16": "images/toolbar-icon-16.png",
-            "19": "images/toolbar-icon-19.png",
-            "32": "images/toolbar-icon-32.png",
-            "38": "images/toolbar-icon-38.png",
-            "48": "images/toolbar-icon-48.png",
-            "72": "images/toolbar-icon-72.png"
-        }
+        "default_icon": "images/toolbar-icon.svg"
     },
 
     "permissions": [ "nativeMessaging", "webRequest" ],

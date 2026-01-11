@@ -1,5 +1,5 @@
 //
-//  RecommendSEs.swift
+//  SearchEnginePresets.swift
 //  Customize Search Engine
 //
 //  Created by Cizzuk on 2025/04/15.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RecommendSEs {
+class SearchEnginePresets {
     // Helpers
     private static let currentRegion = Locale.current.region?.identifier
     private static let preferredLanguages = Locale.preferredLanguages
@@ -160,7 +160,7 @@ class RecommendSEs {
         return baseCSEs
     }
     
-    class func recommendPopCSEList() -> [CSEDataManager.CSEData] {
+    class func popCSEList() -> [CSEDataManager.CSEData] {
         var popCSEs: [CSEDataManager.CSEData] = [
             CSEDataManager.CSEData(
                 name: "Startpage",
@@ -176,6 +176,12 @@ class RecommendSEs {
                 name: "Google &udm=14",
                 keyword: "g",
                 url: "https://www.google.com/search?q=%s&udm=14&client=safari",
+            ),
+            CSEDataManager.CSEData(
+                name: "DuckDuckGo Lite",
+                keyword: "lite",
+                url: "https://lite.duckduckgo.com/lite?q=%s",
+                maxQueryLength: 500,
             ),
             CSEDataManager.CSEData(
                 name: "Kagi",
@@ -212,7 +218,7 @@ class RecommendSEs {
         return popCSEs
     }
         
-    class func recommendAICSEList() -> [CSEDataManager.CSEData] {
+    class func aiCSEList() -> [CSEDataManager.CSEData] {
         var aiCSEs: [CSEDataManager.CSEData] = []
         if currentRegion != "CN" {
             aiCSEs.append(contentsOf: [
@@ -233,7 +239,7 @@ class RecommendSEs {
                     url: "https://google.com/?q=%s&udm=50",
                 ),
                 CSEDataManager.CSEData(
-                    name: "Microsoft Copilot",
+                    name: "Copilot Search",
                     keyword: "copilot",
                     url: "https://www.bing.com/copilotsearch?q=%s",
                 ),
@@ -254,11 +260,6 @@ class RecommendSEs {
                     keyword: "claude",
                     url: "https://claude.ai/new?q=%s",
                 ),
-                CSEDataManager.CSEData(
-                    name: "Grok",
-                    keyword: "grok",
-                    url: "https://grok.com/?q=%s",
-                ),
             ])
         }
         
@@ -272,7 +273,7 @@ class RecommendSEs {
         return aiCSEs
     }
     
-    class func recommendNormalCSEList() -> [CSEDataManager.CSEData] {
+    class func safariCSEList() -> [CSEDataManager.CSEData] {
         var normalCSEs: [CSEDataManager.CSEData] = []
         
         let localizedYahoo: CSEDataManager.CSEData

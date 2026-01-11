@@ -19,6 +19,7 @@ class UITemplates {
                 if dynamicTypeSize <= .xxxLarge {
                     Image(systemName: icon)
                         .frame(width: 20.0, alignment: .center)
+                        .accessibilityHidden(true)
                     Spacer().frame(width: 10.0)
                 }
                 Text(String(localized: text))
@@ -26,7 +27,7 @@ class UITemplates {
         }
     }
     
-    struct RecommendedSEButton: View {
+    struct PresetSEButton: View {
         let action: () -> Void
         let cse: CSEDataManager.CSEData
         

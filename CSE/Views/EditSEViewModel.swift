@@ -26,7 +26,7 @@ class EditSEViewModel: ObservableObject {
     var quickCSEID: String?
     
     // Sheets
-    @Published var isShowingRecommend: Bool = false
+    @Published var isShowingPresets: Bool = false
     @Published var isShowingCloudImport: Bool = false
     @Published var isShowingPostData: Bool = false
     
