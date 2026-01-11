@@ -254,11 +254,6 @@ class SearchEnginePresets {
                     keyword: "claude",
                     url: "https://claude.ai/new?q=%s",
                 ),
-                CSEDataManager.CSEData(
-                    name: "Grok",
-                    keyword: "grok",
-                    url: "https://grok.com/?q=%s",
-                ),
             ])
         }
         
