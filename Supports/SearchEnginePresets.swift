@@ -178,6 +178,12 @@ class SearchEnginePresets {
                 url: "https://www.google.com/search?q=%s&udm=14&client=safari",
             ),
             CSEDataManager.CSEData(
+                name: "DuckDuckGo Lite",
+                keyword: "lite",
+                url: "https://lite.duckduckgo.com/lite?q=%s",
+                maxQueryLength: 500,
+            ),
+            CSEDataManager.CSEData(
                 name: "Kagi",
                 keyword: "kagi",
                 url: "https://kagi.com/search?q=%s",
