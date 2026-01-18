@@ -51,10 +51,12 @@ struct EditSEView: View {
         .sheet(isPresented: $viewModel.isShowingPresets) {
             PresetsView(isOpenSheet: $viewModel.isShowingPresets, CSEData: $viewModel.cseData)
                 .onDisappear { viewModel.saveData(.autosave) }
+                .presentationDetents([.medium, .large])
         }
         .sheet(isPresented: $viewModel.isShowingCloudImport) {
             CloudPicker.CloudPickerView(cseData: $viewModel.cseData, isOpenSheet: $viewModel.isShowingCloudImport)
                 .onDisappear { viewModel.saveData(.autosave) }
+                .presentationDetents([.medium, .large])
         }
         .alert(isPresented: $viewModel.showAlert) {
             Alert(
