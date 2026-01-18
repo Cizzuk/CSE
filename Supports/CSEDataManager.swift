@@ -35,6 +35,7 @@ class CSEDataManager {
         var keyword: String = ""
         var url: String = ""
         var post: [[String: String]] = []
+        var spaceCharacter: String = "+"
         var disablePercentEncoding: Bool = false
         var maxQueryLength: Int? = nil
     }
@@ -98,6 +99,7 @@ class CSEDataManager {
         if let v = dict["name"] as? String { data.name = v }
         if let v = id { data.keyword = v }
         if let v = dict["url"] as? String { data.url = v }
+        if let v = dict["spaceCharacter"] as? String { data.spaceCharacter = v }
         if let v = dict["disablePercentEncoding"] as? Bool { data.disablePercentEncoding = v }
         if let v = dict["maxQueryLength"] as? Int, v >= 0 {
             data.maxQueryLength = v
@@ -133,7 +135,12 @@ class CSEDataManager {
         if !data.post.isEmpty {
             dict["post"] = data.post
         }
-        dict["disablePercentEncoding"] = data.disablePercentEncoding
+        if data.spaceCharacter != "+" {
+            dict["spaceCharacter"] = data.spaceCharacter
+        }
+        if data.disablePercentEncoding {
+            dict["disablePercentEncoding"] = data.disablePercentEncoding
+        }
         if let maxQueryLength = data.maxQueryLength, maxQueryLength >= 0 {
             dict["maxQueryLength"] = maxQueryLength
         }
