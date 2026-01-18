@@ -28,7 +28,7 @@ struct AddQuickSE: AppIntent, CustomIntentMigratedAppIntent {
     @Parameter(title: "Space Character", description: "Use a specific character as the query separator. Default is +.", default: "+")
         var spaceCharacter: String
     
-    @Parameter(title: "Disable Percent-encoding", description: "Disables percent-encoding of queries. When enabled, some symbols and non-ASCII characters may become unavailable.", default: false)
+    @Parameter(title: "Disable Percent-encoding", description: "Disable percent-encoding of queries. When enabled, some symbols and non-ASCII characters may become unavailable.", default: false)
         var disablePercentEncoding: Bool
     
     @Parameter(title: "Max Query Length", description: "Truncate the query to the specified character count. Blank to disable.", default: nil)
