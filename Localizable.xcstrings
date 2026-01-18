@@ -638,7 +638,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Добавить Быстрый поиск Поисковая машина"
+            "value" : "Добавить быструю поисковую систему"
           }
         },
         "uk" : {
@@ -708,7 +708,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Добавляет пользовательскую Быстрый поиск Поисковая машина в CSE."
+            "value" : "Добавляет пользовательскую быструю поисковую систему в CSE."
           }
         },
         "uk" : {
@@ -2291,40 +2291,280 @@
     },
     "CSE will ignore all Focus Filters." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سيتجاهل CSE جميع فلاتر التركيز."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE ignoriert alle Fokusfilter."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE ignorará todos los filtros de concentración."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE ignorera tous les filtres de concentration."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSEは全ての集中モードフィルタを無視するようになります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE는 모든 집중 모드 필터를 무시합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O CSE ignorará todos os filtros de Foco."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE будет игнорировать все фильтры фокусирования."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE ігноруватиме всі фільтри зосередження."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE 将忽略所有专注模式过滤器。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE 將忽略所有專注模式過濾器。"
           }
         }
       }
     },
     "CSE will ignore Safari Settings and detect the URLs of all Safari search engines." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سيتجاهل CSE إعدادات Safari ويكتشف عناوين URL لجميع محركات بحث Safari."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE ignoriert die Safari-Einstellungen und erkennt die URLs aller Safari-Suchmaschinen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE ignorará la configuración de Safari y detectará las URL de todos los buscadores de Safari."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE ignorera les réglages de Safari et détectera les URL de tous les moteurs de recherche Safari."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSEはSafari 設定を無視して、すべてのSafariの検索エンジンのURLを検出するようになります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE는 Safari 설정을 무시하고 모든 Safari 검색 엔진의 URL을 감지합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O CSE ignorará as configurações do Safari e detectará as URLs de todos os buscadores do Safari."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE будет игнорировать настройки Safari и определять URL-адреса всех поисковых систем Safari."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE ігноруватиме налаштування Safari та виявлятиме URL-адреси всіх пошукових систем Safari."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE 将忽略 Safari 设置并检测所有 Safari 搜索引擎的 URL。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE 將忽略 Safari 設定並偵測所有 Safari 搜尋引擎的 URL。"
           }
         }
       }
     },
     "CSE will not check that you have searched from the search bar." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لن يتحقق CSE من أنك بحثت من شريط البحث."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE überprüft nicht, ob Sie über die Suchleiste gesucht haben."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE no verificará que hayas buscado desde la barra de búsqueda."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE ne vérifiera pas que vous avez effectué une recherche depuis la barre de recherche."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSEは検索バーから検索したことを確認しなくなります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE는 검색 바에서 검색했는지 확인하지 않습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O CSE não verificará se você pesquisou pela barra de pesquisa."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE не будет проверять, выполнялся ли поиск из строки поиска."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE не перевірятиме, чи ви здійснювали пошук з панелі пошуку."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE 将不会检查您是否从搜索栏进行了搜索。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE 將不會檢查您是否從搜尋欄進行了搜尋。"
           }
         }
       }
     },
     "CSE will use Quick Search Engines even if you only enter the keyword in the search query." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سيستخدم CSE محركات البحث السريع حتى لو أدخلت الكلمة المفتاحية فقط في استعلام البحث."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE verwendet Schnellsuchmaschinen, auch wenn Sie nur das Schlüsselwort in die Suchanfrage eingeben."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE utilizará los buscadores rápidos incluso si solo introduces la palabra clave en la consulta de búsqueda."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE utilisera les moteurs de recherche rapide même si vous n'entrez que le mot-clé dans la requête de recherche."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "キーワードのみで検索したときでもクイック検索を使用するようになります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE는 검색어에 키워드만 입력해도 빠른 검색 엔진을 사용합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O CSE usará os buscadores rápidos mesmo se você digitar apenas a palavra-chave na consulta de pesquisa."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE будет использовать быстрые поисковые системы, даже если вы введёте только ключевое слово в поисковом запросе."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE використовуватиме швидкі пошукові системи, навіть якщо ви введете лише ключове слово в пошуковому запиті."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "即使您仅在搜索查询中输入关键字，CSE 也将使用快速搜索引擎。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "即使您僅在搜尋查詢中輸入關鍵字，CSE 也將使用快速搜尋引擎。"
           }
         }
       }
@@ -2349,7 +2589,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Buscador defecto"
+            "value" : "Buscador predeterminado"
           }
         },
         "fr" : {
@@ -2521,7 +2761,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Удалить пользовательскую Быстрый поиск Поисковая машина с Ключевым словом."
+            "value" : "Удалить пользовательскую быструю поисковую систему по ключевому слову."
           }
         },
         "uk" : {
@@ -2661,7 +2901,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Удалить Быстрый поиск Поисковая машина"
+            "value" : "Удалить быструю поисковую систему"
           }
         },
         "uk" : {
@@ -2731,7 +2971,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Удалить Быстрый поиск Поисковая машина для Ключевого слова ${cseID}"
+            "value" : "Удалить быструю поисковую систему для ключевого слова ${cseID}"
           }
         },
         "uk" : {
@@ -2828,10 +3068,70 @@
     },
     "Disable Checker" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعطيل المدقق"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Checker deaktivieren"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desactivar verificador"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Désactiver le vérificateur"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "チェッカーを無効化"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검사기 비활성화"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desativar verificador"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отключить проверку"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вимкнути перевірку"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "禁用检查器"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停用檢查器"
           }
         }
       }
@@ -2923,7 +3223,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Desactivar Buscador defecto"
+            "value" : "Desactivar Buscador predeterminado"
           }
         },
         "fr" : {
@@ -2993,7 +3293,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Desactivar Código porciento"
+            "value" : "Desactivar codificación porcentual"
           }
         },
         "fr" : {
@@ -3048,10 +3348,70 @@
     },
     "Disable percent-encoding of queries. When enabled, some symbols and non-ASCII characters may become unavailable." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعطيل تشفير النسبة المئوية للاستعلامات. عند التمكين، قد تصبح بعض الرموز والأحرف غير ASCII غير متاحة."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prozentkodierung von Abfragen deaktivieren. Bei Aktivierung können einige Symbole und Nicht-ASCII-Zeichen nicht verfügbar sein."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desactivar la codificación porcentual de las consultas. Cuando está activado, algunos símbolos y caracteres no ASCII pueden no estar disponibles."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Désactiver l'encodage-pourcent des requêtes. Lorsque activé, certains symboles et caractères non-ASCII peuvent devenir indisponibles."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "クエリのパーセントエンコーディングを無効にします。オンにすると、一部の記号と非 ASCII 文字が使用できなくなる可能性があります。"
+            "value" : "クエリのパーセントエンコーディングを無効にします。オンにすると、一部の記号と非ASCII文字が使用できなくなる可能性があります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "쿼리의 퍼센트 인코딩을 비활성화합니다. 활성화하면 일부 기호와 비 ASCII 문자를 사용할 수 없게 될 수 있습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desativar a codificação percentual das consultas. Quando ativado, alguns símbolos e caracteres não-ASCII podem ficar indisponíveis."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отключить процентное кодирование запросов. При включении некоторые символы и не-ASCII символы могут стать недоступными."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вимкнути відсоткове кодування запитів. При увімкненні деякі символи та не-ASCII символи можуть стати недоступними."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "禁用查询的百分比编码。启用后，某些符号和非 ASCII 字符可能无法使用。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停用查詢的百分比編碼。啟用後，某些符號和非 ASCII 字元可能無法使用。"
           }
         }
       }
@@ -3628,10 +3988,70 @@
     },
     "Enable Reset Buttons" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تمكين أزرار إعادة التعيين"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zurücksetzen-Tasten aktivieren"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activar botones de restablecer"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activer les boutons de réinitialisation"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "リセットボタンを有効化"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "재설정 버튼 활성화"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ativar botões de redefinição"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Включить кнопки сброса"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Увімкнути кнопки скидання"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "启用重置按钮"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "啟用重設按鈕"
           }
         }
       }
@@ -4128,10 +4548,70 @@
     },
     "Existing data will be deleted" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سيتم حذف البيانات الموجودة"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorhandene Daten werden gelöscht"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los datos existentes serán eliminados"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les données existantes seront supprimées"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "既存のデータは削除されます"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기존 데이터가 삭제됩니다"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Os dados existentes serão excluídos"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Существующие данные будут удалены"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Існуючі дані буде видалено"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "现有数据将被删除"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "現有資料將被刪除"
           }
         }
       }
@@ -4539,7 +5019,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Получить список Быстрый поиск Поисковая машина"
+            "value" : "Получить список быстрых поисковых систем"
           }
         },
         "uk" : {
@@ -4681,7 +5161,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Получить все ключевые слова Быстрый поиск Поисковая машина"
+            "value" : "Получить все ключевые слова быстрых поисковых систем"
           }
         },
         "uk" : {
@@ -5344,20 +5824,140 @@
     },
     "Ignore Focus Filter" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تجاهل فلتر التركيز"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fokusfilter ignorieren"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignorar filtro de concentración"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignorer le filtre de concentration"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "集中モードフィルタを無視"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "집중 모드 필터 무시"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignorar filtro de Foco"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Игнорировать фильтр фокусирования"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ігнорувати фільтр зосередження"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "忽略专注模式过滤器"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "忽略專注模式過濾器"
           }
         }
       }
     },
     "Ignore Safari Settings" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تجاهل إعدادات Safari"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safari-Einstellungen ignorieren"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignorar configuración de Safari"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignorer les réglages de Safari"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Safariの設定を無視"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safari 설정 무시"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignorar configurações do Safari"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Игнорировать настройки Safari"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ігнорувати налаштування Safari"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "忽略 Safari 设置"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "忽略 Safari 設定"
           }
         }
       }
@@ -6284,10 +6884,70 @@
     },
     "Not Recommended. Search using POST request. Blank to disable." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "غير مُوصى به. البحث باستخدام طلب POST. اتركه فارغًا للتعطيل."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht empfohlen. Suche mit POST-Anfrage. Leer lassen, um zu deaktivieren."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No recomendado. Buscar usando solicitud POST. En blanco para desactivar."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non recommandé. Recherche avec requête POST. Laisser vide pour désactiver."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "非推奨。POSTリクエストを使って検索します。空にすると無効にします。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "권장하지 않음. POST 요청을 사용하여 검색합니다. 비워 두면 비활성화됩니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não recomendado. Pesquisar usando solicitação POST. Em branco para desativar."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не рекомендуется. Поиск с использованием POST-запроса. Оставьте пустым, чтобы отключить."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не рекомендується. Пошук за допомогою POST-запиту. Залиште порожнім, щоб вимкнути."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不推荐。使用 POST 请求搜索。留空以禁用。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不建議。使用 POST 請求搜尋。留空以停用。"
           }
         }
       }
@@ -6714,20 +7374,140 @@
     },
     "Override Region" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تجاوز المنطقة"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Region überschreiben"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anular región"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remplacer la région"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "地域を上書き"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지역 재정의"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Substituir região"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переопределить регион"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перевизначити регіон"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "覆盖地区"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "覆蓋地區"
           }
         }
       }
     },
     "Overrides the device's region settings when detecting Safari search engines. Blank to disable." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يتجاوز إعدادات منطقة الجهاز عند اكتشاف محركات بحث Safari. اتركه فارغًا للتعطيل."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Überschreibt die Regionseinstellungen des Geräts bei der Erkennung von Safari-Suchmaschinen. Leer lassen, um zu deaktivieren."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anula la configuración de región del dispositivo al detectar los buscadores de Safari. En blanco para desactivar."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remplace les paramètres de région de l'appareil lors de la détection des moteurs de recherche Safari. Laisser vide pour désactiver."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Safariの検索エンジンを検出するときに参照するデバイスの地域設定を、指定した地域コードで上書きします。空白にすると無効にします。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safari 검색 엔진을 감지할 때 장치의 지역 설정을 재정의합니다. 비워 두면 비활성화됩니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Substitui as configurações de região do dispositivo ao detectar os buscadores do Safari. Em branco para desativar."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переопределяет региональные настройки устройства при обнаружении поисковых систем Safari. Оставьте пустым, чтобы отключить."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перевизначає регіональні налаштування пристрою під час виявлення пошукових систем Safari. Залиште порожнім, щоб вимкнути."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在检测 Safari 搜索引擎时覆盖设备的地区设置。留空以禁用。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在偵測 Safari 搜尋引擎時覆蓋裝置的地區設定。留空以停用。"
           }
         }
       }
@@ -7373,7 +8153,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "„Privates Surfen“-Sucfen "
+            "value" : "„Privates Surfen“-Suchmaschine"
           }
         },
         "es" : {
@@ -7549,7 +8329,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Быстрый поиск Поисковая машина"
+            "value" : "Быстрая поисковая система"
           }
         },
         "uk" : {
@@ -7714,20 +8494,140 @@
     },
     "Redo First Tutorial" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إعادة البرنامج التعليمي الأول"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erste Anleitung wiederholen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repetir el tutorial inicial"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refaire le premier tutoriel"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "最初のチュートリアルをやり直す"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "첫 튜토리얼 다시 하기"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refazer o tutorial inicial"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить начальное руководство"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити перший посібник"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做初始教程"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新進行初始教學"
           }
         }
       }
     },
     "Region Code" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "رمز المنطقة"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regionscode"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Código de región"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Code de région"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "地域コード"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지역 코드"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Código da região"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Код региона"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Код регіону"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "地区代码"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "地區代碼"
           }
         }
       }
@@ -7944,40 +8844,280 @@
     },
     "Reset All Custom Search Engines" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إعادة تعيين جميع محركات البحث المخصصة"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle benutzerdefinierten Suchmaschinen zurücksetzen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restablecer todos los buscadores personalizados"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réinitialiser tous les moteurs de recherche personnalisés"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "全てのカスタム検索エンジンをリセット"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모든 사용자 지정 검색 엔진 재설정"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redefinir todos os buscadores personalizados"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сбросить все пользовательские поисковые системы"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скинути всі користувацькі пошукові системи"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重置所有自定义搜索引擎"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重設所有自訂搜尋引擎"
           }
         }
       }
     },
     "Reset Default Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إعادة تعيين محرك البحث الافتراضي"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standard-Suchmaschine zurücksetzen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restablecer buscador predeterminado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réinitialiser le moteur de recherche par défaut"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "デフォルトの検索エンジンをリセット"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기본 검색 엔진 재설정"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redefinir buscador padrão"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сбросить поисковую систему по умолчанию"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скинути пошукову систему за замовчуванням"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重置默认搜索引擎"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重設預設搜尋引擎"
           }
         }
       }
     },
     "Reset Private Search Engine" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إعادة تعيين محرك البحث الخاص"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„Privates Surfen“-Suchmaschine zurücksetzen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restablecer buscador privado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réinitialiser le moteur de recherche privé"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "プライベート検索エンジンをリセット"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개인정보 보호 검색 엔진 재설정"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redefinir buscador privado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сбросить поисковую систему частного доступа"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скинути приватну пошукову систему"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重置无痕浏览搜索引擎"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重設私密搜尋引擎"
           }
         }
       }
     },
     "Reset Quick Search Engines" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إعادة تعيين محركات البحث السريع"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schnellsuchmaschinen zurücksetzen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restablecer buscadores rápidos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réinitialiser les moteurs de recherche rapide"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "クイック検索エンジンをリセット"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "빠른 검색 엔진 재설정"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redefinir buscadores rápidos"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сбросить быстрые поисковые системы"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скинути швидкі пошукові системи"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重置快速搜索引擎"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重設快速搜尋引擎"
           }
         }
       }
@@ -8637,7 +9777,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Definir Buscador defecto"
+            "value" : "Definir Buscador predeterminado"
           }
         },
         "fr" : {
@@ -9057,7 +10197,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Configura un Buscador defecto en CSE."
+            "value" : "Configura un Buscador predeterminado en CSE."
           }
         },
         "fr" : {
@@ -9191,7 +10331,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Legt ein Suchmaschine fest, die bei diesem Fokus verwendet werden soll."
+            "value" : "Legt eine Suchmaschine fest, die bei diesem Fokus verwendet werden soll."
           }
         },
         "es" : {
@@ -9227,13 +10367,13 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Настройка Поисковую машину для использования во время этого фокусирования."
+            "value" : "Настройка Поисковой машины для использования во время этого фокусирования."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Дозволяє встановити власної пошукову систему, яка буде використовуватися під час цього Зосередження."
+            "value" : "Дозволяє встановити власну пошукову систему, яка буде використовуватися під час цього Зосередження."
           }
         },
         "zh-Hans" : {
@@ -9245,7 +10385,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "設定要在此 「專注模式 」期間使用的 「自訂搜尋引擎」。"
+            "value" : "設定要在此「專注模式」期間使用的「自訂搜尋引擎」。"
           }
         }
       }
@@ -9608,10 +10748,70 @@
     },
     "Space Character" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حرف المسافة"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leerzeichen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carácter de espacio"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caractère d'espace"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "空白文字"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "공백 문자"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caractere de espaço"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Символ пробела"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Символ пробілу"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "空格字符"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "空格字元"
           }
         }
       }
@@ -10038,10 +11238,70 @@
     },
     "Truncate the query to the specified character count. Blank to disable." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اقطع الاستعلام إلى عدد الأحرف المحدد. اتركه فارغًا للتعطيل."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kürzt die Abfrage auf die angegebene Zeichenanzahl. Leer lassen, um zu deaktivieren."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trunca la consulta al número de caracteres especificado. En blanco para desactivar."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tronque la requête au nombre de caractères spécifié. Laisser vide pour désactiver."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "指定された文字数でクエリを切り捨てます。空白にすると無効にします。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "쿼리를 지정된 문자 수로 자릅니다. 비워 두면 비활성화됩니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trunca a consulta para o número de caracteres especificado. Em branco para desativar."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обрезает запрос до указанного количества символов. Оставьте пустым, чтобы отключить."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обрізає запит до вказаної кількості символів. Залиште порожнім, щоб вимкнути."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将查询截断为指定的字符数。留空以禁用。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "將查詢截斷為指定的字元數。留空以停用。"
           }
         }
       }
@@ -10328,10 +11588,70 @@
     },
     "Use a specific character as the query separator. Default is +." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استخدم حرفًا محددًا كفاصل للاستعلام. الافتراضي هو +."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verwenden Sie ein bestimmtes Zeichen als Abfrage-Trennzeichen. Standard ist +."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa un carácter específico como separador de consulta. El predeterminado es +."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utiliser un caractère spécifique comme séparateur de requête. Par défaut : +."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "クエリの区切りとして特定の文字を使用します。デフォルトは「+」です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "쿼리 구분 기호로 특정 문자를 사용합니다. 기본값은 +입니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use um caractere específico como separador de consulta. O padrão é +."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Используйте определённый символ в качестве разделителя запроса. По умолчанию +."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Використовуйте певний символ як розділювач запиту. За замовчуванням +."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用特定字符作为查询分隔符。默认为 +。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用特定字元作為查詢分隔符。預設為 +。"
           }
         }
       }
