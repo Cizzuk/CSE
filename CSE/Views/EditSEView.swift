@@ -276,7 +276,7 @@ private struct AdvancedSettingsView: View {
                         }
                     }
                 } footer: {
-                    Text("Deprecated. Search using POST request. Blank to disable.")
+                    Text("Not Recommended. Search using POST request. Blank to disable.")
                 }
             }
             .scrollToDismissesKeyboard()

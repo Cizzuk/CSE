@@ -23,7 +23,7 @@ struct SetFocusSE : SetFocusFilterIntent {
     @Parameter(title: "Max Query Length", description: "Truncate the query to the specified character count. Blank to disable.", default: nil)
         var maxQueryLength: Int?
     
-    @Parameter(title: "POST Data", description: "Deprecated. Search using POST request. Blank to disable.", default: "")
+    @Parameter(title: "POST Data", description: "Not Recommended. Search using POST request. Blank to disable.", default: "")
         var post: String
     
     @Parameter(title: "Quick Search", default: nil)
