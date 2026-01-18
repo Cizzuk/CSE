@@ -296,7 +296,8 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         if let maxQueryLength: Int = CSEData.maxQueryLength,
            decodedFixedQuery.count > maxQueryLength {
             decodedFixedQuery = String(decodedFixedQuery.prefix(maxQueryLength))
-            fixedQuery = String(fixedQuery.prefix(maxQueryLength))
+            fixedQuery = String(decodedFixedQuery.prefix(maxQueryLength)
+                .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")
         }
         
         // Replace %s with query
