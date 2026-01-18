@@ -29,6 +29,7 @@ class EditSEViewModel: ObservableObject {
     @Published var isShowingPresets: Bool = false
     @Published var isShowingCloudImport: Bool = false
     @Published var isShowingPostData: Bool = false
+    @Published var isShowingAdvancedSettings: Bool = false
     
     // Alert
     @Published var showAlert: Bool = false

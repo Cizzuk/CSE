@@ -44,8 +44,8 @@ struct EditSEView: View {
         .animation(.default, value: isFeatureEnabled)
         .navigationTitle(viewModel.cseType.localizedStringResource)
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(isPresented: $viewModel.isShowingPostData) {
-            PostDataView(post: $viewModel.cseData.post, isOpenSheet: $viewModel.isShowingPostData)
+        .sheet(isPresented: $viewModel.isShowingAdvancedSettings) {
+            AdvancedSettingsView(cseData: $viewModel.cseData, isShowingPostData: $viewModel.isShowingPostData, isOpenSheet: $viewModel.isShowingAdvancedSettings)
                 .onDisappear { viewModel.saveData(.autosave) }
         }
         .sheet(isPresented: $viewModel.isShowingPresets) {
@@ -186,52 +186,15 @@ struct EditSEView: View {
     @ViewBuilder
     private var advancedSettingsSection: some View {
         Section {
-            Button(action: { viewModel.isShowingPostData = true }) {
+            Button(action: { viewModel.isShowingAdvancedSettings = true }) {
                 HStack {
-                    Text("POST Data")
+                    UITemplates.IconLabel(icon: "gearshape.2", text: "Advanced Settings")
                     Spacer()
-                    Text("\(viewModel.cseData.post.count)")
-                        .foregroundColor(.secondary)
                     Image(systemName: "chevron.forward")
                         .foregroundColor(.secondary)
                 }
             }
-            .foregroundColor(.primary)
-            .contextMenu {
-                Button(role: .destructive) {
-                    viewModel.cseData.post = []
-                    viewModel.saveData(.autosave)
-                } label: {
-                    Label("Delete All POST Data", systemImage: "trash")
-                }
-            }
-            
-            HStack {
-                Text("Space Character")
-                Spacer()
-                TextField("Space Character", text: $viewModel.cseData.spaceCharacter, prompt: Text("+"))
-                    .disableAutocorrection(true)
-                    .textInputAutocapitalization(.never)
-                    .environment(\.layoutDirection, .leftToRight)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .multilineTextAlignment(.trailing)
-                    .submitLabel(.done)
-                    .onSubmit { viewModel.saveData(.autosave) }
-            }
-            Toggle("Disable Percent-encoding", isOn: $viewModel.cseData.disablePercentEncoding)
-                .onChange(of: viewModel.cseData.disablePercentEncoding) { _ in viewModel.saveData(.autosave) }
-            HStack {
-                Text("Max Query Length")
-                Spacer()
-                TextField("Max Query Length", value: $viewModel.cseData.maxQueryLength, format: .number, prompt: Text("32"))
-                    .keyboardType(.numberPad)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .multilineTextAlignment(.trailing)
-                    .submitLabel(.done)
-                    .onSubmit { viewModel.saveData(.autosave) }
-            }
-        } header: { Text("Advanced Settings")
-        } footer: { Text("Blank to disable") }
+        }
     }
     
     @ViewBuilder
@@ -248,6 +211,100 @@ struct EditSEView: View {
 }
 
 // MARK: - Subviews
+
+private struct AdvancedSettingsView: View {
+    @Binding var cseData: CSEDataManager.CSEData
+    @Binding var isShowingPostData: Bool
+    @Binding var isOpenSheet: Bool
+    
+    var body: some View {
+        NavigationStack {
+            List {
+                Section {
+                    HStack {
+                        Text("Space Character")
+                        Spacer()
+                        TextField("Space Character", text: $cseData.spaceCharacter, prompt: Text("+"))
+                            .disableAutocorrection(true)
+                            .textInputAutocapitalization(.never)
+                            .environment(\.layoutDirection, .leftToRight)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .multilineTextAlignment(.trailing)
+                            .submitLabel(.done)
+                    }
+                } footer: {
+                    Text("Use a specific character as the query separator. Default is +.")
+                }
+                
+                Section {
+                    Toggle("Disable Percent-encoding", isOn: $cseData.disablePercentEncoding)
+                } footer: {
+                    Text("Disable percent-encoding of queries. When enabled, some symbols and non-ASCII characters may become unavailable.")
+                }
+                
+                Section {
+                    HStack {
+                        Text("Max Query Length")
+                        Spacer()
+                        TextField("Max Query Length", value: $cseData.maxQueryLength, format: .number, prompt: Text("32"))
+                            .keyboardType(.numberPad)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .multilineTextAlignment(.trailing)
+                            .submitLabel(.done)
+                    }
+                } footer: {
+                    Text("Truncate the query to the specified character count. Blank to disable.")
+                }
+                
+                Section {
+                    Button(action: { isShowingPostData = true }) {
+                        HStack {
+                            Text("POST Data")
+                            Spacer()
+                            Text("\(cseData.post.count)")
+                                .foregroundColor(.secondary)
+                            Image(systemName: "chevron.forward")
+                                .foregroundColor(.secondary)
+                        }
+                    }
+                    .foregroundColor(.primary)
+                    .contextMenu {
+                        Button(role: .destructive) {
+                            cseData.post = []
+                        } label: {
+                            Label("Delete All POST Data", systemImage: "trash")
+                        }
+                    }
+                } footer: {
+                    Text("Deprecated. Search using POST request. Blank to disable.")
+                }
+            }
+            .scrollToDismissesKeyboard()
+            .navigationTitle("Advanced Settings")
+            .navigationBarTitleDisplayMode(.inline)
+            .sheet(isPresented: $isShowingPostData) {
+                PostDataView(post: $cseData.post, isOpenSheet: $isShowingPostData)
+            }
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done", systemImage: "checkmark") {
+                        isOpenSheet = false
+                    }
+                }
+                #if !os(visionOS)
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    } label: {
+                        Label("Done", systemImage: "checkmark")
+                    }
+                }
+                #endif
+            }
+        }
+    }
+}
 
 private struct PostDataView: View {
     @Binding var post: [[String: String]]
