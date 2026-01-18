@@ -77,15 +77,11 @@ struct EditSEView: View {
         .toolbar {
             if viewModel.cseType == .quickCSE {
                 // Override Back Button
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Menu("Back", systemImage: "chevron.backward") {
-                        Button(action: {
-                            if viewModel.saveData(.dismiss) { dismiss() }
-                        }) {
-                            Label("Save", systemImage: "checkmark")
-                        }
-                    } primaryAction: {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button(action: {
                         if viewModel.saveData(.dismiss) { dismiss() }
+                    }) {
+                        Label("Save", systemImage: "checkmark")
                     }
                 }
                 #if !os(visionOS)
