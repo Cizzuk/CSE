@@ -23,6 +23,9 @@
     "%lld" : {
       "shouldTranslate" : false
     },
+    "+" : {
+      "shouldTranslate" : false
+    },
     "${toggle} Emoji Search" : {
       "localizations" : {
         "ar" : {
@@ -3039,6 +3042,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "停用百分比編碼"
+          }
+        }
+      }
+    },
+    "Disable percent-encoding of queries. When enabled, some symbols and non-ASCII characters may become unavailable." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クエリのパーセントエンコーディングを無効にします。オンにすると、一部の記号と非 ASCII 文字が使用できなくなる可能性があります。"
           }
         }
       }
@@ -6269,6 +6282,16 @@
         }
       }
     },
+    "Not Recommended. Search using POST request. Blank to disable." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "非推奨。POSTリクエストを使って検索します。空にすると無効にします。"
+          }
+        }
+      }
+    },
     "Off" : {
       "localizations" : {
         "ar" : {
@@ -6704,7 +6727,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Safariの検索エンジンを検出するときに参照するデバイスの地域設定を、指定した地域コードで上書きします。空白にすると無効化。"
+            "value" : "Safariの検索エンジンを検出するときに参照するデバイスの地域設定を、指定した地域コードで上書きします。空白にすると無効にします。"
           }
         }
       }
@@ -9583,6 +9606,16 @@
         }
       }
     },
+    "Space Character" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "空白文字"
+          }
+        }
+      }
+    },
     "State" : {
       "localizations" : {
         "ar" : {
@@ -10003,6 +10036,16 @@
         }
       }
     },
+    "Truncate the query to the specified character count. Blank to disable." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "指定された文字数でクエリを切り捨てます。空白にすると無効にします。"
+          }
+        }
+      }
+    },
     "Turn" : {
       "localizations" : {
         "ar" : {
@@ -10279,6 +10322,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL"
+          }
+        }
+      }
+    },
+    "Use a specific character as the query separator. Default is +." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クエリの区切りとして特定の文字を使用します。デフォルトは「+」です。"
           }
         }
       }
