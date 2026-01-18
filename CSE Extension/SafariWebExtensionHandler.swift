@@ -296,7 +296,16 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         if let maxQueryLength: Int = CSEData.maxQueryLength,
            decodedFixedQuery.count > maxQueryLength {
             decodedFixedQuery = String(decodedFixedQuery.prefix(maxQueryLength))
-            fixedQuery = String(fixedQuery.prefix(maxQueryLength))
+            fixedQuery = String(decodedFixedQuery.prefix(maxQueryLength)
+                .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")
+        }
+        
+        // Replace Space Character
+        if CSEData.spaceCharacter != "+" {
+            fixedQuery = fixedQuery
+                .replacingOccurrences(of: "+", with: CSEData.spaceCharacter)
+            decodedFixedQuery = decodedFixedQuery
+                .replacingOccurrences(of: "+", with: CSEData.spaceCharacter)
         }
         
         // Replace %s with query
@@ -307,9 +316,20 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         // POST
         var postData: [[String: String]] = CSEData.post
         if !postData.isEmpty {
-            let decodedFixedQueryForPOST: String = fixedQuery
-                .replacingOccurrences(of: "+", with: " ")
-                .removingPercentEncoding ?? ""
+            var decodedFixedQueryForPOST: String
+            
+            // Disable Percent-encoding
+            if CSEData.disablePercentEncoding {
+                decodedFixedQueryForPOST = decodedFixedQuery
+            } else {
+                decodedFixedQueryForPOST = fixedQuery
+            }
+            
+            if CSEData.spaceCharacter == "+" {
+                // Replace + with Space for POST
+                decodedFixedQueryForPOST = decodedFixedQueryForPOST
+                    .replacingOccurrences(of: "+", with: " ")
+            }
             
             for i in 0..<postData.count {
                 postData[i]["key"] = postData[i]["key"]?

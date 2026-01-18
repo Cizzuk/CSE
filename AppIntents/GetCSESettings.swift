@@ -62,6 +62,8 @@ struct GetCSESettings: AppIntent, CustomIntentMigratedAppIntent {
             return .result(value: cseData.name)
         case .post:
             return .result(value: CSEDataManager.postDataToString(cseData.post))
+        case .spaceCharacter:
+            return .result(value: cseData.spaceCharacter)
         case .disablePercentEncoding:
             return .result(value: cseData.disablePercentEncoding ? "Yes" : "No")
         case .maxQueryLength:

@@ -131,7 +131,7 @@ struct ContentView: View {
                     #endif
                     
                     NavigationLink(value: NavigationItem.advancedSettings) {
-                        UITemplates.IconLabel(icon: "gearshape", text: "Advanced Settings")
+                        UITemplates.IconLabel(icon: "gearshape.2", text: "Advanced Settings")
                     }
                 }
             }
