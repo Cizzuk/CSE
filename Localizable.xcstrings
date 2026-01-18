@@ -2365,7 +2365,7 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "سيتجاهل CSE إعدادات Safari ويكتشف عناوين URL لجميع محركات بحث Safari."
+            "value" : "سيتجاهل CSE إعدادات سفاري ويكتشف عناوين URL لجميع محركات بحث سفاري."
           }
         },
         "de" : {
@@ -2419,7 +2419,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CSE 将忽略 Safari 设置并检测所有 Safari 搜索引擎的 URL。"
+            "value" : "CSE 将忽略 Safari 浏览器设置并检测所有 Safari 浏览器搜索引擎的 URL。"
           }
         },
         "zh-Hant" : {
@@ -5898,7 +5898,7 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "تجاهل إعدادات Safari"
+            "value" : "تجاهل إعدادات سفاري"
           }
         },
         "de" : {
@@ -5952,7 +5952,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "忽略 Safari 设置"
+            "value" : "忽略 Safari 浏览器设置"
           }
         },
         "zh-Hant" : {
@@ -7448,7 +7448,7 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "يتجاوز إعدادات منطقة الجهاز عند اكتشاف محركات بحث Safari. اتركه فارغًا للتعطيل."
+            "value" : "يتجاوز إعدادات منطقة الجهاز عند اكتشاف محركات بحث سفاري. اتركه فارغًا للتعطيل."
           }
         },
         "de" : {
@@ -7502,7 +7502,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "在检测 Safari 搜索引擎时覆盖设备的地区设置。留空以禁用。"
+            "value" : "在检测 Safari 浏览器搜索引擎时覆盖设备的地区设置。留空以禁用。"
           }
         },
         "zh-Hant" : {
