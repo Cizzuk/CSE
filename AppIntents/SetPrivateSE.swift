@@ -19,14 +19,17 @@ struct SetPrivateSE: AppIntent, CustomIntentMigratedAppIntent {
     @Parameter(title: "URL", description: "Blank to disable", default: "")
         var cseURL: String
     
-    @Parameter(title: "POST Data", description: "Blank to disable", default: "")
-        var post: String
+    @Parameter(title: "Space Character", description: "Use a specific character as the query separator. Default is +.", default: "+")
+        var spaceCharacter: String
     
-    @Parameter(title: "Disable Percent-encoding", default: false)
+    @Parameter(title: "Disable Percent-encoding", description: "Disables percent-encoding of queries. When enabled, some symbols and non-ASCII characters may become unavailable.", default: false)
         var disablePercentEncoding: Bool
     
-    @Parameter(title: "Max Query Length", description: "Blank to disable", default: nil)
+    @Parameter(title: "Max Query Length", description: "Truncate the query to the specified character count. Blank to disable.", default: nil)
         var maxQueryLength: Int?
+    
+    @Parameter(title: "POST Data", description: "Deprecated. Search using POST request. Blank to disable.", default: "")
+        var post: String
 
     func perform() async throws -> some IntentResult {
         let userDefaults = CSEDataManager.userDefaults
@@ -46,6 +49,7 @@ struct SetPrivateSE: AppIntent, CustomIntentMigratedAppIntent {
         let cseData = CSEDataManager.CSEData(
             url: cseURL,
             post: parsedPost,
+            spaceCharacter: spaceCharacter,
             disablePercentEncoding: disablePercentEncoding,
             maxQueryLength: maxQueryLength
         )

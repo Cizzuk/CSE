@@ -88,6 +88,16 @@ struct EditSEView: View {
                         if viewModel.saveData(.dismiss) { dismiss() }
                     }
                 }
+                #if !os(visionOS)
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    } label: {
+                        Label("Done", systemImage: "checkmark")
+                    }
+                }
+                #endif
             }
         }
         .navigationBarBackButtonHidden(viewModel.cseType == .quickCSE)
@@ -196,6 +206,18 @@ struct EditSEView: View {
                 }
             }
             
+            HStack {
+                Text("Space Character")
+                Spacer()
+                TextField("Space Character", text: $viewModel.cseData.spaceCharacter, prompt: Text("+"))
+                    .disableAutocorrection(true)
+                    .textInputAutocapitalization(.never)
+                    .environment(\.layoutDirection, .leftToRight)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .multilineTextAlignment(.trailing)
+                    .submitLabel(.done)
+                    .onSubmit { viewModel.saveData(.autosave) }
+            }
             Toggle("Disable Percent-encoding", isOn: $viewModel.cseData.disablePercentEncoding)
                 .onChange(of: viewModel.cseData.disablePercentEncoding) { _ in viewModel.saveData(.autosave) }
             HStack {
@@ -207,18 +229,6 @@ struct EditSEView: View {
                     .multilineTextAlignment(.trailing)
                     .submitLabel(.done)
                     .onSubmit { viewModel.saveData(.autosave) }
-                    #if !os(visionOS)
-                    .toolbar {
-                        ToolbarItemGroup(placement: .keyboard) {
-                            Spacer()
-                            Button {
-                                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                            } label: {
-                                Label("Done", systemImage: "checkmark")
-                            }
-                        }
-                    }
-                    #endif
             }
         } header: { Text("Advanced Settings")
         } footer: { Text("Blank to disable") }

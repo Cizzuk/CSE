@@ -23,6 +23,7 @@ enum IntentCSESettingsEnum: String, AppEnum {
     case url
     case name
     case post
+    case spaceCharacter
     case disablePercentEncoding
     case maxQueryLength
     
@@ -31,6 +32,7 @@ enum IntentCSESettingsEnum: String, AppEnum {
         .url: "URL",
         .name: "Name",
         .post: "POST Data",
+        .spaceCharacter: "Space Character",
         .disablePercentEncoding: "Disable Percent-encoding",
         .maxQueryLength: "Max Query Length"
     ]
