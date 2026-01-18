@@ -300,6 +300,14 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
                 .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")
         }
         
+        // Replace Space Character
+        if CSEData.spaceCharacter != "+" {
+            fixedQuery = fixedQuery
+                .replacingOccurrences(of: "+", with: CSEData.spaceCharacter)
+            decodedFixedQuery = decodedFixedQuery
+                .replacingOccurrences(of: "+", with: CSEData.spaceCharacter)
+        }
+        
         // Replace %s with query
         let redirectQuery: String = CSEData.disablePercentEncoding ? decodedFixedQuery : fixedQuery
         let redirectURL: String = CSEData.url
@@ -308,9 +316,20 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         // POST
         var postData: [[String: String]] = CSEData.post
         if !postData.isEmpty {
-            let decodedFixedQueryForPOST: String = fixedQuery
-                .replacingOccurrences(of: "+", with: " ")
-                .removingPercentEncoding ?? ""
+            var decodedFixedQueryForPOST: String
+            
+            // Disable Percent-encoding
+            if CSEData.disablePercentEncoding {
+                decodedFixedQueryForPOST = decodedFixedQuery
+            } else {
+                decodedFixedQueryForPOST = fixedQuery
+            }
+            
+            if CSEData.spaceCharacter == "+" {
+                // Replace + with Space for POST
+                decodedFixedQueryForPOST = decodedFixedQueryForPOST
+                    .replacingOccurrences(of: "+", with: " ")
+            }
             
             for i in 0..<postData.count {
                 postData[i]["key"] = postData[i]["key"]?
