@@ -256,6 +256,11 @@ class SearchEnginePresets {
             // Normal AI Chat
             aiCSEs.append(contentsOf: [
                 CSEDataManager.CSEData(
+                    name: "Gemini",
+                    keyword: "gemini",
+                    url: "https://gemini.google.com/?prompt_text=%s",
+                ),
+                CSEDataManager.CSEData(
                     name: "Claude",
                     keyword: "claude",
                     url: "https://claude.ai/new?q=%s",
