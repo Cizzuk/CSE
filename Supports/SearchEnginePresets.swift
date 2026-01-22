@@ -22,7 +22,7 @@ class SearchEnginePresets {
         }
     }
     
-    class func quickCSEs() -> [String: CSEDataManager.CSEData] {
+    static var quickCSEs: [String: CSEDataManager.CSEData] {
         let wikiLangsList: [String] = [
             // https://ja.wikipedia.org/wiki/Wikipedia:全言語版の統計#各言語版ウィキペディア
             // Over 1M articles
@@ -160,7 +160,7 @@ class SearchEnginePresets {
         return baseCSEs
     }
     
-    class func popCSEList() -> [CSEDataManager.CSEData] {
+    static var popCSEList: [CSEDataManager.CSEData] {
         var popCSEs: [CSEDataManager.CSEData] = [
             CSEDataManager.CSEData(
                 name: "Startpage",
@@ -218,7 +218,7 @@ class SearchEnginePresets {
         return popCSEs
     }
         
-    class func aiCSEList() -> [CSEDataManager.CSEData] {
+    static var aiCSEList: [CSEDataManager.CSEData] {
         var aiCSEs: [CSEDataManager.CSEData] = []
         if currentRegion != "CN" {
             aiCSEs.append(contentsOf: [
@@ -273,7 +273,7 @@ class SearchEnginePresets {
         return aiCSEs
     }
     
-    class func safariCSEList() -> [CSEDataManager.CSEData] {
+    static var safariCSEList: [CSEDataManager.CSEData] {
         var normalCSEs: [CSEDataManager.CSEData] = []
         
         let localizedYahoo: CSEDataManager.CSEData

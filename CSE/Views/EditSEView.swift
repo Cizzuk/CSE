@@ -374,9 +374,9 @@ private struct PresetsView: View {
     @Binding var isOpenSheet: Bool
     @Binding var CSEData: CSEDataManager.CSEData
     
-    private let popCSEList = SearchEnginePresets.popCSEList()
-    private let aiCSEList = SearchEnginePresets.aiCSEList()
-    private let safariCSEList = SearchEnginePresets.safariCSEList()
+    private let popCSEList = SearchEnginePresets.popCSEList
+    private let aiCSEList = SearchEnginePresets.aiCSEList
+    private let safariCSEList = SearchEnginePresets.safariCSEList
     
     var body: some View {
         NavigationStack {

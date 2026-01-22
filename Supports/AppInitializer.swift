@@ -108,13 +108,13 @@ class AppInitializer {
         case .all:
             CSEDataManager.saveCSEData(CSEDataManager.CSEData(), .defaultCSE, uploadCloud: false)
             CSEDataManager.saveCSEData(CSEDataManager.CSEData(), .privateCSE, uploadCloud: false)
-            CSEDataManager.replaceQuickCSEData(SearchEnginePresets.quickCSEs())
+            CSEDataManager.replaceQuickCSEData(SearchEnginePresets.quickCSEs)
         case .defaultCSE:
             CSEDataManager.saveCSEData(CSEDataManager.CSEData(), .defaultCSE, uploadCloud: false)
         case .privateCSE:
             CSEDataManager.saveCSEData(CSEDataManager.CSEData(), .privateCSE, uploadCloud: false)
         case .quickCSE:
-            CSEDataManager.replaceQuickCSEData(SearchEnginePresets.quickCSEs())
+            CSEDataManager.replaceQuickCSEData(SearchEnginePresets.quickCSEs)
         }
     }
 }
