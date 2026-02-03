@@ -123,6 +123,11 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
 });
 
+// Detect tab creation
+browser.tabs.onCreated.addListener((tabData) => {
+    incognitoStatus[tabData.id] = tabData.incognito;
+});
+
 // Detect tab removal
 browser.tabs.onRemoved.addListener((tabId, removeInfo) => {
     delete savedData[tabId];
