@@ -4,12 +4,6 @@
   },
   "groups" : [
     {
-      "blend-mode-specializations" : [
-        {
-          "appearance" : "dark",
-          "value" : "normal"
-        }
-      ],
       "blur-material" : null,
       "layers" : [
         {
