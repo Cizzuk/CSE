@@ -73,12 +73,9 @@ const getTabIncognitoStatus = async (tabId) => {
 if (isWebRequestAvailable) {
     // Detect web requests
     browser.webRequest.onBeforeRequest.addListener((details) => {
-        const tabId = details.tabId;
-        const url = details.url;
-        
         if (details.type !== "main_frame") { return; }
         
-        requestHandler(tabId, url);
+        requestHandler(details.tabId, details.url);
     });
 } else {
     console.log("webRequest API is not available, using tabs.onUpdated for all navigation detection");
