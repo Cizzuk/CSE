@@ -3,12 +3,13 @@
 // Check if webRequest API is available
 const isWebRequestAvailable = browser.webRequest && browser.webRequest.onBeforeRequest;
 const postRedirectorURL = location.protocol + "//" + location.host + "/post_redirector.html";
-let savedData = {};
-let incognitoStatus = {};
-let processedUrls = {};
+
+let savedData = {}; // Store data for post redirects
+let incognitoStatus = {}; // Store incognito status for Private Seaerch Engine
+let processedUrls = {}; // Store processed URLs to avoid duplicate processing
 
 // Request handler (send tab data to native and handle response)
-const requestHandler = (tabId, url, incognito, curtain = false) => {
+const requestHandler = async (tabId, url) => {
     // Mark this URL was processed
     processedUrls[tabId] = url;
     
@@ -17,10 +18,15 @@ const requestHandler = (tabId, url, incognito, curtain = false) => {
     if (url.startsWith("safari-web-extension:")) { return; }
     if (!url.startsWith("https://")) { return; }
     
+    // Check incognito status
+    if (incognitoStatus[tabId] === undefined) {
+        incognitoStatus[tabId] = await getTabIncognitoStatus(tabId);
+    }
+    
     // Prepare tab data to send
     const tabData = {
         url: url,
-        incognito: incognito
+        incognito: incognitoStatus[tabId]
     };
     
     // Send tab data to native app
@@ -31,9 +37,6 @@ const requestHandler = (tabId, url, incognito, curtain = false) => {
             case "redirect":
                 console.log(tabId, "Redirecting...");
                 browser.tabs.update(tabId, {url: cseData.redirectTo})
-                .then(() => {
-                    if (curtain) { browser.tabs.sendMessage(tabId, {type: "showCurtain"}); }
-                })
                 .catch((error) => { console.error(tabId, "Redirect failed:", error); });
                 break;
                 
@@ -44,17 +47,6 @@ const requestHandler = (tabId, url, incognito, curtain = false) => {
                 browser.tabs.update(tabId, {url: postRedirectorURL})
                 .then(() => { console.log(tabId, "Waiting post_redirector..."); })
                 .catch((error) => { console.error(tabId, "Redirect failed:", error); });
-                
-                if (curtain) { browser.tabs.sendMessage(tabId, {type: "showCurtain"}); }
-                break;
-            case "needIncognitoStatus":
-                console.log(tabId, "Need incognito status, but not available yet.");
-                if (incognitoStatus[tabId] === undefined) {
-                    delete processedUrls[tabId]; // Allow re-processing
-                } else if (processedUrls[tabId] !== url) {
-                    console.log(tabId, "Resending request to native");
-                    requestHandler(tabId, url, incognitoStatus[tabId], curtain);
-                }
                 break;
                 
             case "error":
@@ -72,41 +64,48 @@ const requestHandler = (tabId, url, incognito, curtain = false) => {
     });
 };
 
-// Detect tab updates
+const getTabIncognitoStatus = async (tabId) => {
+    console.log(tabId, "Fetching incognito status...");
+    let tabData = await browser.tabs.get(tabId);
+    return tabData.incognito;
+};
+
 if (isWebRequestAvailable) {
-    // If webRequest is available, use tabs.onUpdated for fallback and incognito status saving
-    browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
-        // Save tab incognito status if not already saved
-        if (!incognitoStatus[tabId]) { incognitoStatus[tabId] = tabData.incognito; }
-
-        if (processedUrls[tabId] === tabData.url) { return; }
-        if (!tabData.url) { return; }
-        if (updatedData.status !== "loading" && updatedData.url === undefined) { return; }
-
-        requestHandler(tabId, tabData.url, tabData.incognito, true);
-    });
-    
     // Detect web requests
     browser.webRequest.onBeforeRequest.addListener((details) => {
-        const tabId = details.tabId;
-        const url = details.url;
-        
         if (details.type !== "main_frame") { return; }
         
-        requestHandler(tabId, url, incognitoStatus[tabId], false);
+        requestHandler(details.tabId, details.url);
     });
-
 } else {
-    // If webRequest is not available, handle all via tabs.onUpdated
-    browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
-        if (processedUrls[tabId] === tabData.url) { return; }
-        if (!tabData.url) { return; }
-        if (tabData.status !== "loading") { return; }
-        
-        requestHandler(tabId, tabData.url, tabData.incognito, true);
-    });
     console.log("webRequest API is not available, using tabs.onUpdated for all navigation detection");
 }
+
+// Fallback: use tabs.onUpdated
+browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
+    // Save tab incognito status if not already saved
+    if (incognitoStatus[tabId] === undefined) {
+        incognitoStatus[tabId] = tabData.incognito;
+    }
+    
+    if (processedUrls[tabId] === tabData.url) { return; }
+    if (!tabData.url) { return; }
+    if (tabData.status !== "loading") { return; }
+    
+    requestHandler(tabId, tabData.url);
+});
+
+// Detect tab creation
+browser.tabs.onCreated.addListener((tabData) => {
+    incognitoStatus[tabData.id] = tabData.incognito;
+});
+
+// Detect tab removal
+browser.tabs.onRemoved.addListener((tabId, removeInfo) => {
+    delete savedData[tabId];
+    delete incognitoStatus[tabId];
+    delete processedUrls[tabId];
+});
 
 // Handle post_redirector
 browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -120,11 +119,4 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
             console.log(tabId, "[post_redirector]", "No POST data. Cancel.");
         }
     }
-});
-
-// Detect tab removal
-browser.tabs.onRemoved.addListener((tabId, removeInfo) => {
-    delete savedData[tabId];
-    delete incognitoStatus[tabId];
-    delete processedUrls[tabId];
 });

@@ -2,20 +2,20 @@
   "fill" : "automatic",
   "groups" : [
     {
-      "blur-material" : null,
+      "blur-material" : 0.1,
       "layers" : [
         {
           "blend-mode" : "normal",
           "fill-specializations" : [
             {
               "value" : {
-                "solid" : "gray:0.00000,1.00000"
+                "solid" : "extended-gray:1.00000,1.00000"
               }
             },
             {
               "appearance" : "dark",
               "value" : {
-                "solid" : "gray:1.00000,1.00000"
+                "solid" : "extended-gray:1.00000,1.00000"
               }
             },
             {
@@ -40,13 +40,13 @@
       "lighting" : "individual",
       "name" : "Object",
       "shadow" : {
-        "kind" : "layer-color",
+        "kind" : "neutral",
         "opacity" : 0.5
       },
       "specular" : true,
       "translucency" : {
         "enabled" : true,
-        "value" : 0.25
+        "value" : 0.5
       }
     },
     {
@@ -56,19 +56,13 @@
           "fill-specializations" : [
             {
               "value" : {
-                "linear-gradient" : [
-                  "srgb:0.00000,0.00000,0.00000,1.00000",
-                  "srgb:0.00000,0.00000,0.00000,0.80000"
-                ]
+                "solid" : "extended-gray:0.00000,1.00000"
               }
             },
             {
               "appearance" : "dark",
               "value" : {
-                "linear-gradient" : [
-                  "srgb:1.00000,1.00000,1.00000,1.00000",
-                  "srgb:1.00000,1.00000,1.00000,0.80000"
-                ]
+                "solid" : "extended-gray:1.00000,1.00000"
               }
             },
             {
@@ -102,6 +96,24 @@
       "translucency" : {
         "enabled" : false,
         "value" : 0.1
+      }
+    },
+    {
+      "layers" : [
+        {
+          "glass" : false,
+          "image-name" : "flag.png",
+          "name" : "flag"
+        }
+      ],
+      "shadow" : {
+        "kind" : "none",
+        "opacity" : 0.5
+      },
+      "specular" : false,
+      "translucency" : {
+        "enabled" : false,
+        "value" : 0.5
       }
     }
   ],

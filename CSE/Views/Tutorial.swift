@@ -238,9 +238,9 @@ class Tutorial {
         @State private var showingFileImport = false
         @State private var showingErrorAlert = false
         @State private var errorMessage = ""
-        private let popCSEList = SearchEnginePresets.popCSEList()
-        private let aiCSEList = SearchEnginePresets.aiCSEList()
-        private let safariCSEList = SearchEnginePresets.safariCSEList()
+        private let popCSEList = SearchEnginePresets.popCSEList
+        private let aiCSEList = SearchEnginePresets.aiCSEList
+        private let safariCSEList = SearchEnginePresets.safariCSEList
         
         var body: some View {
             List {
