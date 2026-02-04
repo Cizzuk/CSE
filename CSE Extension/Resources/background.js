@@ -58,20 +58,7 @@ const requestHandler = (tabId, url, incognito) => {
     });
 };
 
-// Detect tab updates
 if (isWebRequestAvailable) {
-    // If webRequest is available, use tabs.onUpdated for fallback and incognito status saving
-    browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
-        // Save tab incognito status if not already saved
-        if (!incognitoStatus[tabId]) { incognitoStatus[tabId] = tabData.incognito; }
-
-        if (processedUrls[tabId] === tabData.url) { return; }
-        if (!tabData.url) { return; }
-        if (updatedData.status !== "loading" && updatedData.url === undefined) { return; }
-
-        requestHandler(tabId, tabData.url, tabData.incognito, true);
-    });
-    
     // Detect web requests
     browser.webRequest.onBeforeRequest.addListener((details) => {
         const tabId = details.tabId;
@@ -83,16 +70,20 @@ if (isWebRequestAvailable) {
     });
 
 } else {
-    // If webRequest is not available, handle all via tabs.onUpdated
-    browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
-        if (processedUrls[tabId] === tabData.url) { return; }
-        if (!tabData.url) { return; }
-        if (tabData.status !== "loading") { return; }
-        
-        requestHandler(tabId, tabData.url, tabData.incognito, true);
-    });
     console.log("webRequest API is not available, using tabs.onUpdated for all navigation detection");
 }
+
+// Fallback: use tabs.onUpdated
+browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
+    // Save tab incognito status if not already saved
+    if (!incognitoStatus[tabId]) { incognitoStatus[tabId] = tabData.incognito; }
+    
+    if (processedUrls[tabId] === tabData.url) { return; }
+    if (!tabData.url) { return; }
+    if (tabData.status !== "loading") { return; }
+    
+    requestHandler(tabId, tabData.url, tabData.incognito);
+});
 
 // Handle post_redirector
 browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
