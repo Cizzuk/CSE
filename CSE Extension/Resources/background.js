@@ -8,7 +8,7 @@ let incognitoStatus = {};
 let processedUrls = {};
 
 // Request handler (send tab data to native and handle response)
-const requestHandler = (tabId, url, incognito, curtain = false) => {
+const requestHandler = (tabId, url, incognito) => {
     // Mark this URL was processed
     processedUrls[tabId] = url;
     
@@ -31,9 +31,6 @@ const requestHandler = (tabId, url, incognito, curtain = false) => {
             case "redirect":
                 console.log(tabId, "Redirecting...");
                 browser.tabs.update(tabId, {url: cseData.redirectTo})
-                .then(() => {
-                    if (curtain) { browser.tabs.sendMessage(tabId, {type: "showCurtain"}); }
-                })
                 .catch((error) => { console.error(tabId, "Redirect failed:", error); });
                 break;
                 
@@ -44,8 +41,6 @@ const requestHandler = (tabId, url, incognito, curtain = false) => {
                 browser.tabs.update(tabId, {url: postRedirectorURL})
                 .then(() => { console.log(tabId, "Waiting post_redirector..."); })
                 .catch((error) => { console.error(tabId, "Redirect failed:", error); });
-                
-                if (curtain) { browser.tabs.sendMessage(tabId, {type: "showCurtain"}); }
                 break;
             case "needIncognitoStatus":
                 console.log(tabId, "Need incognito status, but not available yet.");
@@ -94,7 +89,7 @@ if (isWebRequestAvailable) {
         
         if (details.type !== "main_frame") { return; }
         
-        requestHandler(tabId, url, incognitoStatus[tabId], false);
+        requestHandler(tabId, url, incognitoStatus[tabId]);
     });
 
 } else {
