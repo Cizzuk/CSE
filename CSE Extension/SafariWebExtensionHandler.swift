@@ -29,9 +29,6 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         
         // Check Incognito Status
         let incognitoFlag = message["incognito"] as? Bool
-        if usePrivateCSE && incognitoFlag == nil {
-            return sendData(context: context, data: ["type" : "needIncognitoStatus"])
-        }
         let isIncognito = usePrivateCSE && (incognitoFlag ?? false)
         
         // Safari Search Engine

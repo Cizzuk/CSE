@@ -42,16 +42,6 @@ const requestHandler = (tabId, url, incognito) => {
                 .then(() => { console.log(tabId, "Waiting post_redirector..."); })
                 .catch((error) => { console.error(tabId, "Redirect failed:", error); });
                 break;
-            case "needIncognitoStatus":
-                console.log(tabId, "Need incognito status, but not available yet.");
-                if (incognitoStatus[tabId] === undefined) {
-                    console.log(tabId, "Clearing processed URL to retry later.");
-                    delete processedUrls[tabId]; // Allow re-processing
-                } else if (processedUrls[tabId] !== url) {
-                    console.log(tabId, "Resending request to native");
-                    requestHandler(tabId, url, incognitoStatus[tabId], curtain);
-                }
-                break;
                 
             case "error":
                 console.log(tabId, "Aborted due to an error.");
