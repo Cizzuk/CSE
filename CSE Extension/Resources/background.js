@@ -3,9 +3,10 @@
 // Check if webRequest API is available
 const isWebRequestAvailable = browser.webRequest && browser.webRequest.onBeforeRequest;
 const postRedirectorURL = location.protocol + "//" + location.host + "/post_redirector.html";
-let savedData = {};
-let incognitoStatus = {};
-let processedUrls = {};
+
+let savedData = {}; // Store data for post redirects
+let incognitoStatus = {}; // Store incognito status for Private Seaerch Engine
+let processedUrls = {}; // Store processed URLs to avoid duplicate processing
 
 // Request handler (send tab data to native and handle response)
 const requestHandler = (tabId, url, incognito) => {
