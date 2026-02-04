@@ -85,6 +85,18 @@ browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
     requestHandler(tabId, tabData.url, tabData.incognito);
 });
 
+// Detect tab creation
+browser.tabs.onCreated.addListener((tabData) => {
+    incognitoStatus[tabData.id] = tabData.incognito;
+});
+
+// Detect tab removal
+browser.tabs.onRemoved.addListener((tabId, removeInfo) => {
+    delete savedData[tabId];
+    delete incognitoStatus[tabId];
+    delete processedUrls[tabId];
+});
+
 // Handle post_redirector
 browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
     const tabId = sender.tab.id;
@@ -97,16 +109,4 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
             console.log(tabId, "[post_redirector]", "No POST data. Cancel.");
         }
     }
-});
-
-// Detect tab creation
-browser.tabs.onCreated.addListener((tabData) => {
-    incognitoStatus[tabData.id] = tabData.incognito;
-});
-
-// Detect tab removal
-browser.tabs.onRemoved.addListener((tabId, removeInfo) => {
-    delete savedData[tabId];
-    delete incognitoStatus[tabId];
-    delete processedUrls[tabId];
 });
