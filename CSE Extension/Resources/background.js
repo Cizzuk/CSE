@@ -9,7 +9,7 @@ let incognitoStatus = {}; // Store incognito status for Private Seaerch Engine
 let processedUrls = {}; // Store processed URLs to avoid duplicate processing
 
 // Request handler (send tab data to native and handle response)
-const requestHandler = (tabId, url, incognito) => {
+const requestHandler = (tabId, url) => {
     // Mark this URL was processed
     processedUrls[tabId] = url;
     
@@ -18,10 +18,14 @@ const requestHandler = (tabId, url, incognito) => {
     if (url.startsWith("safari-web-extension:")) { return; }
     if (!url.startsWith("https://")) { return; }
     
+    // Check incognito status
+    if (incognitoStatus[tabId] === undefined) {
+    }
+    
     // Prepare tab data to send
     const tabData = {
         url: url,
-        incognito: incognito
+        incognito: incognitoStatus[tabId]
     };
     
     // Send tab data to native app
@@ -67,7 +71,7 @@ if (isWebRequestAvailable) {
         
         if (details.type !== "main_frame") { return; }
         
-        requestHandler(tabId, url, incognitoStatus[tabId]);
+        requestHandler(tabId, url);
     });
 
 } else {
@@ -83,7 +87,7 @@ browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
     if (!tabData.url) { return; }
     if (tabData.status !== "loading") { return; }
     
-    requestHandler(tabId, tabData.url, tabData.incognito);
+    requestHandler(tabId, tabData.url);
 });
 
 // Detect tab creation
