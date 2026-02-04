@@ -9,7 +9,7 @@ let incognitoStatus = {}; // Store incognito status for Private Seaerch Engine
 let processedUrls = {}; // Store processed URLs to avoid duplicate processing
 
 // Request handler (send tab data to native and handle response)
-const requestHandler = (tabId, url) => {
+const requestHandler = async (tabId, url) => {
     // Mark this URL was processed
     processedUrls[tabId] = url;
     
@@ -20,6 +20,7 @@ const requestHandler = (tabId, url) => {
     
     // Check incognito status
     if (incognitoStatus[tabId] === undefined) {
+        incognitoStatus[tabId] = await getTabIncognitoStatus(tabId);
     }
     
     // Prepare tab data to send
@@ -63,6 +64,12 @@ const requestHandler = (tabId, url) => {
     });
 };
 
+const getTabIncognitoStatus = async (tabId) => {
+    console.log(tabId, "Fetching incognito status...");
+    let tabData = await browser.tabs.get(tabId);
+    return tabData.incognito;
+};
+
 if (isWebRequestAvailable) {
     // Detect web requests
     browser.webRequest.onBeforeRequest.addListener((details) => {
@@ -73,7 +80,6 @@ if (isWebRequestAvailable) {
         
         requestHandler(tabId, url);
     });
-
 } else {
     console.log("webRequest API is not available, using tabs.onUpdated for all navigation detection");
 }
@@ -81,7 +87,9 @@ if (isWebRequestAvailable) {
 // Fallback: use tabs.onUpdated
 browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
     // Save tab incognito status if not already saved
-    if (!incognitoStatus[tabId]) { incognitoStatus[tabId] = tabData.incognito; }
+    if (incognitoStatus[tabId] === undefined) {
+        incognitoStatus[tabId] = tabData.incognito;
+    }
     
     if (processedUrls[tabId] === tabData.url) { return; }
     if (!tabData.url) { return; }
