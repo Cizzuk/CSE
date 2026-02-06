@@ -50,6 +50,17 @@ struct QuickSEListView: View {
                     }
                     
                     Section {
+                        // Add new SE Button
+                        if searchQuery.isEmpty {
+                            NavigationLink(destination: EditSEView(type: .quickCSE)) {
+                                UITemplates.IconLabel(icon: "plus.circle", text: "Add New Search Engine")
+                                #if !os(visionOS)
+                                .foregroundColor(.accentColor)
+                                #endif
+                            }
+                            .keyboardShortcut("N", modifiers: [.command])
+                        }
+                        
                         // List of Quick SEs
                         let keywordTranslation = String(localized: "Keyword")
                         let sortedQuick: [(key: String, value: CSEDataManager.CSEData)] = quickCSE
@@ -91,23 +102,6 @@ struct QuickSEListView: View {
                             }
                         }
                     } header: { Text("Quick Search Engines") }
-                    
-                    // Add new SE Button
-                    if searchQuery.isEmpty {
-                        Section {
-                            NavigationLink(destination: EditSEView(type: .quickCSE)) {
-                                HStack {
-                                    Image(systemName: "plus.circle")
-                                        .accessibilityHidden(true)
-                                    Text("Add New Search Engine")
-                                }
-                                #if !os(visionOS)
-                                .foregroundColor(.accentColor)
-                                #endif
-                            }
-                            .keyboardShortcut("N", modifiers: [.command])
-                        }
-                    }
                 }
             }
             .navigationTitle("Quick Search")

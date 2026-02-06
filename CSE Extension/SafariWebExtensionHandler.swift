@@ -13,6 +13,17 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     let userDefaults = CSEDataManager.userDefaults
     var focusSettings: (cseData: CSEDataManager.CSEData, useQuickCSE: Bool?, useEmojiSearch: Bool?)? = nil
     
+    enum RedirectType: String, Encodable {
+        case redirect
+        case postRedirect
+    }
+    
+    struct SendDataSet: Encodable {
+        let type: RedirectType
+        let redirectTo: String
+        let postData: [[String: String]]
+    }
+    
     func beginRequest(with context: NSExtensionContext) {
         // Initialize app data and perform necessary updates
         AppInitializer.initializeApp()
@@ -52,13 +63,6 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             privsearchengine = .private
         }
         
-        // CSE data set
-        struct dataSet: Encodable {
-            let type: String
-            let redirectTo: String
-            let postData: [[String: String]]
-        }
-        
         Task {
             // Check current focus filter
             try await getFocusFilter()
@@ -93,7 +97,8 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
                 return
             }
             
-            let redirectData: (type: String, url: String, post: [[String: String]])
+            // Create Redirect URL
+            let redirectData: SendDataSet
             if isIncognito && usePrivateCSE {
                 redirectData = makeSearchURL(baseCSE: CSEDataManager.getCSEData(.privateCSE), query: query)
             } else if useDefaultCSE {
@@ -103,20 +108,13 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             }
             
             // Check Redirect URL exists
-            if redirectData.url.isEmpty {
+            if redirectData.redirectTo.isEmpty {
                 sendData(context: context, data: ["type" : "cancel"])
                 return
             }
             
-            // Create CSE Data
-            let Data = dataSet(
-                type: redirectData.type,
-                redirectTo: redirectData.url,
-                postData: redirectData.post
-            )
-            
             // Send to background.js!
-            sendData(context: context, data: Data)
+            sendData(context: context, data: redirectData)
         }
     }
     
@@ -147,7 +145,8 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     
     // MARK: - Make Search URL
     
-    func makeSearchURL(baseCSE: CSEDataManager.CSEData, query: String) -> (type: String, url: String, post: [[String: String]]) {
+    func makeSearchURL(baseCSE: CSEDataManager.CSEData, query: String)
+            -> SendDataSet {
         // --- Description of some Query variables ---
         //  query: %encoding, Full Search Query
         //  decodedQuery: Decoded, Full Search Query
@@ -187,7 +186,12 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             
             // Make URL
             let redirectURL = "https://emojipedia.org/" + emojipediaLang + query
-            return ("redirect", redirectURL, [])
+            
+            return SendDataSet(
+                type: .redirect,
+                redirectTo: redirectURL,
+                postData: []
+            )
         }
         
         
@@ -335,9 +339,14 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
                     .replacingOccurrences(of: "%s", with: decodedFixedQueryForPOST)
             }
         }
-        let redirectType: String = postData.isEmpty ? "redirect" : "postRedirect"
         
-        return (redirectType, redirectURL, postData)
+        let redirectType: RedirectType = postData.isEmpty ? .redirect : .postRedirect
+        
+        return SendDataSet(
+            type: redirectType,
+            redirectTo: redirectURL,
+            postData: postData
+        )
     }
     
     // MARK: - Focus Filter Support

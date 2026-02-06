@@ -90,7 +90,6 @@ browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
     
     if (processedUrls[tabId] === tabData.url) { return; }
     if (!tabData.url) { return; }
-    if (tabData.status !== "loading") { return; }
     
     requestHandler(tabId, tabData.url);
 });
