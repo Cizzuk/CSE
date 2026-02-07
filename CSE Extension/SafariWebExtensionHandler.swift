@@ -132,11 +132,9 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
 
     // Engine Checker
     func checkEngineURL(engine: SafariSEs, url: String) -> Bool {
-        guard !userDefaults.bool(forKey: "adv_disablechecker") else {
-            return true
-        }
+        let disableChecker = userDefaults.bool(forKey: "adv_disablechecker")
         
-        return engine.isMatchedURL(url)
+        return engine.isMatchedURL(url, disableChecker: disableChecker)
     }
     
     func getQueryValue(engine: SafariSEs, url: String) -> String? {
