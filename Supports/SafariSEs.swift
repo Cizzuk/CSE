@@ -200,11 +200,11 @@ enum SafariSEs: String, CaseIterable {
     
     // MARK: - Support Functions
     
-    func isMatchedURL(_ url: URL) -> Bool {
-        return isMatchedURL(url.absoluteString)
+    func isMatchedURL(_ url: URL, disableChecker: Bool = false) -> Bool {
+        return isMatchedURL(url.absoluteString, disableChecker: disableChecker)
     }
     
-    func isMatchedURL(_ url: String) -> Bool {
+    func isMatchedURL(_ url: String, disableChecker: Bool = false) -> Bool {
         let engine = self
         
         // Make URLComponents and get host
@@ -236,7 +236,8 @@ enum SafariSEs: String, CaseIterable {
         }
         
         // Param Check
-        if let checkParam = engine.checkParameter(for: host) {
+        if !disableChecker,
+           let checkParam = engine.checkParameter(for: host) {
             // Check each param
             for item in checkParam {
                 let param = item.param
