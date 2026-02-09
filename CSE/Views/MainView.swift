@@ -147,12 +147,7 @@ struct ContentView: View {
             case .emojiSearch: EmojiSearchView()
             case .about: AboutView()
             case .backup: BackupView.BackupView()
-            case .iconChange:
-                #if !os(visionOS) && !targetEnvironment(macCatalyst)
-                IconChangeView()
-                #else
-                EmptyView()
-                #endif
+            case .iconChange: IconChangeView()
             case .advancedSettings: AdvSettingView()
             case .none: EmptyView()
             }
