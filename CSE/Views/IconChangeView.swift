@@ -31,7 +31,6 @@ struct IconChangeView: View {
                 .resizable()
                 .frame(width: 64, height: 64)
                 .accessibilityHidden(true)
-                .cornerRadius(16)
                 .padding(8)
                 .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
             Text(iconName)
