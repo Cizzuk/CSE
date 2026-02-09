@@ -5,7 +5,6 @@
 //  Created by Cizzuk on 2024/09/21.
 //
 
-#if !os(visionOS) && !targetEnvironment(macCatalyst)
 import SwiftUI
 
 struct IconChangeView: View {
@@ -47,5 +46,3 @@ struct IconChangeView: View {
         }
     }
 }
-
-#endif

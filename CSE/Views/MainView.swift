@@ -124,13 +124,11 @@ struct ContentView: View {
                         UITemplates.IconLabel(icon: "arrow.counterclockwise", text: "Backup & Restore")
                     }
                     
-                    #if !os(visionOS) && !targetEnvironment(macCatalyst)
                     if UIApplication.shared.supportsAlternateIcons {
                         NavigationLink(value: NavigationItem.iconChange) {
                             UITemplates.IconLabel(icon: "app.dashed", text: "Change App Icon")
                         }
                     }
-                    #endif
                     
                     NavigationLink(value: NavigationItem.advancedSettings) {
                         UITemplates.IconLabel(icon: "gearshape.2", text: "Advanced Settings")
