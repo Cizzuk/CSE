@@ -125,8 +125,10 @@ struct ContentView: View {
                     }
                     
                     #if !os(visionOS) && !targetEnvironment(macCatalyst)
-                    NavigationLink(value: NavigationItem.iconChange) {
-                        UITemplates.IconLabel(icon: "app.dashed", text: "Change App Icon")
+                    if UIApplication.shared.supportsAlternateIcons {
+                        NavigationLink(value: NavigationItem.iconChange) {
+                            UITemplates.IconLabel(icon: "app.dashed", text: "Change App Icon")
+                        }
                     }
                     #endif
                     
