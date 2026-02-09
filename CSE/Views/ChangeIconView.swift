@@ -1,5 +1,5 @@
 //
-//  IconChangeView.swift
+//  ChangeIconView.swift
 //  Customize Search Engine
 //
 //  Created by Cizzuk on 2024/09/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct IconChangeView: View {
+struct ChangeIconView: View {
     var body: some View {
         List {
             Section {

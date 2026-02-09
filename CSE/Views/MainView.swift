@@ -45,7 +45,7 @@ struct ContentView: View {
     @State private var selection: NavigationItem?
     private enum NavigationItem: String, Hashable {
         case defaultSE, privateSE, quickSE, emojiSearch
-        case about, backup, iconChange, advancedSettings
+        case about, backup, changeIcon, advancedSettings
     }
     
     var body: some View {
@@ -125,7 +125,7 @@ struct ContentView: View {
                     }
                     
                     if UIApplication.shared.supportsAlternateIcons {
-                        NavigationLink(value: NavigationItem.iconChange) {
+                        NavigationLink(value: NavigationItem.changeIcon) {
                             UITemplates.IconLabel(icon: "app.dashed", text: "Change App Icon")
                         }
                     }
@@ -147,7 +147,7 @@ struct ContentView: View {
             case .emojiSearch: EmojiSearchView()
             case .about: AboutView()
             case .backup: BackupView.BackupView()
-            case .iconChange: IconChangeView()
+            case .changeIcon: ChangeIconView()
             case .advancedSettings: AdvSettingView()
             case .none: EmptyView()
             }
