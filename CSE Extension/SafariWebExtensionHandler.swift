@@ -97,14 +97,30 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
                 return
             }
             
+            // Fixed a macOS Safari bug where full-width space is not replaced with '+'
+            let fixedQuery = query
+                .replacingOccurrences(of: "%E3%80%80", with: "+", options: .caseInsensitive)
+                .replacingOccurrences(of: "%20", with: "+", options: .caseInsensitive)
+                .replacingOccurrences(of: "　", with: "+")
+                .replacingOccurrences(of: " ", with: "+")
+            
             // Create Redirect URL
             let redirectData: SendDataSet
             if isIncognito && usePrivateCSE {
-                redirectData = makeSearchURL(baseCSE: CSEDataManager.getCSEData(.privateCSE), query: query)
+                redirectData = makeSearchURL(
+                    baseCSE: CSEDataManager.getCSEData(.privateCSE),
+                    query: fixedQuery
+                )
             } else if useDefaultCSE {
-                redirectData = makeSearchURL(baseCSE: CSEDataManager.getCSEData(.defaultCSE), query: query)
+                redirectData = makeSearchURL(
+                    baseCSE: CSEDataManager.getCSEData(.defaultCSE),
+                    query: fixedQuery
+                )
             } else {
-                redirectData = makeSearchURL(baseCSE: CSEDataManager.CSEData(), query: query)
+                redirectData = makeSearchURL(
+                    baseCSE: CSEDataManager.CSEData(),
+                    query: fixedQuery
+                )
             }
             
             // Check Redirect URL exists
