@@ -45,7 +45,7 @@ struct ContentView: View {
     @State private var selection: NavigationItem?
     private enum NavigationItem: String, Hashable {
         case defaultSE, privateSE, quickSE, emojiSearch
-        case about, backup, changeIcon, advancedSettings
+        case about, cseContentBlocker, backup, changeIcon, advancedSettings
     }
     
     var body: some View {
@@ -115,9 +115,12 @@ struct ContentView: View {
                 }
                 
                 Section {
-                    // About View
                     NavigationLink(value: NavigationItem.about) {
                         UITemplates.IconLabel(icon: "info.circle", text: "About")
+                    }
+                    
+                    NavigationLink(value: NavigationItem.cseContentBlocker) {
+                        UITemplates.IconLabel(icon: "shield", text: "CSE Content Blocker")
                     }
                     
                     NavigationLink(value: NavigationItem.backup) {
@@ -146,6 +149,7 @@ struct ContentView: View {
             case .quickSE: QuickSEListView()
             case .emojiSearch: EmojiSearchView()
             case .about: AboutView()
+            case .cseContentBlocker: CSEContentBlockerView()
             case .backup: BackupView.BackupView()
             case .changeIcon: ChangeIconView()
             case .advancedSettings: AdvSettingView()
