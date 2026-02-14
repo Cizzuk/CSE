@@ -34,6 +34,7 @@ struct AboutView: View {
                 })
             } header: {
                 Text("Customize Search Engine")
+                    .textCase(nil)
             }
             
             Section {} header: {
