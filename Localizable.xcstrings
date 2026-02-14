@@ -1081,6 +1081,16 @@
         }
       }
     },
+    "And more..." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "他にも…"
+          }
+        }
+      }
+    },
     "And recommended to Deny for Other Websites." : {
       "localizations" : {
         "ar" : {
@@ -2148,6 +2158,9 @@
           }
         }
       }
+    },
+    "CSE Content Blocker" : {
+      "shouldTranslate" : false
     },
     "CSE Settings" : {
       "localizations" : {
@@ -3558,6 +3571,16 @@
     },
     "duckduckgo.com" : {
       "shouldTranslate" : false
+    },
+    "Due to Safari's limitations, the search engine you select in Safari settings may be able to know your search queries even when using CSE." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safariの制約のため、あなたがSafariの設定で選択した検索エンジンは、CSEの使用中であってもあなたの検索内容を知ることができる可能性があります。"
+          }
+        }
+      }
     },
     "Ecosia" : {
       "localizations" : {
@@ -5400,6 +5423,26 @@
     "google.com" : {
       "shouldTranslate" : false
     },
+    "However, it is known to cause some issues, so it is turned off by default. You can enable it from the Safari Extensions settings if you wish." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ただし、いくつかの不具合を引き起こすことがわかっているため、デフォルトではオフになっています。Safariの拡張機能の設定から任意で有効にすることができます。"
+          }
+        }
+      }
+    },
+    "If Default Search Engine is turned off in the CSE settings, searching becomes impossible." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSEの設定で「デフォルトの検索エンジン」をオフにすると、検索ができなくなる。"
+          }
+        }
+      }
+    },
     "If the keyword is already in use, replace and save" : {
       "localizations" : {
         "ar" : {
@@ -6249,6 +6292,16 @@
         }
       }
     },
+    "Known Issues" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "既知の不具合"
+          }
+        }
+      }
+    },
     "Last Updated: %@" : {
       "localizations" : {
         "ar" : {
@@ -6532,6 +6585,15 @@
     "MIT License\n\nCopyright (c) 2025 Cizzuk\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE." : {
       "shouldTranslate" : false
     },
+    "More About CSE & Privacy..." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSEとプライバシーについての詳細…"
+          }
+        }
+      }
     },
     "Name" : {
       "localizations" : {
@@ -9335,6 +9397,16 @@
         }
       }
     },
+    "Search becomes completely impossible on older versions of Safari." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "古いバージョンのSafariでは全く検索ができなくなる。"
+          }
+        }
+      }
+    },
     "Search Engine" : {
       "localizations" : {
         "ar" : {
@@ -9690,6 +9762,16 @@
     },
     "search.yahoo.com" : {
       "shouldTranslate" : false
+    },
+    "Searching using POST Data becomes impossible." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "POSTデータを用いた検索ができなくなる。"
+          }
+        }
+      }
     },
     "Set Default Search Engine" : {
       "localizations" : {
@@ -10957,6 +11039,16 @@
         }
       }
     },
+    "This content blocker prevents leakage of search queries by blocking Safari's search engine in advance." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このコンテンツブロッカーは、Safariの検索エンジンを事前にブロックすることで、検索クエリの漏洩を防止します。"
+          }
+        }
+      }
+    },
     "This feature is not recommended unless the search engine you want to use absolutely requires POST data. It does not improve privacy and may cause unstable behavior." : {
       "localizations" : {
         "ar" : {
@@ -11023,6 +11115,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "除非您要使用的搜尋引擎絕對需要 POST 資料，否則不建議使用此功能。它不會改善隱私保護，可能會導致不穩定的行為。"
+          }
+        }
+      }
+    },
+    "This is an additional extension that blocks Safari's search engine to prevent leaks of your search queries." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safariのデフォルトの検索エンジンをブロックして、検索クエリが漏洩することを防ぐ、追加の拡張機能です。"
           }
         }
       }
@@ -11443,6 +11545,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在 CSE 上開啟或關閉快速搜尋。"
+          }
+        }
+      }
+    },
+    "Unexpected behavior occurs when going back to a blocked page." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ブロックされたページに戻ると、意図しない動作をする。"
+          }
+        }
+      }
+    },
+    "Unnecessary messages are temporarily displayed when a search is performed." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索をしたときに、不要なメッセージが一時的に表示される。"
+          }
+        }
+      }
+    },
+    "Unnecessary search history may remain." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不要な検索履歴が残ってしまう。"
           }
         }
       }
@@ -11872,6 +12004,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "歡迎來到 CSE"
+          }
+        }
+      }
+    },
+    "What is CSE Content Blocker?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE Content Blockerとは"
           }
         }
       }
