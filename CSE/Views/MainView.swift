@@ -120,7 +120,7 @@ struct ContentView: View {
                     }
                     
                     NavigationLink(value: NavigationItem.cseContentBlocker) {
-                        UITemplates.IconLabel(icon: "shield", text: "CSE Content Blocker")
+                        UITemplates.IconLabel(icon: "shield.lefthalf.filled", text: "CSE Content Blocker")
                     }
                     
                     NavigationLink(value: NavigationItem.backup) {
