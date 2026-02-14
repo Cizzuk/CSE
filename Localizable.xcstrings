@@ -1083,10 +1083,70 @@
     },
     "And more..." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "والمزيد…"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Und mehr…"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Y más…"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Et plus encore…"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "他にも…"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "그 외에도…"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E mais…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "И другие…"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Та інші…"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "以及更多…"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "以及更多…"
           }
         }
       }
@@ -3574,10 +3634,70 @@
     },
     "Due to Safari's limitations, the search engine you select in Safari settings may be able to know your search queries even when using CSE." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بسبب قيود سفاري، قد يتمكن محرك البحث الذي تحدده في إعدادات سفاري من معرفة استعلامات البحث الخاصة بك حتى عند استخدام CSE."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aufgrund von Einschränkungen in Safari kann die Suchmaschine, die Sie in den Safari-Einstellungen ausgewählt haben, Ihre Suchanfragen möglicherweise auch bei Verwendung von CSE erfahren."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Debido a las limitaciones de Safari, el buscador que selecciones en la configuración de Safari puede conocer tus consultas de búsqueda incluso cuando uses CSE."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En raison des limitations de Safari, le moteur de recherche que vous sélectionnez dans les réglages de Safari peut être en mesure de connaître vos requêtes de recherche même lorsque vous utilisez CSE."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Safariの制約のため、あなたがSafariの設定で選択した検索エンジンは、CSEの使用中であってもあなたの検索内容を知ることができる可能性があります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safari의 제한으로 인해, Safari 설정에서 선택한 검색 엔진이 CSE를 사용하는 중에도 검색어를 알 수 있을 가능성이 있습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devido às limitações do Safari, o buscador que você selecionar nos ajustes do Safari pode conhecer suas consultas de pesquisa mesmo ao usar o CSE."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Из-за ограничений Safari поисковая машина, выбранная в настройках Safari, может узнать ваши поисковые запросы даже при использовании CSE."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Через обмеження Safari пошукова система, яку ви обрали в параметрах Safari, може дізнатися ваші пошукові запити навіть при використанні CSE."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "由于 Safari 浏览器的限制，您在 Safari 浏览器设置中选择的搜索引擎即使在使用 CSE 时也可能知道您的搜索查询。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "由於 Safari 的限制，您在 Safari 設定中選擇的搜尋引擎即使在使用 CSE 時也可能知道您的搜尋查詢。"
           }
         }
       }
@@ -5425,20 +5545,140 @@
     },
     "However, it is known to cause some issues, so it is turned off by default. You can enable it from the Safari Extensions settings if you wish." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ومع ذلك، من المعروف أنه يسبب بعض المشكلات، لذلك فهو معطل بشكل افتراضي. يمكنك تفعيله من إعدادات ملحقات سفاري إذا رغبت."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es ist jedoch bekannt, dass es einige Probleme verursacht, daher ist es standardmäßig deaktiviert. Sie können es bei Bedarf in den Safari-Erweiterungseinstellungen aktivieren."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin embargo, se sabe que causa algunos problemas, por lo que está desactivado de forma predeterminada. Puedes habilitarlo desde la configuración de extensiones de Safari si lo deseas."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cependant, il est connu pour causer certains problèmes, il est donc désactivé par défaut. Vous pouvez l'activer depuis les réglages des extensions Safari si vous le souhaitez."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ただし、いくつかの不具合を引き起こすことがわかっているため、デフォルトではオフになっています。Safariの拡張機能の設定から任意で有効にすることができます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "그러나 일부 문제를 일으키는 것으로 알려져 있어 기본적으로 꺼져 있습니다. 원하시면 Safari 확장 프로그램 설정에서 활성화할 수 있습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No entanto, é conhecido por causar alguns problemas, portanto está desativado por padrão. Você pode ativá-lo nas configurações de extensões do Safari, se desejar."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Однако известно, что он вызывает некоторые проблемы, поэтому по умолчанию он отключён. Вы можете включить его в настройках расширений Safari, если хотите."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Однак відомо, що він спричиняє деякі проблеми, тому за замовчуванням він вимкнений. Ви можете увімкнути його в параметрах розширень Safari, якщо бажаєте."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "但是，已知它会导致一些问题，因此默认情况下是关闭的。如果需要，您可以从 Safari 浏览器扩展设置中启用它。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "但是，已知它會導致一些問題，因此預設為關閉。如果需要，您可以從 Safari 延伸功能設定中啟用它。"
           }
         }
       }
     },
     "If Default Search Engine is turned off in the CSE settings, searching becomes impossible." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إذا تم إيقاف محرك البحث الافتراضي في إعدادات CSE، يصبح البحث مستحيلاً."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wenn die Standard-Suchmaschine in den CSE-Einstellungen deaktiviert ist, wird das Suchen unmöglich."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si el buscador predeterminado está desactivado en la configuración de CSE, la búsqueda se vuelve imposible."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si le moteur de recherche par défaut est désactivé dans les réglages de CSE, la recherche devient impossible."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSEの設定で「デフォルトの検索エンジン」をオフにすると、検索ができなくなる。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE 설정에서 기본 검색 엔진이 꺼져 있으면 검색이 불가능해집니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se o buscador padrão estiver desativado nas configurações do CSE, a pesquisa se torna impossível."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Если поисковая машина по умолчанию отключена в настройках CSE, поиск становится невозможным."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Якщо пошукову систему за замовчуванням вимкнено в параметрах CSE, пошук стає неможливим."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果在 CSE 设置中关闭了默认搜索引擎，搜索将变得不可能。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果在 CSE 設定中關閉了預設搜尋引擎，搜尋將變得不可能。"
           }
         }
       }
@@ -6294,10 +6534,70 @@
     },
     "Known Issues" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مشكلات معروفة"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bekannte Probleme"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Problemas conocidos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Problèmes connus"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "既知の不具合"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "알려진 문제"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Problemas conhecidos"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Известные проблемы"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відомі проблеми"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已知问题"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已知問題"
           }
         }
       }
@@ -6587,10 +6887,70 @@
     },
     "More About CSE & Privacy..." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المزيد عن CSE والخصوصية…"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mehr über CSE und Datenschutz…"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Más sobre CSE y privacidad…"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En savoir plus sur CSE et la confidentialité…"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSEとプライバシーについての詳細…"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE 및 개인정보 보호에 대해 더 알아보기…"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mais sobre CSE e privacidade…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подробнее о CSE и конфиденциальности…"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Докладніше про CSE та конфіденційність…"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "了解更多关于 CSE 和隐私…"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "了解更多關於 CSE 和隱私…"
           }
         }
       }
@@ -9399,10 +9759,70 @@
     },
     "Search becomes completely impossible on older versions of Safari." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يصبح البحث مستحيلاً تماماً على الإصدارات القديمة من سفاري."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Suche wird auf älteren Versionen von Safari vollständig unmöglich."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La búsqueda se vuelve completamente imposible en versiones antiguas de Safari."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La recherche devient complètement impossible sur les anciennes versions de Safari."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "古いバージョンのSafariでは全く検索ができなくなる。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이전 버전의 Safari에서는 검색이 완전히 불가능해집니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A pesquisa se torna completamente impossível em versões mais antigas do Safari."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поиск становится полностью невозможным в старых версиях Safari."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пошук стає повністю неможливим у старих версіях Safari."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在旧版本的 Safari 浏览器上搜索将完全无法使用。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在舊版本的 Safari 上搜尋將完全無法使用。"
           }
         }
       }
@@ -9765,10 +10185,70 @@
     },
     "Searching using POST Data becomes impossible." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يصبح البحث باستخدام بيانات POST مستحيلاً."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Suche mit POST-Daten wird unmöglich."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La búsqueda usando datos POST se vuelve imposible."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La recherche utilisant les données POST devient impossible."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "POSTデータを用いた検索ができなくなる。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "POST 데이터를 사용한 검색이 불가능해집니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A pesquisa usando dados POST se torna impossível."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поиск с использованием данных POST становится невозможным."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пошук з використанням POST-даних стає неможливим."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用 POST 数据进行搜索将变得不可能。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用 POST 資料進行搜尋將變得不可能。"
           }
         }
       }
@@ -11041,10 +11521,70 @@
     },
     "This content blocker prevents leakage of search queries by blocking Safari's search engine in advance." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يمنع مانع المحتوى هذا تسرب استعلامات البحث عن طريق حظر محرك بحث سفاري مسبقاً."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieser Inhaltsblocker verhindert das Durchsickern von Suchanfragen, indem er die Safari-Suchmaschine im Voraus blockiert."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este bloqueador de contenido evita la filtración de consultas de búsqueda bloqueando el buscador de Safari de antemano."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce bloqueur de contenu empêche la fuite des requêtes de recherche en bloquant le moteur de recherche de Safari à l'avance."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "このコンテンツブロッカーは、Safariの検索エンジンを事前にブロックすることで、検索クエリの漏洩を防止します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 콘텐츠 차단기는 Safari의 검색 엔진을 사전에 차단하여 검색어 유출을 방지합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este bloqueador de conteúdo evita o vazamento de consultas de pesquisa bloqueando o buscador do Safari antecipadamente."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Этот блокировщик контента предотвращает утечку поисковых запросов, заранее блокируя поисковую машину Safari."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цей блокувальник контенту запобігає витоку пошукових запитів, заздалегідь блокуючи пошукову систему Safari."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此内容拦截器通过提前拦截 Safari 浏览器的搜索引擎来防止搜索查询泄露。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此內容阻擋器透過預先阻擋 Safari 的搜尋引擎來防止搜尋查詢洩露。"
           }
         }
       }
@@ -11121,10 +11661,70 @@
     },
     "This is an additional extension that blocks Safari's search engine to prevent leaks of your search queries." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هذا ملحق إضافي يحظر محرك بحث سفاري لمنع تسرب استعلامات البحث الخاصة بك."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dies ist eine zusätzliche Erweiterung, die die Safari-Suchmaschine blockiert, um das Durchsickern Ihrer Suchanfragen zu verhindern."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta es una extensión adicional que bloquea el buscador de Safari para evitar la filtración de tus consultas de búsqueda."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il s'agit d'une extension supplémentaire qui bloque le moteur de recherche de Safari pour empêcher la fuite de vos requêtes de recherche."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Safariのデフォルトの検索エンジンをブロックして、検索クエリが漏洩することを防ぐ、追加の拡張機能です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이것은 Safari의 검색 엔진을 차단하여 검색어 유출을 방지하는 추가 확장 프로그램입니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta é uma extensão adicional que bloqueia o buscador do Safari para evitar o vazamento de suas consultas de pesquisa."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Это дополнительное расширение, которое блокирует поисковую машину Safari для предотвращения утечки ваших поисковых запросов."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Це додаткове розширення, яке блокує пошукову систему Safari для запобігання витоку ваших пошукових запитів."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这是一个附加扩展，通过拦截 Safari 浏览器的搜索引擎来防止您的搜索查询泄露。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "這是一個附加延伸功能，透過阻擋 Safari 的搜尋引擎來防止您的搜尋查詢洩露。"
           }
         }
       }
@@ -11551,30 +12151,210 @@
     },
     "Unexpected behavior occurs when going back to a blocked page." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يحدث سلوك غير متوقع عند العودة إلى صفحة محظورة."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unerwartetes Verhalten tritt auf, wenn man zu einer blockierten Seite zurückkehrt."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se produce un comportamiento inesperado al volver a una página bloqueada."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un comportement inattendu se produit lors du retour à une page bloquée."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ブロックされたページに戻ると、意図しない動作をする。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "차단된 페이지로 돌아갈 때 예기치 않은 동작이 발생합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comportamento inesperado ocorre ao voltar a uma página bloqueada."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "При возврате на заблокированную страницу возникает непредвиденное поведение."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "При поверненні на заблоковану сторінку виникає неочікувана поведінка."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "返回被拦截的页面时会出现意外行为。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "返回被阻擋的頁面時會出現意外行為。"
           }
         }
       }
     },
     "Unnecessary messages are temporarily displayed when a search is performed." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يتم عرض رسائل غير ضرورية مؤقتاً عند إجراء بحث."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bei einer Suche werden vorübergehend unnötige Meldungen angezeigt."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se muestran temporalmente mensajes innecesarios al realizar una búsqueda."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Des messages inutiles s'affichent temporairement lors d'une recherche."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "検索をしたときに、不要なメッセージが一時的に表示される。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검색을 수행할 때 불필요한 메시지가 일시적으로 표시됩니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mensagens desnecessárias são exibidas temporariamente ao realizar uma pesquisa."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "При выполнении поиска временно отображаются ненужные сообщения."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "При виконанні пошуку тимчасово відображаються непотрібні повідомлення."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "执行搜索时会临时显示不必要的消息。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "執行搜尋時會暫時顯示不必要的訊息。"
           }
         }
       }
     },
     "Unnecessary search history may remain." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قد يبقى سجل بحث غير ضروري."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unnötiger Suchverlauf kann bestehen bleiben."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puede quedar historial de búsqueda innecesario."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un historique de recherche inutile peut subsister."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "不要な検索履歴が残ってしまう。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "불필요한 검색 기록이 남을 수 있습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O histórico de pesquisa desnecessário pode permanecer."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Может остаться ненужная история поиска."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Може залишитися непотрібна історія пошуку."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可能会残留不必要的搜索历史记录。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可能會殘留不必要的搜尋歷史記錄。"
           }
         }
       }
@@ -12010,10 +12790,70 @@
     },
     "What is CSE Content Blocker?" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ما هو CSE Content Blocker؟"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was ist CSE Content Blocker?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Qué es CSE Content Blocker?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qu'est-ce que CSE Content Blocker ?"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "CSE Content Blockerとは"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSE Content Blocker란?"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O que é o CSE Content Blocker?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Что такое CSE Content Blocker?"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Що таке CSE Content Blocker?"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "什么是 CSE Content Blocker？"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "什麼是 CSE Content Blocker？"
           }
         }
       }
