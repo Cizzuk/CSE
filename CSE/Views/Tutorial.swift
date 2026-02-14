@@ -149,7 +149,7 @@ class Tutorial {
                     VStack(alignment : .leading) {
                         Text("The search engine you select here can see your search queries. If you have privacy concerns, enable \"CSE Content Blocker\" in Safari settings to prevent query leaks. Note that the Content Blocker may disable some features and might not work properly on certain Safari versions.")
                         Spacer()
-                        Link("More details on CSE privacy...", destination: URL(string: "https://cizz.uk/cse/privacy-report")!)
+                        Link("More About CSE & Privacy...", destination: URL(string: "https://cizz.uk/cse/privacy-report")!)
                     }
                     .font(.caption)
                 }
