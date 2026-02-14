@@ -20,7 +20,7 @@ struct CCQuickSearch: ControlWidget {
                 isOn: value,
                 action: CCQuickSearchIntent()
             ) { isRunning in
-                Label(isRunning ? "On" : "Off", image: "symbol_QuickCSEIcon")
+                Label(isRunning ? "On" : "Off", image: "cse_quick")
             }
         }
         .displayName("Quick Search")

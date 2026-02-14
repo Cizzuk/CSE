@@ -20,7 +20,7 @@ struct CCUseDefaultCSE: ControlWidget {
                 isOn: value,
                 action: CCUseDefaultCSEIntent()
             ) { isRunning in
-                Label(isRunning ? "On" : "Off", image: "symbol_CSEIcon")
+                Label(isRunning ? "On" : "Off", image: "cse")
             }
         }
         .displayName("Default Search Engine")

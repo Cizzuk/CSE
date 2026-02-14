@@ -20,7 +20,7 @@ struct CCUsePrivateCSE: ControlWidget {
                 isOn: value,
                 action: CCUsePrivateCSEIntent()
             ) { isRunning in
-                Label(isRunning ? "On" : "Off", image: "symbol_PrivateCSEIcon")
+                Label(isRunning ? "On" : "Off", image: "cse_private")
             }
         }
         .displayName("Private Search Engine")

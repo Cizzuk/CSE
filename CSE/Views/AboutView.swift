@@ -34,6 +34,11 @@ struct AboutView: View {
                 })
             } header: {
                 Text("Customize Search Engine")
+                    .textCase(nil)
+            } footer: {
+                Link("More About CSE & Privacy...", destination: URL(string: "https://cizz.uk/cse/privacy-report")!)
+                    .font(.caption)
+                    .padding(.bottom, 20)
             }
             
             Section {} header: {

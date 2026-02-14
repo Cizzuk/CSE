@@ -1,14 +1,13 @@
 //
-//  IconChangeView.swift
+//  ChangeIconView.swift
 //  Customize Search Engine
 //
 //  Created by Cizzuk on 2024/09/21.
 //
 
-#if !os(visionOS) && !targetEnvironment(macCatalyst)
 import SwiftUI
 
-struct IconChangeView: View {
+struct ChangeIconView: View {
     var body: some View {
         List {
             Section {
@@ -31,7 +30,6 @@ struct IconChangeView: View {
                 .resizable()
                 .frame(width: 64, height: 64)
                 .accessibilityHidden(true)
-                .cornerRadius(16)
                 .padding(8)
                 .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
             Text(iconName)
@@ -48,5 +46,3 @@ struct IconChangeView: View {
         }
     }
 }
-
-#endif
