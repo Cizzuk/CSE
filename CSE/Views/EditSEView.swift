@@ -83,6 +83,7 @@ struct EditSEView: View {
                     }) {
                         Label("Save", systemImage: "checkmark")
                     }
+                    .keyboardShortcut("S", modifiers: [.command])
                 }
                 #if !os(visionOS)
                 ToolbarItemGroup(placement: .keyboard) {
