@@ -11,10 +11,22 @@ struct CSEContentBlockerView: View {
     var body: some View {
         List {
             Section {
-            } footer: {
-                Link("More details on CSE privacy...", destination: URL(string: "https://cizz.uk/cse/privacy-report")!)
-                    .font(.caption)
-                    .padding(.vertical, 4)
+                VStack(alignment: .leading, spacing: 5) {
+                    Image("cse-content-blocker")
+                        .resizable()
+                        .frame(width: 60, height: 60)
+                        .accessibilityHidden(true)
+                        .padding(.bottom, 10)
+                        .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
+                    Text("CSE Content Blocker")
+                        .font(.title2)
+                        .bold()
+                    Text("This is an additional extension that blocks Safari's search engine to prevent leaks of your search queries.")
+                        .foregroundColor(.secondary)
+                }
+                
+                // Open Settings Button
+                UITemplates.OpenSettingsButton()
             }
         }
         .navigationTitle("CSE Content Blocker")
