@@ -148,10 +148,10 @@ class CloudPicker {
         private func deviceRow(_ ds: CSEDataManager.DeviceCSEs) -> some View {
             VStack(alignment: .leading) {
                 Text(ds.deviceName)
-                    .foregroundColor(.primary)
+                    .foregroundStyle(.primary)
                 if let modificationDate: Date = ds.modificationDate {
                     Text("Last Updated: \(modificationDate.formatted(date: .abbreviated, time: .shortened))")
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(.secondary)
                         .font(.subheadline)
                 }
             }
@@ -231,10 +231,10 @@ class CloudPicker {
             VStack(alignment: .leading) {
                 Text(title)
                     .bold()
-                    .foregroundColor(.primary)
+                    .foregroundStyle(.primary)
                 Text(cse.url)
                     .lineLimit(1)
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(.secondary)
                     .font(.subheadline)
             }
         }

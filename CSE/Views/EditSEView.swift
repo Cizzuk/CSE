@@ -188,7 +188,7 @@ struct EditSEView: View {
                     UITemplates.IconLabel(icon: "gearshape.2", text: "Advanced Settings")
                     Spacer()
                     Image(systemName: "chevron.forward")
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(.secondary)
                 }
             }
         }
@@ -259,12 +259,12 @@ private struct AdvancedSettingsView: View {
                             Text("POST Data")
                             Spacer()
                             Text("\(cseData.post.count)")
-                                .foregroundColor(.secondary)
+                                .foregroundStyle(.secondary)
                             Image(systemName: "chevron.forward")
-                                .foregroundColor(.secondary)
+                                .foregroundStyle(.secondary)
                         }
                     }
-                    .foregroundColor(.primary)
+                    .foregroundStyle(.primary)
                     .contextMenu {
                         Button(role: .destructive) {
                             cseData.post = []

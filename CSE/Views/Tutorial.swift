@@ -27,7 +27,7 @@ class Tutorial {
                             .resizable()
                             .frame(width: 28, height: 28)
                             .accessibilityHidden(true)
-                            .foregroundColor(.accentColor)
+                            .foregroundStyle(.accent)
                             .padding(6)
                         Text("Enable Extension in Safari")
                             .font(.headline)
@@ -37,7 +37,7 @@ class Tutorial {
                             .resizable()
                             .frame(width: 28, height: 28)
                             .accessibilityHidden(true)
-                            .foregroundColor(.accentColor)
+                            .foregroundStyle(.accent)
                             .padding(6)
                         Text("Setup Custom Search Engine")
                             .font(.headline)
@@ -47,7 +47,7 @@ class Tutorial {
                             .resizable()
                             .frame(width: 28, height: 28)
                             .accessibilityHidden(true)
-                            .foregroundColor(.accentColor)
+                            .foregroundStyle(.accent)
                             .padding(6)
                         Text("Enjoy your Search Life!")
                             .font(.headline)
@@ -258,12 +258,12 @@ class Tutorial {
                 Section {
                     Button(action: { showingFileImport = true }) {
                         UITemplates.IconLabel(icon: "square.and.arrow.down", text: "Import from JSON")
-                            .foregroundColor(.accentColor)
+                            .foregroundStyle(.accent)
                     }
                     
                     Button(action: { showingCloudImport = true }) {
                         UITemplates.IconLabel(icon: "icloud.and.arrow.down", text: "Restore from iCloud")
-                            .foregroundColor(.accentColor)
+                            .foregroundStyle(.accent)
                     }
                 }
                 
