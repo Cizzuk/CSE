@@ -305,19 +305,25 @@ enum SafariSEs: String, CaseIterable {
         
         // valueInShortcuts
         if let matched = SafariSEs.allCases.first(where: { $0.valueInShortcuts.lowercased() == value }) {
+            #if DEBUG
             print("Matched by valueInShortcuts: \(matched)")
+            #endif
             return matched
         }
         
         // displayName
         if let matched = SafariSEs.allCases.first(where: { String(localized: $0.displayName).lowercased() == value }) {
+            #if DEBUG
             print("Matched by displayName: \(matched)")
+            #endif
             return matched
         }
         
         // rawValue
         if let matched = SafariSEs(rawValue: value) {
+            #if DEBUG
             print("Matched by rawValue: \(matched)")
+            #endif
             return matched
         }
         

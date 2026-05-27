@@ -71,7 +71,9 @@ final class CloudKitManager: ObservableObject {
         guard mustUpload || userDefaults.bool(forKey: "iCloudAutoBackup") else {
             self.currentStatus = .skipped
             self.error = nil
+            #if DEBUG
             print("CloudKit upload is disabled in settings.")
+            #endif
             return
         }
         self.currentStatus = .inProgress
@@ -132,13 +134,17 @@ final class CloudKitManager: ObservableObject {
             
             // Gen hash
             let currentRecordHash = generateHash(from: CSEDataManager.jsonDictToString(combinedDict) ?? "")
+            #if DEBUG
             print("Current record hash: \(currentRecordHash.base64EncodedString())")
+            #endif
             
             // Compare with last uploaded hash (unless forced)
             if !mustUpload {
                 let lastRecordHash = userDefaults.data(forKey: "cloudkit_lastRecordHash") ?? Data()
                 guard currentRecordHash != lastRecordHash else {
+                    #if DEBUG
                     print("No changes detected, skipping CloudKit upload.")
+                    #endif
                     DispatchQueue.main.async {
                         self.currentStatus = .skipped
                         self.error = nil
