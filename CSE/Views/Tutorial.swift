@@ -85,7 +85,7 @@ class Tutorial {
             List {
                 UITemplates.HeaderSection(
                     title: "Safari Settings",
-                    description: "Please make sure that the following items are the same as your Safari settings"
+                    description: "Please configure the settings to match the actual Safari settings."
                 )
                 
                 // Open Settings Button
@@ -184,7 +184,7 @@ class Tutorial {
             List {
                 UITemplates.HeaderSection(
                     title: "Safari Settings",
-                    description: "Please allow CSE at the following webpage"
+                    description: "Please allow CSE at the following webpage."
                 )
                 
                 Section {
