@@ -92,6 +92,7 @@ class CloudPicker {
                 } label: {
                     deviceRow(ds)
                 }
+                .buttonStyle(.plain)
                 .contextMenu {
                     Button(role: .destructive) {
                         ck.delete(recordID: ds.id)
@@ -114,6 +115,7 @@ class CloudPicker {
         private var pickSingleCSEList: some View {
             ForEach(ck.allCSEs) { ds in
                 NavigationLink(value: ds) { deviceRow(ds) }
+                    .buttonStyle(.plain)
                     .contextMenu {
                         Button(role: .destructive) {
                             ck.delete(recordID: ds.id)
@@ -188,6 +190,7 @@ class CloudPicker {
                         } label: {
                             cseSummary(title: "Default Search Engine", cse: defaultCSE)
                         }
+                        .buttonStyle(.plain)
                     }
                 }
                 if privateCSE.url != "" {
@@ -197,6 +200,7 @@ class CloudPicker {
                         } label: {
                             cseSummary(title: "Private Search Engine", cse: privateCSE)
                         }
+                        .buttonStyle(.plain)
                     }
                 }
                 if quickCSE.count > 0 {
@@ -209,6 +213,7 @@ class CloudPicker {
                                 } label: {
                                     cseSummary(title: displayName, cse: se)
                                 }
+                                .buttonStyle(.plain)
                             }
                         }
                     } header: { Text("Quick Search Engines") }
