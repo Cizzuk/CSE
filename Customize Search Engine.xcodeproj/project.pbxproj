@@ -97,6 +97,7 @@
 				SetDefaultSE.swift,
 				SetFocusSE.swift,
 				SetPrivateSE.swift,
+				SetSafariSettingsSearchEngine.swift,
 				SetUseEmojiSearch.swift,
 				SetUseQuickSearch.swift,
 			);
