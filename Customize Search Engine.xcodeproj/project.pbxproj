@@ -91,6 +91,7 @@
 			membershipExceptions = (
 				AddQuickSE.swift,
 				DeleteQuickSE.swift,
+				ExportBackupJSON.swift,
 				GetCSESettings.swift,
 				GetQuickCSEList.swift,
 				IntentEnums.swift,
