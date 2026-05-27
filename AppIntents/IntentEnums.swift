@@ -5,7 +5,6 @@
 //  Created by Cizzuk on 2025/01/24.
 //
 
-import Foundation
 import AppIntents
 
 enum IntentTurnEnum: String, AppEnum {

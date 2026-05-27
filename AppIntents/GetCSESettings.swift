@@ -5,7 +5,6 @@
 //  Created by Cizzuk on 2025/06/02.
 //
 
-import Foundation
 import AppIntents
 
 struct GetCSESettings: AppIntent, CustomIntentMigratedAppIntent {
@@ -14,13 +13,13 @@ struct GetCSESettings: AppIntent, CustomIntentMigratedAppIntent {
     static var description: LocalizedStringResource = "Gets the current Custom Search Engine setting."
     
     @Parameter(title: "Search Engine Type", default: .defaultCSE)
-        var type: CSEDataManager.CSEType
+    var type: CSEDataManager.CSEType
     
     @Parameter(title: "Keyword", default: "")
-        var cseID: String
+    var cseID: String
     
     @Parameter(title: "CSE Settings", default: .url)
-        var settings: IntentCSESettingsEnum
+    var settings: IntentCSESettingsEnum
     
     static var parameterSummary: some ParameterSummary {
         When(\Self.$type, .notEqualTo, .quickCSE) {

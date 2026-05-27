@@ -5,7 +5,6 @@
 //  Created by Cizzuk on 2025/01/24.
 //
 
-import Foundation
 import AppIntents
 
 struct DeleteQuickSE: AppIntent, CustomIntentMigratedAppIntent {
@@ -14,7 +13,7 @@ struct DeleteQuickSE: AppIntent, CustomIntentMigratedAppIntent {
     static var description: LocalizedStringResource = "Delete a Custom Quick Search Engine with Keyword."
     
     @Parameter(title: "Keyword")
-        var cseID: String
+    var cseID: String
     
     static var parameterSummary: some ParameterSummary {
         Summary("Delete Quick Search Engine for Keyword \(\.$cseID)")
