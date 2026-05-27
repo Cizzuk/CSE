@@ -7865,36 +7865,36 @@
         }
       }
     },
-    "Please allow CSE at the following webpage" : {
+    "Please allow CSE at the following webpage." : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "يرجى السماح بـ CSE على صفحة الويب التالية"
+            "value" : "يرجى السماح بـ CSE على صفحة الويب التالية."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bitte erlauben Sie CSE, die folgende Webseite bearbeiten"
+            "value" : "Bitte erlauben Sie CSE, die folgende Webseite bearbeiten."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Por favor, permita a CSE en la siguiente página web"
+            "value" : "Por favor, permita a CSE en la siguiente página web."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Veuillez autoriser le CSE à consulter la page web suivante"
+            "value" : "Veuillez autoriser le CSE à consulter la page web suivante."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "以下のWebページでCSEを許可してください"
+            "value" : "以下のWebページでCSEを許可してください。"
           }
         },
         "ko" : {
@@ -7906,101 +7906,41 @@
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Por favor, permita o CSE na seguinte página da web"
+            "value" : "Por favor, permita o CSE na seguinte página da web."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Пожалуйста, разрешите проведение ЕГЭ на следующей веб-странице"
+            "value" : "Пожалуйста, разрешите проведение ЕГЭ на следующей веб-странице."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Будь ласка, дозвольте CSE на наступній веб-сторінці"
+            "value" : "Будь ласка, дозвольте CSE на наступній веб-сторінці."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请允许 CSE 访问以下网页"
+            "value" : "请允许 CSE 访问以下网页。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "請在以下網站上允許 CSE"
+            "value" : "請在以下網站上允許 CSE。"
           }
         }
       }
     },
-    "Please make sure that the following items are the same as your Safari settings" : {
+    "Please configure the settings to match the actual Safari settings." : {
       "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "يرجى التأكد من أن العناصر التالية هي نفسها إعدادات سفاري الخاصة بك"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bitte vergewissern Sie sich, dass die folgenden Punkte mit Ihren Safari-Einstellungen übereinstimmen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Asegúrese de que los siguientes elementos coinciden con la configuración de Safari"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Veillez à ce que les éléments suivants correspondent aux paramètres de Safari"
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "以下の項目をあなたのSafariの設定と同じものにしてください。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "아래 항목을 Safari의 설정과 동일하게 설정해 주세요."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Por favor, certifique-se de que os seguintes itens são os mesmos que suas configurações do Safari"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Убедитесь, что следующие пункты совпадают с настройками Safari"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Будь ласка, переконайтеся, що наступні пункти збігаються з параметрами вашого браузера Safari"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "请确保以下项目与您的 Safari 浏览器设置相同"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "請確認下列項目與您的 Safari 設定相同"
+            "value" : "実際のSafariの設定と同じになるように設定してください。"
           }
         }
       }
@@ -10529,6 +10469,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "設定快速搜尋"
+          }
+        }
+      }
+    },
+    "Set Safari's Search Engine" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safariの検索エンジンを設定"
           }
         }
       }
