@@ -45,7 +45,7 @@ class UITemplates {
                 }
             }
             .accessibilityLabel(cse.name)
-            .foregroundStyle(.primary)
+            .buttonStyle(.plain)
         }
     }
     
@@ -84,7 +84,7 @@ class UITemplates {
                         .bold()
                         .padding()
                         #if !os(visionOS)
-                        .foregroundStyle(.primary)
+                        .foregroundStyle(.white)
                         #endif
                 }
                 .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
