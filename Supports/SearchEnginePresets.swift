@@ -173,11 +173,6 @@ class SearchEnginePresets {
                 url: "https://search.brave.com/search?q=%s",
             ),
             CSEDataManager.CSEData(
-                name: "Google &udm=14",
-                keyword: "g",
-                url: "https://www.google.com/search?q=%s&udm=14&client=safari",
-            ),
-            CSEDataManager.CSEData(
                 name: "DuckDuckGo Lite",
                 keyword: "lite",
                 url: "https://lite.duckduckgo.com/lite?q=%s",
@@ -216,6 +211,24 @@ class SearchEnginePresets {
         }
         
         return popCSEs
+    }
+    
+    static var noaiCSEList: [CSEDataManager.CSEData] {
+        let noaiCSEs: [CSEDataManager.CSEData] = [
+            CSEDataManager.CSEData(
+                name: "DuckDuckGo No AI",
+                keyword: "noai",
+                url: "https://noai.duckduckgo.com/?q=%s",
+                maxQueryLength: 500,
+            ),
+            CSEDataManager.CSEData(
+                name: "Google &udm=14",
+                keyword: "g",
+                url: "https://www.google.com/search?q=%s&udm=14&client=safari",
+            ),
+        ]
+        
+        return noaiCSEs
     }
         
     static var aiCSEList: [CSEDataManager.CSEData] {

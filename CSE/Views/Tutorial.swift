@@ -245,6 +245,7 @@ class Tutorial {
         @State private var showingErrorAlert = false
         @State private var errorMessage = ""
         private let popCSEList = SearchEnginePresets.popCSEList
+        private let noaiCSEList = SearchEnginePresets.noaiCSEList
         private let aiCSEList = SearchEnginePresets.aiCSEList
         private let safariCSEList = SearchEnginePresets.safariCSEList
         
@@ -267,14 +268,27 @@ class Tutorial {
                     }
                 }
                 
-                Section {
-                    ForEach(popCSEList.indices, id: \.self, content: { index in
-                        UITemplates.PresetSEButton(action: {
-                            CSEDataManager.saveCSEData(popCSEList[index], .defaultCSE)
-                            isOpenSheet = false
-                        }, cse: popCSEList[index])
-                    })
-                } header: { Text("Popular Search Engines") }
+                if !popCSEList.isEmpty {
+                    Section {
+                        ForEach(popCSEList.indices, id: \.self, content: { index in
+                            UITemplates.PresetSEButton(action: {
+                                CSEDataManager.saveCSEData(popCSEList[index], .defaultCSE)
+                                isOpenSheet = false
+                            }, cse: popCSEList[index])
+                        })
+                    } header: { Text("Popular Search Engines") }
+                }
+                
+                if !noaiCSEList.isEmpty {
+                    Section {
+                        ForEach(noaiCSEList.indices, id: \.self, content: { index in
+                            UITemplates.PresetSEButton(action: {
+                                CSEDataManager.saveCSEData(noaiCSEList[index], .defaultCSE)
+                                isOpenSheet = false
+                            }, cse: noaiCSEList[index])
+                        })
+                    } header: { Text("Known as No AI") }
+                }
                 
                 if !aiCSEList.isEmpty {
                     Section {
@@ -287,14 +301,16 @@ class Tutorial {
                     } header: { Text("AI Assistants") }
                 }
                 
-                Section {
-                    ForEach(safariCSEList.indices, id: \.self, content: { index in
-                        UITemplates.PresetSEButton(action: {
-                            CSEDataManager.saveCSEData(safariCSEList[index], .defaultCSE)
-                            isOpenSheet = false
-                        }, cse: safariCSEList[index])
-                    })
-                } header: { Text("Safari Search Engines") }
+                if !safariCSEList.isEmpty {
+                    Section {
+                        ForEach(safariCSEList.indices, id: \.self, content: { index in
+                            UITemplates.PresetSEButton(action: {
+                                CSEDataManager.saveCSEData(safariCSEList[index], .defaultCSE)
+                                isOpenSheet = false
+                            }, cse: safariCSEList[index])
+                        })
+                    } header: { Text("Safari Search Engines") }
+                }
             }
             #if !os(visionOS)
             .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
