@@ -287,7 +287,7 @@ class Tutorial {
                                 isOpenSheet = false
                             }, cse: noaiCSEList[index])
                         })
-                    } header: { Text("Known as No AI") }
+                    } header: { Text("Without AI") }
                 }
                 
                 if !aiCSEList.isEmpty {

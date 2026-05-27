@@ -406,7 +406,7 @@ private struct PresetsView: View {
                                 isOpenSheet = false
                             }, cse: cse)
                         })
-                    } header: { Text("Known as No AI") }
+                    } header: { Text("Without AI") }
                 }
                 
                 // AI Search Engine List
