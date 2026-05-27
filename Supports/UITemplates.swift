@@ -40,12 +40,14 @@ class UITemplates {
                         .bold()
                     Text(cse.url)
                         .lineLimit(1)
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(.secondary)
                         .font(.subheadline)
                 }
             }
             .accessibilityLabel(cse.name)
-            .foregroundColor(.primary)
+            #if !os(visionOS)
+            .buttonStyle(.plain)
+            #endif
         }
     }
     
@@ -60,13 +62,13 @@ class UITemplates {
                     .textCase(.none)
                     .font(.title)
                     .fontWeight(.bold)
-                    .foregroundColor(.primary)
+                    .foregroundStyle(.primary)
                     .padding(.top, 35)
             }
             footer: {
                 Text(String(localized: description))
                     .font(.body)
-                    .foregroundColor(.primary)
+                    .foregroundStyle(.primary)
                     .padding(.bottom, 20)
             }
         }
@@ -84,7 +86,7 @@ class UITemplates {
                         .bold()
                         .padding()
                         #if !os(visionOS)
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
                         #endif
                 }
                 .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
@@ -105,7 +107,7 @@ class UITemplates {
             }) {
                 UITemplates.IconLabel(icon: "gear", text: "Open Settings")
                     #if !os(visionOS)
-                    .foregroundColor(.accentColor)
+                    .foregroundStyle(.accent)
                     #endif
             }
             #endif

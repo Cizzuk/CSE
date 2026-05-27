@@ -92,6 +92,9 @@ class CloudPicker {
                 } label: {
                     deviceRow(ds)
                 }
+                #if !os(visionOS)
+                .buttonStyle(.plain)
+                #endif
                 .contextMenu {
                     Button(role: .destructive) {
                         ck.delete(recordID: ds.id)
@@ -114,6 +117,9 @@ class CloudPicker {
         private var pickSingleCSEList: some View {
             ForEach(ck.allCSEs) { ds in
                 NavigationLink(value: ds) { deviceRow(ds) }
+                    #if !os(visionOS)
+                    .buttonStyle(.plain)
+                    #endif
                     .contextMenu {
                         Button(role: .destructive) {
                             ck.delete(recordID: ds.id)
@@ -148,10 +154,10 @@ class CloudPicker {
         private func deviceRow(_ ds: CSEDataManager.DeviceCSEs) -> some View {
             VStack(alignment: .leading) {
                 Text(ds.deviceName)
-                    .foregroundColor(.primary)
+                    .foregroundStyle(.primary)
                 if let modificationDate: Date = ds.modificationDate {
                     Text("Last Updated: \(modificationDate.formatted(date: .abbreviated, time: .shortened))")
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(.secondary)
                         .font(.subheadline)
                 }
             }
@@ -188,6 +194,9 @@ class CloudPicker {
                         } label: {
                             cseSummary(title: "Default Search Engine", cse: defaultCSE)
                         }
+                        #if !os(visionOS)
+                        .buttonStyle(.plain)
+                        #endif
                     }
                 }
                 if privateCSE.url != "" {
@@ -197,6 +206,9 @@ class CloudPicker {
                         } label: {
                             cseSummary(title: "Private Search Engine", cse: privateCSE)
                         }
+                        #if !os(visionOS)
+                        .buttonStyle(.plain)
+                        #endif
                     }
                 }
                 if quickCSE.count > 0 {
@@ -209,6 +221,9 @@ class CloudPicker {
                                 } label: {
                                     cseSummary(title: displayName, cse: se)
                                 }
+                                #if !os(visionOS)
+                                .buttonStyle(.plain)
+                                #endif
                             }
                         }
                     } header: { Text("Quick Search Engines") }
@@ -231,10 +246,10 @@ class CloudPicker {
             VStack(alignment: .leading) {
                 Text(title)
                     .bold()
-                    .foregroundColor(.primary)
+                    .foregroundStyle(.primary)
                 Text(cse.url)
                     .lineLimit(1)
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(.secondary)
                     .font(.subheadline)
             }
         }

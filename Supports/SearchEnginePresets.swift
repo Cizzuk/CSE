@@ -91,7 +91,7 @@ class SearchEnginePresets {
         if currentRegion != "CN" {
             baseCSEs["gpt"] = CSEDataManager.CSEData(
                 name: "ChatGPT",
-                url: "https://chatgpt.com/?q=%s&hints=search",
+                url: "https://chatgpt.com/?q=%s",
             )
             baseCSEs["pplx"] = CSEDataManager.CSEData(
                 name: "Perplexity",
@@ -173,11 +173,6 @@ class SearchEnginePresets {
                 url: "https://search.brave.com/search?q=%s",
             ),
             CSEDataManager.CSEData(
-                name: "Google &udm=14",
-                keyword: "g",
-                url: "https://www.google.com/search?q=%s&udm=14&client=safari",
-            ),
-            CSEDataManager.CSEData(
                 name: "DuckDuckGo Lite",
                 keyword: "lite",
                 url: "https://lite.duckduckgo.com/lite?q=%s",
@@ -217,6 +212,24 @@ class SearchEnginePresets {
         
         return popCSEs
     }
+    
+    static var noaiCSEList: [CSEDataManager.CSEData] {
+        let noaiCSEs: [CSEDataManager.CSEData] = [
+            CSEDataManager.CSEData(
+                name: "DuckDuckGo No AI",
+                keyword: "noai",
+                url: "https://noai.duckduckgo.com/?q=%s",
+                maxQueryLength: 500,
+            ),
+            CSEDataManager.CSEData(
+                name: "Google &udm=14",
+                keyword: "g",
+                url: "https://www.google.com/search?q=%s&udm=14&client=safari",
+            ),
+        ]
+        
+        return noaiCSEs
+    }
         
     static var aiCSEList: [CSEDataManager.CSEData] {
         var aiCSEs: [CSEDataManager.CSEData] = []
@@ -226,12 +239,17 @@ class SearchEnginePresets {
                 CSEDataManager.CSEData(
                     name: "ChatGPT",
                     keyword: "gpt",
-                    url: "https://chatgpt.com/?q=%s&hints=search",
+                    url: "https://chatgpt.com/?q=%s",
                 ),
                 CSEDataManager.CSEData(
                     name: "Perplexity",
                     keyword: "pplx",
                     url: "https://www.perplexity.ai/?q=%s",
+                ),
+                CSEDataManager.CSEData(
+                    name: "Duck.ai",
+                    keyword: "duckai",
+                    url: "https://duck.ai/chat?home=1&prompt=1&q=%s",
                 ),
                 CSEDataManager.CSEData(
                     name: "Google AI Mode",
@@ -247,9 +265,9 @@ class SearchEnginePresets {
             
             if currentRegion == "JP" || containsLanguage("ja") {
                 aiCSEs.append(CSEDataManager.CSEData(
-                    name: "Yahoo!検索 AIアシスタント",
+                    name: "Agent i",
                     keyword: "yai",
-                    url: "https://search.yahoo.co.jp/chat?q=%s",
+                    url: "https://search.yahoo.co.jp/chat/s/n?q=%s&s=request_parameter_question",
                 ))
             }
             
@@ -263,13 +281,6 @@ class SearchEnginePresets {
             ])
         }
         
-        if currentRegion == "CN" || containsLanguage("zh-Hans") {
-            aiCSEs.append(CSEDataManager.CSEData(
-                name: "百度AI搜索",
-                keyword: "baiduai",
-                url: "https://chat.baidu.com/search?query=%s",
-            ))
-        }
         return aiCSEs
     }
     

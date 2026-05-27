@@ -5,7 +5,6 @@
 //  Created by Cizzuk on 2025/01/24.
 //
 
-import Foundation
 import AppIntents
 #if !os(visionOS)
 import WidgetKit
@@ -15,12 +14,12 @@ struct SetUseEmojiSearch: AppIntent, CustomIntentMigratedAppIntent {
     static let intentClassName = "SetUseEmojiSearch"
     static var title: LocalizedStringResource = "Set Emoji Search"
     static var description: LocalizedStringResource = "Turn Emoji Search On or Off on CSE."
-
+    
     @Parameter(title: "Operation", default: .turn)
-        var toggle: IntentTurnEnum?
-
+    var toggle: IntentTurnEnum?
+    
     @Parameter(title: "State", default: true)
-        var state: Bool
+    var state: Bool
     
     static var parameterSummary: some ParameterSummary {
         When(\.$toggle, .equalTo, .turn) {
@@ -29,7 +28,7 @@ struct SetUseEmojiSearch: AppIntent, CustomIntentMigratedAppIntent {
             Summary("\(\.$toggle) Emoji Search")
         }
     }
-
+    
     func perform() async throws -> some IntentResult {
         let userDefaults = CSEDataManager.userDefaults
         var useEmojiSearch: Bool = userDefaults.bool(forKey: "useEmojiSearch")

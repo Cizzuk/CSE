@@ -283,4 +283,50 @@ enum SafariSEs: String, CaseIterable {
         // Not found
         return nil
     }
+    
+    // MARK: - Shortcut Support
+    
+    var valueInShortcuts: String {
+        switch self {
+        case .google: return "Google"
+        case .yahoo: return "Yahoo!"
+        case .bing: return "Bing"
+        case .duckduckgo: return "DuckDuckGo"
+        case .ecosia: return "Ecosia"
+        case .baidu: return "Baidu"
+        case .sogou: return "Sogou"
+        case .so360search: return "Qihoo"
+        case .yandex: return "Yandex"
+        }
+    }
+    
+    static func convertForShortcuts(_ engine: String) -> SafariSEs? {
+        let value = engine.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        
+        // valueInShortcuts
+        if let matched = SafariSEs.allCases.first(where: { $0.valueInShortcuts.lowercased() == value }) {
+            #if DEBUG
+            print("Matched by valueInShortcuts: \(matched)")
+            #endif
+            return matched
+        }
+        
+        // displayName
+        if let matched = SafariSEs.allCases.first(where: { String(localized: $0.displayName).lowercased() == value }) {
+            #if DEBUG
+            print("Matched by displayName: \(matched)")
+            #endif
+            return matched
+        }
+        
+        // rawValue
+        if let matched = SafariSEs(rawValue: value) {
+            #if DEBUG
+            print("Matched by rawValue: \(matched)")
+            #endif
+            return matched
+        }
+        
+        return nil
+    }
 }

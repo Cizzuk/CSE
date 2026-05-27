@@ -27,7 +27,7 @@ class Tutorial {
                             .resizable()
                             .frame(width: 28, height: 28)
                             .accessibilityHidden(true)
-                            .foregroundColor(.accentColor)
+                            .foregroundStyle(.accent)
                             .padding(6)
                         Text("Enable Extension in Safari")
                             .font(.headline)
@@ -37,7 +37,7 @@ class Tutorial {
                             .resizable()
                             .frame(width: 28, height: 28)
                             .accessibilityHidden(true)
-                            .foregroundColor(.accentColor)
+                            .foregroundStyle(.accent)
                             .padding(6)
                         Text("Setup Custom Search Engine")
                             .font(.headline)
@@ -47,7 +47,7 @@ class Tutorial {
                             .resizable()
                             .frame(width: 28, height: 28)
                             .accessibilityHidden(true)
-                            .foregroundColor(.accentColor)
+                            .foregroundStyle(.accent)
                             .padding(6)
                         Text("Enjoy your Search Life!")
                             .font(.headline)
@@ -85,7 +85,7 @@ class Tutorial {
             List {
                 UITemplates.HeaderSection(
                     title: "Safari Settings",
-                    description: "Please make sure that the following items are the same as your Safari settings"
+                    description: "Please configure the settings to match the actual Safari settings."
                 )
                 
                 // Open Settings Button
@@ -184,7 +184,7 @@ class Tutorial {
             List {
                 UITemplates.HeaderSection(
                     title: "Safari Settings",
-                    description: "Please allow CSE at the following webpage"
+                    description: "Please allow CSE at the following webpage."
                 )
                 
                 Section {
@@ -245,6 +245,7 @@ class Tutorial {
         @State private var showingErrorAlert = false
         @State private var errorMessage = ""
         private let popCSEList = SearchEnginePresets.popCSEList
+        private let noaiCSEList = SearchEnginePresets.noaiCSEList
         private let aiCSEList = SearchEnginePresets.aiCSEList
         private let safariCSEList = SearchEnginePresets.safariCSEList
         
@@ -258,23 +259,36 @@ class Tutorial {
                 Section {
                     Button(action: { showingFileImport = true }) {
                         UITemplates.IconLabel(icon: "square.and.arrow.down", text: "Import from JSON")
-                            .foregroundColor(.accentColor)
+                            .foregroundStyle(.accent)
                     }
                     
                     Button(action: { showingCloudImport = true }) {
                         UITemplates.IconLabel(icon: "icloud.and.arrow.down", text: "Restore from iCloud")
-                            .foregroundColor(.accentColor)
+                            .foregroundStyle(.accent)
                     }
                 }
                 
-                Section {
-                    ForEach(popCSEList.indices, id: \.self, content: { index in
-                        UITemplates.PresetSEButton(action: {
-                            CSEDataManager.saveCSEData(popCSEList[index], .defaultCSE)
-                            isOpenSheet = false
-                        }, cse: popCSEList[index])
-                    })
-                } header: { Text("Popular Search Engines") }
+                if !popCSEList.isEmpty {
+                    Section {
+                        ForEach(popCSEList.indices, id: \.self, content: { index in
+                            UITemplates.PresetSEButton(action: {
+                                CSEDataManager.saveCSEData(popCSEList[index], .defaultCSE)
+                                isOpenSheet = false
+                            }, cse: popCSEList[index])
+                        })
+                    } header: { Text("Popular Search Engines") }
+                }
+                
+                if !noaiCSEList.isEmpty {
+                    Section {
+                        ForEach(noaiCSEList.indices, id: \.self, content: { index in
+                            UITemplates.PresetSEButton(action: {
+                                CSEDataManager.saveCSEData(noaiCSEList[index], .defaultCSE)
+                                isOpenSheet = false
+                            }, cse: noaiCSEList[index])
+                        })
+                    } header: { Text("Without AI") }
+                }
                 
                 if !aiCSEList.isEmpty {
                     Section {
@@ -287,14 +301,16 @@ class Tutorial {
                     } header: { Text("AI Assistants") }
                 }
                 
-                Section {
-                    ForEach(safariCSEList.indices, id: \.self, content: { index in
-                        UITemplates.PresetSEButton(action: {
-                            CSEDataManager.saveCSEData(safariCSEList[index], .defaultCSE)
-                            isOpenSheet = false
-                        }, cse: safariCSEList[index])
-                    })
-                } header: { Text("Safari Search Engines") }
+                if !safariCSEList.isEmpty {
+                    Section {
+                        ForEach(safariCSEList.indices, id: \.self, content: { index in
+                            UITemplates.PresetSEButton(action: {
+                                CSEDataManager.saveCSEData(safariCSEList[index], .defaultCSE)
+                                isOpenSheet = false
+                            }, cse: safariCSEList[index])
+                        })
+                    } header: { Text("Safari Search Engines") }
+                }
             }
             #if !os(visionOS)
             .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())

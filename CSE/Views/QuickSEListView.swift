@@ -55,7 +55,7 @@ struct QuickSEListView: View {
                             NavigationLink(destination: EditSEView(type: .quickCSE)) {
                                 UITemplates.IconLabel(icon: "plus.circle", text: "Add New Search Engine")
                                 #if !os(visionOS)
-                                .foregroundColor(.accentColor)
+                                .foregroundStyle(.accent)
                                 #endif
                             }
                             .keyboardShortcut("N", modifiers: [.command])
@@ -77,7 +77,7 @@ struct QuickSEListView: View {
                                         .bold()
                                     Text(displayName)
                                         .lineLimit(1)
-                                        .foregroundColor(.secondary)
+                                        .foregroundStyle(.secondary)
                                 }
                             }
                             .accessibilityLabel("\(displayName), " + keywordTranslation + ", \(cseID)")

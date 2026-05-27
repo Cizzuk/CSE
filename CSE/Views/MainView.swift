@@ -58,7 +58,7 @@ struct ContentView: View {
                             UITemplates.IconLabel(icon: "magnifyingglass", text: "Default Search Engine")
                             Spacer()
                             Text(useDefaultCSE ? "On" : "Off")
-                                .foregroundColor(.secondary)
+                                .foregroundStyle(.secondary)
                                 .multilineTextAlignment(.trailing)
                         }
                     }
@@ -69,7 +69,7 @@ struct ContentView: View {
                             UITemplates.IconLabel(icon: "hand.raised", text: "Private Search Engine")
                             Spacer()
                             Text(usePrivateCSE ? "On" : "Off")
-                                .foregroundColor(.secondary)
+                                .foregroundStyle(.secondary)
                                 .multilineTextAlignment(.trailing)
                         }
                     }
@@ -80,7 +80,7 @@ struct ContentView: View {
                             UITemplates.IconLabel(icon: "hare", text: "Quick Search")
                             Spacer()
                             Text(useQuickCSE ? "On" : "Off")
-                                .foregroundColor(.secondary)
+                                .foregroundStyle(.secondary)
                                 .multilineTextAlignment(.trailing)
                         }
                     }
@@ -92,7 +92,7 @@ struct ContentView: View {
                             UITemplates.IconLabel(icon: "face.smiling", text: "Emoji Search")
                             Spacer()
                             Text(useEmojiSearch ? "On" : "Off")
-                                .foregroundColor(.secondary)
+                                .foregroundStyle(.secondary)
                                 .multilineTextAlignment(.trailing)
                         }
                     }
@@ -104,14 +104,17 @@ struct ContentView: View {
                         VStack(alignment: .leading) {
                             UITemplates.IconLabel(icon: "safari", text: "Safari Settings")
                                 #if !os(visionOS)
-                                .foregroundColor(.accentColor)
+                                .foregroundStyle(.accent)
                                 #endif
                             Spacer().frame(height: 4)
                             Text("If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial.")
-                                .foregroundColor(.secondary)
+                                .foregroundStyle(.secondary)
                                 .font(.caption)
                         }
                     }
+                    #if !os(visionOS)
+                    .buttonStyle(.plain)
+                    #endif
                 }
                 
                 Section {

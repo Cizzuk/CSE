@@ -21,7 +21,7 @@ struct CSEContentBlockerView: View {
                         .font(.title2)
                         .bold()
                     Text("This is an additional extension that blocks Safari's search engine to prevent leaks of your search queries.")
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(.secondary)
                 }
                 
                 // Open Settings Button

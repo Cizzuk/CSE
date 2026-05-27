@@ -188,7 +188,7 @@ struct EditSEView: View {
                     UITemplates.IconLabel(icon: "gearshape.2", text: "Advanced Settings")
                     Spacer()
                     Image(systemName: "chevron.forward")
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(.secondary)
                 }
             }
         }
@@ -259,12 +259,12 @@ private struct AdvancedSettingsView: View {
                             Text("POST Data")
                             Spacer()
                             Text("\(cseData.post.count)")
-                                .foregroundColor(.secondary)
+                                .foregroundStyle(.secondary)
                             Image(systemName: "chevron.forward")
-                                .foregroundColor(.secondary)
+                                .foregroundStyle(.secondary)
                         }
                     }
-                    .foregroundColor(.primary)
+                    .foregroundStyle(.primary)
                     .contextMenu {
                         Button(role: .destructive) {
                             cseData.post = []
@@ -376,6 +376,7 @@ private struct PresetsView: View {
     @Binding var CSEData: CSEDataManager.CSEData
     
     private let popCSEList = SearchEnginePresets.popCSEList
+    private let noaiCSEList = SearchEnginePresets.noaiCSEList
     private let aiCSEList = SearchEnginePresets.aiCSEList
     private let safariCSEList = SearchEnginePresets.safariCSEList
     
@@ -383,15 +384,30 @@ private struct PresetsView: View {
         NavigationStack {
             List {
                 // Search Engine List
-                Section {
-                    ForEach(popCSEList.indices, id: \.self, content: { index in
-                        let cse = popCSEList[index]
-                        UITemplates.PresetSEButton(action: {
-                            CSEData = cse
-                            isOpenSheet = false
-                        }, cse: cse)
-                    })
-                } header: { Text("Popular Search Engines") }
+                if !popCSEList.isEmpty {
+                    Section {
+                        ForEach(popCSEList.indices, id: \.self, content: { index in
+                            let cse = popCSEList[index]
+                            UITemplates.PresetSEButton(action: {
+                                CSEData = cse
+                                isOpenSheet = false
+                            }, cse: cse)
+                        })
+                    } header: { Text("Popular Search Engines") }
+                }
+                
+                // Known as No AI Search Engine List
+                if !noaiCSEList.isEmpty {
+                    Section {
+                        ForEach(noaiCSEList.indices, id: \.self, content: { index in
+                            let cse = noaiCSEList[index]
+                            UITemplates.PresetSEButton(action: {
+                                CSEData = cse
+                                isOpenSheet = false
+                            }, cse: cse)
+                        })
+                    } header: { Text("Without AI") }
+                }
                 
                 // AI Search Engine List
                 if !aiCSEList.isEmpty {
@@ -407,15 +423,17 @@ private struct PresetsView: View {
                 }
                 
                 // Normal Search Engine List
-                Section {
-                    ForEach(safariCSEList.indices, id: \.self, content: { index in
-                        let cse = safariCSEList[index]
-                        UITemplates.PresetSEButton(action: {
-                            CSEData = cse
-                            isOpenSheet = false
-                        }, cse: cse)
-                    })
-                } header: { Text("Safari Search Engines") }
+                if !safariCSEList.isEmpty {
+                    Section {
+                        ForEach(safariCSEList.indices, id: \.self, content: { index in
+                            let cse = safariCSEList[index]
+                            UITemplates.PresetSEButton(action: {
+                                CSEData = cse
+                                isOpenSheet = false
+                            }, cse: cse)
+                        })
+                    } header: { Text("Safari Search Engines") }
+                }
             }
             .navigationTitle("Search Engine Presets")
             .navigationBarTitleDisplayMode(.inline)
