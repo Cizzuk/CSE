@@ -300,21 +300,24 @@ enum SafariSEs: String, CaseIterable {
         }
     }
     
-    static func convertFromGetSafariSettings(_ engine: String) -> SafariSEs? {
+    static func convertForShortcuts(_ engine: String) -> SafariSEs? {
         let value = engine.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         
         // valueInShortcuts
-        if let matched = SafariSEs.allCases.first(where: { $0.valueInShortcuts == value }) {
+        if let matched = SafariSEs.allCases.first(where: { $0.valueInShortcuts.lowercased() == value }) {
+            print("Matched by valueInShortcuts: \(matched)")
             return matched
         }
         
         // displayName
-        if let matched = SafariSEs.allCases.first(where: { String(localized: $0.displayName) == value }) {
+        if let matched = SafariSEs.allCases.first(where: { String(localized: $0.displayName).lowercased() == value }) {
+            print("Matched by displayName: \(matched)")
             return matched
         }
         
         // rawValue
         if let matched = SafariSEs(rawValue: value) {
+            print("Matched by rawValue: \(matched)")
             return matched
         }
         
