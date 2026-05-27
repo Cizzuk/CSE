@@ -45,7 +45,9 @@ class UITemplates {
                 }
             }
             .accessibilityLabel(cse.name)
+            #if !os(visionOS)
             .buttonStyle(.plain)
+            #endif
         }
     }
     

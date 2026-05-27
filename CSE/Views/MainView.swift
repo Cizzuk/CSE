@@ -112,7 +112,9 @@ struct ContentView: View {
                                 .font(.caption)
                         }
                     }
+                    #if !os(visionOS)
                     .buttonStyle(.plain)
+                    #endif
                 }
                 
                 Section {
