@@ -6555,6 +6555,16 @@
         }
       }
     },
+    "Known as No AI" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI除外エンジン"
+          }
+        }
+      }
+    },
     "Known Issues" : {
       "localizations" : {
         "ar" : {
