@@ -239,12 +239,17 @@ class SearchEnginePresets {
                 CSEDataManager.CSEData(
                     name: "ChatGPT",
                     keyword: "gpt",
-                    url: "https://chatgpt.com/?q=%s&hints=search",
+                    url: "https://chatgpt.com/?q=%s",
                 ),
                 CSEDataManager.CSEData(
                     name: "Perplexity",
                     keyword: "pplx",
                     url: "https://www.perplexity.ai/?q=%s",
+                ),
+                CSEDataManager.CSEData(
+                    name: "Duck.ai",
+                    keyword: "duckai",
+                    url: "https://duck.ai/chat?home=1&prompt=1&q=%s",
                 ),
                 CSEDataManager.CSEData(
                     name: "Google AI Mode",
@@ -260,7 +265,7 @@ class SearchEnginePresets {
             
             if currentRegion == "JP" || containsLanguage("ja") {
                 aiCSEs.append(CSEDataManager.CSEData(
-                    name: "Yahoo!検索 AIアシスタント",
+                    name: "Agent i",
                     keyword: "yai",
                     url: "https://search.yahoo.co.jp/chat?q=%s",
                 ))
