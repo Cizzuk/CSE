@@ -94,6 +94,7 @@
 				ExportBackupJSON.swift,
 				GetCSESettings.swift,
 				GetQuickCSEList.swift,
+				ImportBackupJSON.swift,
 				IntentEnums.swift,
 				SetDefaultSE.swift,
 				SetFocusSE.swift,
