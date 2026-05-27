@@ -91,7 +91,7 @@ class SearchEnginePresets {
         if currentRegion != "CN" {
             baseCSEs["gpt"] = CSEDataManager.CSEData(
                 name: "ChatGPT",
-                url: "https://chatgpt.com/?q=%s&hints=search",
+                url: "https://chatgpt.com/?q=%s",
             )
             baseCSEs["pplx"] = CSEDataManager.CSEData(
                 name: "Perplexity",
