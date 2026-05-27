@@ -267,7 +267,7 @@ class SearchEnginePresets {
                 aiCSEs.append(CSEDataManager.CSEData(
                     name: "Agent i",
                     keyword: "yai",
-                    url: "https://search.yahoo.co.jp/chat?q=%s",
+                    url: "https://search.yahoo.co.jp/chat/s/n?q=%s&s=request_parameter_question",
                 ))
             }
             
@@ -281,13 +281,6 @@ class SearchEnginePresets {
             ])
         }
         
-        if currentRegion == "CN" || containsLanguage("zh-Hans") {
-            aiCSEs.append(CSEDataManager.CSEData(
-                name: "百度AI搜索",
-                keyword: "baiduai",
-                url: "https://chat.baidu.com/search?query=%s",
-            ))
-        }
         return aiCSEs
     }
     
