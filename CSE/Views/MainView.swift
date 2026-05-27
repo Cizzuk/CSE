@@ -112,6 +112,7 @@ struct ContentView: View {
                                 .font(.caption)
                         }
                     }
+                    .buttonStyle(.plain)
                 }
                 
                 Section {
