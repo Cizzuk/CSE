@@ -46,7 +46,7 @@ class UITemplates {
             }
             .accessibilityLabel(cse.name)
             #if !os(visionOS)
-            .buttonStyle(.plain)
+            .foregroundStyle(Color(.label))
             #endif
         }
     }
