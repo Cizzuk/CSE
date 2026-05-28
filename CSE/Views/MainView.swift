@@ -113,7 +113,7 @@ struct ContentView: View {
                         }
                     }
                     #if !os(visionOS)
-                    .buttonStyle(.plain)
+                    .foregroundStyle(Color(.label))
                     #endif
                 }
                 
