@@ -56,7 +56,7 @@ extension TutorialViews {
                         }
                     }
                 } footer: {
-                    VStack (alignment : .leading) {
+                    VStack(alignment : .leading) {
                         #if targetEnvironment(macCatalyst)
                         Text("Open Safari, go to Safari → Settings... and select 'Search' tab to find these settings.")
                         #else
