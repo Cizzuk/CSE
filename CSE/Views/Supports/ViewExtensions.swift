@@ -1,5 +1,5 @@
 //
-//  Extensions.swift
+//  ViewExtensions.swift
 //  Customize Search Engine
 //
 //  Created by Cizzuk on 2025/07/24.

@@ -1,5 +1,5 @@
 //
-//  EditSEViewModel.swift
+//  EditSEViewSupport.swift
 //  Customize Search Engine
 //
 //  Created by Cizzuk on 2025/12/10.
@@ -11,7 +11,7 @@ import Combine
 import WidgetKit
 #endif
 
-class EditSEViewModel: ObservableObject {
+class EditSEViewSupport: ObservableObject {
     enum SaveMode {
         case autosave
         case dismiss

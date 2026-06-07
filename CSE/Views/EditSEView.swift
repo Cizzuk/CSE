@@ -11,7 +11,7 @@ import WidgetKit
 #endif
 
 struct EditSEView: View {
-    @StateObject private var viewModel: EditSEViewModel
+    @StateObject private var viewModel: EditSEViewSupport
     @Environment(\.dismiss) private var dismiss
     @Environment(\.scenePhase) private var scenePhase
     
@@ -20,7 +20,7 @@ struct EditSEView: View {
     @AppStorage("QuickSearchSettings_keywordPos", store: userDefaults) private var keywordPos: String = QuickSearchKeywordPos.default.rawValue
     
     init(type: CSEDataManager.CSEType, cseID: String? = nil) {
-        _viewModel = StateObject(wrappedValue: EditSEViewModel(type: type, cseID: cseID))
+        _viewModel = StateObject(wrappedValue: EditSEViewSupport(type: type, cseID: cseID))
     }
     
     var body: some View {

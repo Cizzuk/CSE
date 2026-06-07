@@ -1,76 +1,14 @@
 //
-//  Tutorial.swift
+//  TutorialViews+SafariSettings.swift
 //  Customize Search Engine
 //
 //  Created by Cizzuk on 2024/12/31.
 //
 
 import SwiftUI
-import UniformTypeIdentifiers
 
-class Tutorial {
-    // First Tutorial
-    struct FirstView: View {
-        @Binding var isOpenSheet: Bool
-        @State private var isNavigation: Bool = false
-        
-        var body: some View {
-            List {
-                UITemplates.HeaderSection(
-                    title: "Welcome to CSE",
-                    description: "Before you can start using CSE, you need to do some setup."
-                )
-                
-                Section {
-                    HStack {
-                        Image(systemName: "gear")
-                            .resizable()
-                            .frame(width: 28, height: 28)
-                            .accessibilityHidden(true)
-                            .foregroundStyle(.accent)
-                            .padding(6)
-                        Text("Enable Extension in Safari")
-                            .font(.headline)
-                    }
-                    HStack {
-                        Image(systemName: "sparkle.magnifyingglass")
-                            .resizable()
-                            .frame(width: 28, height: 28)
-                            .accessibilityHidden(true)
-                            .foregroundStyle(.accent)
-                            .padding(6)
-                        Text("Setup Custom Search Engine")
-                            .font(.headline)
-                    }
-                    HStack {
-                        Image(systemName: "safari")
-                            .resizable()
-                            .frame(width: 28, height: 28)
-                            .accessibilityHidden(true)
-                            .foregroundStyle(.accent)
-                            .padding(6)
-                        Text("Enjoy your Search Life!")
-                            .font(.headline)
-                    }
-                }
-            }
-            .navigationDestination(isPresented: $isNavigation) {
-                SafariSEView(isOpenSheet: $isOpenSheet, isFirstTutorial: true)
-            }
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    UITemplates.TutorialButton(action: { isNavigation = true }, text: "Next")
-                }
-            }
-            #if !os(visionOS)
-            .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
-            #endif
-            .interactiveDismissDisabled()
-        }
-    }
-    
-    // MARK: - Safari SE View 1 Set Safari Settings
-    
+extension TutorialViews {
+    // MARK: - Select Safari SE
     struct SafariSEView: View {
         @Binding var isOpenSheet: Bool
         var isFirstTutorial: Bool = false
@@ -169,8 +107,7 @@ class Tutorial {
         }
     }
     
-    // MARK: - Safari SE View 2 Show Domains
-    
+    // MARK: - Permission
     private struct SafariPermissionView: View {
         @Binding var isOpenSheet: Bool
         var isFirstTutorial: Bool = false
@@ -231,119 +168,6 @@ class Tutorial {
             #if !os(visionOS)
             .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
             #endif
-        }
-    }
-    
-    // MARK: - Presets View
-    
-    private struct PresetsView: View {
-        @Binding var isOpenSheet: Bool
-        @State private var isNavigation: Bool = false
-        
-        @State private var showingCloudImport = false
-        @State private var showingFileImport = false
-        @State private var showingErrorAlert = false
-        @State private var errorMessage = ""
-        private let popCSEList = SearchEnginePresets.popCSEList
-        private let noaiCSEList = SearchEnginePresets.noaiCSEList
-        private let aiCSEList = SearchEnginePresets.aiCSEList
-        private let safariCSEList = SearchEnginePresets.safariCSEList
-        
-        var body: some View {
-            List {
-                UITemplates.HeaderSection(
-                    title: "Setup Search Engine",
-                    description: "Choose a search engine below or customize it later."
-                )
-                
-                Section {
-                    Button(action: { showingFileImport = true }) {
-                        UITemplates.IconLabel(icon: "square.and.arrow.down", text: "Import from JSON")
-                            .foregroundStyle(.accent)
-                    }
-                    
-                    Button(action: { showingCloudImport = true }) {
-                        UITemplates.IconLabel(icon: "icloud.and.arrow.down", text: "Restore from iCloud")
-                            .foregroundStyle(.accent)
-                    }
-                }
-                
-                if !popCSEList.isEmpty {
-                    Section {
-                        ForEach(popCSEList.indices, id: \.self, content: { index in
-                            UITemplates.PresetSEButton(action: {
-                                CSEDataManager.saveCSEData(popCSEList[index], .defaultCSE)
-                                isOpenSheet = false
-                            }, cse: popCSEList[index])
-                        })
-                    } header: { Text("Popular Search Engines") }
-                }
-                
-                if !noaiCSEList.isEmpty {
-                    Section {
-                        ForEach(noaiCSEList.indices, id: \.self, content: { index in
-                            UITemplates.PresetSEButton(action: {
-                                CSEDataManager.saveCSEData(noaiCSEList[index], .defaultCSE)
-                                isOpenSheet = false
-                            }, cse: noaiCSEList[index])
-                        })
-                    } header: { Text("Without AI") }
-                }
-                
-                if !aiCSEList.isEmpty {
-                    Section {
-                        ForEach(aiCSEList.indices, id: \.self, content: { index in
-                            UITemplates.PresetSEButton(action: {
-                                CSEDataManager.saveCSEData(aiCSEList[index], .defaultCSE)
-                                isOpenSheet = false
-                            }, cse: aiCSEList[index])
-                        })
-                    } header: { Text("AI Assistants") }
-                }
-                
-                if !safariCSEList.isEmpty {
-                    Section {
-                        ForEach(safariCSEList.indices, id: \.self, content: { index in
-                            UITemplates.PresetSEButton(action: {
-                                CSEDataManager.saveCSEData(safariCSEList[index], .defaultCSE)
-                                isOpenSheet = false
-                            }, cse: safariCSEList[index])
-                        })
-                    } header: { Text("Safari Search Engines") }
-                }
-            }
-            #if !os(visionOS)
-            .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
-            #endif
-            .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    UITemplates.TutorialButton(action: { isOpenSheet = false }, text: "Skip")
-                }
-            }
-            .sheet(isPresented: $showingCloudImport) {
-                CloudPicker.CloudPickerView(onRestore: { isOpenSheet = false })
-            }
-            .alert(errorMessage, isPresented: $showingErrorAlert, actions: {})
-            .fileImporter(
-                isPresented: $showingFileImport,
-                allowedContentTypes: [UTType.json],
-                allowsMultipleSelection: false
-            ) { result in
-                switch result {
-                case .success(let files):
-                    guard let fileURL = files.first else { return }
-                    BackupView.importJSONFile(from: fileURL, onSuccess: {
-                        isOpenSheet = false
-                    }, onError: { error in
-                        errorMessage = error
-                        showingErrorAlert = true
-                    })
-                case .failure(let error):
-                    errorMessage = error.localizedDescription
-                    showingErrorAlert = true
-                }
-            }
         }
     }
 }

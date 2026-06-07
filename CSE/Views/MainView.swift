@@ -7,30 +7,7 @@
 
 import SwiftUI
 
-@main
-struct MainView: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @Environment(\.scenePhase) private var scenePhase
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-                #if targetEnvironment(macCatalyst)
-                .onAppear {
-                    (UIApplication.shared.connectedScenes.first as? UIWindowScene)?
-                        .titlebar?
-                        .titleVisibility = .hidden
-                }
-                #endif
-        }
-        .onChange(of: scenePhase) { newPhase in
-            if newPhase == .background {
-                CloudKitManager().saveAll()
-            }
-        }
-    }
-}
-
-struct ContentView: View {
+struct MainView: View {
     // Load app settings
     @AppStorage("useDefaultCSE", store: userDefaults) private var useDefaultCSE: Bool = true
     @AppStorage("usePrivateCSE", store: userDefaults) private var usePrivateCSE: Bool = false
@@ -164,12 +141,12 @@ struct ContentView: View {
         // Tutorial sheets
         .sheet(isPresented : $needFirstTutorial) {
             NavigationStack {
-                Tutorial.FirstView(isOpenSheet: $needFirstTutorial)
+                TutorialViews.WelcomeView(isOpenSheet: $needFirstTutorial)
             }
         }
         .sheet(isPresented: $openSafariTutorialView) {
             NavigationStack {
-                Tutorial.SafariSEView(isOpenSheet: $openSafariTutorialView)
+                TutorialViews.SafariSEView(isOpenSheet: $openSafariTutorialView)
             }
         }
         .onOpenURL { url in
