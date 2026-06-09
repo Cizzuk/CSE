@@ -56,7 +56,8 @@ extension TutorialViews {
                 SafariSEView(isOpenSheet: $isOpenSheet, isFirstTutorial: true)
             }
             .toolbar {
-                ToolbarItem(placement: .bottomBar) {
+                ToolbarItemGroup(placement: .bottomBar) {
+                    Spacer()
                     UITemplates.TutorialButton(action: { isNavigation = true }, text: "Next")
                 }
             }

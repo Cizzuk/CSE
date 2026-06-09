@@ -90,7 +90,8 @@ extension TutorialViews {
             #endif
             .navigationBarBackButtonHidden(true)
             .toolbar {
-                ToolbarItem(placement: .bottomBar) {
+                ToolbarItemGroup(placement: .bottomBar) {
+                    Spacer()
                     UITemplates.TutorialButton(action: { isOpenSheet = false }, text: "Skip")
                 }
             }

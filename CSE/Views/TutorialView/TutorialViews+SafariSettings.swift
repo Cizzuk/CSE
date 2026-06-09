@@ -97,7 +97,8 @@ extension TutorialViews {
                 SafariPermissionView(isOpenSheet: $isOpenSheet, isFirstTutorial: isFirstTutorial)
             }
             .toolbar {
-                ToolbarItem(placement: .bottomBar) {
+                ToolbarItemGroup(placement: .bottomBar) {
+                    Spacer()
                     UITemplates.TutorialButton(action: { isNavigation = true }, text: "Next")
                 }
             }
@@ -157,7 +158,8 @@ extension TutorialViews {
                 PresetsView(isOpenSheet: $isOpenSheet)
             }
             .toolbar {
-                ToolbarItem(placement: .bottomBar) {
+                ToolbarItemGroup(placement: .bottomBar) {
+                    Spacer()
                     if isFirstTutorial {
                         UITemplates.TutorialButton(action: { isNavigation = true }, text: "Next")
                     } else {
