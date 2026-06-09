@@ -77,20 +77,12 @@ class UITemplates {
         let text: String.LocalizationValue
         
         var body: some View {
-            GeometryReader { geo in
-                Button(action: action) {
-                    Text(String(localized: text))
-                        .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
-                        .bold()
-                        .padding()
-                        #if !os(visionOS)
-                        .foregroundStyle(.white)
-                        #endif
-                }
-                .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
-                .glassEffectTutorialButton()
+            Button(action: action) {
+                Text(String(localized: text))
+                    .bold()
+                    .padding()
             }
-            .frame(maxWidth: .infinity, minHeight: 40)
+            .glassEffectTutorialButton()
         }
     }
     
