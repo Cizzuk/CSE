@@ -93,7 +93,7 @@ class CloudPicker {
                     deviceRow(ds)
                 }
                 #if !os(visionOS)
-                .buttonStyle(.plain)
+                .foregroundStyle(Color(.label))
                 #endif
                 .contextMenu {
                     Button(role: .destructive) {
@@ -118,7 +118,7 @@ class CloudPicker {
             ForEach(ck.allCSEs) { ds in
                 NavigationLink(value: ds) { deviceRow(ds) }
                     #if !os(visionOS)
-                    .buttonStyle(.plain)
+                    .foregroundStyle(Color(.label))
                     #endif
                     .contextMenu {
                         Button(role: .destructive) {
@@ -195,7 +195,7 @@ class CloudPicker {
                             cseSummary(title: "Default Search Engine", cse: defaultCSE)
                         }
                         #if !os(visionOS)
-                        .buttonStyle(.plain)
+                        .foregroundStyle(Color(.label))
                         #endif
                     }
                 }
@@ -207,7 +207,7 @@ class CloudPicker {
                             cseSummary(title: "Private Search Engine", cse: privateCSE)
                         }
                         #if !os(visionOS)
-                        .buttonStyle(.plain)
+                        .foregroundStyle(Color(.label))
                         #endif
                     }
                 }
@@ -222,7 +222,7 @@ class CloudPicker {
                                     cseSummary(title: displayName, cse: se)
                                 }
                                 #if !os(visionOS)
-                                .buttonStyle(.plain)
+                                .foregroundStyle(Color(.label))
                                 #endif
                             }
                         }
