@@ -56,16 +56,14 @@ class UITemplates {
         let description: String.LocalizationValue
         
         var body: some View {
-            Section {}
-            header: {
+            Section {} header: {
                 Text(String(localized: title))
                     .textCase(.none)
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundStyle(.primary)
                     .padding(.top, 35)
-            }
-            footer: {
+            } footer: {
                 Text(String(localized: description))
                     .font(.body)
                     .foregroundStyle(.primary)
