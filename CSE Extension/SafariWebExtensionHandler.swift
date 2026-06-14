@@ -65,7 +65,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         
         Task {
             // Check current focus filter
-            try await getFocusFilter()
+            try? await getFocusFilter()
             
             var searchQuery: String? = nil
             
