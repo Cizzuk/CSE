@@ -1,8 +1,12 @@
 {
+  "features" : [
+    "refractivity",
+    "specular-location"
+  ],
   "fill" : "automatic",
   "groups" : [
     {
-      "blur-material" : 0.1,
+      "blur-material" : null,
       "layers" : [
         {
           "blend-mode" : "normal",
@@ -39,18 +43,24 @@
       ],
       "lighting" : "individual",
       "name" : "Object",
+      "refractivity" : {
+        "depth" : 0,
+        "enabled" : true,
+        "strength" : 0.5
+      },
       "shadow" : {
         "kind" : "neutral",
         "opacity" : 0.5
       },
-      "specular" : true,
+      "specular" : "inside",
       "translucency" : {
         "enabled" : true,
-        "value" : 0.5
+        "value" : 1
       }
     },
     {
       "blur-material" : null,
+      "hidden" : false,
       "layers" : [
         {
           "fill-specializations" : [
@@ -88,6 +98,11 @@
         }
       ],
       "name" : "Magnifier",
+      "refractivity" : {
+        "depth" : 0,
+        "enabled" : true,
+        "strength" : 0.5
+      },
       "shadow" : {
         "kind" : "layer-color",
         "opacity" : 0.5
@@ -99,6 +114,33 @@
       }
     },
     {
+      "blur-material" : null,
+      "layers" : [
+        {
+          "fill" : {
+            "solid" : "extended-srgb:0.00000,0.53333,1.00000,0.00000"
+          },
+          "image-name" : "lens.png",
+          "name" : "lens"
+        }
+      ],
+      "name" : "Lens",
+      "refractivity" : {
+        "depth" : 0.05,
+        "enabled" : true,
+        "strength" : 0.15
+      },
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.6
+      },
+      "specular" : "inside",
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.2
+      }
+    },
+    {
       "layers" : [
         {
           "glass" : false,
@@ -106,6 +148,11 @@
           "name" : "flag"
         }
       ],
+      "refractivity" : {
+        "depth" : 0,
+        "enabled" : true,
+        "strength" : 0.5
+      },
       "shadow" : {
         "kind" : "none",
         "opacity" : 0.5
