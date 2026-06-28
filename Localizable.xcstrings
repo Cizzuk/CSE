@@ -6887,6 +6887,16 @@
         }
       }
     },
+    "Make it easier to re-search with another search engine using the same search query. Available from the toolbar or page menu in Safari." : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "同じ検索クエリを使用して別の検索エンジンで再検索をしやすくなります。Safariのツールバーやページメニューから利用できます。"
+          }
+        }
+      }
+    },
     "Max Query Length" : {
       "localizations" : {
         "ar" : {
@@ -8986,6 +8996,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "快速搜尋設定"
+          }
+        }
+      }
+    },
+    "Re-Search" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再検索"
           }
         }
       }

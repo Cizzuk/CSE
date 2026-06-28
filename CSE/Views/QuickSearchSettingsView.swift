@@ -19,7 +19,6 @@ struct QuickSearchSettingsView: View {
                     Text("Re-Search")
                 }
             } footer: {
-                // 同じ検索クエリを使用して別の検索エンジンで再検索をしやすくなります。Safariのツールバーやページメニューから利用できます。
                 Text("Make it easier to re-search with another search engine using the same search query. Available from the toolbar or page menu in Safari.")
             }
             
