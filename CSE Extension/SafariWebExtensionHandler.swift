@@ -22,6 +22,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         let type: RedirectType
         let redirectTo: String
         let postData: [[String: String]]
+        var searchQuery: String?
     }
     
     func beginRequest(with context: NSExtensionContext) {
@@ -104,23 +105,25 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
                 .replacingOccurrences(of: "　", with: "+")
                 .replacingOccurrences(of: " ", with: "+")
             
-            // Create Redirect URL
-            let redirectData: SendDataSet
+            // Create Redirect Data
+            
+            let baseCSE: CSEDataManager.CSEData
             if isIncognito && usePrivateCSE {
-                redirectData = makeSearchURL(
-                    baseCSE: CSEDataManager.getCSEData(.privateCSE),
-                    query: fixedQuery
-                )
+                // Private Search
+                baseCSE = CSEDataManager.getCSEData(.privateCSE)
             } else if useDefaultCSE {
-                redirectData = makeSearchURL(
-                    baseCSE: CSEDataManager.getCSEData(.defaultCSE),
-                    query: fixedQuery
-                )
+                // Default Search
+                baseCSE = CSEDataManager.getCSEData(.defaultCSE)
             } else {
-                redirectData = makeSearchURL(
-                    baseCSE: CSEDataManager.CSEData(),
-                    query: fixedQuery
-                )
+                // Fallback
+                baseCSE = CSEDataManager.CSEData()
+            }
+            
+            var redirectData = makeSearchURL(baseCSE: baseCSE, query: fixedQuery)
+            
+            // Remove search query if needed
+            if !userDefaults.bool(forKey: "QuickSearchSettings_reSearch") {
+                redirectData.searchQuery = nil
             }
             
             // Check Redirect URL exists
@@ -204,7 +207,8 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             return SendDataSet(
                 type: .redirect,
                 redirectTo: redirectURL,
-                postData: []
+                postData: [],
+                searchQuery: query
             )
         }
         
@@ -359,7 +363,8 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         return SendDataSet(
             type: redirectType,
             redirectTo: redirectURL,
-            postData: postData
+            postData: postData,
+            searchQuery: query
         )
     }
     
