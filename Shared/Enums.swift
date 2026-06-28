@@ -10,6 +10,8 @@ import Foundation
 enum QuickSearchKeywordPos: String, CaseIterable {
     case prefix, suffix, prefORsuf, prefANDsuf
     
+    static let `default`: QuickSearchKeywordPos = .prefix
+    
     var displayName: String.LocalizationValue {
         switch self {
         case .prefix:
@@ -21,9 +23,5 @@ enum QuickSearchKeywordPos: String, CaseIterable {
         case .prefANDsuf:
             return "Prefix and Suffix"
         }
-    }
-    
-    static var `default`: QuickSearchKeywordPos {
-        return .prefix
     }
 }
