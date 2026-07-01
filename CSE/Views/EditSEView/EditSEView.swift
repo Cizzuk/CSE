@@ -67,34 +67,20 @@ struct EditSEView: View {
             }
         }
         .onDisappear {
-            if viewModel.cseType != .quickCSE {
-                viewModel.saveData(.dismiss)
-            }
+            viewModel.saveData(.dismiss)
         }
         .toolbar {
-            if viewModel.cseType == .quickCSE {
-                // Override Back Button
-                ToolbarItem(placement: .confirmationAction) {
-                    Button(action: {
-                        if viewModel.saveData(.dismiss) { dismiss() }
-                    }) {
-                        Label("Save", systemImage: "checkmark")
-                    }
-                    .keyboardShortcut("S", modifiers: [.command])
+            #if !os(visionOS)
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button {
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                } label: {
+                    Label("Done", systemImage: "checkmark")
                 }
-                #if !os(visionOS)
-                ToolbarItemGroup(placement: .keyboard) {
-                    Spacer()
-                    Button {
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                    } label: {
-                        Label("Done", systemImage: "checkmark")
-                    }
-                }
-                #endif
             }
+            #endif
         }
-        .navigationBarBackButtonHidden(viewModel.cseType == .quickCSE)
         .accessibilityAction(.escape) {
             if viewModel.saveData(.dismiss) { dismiss() }
         }

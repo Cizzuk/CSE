@@ -115,6 +115,10 @@ struct QuickSEListView: View {
                 quickCSE = CSEDataManager.getAllQuickCSEData()
                 useQuickCSEToggle = useQuickCSE
             }
+            .onReceive(NotificationCenter.default.publisher(for: UserDefaults.didChangeNotification)) { _ in
+                quickCSE = CSEDataManager.getAllQuickCSEData()
+                useQuickCSEToggle = useQuickCSE
+            }
             .onChange(of: scenePhase) { newPhase in
                 if newPhase == .active {
                     searchQuery = ""
