@@ -110,6 +110,7 @@ struct QuickSEListView: View {
             .toolbar {
                 if useQuickCSEToggle { EditButton() }
             }
+            .animation(.default, value: quickCSE)
             .task {
                 // Initialize
                 quickCSE = CSEDataManager.getAllQuickCSEData()
