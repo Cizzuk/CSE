@@ -17,7 +17,7 @@ const requestHandler = async (tabId, url) => {
     if (!url.startsWith("https://")) { return; }
     
     // Check incognito status
-    incognitoStatus = await getTabIncognitoStatus(tabId);
+    const incognitoStatus = await getTabIncognitoStatus(tabId);
     
     // Prepare tab data to send
     const tabData = {
