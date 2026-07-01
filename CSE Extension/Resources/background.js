@@ -14,7 +14,6 @@ const requestHandler = async (tabId, url) => {
     
     // Easy URL checks
     if (!url) { return; }
-    if (url.startsWith("safari-web-extension:")) { return; }
     if (!url.startsWith("https://")) { return; }
     
     // Check incognito status
@@ -90,16 +89,21 @@ browser.tabs.onRemoved.addListener((tabId, removeInfo) => {
     delete processedUrls[tabId];
 });
 
-// Handle post_redirector
 browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
     const tabId = sender.tab.id;
-    if (request.type === "post_redirector") {
-        if (savedData[tabId]) {
-            console.log(tabId, "[post_redirector]", "Redirecting... (with POST).");
-            sendResponse(savedData[tabId]);
-            delete savedData[tabId];
-        } else {
-            console.log(tabId, "[post_redirector]", "No POST data. Cancel.");
-        }
+    switch (request.type) {
+        case "post_redirector":
+            // Handle post_redirector
+            if (savedData[tabId]) {
+                console.log(tabId, "[post_redirector]", "Redirecting... (with POST).");
+                sendResponse(savedData[tabId]);
+                delete savedData[tabId];
+            } else {
+                console.log(tabId, "[post_redirector]", "No POST data. Cancel.");
+            }
+            break;
+        default:
+            console.log(tabId, "Unknown message type:", request.type);
+            break;
     }
 });
