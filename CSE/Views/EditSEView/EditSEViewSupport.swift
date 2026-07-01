@@ -70,35 +70,23 @@ class EditSEViewSupport: ObservableObject {
         if cseType == .quickCSE && quickCSEID == nil && cseData == CSEDataManager.CSEData() && mode == .dismiss {
             return true
         }
-
-        // Try to save data
-        do {
-            switch cseType {
-            case .defaultCSE:
-                CSEDataManager.saveCSEData(cseData, .defaultCSE, uploadCloud: mode == .dismiss)
-            case .privateCSE:
-                CSEDataManager.saveCSEData(cseData, .privateCSE, uploadCloud: mode == .dismiss)
-            case .quickCSE:
-                try CSEDataManager.saveCSEData(cseData, quickCSEID, uploadCloud: mode == .dismiss)
-                if mode == .autosave {
-                    quickCSEID = cseData.keyword
-                }
+        
+        // Save data
+        switch cseType {
+        case .defaultCSE:
+            CSEDataManager.saveCSEData(cseData, .defaultCSE, uploadCloud: mode == .dismiss)
+        case .privateCSE:
+            CSEDataManager.saveCSEData(cseData, .privateCSE, uploadCloud: mode == .dismiss)
+        case .quickCSE:
+            CSEDataManager.saveCSEData(cseData, quickCSEID, uploadCloud: mode == .dismiss) { newKey in
+                self.cseData.keyword = newKey
             }
-            lastSavedCSEData = cseData
-            return true
-        } catch let error as CSEDataManager.saveCSEDataError {
-            if mode == .dismiss {
-                alertTitle = error.errorDescription ?? String(localized: "An error occurred while loading or updating data")
-                showAlert = true
-                return false
-            }
-        } catch {
-            if mode == .dismiss {
-                alertTitle = String(localized: "An error occurred while loading or updating data")
-                showAlert = true
-                return false
+            if mode == .autosave {
+                quickCSEID = cseData.keyword
             }
         }
+        
+        lastSavedCSEData = cseData
         return true
     }
     

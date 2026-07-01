@@ -1012,6 +1012,7 @@
       }
     },
     "An error occurred while loading or updating data" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -5756,6 +5757,7 @@
       }
     },
     "If the keyword is already in use, replace and save" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -6538,6 +6540,7 @@
       }
     },
     "Keyword cannot be blank" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -9131,6 +9134,7 @@
       }
     },
     "Replace" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -10253,6 +10257,7 @@
       }
     },
     "Search URL cannot be blank" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -11945,6 +11950,7 @@
       }
     },
     "This keyword is already used in other" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
