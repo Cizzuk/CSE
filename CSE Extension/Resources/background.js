@@ -5,8 +5,9 @@ const isWebRequestAvailable = browser.webRequest && browser.webRequest.onBeforeR
 const postRedirectorURL = location.protocol + "//" + location.host + "/post_redirector.html";
 
 let savedData = {}; // Store data for post redirects
-let incognitoStatus = {}; // Store incognito status for Private Seaerch Engine
 let processedUrls = {}; // Store processed URLs to avoid duplicate processing
+
+let isThisFirstRun = true;
 
 // Request handler (send tab data to native and handle response)
 const requestHandler = async (tabId, url) => {
@@ -19,14 +20,12 @@ const requestHandler = async (tabId, url) => {
     if (!url.startsWith("https://")) { return; }
     
     // Check incognito status
-    if (incognitoStatus[tabId] === undefined) {
-        incognitoStatus[tabId] = await getTabIncognitoStatus(tabId);
-    }
+    incognitoStatus = await getTabIncognitoStatus(tabId);
     
     // Prepare tab data to send
     const tabData = {
         url: url,
-        incognito: incognitoStatus[tabId]
+        incognito: incognitoStatus
     };
     
     // Send tab data to native app
@@ -83,26 +82,15 @@ if (isWebRequestAvailable) {
 
 // Fallback: use tabs.onUpdated
 browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
-    // Save tab incognito status if not already saved
-    if (incognitoStatus[tabId] === undefined) {
-        incognitoStatus[tabId] = tabData.incognito;
-    }
-    
     if (processedUrls[tabId] === tabData.url) { return; }
     if (!tabData.url) { return; }
     
     requestHandler(tabId, tabData.url);
 });
 
-// Detect tab creation
-browser.tabs.onCreated.addListener((tabData) => {
-    incognitoStatus[tabData.id] = tabData.incognito;
-});
-
 // Detect tab removal
 browser.tabs.onRemoved.addListener((tabId, removeInfo) => {
     delete savedData[tabId];
-    delete incognitoStatus[tabId];
     delete processedUrls[tabId];
 });
 
