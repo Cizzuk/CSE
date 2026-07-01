@@ -22,7 +22,6 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         let type: RedirectType
         let redirectTo: String
         let postData: [[String: String]]
-        var searchQuery: String?
     }
     
     func beginRequest(with context: NSExtensionContext) {
@@ -119,12 +118,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
                 baseCSE = CSEDataManager.CSEData()
             }
             
-            var redirectData = makeSearchURL(baseCSE: baseCSE, query: fixedQuery)
-            
-            // Remove search query if needed
-            if !userDefaults.bool(forKey: "QuickSearchSettings_reSearch") {
-                redirectData.searchQuery = nil
-            }
+            let redirectData = makeSearchURL(baseCSE: baseCSE, query: fixedQuery)
             
             // Check Redirect URL exists
             if redirectData.redirectTo.isEmpty {
@@ -208,7 +202,6 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
                 type: .redirect,
                 redirectTo: redirectURL,
                 postData: [],
-                searchQuery: query
             )
         }
         
@@ -364,7 +357,6 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             type: redirectType,
             redirectTo: redirectURL,
             postData: postData,
-            searchQuery: query
         )
     }
     
