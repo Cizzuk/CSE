@@ -7,8 +7,6 @@ const postRedirectorURL = location.protocol + "//" + location.host + "/post_redi
 let savedData = {}; // Store data for post redirects
 let processedUrls = {}; // Store processed URLs to avoid duplicate processing
 
-let isThisFirstRun = true;
-
 // Request handler (send tab data to native and handle response)
 const requestHandler = async (tabId, url) => {
     // Mark this URL was processed
@@ -73,7 +71,6 @@ if (isWebRequestAvailable) {
     // Detect web requests
     browser.webRequest.onBeforeRequest.addListener((details) => {
         if (details.type !== "main_frame") { return; }
-        
         requestHandler(details.tabId, details.url);
     });
 } else {
@@ -84,7 +81,6 @@ if (isWebRequestAvailable) {
 browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
     if (processedUrls[tabId] === tabData.url) { return; }
     if (!tabData.url) { return; }
-    
     requestHandler(tabId, tabData.url);
 });
 
