@@ -16,7 +16,7 @@ struct SetUseQuickSearch: AppIntent, CustomIntentMigratedAppIntent {
     static var description: LocalizedStringResource = "Turn Quick Search On or Off on CSE."
     
     @Parameter(title: "Operation", default: .turn)
-    var toggle: IntentTurnEnum?
+    var toggle: IntentSupport.TurnEnum?
     
     @Parameter(title: "State", default: true)
     var state: Bool
