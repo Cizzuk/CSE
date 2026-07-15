@@ -30,6 +30,10 @@ struct SetUseQuickSearch: AppIntent, CustomIntentMigratedAppIntent {
     }
     
     func perform() async throws -> some IntentResult {
+        if !IntentSupport.isAllowedEditingSearchEngines() {
+            throw IntentSupport.CSEIntentError.notAllowedEditingSearchEngines
+        }
+        
         let userDefaults = CSEDataManager.userDefaults
         var useQuickCSE: Bool = userDefaults.bool(forKey: "useQuickCSE")
         

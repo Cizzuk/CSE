@@ -13,6 +13,7 @@ struct AdvSettingView: View {
     @AppStorage("adv_disablechecker", store: userDefaults) private var disablechecker: Bool = false
     @AppStorage("adv_ignoreSafariSettings", store: userDefaults) private var ignoreSafariSettings: Bool = false
     @AppStorage("adv_ignoreFocusFilter", store: userDefaults) private var ignoreFocusFilter: Bool = false
+    @AppStorage("adv_disableEditSEFromShortcuts", store: userDefaults) private var disableEditSEFromShortcuts: Bool = false
     @AppStorage("adv_overrideRegion", store: userDefaults) private var overrideRegion: String = ""
     @State private var allowReset: Bool = false
     
@@ -54,8 +55,12 @@ struct AdvSettingView: View {
                 Toggle(isOn: $ignoreFocusFilter, label: {
                     Text("Ignore Focus Filter")
                 })
-            } footer: {
-                Text("CSE will ignore all Focus Filters.")
+            }
+            
+            Section {
+                Toggle(isOn: $disableEditSEFromShortcuts, label: {
+                    Text("Disable Editing Search Engine from Shortcuts")
+                })
             }
             
             Section {

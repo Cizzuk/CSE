@@ -31,6 +31,10 @@ struct SetPrivateSE: AppIntent, CustomIntentMigratedAppIntent {
     var post: String
     
     func perform() async throws -> some IntentResult {
+        if !IntentSupport.isAllowedEditingSearchEngines() {
+            throw IntentSupport.CSEIntentError.notAllowedEditingSearchEngines
+        }
+        
         let userDefaults = CSEDataManager.userDefaults
         
         if cseURL.isEmpty {

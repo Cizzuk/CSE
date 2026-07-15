@@ -8,6 +8,21 @@
 import AppIntents
 
 final class IntentSupport {
+    static func isAllowedEditingSearchEngines() -> Bool {
+        !userDefaults.bool(forKey: "adv_disableEditSEFromShortcuts")
+    }
+    
+    enum CSEIntentError: LocalizedError {
+        case notAllowedEditingSearchEngines
+        
+        var errorDescription: String? {
+            switch self {
+            case .notAllowedEditingSearchEngines:
+                return "Editing Search Engines from Shortcuts is disabled in CSE settings."
+            }
+        }
+    }
+    
     enum TurnEnum: String, AppEnum {
         case turn
         case toggle

@@ -34,6 +34,10 @@ struct AddQuickSE: AppIntent, CustomIntentMigratedAppIntent {
     var post: String
 
     func perform() async throws -> some IntentResult {
+        if !IntentSupport.isAllowedEditingSearchEngines() {
+            throw IntentSupport.CSEIntentError.notAllowedEditingSearchEngines
+        }
+        
         let parsedPost = CSEDataManager.postDataToDictionary(post)
         
         let cseData = CSEDataManager.CSEData(
