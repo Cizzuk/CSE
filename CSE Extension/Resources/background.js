@@ -72,8 +72,6 @@ if (isWebRequestAvailable) {
         if (details.type !== "main_frame") { return; }
         requestHandler(details.tabId, details.url);
     });
-} else {
-    console.log("webRequest API is not available, using tabs.onUpdated for all navigation detection");
 }
 
 // Fallback: use tabs.onUpdated
