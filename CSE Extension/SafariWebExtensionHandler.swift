@@ -287,7 +287,7 @@ final class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
                 CSEData = focusCSE
             } else if shouldUsePrivateCSE {
                 CSEData = CSEDataManager.getCSEData(.privateCSE)
-            } else {
+            } else if userDefaults.bool(forKey: "useDefaultCSE") {
                 CSEData = CSEDataManager.getCSEData(.defaultCSE)
             }
         }
