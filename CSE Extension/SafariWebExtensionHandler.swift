@@ -283,7 +283,6 @@ final class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         // If CSEData is nil (is not Quick Search), get Focus, Default or Private CSE
         if CSEData == nil {
             if let focusCSE = focusSettings?.cseData {
-                // Set focus filter setting
                 CSEData = focusCSE
             } else if shouldUsePrivateCSE {
                 CSEData = CSEDataManager.getCSEData(.privateCSE)
