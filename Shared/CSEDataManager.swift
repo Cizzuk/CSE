@@ -175,11 +175,6 @@ class CSEDataManager {
     
     // MARK: - Save CSE Data
     
-    enum saveCSEDataResult {
-        case success
-        case keyReplaced(String)
-    }
-    
     class func findAvailableKey(_ baseKey: String) -> String {
         var candidate = baseKey
         var count = 1
