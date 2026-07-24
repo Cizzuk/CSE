@@ -9,7 +9,7 @@ import AppIntents
 
 final class IntentSupport {
     static func isAllowedEditingSearchEngines() -> Bool {
-        !userDefaults.bool(forKey: "adv_disableEditSEFromShortcuts")
+        !CSEDataManager.userDefaults.bool(forKey: "adv_disableEditSEFromShortcuts")
     }
     
     enum CSEIntentError: LocalizedError {
