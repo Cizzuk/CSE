@@ -3705,6 +3705,76 @@
     "ecosia.org" : {
       "shouldTranslate" : false
     },
+    "Editing Search Engines from Shortcuts is disabled in CSE settings." : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تحرير محركات البحث من الاختصارات معطل في إعدادات CSE."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Bearbeitung von Suchmaschinen über Kurzbefehle ist in den CSE-Einstellungen deaktiviert."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La edición de buscadores desde Atajos está desactivada en los ajustes de CSE."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'édition des moteurs de recherche depuis les Raccourcis est désactivée dans les réglages de CSE."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットによる検索エンジンの編集は、CSEの設定で無効化されています。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "단축키에서 검색 엔진 편집은 CSE 설정에서 비활성화되어 있습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A edição de buscadores a partir de Atalhos está desativada nas configurações do CSE."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Редактирование поисковых систем из ярлыков отключено в настройках CSE."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Редагування пошукових систем із ярликів вимкнено в налаштуваннях CSE."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在 CSE 设置中禁用了从快捷方式编辑搜索引擎。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在 CSE 設定中停用了從捷徑編輯搜尋引擎。"
+          }
+        }
+      }
+    },
     "Emoji Search" : {
       "localizations" : {
         "ar" : {

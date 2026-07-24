@@ -15,7 +15,7 @@ final class IntentSupport {
     enum CSEIntentError: LocalizedError {
         case notAllowedEditingSearchEngines
         
-        var errorDescription: String? {
+        var errorDescription: LocalizedStringResource? {
             switch self {
             case .notAllowedEditingSearchEngines:
                 return "Editing Search Engines from Shortcuts is disabled in CSE settings."
