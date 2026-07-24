@@ -181,13 +181,13 @@ class CSEDataManager {
     }
     
     class func findAvailableKey(_ baseKey: String) -> String {
-        var newKey = baseKey
+        var candidate = baseKey
         var count = 1
-        while checkQuickCSEExists(newKey) {
+        while checkQuickCSEExists(candidate) {
             count += 1
-            newKey = "\(baseKey)\(count)"
+            candidate = "\(baseKey)\(count)"
         }
-        return newKey
+        return candidate
     }
     
     class func saveCSEDataCommon(_ data: CSEData) -> CSEData {
