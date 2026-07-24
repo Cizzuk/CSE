@@ -76,22 +76,22 @@ final class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             try? await getFocusFilter()
             
             var searchQuery: String?
-            var chechedEngines: [SafariSEs] = []
+            var checkedEngines: [SafariSEs] = []
             
             // Get search query from user selected safari engines
             if engineIsMatchedURL(safariSE, searchURL) {
                 searchQuery = safariSE.getQuery(from: searchURL)
-                chechedEngines.append(safariSE)
+                checkedEngines.append(safariSE)
             } else if safariAlsoUsePrivate && engineIsMatchedURL(safariSEPrivate, searchURL) {
                 searchQuery = safariSEPrivate.getQuery(from: searchURL)
-                chechedEngines.append(safariSEPrivate)
+                checkedEngines.append(safariSEPrivate)
             }
             
             // If adv_ignoreSafariSettings is enabled and searchQuery is nil, check all available engines
             if adv_ignoreSafariSettings && searchQuery == nil {
                 for engine in SafariSEs.availableEngines {
                     // Skip already checked engines
-                    if chechedEngines.contains(engine) { continue }
+                    if checkedEngines.contains(engine) { continue }
                     // Check engine
                     if engineIsMatchedURL(engine, searchURL) {
                         searchQuery = engine.getQuery(from: searchURL)
