@@ -37,7 +37,7 @@ struct QuickSEListView: View {
                             }
                             #endif
                         }
-                    } footer: { Text("Enter a keyword into the query to switch search engine.") }
+                    } footer: { Text("Type a keyword in the query to switch search engines.") }
                 }
                 
                 if useQuickCSEToggle {

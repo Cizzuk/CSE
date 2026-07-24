@@ -145,7 +145,7 @@ struct EditSEView: View {
         } footer: {
             let enumratedKeywordPos = QuickSearchKeywordPos(rawValue: keywordPos) ?? QuickSearchKeywordPos.default
             let localizedKeywordPos = String(localized: enumratedKeywordPos.displayName)
-            Text("Enter this keyword at \(localizedKeywordPos) to search with this search engine.")
+            Text("Type this keyword at \(localizedKeywordPos) to search with this search engine.")
         }
     }
     
