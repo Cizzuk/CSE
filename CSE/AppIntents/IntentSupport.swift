@@ -12,10 +12,10 @@ final class IntentSupport {
         !CSEDataManager.userDefaults.bool(forKey: "adv_disableEditSEFromShortcuts")
     }
     
-    enum CSEIntentError: LocalizedError {
+    enum CSEIntentError: Error, CustomLocalizedStringResourceConvertible {
         case notAllowedEditingSearchEngines
         
-        var errorDescription: LocalizedStringResource? {
+        var localizedStringResource: LocalizedStringResource {
             switch self {
             case .notAllowedEditingSearchEngines:
                 return "Editing Search Engines from Shortcuts is disabled in CSE settings."
