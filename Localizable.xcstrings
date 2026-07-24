@@ -2222,76 +2222,6 @@
         }
       }
     },
-    "CSE will ignore all Focus Filters." : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "سيتجاهل CSE جميع فلاتر التركيز."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CSE ignoriert alle Fokusfilter."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CSE ignorará todos los filtros de concentración."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CSE ignorera tous les filtres de concentration."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CSEは全ての集中モードフィルタを無視するようになります。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CSE는 모든 집중 모드 필터를 무시합니다."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "O CSE ignorará todos os filtros de Foco."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CSE будет игнорировать все фильтры фокусирования."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CSE ігноруватиме всі фільтри зосередження."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CSE 将忽略所有专注模式过滤器。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CSE 將忽略所有專注模式過濾器。"
-          }
-        }
-      }
-    },
     "CSE will ignore Safari Settings and detect the URLs of all Safari search engines." : {
       "localizations" : {
         "ar" : {
@@ -3205,6 +3135,76 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "停用預設搜尋引擎"
+          }
+        }
+      }
+    },
+    "Disable Editing Search Engine from Shortcuts" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعطيل تحرير محرك البحث من الاختصارات"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bearbeitung der Suchmaschine über Kurzbefehle deaktivieren"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desactivar la edición del Buscador desde Atajos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Désactiver l'édition du moteur de recherche depuis les Raccourcis"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットによる検索エンジンの編集を無効化"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "단축키에서 검색 엔진 편집 비활성화"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desativar a edição do Buscador a partir de Atalhos"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отключить редактирование поисковой системы из ярлыков"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вимкнути редагування пошукової системи з ярликів"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停用从快捷方式编辑搜索引擎"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停用從捷徑編輯搜尋引擎"
           }
         }
       }
