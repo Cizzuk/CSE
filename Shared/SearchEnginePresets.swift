@@ -93,24 +93,12 @@ class SearchEnginePresets {
                 name: "ChatGPT",
                 url: "https://chatgpt.com/?q=%s",
             )
-            baseCSEs["pplx"] = CSEDataManager.CSEData(
-                name: "Perplexity",
-                url: "https://www.perplexity.ai/?q=%s",
-            )
         }
         
         if preferredLanguages.first == "ja-JP" {
             baseCSEs["y"] = CSEDataManager.CSEData(
                 name: "Yahoo! JAPAN",
                 url: "https://search.yahoo.co.jp/search?p=%s",
-            )
-        }
-        
-        if currentRegion == "JP" || containsLanguage("ja") {
-            baseCSEs["nico"] = CSEDataManager.CSEData(
-                name: "ニコニコ動画",
-                url: "https://www.nicovideo.jp/search/%s",
-                maxQueryLength: 256,
             )
         }
         
@@ -122,10 +110,6 @@ class SearchEnginePresets {
             baseCSEs["weibo"] = CSEDataManager.CSEData(
                 name: "微博",
                 url: "https://s.weibo.com/weibo?q=%s",
-            )
-            baseCSEs["bili"] = CSEDataManager.CSEData(
-                name: "哔哩哔哩",
-                url: "https://search.bilibili.com/all?keyword=%s",
             )
         }
         
