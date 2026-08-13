@@ -24,6 +24,7 @@ struct AdvSettingView: View {
                     disablechecker = false
                     ignoreSafariSettings = false
                     ignoreFocusFilter = false
+                    disableEditSEFromShortcuts = false
                     overrideRegion = ""
                     allowReset = false
                 }
