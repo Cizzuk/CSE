@@ -75,7 +75,6 @@ extension EditSEView {
                         Text("Not Recommended. Search using POST request. Blank to disable.")
                     }
                 }
-                .scrollToDismissesKeyboard()
                 .navigationTitle("Advanced Settings")
                 .navigationBarTitleDisplayMode(.inline)
                 .sheet(isPresented: $isShowingPostData) {

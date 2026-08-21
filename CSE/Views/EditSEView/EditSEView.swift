@@ -37,7 +37,6 @@ struct EditSEView: View {
                 importSection
             }
         }
-        .scrollToDismissesKeyboard()
         .animation(.default, value: isFeatureEnabled)
         .navigationTitle(viewModel.cseType.localizedStringResource)
         .navigationBarTitleDisplayMode(.inline)

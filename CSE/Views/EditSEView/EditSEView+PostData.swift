@@ -55,7 +55,6 @@ extension EditSEView {
                         }
                     } footer: { Text("Replace query with %s") }
                 }
-                .scrollToDismissesKeyboard()
                 .navigationTitle("POST Data")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {

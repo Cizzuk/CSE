@@ -75,7 +75,6 @@ struct AdvSettingView: View {
                         .frame(maxWidth: .infinity, alignment: .trailing)
                         .multilineTextAlignment(.trailing)
                         .submitLabel(.done)
-                        .scrollToDismissesKeyboard()
                 }
             } footer: {
                 Text("Overrides the device's region settings when detecting Safari search engines. Blank to disable.")
