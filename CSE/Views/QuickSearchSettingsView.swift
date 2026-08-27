@@ -17,6 +17,7 @@ struct QuickSearchSettingsView: View {
                 Toggle(isOn: $keywordOnly) {
                     Text("Allow Keyword Only Search")
                 }
+                .tint(.accent)
             } footer: {
                 Text("CSE will use Quick Search Engines even if you only enter the keyword in the search query.")
             }

@@ -103,6 +103,7 @@ struct EditSEView: View {
                 Toggle(isOn: $useDefaultCSE) {
                     UITemplates.IconLabel(icon: "magnifyingglass", text: "Default Search Engine")
                 }
+                .tint(.accent)
                 .onChange(of: useDefaultCSE) { newValue in
                     viewModel.handleToggleChange(isOn: newValue, key: "com.tsg0o0.cse.CCWidget.UseDefaultCSE")
                 }
@@ -112,6 +113,7 @@ struct EditSEView: View {
                 Toggle(isOn: $usePrivateCSE) {
                     UITemplates.IconLabel(icon: "hand.raised", text: "Private Search Engine")
                 }
+                .tint(.accent)
                 .onChange(of: usePrivateCSE) { newValue in
                     viewModel.handleToggleChange(isOn: newValue, key: "com.tsg0o0.cse.CCWidget.UsePrivateCSE")
                 }

@@ -27,6 +27,7 @@ struct QuickSEListView: View {
                         Toggle(isOn: $useQuickCSE) {
                             UITemplates.IconLabel(icon: "hare", text: "Quick Search")
                         }
+                        .tint(.accent)
                         .onChange(of: useQuickCSE) { _ in
                             withAnimation { useQuickCSEToggle = useQuickCSE }
                             #if !os(visionOS)

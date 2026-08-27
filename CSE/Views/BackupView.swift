@@ -84,6 +84,7 @@ class BackupView {
                         Toggle(isOn: $iCloudAutoBackup, label: {
                             Text("Auto Backup to iCloud")
                         })
+                        .tint(.accent)
                         Button(action: {
                             #if !os(visionOS)
                             UIImpactFeedbackGenerator(style: .light).impactOccurred()

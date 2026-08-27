@@ -41,6 +41,7 @@ extension TutorialViews {
                         Toggle(isOn: $alsousepriv.animation()) {
                             Text("Also Use in Private Browsing")
                         }
+                        .tint(.accent)
                         .onChange(of: alsousepriv) { _ in
                             withAnimation { alsouseprivToggle = alsousepriv }
                         }

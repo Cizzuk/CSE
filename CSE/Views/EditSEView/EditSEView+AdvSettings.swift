@@ -34,6 +34,7 @@ extension EditSEView {
                     
                     Section {
                         Toggle("Disable Percent-encoding", isOn: $cseData.disablePercentEncoding)
+                            .tint(.accent)
                     } footer: {
                         Text("Disable percent-encoding of queries. When enabled, some symbols and non-ASCII characters may become unavailable.")
                     }
