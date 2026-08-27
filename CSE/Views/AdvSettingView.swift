@@ -37,35 +37,27 @@ struct AdvSettingView: View {
             }
             
             Section {
-                Toggle(isOn: $disablechecker, label: {
-                    Text("Disable Checker")
-                })
-                .tint(.accent)
+                Toggle("Disable Checker", isOn: $disablechecker)
+                    .tint(.accent)
             } footer: {
                 Text("CSE will not check that you have searched from the search bar.")
             }
             
             Section {
-                Toggle(isOn: $ignoreSafariSettings, label: {
-                    Text("Ignore Safari Settings")
-                })
-                .tint(.accent)
+                Toggle("Ignore Safari Settings", isOn: $ignoreSafariSettings)
+                    .tint(.accent)
             } footer: {
                 Text("CSE will ignore Safari Settings and detect the URLs of all Safari search engines.")
             }
             
             Section {
-                Toggle(isOn: $ignoreFocusFilter, label: {
-                    Text("Ignore Focus Filter")
-                })
-                .tint(.accent)
+                Toggle("Ignore Focus Filter", isOn: $ignoreFocusFilter)
+                    .tint(.accent)
             }
             
             Section {
-                Toggle(isOn: $disableEditSEFromShortcuts, label: {
-                    Text("Disable Editing Search Engine from Shortcuts")
-                })
-                .tint(.accent)
+                Toggle("Disable Editing Search Engine from Shortcuts", isOn: $disableEditSEFromShortcuts)
+                    .tint(.accent)
             }
             
             Section {
@@ -85,10 +77,8 @@ struct AdvSettingView: View {
             }
             
             Section {
-                Toggle(isOn: $allowReset, label: {
-                    Text("Enable Reset Buttons")
-                })
-                .tint(.accent)
+                Toggle("Enable Reset Buttons", isOn: $allowReset)
+                    .tint(.accent)
                 Button(action: { AppInitializer.resetCSE(target: .defaultCSE) }) {
                     Text("Reset Default Search Engine")
                 }

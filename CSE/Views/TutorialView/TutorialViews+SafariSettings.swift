@@ -38,14 +38,12 @@ extension TutorialViews {
                     }
                     
                     if #available(iOS 17.0, macOS 14.0, *) {
-                        Toggle(isOn: $alsousepriv.animation()) {
-                            Text("Also Use in Private Browsing")
-                        }
-                        .tint(.accent)
-                        .onChange(of: alsousepriv) { _ in
-                            withAnimation { alsouseprivToggle = alsousepriv }
-                        }
-                        .onAppear { alsouseprivToggle = alsousepriv }
+                        Toggle("Also Use in Private Browsing", isOn: $alsousepriv.animation())
+                            .tint(.accent)
+                            .onChange(of: alsousepriv) { _ in
+                                withAnimation { alsouseprivToggle = alsousepriv }
+                            }
+                            .onAppear { alsouseprivToggle = alsousepriv }
                         
                         // Private SE
                         if !alsouseprivToggle {
