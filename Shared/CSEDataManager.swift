@@ -337,7 +337,9 @@ class CSEDataManager {
             quickCSEData.removeValue(forKey: id)
             // Convert to Dictionary
             let quickCSEDataDict = CSEDataToDictionary(quickCSEData)
-            userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
+            DispatchQueue.main.async {
+                userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
+            }
         }
     }
     
@@ -476,7 +478,7 @@ class CSEDataManager {
         replaceQuickCSEData(quickCSE)
         
         // Update Toggles
-        DispatchQueue.global(qos: .userInteractive).async {
+        DispatchQueue.main.async {
             userDefaults.set(!defaultCSE.url.isEmpty, forKey: "useDefaultCSE")
             userDefaults.set(!privateCSE.url.isEmpty, forKey: "usePrivateCSE")
             userDefaults.set(!quickCSE.isEmpty, forKey: "useQuickCSE")
@@ -508,7 +510,7 @@ class CSEDataManager {
         replaceQuickCSEData(quickCSE)
         
         // Update Toggles
-        DispatchQueue.global(qos: .userInteractive).async {
+        DispatchQueue.main.async {
             userDefaults.set(!defaultCSE.url.isEmpty, forKey: "useDefaultCSE")
             userDefaults.set(!privateCSE.url.isEmpty, forKey: "usePrivateCSE")
             userDefaults.set(!quickCSE.isEmpty, forKey: "useQuickCSE")
