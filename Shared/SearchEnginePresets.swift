@@ -226,11 +226,6 @@ class SearchEnginePresets {
                     url: "https://chatgpt.com/?q=%s",
                 ),
                 CSEDataManager.CSEData(
-                    name: "Perplexity",
-                    keyword: "pplx",
-                    url: "https://www.perplexity.ai/?q=%s",
-                ),
-                CSEDataManager.CSEData(
                     name: "Duck.ai",
                     keyword: "duckai",
                     url: "https://duck.ai/chat?home=1&prompt=1&q=%s",
