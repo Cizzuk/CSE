@@ -20,7 +20,7 @@ struct CCEmojiSearch: ControlWidget {
                 isOn: value,
                 action: CCEmojiSearchIntent()
             ) { isRunning in
-                Label(isRunning ? "On" : "Off", image: "cse_emoji")
+                Label(isRunning ? "On" : "Off", image: "cse.emoji")
             }
         }
         .displayName("Emoji Search")
