@@ -8,8 +8,7 @@
 import SafariServices
 import os.log
 
-class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
-
+final class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     let userDefaults = CSEDataManager.userDefaults
     var focusSettings: (cseData: CSEDataManager.CSEData, useQuickCSE: Bool?, useEmojiSearch: Bool?)? = nil
     
@@ -35,96 +34,90 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             return sendData(context: context, data: ["type" : "error"])
         }
         
-        let useDefaultCSE: Bool = userDefaults.bool(forKey: "useDefaultCSE")
+        // Check if Private CSE should be used
         let usePrivateCSE: Bool = userDefaults.bool(forKey: "usePrivateCSE")
-        
-        // Check Incognito Status
         let incognitoFlag = message["incognito"] as? Bool
-        let isIncognito = usePrivateCSE && (incognitoFlag ?? false)
+        let shouldUsePrivateCSE = usePrivateCSE && (incognitoFlag ?? false)
         
-        // Safari Search Engine
-        let searchengine: SafariSEs
+        // MARK: Get App Settings
+        
+        // Get Safari Search Engine Settings
+        let safariSE: SafariSEs
         if let rawValue = userDefaults.string(forKey: "searchengine"),
            let candidate = SafariSEs(rawValue: rawValue),
            candidate.isAvailable {
-            searchengine = candidate
+            safariSE = candidate
         } else {
-            searchengine = .default
+            safariSE = .default
         }
         
-        // Safari Private Search Engine
-        let alsousepriv: Bool = userDefaults.bool(forKey: "alsousepriv")
-        let privsearchengine: SafariSEs
+        // Private
+        let safariAlsoUsePrivate: Bool = userDefaults.bool(forKey: "alsousepriv")
+        let safariSEPrivate: SafariSEs
         if let rawValue = userDefaults.string(forKey: "privsearchengine"),
            let candidate = SafariSEs(rawValue: rawValue),
            candidate.isAvailable {
-            privsearchengine = candidate
+            safariSEPrivate = candidate
         } else {
-            privsearchengine = .private
+            safariSEPrivate = .private
+        }
+        
+        // Get advanced settings
+        let adv_disablechecker = userDefaults.bool(forKey: "adv_disablechecker")
+        let adv_ignoreSafariSettings = userDefaults.bool(forKey: "adv_ignoreSafariSettings")
+        
+        // Support function
+        func engineIsMatchedURL(_ engine: SafariSEs, _ url: String) -> Bool {
+            return engine.isMatchedURL(url, disableChecker: adv_disablechecker)
         }
         
         Task {
-            // Check current focus filter
-            try await getFocusFilter()
+            // Check current Focus Filter
+            try? await getFocusFilter()
             
-            var searchQuery: String? = nil
+            var searchQuery: String?
+            var checkedEngines: [SafariSEs] = []
             
-            // Get search query from user selected engines
-            if checkEngineURL(engine: searchengine, url: searchURL) {
-                searchQuery = getQueryValue(engine: searchengine, url: searchURL)
-            } else if !alsousepriv && checkEngineURL(engine: privsearchengine, url: searchURL) {
-                searchQuery = getQueryValue(engine: privsearchengine, url: searchURL)
+            // Get search query from user selected safari engines
+            if engineIsMatchedURL(safariSE, searchURL) {
+                searchQuery = safariSE.getQuery(from: searchURL)
+                checkedEngines.append(safariSE)
+            } else if safariAlsoUsePrivate && engineIsMatchedURL(safariSEPrivate, searchURL) {
+                searchQuery = safariSEPrivate.getQuery(from: searchURL)
+                checkedEngines.append(safariSEPrivate)
             }
             
-            // If adv_ignoreSafariSettings and not matched, try all other available engines
-            let adv_ignoreSafariSettings = userDefaults.bool(forKey: "adv_ignoreSafariSettings")
+            // If adv_ignoreSafariSettings is enabled and searchQuery is nil, check all available engines
             if adv_ignoreSafariSettings && searchQuery == nil {
                 for engine in SafariSEs.availableEngines {
                     // Skip already checked engines
-                    if engine == searchengine || (!alsousepriv && engine == privsearchengine) {
-                        continue
-                    }
-                    if checkEngineURL(engine: engine, url: searchURL) {
-                        searchQuery = getQueryValue(engine: engine, url: searchURL)
+                    if checkedEngines.contains(engine) { continue }
+                    // Check engine
+                    if engineIsMatchedURL(engine, searchURL) {
+                        searchQuery = engine.getQuery(from: searchURL)
                         break
                     }
                 }
             }
             
-            // Check if searchQuery is available
-            guard let query = searchQuery else {
+            // If all search engines are not matched, return cancel
+            guard let searchQuery else {
                 sendData(context: context, data: ["type" : "cancel"])
                 return
             }
             
-            // Fixed a macOS Safari bug where full-width space is not replaced with '+'
-            let fixedQuery = query
+            // Fixed a macOS Safari bug where full-width spaces are not replaced with '+'
+            let fixedQuery = searchQuery
                 .replacingOccurrences(of: "%E3%80%80", with: "+", options: .caseInsensitive)
                 .replacingOccurrences(of: "%20", with: "+", options: .caseInsensitive)
                 .replacingOccurrences(of: "　", with: "+")
                 .replacingOccurrences(of: " ", with: "+")
             
-            // Create Redirect URL
-            let redirectData: SendDataSet
-            if isIncognito && usePrivateCSE {
-                redirectData = makeSearchURL(
-                    baseCSE: CSEDataManager.getCSEData(.privateCSE),
-                    query: fixedQuery
-                )
-            } else if useDefaultCSE {
-                redirectData = makeSearchURL(
-                    baseCSE: CSEDataManager.getCSEData(.defaultCSE),
-                    query: fixedQuery
-                )
-            } else {
-                redirectData = makeSearchURL(
-                    baseCSE: CSEDataManager.CSEData(),
-                    query: fixedQuery
-                )
-            }
+            // Create Redirect Data
+            let redirectData = makeSearchURL(shouldUsePrivateCSE: shouldUsePrivateCSE, query: fixedQuery)
             
-            // Check Redirect URL exists
-            if redirectData.redirectTo.isEmpty {
+            // If redirect URL is empty, return cancel
+            guard !redirectData.redirectTo.isEmpty else {
                 sendData(context: context, data: ["type" : "cancel"])
                 return
             }
@@ -144,23 +137,8 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         } catch {}
     }
     
-    // MARK: - SafariSEs Support
-
-    // Engine Checker
-    func checkEngineURL(engine: SafariSEs, url: String) -> Bool {
-        let disableChecker = userDefaults.bool(forKey: "adv_disablechecker")
-        
-        return engine.isMatchedURL(url, disableChecker: disableChecker)
-    }
-    
-    func getQueryValue(engine: SafariSEs, url: String) -> String? {
-        return engine.getQuery(from: url)
-    }
-    
     // MARK: - Make Search URL
-    
-    func makeSearchURL(baseCSE: CSEDataManager.CSEData, query: String)
-            -> SendDataSet {
+    func makeSearchURL(shouldUsePrivateCSE: Bool, query: String) -> SendDataSet {
         // --- Description of some Query variables ---
         //  query: %encoding, Full Search Query
         //  decodedQuery: Decoded, Full Search Query
@@ -171,20 +149,21 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         // Get decoded query
         let decodedQuery: String = query.removingPercentEncoding ?? ""
         
+        // MARK: - Emoji Search
+        
         // Is useEmojiSearch Enabled?
         let useEmojiSearch: Bool
         if let focusUseEmojiSearch = focusSettings?.useEmojiSearch {
-            // Set focus filter setting
             useEmojiSearch = focusUseEmojiSearch
         } else {
             useEmojiSearch = userDefaults.bool(forKey: "useEmojiSearch")
         }
         
-        // Check Emoji Search
+        // If Emoji Search
         if useEmojiSearch &&
-           decodedQuery.count == 1 &&
-           decodedQuery.unicodeScalars.first!.properties.isEmoji &&
-           (decodedQuery.unicodeScalars.first!.value >= 0x203C || decodedQuery.unicodeScalars.count > 1) {
+            decodedQuery.count == 1 &&
+            decodedQuery.unicodeScalars.first!.properties.isEmoji &&
+            (decodedQuery.unicodeScalars.first!.value >= 0x203C || decodedQuery.unicodeScalars.count > 1) {
             
             // Check Language
             let preferredLanguages = Locale.preferredLanguages
@@ -204,23 +183,17 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             return SendDataSet(
                 type: .redirect,
                 redirectTo: redirectURL,
-                postData: []
+                postData: [],
             )
         }
         
+        // MARK: End of Emoji Search
         
-        // ↓--- if !EmojiSearch ---↓
-        
+        // Prepare CSEData
+        var CSEData: CSEDataManager.CSEData?
         var fixedQuery: String = query
         
-        // Load Settings
-        var CSEData: CSEDataManager.CSEData
-        if let focusCSE = focusSettings?.cseData {
-            // Set focus filter setting
-            CSEData = focusCSE
-        } else {
-            CSEData = baseCSE
-        }
+        // MARK: - Quick Search
         
         // Is useQuickCSE Enabled?
         let useQuickCSE: Bool
@@ -238,7 +211,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             let keywordPosRaw = userDefaults.string(forKey: "QuickSearchSettings_keywordPos")
             let keywordPos = QuickSearchKeywordPos(rawValue: keywordPosRaw ?? QuickSearchKeywordPos.default.rawValue) ?? .default
             let quickCSEData = CSEDataManager.getAllQuickCSEData()
-
+            
             // Split query into components with '+'
             var components = query
                 .split(separator: "+", omittingEmptySubsequences: false)
@@ -247,7 +220,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
                 components = [query]
             }
             let decodedComponents = components.map { $0.removingPercentEncoding ?? $0 }
-
+            
             // Apply Matched Quick Search
             func applyMatch(_ matchedData: CSEDataManager.CSEData, removing indices: Set<Int>) {
                 // Remove keyword from query
@@ -258,7 +231,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
                 // Set CSEData
                 CSEData = matchedData
             }
-
+            
             // Match Checking
             // Check keyword only quick search
             if keywordOnly && components.count == 1 {
@@ -303,6 +276,32 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             }
         }
         
+        // MARK: End of Quick Search
+        
+        // MARK: - Determine CSEData to Use
+        
+        // If CSEData is nil (is not Quick Search), get Focus, Default or Private CSE
+        if CSEData == nil {
+            if let focusCSE = focusSettings?.cseData {
+                CSEData = focusCSE
+            } else if shouldUsePrivateCSE {
+                CSEData = CSEDataManager.getCSEData(.privateCSE)
+            } else if userDefaults.bool(forKey: "useDefaultCSE") {
+                CSEData = CSEDataManager.getCSEData(.defaultCSE)
+            }
+        }
+        
+        // If CSEData is still nil, return empty redirect
+        guard let CSEData else {
+            return SendDataSet(
+                type: .redirect,
+                redirectTo: "",
+                postData: [],
+            )
+        }
+        
+        // MARK: - Prepare Redirect
+        
         // Get decoded fixedQuery
         var decodedFixedQuery: String = fixedQuery
             .removingPercentEncoding ?? ""
@@ -328,7 +327,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         let redirectURL: String = CSEData.url
             .replacingOccurrences(of: "%s", with: redirectQuery)
         
-        // POST
+        // MARK: POST
         var postData: [[String: String]] = CSEData.post
         if !postData.isEmpty {
             var decodedFixedQueryForPOST: String
@@ -354,12 +353,14 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             }
         }
         
+        // MARK: End of Prepare Redirect
+        
         let redirectType: RedirectType = postData.isEmpty ? .redirect : .postRedirect
         
         return SendDataSet(
             type: redirectType,
             redirectTo: redirectURL,
-            postData: postData
+            postData: postData,
         )
     }
     
@@ -383,4 +384,3 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         }
     }
 }
-

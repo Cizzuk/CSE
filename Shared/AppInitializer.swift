@@ -18,9 +18,7 @@ class AppInitializer {
         let isVersionChanged = lastVersion != currentVersion
         
         // Early exit if no changes detected
-        if !isFirstLaunch && !isVersionChanged {
-            return
-        }
+        guard isFirstLaunch || isVersionChanged else { return }
         
         // First Launch Setup
         if isFirstLaunch {

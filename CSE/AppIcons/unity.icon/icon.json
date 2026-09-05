@@ -1,4 +1,7 @@
 {
+  "features" : [
+    "specular-location"
+  ],
   "fill" : {
     "solid" : "extended-gray:0.00000,1.00000"
   },
@@ -36,10 +39,10 @@
       "lighting" : "individual",
       "name" : "Object",
       "shadow" : {
-        "kind" : "layer-color",
+        "kind" : "neutral",
         "opacity" : 0.5
       },
-      "specular" : true,
+      "specular" : "inside",
       "translucency" : {
         "enabled" : true,
         "value" : 0.25
@@ -54,7 +57,16 @@
               "value" : {
                 "linear-gradient" : [
                   "srgb:0.94118,0.00000,0.06275,1.00000",
-                  "srgb:1.00000,0.78431,0.00000,0.75228"
+                  "srgb:1.00000,0.78431,0.00000,1.00000"
+                ]
+              }
+            },
+            {
+              "appearance" : "dark",
+              "value" : {
+                "linear-gradient" : [
+                  "srgb:0.94118,0.00000,0.06275,1.00000",
+                  "srgb:1.00000,0.78431,0.00000,1.00000"
                 ]
               }
             },
@@ -83,13 +95,13 @@
       ],
       "name" : "Magnifier",
       "shadow" : {
-        "kind" : "layer-color",
+        "kind" : "neutral",
         "opacity" : 0.5
       },
-      "specular" : true,
+      "specular" : "inside",
       "translucency" : {
-        "enabled" : false,
-        "value" : 0.1
+        "enabled" : true,
+        "value" : 0.3
       }
     }
   ],

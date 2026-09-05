@@ -34,6 +34,7 @@ extension EditSEView {
                     
                     Section {
                         Toggle("Disable Percent-encoding", isOn: $cseData.disablePercentEncoding)
+                            .tint(.accent)
                     } footer: {
                         Text("Disable percent-encoding of queries. When enabled, some symbols and non-ASCII characters may become unavailable.")
                     }
@@ -75,7 +76,6 @@ extension EditSEView {
                         Text("Not Recommended. Search using POST request. Blank to disable.")
                     }
                 }
-                .scrollToDismissesKeyboard()
                 .navigationTitle("Advanced Settings")
                 .navigationBarTitleDisplayMode(.inline)
                 .sheet(isPresented: $isShowingPostData) {

@@ -5,7 +5,6 @@ const isWebRequestAvailable = browser.webRequest && browser.webRequest.onBeforeR
 const postRedirectorURL = location.protocol + "//" + location.host + "/post_redirector.html";
 
 let savedData = {}; // Store data for post redirects
-let incognitoStatus = {}; // Store incognito status for Private Seaerch Engine
 let processedUrls = {}; // Store processed URLs to avoid duplicate processing
 
 // Request handler (send tab data to native and handle response)
@@ -15,18 +14,15 @@ const requestHandler = async (tabId, url) => {
     
     // Easy URL checks
     if (!url) { return; }
-    if (url.startsWith("safari-web-extension:")) { return; }
     if (!url.startsWith("https://")) { return; }
     
     // Check incognito status
-    if (incognitoStatus[tabId] === undefined) {
-        incognitoStatus[tabId] = await getTabIncognitoStatus(tabId);
-    }
+    const incognitoStatus = await getTabIncognitoStatus(tabId);
     
     // Prepare tab data to send
     const tabData = {
         url: url,
-        incognito: incognitoStatus[tabId]
+        incognito: incognitoStatus
     };
     
     // Send tab data to native app
@@ -74,48 +70,38 @@ if (isWebRequestAvailable) {
     // Detect web requests
     browser.webRequest.onBeforeRequest.addListener((details) => {
         if (details.type !== "main_frame") { return; }
-        
         requestHandler(details.tabId, details.url);
     });
-} else {
-    console.log("webRequest API is not available, using tabs.onUpdated for all navigation detection");
 }
 
 // Fallback: use tabs.onUpdated
 browser.tabs.onUpdated.addListener((tabId, updatedData, tabData) => {
-    // Save tab incognito status if not already saved
-    if (incognitoStatus[tabId] === undefined) {
-        incognitoStatus[tabId] = tabData.incognito;
-    }
-    
     if (processedUrls[tabId] === tabData.url) { return; }
     if (!tabData.url) { return; }
-    
     requestHandler(tabId, tabData.url);
-});
-
-// Detect tab creation
-browser.tabs.onCreated.addListener((tabData) => {
-    incognitoStatus[tabData.id] = tabData.incognito;
 });
 
 // Detect tab removal
 browser.tabs.onRemoved.addListener((tabId, removeInfo) => {
     delete savedData[tabId];
-    delete incognitoStatus[tabId];
     delete processedUrls[tabId];
 });
 
-// Handle post_redirector
 browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
     const tabId = sender.tab.id;
-    if (request.type === "post_redirector") {
-        if (savedData[tabId]) {
-            console.log(tabId, "[post_redirector]", "Redirecting... (with POST).");
-            sendResponse(savedData[tabId]);
-            delete savedData[tabId];
-        } else {
-            console.log(tabId, "[post_redirector]", "No POST data. Cancel.");
-        }
+    switch (request.type) {
+        case "post_redirector":
+            // Handle post_redirector
+            if (savedData[tabId]) {
+                console.log(tabId, "[post_redirector]", "Redirecting... (with POST).");
+                sendResponse(savedData[tabId]);
+                delete savedData[tabId];
+            } else {
+                console.log(tabId, "[post_redirector]", "No POST data. Cancel.");
+            }
+            break;
+        default:
+            console.log(tabId, "Unknown message type:", request.type);
+            break;
     }
 });

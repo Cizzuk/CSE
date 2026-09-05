@@ -20,6 +20,7 @@ struct EmojiSearchView: View {
                 Toggle(isOn: $useEmojiSearch) {
                     UITemplates.IconLabel(icon: "face.smiling", text: "Emoji Search")
                 }
+                .tint(.accent)
                 #if !os(visionOS)
                 .onChange(of: useEmojiSearch) { _ in
                     DispatchQueue.global(qos: .background).async {

@@ -19,7 +19,7 @@ struct GetCSESettings: AppIntent, CustomIntentMigratedAppIntent {
     var cseID: String
     
     @Parameter(title: "CSE Settings", default: .url)
-    var settings: IntentCSESettingsEnum
+    var settings: IntentSupport.CSESettingsEnum
     
     static var parameterSummary: some ParameterSummary {
         When(\Self.$type, .notEqualTo, .quickCSE) {

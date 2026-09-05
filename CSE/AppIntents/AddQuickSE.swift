@@ -12,9 +12,6 @@ struct AddQuickSE: AppIntent, CustomIntentMigratedAppIntent {
     static var title: LocalizedStringResource = "Add Quick Search Engine"
     static var description: LocalizedStringResource = "Adds a Custom Quick Search Engine on CSE."
     
-    @Parameter(title: "Replace", description: "If the keyword is already in use, replace and save", default: false)
-    var replace: Bool
-    
     @Parameter(title: "Name", default: "")
     var name: String
     
@@ -36,7 +33,11 @@ struct AddQuickSE: AppIntent, CustomIntentMigratedAppIntent {
     @Parameter(title: "POST Data", description: "Not Recommended. Search using POST request. Blank to disable.", default: "")
     var post: String
 
-    func perform() async throws -> some IntentResult & ReturnsValue<String?> {
+    func perform() async throws -> some IntentResult {
+        if !IntentSupport.isAllowedEditingSearchEngines() {
+            throw IntentSupport.CSEIntentError.notAllowedEditingSearchEngines
+        }
+        
         let parsedPost = CSEDataManager.postDataToDictionary(post)
         
         let cseData = CSEDataManager.CSEData(
@@ -49,12 +50,8 @@ struct AddQuickSE: AppIntent, CustomIntentMigratedAppIntent {
             maxQueryLength: maxQueryLength
         )
         
-        do {
-            try CSEDataManager.saveCSEData(cseData, nil, replace: replace)
-        } catch let error as CSEDataManager.saveCSEDataError {
-            throw error
-        }
+        CSEDataManager.saveCSEData(cseData, nil)
         
-        return .result(value: nil)
+        return .result()
     }
 }
