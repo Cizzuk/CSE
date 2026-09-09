@@ -1,4 +1,7 @@
 {
+  "features" : [
+    "specular-location"
+  ],
   "fill" : "automatic",
   "groups" : [
     {
@@ -40,10 +43,10 @@
       "lighting" : "individual",
       "name" : "Object",
       "shadow" : {
-        "kind" : "layer-color",
+        "kind" : "neutral",
         "opacity" : 0.5
       },
-      "specular" : true,
+      "specular" : "inside",
       "translucency" : {
         "enabled" : true,
         "value" : 0.25
@@ -56,38 +59,19 @@
           "fill-specializations" : [
             {
               "value" : {
-                "linear-gradient" : [
-                  "srgb:0.20000,0.40000,1.00000,1.00000",
-                  "srgb:0.20000,0.40000,1.00000,0.80000"
-                ]
+                "solid" : "srgb:0.20000,0.40000,1.00000,1.00000"
               }
             },
             {
               "appearance" : "dark",
               "value" : {
-                "linear-gradient" : [
-                  "display-p3:0.20000,0.40000,1.00000,1.00000",
-                  "srgb:0.20000,0.40000,1.00000,0.79572"
-                ],
-                "orientation" : {
-                  "start" : {
-                    "x" : 0.5,
-                    "y" : 0
-                  },
-                  "stop" : {
-                    "x" : 0.5,
-                    "y" : 0.7
-                  }
-                }
+                "solid" : "display-p3:0.20000,0.40000,1.00000,1.00000"
               }
             },
             {
               "appearance" : "tinted",
               "value" : {
-                "linear-gradient" : [
-                  "gray:0.80000,1.00000",
-                  "gray:0.50000,1.00000"
-                ]
+                "solid" : "gray:0.80000,1.00000"
               }
             }
           ],
@@ -105,13 +89,13 @@
       ],
       "name" : "Magnifier",
       "shadow" : {
-        "kind" : "layer-color",
+        "kind" : "neutral",
         "opacity" : 0.5
       },
-      "specular" : true,
+      "specular" : "inside",
       "translucency" : {
-        "enabled" : false,
-        "value" : 0.1
+        "enabled" : true,
+        "value" : 0.3
       }
     }
   ],

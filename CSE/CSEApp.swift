@@ -31,6 +31,9 @@ struct CSEApp: App {
                         .titleVisibility = .hidden
                 }
                 #endif
+                #if !os(visionOS)
+                .scrollDismissesKeyboard(.interactively)
+                #endif
         }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .background {

@@ -13,6 +13,7 @@ struct AdvSettingView: View {
     @AppStorage("adv_disablechecker", store: userDefaults) private var disablechecker: Bool = false
     @AppStorage("adv_ignoreSafariSettings", store: userDefaults) private var ignoreSafariSettings: Bool = false
     @AppStorage("adv_ignoreFocusFilter", store: userDefaults) private var ignoreFocusFilter: Bool = false
+    @AppStorage("adv_disableEditSEFromShortcuts", store: userDefaults) private var disableEditSEFromShortcuts: Bool = false
     @AppStorage("adv_overrideRegion", store: userDefaults) private var overrideRegion: String = ""
     @State private var allowReset: Bool = false
     
@@ -23,6 +24,7 @@ struct AdvSettingView: View {
                     disablechecker = false
                     ignoreSafariSettings = false
                     ignoreFocusFilter = false
+                    disableEditSEFromShortcuts = false
                     overrideRegion = ""
                     allowReset = false
                 }
@@ -35,27 +37,27 @@ struct AdvSettingView: View {
             }
             
             Section {
-                Toggle(isOn: $disablechecker, label: {
-                    Text("Disable Checker")
-                })
+                Toggle("Disable Checker", isOn: $disablechecker)
+                    .tint(.accent)
             } footer: {
                 Text("CSE will not check that you have searched from the search bar.")
             }
             
             Section {
-                Toggle(isOn: $ignoreSafariSettings, label: {
-                    Text("Ignore Safari Settings")
-                })
+                Toggle("Ignore Safari Settings", isOn: $ignoreSafariSettings)
+                    .tint(.accent)
             } footer: {
                 Text("CSE will ignore Safari Settings and detect the URLs of all Safari search engines.")
             }
             
             Section {
-                Toggle(isOn: $ignoreFocusFilter, label: {
-                    Text("Ignore Focus Filter")
-                })
-            } footer: {
-                Text("CSE will ignore all Focus Filters.")
+                Toggle("Ignore Focus Filter", isOn: $ignoreFocusFilter)
+                    .tint(.accent)
+            }
+            
+            Section {
+                Toggle("Disable Editing Search Engine from Shortcuts", isOn: $disableEditSEFromShortcuts)
+                    .tint(.accent)
             }
             
             Section {
@@ -69,16 +71,14 @@ struct AdvSettingView: View {
                         .frame(maxWidth: .infinity, alignment: .trailing)
                         .multilineTextAlignment(.trailing)
                         .submitLabel(.done)
-                        .scrollToDismissesKeyboard()
                 }
             } footer: {
                 Text("Overrides the device's region settings when detecting Safari search engines. Blank to disable.")
             }
             
             Section {
-                Toggle(isOn: $allowReset, label: {
-                    Text("Enable Reset Buttons")
-                })
+                Toggle("Enable Reset Buttons", isOn: $allowReset)
+                    .tint(.accent)
                 Button(action: { AppInitializer.resetCSE(target: .defaultCSE) }) {
                     Text("Reset Default Search Engine")
                 }

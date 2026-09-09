@@ -8,14 +8,7 @@
 import SwiftUI
 
 // View extensions for common styling
-extension View {
-    func scrollToDismissesKeyboard() -> some View {
-        self
-            #if !os(visionOS)
-            .scrollDismissesKeyboard(.interactively)
-            #endif
-    }
-    
+extension View {    
     // Glass effect button for tutorial
     func glassEffectTutorialButton() -> some View {
         if #available(iOS 26, macOS 26, *) {

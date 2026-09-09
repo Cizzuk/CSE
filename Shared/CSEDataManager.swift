@@ -175,18 +175,14 @@ class CSEDataManager {
     
     // MARK: - Save CSE Data
     
-    enum saveCSEDataError: LocalizedError {
-        case keyBlank
-        case urlBlank
-        case keyUsed
-        
-        var errorDescription: String? {
-            switch self {
-            case .keyBlank: return String(localized: "Keyword cannot be blank")
-            case .urlBlank: return String(localized: "Search URL cannot be blank")
-            case .keyUsed: return String(localized: "This keyword is already used in other")
-            }
+    class func findAvailableKey(_ baseKey: String) -> String {
+        var candidate = baseKey
+        var count = 1
+        while checkQuickCSEExists(candidate) {
+            count += 1
+            candidate = "\(baseKey)\(count)"
         }
+        return candidate
     }
     
     class func saveCSEDataCommon(_ data: CSEData) -> CSEData {
@@ -204,6 +200,7 @@ class CSEDataManager {
             "https://www.yandex.ru": "https://yandex.ru",
             "https://so.com": "https://www.so.com",
         ]
+        
         for (original, replacement) in replacements {
             if cseData.url.hasPrefix(original) {
                 cseData.url = cseData.url.replacingOccurrences(of: original, with: replacement)
@@ -256,10 +253,14 @@ class CSEDataManager {
         return cseData
     }
     
-    class func saveCSEData(_ data: CSEData, _ type: CSEType = .defaultCSE, uploadCloud: Bool = true) {
+    class func saveCSEData(
+        _ data: CSEData,
+        _ type: CSEType = .defaultCSE,
+        uploadCloud: Bool = true
+    ) {
         // QuickCSE fallback
         if type == .quickCSE {
-            try? saveCSEData(data, nil, uploadCloud: uploadCloud)
+            saveCSEData(data, nil, uploadCloud: uploadCloud)
             return
         }
         
@@ -274,32 +275,36 @@ class CSEDataManager {
         if uploadCloud { CloudKitManager().saveAll() }
     }
     
-    class func saveCSEData(_ data: CSEData, _ originalID: String?, replace: Bool = false, uploadCloud: Bool = true) throws {
+    class func saveCSEData(
+        _ data: CSEData,
+        _ originalID: String?,
+        uploadCloud: Bool = true,
+        handleKeywordChange: ((String) -> Void)? = nil
+    ) {
         var cseData = saveCSEDataCommon(data)
         
         // If Keyword is blank
-        if cseData.keyword.isEmpty { throw saveCSEDataError.keyBlank }
-        // If URL is blank
-        if cseData.url.isEmpty { throw saveCSEDataError.urlBlank }
+        if cseData.keyword.isEmpty {
+            cseData.keyword = findAvailableKey("cse")
+        }
         
         // Remove whitespace from keyword
         cseData.keyword = cseData.keyword.filter { !($0.isWhitespace || $0.isNewline) }
         
         // Get current QuickSEs Data
         var quickCSEData = getAllQuickCSEData()
-        // If Keyword is changed
-        if cseData.keyword != originalID {
-            // If Keyword is free
-            if quickCSEData[cseData.keyword] == nil {
-                if originalID != nil {
-                    quickCSEData.removeValue(forKey: originalID!)
-                }
-            } else {
-                if replace {
-                    quickCSEData.removeValue(forKey: cseData.keyword)
-                } else { throw saveCSEDataError.keyUsed }
-            }
+        
+        // If Keyword is not free, automatically set a new one
+        if quickCSEData[cseData.keyword] != nil && cseData.keyword != originalID {
+            cseData.keyword = findAvailableKey(cseData.keyword)
+            handleKeywordChange?(cseData.keyword)
         }
+        
+        // If Keyword is changed, remove the old one
+        if let originalID = originalID, originalID != cseData.keyword {
+            quickCSEData.removeValue(forKey: originalID)
+        }
+        
         // Replace this QuickSE
         quickCSEData.removeValue(forKey: cseData.keyword)
         quickCSEData[cseData.keyword] = cseData
@@ -332,7 +337,9 @@ class CSEDataManager {
             quickCSEData.removeValue(forKey: id)
             // Convert to Dictionary
             let quickCSEDataDict = CSEDataToDictionary(quickCSEData)
-            userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
+            DispatchQueue.main.async {
+                userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
+            }
         }
     }
     
@@ -471,7 +478,7 @@ class CSEDataManager {
         replaceQuickCSEData(quickCSE)
         
         // Update Toggles
-        DispatchQueue.global(qos: .userInteractive).async {
+        DispatchQueue.main.async {
             userDefaults.set(!defaultCSE.url.isEmpty, forKey: "useDefaultCSE")
             userDefaults.set(!privateCSE.url.isEmpty, forKey: "usePrivateCSE")
             userDefaults.set(!quickCSE.isEmpty, forKey: "useQuickCSE")
@@ -503,7 +510,7 @@ class CSEDataManager {
         replaceQuickCSEData(quickCSE)
         
         // Update Toggles
-        DispatchQueue.global(qos: .userInteractive).async {
+        DispatchQueue.main.async {
             userDefaults.set(!defaultCSE.url.isEmpty, forKey: "useDefaultCSE")
             userDefaults.set(!privateCSE.url.isEmpty, forKey: "usePrivateCSE")
             userDefaults.set(!quickCSE.isEmpty, forKey: "useQuickCSE")

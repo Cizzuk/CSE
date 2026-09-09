@@ -37,7 +37,6 @@ struct EditSEView: View {
                 importSection
             }
         }
-        .scrollToDismissesKeyboard()
         .animation(.default, value: isFeatureEnabled)
         .navigationTitle(viewModel.cseType.localizedStringResource)
         .navigationBarTitleDisplayMode(.inline)
@@ -67,34 +66,20 @@ struct EditSEView: View {
             }
         }
         .onDisappear {
-            if viewModel.cseType != .quickCSE {
-                viewModel.saveData(.dismiss)
-            }
+            viewModel.saveData(.dismiss)
         }
         .toolbar {
-            if viewModel.cseType == .quickCSE {
-                // Override Back Button
-                ToolbarItem(placement: .confirmationAction) {
-                    Button(action: {
-                        if viewModel.saveData(.dismiss) { dismiss() }
-                    }) {
-                        Label("Save", systemImage: "checkmark")
-                    }
-                    .keyboardShortcut("S", modifiers: [.command])
+            #if !os(visionOS)
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button {
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                } label: {
+                    Label("Done", systemImage: "checkmark")
                 }
-                #if !os(visionOS)
-                ToolbarItemGroup(placement: .keyboard) {
-                    Spacer()
-                    Button {
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                    } label: {
-                        Label("Done", systemImage: "checkmark")
-                    }
-                }
-                #endif
             }
+            #endif
         }
-        .navigationBarBackButtonHidden(viewModel.cseType == .quickCSE)
         .accessibilityAction(.escape) {
             if viewModel.saveData(.dismiss) { dismiss() }
         }
@@ -118,6 +103,7 @@ struct EditSEView: View {
                 Toggle(isOn: $useDefaultCSE) {
                     UITemplates.IconLabel(icon: "magnifyingglass", text: "Default Search Engine")
                 }
+                .tint(.accent)
                 .onChange(of: useDefaultCSE) { newValue in
                     viewModel.handleToggleChange(isOn: newValue, key: "com.tsg0o0.cse.CCWidget.UseDefaultCSE")
                 }
@@ -127,6 +113,7 @@ struct EditSEView: View {
                 Toggle(isOn: $usePrivateCSE) {
                     UITemplates.IconLabel(icon: "hand.raised", text: "Private Search Engine")
                 }
+                .tint(.accent)
                 .onChange(of: usePrivateCSE) { newValue in
                     viewModel.handleToggleChange(isOn: newValue, key: "com.tsg0o0.cse.CCWidget.UsePrivateCSE")
                 }
@@ -159,7 +146,7 @@ struct EditSEView: View {
         } footer: {
             let enumratedKeywordPos = QuickSearchKeywordPos(rawValue: keywordPos) ?? QuickSearchKeywordPos.default
             let localizedKeywordPos = String(localized: enumratedKeywordPos.displayName)
-            Text("Enter this keyword at \(localizedKeywordPos) to search with this search engine.")
+            Text("Type this keyword at \(localizedKeywordPos) to search with this search engine.")
         }
     }
     

@@ -16,7 +16,7 @@ struct SetUseEmojiSearch: AppIntent, CustomIntentMigratedAppIntent {
     static var description: LocalizedStringResource = "Turn Emoji Search On or Off on CSE."
     
     @Parameter(title: "Operation", default: .turn)
-    var toggle: IntentTurnEnum?
+    var toggle: IntentSupport.TurnEnum?
     
     @Parameter(title: "State", default: true)
     var state: Bool
@@ -30,6 +30,10 @@ struct SetUseEmojiSearch: AppIntent, CustomIntentMigratedAppIntent {
     }
     
     func perform() async throws -> some IntentResult {
+        if !IntentSupport.isAllowedEditingSearchEngines() {
+            throw IntentSupport.CSEIntentError.notAllowedEditingSearchEngines
+        }
+        
         let userDefaults = CSEDataManager.userDefaults
         var useEmojiSearch: Bool = userDefaults.bool(forKey: "useEmojiSearch")
         
