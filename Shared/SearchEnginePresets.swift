@@ -208,7 +208,7 @@ class SearchEnginePresets {
             CSEDataManager.CSEData(
                 name: "Google &udm=14",
                 keyword: "g",
-                url: "https://www.google.com/search?q=%s&udm=14&client=safari",
+                url: "https://www.google.com/search?udm=14&q=%s&client=safari",
             ),
         ]
         
@@ -233,7 +233,7 @@ class SearchEnginePresets {
                 CSEDataManager.CSEData(
                     name: "Google AI Mode",
                     keyword: "gai",
-                    url: "https://google.com/?q=%s&udm=50",
+                    url: "https://google.com/?udm=50&q=%s",
                 ),
                 CSEDataManager.CSEData(
                     name: "Copilot Search",
