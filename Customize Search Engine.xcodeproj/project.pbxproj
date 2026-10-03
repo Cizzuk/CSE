@@ -14,10 +14,7 @@
 		BE8F7FF02DE41F0E003906F4 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8F7FEF2DE41F0E003906F4 /* WidgetKit.framework */; };
 		BE8F7FF22DE41F0E003906F4 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8F7FF12DE41F0E003906F4 /* SwiftUI.framework */; };
 		BE8F7FFF2DE41F0F003906F4 /* CSE CCWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BE8F7FED2DE41F0E003906F4 /* CSE CCWidgetExtension.appex */; platformFilters = (ios, maccatalyst, ); settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		BE8F800D2DE4857C003906F4 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */; };
 		BE8F800E2DE4A29D003906F4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */; };
-		BEE22EE52D44E93000EDA51A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */; };
-		BEE22EE62D44E93000EDA51A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +65,6 @@
 		BE8F7FED2DE41F0E003906F4 /* CSE CCWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "CSE CCWidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8F7FEF2DE41F0E003906F4 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		BE8F7FF12DE41F0E003906F4 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -163,7 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				BE315D2E2EE9B5CA00A1F79A /* Shared */,
-				BEE22EE42D44E93000EDA51A /* Localizable.xcstrings */,
 				908FBC942BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy */,
 				BE315D182EE9B56100A1F79A /* CSE */,
 				BE315CF82EE9B55200A1F79A /* CSE Extension */,
@@ -349,7 +344,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEE22EE62D44E93000EDA51A /* Localizable.xcstrings in Resources */,
 				908FBC952BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,7 +352,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEE22EE52D44E93000EDA51A /* Localizable.xcstrings in Resources */,
 				908FBC962BAD83FA00D77AE5 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,7 +368,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE8F800E2DE4A29D003906F4 /* PrivacyInfo.xcprivacy in Resources */,
-				BE8F800D2DE4857C003906F4 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
