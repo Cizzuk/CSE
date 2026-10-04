@@ -24,11 +24,12 @@ class SearchEnginePresets {
     
     static var quickCSEs: [String: CSEDataManager.CSEData] {
         let wikiLangsList: [String] = [
+            // 下記ページで (純記事数 >= 500,000 && 点数B >= 40.0) の言語版のみを採用する
             // https://ja.wikipedia.org/wiki/Wikipedia:全言語版の統計#各言語版ウィキペディア
-            // Over 1M articles
-            "ar", "de", "en", "es", "fa", "fr", "it", "arz", "nl", "ja", "pl", "pt", "ceb", "sv", "uk", "vi", "war", "zh", "ru",
-            // Over 500K articles
-            "ca", "id", "ko", "sr", "no", "tr", "fi", "ce", "cs", "hu", "ro", "tt",
+            // 1M
+            "en", "de", "fr", "sv", "nl", "es", "ru", "it", "pl", "zh", "ja", "uk", "ar", "vi", "pt", "fa",
+            // 500K
+            "ca", "id", "ko", "sr", "tr", "no", "fi", "cs", "hu", "ro",
         ]
         var wikiLang: String = "en"
         for language in preferredLanguages {
