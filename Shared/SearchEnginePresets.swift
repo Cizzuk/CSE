@@ -1,6 +1,6 @@
 //
 //  SearchEnginePresets.swift
-//  Customize Search Engine
+//  CSE
 //
 //  Created by Cizzuk on 2025/04/15.
 //

@@ -1,6 +1,6 @@
 //
 //  CSEApp.swift
-//  Customize Search Engine
+//  CSE
 //
 //  Created by Cizzuk on 2022/07/23.
 //

@@ -1,6 +1,6 @@
 //
 //  CSEDataManager.swift
-//  Customize Search Engine
+//  CSE
 //
 //  Created by Cizzuk on 2025/05/25.
 //

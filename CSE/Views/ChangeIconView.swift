@@ -1,6 +1,6 @@
 //
 //  ChangeIconView.swift
-//  Customize Search Engine
+//  CSE
 //
 //  Created by Cizzuk on 2024/09/21.
 //

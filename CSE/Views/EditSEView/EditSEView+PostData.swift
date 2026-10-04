@@ -1,6 +1,6 @@
 //
 //  EditSEView+PostData.swift
-//  Customize Search Engine
+//  CSE
 //
 //  Created by Cizzuk on 2025/12/10.
 //

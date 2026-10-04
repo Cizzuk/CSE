@@ -1,6 +1,6 @@
 //
 //  EmojiSearchView.swift
-//  Customize Search Engine
+//  CSE
 //
 //  Created by Cizzuk on 2025/07/24.
 //

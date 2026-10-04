@@ -1,6 +1,6 @@
 //
 //  CCEmojiSearch.swift
-//  CCEmojiSearch
+//  CSE Widget Extension
 //
 //  Created by Cizzuk on 2025/05/26.
 //

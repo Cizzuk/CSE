@@ -1,6 +1,6 @@
 //
 //  MainView.swift
-//  Customize Search Engine
+//  CSE
 //
 //  Created by Cizzuk on 2024/03/13.
 //

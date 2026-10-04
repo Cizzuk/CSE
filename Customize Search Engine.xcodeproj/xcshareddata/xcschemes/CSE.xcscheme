@@ -30,8 +30,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "90C9BE2E288BE17300E22FB8"
-               BuildableName = "CSE Extension.appex"
-               BlueprintName = "CSE Extension"
+               BuildableName = "CSE Safari Extension.appex"
+               BlueprintName = "CSE Safari Extension"
                ReferencedContainer = "container:Customize Search Engine.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,8 +44,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BE8F7FEC2DE41F0E003906F4"
-               BuildableName = "CSE CCWidgetExtension.appex"
-               BlueprintName = "CSE CCWidgetExtension"
+               BuildableName = "CSE Widget Extension.appex"
+               BlueprintName = "CSE Widget Extension"
                ReferencedContainer = "container:Customize Search Engine.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
