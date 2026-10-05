@@ -1,6 +1,6 @@
 //
 //  TutorialViews+Presets.swift
-//  Customize Search Engine
+//  CSE
 //
 //  Created by Cizzuk on 2024/12/31.
 //

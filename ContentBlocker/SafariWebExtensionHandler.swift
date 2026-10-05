@@ -1,6 +1,6 @@
 //
 //  SafariWebExtensionHandler.swift
-//  CSE ContentBlocker
+//  CSE Content Blocker
 //
 //  Created by Cizzuk on 2025/09/28.
 //

@@ -1,6 +1,6 @@
 //
 //  CCUsePrivateCSE.swift
-//  CCUsePrivateCSE
+//  CSE Widget Extension
 //
 //  Created by Cizzuk on 2025/07/27.
 //

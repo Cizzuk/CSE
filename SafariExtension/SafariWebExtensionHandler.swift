@@ -1,6 +1,6 @@
 //
 //  SafariWebExtensionHandler.swift
-//  Customize Search Engine Extension
+//  CSE Safari Extension
 //
 //  Created by Cizzuk on 2022/07/23.
 //

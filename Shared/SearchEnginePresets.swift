@@ -1,6 +1,6 @@
 //
 //  SearchEnginePresets.swift
-//  Customize Search Engine
+//  CSE
 //
 //  Created by Cizzuk on 2025/04/15.
 //
@@ -24,11 +24,12 @@ class SearchEnginePresets {
     
     static var quickCSEs: [String: CSEDataManager.CSEData] {
         let wikiLangsList: [String] = [
+            // 下記ページで (純記事数 >= 500,000 && 点数B >= 40.0) の言語版のみを採用する
             // https://ja.wikipedia.org/wiki/Wikipedia:全言語版の統計#各言語版ウィキペディア
-            // Over 1M articles
-            "ar", "de", "en", "es", "fa", "fr", "it", "arz", "nl", "ja", "pl", "pt", "ceb", "sv", "uk", "vi", "war", "zh", "ru",
-            // Over 500K articles
-            "ca", "id", "ko", "sr", "no", "tr", "fi", "ce", "cs", "hu", "ro", "tt",
+            // 1M
+            "en", "de", "fr", "sv", "nl", "es", "ru", "it", "pl", "zh", "ja", "uk", "ar", "vi", "pt", "fa",
+            // 500K
+            "ca", "id", "ko", "sr", "tr", "no", "fi", "cs", "hu", "ro",
         ]
         var wikiLang: String = "en"
         for language in preferredLanguages {
@@ -208,7 +209,7 @@ class SearchEnginePresets {
             CSEDataManager.CSEData(
                 name: "Google &udm=14",
                 keyword: "g",
-                url: "https://www.google.com/search?q=%s&udm=14&client=safari",
+                url: "https://www.google.com/search?udm=14&q=%s&client=safari",
             ),
         ]
         
@@ -233,7 +234,7 @@ class SearchEnginePresets {
                 CSEDataManager.CSEData(
                     name: "Google AI Mode",
                     keyword: "gai",
-                    url: "https://google.com/?q=%s&udm=50",
+                    url: "https://google.com/?udm=50&q=%s",
                 ),
                 CSEDataManager.CSEData(
                     name: "Copilot Search",
