@@ -217,6 +217,10 @@ class SearchEnginePresets {
     }
         
     static var aiCSEList: [CSEDataManager.CSEData] {
+        #if targetEnvironment(simulator)
+        return []
+        #endif
+        
         var aiCSEs: [CSEDataManager.CSEData] = []
         if currentRegion != "CN" {
             aiCSEs.append(contentsOf: [
