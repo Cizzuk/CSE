@@ -12,7 +12,7 @@ extension EditSEView {
         @Binding var cseData: CSEDataManager.CSEData
         @Binding var isShowingPostData: Bool
         @Binding var isOpenSheet: Bool
-        
+
         var body: some View {
             NavigationStack {
                 List {
@@ -31,14 +31,14 @@ extension EditSEView {
                     } footer: {
                         Text("Use a specific character as the query separator. Default is +.")
                     }
-                    
+
                     Section {
                         Toggle("Disable Percent-encoding", isOn: $cseData.disablePercentEncoding)
                             .tint(.accent)
                     } footer: {
                         Text("Disable percent-encoding of queries. When enabled, some symbols and non-ASCII characters may become unavailable.")
                     }
-                    
+
                     Section {
                         HStack {
                             Text("Max Query Length")
@@ -52,7 +52,7 @@ extension EditSEView {
                     } footer: {
                         Text("Truncate the query to the specified character count. Blank to disable.")
                     }
-                    
+
                     Section {
                         Button(action: { isShowingPostData = true }) {
                             HStack {
@@ -88,14 +88,14 @@ extension EditSEView {
                         }
                     }
                     #if !os(visionOS)
-                    ToolbarItemGroup(placement: .keyboard) {
-                        Spacer()
-                        Button {
-                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                        } label: {
-                            Label("Done", systemImage: "checkmark")
+                        ToolbarItemGroup(placement: .keyboard) {
+                            Spacer()
+                            Button {
+                                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                            } label: {
+                                Label("Done", systemImage: "checkmark")
+                            }
                         }
-                    }
                     #endif
                 }
             }

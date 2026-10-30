@@ -10,7 +10,7 @@ import SwiftUI
 struct QuickSearchSettingsView: View {
     @AppStorage("QuickSearchSettings_keywordOnly", store: userDefaults) private var keywordOnly: Bool = true
     @AppStorage("QuickSearchSettings_keywordPos", store: userDefaults) private var keywordPos: String = QuickSearchKeywordPos.default.rawValue
-    
+
     var body: some View {
         List {
             Section {
@@ -19,7 +19,7 @@ struct QuickSearchSettingsView: View {
             } footer: {
                 Text("CSE will use Quick Search Engines even if you only enter the keyword in the search query.")
             }
-            
+
             Section {
                 Picker("Keyword Position", selection: $keywordPos) {
                     ForEach(QuickSearchKeywordPos.allCases, id: \.self.rawValue) { pos in

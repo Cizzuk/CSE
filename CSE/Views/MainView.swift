@@ -13,18 +13,18 @@ struct MainView: View {
     @AppStorage("usePrivateCSE", store: userDefaults) private var usePrivateCSE: Bool = false
     @AppStorage("useQuickCSE", store: userDefaults) private var useQuickCSE: Bool = false
     @AppStorage("useEmojiSearch", store: userDefaults) private var useEmojiSearch: Bool = false
-    
+
     // Sheets
     @AppStorage("needFirstTutorial", store: userDefaults) private var needFirstTutorial: Bool = true
     @State private var openSafariTutorialView: Bool = false
-    
+
     // Navigation
     @State private var selection: NavigationItem?
     private enum NavigationItem: String, Hashable {
         case defaultSE, privateSE, quickSE, emojiSearch
         case about, cseContentBlocker, backup, changeIcon, advancedSettings
     }
-    
+
     var body: some View {
         NavigationSplitView(columnVisibility: .constant(.doubleColumn)) {
             List(selection: $selection) {
@@ -39,7 +39,7 @@ struct MainView: View {
                                 .multilineTextAlignment(.trailing)
                         }
                     }
-                    
+
                     // Private SE Settings
                     NavigationLink(value: NavigationItem.privateSE) {
                         HStack {
@@ -50,7 +50,7 @@ struct MainView: View {
                                 .multilineTextAlignment(.trailing)
                         }
                     }
-                    
+
                     // Quick SE Settings
                     NavigationLink(value: NavigationItem.quickSE) {
                         HStack {
@@ -61,8 +61,7 @@ struct MainView: View {
                                 .multilineTextAlignment(.trailing)
                         }
                     }
-                    
-                    
+
                     // Emoji Search Setting
                     NavigationLink(value: NavigationItem.emojiSearch) {
                         HStack {
@@ -74,14 +73,14 @@ struct MainView: View {
                         }
                     }
                 }
-                
+
                 // Show Safari Settings Tutorial Button
                 Section {
                     Button(action: { openSafariTutorialView = true }) {
                         VStack(alignment: .leading) {
                             UITemplates.IconLabel(icon: "safari", text: "Safari Settings")
                                 #if !os(visionOS)
-                                .foregroundStyle(.accent)
+                                    .foregroundStyle(.accent)
                                 #endif
                             Spacer().frame(height: 4)
                             Text("If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial.")
@@ -90,29 +89,29 @@ struct MainView: View {
                         }
                     }
                     #if !os(visionOS)
-                    .foregroundStyle(Color(.label))
+                        .foregroundStyle(Color(.label))
                     #endif
                 }
-                
+
                 Section {
                     NavigationLink(value: NavigationItem.about) {
                         UITemplates.IconLabel(icon: "info.circle", text: "About")
                     }
-                    
+
                     NavigationLink(value: NavigationItem.cseContentBlocker) {
                         UITemplates.IconLabel(icon: "shield.lefthalf.filled", text: "CSE Content Blocker")
                     }
-                    
+
                     NavigationLink(value: NavigationItem.backup) {
                         UITemplates.IconLabel(icon: "arrow.counterclockwise", text: "Backup & Restore")
                     }
-                    
+
                     if UIApplication.shared.supportsAlternateIcons {
                         NavigationLink(value: NavigationItem.changeIcon) {
                             UITemplates.IconLabel(icon: "app.dashed", text: "Change App Icon")
                         }
                     }
-                    
+
                     NavigationLink(value: NavigationItem.advancedSettings) {
                         UITemplates.IconLabel(icon: "gearshape.2", text: "Advanced Settings")
                     }
@@ -120,7 +119,7 @@ struct MainView: View {
             }
             .navigationTitle("CSE Settings")
             #if os(visionOS)
-            .background(.thickMaterial)
+                .background(.thickMaterial)
             #endif
         } detail: {
             switch selection {
@@ -139,7 +138,7 @@ struct MainView: View {
         .navigationSplitViewStyle(.balanced)
         .listStyleFallback()
         // Tutorial sheets
-        .sheet(isPresented : $needFirstTutorial) {
+        .sheet(isPresented: $needFirstTutorial) {
             NavigationStack {
                 TutorialViews.WelcomeView(isOpenSheet: $needFirstTutorial)
             }

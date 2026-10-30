@@ -14,10 +14,10 @@ struct GetQuickCSEList: AppIntent, CustomIntentMigratedAppIntent {
 
     func perform() async throws -> some IntentResult & ReturnsValue<[String]> {
         let quickCSEs = CSEDataManager.getAllQuickCSEData()
-        
+
         // List up the keywords
         let keywords: [String] = quickCSEs.map { $0.key }.sorted()
-        
+
         return .result(value: keywords)
     }
 }

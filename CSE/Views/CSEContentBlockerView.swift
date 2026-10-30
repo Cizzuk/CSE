@@ -23,11 +23,11 @@ struct CSEContentBlockerView: View {
                     Text("This is an additional extension that blocks Safari's search engine to prevent leaks of your search queries.")
                         .foregroundStyle(.secondary)
                 }
-                
+
                 // Open Settings Button
                 UITemplates.OpenSettingsButton()
             }
-            
+
             Section {
                 // Safariの制約のため、あなたがSafariの設定で選択した検索エンジンは、CSEの使用中であってもあなたの検索内容を知ることができる可能性があります。
                 // このコンテンツブロッカーは、Safariの検索エンジンを事前にブロックすることで、検索クエリの漏洩を防止します。
@@ -43,7 +43,7 @@ struct CSEContentBlockerView: View {
                     .font(.caption)
                     .padding(.bottom, 20)
             }
-            
+
             Section {
                 // 古いバージョンのSafariでは全く検索ができなくなる。
                 // CSEの設定で「デフォルトの検索エンジン」をオフにすると、検索ができなくなる。

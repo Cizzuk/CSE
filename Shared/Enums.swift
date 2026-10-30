@@ -9,9 +9,9 @@ import Foundation
 
 enum QuickSearchKeywordPos: String, CaseIterable {
     case prefix, suffix, prefORsuf, prefANDsuf
-    
+
     static let `default`: QuickSearchKeywordPos = .prefix
-    
+
     var displayName: String.LocalizationValue {
         switch self {
         case .prefix:

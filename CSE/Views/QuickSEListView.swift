@@ -6,18 +6,19 @@
 //
 
 import SwiftUI
+
 #if !os(visionOS)
-import WidgetKit
+    import WidgetKit
 #endif
 
 struct QuickSEListView: View {
     @Environment(\.scenePhase) private var scenePhase
-    
+
     @State private var quickCSE: [String: CSEDataManager.CSEData] = CSEDataManager.getAllQuickCSEData()
     @AppStorage("useQuickCSE", store: userDefaults) private var useQuickCSE: Bool = false
     @State private var useQuickCSEToggle: Bool = false
     @State private var searchQuery: String = ""
-    
+
     var body: some View {
         NavigationStack {
             List {
@@ -31,16 +32,18 @@ struct QuickSEListView: View {
                         .onChange(of: useQuickCSE) { _ in
                             withAnimation { useQuickCSEToggle = useQuickCSE }
                             #if !os(visionOS)
-                            DispatchQueue.global(qos: .background).async {
-                                if #available(iOS 18.0, macOS 26, *) {
-                                    ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
+                                DispatchQueue.global(qos: .background).async {
+                                    if #available(iOS 18.0, macOS 26, *) {
+                                        ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
+                                    }
                                 }
-                            }
                             #endif
                         }
-                    } footer: { Text("Type a keyword in the query to switch search engines.") }
+                    } footer: {
+                        Text("Type a keyword in the query to switch search engines.")
+                    }
                 }
-                
+
                 if useQuickCSEToggle {
                     if searchQuery.isEmpty {
                         Section {
@@ -49,25 +52,26 @@ struct QuickSEListView: View {
                             }
                         }
                     }
-                    
+
                     Section {
                         // Add new SE Button
                         if searchQuery.isEmpty {
                             NavigationLink(destination: EditSEView(type: .quickCSE)) {
                                 UITemplates.IconLabel(icon: "plus.circle", text: "Add New Search Engine")
-                                #if !os(visionOS)
-                                .foregroundStyle(.accent)
-                                #endif
+                                    #if !os(visionOS)
+                                        .foregroundStyle(.accent)
+                                    #endif
                             }
                             .keyboardShortcut("N", modifiers: [.command])
                         }
-                        
+
                         // List of Quick SEs
                         let keywordTranslation = String(localized: "Keyword")
-                        let sortedQuick: [(key: String, value: CSEDataManager.CSEData)] = quickCSE
+                        let sortedQuick: [(key: String, value: CSEDataManager.CSEData)] =
+                            quickCSE
                             .map { ($0.key, $0.value) }
                             .sorted { $0.key < $1.key }
-                        
+
                         ForEach(sortedQuick, id: \.key) { item in
                             let cseID = item.key
                             let cseData = item.value
@@ -102,7 +106,9 @@ struct QuickSEListView: View {
                                 quickCSE.removeValue(forKey: key)
                             }
                         }
-                    } header: { Text("Quick Search Engines") }
+                    } header: {
+                        Text("Quick Search Engines")
+                    }
                 }
             }
             .navigationTitle("Quick Search")
@@ -135,9 +141,7 @@ struct QuickSEListView: View {
                     // Search QuickCSEs
                     let query = newQuery.lowercased()
                     quickCSE = CSEDataManager.getAllQuickCSEData().filter { key, data in
-                        key.lowercased().contains(query) ||
-                        data.name.lowercased().contains(query) ||
-                        data.url.lowercased().contains(query)
+                        key.lowercased().contains(query) || data.name.lowercased().contains(query) || data.url.lowercased().contains(query)
                     }
                 }
             }

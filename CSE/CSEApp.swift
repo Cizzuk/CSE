@@ -25,14 +25,14 @@ struct CSEApp: App {
         WindowGroup {
             MainView()
                 #if targetEnvironment(macCatalyst)
-                .onAppear {
-                    (UIApplication.shared.connectedScenes.first as? UIWindowScene)?
-                        .titlebar?
-                        .titleVisibility = .hidden
-                }
+                    .onAppear {
+                        (UIApplication.shared.connectedScenes.first as? UIWindowScene)?
+                            .titlebar?
+                            .titleVisibility = .hidden
+                    }
                 #endif
                 #if !os(visionOS)
-                .scrollDismissesKeyboard(.interactively)
+                    .scrollDismissesKeyboard(.interactively)
                 #endif
         }
         .onChange(of: scenePhase) { newPhase in
@@ -46,15 +46,15 @@ struct CSEApp: App {
 // MARK: - App Delegate
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+
         // Initialize app data and perform necessary updates
         AppInitializer.initializeApp()
-        
+
         return true
     }
-    
+
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }

@@ -11,7 +11,7 @@ class SearchEnginePresets {
     // Helpers
     private static let currentRegion = Locale.current.region?.identifier
     private static let preferredLanguages = Locale.preferredLanguages
-    
+
     private static func containsLanguage(_ languageCode: String) -> Bool {
         return preferredLanguages.contains { language in
             if language.hasPrefix(languageCode + "-") {
@@ -21,7 +21,7 @@ class SearchEnginePresets {
             return locale.language.languageCode?.identifier == languageCode
         }
     }
-    
+
     static var quickCSEs: [String: CSEDataManager.CSEData] {
         let wikiLangsList: [String] = [
             // 下記ページで (純記事数 >= 500,000 && 点数B >= 40.0) の言語版のみを採用する
@@ -39,7 +39,7 @@ class SearchEnginePresets {
                 break
             }
         }
-        
+
         var baseCSEs = [
             "g": CSEDataManager.CSEData(
                 name: "Google",
@@ -88,21 +88,21 @@ class SearchEnginePresets {
                 disablePercentEncoding: true,
             ),
         ]
-        
+
         if currentRegion != "CN" {
             baseCSEs["gpt"] = CSEDataManager.CSEData(
                 name: "ChatGPT",
                 url: "https://chatgpt.com/?q=%s",
             )
         }
-        
+
         if preferredLanguages.first == "ja-JP" {
             baseCSEs["y"] = CSEDataManager.CSEData(
                 name: "Yahoo! JAPAN",
                 url: "https://search.yahoo.co.jp/search?p=%s",
             )
         }
-        
+
         if currentRegion == "CN" || containsLanguage("zh-Hans") {
             baseCSEs["baidu"] = CSEDataManager.CSEData(
                 name: "百度",
@@ -113,38 +113,38 @@ class SearchEnginePresets {
                 url: "https://s.weibo.com/weibo?q=%s",
             )
         }
-        
+
         if currentRegion == "FR" {
             baseCSEs["qwant"] = CSEDataManager.CSEData(
                 name: "Qwant",
                 url: "https://www.qwant.com/?q=%s",
             )
         }
-        
+
         if currentRegion == "KR" || containsLanguage("ko") {
             baseCSEs["naver"] = CSEDataManager.CSEData(
                 name: "NAVER",
                 url: "https://search.naver.com/search.naver?query=%s",
             )
         }
-        
+
         if currentRegion == "VN" || containsLanguage("vi") {
             baseCSEs["coc"] = CSEDataManager.CSEData(
                 name: "Cốc Cốc",
                 url: "https://coccoc.com/search#query=%s",
             )
         }
-        
+
         if currentRegion == "RU" || containsLanguage("ru") {
             baseCSEs["yandex"] = CSEDataManager.CSEData(
                 name: "Яндекс",
                 url: "https://yandex.ru/search/?text=%s",
             )
         }
-        
+
         return baseCSEs
     }
-    
+
     static var popCSEList: [CSEDataManager.CSEData] {
         var popCSEs: [CSEDataManager.CSEData] = [
             CSEDataManager.CSEData(
@@ -169,35 +169,38 @@ class SearchEnginePresets {
                 url: "https://kagi.com/search?q=%s",
             ),
         ]
-        
+
         // Add region-specific search engines
         if currentRegion == "FR" {
-            popCSEs.append(CSEDataManager.CSEData(
-                name: "Qwant",
-                keyword: "qwant",
-                url: "https://www.qwant.com/?q=%s",
-            ))
+            popCSEs.append(
+                CSEDataManager.CSEData(
+                    name: "Qwant",
+                    keyword: "qwant",
+                    url: "https://www.qwant.com/?q=%s",
+                ))
         }
-        
+
         if currentRegion == "KR" || containsLanguage("ko") {
-            popCSEs.append(CSEDataManager.CSEData(
-                name: "NAVER",
-                keyword: "naver",
-                url: "https://search.naver.com/search.naver?query=%s",
-            ))
+            popCSEs.append(
+                CSEDataManager.CSEData(
+                    name: "NAVER",
+                    keyword: "naver",
+                    url: "https://search.naver.com/search.naver?query=%s",
+                ))
         }
-        
+
         if currentRegion == "VN" || containsLanguage("vi") {
-            popCSEs.append(CSEDataManager.CSEData(
-                name: "Cốc Cốc",
-                keyword: "coc",
-                url: "https://coccoc.com/search#query=%s",
-            ))
+            popCSEs.append(
+                CSEDataManager.CSEData(
+                    name: "Cốc Cốc",
+                    keyword: "coc",
+                    url: "https://coccoc.com/search#query=%s",
+                ))
         }
-        
+
         return popCSEs
     }
-    
+
     static var noaiCSEList: [CSEDataManager.CSEData] {
         let noaiCSEs: [CSEDataManager.CSEData] = [
             CSEDataManager.CSEData(
@@ -212,15 +215,15 @@ class SearchEnginePresets {
                 url: "https://www.google.com/search?udm=14&q=%s&client=safari",
             ),
         ]
-        
+
         return noaiCSEs
     }
-        
+
     static var aiCSEList: [CSEDataManager.CSEData] {
         #if targetEnvironment(simulator)
-        return []
+            return []
         #endif
-        
+
         var aiCSEs: [CSEDataManager.CSEData] = []
         if currentRegion != "CN" {
             aiCSEs.append(contentsOf: [
@@ -246,31 +249,32 @@ class SearchEnginePresets {
                     url: "https://www.bing.com/copilotsearch?q=%s",
                 ),
             ])
-            
+
             if currentRegion == "JP" || containsLanguage("ja") {
-                aiCSEs.append(CSEDataManager.CSEData(
-                    name: "Agent i",
-                    keyword: "yai",
-                    url: "https://search.yahoo.co.jp/chat/s/n?q=%s&s=request_parameter_question",
-                ))
+                aiCSEs.append(
+                    CSEDataManager.CSEData(
+                        name: "Agent i",
+                        keyword: "yai",
+                        url: "https://search.yahoo.co.jp/chat/s/n?q=%s&s=request_parameter_question",
+                    ))
             }
-            
+
             // Normal AI Chat
             aiCSEs.append(contentsOf: [
                 CSEDataManager.CSEData(
                     name: "Claude",
                     keyword: "claude",
                     url: "https://claude.ai/new?q=%s",
-                ),
+                )
             ])
         }
-        
+
         return aiCSEs
     }
-    
+
     static var safariCSEList: [CSEDataManager.CSEData] {
         var normalCSEs: [CSEDataManager.CSEData] = []
-        
+
         let localizedYahoo: CSEDataManager.CSEData
         if preferredLanguages.first == "ja-JP" {
             localizedYahoo = CSEDataManager.CSEData(
@@ -285,8 +289,8 @@ class SearchEnginePresets {
                 url: "https://search.yahoo.com/search?p=%s",
             )
         }
-        
-        normalCSEs.append(contentsOf:[
+
+        normalCSEs.append(contentsOf: [
             CSEDataManager.CSEData(
                 name: "Google",
                 keyword: "g",
@@ -310,24 +314,26 @@ class SearchEnginePresets {
                 url: "https://www.ecosia.org/search?q=%s",
             ),
         ])
-        
+
         if currentRegion == "CN" || containsLanguage("zh-Hans") {
-            normalCSEs.append(CSEDataManager.CSEData(
-                name: "百度",
-                keyword: "baidu",
-                url: "https://www.baidu.com/s?wd=%s",
-            ))
+            normalCSEs.append(
+                CSEDataManager.CSEData(
+                    name: "百度",
+                    keyword: "baidu",
+                    url: "https://www.baidu.com/s?wd=%s",
+                ))
         }
-        
+
         if currentRegion == "RU" || containsLanguage("ru") {
-            normalCSEs.append(CSEDataManager.CSEData(
-                name: "Яндекс",
-                keyword: "yandex",
-                url: "https://yandex.ru/search/?text=%s",
-            ))
+            normalCSEs.append(
+                CSEDataManager.CSEData(
+                    name: "Яндекс",
+                    keyword: "yandex",
+                    url: "https://yandex.ru/search/?text=%s",
+                ))
         }
-        
+
         return normalCSEs
     }
-        
+
 }

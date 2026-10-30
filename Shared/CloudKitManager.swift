@@ -7,13 +7,13 @@
 
 import CloudKit
 import Combine
-import UIKit
 import CryptoKit
+import UIKit
 
 final class CloudKitManager: ObservableObject {
     private let database: CKDatabase = CKContainer(identifier: "iCloud.net.cizzuk.cse").privateCloudDatabase
     private let userDefaults = CSEDataManager.userDefaults
-    
+
     enum CKMStatus: Equatable {
         case idle
         case skipped
@@ -30,13 +30,13 @@ final class CloudKitManager: ObservableObject {
         case delete
         case export
     }
-    
+
     @Published var cloudKitAvailability: CKAccountStatus?
-    @Published var allCSEs: [CSEDataManager.DeviceCSEs] = [] // All data from iCloud
-    @Published var error: Error? // Error message
+    @Published var allCSEs: [CSEDataManager.DeviceCSEs] = []  // All data from iCloud
+    @Published var error: Error?  // Error message
     @Published var currentStatus: CKMStatus = .idle
     @Published var currentOperation: CKMOperation = .none
-    
+
     // Check CloudKit availability
     func checkCloudKitAvailability() {
         currentOperation = .availability
@@ -54,16 +54,16 @@ final class CloudKitManager: ObservableObject {
             }
         }
     }
-    
+
     // Create device name
     func createDeviceName() -> String {
         #if targetEnvironment(macCatalyst)
-        return "Mac Catalyst / \(UIDevice.current.systemName) \(UIDevice.current.systemVersion)"
+            return "Mac Catalyst / \(UIDevice.current.systemName) \(UIDevice.current.systemVersion)"
         #else
-        return "\(UIDevice.current.name) / \(UIDevice.current.systemName) \(UIDevice.current.systemVersion)"
+            return "\(UIDevice.current.name) / \(UIDevice.current.systemName) \(UIDevice.current.systemVersion)"
         #endif
     }
-    
+
     // Upload CSEs
     func saveAll(mustUpload: Bool = false) {
         currentOperation = .upload
@@ -72,25 +72,25 @@ final class CloudKitManager: ObservableObject {
             self.currentStatus = .skipped
             self.error = nil
             #if DEBUG
-            print("CloudKit upload is disabled in settings.")
+                print("CloudKit upload is disabled in settings.")
             #endif
             return
         }
         self.currentStatus = .inProgress
         self.error = nil
-        
+
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self else { return }
-            
+
             let deviceID = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
             let recordID = CKRecord.ID(recordName: deviceID)
             let record = CKRecord(recordType: "DeviceCSEs", recordID: recordID)
             var combinedDict: [String: Any] = [:]
-            
+
             // Set record values
             record["deviceName"] = createDeviceName()
             record["version"] = CSEDataManager.currentVersion
-            
+
             // DefaultCSE
             if userDefaults.bool(forKey: "useDefaultCSE") {
                 let defaultCSE = CSEDataManager.getCSEData(.defaultCSE)
@@ -99,7 +99,7 @@ final class CloudKitManager: ObservableObject {
                 combinedDict["defaultCSE"] = defaultCSEDict
                 record["defaultCSE"] = defaultCSEJSON
             }
-            
+
             // PrivateCSE
             if userDefaults.bool(forKey: "usePrivateCSE") {
                 let privateCSE = CSEDataManager.getCSEData(.privateCSE)
@@ -108,7 +108,7 @@ final class CloudKitManager: ObservableObject {
                 combinedDict["privateCSE"] = privateCSEDict
                 record["privateCSE"] = privateCSEJSON
             }
-            
+
             // QuickCSE
             if userDefaults.bool(forKey: "useQuickCSE") {
                 let quickCSEs = CSEDataManager.getAllQuickCSEData()
@@ -117,33 +117,33 @@ final class CloudKitManager: ObservableObject {
                 combinedDict["quickCSE"] = quickCSEDict
                 record["quickCSE"] = quickCSEJSON
             }
-            
+
             // Use Emoji Search
             let useEmojiSearch = userDefaults.bool(forKey: "useEmojiSearch")
             combinedDict["useEmojiSearch"] = useEmojiSearch
             record["useEmojiSearch"] = useEmojiSearch
-            
+
             // Quick Search Settings
             let QuickSearchSettings_keywordOnly = userDefaults.bool(forKey: "QuickSearchSettings_keywordOnly")
             combinedDict["QuickSearchSettings_keywordOnly"] = QuickSearchSettings_keywordOnly
             record["QuickSearchSettings_keywordOnly"] = QuickSearchSettings_keywordOnly
-            
+
             let QuickSearchSettings_keywordPos = userDefaults.string(forKey: "QuickSearchSettings_keywordPos") ?? QuickSearchKeywordPos.default.rawValue
             combinedDict["QuickSearchSettings_keywordPos"] = QuickSearchSettings_keywordPos
             record["QuickSearchSettings_keywordPos"] = QuickSearchSettings_keywordPos
-            
+
             // Gen hash
             let currentRecordHash = generateHash(from: CSEDataManager.jsonDictToString(combinedDict) ?? "")
             #if DEBUG
-            print("Current record hash: \(currentRecordHash.base64EncodedString())")
+                print("Current record hash: \(currentRecordHash.base64EncodedString())")
             #endif
-            
+
             // Compare with last uploaded hash (unless forced)
             if !mustUpload {
                 let lastRecordHash = userDefaults.data(forKey: "cloudkit_lastRecordHash") ?? Data()
                 guard currentRecordHash != lastRecordHash else {
                     #if DEBUG
-                    print("No changes detected, skipping CloudKit upload.")
+                        print("No changes detected, skipping CloudKit upload.")
                     #endif
                     DispatchQueue.main.async {
                         self.currentStatus = .skipped
@@ -152,11 +152,11 @@ final class CloudKitManager: ObservableObject {
                     return
                 }
             }
-            
+
             // Save record
             let operation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
             operation.savePolicy = .allKeys
-            
+
             // Set completion handler to save the record data after successful upload
             operation.modifyRecordsResultBlock = { result in
                 DispatchQueue.main.async {
@@ -172,17 +172,17 @@ final class CloudKitManager: ObservableObject {
                     }
                 }
             }
-            
+
             database.add(operation)
         }
     }
-    
+
     // Generate SHA256 hash from string
     private func generateHash(from string: String) -> Data {
         let data = Data(string.utf8)
         return Data(SHA256.hash(data: data))
     }
-    
+
     // Fetch CSEs from all devices
     func fetchAll() {
         // Reset
@@ -190,17 +190,17 @@ final class CloudKitManager: ObservableObject {
         currentStatus = .inProgress
         error = nil
         self.allCSEs.removeAll()
-        
+
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self else { return }
-            
+
             // Fetch records
             let query = CKQuery(recordType: "DeviceCSEs", predicate: NSPredicate(value: true))
             let sortDescriptor = NSSortDescriptor(key: "modificationDate", ascending: false)
             query.sortDescriptors = [sortDescriptor]
-            
+
             let operation = CKQueryOperation(query: query)
-            
+
             // Collect records
             operation.recordMatchedBlock = { (recordID: CKRecord.ID, result: Result<CKRecord, Error>) in
                 switch result {
@@ -228,7 +228,7 @@ final class CloudKitManager: ObservableObject {
                     }
                 }
             }
-            
+
             // Completion
             operation.queryResultBlock = { result in
                 DispatchQueue.main.async {
@@ -243,20 +243,20 @@ final class CloudKitManager: ObservableObject {
                     }
                 }
             }
-            
+
             database.add(operation)
         }
     }
-    
+
     // Delete record
     func delete(recordID: CKRecord.ID) {
         currentOperation = .delete
         currentStatus = .inProgress
         error = nil
-        
+
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self else { return }
-            
+
             let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [recordID])
             operation.modifyRecordsResultBlock = { result in
                 DispatchQueue.main.async {
@@ -274,21 +274,21 @@ final class CloudKitManager: ObservableObject {
             database.add(operation)
         }
     }
-    
+
     func exportAllData() {
         currentOperation = .export
         currentStatus = .inProgress
         error = nil
-        
+
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self else { return }
-            
+
             let query = CKQuery(recordType: "DeviceCSEs", predicate: NSPredicate(value: true))
             query.sortDescriptors = [NSSortDescriptor(key: "modificationDate", ascending: false)]
-            
+
             let operation = CKQueryOperation(query: query)
             var recordsArray: [[String: Any]] = []
-            
+
             operation.recordMatchedBlock = { _, result in
                 guard case .success(let record) = result else { return }
                 var dict: [String: Any] = [:]
@@ -298,23 +298,24 @@ final class CloudKitManager: ObservableObject {
                 dict["modificationDate"] = ISO8601DateFormatter().string(from: record.modificationDate ?? Date())
                 // All custom fields -> String(describing: value) for raw dump
                 for key in record.allKeys() {
-                    if let value = record[key] { // CKRecordValue
+                    if let value = record[key] {  // CKRecordValue
                         dict[key] = String(describing: value)
                     }
                 }
                 recordsArray.append(dict)
             }
-            
+
             operation.queryResultBlock = { result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success:
                         let root: [String: Any] = [
                             "exportDate": ISO8601DateFormatter().string(from: Date()),
-                            "records": recordsArray
+                            "records": recordsArray,
                         ]
                         if let data = try? JSONSerialization.data(withJSONObject: root, options: [.sortedKeys]),
-                           let json = String(data: data, encoding: .utf8) {
+                            let json = String(data: data, encoding: .utf8)
+                        {
                             NotificationCenter.default.post(name: NSNotification.Name("CloudKitAllDataExported"), object: json)
                         }
                         DispatchQueue.main.async {

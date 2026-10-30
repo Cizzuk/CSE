@@ -9,7 +9,7 @@ import AppIntents
 
 struct ExportBackupJSON: AppIntent {
     static var title: LocalizedStringResource = "Export Backup JSON"
-    
+
     enum ExportBackupJSONError: Error {
         case exportFailed
     }

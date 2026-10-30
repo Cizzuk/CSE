@@ -11,14 +11,14 @@ extension TutorialViews {
     struct WelcomeView: View {
         @Binding var isOpenSheet: Bool
         @State private var isNavigation: Bool = false
-        
+
         var body: some View {
             List {
                 UITemplates.HeaderSection(
                     title: "Welcome to CSE",
                     description: "Before you can start using CSE, you need to do some setup."
                 )
-                
+
                 Section {
                     HStack {
                         Image(systemName: "gear")
@@ -62,7 +62,7 @@ extension TutorialViews {
                 }
             }
             #if !os(visionOS)
-            .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
+                .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
             #endif
             .interactiveDismissDisabled()
         }

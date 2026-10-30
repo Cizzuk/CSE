@@ -16,18 +16,18 @@ class BackupView {
         @State private var showingFileImport = false
         @State private var showingErrorAlert = false
         @State private var errorMessage = ""
-        
+
         var body: some View {
             List {
                 // JSON Export/Import Section
                 Section {
                     Button(action: {
                         #if !os(visionOS)
-                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
                         #endif
                         guard let jsonString = CSEDataManager.exportDeviceCSEsAsJSON() else {
                             #if !os(visionOS)
-                            UINotificationFeedbackGenerator().notificationOccurred(.error)
+                                UINotificationFeedbackGenerator().notificationOccurred(.error)
                             #endif
                             return
                         }
@@ -39,13 +39,13 @@ class BackupView {
                         UITemplates.IconLabel(icon: "square.and.arrow.down", text: "Import from JSON")
                     }
                 }
-                
+
                 // CloudKit Section
                 Group {
                     Section {
                         Button(action: {
                             #if !os(visionOS)
-                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                                UIImpactFeedbackGenerator(style: .light).impactOccurred()
                             #endif
                             ck.saveAll(mustUpload: true)
                         }) {
@@ -66,32 +66,34 @@ class BackupView {
                             guard ck.currentOperation == .upload else { return }
                             if status == .success {
                                 #if !os(visionOS)
-                                UINotificationFeedbackGenerator().notificationOccurred(.success)
+                                    UINotificationFeedbackGenerator().notificationOccurred(.success)
                                 #endif
                             } else if status == .failure {
                                 #if !os(visionOS)
-                                UINotificationFeedbackGenerator().notificationOccurred(.error)
+                                    UINotificationFeedbackGenerator().notificationOccurred(.error)
                                 #endif
                             }
                         }
-                        
+
                         Button(action: { showingRestoreSheet = true }) {
                             UITemplates.IconLabel(icon: "icloud.and.arrow.down", text: "Restore from iCloud")
                         }
                     }
-                    
+
                     Section {
                         Toggle("Auto Backup to iCloud", isOn: $iCloudAutoBackup)
                             .tint(.accent)
                         Button(action: {
                             #if !os(visionOS)
-                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                                UIImpactFeedbackGenerator(style: .light).impactOccurred()
                             #endif
                             ck.exportAllData()
                         }) {
                             Text("Export All data from iCloud")
                         }
-                    } footer: { Text("You can delete all data stored in iCloud from the iCloud settings.") }
+                    } footer: {
+                        Text("You can delete all data stored in iCloud from the iCloud settings.")
+                    }
                 }
                 .disabled(ck.cloudKitAvailability != .available || isLocked)
             }
@@ -120,10 +122,12 @@ class BackupView {
                 switch result {
                 case .success(let files):
                     guard let fileURL = files.first else { return }
-                    importJSONFile(from: fileURL, onError: { error in
-                        errorMessage = error
-                        showingErrorAlert = true
-                    })
+                    importJSONFile(
+                        from: fileURL,
+                        onError: { error in
+                            errorMessage = error
+                            showingErrorAlert = true
+                        })
                 case .failure(let error):
                     errorMessage = error.localizedDescription
                     showingErrorAlert = true
@@ -146,7 +150,7 @@ class BackupView {
         private var isLocked: Bool {
             ck.currentStatus == .inProgress && (ck.currentOperation == .export || ck.currentOperation == .delete)
         }
-        
+
         // MARK: - Export JSON File
 
         private func exportJSONFile(jsonString: String, filePrefix: String) {
@@ -154,63 +158,66 @@ class BackupView {
             formatter.dateFormat = "yyyyMMddHHmmss"
             let fileName = "\(filePrefix)-\(formatter.string(from: Date())).json"
             let fileURL = FileManager.default.temporaryDirectory.appendingPathComponent(fileName)
-            
+
             // Write JSON string to file
             do {
                 try jsonString.write(to: fileURL, atomically: true, encoding: .utf8)
             } catch {
                 #if !os(visionOS)
-                UINotificationFeedbackGenerator().notificationOccurred(.error)
+                    UINotificationFeedbackGenerator().notificationOccurred(.error)
                 #endif
                 return
             }
-            
+
             #if os(visionOS)
-            // if visionOS, use file
-            let documentPicker = UIDocumentPickerViewController(forExporting: [fileURL], asCopy: true)
-            documentPicker.modalPresentationStyle = .formSheet
-            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-               let rootViewController = windowScene.windows.first?.rootViewController {
-                rootViewController.present(documentPicker, animated: true, completion: nil)
-            }
+                // if visionOS, use file
+                let documentPicker = UIDocumentPickerViewController(forExporting: [fileURL], asCopy: true)
+                documentPicker.modalPresentationStyle = .formSheet
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                    let rootViewController = windowScene.windows.first?.rootViewController
+                {
+                    rootViewController.present(documentPicker, animated: true, completion: nil)
+                }
             #elseif targetEnvironment(macCatalyst)
-            // if macOS, use finder
-            let documentPicker = UIDocumentPickerViewController(forExporting: [fileURL], asCopy: true)
-            documentPicker.modalPresentationStyle = .formSheet
-            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                let rootViewController = windowScene.windows.first?.rootViewController {
-                rootViewController.present(documentPicker, animated: true, completion: nil)
-            }
+                // if macOS, use finder
+                let documentPicker = UIDocumentPickerViewController(forExporting: [fileURL], asCopy: true)
+                documentPicker.modalPresentationStyle = .formSheet
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                    let rootViewController = windowScene.windows.first?.rootViewController
+                {
+                    rootViewController.present(documentPicker, animated: true, completion: nil)
+                }
             #else
-            // if ios, use share sheet
-            let activityViewController = UIActivityViewController(activityItems: [fileURL], applicationActivities: nil)
-            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                let rootViewController = windowScene.windows.first?.rootViewController {
-                rootViewController.present(activityViewController, animated: true, completion: nil)
-            }
+                // if ios, use share sheet
+                let activityViewController = UIActivityViewController(activityItems: [fileURL], applicationActivities: nil)
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                    let rootViewController = windowScene.windows.first?.rootViewController
+                {
+                    rootViewController.present(activityViewController, animated: true, completion: nil)
+                }
             #endif
         }
     }
-    
+
     // MARK: - Import JSON File
-    
+
     // Shared JSON import functionality for Tutorial and BackupView
     static func importJSONFile(from url: URL, onSuccess: @escaping () -> Void = {}, onError: @escaping (String) -> Void = { _ in }) {
         guard url.startAccessingSecurityScopedResource() else { return }
         defer { url.stopAccessingSecurityScopedResource() }
-        
+
         do {
             let jsonString = try String(contentsOf: url)
             try CSEDataManager.importDeviceCSEsFromJSON(jsonString)
-            
+
             onSuccess()
             #if !os(visionOS)
-            UINotificationFeedbackGenerator().notificationOccurred(.success)
+                UINotificationFeedbackGenerator().notificationOccurred(.success)
             #endif
         } catch {
             onError(error.localizedDescription)
             #if !os(visionOS)
-            UINotificationFeedbackGenerator().notificationOccurred(.error)
+                UINotificationFeedbackGenerator().notificationOccurred(.error)
             #endif
         }
     }

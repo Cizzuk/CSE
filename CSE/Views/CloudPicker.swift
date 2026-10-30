@@ -15,31 +15,31 @@ class CloudPicker {
             case restoreAll(onRestore: (() -> Void)?)
             case pickSingleCSE(cseData: Binding<CSEDataManager.CSEData>, isOpenSheet: Binding<Bool>)
         }
-        
+
         private let mode: Mode
         @Environment(\.dismiss) private var dismiss
         @StateObject private var ck = CloudKitManager()
         @State private var isFirstLoad: Bool = true
-        
+
         // Restore All initializer
         init(onRestore: (() -> Void)? = nil) {
             self.mode = .restoreAll(onRestore: onRestore)
         }
-        
+
         // Pick Single CSE initializer
         init(cseData: Binding<CSEDataManager.CSEData>, isOpenSheet: Binding<Bool>) {
             self.mode = .pickSingleCSE(cseData: cseData, isOpenSheet: isOpenSheet)
         }
-        
+
         var body: some View {
             NavigationStack {
                 listContent
                     .navigationTitle("Choose Device")
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar { toolbarItems }
-                // Attach destination at stack level (value-based navigation)
+                    // Attach destination at stack level (value-based navigation)
                     .navigationDestination(for: CSEDataManager.DeviceCSEs.self) { ds in
-                        if case let .pickSingleCSE(cseData, isOpenSheet) = mode {
+                        if case .pickSingleCSE(let cseData, let isOpenSheet) = mode {
                             let parsed = CSEDataManager.parseDeviceCSEs(ds)
                             DeviceCSESelectionView(
                                 deviceName: ds.deviceName,
@@ -60,12 +60,16 @@ class CloudPicker {
                 }
             }
         }
-        
+
         @ViewBuilder
         private var listContent: some View {
             List {
                 if isFetching {
-                    HStack { Spacer(); ProgressView(); Spacer() }
+                    HStack {
+                        Spacer()
+                        ProgressView()
+                        Spacer()
+                    }
                 } else if let error = ck.error {
                     UITemplates.IconLabel(icon: "exclamationmark.icloud", text: String.LocalizationValue(error.localizedDescription))
                 } else if ck.allCSEs.isEmpty {
@@ -78,22 +82,22 @@ class CloudPicker {
                 }
             }
         }
-        
+
         // List when restoring all immediately
         private var restoreAllList: some View {
             ForEach(ck.allCSEs) { ds in
                 Button {
                     CSEDataManager.importDeviceCSEs(from: ds)
                     #if !os(visionOS)
-                    UINotificationFeedbackGenerator().notificationOccurred(.success)
+                        UINotificationFeedbackGenerator().notificationOccurred(.success)
                     #endif
-                    if case let .restoreAll(onRestore) = mode { onRestore?() }
+                    if case .restoreAll(let onRestore) = mode { onRestore?() }
                     dismiss()
                 } label: {
                     deviceRow(ds)
                 }
                 #if !os(visionOS)
-                .foregroundStyle(Color(.label))
+                    .foregroundStyle(Color(.label))
                 #endif
                 .contextMenu {
                     Button(role: .destructive) {
@@ -112,13 +116,13 @@ class CloudPicker {
                 }
             }
         }
-        
+
         // List when picking single CSE -> navigate to detail picker
         private var pickSingleCSEList: some View {
             ForEach(ck.allCSEs) { ds in
                 NavigationLink(value: ds) { deviceRow(ds) }
                     #if !os(visionOS)
-                    .foregroundStyle(Color(.label))
+                        .foregroundStyle(Color(.label))
                     #endif
                     .contextMenu {
                         Button(role: .destructive) {
@@ -137,20 +141,20 @@ class CloudPicker {
                     }
             }
         }
-        
+
         @ToolbarContentBuilder
         private var toolbarItems: some ToolbarContent {
             ToolbarItem(placement: .cancellationAction) {
                 Button("Cancel", systemImage: "xmark") {
                     dismiss()
-                    if case let .pickSingleCSE(_, isOpenSheet) = mode {
+                    if case .pickSingleCSE(_, let isOpenSheet) = mode {
                         isOpenSheet.wrappedValue = false
                     }
                 }
                 .disabled(isLocked)
             }
         }
-        
+
         private func deviceRow(_ ds: CSEDataManager.DeviceCSEs) -> some View {
             VStack(alignment: .leading) {
                 Text(ds.deviceName)
@@ -171,9 +175,9 @@ class CloudPicker {
             ck.currentStatus == .inProgress && (ck.currentOperation == .delete || ck.currentOperation == .export)
         }
     }
-    
+
     // MARK: - Device CSE Selection View
-    
+
     // Detail picker for selecting a single CSE from a device (used in pickSingleCSE mode)
     private struct DeviceCSESelectionView: View {
         @Environment(\.dismiss) private var dismiss
@@ -184,7 +188,7 @@ class CloudPicker {
         let privateCSE: CSEDataManager.CSEData
         let quickCSE: [String: CSEDataManager.CSEData]
         @State private var originalID: String? = nil
-        
+
         var body: some View {
             List {
                 if defaultCSE.url != "" {
@@ -195,7 +199,7 @@ class CloudPicker {
                             cseSummary(title: "Default Search Engine", cse: defaultCSE)
                         }
                         #if !os(visionOS)
-                        .foregroundStyle(Color(.label))
+                            .foregroundStyle(Color(.label))
                         #endif
                     }
                 }
@@ -207,7 +211,7 @@ class CloudPicker {
                             cseSummary(title: "Private Search Engine", cse: privateCSE)
                         }
                         #if !os(visionOS)
-                        .foregroundStyle(Color(.label))
+                            .foregroundStyle(Color(.label))
                         #endif
                     }
                 }
@@ -222,18 +226,20 @@ class CloudPicker {
                                     cseSummary(title: displayName, cse: se)
                                 }
                                 #if !os(visionOS)
-                                .foregroundStyle(Color(.label))
+                                    .foregroundStyle(Color(.label))
                                 #endif
                             }
                         }
-                    } header: { Text("Quick Search Engines") }
+                    } header: {
+                        Text("Quick Search Engines")
+                    }
                 }
             }
             .navigationTitle(deviceName)
             .navigationBarTitleDisplayMode(.inline)
             .task { originalID = cseData.keyword }
         }
-        
+
         private func select(_ selected: CSEDataManager.CSEData, keepKeyword: Bool) {
             var newData = selected
             if keepKeyword { newData.keyword = originalID ?? selected.keyword }
@@ -241,7 +247,7 @@ class CloudPicker {
             isOpenSheet = false
             dismiss()
         }
-        
+
         private func cseSummary(title: String, cse: CSEDataManager.CSEData) -> some View {
             VStack(alignment: .leading) {
                 Text(title)

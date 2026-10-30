@@ -11,26 +11,26 @@ struct EditSEView: View {
     @StateObject private var viewModel: EditSEViewSupport
     @Environment(\.dismiss) private var dismiss
     @Environment(\.scenePhase) private var scenePhase
-    
+
     @AppStorage("useDefaultCSE", store: userDefaults) private var useDefaultCSE: Bool = true
     @AppStorage("usePrivateCSE", store: userDefaults) private var usePrivateCSE: Bool = false
     @AppStorage("QuickSearchSettings_keywordPos", store: userDefaults) private var keywordPos: String = QuickSearchKeywordPos.default.rawValue
-    
+
     init(type: CSEDataManager.CSEType, cseID: String? = nil) {
         _viewModel = StateObject(wrappedValue: EditSEViewSupport(type: type, cseID: cseID))
     }
-    
+
     var body: some View {
         List {
             // Header / Toggle Section
             headerSection
-            
+
             if isFeatureEnabled {
                 // Name & Keyword (QuickCSE only)
                 if viewModel.cseType == .quickCSE {
                     quickCSESettingsSection
                 }
-                
+
                 // Common Settings
                 searchURLSection
                 advancedSettingsSection
@@ -70,21 +70,21 @@ struct EditSEView: View {
         }
         .toolbar {
             #if !os(visionOS)
-            ToolbarItemGroup(placement: .keyboard) {
-                Spacer()
-                Button {
-                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                } label: {
-                    Label("Done", systemImage: "checkmark")
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    } label: {
+                        Label("Done", systemImage: "checkmark")
+                    }
                 }
-            }
             #endif
         }
         .accessibilityAction(.escape) {
             if viewModel.saveData(.dismiss) { dismiss() }
         }
     }
-    
+
     private var isFeatureEnabled: Bool {
         switch viewModel.cseType {
         case .defaultCSE: return useDefaultCSE
@@ -92,9 +92,9 @@ struct EditSEView: View {
         case .quickCSE: return true
         }
     }
-    
+
     // MARK: - Sections
-    
+
     @ViewBuilder
     private var headerSection: some View {
         switch viewModel.cseType {
@@ -124,7 +124,7 @@ struct EditSEView: View {
             EmptyView()
         }
     }
-    
+
     @ViewBuilder
     private var quickCSESettingsSection: some View {
         // Search Engine Name
@@ -132,8 +132,10 @@ struct EditSEView: View {
             TextField("Name", text: $viewModel.cseData.name)
                 .submitLabel(.done)
                 .onSubmit { viewModel.saveData(.autosave) }
-        } header: { Text("Name") }
-        
+        } header: {
+            Text("Name")
+        }
+
         // Quick Search Key
         Section {
             TextField("Keyword", text: $viewModel.cseData.keyword, prompt: Text(verbatim: "cse"))
@@ -142,14 +144,15 @@ struct EditSEView: View {
                 .onChange(of: viewModel.cseData.keyword) { _ in
                     viewModel.cseData.keyword = viewModel.cseData.keyword.filter { !($0.isWhitespace || $0.isNewline) }
                 }
-        } header: { Text("Keyword")
+        } header: {
+            Text("Keyword")
         } footer: {
             let enumratedKeywordPos = QuickSearchKeywordPos(rawValue: keywordPos) ?? QuickSearchKeywordPos.default
             let localizedKeywordPos = String(localized: enumratedKeywordPos.displayName)
             Text("Type this keyword at \(localizedKeywordPos) to search with this search engine.")
         }
     }
-    
+
     @ViewBuilder
     private var searchURLSection: some View {
         Section {
@@ -160,10 +163,13 @@ struct EditSEView: View {
                 .environment(\.layoutDirection, .leftToRight)
                 .submitLabel(.done)
                 .onSubmit { viewModel.saveData(.autosave) }
-        } header: { Text("Search URL")
-        } footer: { Text("Replace query with %s") }
+        } header: {
+            Text("Search URL")
+        } footer: {
+            Text("Replace query with %s")
+        }
     }
-    
+
     @ViewBuilder
     private var advancedSettingsSection: some View {
         Section {
@@ -177,7 +183,7 @@ struct EditSEView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     private var importSection: some View {
         Section {
