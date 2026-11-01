@@ -227,11 +227,15 @@ class SearchEnginePresets {
         var aiCSEs: [CSEDataManager.CSEData] = []
         if currentRegion != "CN" {
             aiCSEs.append(contentsOf: [
-                // Search Engine (Mode)
                 CSEDataManager.CSEData(
                     name: "ChatGPT",
                     keyword: "gpt",
                     url: "https://chatgpt.com/?q=%s",
+                ),
+                CSEDataManager.CSEData(
+                    name: "Claude",
+                    keyword: "claude",
+                    url: "https://claude.ai/new?q=%s",
                 ),
                 CSEDataManager.CSEData(
                     name: "Duck.ai",
@@ -256,17 +260,19 @@ class SearchEnginePresets {
                         name: "Agent i",
                         keyword: "yai",
                         url: "https://search.yahoo.co.jp/chat/s/n?q=%s&s=request_parameter_question",
-                    ))
-            }
-
-            // Normal AI Chat
-            aiCSEs.append(contentsOf: [
-                CSEDataManager.CSEData(
-                    name: "Claude",
-                    keyword: "claude",
-                    url: "https://claude.ai/new?q=%s",
+                    )
                 )
-            ])
+            }
+        }
+
+        if currentRegion == "CN" || containsLanguage("zh-Hans") {
+            aiCSEs.append(
+                CSEDataManager.CSEData(
+                    name: "百度文心助手",
+                    keyword: "wenxin",
+                    url: "https://wenxin.baidu.com/search?query=%s",
+                )
+            )
         }
 
         return aiCSEs
