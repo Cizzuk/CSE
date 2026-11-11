@@ -58,7 +58,7 @@ struct AdvSettingView: View {
             }
 
             Section {
-                Toggle("Disable Editing Search Engine from Shortcuts", isOn: $disableEditSEFromShortcuts)
+                Toggle("Disable Editing Search Engine Settings from Shortcuts", isOn: $disableEditSEFromShortcuts)
                     .tint(.accent)
             }
 
