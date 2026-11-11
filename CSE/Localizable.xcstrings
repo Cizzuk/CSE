@@ -3139,72 +3139,72 @@
         }
       }
     },
-    "Disable Editing Search Engine from Shortcuts" : {
+    "Disable Editing Search Engine Settings from Shortcuts" : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "تعطيل تحرير محرك البحث من الاختصارات"
+            "value" : "تعطيل تحرير إعدادات محرك البحث من الاختصارات"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bearbeitung der Suchmaschine über Kurzbefehle deaktivieren"
+            "value" : "Bearbeitung der Suchmaschineneinstellungen über Kurzbefehle deaktivieren"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Desactivar la edición del Buscador desde Atajos"
+            "value" : "Desactivar la edición de la configuración del Buscador desde Atajos"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Désactiver l'édition du moteur de recherche depuis les Raccourcis"
+            "value" : "Désactiver l'édition des réglages du moteur de recherche depuis les Raccourcis"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ショートカットによる検索エンジンの編集を無効化"
+            "value" : "ショートカットによる検索エンジン設定の編集を無効化"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "단축키에서 검색 엔진 편집 비활성화"
+            "value" : "단축어에서 검색 엔진 설정 편집 비활성화"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Desativar a edição do Buscador a partir de Atalhos"
+            "value" : "Desativar a edição das configurações do Buscador a partir de Atalhos"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Отключить редактирование поисковой системы из ярлыков"
+            "value" : "Отключить редактирование настроек поисковой системы из приложения «Быстрые команды»"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Вимкнути редагування пошукової системи з ярликів"
+            "value" : "Вимкнути редагування налаштувань пошукової системи з програми «Швидкі команди»"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "停用从快捷方式编辑搜索引擎"
+            "value" : "停用从快捷指令编辑搜索引擎设置"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "停用從捷徑編輯搜尋引擎"
+            "value" : "停用從捷徑編輯搜尋引擎設定"
           }
         }
       }
@@ -3244,7 +3244,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "단축키에서 검색 엔진 설정 가져오기 비활성화"
+            "value" : "단축어에서 검색 엔진 설정 가져오기 비활성화"
           }
         },
         "pt" : {
@@ -3256,19 +3256,19 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Отключить получение настроек поисковой системы из ярлыков"
+            "value" : "Отключить получение настроек поисковой системы из приложения «Быстрые команды»"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Вимкнути отримання налаштувань пошукової системи з ярликів"
+            "value" : "Вимкнути отримання налаштувань пошукової системи з програми «Швидкі команди»"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "停用从快捷方式获取搜索引擎设置"
+            "value" : "停用从快捷指令获取搜索引擎设置"
           }
         },
         "zh-Hant" : {
@@ -3810,7 +3810,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "단축키에서 검색 엔진 편집은 CSE 설정에서 비활성화되어 있습니다."
+            "value" : "단축어에서 검색 엔진 편집은 CSE 설정에서 비활성화되어 있습니다."
           }
         },
         "pt" : {
@@ -3822,19 +3822,19 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Редактирование поисковых систем из ярлыков отключено в настройках CSE."
+            "value" : "Редактирование поисковых систем из приложения «Быстрые команды» отключено в настройках CSE."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Редагування пошукових систем із ярликів вимкнено в налаштуваннях CSE."
+            "value" : "Редагування пошукових систем із програми «Швидкі команди» вимкнено в налаштуваннях CSE."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "在 CSE 设置中禁用了从快捷方式编辑搜索引擎。"
+            "value" : "在 CSE 设置中禁用了从快捷指令编辑搜索引擎。"
           }
         },
         "zh-Hant" : {
@@ -5362,7 +5362,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "단축키에서 검색 엔진 설정 가져오기는 CSE 설정에서 비활성화되어 있습니다."
+            "value" : "단축어에서 검색 엔진 설정 가져오기는 CSE 설정에서 비활성화되어 있습니다."
           }
         },
         "pt" : {
@@ -5374,19 +5374,19 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Получение настроек поисковых систем из ярлыков отключено в настройках CSE."
+            "value" : "Получение настроек поисковых систем из приложения «Быстрые команды» отключено в настройках CSE."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Отримання налаштувань пошукових систем із ярликів вимкнено в налаштуваннях CSE."
+            "value" : "Отримання налаштувань пошукових систем із програми «Швидкі команди» вимкнено в налаштуваннях CSE."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "在 CSE 设置中禁用了从快捷方式获取搜索引擎设置。"
+            "value" : "在 CSE 设置中禁用了从快捷指令获取搜索引擎设置。"
           }
         },
         "zh-Hant" : {
