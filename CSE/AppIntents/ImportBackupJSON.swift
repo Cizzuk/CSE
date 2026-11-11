@@ -14,6 +14,10 @@ struct ImportBackupJSON: AppIntent {
     var json: String
 
     func perform() async throws -> some IntentResult {
+        if !IntentSupport.isAllowedEditingSearchEngines() {
+            throw IntentSupport.CSEIntentError.notAllowedEditingSearchEngines
+        }
+        
         try CSEDataManager.importDeviceCSEsFromJSON(json)
         return .result()
     }
