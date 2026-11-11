@@ -13,11 +13,15 @@ struct GetQuickCSEList: AppIntent, CustomIntentMigratedAppIntent {
     static var description: LocalizedStringResource = "Gets All Quick Search Engine Keywords"
 
     func perform() async throws -> some IntentResult & ReturnsValue<[String]> {
+        if !IntentSupport.isAllowedGettingSearchEngineSettings() {
+            throw IntentSupport.CSEIntentError.notAllowedGettingSearchEngineSettings
+        }
+
         let quickCSEs = CSEDataManager.getAllQuickCSEData()
-        
+
         // List up the keywords
         let keywords: [String] = quickCSEs.map { $0.key }.sorted()
-        
+
         return .result(value: keywords)
     }
 }

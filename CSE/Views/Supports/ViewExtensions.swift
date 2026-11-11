@@ -8,16 +8,16 @@
 import SwiftUI
 
 // View extensions for common styling
-extension View {    
+extension View {
     // Glass effect button for tutorial
     func glassEffectTutorialButton() -> some View {
         if #available(iOS 26, macOS 26, *) {
             #if os(iOS) && !targetEnvironment(macCatalyst)
-            return AnyView(self)
-                .tint(.accent)
-                .buttonStyle(.glassProminent)
+                return AnyView(self)
+                    .tint(.accent)
+                    .buttonStyle(.glassProminent)
             #else
-            return AnyView(self)
+                return AnyView(self)
             #endif
         } else {
             return AnyView(self)
@@ -25,7 +25,7 @@ extension View {
                 .cornerRadius(20)
         }
     }
-    
+
     // listStyle must be .insetGrouped under iOS 17
     func listStyleFallback() -> some View {
         if #unavailable(iOS 17.0, macOS 14.0) {
@@ -35,4 +35,3 @@ extension View {
         }
     }
 }
-

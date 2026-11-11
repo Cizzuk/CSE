@@ -11,29 +11,36 @@ final class IntentSupport {
     static func isAllowedEditingSearchEngines() -> Bool {
         !CSEDataManager.userDefaults.bool(forKey: "adv_disableEditSEFromShortcuts")
     }
-    
+
+    static func isAllowedGettingSearchEngineSettings() -> Bool {
+        !CSEDataManager.userDefaults.bool(forKey: "adv_disableGetSEFromShortcuts")
+    }
+
     enum CSEIntentError: Error, CustomLocalizedStringResourceConvertible {
         case notAllowedEditingSearchEngines
-        
+        case notAllowedGettingSearchEngineSettings
+
         var localizedStringResource: LocalizedStringResource {
             switch self {
             case .notAllowedEditingSearchEngines:
                 return "Editing Search Engines from Shortcuts is disabled in CSE settings."
+            case .notAllowedGettingSearchEngineSettings:
+                return "Getting Search Engine Settings from Shortcuts is disabled in CSE settings."
             }
         }
     }
-    
+
     enum TurnEnum: String, AppEnum {
         case turn
         case toggle
-        
+
         static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "Operation")
         static var caseDisplayRepresentations: [Self: DisplayRepresentation] = [
             .turn: "Turn",
-            .toggle: "Toggle"
+            .toggle: "Toggle",
         ]
     }
-    
+
     enum CSESettingsEnum: String, AppEnum {
         case url
         case name
@@ -41,7 +48,7 @@ final class IntentSupport {
         case spaceCharacter
         case disablePercentEncoding
         case maxQueryLength
-        
+
         static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "CSE Settings")
         static var caseDisplayRepresentations: [Self: DisplayRepresentation] = [
             .url: "URL",
@@ -49,7 +56,7 @@ final class IntentSupport {
             .post: "POST Data",
             .spaceCharacter: "Space Character",
             .disablePercentEncoding: "Disable Percent-encoding",
-            .maxQueryLength: "Max Query Length"
+            .maxQueryLength: "Max Query Length",
         ]
     }
 }

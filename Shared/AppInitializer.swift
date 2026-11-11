@@ -10,16 +10,16 @@ import Foundation
 class AppInitializer {
     private static let userDefaults = CSEDataManager.userDefaults
     private static let currentVersion = CSEDataManager.currentVersion
-    
+
     class func initializeApp() {
         let lastVersion = userDefaults.string(forKey: "LastAppVer") ?? ""
-        
+
         let isFirstLaunch = lastVersion.isEmpty
         let isVersionChanged = lastVersion != currentVersion
-        
+
         // Early exit if no changes detected
         guard isFirstLaunch || isVersionChanged else { return }
-        
+
         // First Launch Setup
         if isFirstLaunch {
             userDefaults.set(true, forKey: "needFirstTutorial")
@@ -27,24 +27,24 @@ class AppInitializer {
             userDefaults.set(SafariSEs.private.rawValue, forKey: "privsearchengine")
             userDefaults.set(true, forKey: "alsousepriv")
             userDefaults.set(true, forKey: "iCloudAutoBackup")
-            
+
             resetCSE(target: .all)
         }
-        
+
         // Version Update Tasks
         if isVersionChanged {
             // Database migration for v3.0+
             if isFirstLaunch || isUpdated(updateVer: "3.0", lastVer: lastVersion) {
                 migrateOldCSESettings()
             }
-            
+
             // useDefaultCSE setting for v4.0+
             if isFirstLaunch || isUpdated(updateVer: "4.0", lastVer: lastVersion) {
                 if userDefaults.string(forKey: "useDefaultCSE") == nil {
                     userDefaults.set(true, forKey: "useDefaultCSE")
                 }
             }
-            
+
             // Quick Search Settings for v4.8+
             if isFirstLaunch || isUpdated(updateVer: "4.8", lastVer: lastVersion) {
                 if userDefaults.string(forKey: "QuickSearchSettings_keywordOnly") == nil {
@@ -58,15 +58,15 @@ class AppInitializer {
                 }
             }
         }
-        
+
         // Save Current State
         DispatchQueue.global(qos: .background).async {
             userDefaults.set(currentVersion, forKey: "LastAppVer")
         }
     }
-    
+
     // MARK: - Migration Helpers
-    
+
     private class func migrateOldCSESettings() {
         let urltop = userDefaults.string(forKey: "urltop") ?? ""
         let urlsuffix = userDefaults.string(forKey: "urlsuffix") ?? ""
@@ -77,13 +77,13 @@ class AppInitializer {
             userDefaults.removeObject(forKey: "urlsuffix")
         }
     }
-    
+
     private class func isUpdated(updateVer: String, lastVer: String) -> Bool {
         guard !lastVer.isEmpty else { return false }
-        
+
         let updateComponents = updateVer.split(separator: ".").compactMap { Int($0) }
         let lastComponents = lastVer.split(separator: ".").compactMap { Int($0) }
-        
+
         for (update, last) in zip(updateComponents, lastComponents) {
             if update > last {
                 return true
@@ -91,16 +91,16 @@ class AppInitializer {
                 return false
             }
         }
-        
+
         return updateComponents.count > lastComponents.count
     }
-    
+
     // MARK: - Reset CSE Data
-    
+
     enum resetCSETarget {
         case all, defaultCSE, privateCSE, quickCSE
     }
-    
+
     class func resetCSE(target: resetCSETarget) {
         switch target {
         case .all:

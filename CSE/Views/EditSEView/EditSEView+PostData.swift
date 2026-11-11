@@ -11,16 +11,15 @@ extension EditSEView {
     struct PostDataView: View {
         @Binding var post: [[String: String]]
         @Binding var isOpenSheet: Bool
-        
+
         var body: some View {
             NavigationStack {
                 List {
-                    Section {}
-                    header: {
+                    Section {
+                    } header: {
                         Text("Not Recommended")
                             .textCase(.none)
-                    }
-                    footer: {
+                    } footer: {
                         VStack(alignment: .leading) {
                             Text("This feature is not recommended unless the search engine you want to use absolutely requires POST data. It does not improve privacy and may cause unstable behavior.")
                             Spacer()
@@ -41,19 +40,21 @@ extension EditSEView {
                             .submitLabel(.done)
                         }
                         .onDelete(perform: { index in
-                            withAnimation() { post.remove(atOffsets: index) }
+                            withAnimation { post.remove(atOffsets: index) }
                         })
-                        
+
                         Button(action: {
                             withAnimation { post.append(["key": "", "value": ""]) }
-                        })  {
+                        }) {
                             HStack {
                                 Image(systemName: "plus.circle")
                                     .accessibilityHidden(true)
                                 Text("Add POST Data")
                             }
                         }
-                    } footer: { Text("Replace query with %s") }
+                    } footer: {
+                        Text("Replace query with %s")
+                    }
                 }
                 .navigationTitle("POST Data")
                 .navigationBarTitleDisplayMode(.inline)
@@ -66,7 +67,7 @@ extension EditSEView {
                 }
             }
         }
-        
+
         private func binding(for index: Int, key: String) -> Binding<String> {
             Binding<String>(
                 get: { return post[index][key] ?? "" },

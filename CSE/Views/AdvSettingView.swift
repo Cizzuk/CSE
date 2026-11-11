@@ -14,9 +14,10 @@ struct AdvSettingView: View {
     @AppStorage("adv_ignoreSafariSettings", store: userDefaults) private var ignoreSafariSettings: Bool = false
     @AppStorage("adv_ignoreFocusFilter", store: userDefaults) private var ignoreFocusFilter: Bool = false
     @AppStorage("adv_disableEditSEFromShortcuts", store: userDefaults) private var disableEditSEFromShortcuts: Bool = false
+    @AppStorage("adv_disableGetSEFromShortcuts", store: userDefaults) private var disableGetSEFromShortcuts: Bool = false
     @AppStorage("adv_overrideRegion", store: userDefaults) private var overrideRegion: String = ""
     @State private var allowReset: Bool = false
-    
+
     var body: some View {
         List {
             Section {
@@ -25,41 +26,47 @@ struct AdvSettingView: View {
                     ignoreSafariSettings = false
                     ignoreFocusFilter = false
                     disableEditSEFromShortcuts = false
+                    disableGetSEFromShortcuts = false
                     overrideRegion = ""
                     allowReset = false
                 }
             }
-            
+
             Section {
                 Button("Redo First Tutorial") {
                     needFirstTutorial = true
                 }
             }
-            
+
             Section {
                 Toggle("Disable Checker", isOn: $disablechecker)
                     .tint(.accent)
             } footer: {
                 Text("CSE will not check that you have searched from the search bar.")
             }
-            
+
             Section {
                 Toggle("Ignore Safari Settings", isOn: $ignoreSafariSettings)
                     .tint(.accent)
             } footer: {
                 Text("CSE will ignore Safari Settings and detect the URLs of all Safari search engines.")
             }
-            
+
             Section {
                 Toggle("Ignore Focus Filter", isOn: $ignoreFocusFilter)
                     .tint(.accent)
             }
-            
+
             Section {
-                Toggle("Disable Editing Search Engine from Shortcuts", isOn: $disableEditSEFromShortcuts)
+                Toggle("Disable Editing Search Engine Settings from Shortcuts", isOn: $disableEditSEFromShortcuts)
                     .tint(.accent)
             }
-            
+
+            Section {
+                Toggle("Disable Getting Search Engine Settings from Shortcuts", isOn: $disableGetSEFromShortcuts)
+                    .tint(.accent)
+            }
+
             Section {
                 HStack {
                     Text("Override Region")
@@ -75,7 +82,7 @@ struct AdvSettingView: View {
             } footer: {
                 Text("Overrides the device's region settings when detecting Safari search engines. Blank to disable.")
             }
-            
+
             Section {
                 Toggle("Enable Reset Buttons", isOn: $allowReset)
                     .tint(.accent)
@@ -95,7 +102,9 @@ struct AdvSettingView: View {
                     Text("Reset All Custom Search Engines")
                 }
                 .disabled(!allowReset)
-            } footer: { Text("Existing data will be deleted") }
+            } footer: {
+                Text("Existing data will be deleted")
+            }
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Advanced Settings")

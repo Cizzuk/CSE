@@ -5,30 +5,31 @@
 //  Created by Cizzuk on 2025/05/25.
 //
 
-import Foundation
-import CloudKit
 import AppIntents
+import CloudKit
+import Foundation
+
 #if !os(visionOS)
-import WidgetKit
+    import WidgetKit
 #endif
 
 class CSEDataManager {
     static let userDefaults = UserDefaults(suiteName: "group.com.tsg0o0.cse")!
     static let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-    
+
     enum CSEType: String, AppEnum {
         case defaultCSE
         case privateCSE
         case quickCSE
-        
+
         static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "Search Engine Type")
         static var caseDisplayRepresentations: [Self: DisplayRepresentation] = [
             .defaultCSE: "Default Search Engine",
             .privateCSE: "Private Search Engine",
-            .quickCSE: "Quick Search Engine"
+            .quickCSE: "Quick Search Engine",
         ]
     }
-    
+
     // Structure of a CSE data
     struct CSEData: Encodable, Equatable {
         var name: String = ""
@@ -39,7 +40,7 @@ class CSEDataManager {
         var disablePercentEncoding: Bool = false
         var maxQueryLength: Int? = nil
     }
-    
+
     // Structure of a single device's CSE data for iCloud
     struct DeviceCSEs: Identifiable, Hashable {
         let id: CKRecord.ID
@@ -52,18 +53,18 @@ class CSEDataManager {
         let useEmojiSearch: Bool
         let QuickSearchSettings_keywordOnly: Bool
         let QuickSearchSettings_keywordPos: String
-        
+
         static func == (lhs: DeviceCSEs, rhs: DeviceCSEs) -> Bool {
-                return lhs.id.recordName == rhs.id.recordName
-            }
+            return lhs.id.recordName == rhs.id.recordName
+        }
 
         func hash(into hasher: inout Hasher) {
             hasher.combine(id.recordName)
         }
     }
-    
+
     // MARK: - Load CSE Data
-    
+
     class func getCSEData(_ type: CSEType = .defaultCSE, id: String? = nil) -> CSEData {
         let cseData = userDefaults.dictionary(forKey: type.rawValue) ?? [:]
         switch type {
@@ -71,13 +72,14 @@ class CSEDataManager {
             return parseCSEData(cseData)
         case .quickCSE:
             guard let id = id,
-                  let quickDict = cseData as? [String: [String: Any]] else {
+                let quickDict = cseData as? [String: [String: Any]]
+            else {
                 return CSEData()
             }
             return parseCSEData(quickDict[id] ?? [:], id: id)
         }
     }
-    
+
     class func getAllQuickCSEData() -> [String: CSEData] {
         let quickCSEData = userDefaults.dictionary(forKey: "quickCSE") ?? [:]
         var allQuickCSEs: [String: CSEData] = [:]
@@ -88,12 +90,12 @@ class CSEDataManager {
         }
         return allQuickCSEs
     }
-    
+
     class func checkQuickCSEExists(_ id: String) -> Bool {
         let quickCSEData = userDefaults.dictionary(forKey: "quickCSE") ?? [:]
         return quickCSEData.keys.contains(id)
     }
-    
+
     class func parseCSEData(_ dict: [String: Any], id: String? = nil) -> CSEData {
         var data = CSEData()
         if let v = dict["name"] as? String { data.name = v }
@@ -107,10 +109,10 @@ class CSEDataManager {
             data.maxQueryLength = nil
         }
         if let v = dict["post"] as? [[String: String]] { data.post = cleanPostData(v) }
-            
+
         return data
     }
-    
+
     // for QuickCSEs
     class func parseCSEData(_ data: [String: [String: Any]]) -> [String: CSEDataManager.CSEData] {
         // Convert Dictionary to CSEData
@@ -120,7 +122,7 @@ class CSEDataManager {
         }
         return parsedCSEs
     }
-    
+
     class func CSEDataToDictionary(_ data: CSEData) -> [String: Any] {
         var dict: [String: Any] = [:]
         if !data.name.isEmpty {
@@ -146,7 +148,7 @@ class CSEDataManager {
         }
         return dict
     }
-    
+
     class func CSEDataToDictionary(_ data: [String: CSEData]) -> [String: [String: Any]] {
         // Convert QuickCSE data to Dictionary
         var quickCSEDict: [String: [String: Any]] = [:]
@@ -155,13 +157,13 @@ class CSEDataManager {
         }
         return quickCSEDict
     }
-    
+
     class func parseDeviceCSEs(_ ds: DeviceCSEs) -> (defaultCSE: CSEData, privateCSE: CSEData, quickCSE: [String: CSEData]) {
         // Convert JSON string to Dictionary
         let dicDefaultCSE = ds.defaultCSE.isEmpty ? [:] : (try? JSONSerialization.jsonObject(with: Data(ds.defaultCSE.utf8), options: [])) as? [String: Any] ?? [:]
         let dicPrivateCSE = ds.privateCSE.isEmpty ? [:] : (try? JSONSerialization.jsonObject(with: Data(ds.privateCSE.utf8), options: [])) as? [String: Any] ?? [:]
         let dicQuickCSE = ds.quickCSE.isEmpty ? [:] : (try? JSONSerialization.jsonObject(with: Data(ds.quickCSE.utf8), options: [])) as? [String: [String: Any]] ?? [:]
-        
+
         // Parse CSE data
         let defaultCSE = parseCSEData(dicDefaultCSE)
         let privateCSE = parseCSEData(dicPrivateCSE)
@@ -169,12 +171,12 @@ class CSEDataManager {
         for (key, value) in dicQuickCSE {
             quickCSE[key] = parseCSEData(value, id: key)
         }
-        
+
         return (defaultCSE, privateCSE, quickCSE)
     }
-    
+
     // MARK: - Save CSE Data
-    
+
     class func findAvailableKey(_ baseKey: String) -> String {
         var candidate = baseKey
         var count = 1
@@ -184,10 +186,10 @@ class CSEDataManager {
         }
         return candidate
     }
-    
+
     class func saveCSEDataCommon(_ data: CSEData) -> CSEData {
         var cseData = data
-        
+
         // Normalize Safari search engine URLs
         let replacements = [
             "https://google.com": "https://www.google.com",
@@ -200,59 +202,60 @@ class CSEDataManager {
             "https://www.yandex.ru": "https://yandex.ru",
             "https://so.com": "https://www.so.com",
         ]
-        
+
         for (original, replacement) in replacements {
             if cseData.url.hasPrefix(original) {
                 cseData.url = cseData.url.replacingOccurrences(of: original, with: replacement)
                 break
             }
         }
-        
+
         // Remove check parameters from Safari search engine URLs
         for safariSE in SafariSEs.allCases {
             if safariSE.isMatchedURL(cseData.url) {
                 // This CSE could cause a redirect loop
                 // Remove check parameter used by safariSE
-                
+
                 // Get host
                 guard let urlComponents = URLComponents(string: cseData.url),
-                      let host = urlComponents.host else {
+                    let host = urlComponents.host
+                else {
                     break
                 }
-                
+
                 // Get first CheckItem
                 let checkItem = safariSE.checkParameter(for: host)
                 guard let firstItem = checkItem?.first else {
                     break
                 }
-                
+
                 // Remove first check parameter
                 let newParams = urlComponents.queryItems?.filter { $0.name != firstItem.param }
                 var newURLComponents = urlComponents
                 newURLComponents.queryItems = newParams
-                
+
                 // Set new URL
                 if let newURL = newURLComponents.url {
                     cseData.url = newURL.absoluteString
                 }
-                
+
                 break
             }
         }
-        
+
         // Remove percent encoding
         cseData.url = cseData.url.removingPercentEncoding ?? cseData.url
-        
+
         // Clean up post data
         cseData.post = cleanPostData(cseData.post)
-        
+
         if cseData.maxQueryLength ?? -1 < 0 {
-            cseData.maxQueryLength = nil // Default value for maxQueryLength
+            cseData.maxQueryLength = nil  // Default value for maxQueryLength
         }
-        
+
         return cseData
     }
-    
+
     class func saveCSEData(
         _ data: CSEData,
         _ type: CSEType = .defaultCSE,
@@ -263,18 +266,18 @@ class CSEDataManager {
             saveCSEData(data, nil, uploadCloud: uploadCloud)
             return
         }
-        
+
         var cseData = saveCSEDataCommon(data)
-        
+
         // Default and Private CSEs do not have keywords and names
-        cseData.keyword = "" // Default and Private CSEs do not have keywords
-        cseData.name = "" // Default and Private CSEs do not have names
+        cseData.keyword = ""  // Default and Private CSEs do not have keywords
+        cseData.name = ""  // Default and Private CSEs do not have names
         userDefaults.set(CSEDataToDictionary(cseData), forKey: type.rawValue)
-        
+
         // Upload CSEData to iCloud
         if uploadCloud { CloudKitManager().saveAll() }
     }
-    
+
     class func saveCSEData(
         _ data: CSEData,
         _ originalID: String?,
@@ -282,53 +285,53 @@ class CSEDataManager {
         handleKeywordChange: ((String) -> Void)? = nil
     ) {
         var cseData = saveCSEDataCommon(data)
-        
+
         // If Keyword is blank
         if cseData.keyword.isEmpty {
             cseData.keyword = findAvailableKey("cse")
         }
-        
+
         // Remove whitespace from keyword
         cseData.keyword = cseData.keyword.filter { !($0.isWhitespace || $0.isNewline) }
-        
+
         // Get current QuickSEs Data
         var quickCSEData = getAllQuickCSEData()
-        
+
         // If Keyword is not free, automatically set a new one
         if quickCSEData[cseData.keyword] != nil && cseData.keyword != originalID {
             cseData.keyword = findAvailableKey(cseData.keyword)
             handleKeywordChange?(cseData.keyword)
         }
-        
+
         // If Keyword is changed, remove the old one
         if let originalID = originalID, originalID != cseData.keyword {
             quickCSEData.removeValue(forKey: originalID)
         }
-        
+
         // Replace this QuickSE
         quickCSEData.removeValue(forKey: cseData.keyword)
         quickCSEData[cseData.keyword] = cseData
-        
+
         // Convert to Dictionary
         let quickCSEDataDict = CSEDataToDictionary(quickCSEData)
         userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
-        
+
         // Upload CSEData to iCloud
         if uploadCloud { CloudKitManager().saveAll() }
     }
-    
+
     // MARK: - QuickCSE Data Management
-    
+
     class func replaceQuickCSEData(_ data: [String: CSEData]) {
         // Convert to Dictionary
         let quickCSEDataDict = CSEDataToDictionary(data)
         userDefaults.set(quickCSEDataDict, forKey: "quickCSE")
     }
-    
+
     class func replaceQuickCSEData(_ data: [String: [String: Any]]) {
         userDefaults.set(data, forKey: "quickCSE")
     }
-    
+
     class func deleteQuickCSE(_ id: String) {
         DispatchQueue.global(qos: .userInteractive).async {
             // Get current QuickSEs Data
@@ -342,9 +345,9 @@ class CSEDataManager {
             }
         }
     }
-    
+
     // MARK: - POST Data Handling
-    
+
     class func cleanPostData(_ post: [[String: String]]) -> [[String: String]] {
         return post.filter { entry in
             if let key = entry["key"], let value = entry["value"] {
@@ -353,33 +356,33 @@ class CSEDataManager {
             return false
         }
     }
-    
+
     class func postDataToString(_ post: [[String: String]], join: String = "=", separator: String = "&") -> String {
         if post.isEmpty { return "" }
-        
+
         // key=value&key=value&...
         let postData = post.map { entry in
             if let key = entry["key"], let value = entry["value"] {
                 let encodedKey =
-                (key.addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._"))) ?? key)
+                    (key.addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._"))) ?? key)
                     .replacingOccurrences(of: "%25s", with: "%s")
                 let encodedValue =
-                (value.addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._"))) ?? value)
+                    (value.addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(.init(charactersIn: "~-._"))) ?? value)
                     .replacingOccurrences(of: "%25s", with: "%s")
-                
+
                 return "\(encodedKey)\(join)\(encodedValue)"
             }
             return ""
         }.filter { !$0.isEmpty }.joined(separator: separator)
-        
+
         return postData
     }
-    
+
     class func postDataToDictionary(_ post: String, join: String = "=", separator: String = "&") -> [[String: String]] {
         // Convert post data to Dictionary
         var postDataDict: [[String: String]] = []
         // [["key"="example", "value"="example"]] format
-        
+
         // Split the post data by separator
         let entries = post.split(separator: separator).map { String($0) }
         for entry in entries {
@@ -391,16 +394,16 @@ class CSEDataManager {
                 postDataDict.append(["key": key, "value": value])
             }
         }
-        
+
         return postDataDict
     }
-    
+
     // MARK: - Import/Export Support
-    
+
     enum jsonError: LocalizedError {
         case parseError
         case validDataNotFound
-        
+
         var errorDescription: String? {
             switch self {
             case .parseError: return String(localized: "Failed to parse JSON data")
@@ -408,57 +411,58 @@ class CSEDataManager {
             }
         }
     }
-    
+
     class func exportDeviceCSEsAsJSON() -> String? {
         // Create JSON Dictionary
         var jsonDict: [String: Any] = [:]
         jsonDict["type"] = "net.cizzuk.cse.deviceCSEs"
         jsonDict["version"] = currentVersion
-        
+
         // DefaultCSE
         if userDefaults.bool(forKey: "useDefaultCSE") {
             let defaultCSE = getCSEData(.defaultCSE)
             let defaultCSEDict = CSEDataToDictionary(defaultCSE)
             jsonDict["defaultCSE"] = defaultCSEDict
         }
-        
+
         // PrivateCSE
         if userDefaults.bool(forKey: "usePrivateCSE") {
             let privateCSE = getCSEData(.privateCSE)
             let privateCSEDict = CSEDataToDictionary(privateCSE)
             jsonDict["privateCSE"] = privateCSEDict
         }
-        
+
         // QuickCSE
         if userDefaults.bool(forKey: "useQuickCSE") {
             let quickCSEs = getAllQuickCSEData()
             let quickCSEDict = CSEDataToDictionary(quickCSEs)
             jsonDict["quickCSE"] = quickCSEDict
         }
-        
+
         // Emoji Search
         jsonDict["useEmojiSearch"] = userDefaults.bool(forKey: "useEmojiSearch")
-        
+
         // Quick Search Settings
         jsonDict["QuickSearchSettings_keywordOnly"] = userDefaults.bool(forKey: "QuickSearchSettings_keywordOnly")
         jsonDict["QuickSearchSettings_keywordPos"] = userDefaults.string(forKey: "QuickSearchSettings_keywordPos") ?? QuickSearchKeywordPos.default.rawValue
-        
+
         // Convert Dictionary to JSON String
         return jsonDictToString(jsonDict)
     }
-    
+
     class func importDeviceCSEsFromJSON(_ jsonString: String) throws {
         // Convert JSON string to Dictionary
         guard let jsonData = jsonString.data(using: .utf8),
-              let jsonDict = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] else {
+            let jsonDict = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any]
+        else {
             throw jsonError.parseError
         }
-        
+
         // Check JSON Data
         guard let type = jsonDict["type"] as? String, type == "net.cizzuk.cse.deviceCSEs" else {
             throw jsonError.validDataNotFound
         }
-        
+
         // Extract and import CSEs
         let defaultCSEJSON = jsonDict["defaultCSE"] as? [String: Any] ?? [:]
         let privateCSEJSON = jsonDict["privateCSE"] as? [String: Any] ?? [:]
@@ -466,17 +470,17 @@ class CSEDataManager {
         let useEmojiSearch = jsonDict["useEmojiSearch"] as? Bool ?? false
         let QuickSearchSettings_keywordOnly = jsonDict["QuickSearchSettings_keywordOnly"] as? Bool ?? true
         let QuickSearchSettings_keywordPos = jsonDict["QuickSearchSettings_keywordPos"] as? String ?? QuickSearchKeywordPos.default.rawValue
-        
+
         // Convert JSON strings to CSEData
         let defaultCSE = parseCSEData(defaultCSEJSON)
         let privateCSE = parseCSEData(privateCSEJSON)
         let quickCSE = parseCSEData(quickCSEJSON)
-        
+
         // Save CSEs
         saveCSEData(defaultCSE, .defaultCSE, uploadCloud: false)
         saveCSEData(privateCSE, .privateCSE, uploadCloud: false)
         replaceQuickCSEData(quickCSE)
-        
+
         // Update Toggles
         DispatchQueue.main.async {
             userDefaults.set(!defaultCSE.url.isEmpty, forKey: "useDefaultCSE")
@@ -486,29 +490,29 @@ class CSEDataManager {
             userDefaults.set(QuickSearchSettings_keywordOnly, forKey: "QuickSearchSettings_keywordOnly")
             userDefaults.set(QuickSearchSettings_keywordPos, forKey: "QuickSearchSettings_keywordPos")
         }
-        
+
         // Update CC
         #if !os(visionOS)
-        DispatchQueue.global(qos: .background).async {
-            if #available(iOS 18.0, macOS 26, *) {
-                ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UseDefaultCSE")
-                ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UsePrivateCSE")
-                ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
-                ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.EmojiSearch")
+            DispatchQueue.global(qos: .background).async {
+                if #available(iOS 18.0, macOS 26, *) {
+                    ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UseDefaultCSE")
+                    ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UsePrivateCSE")
+                    ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
+                    ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.EmojiSearch")
+                }
             }
-        }
         #endif
     }
-    
+
     class func importDeviceCSEs(from deviceCSE: DeviceCSEs) {
         // Parse device CSE data using existing function
         let (defaultCSE, privateCSE, quickCSE) = parseDeviceCSEs(deviceCSE)
-        
+
         // Save CSEs
         saveCSEData(defaultCSE, .defaultCSE, uploadCloud: false)
         saveCSEData(privateCSE, .privateCSE, uploadCloud: false)
         replaceQuickCSEData(quickCSE)
-        
+
         // Update Toggles
         DispatchQueue.main.async {
             userDefaults.set(!defaultCSE.url.isEmpty, forKey: "useDefaultCSE")
@@ -518,23 +522,24 @@ class CSEDataManager {
             userDefaults.set(deviceCSE.QuickSearchSettings_keywordOnly, forKey: "QuickSearchSettings_keywordOnly")
             userDefaults.set(deviceCSE.QuickSearchSettings_keywordPos, forKey: "QuickSearchSettings_keywordPos")
         }
-        
+
         // Update CC
         #if !os(visionOS)
-        DispatchQueue.global(qos: .background).async {
-            if #available(iOS 18.0, macOS 26, *) {
-                ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UseDefaultCSE")
-                ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UsePrivateCSE")
-                ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
-                ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.EmojiSearch")
+            DispatchQueue.global(qos: .background).async {
+                if #available(iOS 18.0, macOS 26, *) {
+                    ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UseDefaultCSE")
+                    ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.UsePrivateCSE")
+                    ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.QuickSearch")
+                    ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.EmojiSearch")
+                }
             }
-        }
         #endif
     }
-    
+
     class func jsonDictToString(_ cseData: Any) -> String? {
         guard let jsonData = try? JSONSerialization.data(withJSONObject: cseData, options: [.sortedKeys]),
-              let jsonString = String(data: jsonData, encoding: .utf8) else {
+            let jsonString = String(data: jsonData, encoding: .utf8)
+        else {
             return nil
         }
         return jsonString

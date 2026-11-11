@@ -9,11 +9,15 @@ import AppIntents
 
 struct ImportBackupJSON: AppIntent {
     static var title: LocalizedStringResource = "Import Backup JSON"
-    
+
     @Parameter(title: "JSON", default: "")
     var json: String
 
     func perform() async throws -> some IntentResult {
+        if !IntentSupport.isAllowedEditingSearchEngines() {
+            throw IntentSupport.CSEIntentError.notAllowedEditingSearchEngines
+        }
+        
         try CSEDataManager.importDeviceCSEsFromJSON(json)
         return .result()
     }

@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
+
 #if !os(visionOS)
-import WidgetKit
+    import WidgetKit
 #endif
 
 struct EmojiSearchView: View {
     @AppStorage("useEmojiSearch", store: userDefaults) private var useEmojiSearch: Bool = false
-    
+
     var body: some View {
         List {
             Section {
@@ -22,17 +23,20 @@ struct EmojiSearchView: View {
                 }
                 .tint(.accent)
                 #if !os(visionOS)
-                .onChange(of: useEmojiSearch) { _ in
-                    DispatchQueue.global(qos: .background).async {
-                        if #available(iOS 18.0, macOS 26, *) {
-                            ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.EmojiSearch")
+                    .onChange(of: useEmojiSearch) { _ in
+                        DispatchQueue.global(qos: .background).async {
+                            if #available(iOS 18.0, macOS 26, *) {
+                                ControlCenter.shared.reloadControls(ofKind: "com.tsg0o0.cse.CCWidget.EmojiSearch")
+                            }
                         }
                     }
-                }
                 #endif
-            } footer: { Text("If you enter only one emoji, you can search on Emojipedia.org.") }
-            
-            Section {} footer: {
+            } footer: {
+                Text("If you enter only one emoji, you can search on Emojipedia.org.")
+            }
+
+            Section {
+            } footer: {
                 VStack(alignment: .leading) {
                     Text("If you use this feature, you need to agree to the terms of service and privacy policy of Emojipedia.")
                     Spacer()

@@ -10,10 +10,10 @@ import SwiftUI
 class UITemplates {
     struct IconLabel: View {
         @Environment(\.dynamicTypeSize) var dynamicTypeSize
-        
+
         let icon: String
         let text: String.LocalizationValue
-        
+
         var body: some View {
             HStack {
                 if dynamicTypeSize <= .xxxLarge {
@@ -26,11 +26,11 @@ class UITemplates {
             }
         }
     }
-    
+
     struct PresetSEButton: View {
         let action: () -> Void
         let cse: CSEDataManager.CSEData
-        
+
         var body: some View {
             Button {
                 action()
@@ -46,17 +46,18 @@ class UITemplates {
             }
             .accessibilityLabel(cse.name)
             #if !os(visionOS)
-            .foregroundStyle(Color(.label))
+                .foregroundStyle(Color(.label))
             #endif
         }
     }
-    
+
     struct HeaderSection: View {
         let title: String.LocalizationValue
         let description: String.LocalizationValue
-        
+
         var body: some View {
-            Section {} header: {
+            Section {
+            } header: {
                 Text(String(localized: title))
                     .textCase(.none)
                     .font(.title)
@@ -71,11 +72,11 @@ class UITemplates {
             }
         }
     }
-    
+
     struct TutorialButton: View {
         let action: () -> Void
         let text: String.LocalizationValue
-        
+
         var body: some View {
             Button(action: action) {
                 Text(String(localized: text))
@@ -85,21 +86,21 @@ class UITemplates {
             .glassEffectTutorialButton()
         }
     }
-    
+
     struct OpenSettingsButton: View {
         var body: some View {
             #if !targetEnvironment(macCatalyst)
-            // Open Safari Settings Button
-            Button(action: {
-                if let url = URL(string: "App-Prefs:com.apple.mobilesafari") {
-                    UIApplication.shared.open(url)
+                // Open Safari Settings Button
+                Button(action: {
+                    if let url = URL(string: "App-Prefs:com.apple.mobilesafari") {
+                        UIApplication.shared.open(url)
+                    }
+                }) {
+                    UITemplates.IconLabel(icon: "gear", text: "Open Settings")
+                        #if !os(visionOS)
+                            .foregroundStyle(.accent)
+                        #endif
                 }
-            }) {
-                UITemplates.IconLabel(icon: "gear", text: "Open Settings")
-                    #if !os(visionOS)
-                    .foregroundStyle(.accent)
-                    #endif
-            }
             #endif
         }
     }

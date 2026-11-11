@@ -15,10 +15,10 @@ enum SafariSEs: String, CaseIterable {
         if !overrideRegion_code.isEmpty {
             return overrideRegion_code
         }
-        
+
         return Locale.current.region?.identifier
     }
-    
+
     private static func containsLanguage(_ languageCode: String) -> Bool {
         return Locale.preferredLanguages.contains { language in
             if language.hasPrefix(languageCode + "-") {
@@ -28,11 +28,13 @@ enum SafariSEs: String, CaseIterable {
             return locale.language.languageCode?.identifier == languageCode
         }
     }
-    
+
     // MARK: - Standard
-    
-    case google, yahoo, bing, baidu, yandex, duckduckgo, sogou, so360search = "360search", ecosia
-    
+
+    case google, yahoo, bing, baidu, yandex, duckduckgo, sogou
+    case so360search = "360search"
+    case ecosia
+
     var displayName: String.LocalizationValue {
         switch self {
         case .google: return "Google"
@@ -46,11 +48,11 @@ enum SafariSEs: String, CaseIterable {
         case .yandex: return "Yandex"
         }
     }
-    
+
     static var availableEngines: [SafariSEs] {
         return SafariSEs.allCases.filter { $0.isAvailable }
     }
-    
+
     static var `default`: SafariSEs {
         if currentRegion == "CN" { return .baidu }
         if #unavailable(iOS 17.0, macOS 14.0) {
@@ -62,7 +64,7 @@ enum SafariSEs: String, CaseIterable {
     static var `private`: SafariSEs {
         return .duckduckgo
     }
-    
+
     var isAvailable: Bool {
         switch self {
         case .google:
@@ -78,43 +80,43 @@ enum SafariSEs: String, CaseIterable {
             return Self.currentRegion == "RU" || Self.currentRegion == "KZ" || Self.currentRegion == "BY" || Self.containsLanguage("ru")
         }
     }
-    
+
     // MARK: - URL Matching
-    
+
     var domains: [String] {
         let region = Self.currentRegion
         switch self {
         case .google:
             if region == "CN" {
-                return ["google.cn"] // www.google.cn
+                return ["google.cn"]  // www.google.cn
             } else if region == "HK" {
-                return ["google.com", "google.com.hk"] // www.google.com, www.google.com.hk
+                return ["google.com", "google.com.hk"]  // www.google.com, www.google.com.hk
             } else {
-                return ["google.com"] // www.google.com
+                return ["google.com"]  // www.google.com
             }
         case .yahoo:
             if region == "JP" {
-                return ["search.yahoo.co.jp", "search.yahoo.com"] // search.yahoo.co.jp, jp.search.yahoo.com
+                return ["search.yahoo.co.jp", "search.yahoo.com"]  // search.yahoo.co.jp, jp.search.yahoo.com
             } else {
-                return ["search.yahoo.com"] // search.yahoo.com, *.search.yahoo.com
+                return ["search.yahoo.com"]  // search.yahoo.com, *.search.yahoo.com
             }
-        case .bing: return ["bing.com"] // www.bing.com
-        case .duckduckgo: return ["duckduckgo.com"] // duckduckgo.com
-        case .ecosia: return ["ecosia.org"] // www.ecosia.org
-        case .baidu: return ["baidu.com"] // m.baidu.com, www.baidu.com
-        case .sogou: return ["sogou.com"] // m.sogou.com, www.sogou.com
-        case .so360search: return ["so.com"] // m.so.com, www.so.com
-        case .yandex: return ["yandex.ru"] // yandex.ru
+        case .bing: return ["bing.com"]  // www.bing.com
+        case .duckduckgo: return ["duckduckgo.com"]  // duckduckgo.com
+        case .ecosia: return ["ecosia.org"]  // www.ecosia.org
+        case .baidu: return ["baidu.com"]  // m.baidu.com, www.baidu.com
+        case .sogou: return ["sogou.com"]  // m.sogou.com, www.sogou.com
+        case .so360search: return ["so.com"]  // m.so.com, www.so.com
+        case .yandex: return ["yandex.ru"]  // yandex.ru
         }
     }
-    
+
     func matchesHost(_ host: String) -> Bool {
         // Ignore subdomains
         return domains.contains { domain in
             host == domain || host.hasSuffix("." + domain)
         }
     }
-    
+
     func path(for domain: String) -> String {
         switch self {
         case .google, .yahoo, .bing, .ecosia, .yandex: return "/search"
@@ -123,7 +125,7 @@ enum SafariSEs: String, CaseIterable {
         case .sogou: return domain == "m.sogou.com" ? "/web/sl" : "/web"
         }
     }
-    
+
     func queryParam(for domain: String) -> String {
         switch self {
         case .google, .bing, .duckduckgo, .ecosia, .so360search: return "q"
@@ -133,15 +135,15 @@ enum SafariSEs: String, CaseIterable {
         case .yandex: return "text"
         }
     }
-    
+
     struct CheckItem {
         let param: String
         let values: [String]
     }
-    
+
     func checkParameter(for domain: String) -> [CheckItem]? {
         // The first item is prioritized for deletion when automatic deletion is performed.
-        
+
         switch self {
         case .google:
             // All: ie=UTF-8, oe=UTF-8, client=safari
@@ -197,19 +199,20 @@ enum SafariSEs: String, CaseIterable {
         case .sogou: return nil
         }
     }
-    
+
     // MARK: - Support Functions
-    
+
     func isMatchedURL(_ url: URL, disableChecker: Bool = false) -> Bool {
         return isMatchedURL(url.absoluteString, disableChecker: disableChecker)
     }
-    
+
     func isMatchedURL(_ url: String, disableChecker: Bool = false) -> Bool {
         let engine = self
-        
+
         // Make URLComponents and get host
         guard let urlComponents = URLComponents(string: url),
-              let host = urlComponents.host else {
+            let host = urlComponents.host
+        else {
             return false
         }
 
@@ -228,16 +231,17 @@ enum SafariSEs: String, CaseIterable {
         guard let queryItems = urlComponents.queryItems else {
             return false
         }
-        
+
         // Check if search query param exists
         let queryParam = engine.queryParam(for: host)
         guard queryItems.contains(where: { $0.name == queryParam }) else {
             return false
         }
-        
+
         // Param Check
         if !disableChecker,
-           let checkParam = engine.checkParameter(for: host) {
+            let checkParam = engine.checkParameter(for: host)
+        {
             // Check each param
             for item in checkParam {
                 let param = item.param
@@ -248,44 +252,45 @@ enum SafariSEs: String, CaseIterable {
                     // All items must match
                     return false
                 }
-                        
+
             }
         }
 
         // All items matched (or no checks)
         return true
     }
-    
+
     func getQuery(from url: URL) -> String? {
         return getQuery(from: url.absoluteString)
     }
-    
+
     func getQuery(from url: String) -> String? {
         let engine = self
-        
+
         // Make URLComponents and get host
         guard let urlComponents = URLComponents(string: url),
-              let host = urlComponents.host else {
+            let host = urlComponents.host
+        else {
             return nil
         }
-        
+
         // Get search query param
         let queryParam = engine.queryParam(for: host)
-        
+
         // Get %encoded Query Items
         guard let queryItems = urlComponents.percentEncodedQueryItems else { return nil }
-        
+
         // Find search query
         if let item = queryItems.first(where: { $0.name == queryParam }) {
             return item.value
         }
-        
+
         // Not found
         return nil
     }
-    
+
     // MARK: - Shortcut Support
-    
+
     var valueInShortcuts: String {
         switch self {
         case .google: return "Google"
@@ -299,34 +304,34 @@ enum SafariSEs: String, CaseIterable {
         case .yandex: return "Yandex"
         }
     }
-    
+
     static func convertForShortcuts(_ engine: String) -> SafariSEs? {
         let value = engine.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
-        
+
         // valueInShortcuts
         if let matched = SafariSEs.allCases.first(where: { $0.valueInShortcuts.lowercased() == value }) {
             #if DEBUG
-            print("Matched by valueInShortcuts: \(matched)")
+                print("Matched by valueInShortcuts: \(matched)")
             #endif
             return matched
         }
-        
+
         // displayName
         if let matched = SafariSEs.allCases.first(where: { String(localized: $0.displayName).lowercased() == value }) {
             #if DEBUG
-            print("Matched by displayName: \(matched)")
+                print("Matched by displayName: \(matched)")
             #endif
             return matched
         }
-        
+
         // rawValue
         if let matched = SafariSEs(rawValue: value) {
             #if DEBUG
-            print("Matched by rawValue: \(matched)")
+                print("Matched by rawValue: \(matched)")
             #endif
             return matched
         }
-        
+
         return nil
     }
 }
