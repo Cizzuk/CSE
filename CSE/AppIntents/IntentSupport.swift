@@ -12,13 +12,20 @@ final class IntentSupport {
         !CSEDataManager.userDefaults.bool(forKey: "adv_disableEditSEFromShortcuts")
     }
 
+    static func isAllowedGettingSearchEngineSettings() -> Bool {
+        !CSEDataManager.userDefaults.bool(forKey: "adv_disableGetSEFromShortcuts")
+    }
+
     enum CSEIntentError: Error, CustomLocalizedStringResourceConvertible {
         case notAllowedEditingSearchEngines
+        case notAllowedGettingSearchEngineSettings
 
         var localizedStringResource: LocalizedStringResource {
             switch self {
             case .notAllowedEditingSearchEngines:
                 return "Editing Search Engines from Shortcuts is disabled in CSE settings."
+            case .notAllowedGettingSearchEngineSettings:
+                return "Getting Search Engine Settings from Shortcuts is disabled in CSE settings."
             }
         }
     }

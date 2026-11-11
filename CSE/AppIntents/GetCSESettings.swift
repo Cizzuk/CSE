@@ -35,6 +35,10 @@ struct GetCSESettings: AppIntent, CustomIntentMigratedAppIntent {
     }
 
     func perform() async throws -> some IntentResult & ReturnsValue<String> {
+        if !IntentSupport.isAllowedGettingSearchEngineSettings() {
+            throw IntentSupport.CSEIntentError.notAllowedGettingSearchEngineSettings
+        }
+
         var cseData: CSEDataManager.CSEData
 
         if type == .quickCSE {

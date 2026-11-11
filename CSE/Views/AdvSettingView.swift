@@ -14,6 +14,7 @@ struct AdvSettingView: View {
     @AppStorage("adv_ignoreSafariSettings", store: userDefaults) private var ignoreSafariSettings: Bool = false
     @AppStorage("adv_ignoreFocusFilter", store: userDefaults) private var ignoreFocusFilter: Bool = false
     @AppStorage("adv_disableEditSEFromShortcuts", store: userDefaults) private var disableEditSEFromShortcuts: Bool = false
+    @AppStorage("adv_disableGetSEFromShortcuts", store: userDefaults) private var disableGetSEFromShortcuts: Bool = false
     @AppStorage("adv_overrideRegion", store: userDefaults) private var overrideRegion: String = ""
     @State private var allowReset: Bool = false
 
@@ -25,6 +26,7 @@ struct AdvSettingView: View {
                     ignoreSafariSettings = false
                     ignoreFocusFilter = false
                     disableEditSEFromShortcuts = false
+                    disableGetSEFromShortcuts = false
                     overrideRegion = ""
                     allowReset = false
                 }
@@ -57,6 +59,11 @@ struct AdvSettingView: View {
 
             Section {
                 Toggle("Disable Editing Search Engine from Shortcuts", isOn: $disableEditSEFromShortcuts)
+                    .tint(.accent)
+            }
+
+            Section {
+                Toggle("Disable Getting Search Engine Settings from Shortcuts", isOn: $disableGetSEFromShortcuts)
                     .tint(.accent)
             }
 

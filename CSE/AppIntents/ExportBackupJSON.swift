@@ -15,6 +15,10 @@ struct ExportBackupJSON: AppIntent {
     }
 
     func perform() async throws -> some IntentResult & ReturnsValue<String> {
+        if !IntentSupport.isAllowedGettingSearchEngineSettings() {
+            throw IntentSupport.CSEIntentError.notAllowedGettingSearchEngineSettings
+        }
+
         if let backupJSON = CSEDataManager.exportDeviceCSEsAsJSON() {
             return .result(value: backupJSON)
         } else {
